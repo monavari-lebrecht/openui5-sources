@@ -1,0 +1,1743 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.layout.Splitter</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class sap.ui.layout.Splitter
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.ui.core.Control" href="../symbols/sap.ui.core.Control.html">Control</a></div>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p></p><p>
+A layout that contains several content areas. The content that is added to the splitter should contain LayoutData of the type SplitterLayoutData that defines its size and size contraints.
+</p><p>
+By adding or changing SplitterLayoutData to the controls that make up the content areas, the size can be changed programatically. Additionally the contents can be made non-resizable individually and a minimal size (in px) can be set.
+</p><p>
+The orientation of the splitter can be set to horizontal (default) or vertical. All content areas of the splitter will be arranged in that way. In order to split vertically and horizontally at the same time, Splitters need to be nested.
+</p><p>
+The splitter bars can be focused to enable resizing of the content areas via keyboard. The contents size can be manipulated when the splitter bar is focused and Shift-Left/Down/Right/Up are pressed. When Shift-Home/End are pressed, the contents are set their minimum or maximum size (keep in mind though, that resizing an auto-size content-area next to another auto-size one might lead to the effect that the former does not take its maximum size but only the maximum size before recalculating auto sizes).
+</p><p>
+The splitter bars used for resizing the contents by the user can be set to different widths (or heights in vertical mode) and the splitter will automatically resize the other contents accordingly. In case the splitter bar is resized after the splitter has rendered, a manual resize has to be triggered by invoking triggerResize() on the Splitter.</p>
+						
+						
+							<p class="tagExperimental"><span class="title">Experimental API:</span><span class="desc">Since version 1.22.0. 
+API is not yet finished and might change completely</span></p> 
+						
+						
+						
+						
+						
+							<br />
+							<i>Since: </i>1.22.0.
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="Constructor for a new Splitter.">new <a href="../symbols/sap.ui.layout.Splitter.html#constructor">sap.ui.layout.Splitter</a></b>
+										<span class='signature'>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)</span>
+										<span class='description'>Constructor for a new Splitter.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+						
+						
+						
+						
+					
+		
+
+
+					
+						
+						
+						<div class="summary section" cellspacing="0" summary="A summary of the events documented in the class sap.ui.layout.Splitter.">
+							<div class="sectionTitle">Event Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Event is fired when contents are resized."><a href="../symbols/sap.ui.layout.Splitter.html#event:resize">resize</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>Event is fired when contents are resized.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+				
+						
+						
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Creates a new subclass of class sap.ui.layout.Splitter with name sClassName and enriches it with the information contained in oClassInfo."><a href="../symbols/sap.ui.layout.Splitter.html#.extend">sap.ui.layout.Splitter.extend</a></b><span class='signature'>(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Creates a new subclass of class sap.ui.layout.Splitter with name <code>sClassName</code> and enriches it with the information contained in <code>oClassInfo</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Adds some contentArea oContentArea to the aggregation named contentAreas."><a href="../symbols/sap.ui.layout.Splitter.html#addContentArea">addContentArea</a></b><span class='signature'>(<span title="(sap.ui.core.Control) the contentArea to add; if empty, nothing is inserted">oContentArea</span>)</span>
+									<span class='description'>Adds some contentArea <code>oContentArea</code> to the aggregation named <code>contentAreas</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Attach event handler fnFunction to the 'resize' event of this sap.ui.layout.Splitter."><a href="../symbols/sap.ui.layout.Splitter.html#attachResize">attachResize</a></b><span class='signature'>(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Attach event handler <code>fnFunction</code> to the 'resize' event of this <code>sap.ui.layout.Splitter</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys all the contentAreas in the aggregation named contentAreas."><a href="../symbols/sap.ui.layout.Splitter.html#destroyContentAreas">destroyContentAreas</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys all the contentAreas in the aggregation named <code>contentAreas</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Detach event handler fnFunction from the 'resize' event of this sap.ui.layout.Splitter."><a href="../symbols/sap.ui.layout.Splitter.html#detachResize">detachResize</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Detach event handler <code>fnFunction</code> from the 'resize' event of this <code>sap.ui.layout.Splitter</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Disables the resizing of the Splitter contents via keyboard."><a href="../symbols/sap.ui.layout.Splitter.html#disableKeyboardSupport">disableKeyboardSupport</a></b><span class='signature'>()</span>
+									<span class='description'>Disables the resizing of the Splitter contents via keyboard.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Enables the resizing of the Splitter contents via keyboard."><a href="../symbols/sap.ui.layout.Splitter.html#enableKeyboardSupport">enableKeyboardSupport</a></b><span class='signature'>()</span>
+									<span class='description'>Enables the resizing of the Splitter contents via keyboard.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Fire event resize to attached listeners."><a href="../symbols/sap.ui.layout.Splitter.html#fireResize">fireResize</a></b><span class='signature'>(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event resize to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation contentAreas."><a href="../symbols/sap.ui.layout.Splitter.html#getContentAreas">getContentAreas</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>contentAreas</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property height."><a href="../symbols/sap.ui.layout.Splitter.html#getHeight">getHeight</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>height</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property orientation."><a href="../symbols/sap.ui.layout.Splitter.html#getOrientation">getOrientation</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>orientation</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property width."><a href="../symbols/sap.ui.layout.Splitter.html#getWidth">getWidth</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>width</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Checks for the provided sap.ui.core.Control in the aggregation named contentAreas and returns its index if found or -1 otherwise."><a href="../symbols/sap.ui.layout.Splitter.html#indexOfContentArea">indexOfContentArea</a></b><span class='signature'>(<span title="(sap.ui.core.Control) the contentArea whose index is looked for.">oContentArea</span>)</span>
+									<span class='description'>Checks for the provided <code>sap.ui.core.Control</code> in the aggregation named <code>contentAreas</code> and returns its index if found or -1 otherwise.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Inserts a contentArea into the aggregation named contentAreas."><a href="../symbols/sap.ui.layout.Splitter.html#insertContentArea">insertContentArea</a></b><span class='signature'>(<span title="(sap.ui.core.Control) the contentArea to insert; if empty, nothing is inserted">oContentArea</span>, <span title="(int) the 0-based index the contentArea should be inserted at; for a negative value of iIndex, the contentArea is inserted at position 0; for a value greater than the current size of the aggregation, the contentArea is inserted at the last position">iIndex</span>)</span>
+									<span class='description'>Inserts a contentArea into the aggregation named <code>contentAreas</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes all the controls in the aggregation named contentAreas."><a href="../symbols/sap.ui.layout.Splitter.html#removeAllContentAreas">removeAllContentAreas</a></b><span class='signature'>()</span>
+									<span class='description'>Removes all the controls in the aggregation named <code>contentAreas</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes an contentArea from the aggregation named contentAreas."><a href="../symbols/sap.ui.layout.Splitter.html#removeContentArea">removeContentArea</a></b><span class='signature'>(<span title="(int | string | sap.ui.core.Control) the contentArea to remove or its index or id">vContentArea</span>)</span>
+									<span class='description'>Removes an contentArea from the aggregation named <code>contentAreas</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property height."><a href="../symbols/sap.ui.layout.Splitter.html#setHeight">setHeight</a></b><span class='signature'>(<span title="(sap.ui.core.CSSSize) new value for property height">sHeight</span>)</span>
+									<span class='description'>Setter for property <code>height</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property orientation."><a href="../symbols/sap.ui.layout.Splitter.html#setOrientation">setOrientation</a></b><span class='signature'>(<span title="(sap.ui.core.Orientation) new value for property orientation">oOrientation</span>)</span>
+									<span class='description'>Setter for property <code>orientation</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property width."><a href="../symbols/sap.ui.layout.Splitter.html#setWidth">setWidth</a></b><span class='signature'>(<span title="(sap.ui.core.CSSSize) new value for property width">sWidth</span>)</span>
+									<span class='description'>Setter for property <code>width</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="This method triggers a resize on the Splitter - meaning it forces the Splitter to recalculate all sizes."><a href="../symbols/sap.ui.layout.Splitter.html#triggerResize">triggerResize</a></b><span class='signature'>(<span title="forceDirectly Do not delay the resize, trigger it right now.">bool</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>This method triggers a resize on the Splitter - meaning it forces the Splitter to recalculate all sizes.</span>
+								</div>
+							
+								<div class="sectionItem classMethod deprecated protected">
+									<b class="icon protected" title="Disables the resize handler for this control, this leads to an automatic resize of the contents whenever the control changes its size."><a href="../symbols/sap.ui.layout.Splitter.html#disableAutoResize">disableAutoResize</a></b><span class='signature'>()</span>
+									<span class='description'>Disables the resize handler for this control, this leads to an automatic resize of the contents whenever the control changes its size.</span>
+								</div>
+							
+								<div class="sectionItem classMethod deprecated protected">
+									<b class="icon protected" title="Disables recalculation and resize of the splitter contents while dragging the splitter bar."><a href="../symbols/sap.ui.layout.Splitter.html#disableLiveResize">disableLiveResize</a></b><span class='signature'>()</span>
+									<span class='description'>Disables recalculation and resize of the splitter contents while dragging the splitter bar.</span>
+								</div>
+							
+								<div class="sectionItem classMethod deprecated protected">
+									<b class="icon protected" title="Enables the resize handler for this control, this leads to an automatic resize of the contents whenever the control changes its size."><a href="../symbols/sap.ui.layout.Splitter.html#enableAutoResize">enableAutoResize</a></b><span class='signature'>()</span>
+									<span class='description'>Enables the resize handler for this control, this leads to an automatic resize of the contents whenever the control changes its size.</span>
+								</div>
+							
+								<div class="sectionItem classMethod deprecated protected">
+									<b class="icon protected" title="Enables recalculation and resize of the splitter contents while dragging the splitter bar."><a href="../symbols/sap.ui.layout.Splitter.html#enableLiveResize">enableLiveResize</a></b><span class='signature'>()</span>
+									<span class='description'>Enables recalculation and resize of the splitter contents while dragging the splitter bar.</span>
+								</div>
+							
+								<div class="sectionItem classMethod deprecated protected">
+									<b class="icon protected" title="Returns the current actual content sizes as pixel value - these values can change with every resize."><a href="../symbols/sap.ui.layout.Splitter.html#getCalculatedSizes">getCalculatedSizes</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the current actual content sizes as pixel value - these values can change with every resize.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Control.html#addStyleClass">addStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#allowTextSelection">allowTextSelection</a>, <a href="../symbols/sap.ui.core.Control.html#attachBrowserEvent">attachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#clone">clone</a>, <a href="../symbols/sap.ui.core.Control.html#detachBrowserEvent">detachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#getBusy">getBusy</a>, <a href="../symbols/sap.ui.core.Control.html#getBusyIndicatorDelay">getBusyIndicatorDelay</a>, <a href="../symbols/sap.ui.core.Control.html#getIdForLabel">getIdForLabel</a>, <a href="../symbols/sap.ui.core.Control.html#getRenderer">getRenderer</a>, <a href="../symbols/sap.ui.core.Control.html#hasStyleClass">hasStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#invalidate">invalidate</a>, <a href="../symbols/sap.ui.core.Control.html#isBusy">isBusy</a>, <a href="../symbols/sap.ui.core.Control.html#onBeforeRendering">onBeforeRendering</a>, <a href="../symbols/sap.ui.core.Control.html#placeAt">placeAt</a>, <a href="../symbols/sap.ui.core.Control.html#removeStyleClass">removeStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#rerender">rerender</a>, <a href="../symbols/sap.ui.core.Control.html#setBusy">setBusy</a>, <a href="../symbols/sap.ui.core.Control.html#setBusyIndicatorDelay">setBusyIndicatorDelay</a>, <a href="../symbols/sap.ui.core.Control.html#toggleStyleClass">toggleStyleClass</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Element.html#$">$</a>, <a href="../symbols/sap.ui.core.Element.html#addCustomData">addCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#addDependent">addDependent</a>, <a href="../symbols/sap.ui.core.Element.html#addEventDelegate">addEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#applyFocusInfo">applyFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#bindElement">bindElement</a>, <a href="../symbols/sap.ui.core.Element.html#data">data</a>, <a href="../symbols/sap.ui.core.Element.html#destroy">destroy</a>, <a href="../symbols/sap.ui.core.Element.html#destroyCustomData">destroyCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#destroyDependents">destroyDependents</a>, <a href="../symbols/sap.ui.core.Element.html#enhanceAccessibilityState">enhanceAccessibilityState</a>, <a href="../symbols/sap.ui.core.Element.html#exit">exit</a>, <a href="../symbols/sap.ui.core.Element.html#findElements">findElements</a>, <a href="../symbols/sap.ui.core.Element.html#fireEvent">fireEvent</a>, <a href="../symbols/sap.ui.core.Element.html#getCustomData">getCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#getDependents">getDependents</a>, <a href="../symbols/sap.ui.core.Element.html#getDomRef">getDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getElementBinding">getElementBinding</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusDomRef">getFocusDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusInfo">getFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#getInterface">getInterface</a>, <a href="../symbols/sap.ui.core.Element.html#getLayoutData">getLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#getMetadata">getMetadata</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip">getTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_AsString">getTooltip_AsString</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_Text">getTooltip_Text</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfCustomData">indexOfCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfDependent">indexOfDependent</a>, <a href="../symbols/sap.ui.core.Element.html#init">init</a>, <a href="../symbols/sap.ui.core.Element.html#insertCustomData">insertCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#insertDependent">insertDependent</a>, <a href="../symbols/sap.ui.core.Element.html#prop">prop</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllCustomData">removeAllCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllDependents">removeAllDependents</a>, <a href="../symbols/sap.ui.core.Element.html#removeCustomData">removeCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeDependent">removeDependent</a>, <a href="../symbols/sap.ui.core.Element.html#removeEventDelegate">removeEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#setLayoutData">setLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#setTooltip">setTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#toString">toString</a>, <a href="../symbols/sap.ui.core.Element.html#unbindElement">unbindElement</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.ManagedObject.html">sap.ui.base.ManagedObject</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.ManagedObject.html#addAggregation">addAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#addAssociation">addAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#applySettings">applySettings</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindAggregation">bindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindContext">bindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindObject">bindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindProperty">bindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#destroyAggregation">destroyAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#findAggregatedObjects">findAggregatedObjects</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAggregation">getAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAssociation">getAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBinding">getBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingContext">getBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingInfo">getBindingInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingPath">getBindingPath</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getEventingParent">getEventingParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getId">getId</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getModel">getModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getObjectBinding">getObjectBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getOriginInfo">getOriginInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getParent">getParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getProperty">getProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#hasModel">hasModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#indexOfAggregation">indexOfAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#insertAggregation">insertAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isBound">isBound</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isInvalidateSuppressed">isInvalidateSuppressed</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isTreeBinding">isTreeBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAggregation">removeAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAggregation">removeAllAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAssociation">removeAllAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAssociation">removeAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAggregation">setAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAssociation">setAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setBindingContext">setBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setModel">setModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setProperty">setProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindAggregation">unbindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindContext">unbindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindObject">unbindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindProperty">unbindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateAggregation">validateAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateProperty">validateProperty</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.EventProvider.html#attachEvent">attachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#attachEventOnce">attachEventOnce</a>, <a href="../symbols/sap.ui.base.EventProvider.html#detachEvent">detachEvent</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.ui.layout.Splitter</b>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)
+										</div>
+										
+										<div class="full-description">
+											Constructor for a new Splitter.
+</p><p>
+Accepts an object literal <code>mSettings</code> that defines initial 
+property values, aggregated and associated objects as well as event handlers. 
+</p><p>
+If the name of a setting is ambiguous (e.g. a property has the same name as an event), 
+then the framework assumes property, aggregation, association, event in that order. 
+To override this automatic resolution, one of the prefixes "aggregation:", "association:" 
+or "event:" can be added to the name of the setting (such a prefixed name must be
+enclosed in single or double quotes).
+</p><p>
+The supported settings are:
+<ul>
+<li>Properties
+<ul>
+<li><a href="#getOrientation">orientation</a> : sap.ui.core.Orientation (default: sap.ui.core.Orientation.Horizontal)</li>
+<li><a href="#getWidth">width</a> : sap.ui.core.CSSSize (default: '100%')</li>
+<li><a href="#getHeight">height</a> : sap.ui.core.CSSSize (default: '100%')</li></ul>
+</li>
+<li>Aggregations
+<ul>
+<li><a href="#getContentAreas">contentAreas</a> <strong>(default aggregation)</strong> : sap.ui.core.Control[]</li></ul>
+</li>
+<li>Associations
+<ul></ul>
+</li>
+<li>Events
+<ul>
+<li><a href="../symbols/sap.ui.layout.Splitter.html#event:resize">resize</a> : fnListenerFunction or [fnListenerFunction, oListenerObject] or [oData, fnListenerFunction, oListenerObject]</li></ul>
+</li>
+</ul>
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    id for the new control, generated automatically if no id is given
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mSettings</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    initial settings for the new control
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Event Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:resize"> </a>
+									<div class="itemTitle icon">
+										resize<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										Event is fired when contents are resized.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.id</b>
+												</td>
+												<td class="methodItemDesc">
+											    The ID of the splitter control. The splitter control can also be accessed by calling getSource() on the event.
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{int[]}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.oldSizes</b>
+												</td>
+												<td class="methodItemDesc">
+											    An array of values representing the old (pixel-)sizes of the splitter contents
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{int[]}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.newSizes</b>
+												</td>
+												<td class="methodItemDesc">
+											    An array of values representing the new (pixel-)sizes of the splitter contents
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+							</div>
+						</div>
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".extend"> </a>
+										<div class="itemTitle icon">
+											sap.ui.layout.Splitter.extend<span class="signature">(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns function">: function</span>
+										</div>
+										<div class="full-description">
+											Creates a new subclass of class sap.ui.layout.Splitter with name <code>sClassName</code> 
+and enriches it with the information contained in <code>oClassInfo</code>.
+</p><p>
+<code>oClassInfo</code> might contain the same kind of informations as described in <a href="../symbols/sap.ui.core.Element.html#.extend">Element.extend</a>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sClassName</b>
+													</td>
+													<td class="methodItemDesc">
+												    name of the class to be created
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oClassInfo</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    object literal with informations about the class
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>FNMetaImpl</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    constructor function for the metadata object. If not given, it defaults to sap.ui.core.ElementMetadata.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{function}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the created class / constructor function
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addContentArea"> </a>
+										<div class="itemTitle icon">
+											addContentArea<span class="signature">(<span title="(sap.ui.core.Control) the contentArea to add; if empty, nothing is inserted">oContentArea</span>)</span>
+											<span class="light" title="returns sap.ui.layout.Splitter">: <a href="../symbols/sap.ui.layout.Splitter.html">sap.ui.layout.Splitter</a></span>
+										</div>
+										<div class="full-description">
+											Adds some contentArea <code>oContentArea</code> 
+to the aggregation named <code>contentAreas</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oContentArea</b>
+													</td>
+													<td class="methodItemDesc">
+												    the contentArea to add; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.layout.Splitter.html">sap.ui.layout.Splitter</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachResize"> </a>
+										<div class="itemTitle icon">
+											attachResize<span class="signature">(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.layout.Splitter">: <a href="../symbols/sap.ui.layout.Splitter.html">sap.ui.layout.Splitter</a></span>
+										</div>
+										<div class="full-description">
+											Attach event handler <code>fnFunction</code> to the 'resize' event of this <code>sap.ui.layout.Splitter</code>.<br/>.
+When called, the context of the event handler (its <code>this</code>) will be bound to <code>oListener<code> if specified
+otherwise to this <code>sap.ui.layout.Splitter</code>.<br/> itself. 
+</p><p>
+Event is fired when contents are resized.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oData</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    An application specific payload object, that will be passed to the event handler along with the event object when firing the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Context object to call the event handler with. Defaults to this <code>sap.ui.layout.Splitter</code>.<br/> itself.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.layout.Splitter.html">sap.ui.layout.Splitter</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyContentAreas"> </a>
+										<div class="itemTitle icon">
+											destroyContentAreas<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.layout.Splitter">: <a href="../symbols/sap.ui.layout.Splitter.html">sap.ui.layout.Splitter</a></span>
+										</div>
+										<div class="full-description">
+											Destroys all the contentAreas in the aggregation 
+named <code>contentAreas</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.layout.Splitter.html">sap.ui.layout.Splitter</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachResize"> </a>
+										<div class="itemTitle icon">
+											detachResize<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.ui.layout.Splitter">: <a href="../symbols/sap.ui.layout.Splitter.html">sap.ui.layout.Splitter</a></span>
+										</div>
+										<div class="full-description">
+											Detach event handler <code>fnFunction</code> from the 'resize' event of this <code>sap.ui.layout.Splitter</code>.<br/>
+</p><p>
+The passed function and listener object must match the ones used for event registration.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Context object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.layout.Splitter.html">sap.ui.layout.Splitter</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="disableKeyboardSupport"> </a>
+										<div class="itemTitle icon protected">
+											disableKeyboardSupport<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Disables the resizing of the Splitter contents via keyboard. This changes the Splitter bars
+to non-focussable elements.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="enableKeyboardSupport"> </a>
+										<div class="itemTitle icon protected">
+											enableKeyboardSupport<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Enables the resizing of the Splitter contents via keyboard. This makes the Splitter bars
+focussable elements.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="fireResize"> </a>
+										<div class="itemTitle icon protected">
+											fireResize<span class="signature">(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.layout.Splitter">: <a href="../symbols/sap.ui.layout.Splitter.html">sap.ui.layout.Splitter</a></span>
+										</div>
+										<div class="full-description">
+											Fire event resize to attached listeners.
+</p><p>
+Expects following event parameters:
+<ul>
+<li>'id' of type <code>string</code> The ID of the splitter control. The splitter control can also be accessed by calling getSource() on the event.</li>
+<li>'oldSizes' of type <code>int[]</code> An array of values representing the old (pixel-)sizes of the splitter contents</li>
+<li>'newSizes' of type <code>int[]</code> An array of values representing the new (pixel-)sizes of the splitter contents</li>
+</ul>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Map}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.layout.Splitter.html">sap.ui.layout.Splitter</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getContentAreas"> </a>
+										<div class="itemTitle icon">
+											getContentAreas<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.Control[]">: <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>[]</span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>contentAreas</code>.<br/>
+The content areas to be split. The control will show n-1 splitter bars between n controls in this aggregation.
+</p><p>
+<strong>Note</strong>: this is the default aggregation for Splitter.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getHeight"> </a>
+										<div class="itemTitle icon">
+											getHeight<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.CSSSize">: <a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a></span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>height</code>.
+The height of the control
+</p><p>
+Default value is <code>100%</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>height</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getOrientation"> </a>
+										<div class="itemTitle icon">
+											getOrientation<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.Orientation">: <a href="../symbols/sap.ui.core.Orientation.html">sap.ui.core.Orientation</a></span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>orientation</code>.
+Whether to split the contents horizontally (default) or vertically.
+</p><p>
+Default value is <code>Horizontal</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Orientation.html">sap.ui.core.Orientation</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>orientation</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getWidth"> </a>
+										<div class="itemTitle icon">
+											getWidth<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.CSSSize">: <a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a></span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>width</code>.
+The width of the control
+</p><p>
+Default value is <code>100%</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>width</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="indexOfContentArea"> </a>
+										<div class="itemTitle icon">
+											indexOfContentArea<span class="signature">(<span title="(sap.ui.core.Control) the contentArea whose index is looked for.">oContentArea</span>)</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Checks for the provided <code>sap.ui.core.Control</code> in the aggregation named <code>contentAreas</code> 
+and returns its index if found or -1 otherwise.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oContentArea</b>
+													</td>
+													<td class="methodItemDesc">
+												    the contentArea whose index is looked for.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the index of the provided control in the aggregation if found, or -1 otherwise
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="insertContentArea"> </a>
+										<div class="itemTitle icon">
+											insertContentArea<span class="signature">(<span title="(sap.ui.core.Control) the contentArea to insert; if empty, nothing is inserted">oContentArea</span>, <span title="(int) the 0-based index the contentArea should be inserted at; for a negative value of iIndex, the contentArea is inserted at position 0; for a value greater than the current size of the aggregation, the contentArea is inserted at the last position">iIndex</span>)</span>
+											<span class="light" title="returns sap.ui.layout.Splitter">: <a href="../symbols/sap.ui.layout.Splitter.html">sap.ui.layout.Splitter</a></span>
+										</div>
+										<div class="full-description">
+											Inserts a contentArea into the aggregation named <code>contentAreas</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oContentArea</b>
+													</td>
+													<td class="methodItemDesc">
+												    the contentArea to insert; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    the <code>0</code>-based index the contentArea should be inserted at; for 
+            a negative value of <code>iIndex</code>, the contentArea is inserted at position 0; for a value 
+            greater than the current size of the aggregation, the contentArea is inserted at 
+            the last position
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.layout.Splitter.html">sap.ui.layout.Splitter</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeAllContentAreas"> </a>
+										<div class="itemTitle icon">
+											removeAllContentAreas<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.Control[]">: <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>[]</span>
+										</div>
+										<div class="full-description">
+											Removes all the controls in the aggregation named <code>contentAreas</code>.<br/>
+Additionally unregisters them from the hosting UIArea.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														an array of the removed elements (might be empty)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeContentArea"> </a>
+										<div class="itemTitle icon">
+											removeContentArea<span class="signature">(<span title="(int | string | sap.ui.core.Control) the contentArea to remove or its index or id">vContentArea</span>)</span>
+											<span class="light" title="returns sap.ui.core.Control">: <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></span>
+										</div>
+										<div class="full-description">
+											Removes an contentArea from the aggregation named <code>contentAreas</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int|string|<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vContentArea</b>
+													</td>
+													<td class="methodItemDesc">
+												    the contentArea to remove or its index or id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the removed contentArea or null
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setHeight"> </a>
+										<div class="itemTitle icon">
+											setHeight<span class="signature">(<span title="(sap.ui.core.CSSSize) new value for property height">sHeight</span>)</span>
+											<span class="light" title="returns sap.ui.layout.Splitter">: <a href="../symbols/sap.ui.layout.Splitter.html">sap.ui.layout.Splitter</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>height</code>.
+</p><p>
+Default value is <code>100%</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sHeight</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>height</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.layout.Splitter.html">sap.ui.layout.Splitter</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setOrientation"> </a>
+										<div class="itemTitle icon">
+											setOrientation<span class="signature">(<span title="(sap.ui.core.Orientation) new value for property orientation">oOrientation</span>)</span>
+											<span class="light" title="returns sap.ui.layout.Splitter">: <a href="../symbols/sap.ui.layout.Splitter.html">sap.ui.layout.Splitter</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>orientation</code>.
+</p><p>
+Default value is <code>Horizontal</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Orientation.html">sap.ui.core.Orientation</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oOrientation</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>orientation</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.layout.Splitter.html">sap.ui.layout.Splitter</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setWidth"> </a>
+										<div class="itemTitle icon">
+											setWidth<span class="signature">(<span title="(sap.ui.core.CSSSize) new value for property width">sWidth</span>)</span>
+											<span class="light" title="returns sap.ui.layout.Splitter">: <a href="../symbols/sap.ui.layout.Splitter.html">sap.ui.layout.Splitter</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>width</code>.
+</p><p>
+Default value is <code>100%</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sWidth</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>width</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.layout.Splitter.html">sap.ui.layout.Splitter</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="triggerResize"> </a>
+										<div class="itemTitle icon">
+											triggerResize<span class="signature">(<span title="forceDirectly Do not delay the resize, trigger it right now.">bool</span><i class="help" title="Optional parameter">?</i>)</span>
+											
+										</div>
+										<div class="full-description">
+											This method  triggers a resize on the Splitter - meaning it forces the Splitter to recalculate
+all sizes.
+This method should only be used in rare cases, for example when the CSS that defines the sizes
+of the splitter bars changes without triggering a rerendering of the splitter.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  
+													</td>
+													<td class="methodItemName">
+													  <b>bool</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    forceDirectly Do not delay the resize, trigger it right now. (default=false)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected deprecated protected'>
+										<a name="disableAutoResize"> </a>
+										<div class="itemTitle icon protected">
+											disableAutoResize<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Disables the resize handler for this control, this leads to an automatic resize of
+the contents whenever the control changes its size. The resize handler is enabled
+in every control instance by default.
+For performance reasons this behavior can be disabled by calling disableAutoResize()
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+											<dl class="detailList deprecation">
+												<dt class="heading">Deprecated:</dt>
+												<dt>
+													This method is declared as protected in order to assess the need for this feature. It is declared as deprecated because the API might change in case the need for this is high enough to make it part of the official Splitter interface
+												</dt>
+											</dl>
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected deprecated protected'>
+										<a name="disableLiveResize"> </a>
+										<div class="itemTitle icon protected">
+											disableLiveResize<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Disables recalculation and resize of the splitter contents while dragging the splitter bar.
+This means that the contents are resized only once after moving the splitter bar.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+											<dl class="detailList deprecation">
+												<dt class="heading">Deprecated:</dt>
+												<dt>
+													This method is declared as protected in order to assess the need for this feature. It is declared as deprecated because the API might change in case the need for this is high enough to make it part of the official Splitter interface
+												</dt>
+											</dl>
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected deprecated protected'>
+										<a name="enableAutoResize"> </a>
+										<div class="itemTitle icon protected">
+											enableAutoResize<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Enables the resize handler for this control, this leads to an automatic resize of
+the contents whenever the control changes its size. The resize handler is enabled
+in every control instance by default.
+For performance reasons this behavior can be disabled by calling disableAutoResize()
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+											<dl class="detailList deprecation">
+												<dt class="heading">Deprecated:</dt>
+												<dt>
+													This method is declared as protected in order to assess the need for this feature. It is declared as deprecated because the API might change in case the need for this is high enough to make it part of the official Splitter interface
+												</dt>
+											</dl>
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected deprecated protected'>
+										<a name="enableLiveResize"> </a>
+										<div class="itemTitle icon protected">
+											enableLiveResize<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Enables recalculation and resize of the splitter contents while dragging the splitter bar.
+This means that the contents are resized several times per second when moving the splitter bar.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+											<dl class="detailList deprecation">
+												<dt class="heading">Deprecated:</dt>
+												<dt>
+													This method is declared as protected in order to assess the need for this feature. It is declared as deprecated because the API might change in case the need for this is high enough to make it part of the official Splitter interface
+												</dt>
+											</dl>
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected deprecated protected'>
+										<a name="getCalculatedSizes"> </a>
+										<div class="itemTitle icon protected">
+											getCalculatedSizes<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Returns the current actual content sizes as pixel value - these values can change with every 
+resize.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+											<dl class="detailList deprecation">
+												<dt class="heading">Deprecated:</dt>
+												<dt>
+													This method is declared as protected in order to assess the need for this feature. It is declared as deprecated because the API might change in case the need for this is high enough to make it part of the official Splitter interface
+												</dt>
+											</dl>
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														
+													</td>
+													<td class="methodItemDesc">
+														[Number[]]
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

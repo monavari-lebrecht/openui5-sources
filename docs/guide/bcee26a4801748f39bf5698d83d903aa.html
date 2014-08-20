@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=7147410800133335"/>
+<title>Extending TextField Rendering</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiobcee26a4801748f39bf5698d83d903aa">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Extending TextField Rendering</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">The following code snippet creates a control type that inherits from
+			<samp class="ph codeph">TextField</samp>. The new control has all features from the
+				<samp class="ph codeph">TextField</samp> control, but the rendering is changed to highlighted with
+			yellow background.</p>
+<p class="p">The control API and the <samp class="ph codeph">render</samp> method can be inherited as is and the
+				<samp class="ph codeph">renderInnerAttributes</samp> method of the
+				<samp class="ph codeph">TextFieldRenderer</samp> is overwritten: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">  sap.ui.commons.TextField.extend("HighlightField", { // call the new Control type "HighlightField" 
+                                                      // and let it inherit from sap.ui.commons.TextField
+     
+
+      renderer: {
+          // note that NO render() function is given here! The TextField's render() function is used. 
+          // But one function is overwritten:
+          
+          renderInnerAttributes : function(oRm, oTextField) {
+              oRm.addStyle('background-color', '#ffff00');  // this change could also be done with plain CSS!! 
+                                                            // But you get the idea...
+          }
+      }
+  });</pre></div>
+<p class="p">The <samp class="ph codeph">HighlightField</samp> control can be used in an application in the same way as
+				<samp class="ph codeph">TextField</samp>:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var myControl = new HighlightField({value:"Highlighted editing"});
+myControl.placeAt("content");</pre></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Extending TextField Rendering";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

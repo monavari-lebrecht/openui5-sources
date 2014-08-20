@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="To bind texts of a control in JSON views to a language-dependent resource bundle, define the resource bundle by a name (resourceBundleName property) or a URL (resourceBundleUrl property) and assign an alias (resourceBundleAlias property) for the bundle in the view definition."/>
+<meta name="description" content="To bind texts of a control in JSON views to a language-dependent resource bundle, define the resource bundle by a name (resourceBundleName property) or a URL (resourceBundleUrl property) and assign an alias (resourceBundleAlias property) for the bundle in the view definition."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=7228654599010084"/>
+<title>Binding Texts to a Resource Bundle</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio7341396326c34631813c805d44058b05">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Binding Texts to a Resource Bundle</h1>
+<div class="body taskbody"><p class="shortdesc">To bind texts of a control in JSON views to a language-dependent resource bundle,
+		define the resource bundle by a name (<samp class="ph codeph">resourceBundleName</samp> property) or a URL
+			(<samp class="ph codeph">resourceBundleUrl</samp> property) and assign an alias
+			(<samp class="ph codeph">resourceBundleAlias</samp> property) for the bundle in the view definition. </p>
+<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">The <samp class="ph codeph">ResourceModel</samp> required for binding these texts is created during
+				view instantiation. The model is set as secondary model with the given alias to the
+				view instance. If you want to bind other properties to another model, you have to
+				create the model on your own in the corresponding controller or HTML page and attach
+				it to the view with another alias. The binding itself behaves in the same way as
+				every SAPUI5 data binding and as described above. </p>
+
+		</div><div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step"><span class="ph cmd">Deifne the following resource bundle content: <samp class="ph codeph">MY_TEXT=Hello
+						World</samp></span></li>
+<li class="li step"><span class="ph cmd">To bind this resource bundle contetn, insert the following code depending on the view type: </span><ul class="ul choices" id="loio7341396326c34631813c805d44058b05__choices_o5x_zn5_sk"><li class="li choice">For a JSON view, insert the following code:
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">{	"Type": "sap.ui.core.JSONView",
+	 "controllerName":"my.own.views.test",
+ 	"resourceBundleName":"myBundle",
+ 	"resourceBundleAlias":"i18n",
+ 	"content": [{
+    		"Type":"sap.ui.commons.Panel",
+    		"id":"myPanel",
+    		"content":[{
+       			"Type":"sap.ui.commons.Button",
+       			"id":"Button1",
+       			"text":"{i18n&gt;MY_TEXT}",
+       			"press": "doIt"
+    		}]
+ 	}]
+}</pre></div>
+</li>
+<li class="li choice">For a XML view, insert the following code:
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;core:View resourceBundleName="myBundle"
+           resourceBundleAlias="i18n" 
+           controllerName="sap.hcm.Address" xmlns="sap.ui.commons" xmlns:core="sap.ui.core"
+           xmlns:html="http://www.w3.org/1999/xhtml"&gt;
+   &lt;Panel&gt;
+      &lt;Button text="{i18n&gt;MY_TEXT}"/&gt;
+   &lt;/Panel&gt;
+&lt;core:View&gt;</pre></div>
+
+					</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="91f0ca956f4d1014b6dd926db0e91070.html">Models and Data Binding</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Binding Texts to a Resource Bundle";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

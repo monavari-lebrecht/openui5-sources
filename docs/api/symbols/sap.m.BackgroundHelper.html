@@ -1,0 +1,329 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.m.BackgroundHelper</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static protected">
+					
+					Namespace sap.m.BackgroundHelper
+					</h1>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>Helper for rendering themable background</p>
+						
+						
+						
+						
+						
+						
+							<br />
+							<i>Since: </i>1.12.
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+		
+
+
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Adds CSS classes and styles to the given RenderManager, depending on the given configuration for background color and background image."><a href="../symbols/sap.m.BackgroundHelper.html#addBackgroundColorStyles">addBackgroundColorStyles</a></b><span class='signature'>(<span title="(sap.ui.core.RenderManager) the RenderManager">rm</span>, <span title="(String) a configured custom background color for the control, if any">sBgColor</span><i class="help" title="Optional parameter">?</i>, <span title="(sap.ui.core.URI) the configured custom background image for the control, if any">sBgImgUrl</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Adds CSS classes and styles to the given RenderManager, depending on the given configuration for background color and background image.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Renders an HTML tag into the given RenderManager which carries the background image which is either configured and given or coming from the current theme."><a href="../symbols/sap.m.BackgroundHelper.html#renderBackgroundImageTag">renderBackgroundImageTag</a></b><span class='signature'>(<span title="the RenderManager">rm</span>, <span title="(sap.ui.core.Control) the control within which the tag will be rendered; its ID will be used to generate the element ID">oControl</span>, <span title="(String) a css class to add to the element">sCssClass</span>, <span title="(sap.ui.core.URI) the image of a configured background image; if this is not given, the theme background will be used and also the other settings are ignored.">sBgImgUrl</span><i class="help" title="Optional parameter">?</i>, <span title="(boolean) whether the background image should be repeated/tiled (or stretched)">bRepeat</span><i class="help" title="Optional parameter">?</i>, <span title="(float) the background image opacity, if any">fOpacity</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Renders an HTML tag into the given RenderManager which carries the background image which is either configured and given or coming from the current theme.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+					
+		
+		
+
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="addBackgroundColorStyles"> </a>
+										<div class="itemTitle icon protected">
+											addBackgroundColorStyles<span class="signature">(<span title="(sap.ui.core.RenderManager) the RenderManager">rm</span>, <span title="(String) a configured custom background color for the control, if any">sBgColor</span><i class="help" title="Optional parameter">?</i>, <span title="(sap.ui.core.URI) the configured custom background image for the control, if any">sBgImgUrl</span><i class="help" title="Optional parameter">?</i>)</span>
+											
+										</div>
+										<div class="full-description">
+											Adds CSS classes and styles to the given RenderManager, depending on the given configuration for background color and background image.
+To be called by control renderers supporting the global themable background image within their root tag, before they call writeClasses() and writeStyles().
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.RenderManager.html">sap.ui.core.RenderManager</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>rm</b>
+													</td>
+													<td class="methodItemDesc">
+												    the RenderManager
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{String}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sBgColor</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    a configured custom background color for the control, if any
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.URI.html">sap.ui.core.URI</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sBgImgUrl</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the configured custom background image for the control, if any
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="renderBackgroundImageTag"> </a>
+										<div class="itemTitle icon protected">
+											renderBackgroundImageTag<span class="signature">(<span title="the RenderManager">rm</span>, <span title="(sap.ui.core.Control) the control within which the tag will be rendered; its ID will be used to generate the element ID">oControl</span>, <span title="(String) a css class to add to the element">sCssClass</span>, <span title="(sap.ui.core.URI) the image of a configured background image; if this is not given, the theme background will be used and also the other settings are ignored.">sBgImgUrl</span><i class="help" title="Optional parameter">?</i>, <span title="(boolean) whether the background image should be repeated/tiled (or stretched)">bRepeat</span><i class="help" title="Optional parameter">?</i>, <span title="(float) the background image opacity, if any">fOpacity</span><i class="help" title="Optional parameter">?</i>)</span>
+											
+										</div>
+										<div class="full-description">
+											Renders an HTML tag into the given RenderManager which carries the background image which is either configured and given or coming from the current theme.
+Should be called right after the opening root tag has been completed, so this is the first child element inside the control.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  
+													</td>
+													<td class="methodItemName">
+													  <b>rm</b>
+													</td>
+													<td class="methodItemDesc">
+												    the RenderManager
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oControl</b>
+													</td>
+													<td class="methodItemDesc">
+												    the control within which the tag will be rendered; its ID will be used to generate the element ID
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{String}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sCssClass</b>
+													</td>
+													<td class="methodItemDesc">
+												    a css class to add to the element
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.URI.html">sap.ui.core.URI</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sBgImgUrl</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the image of a configured background image; if this is not given, the theme background will be used and also the other settings are ignored.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bRepeat</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    whether the background image should be repeated/tiled (or stretched)
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{float}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fOpacity</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the background image opacity, if any
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

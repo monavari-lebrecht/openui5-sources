@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=8402415423788527"/>
+<title>Dependency Resolution Tools</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio874cee3a452f41a79b2e22ae018dcb30">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Dependency Resolution Tools</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">During development the dependencies between modules are usually resolved on the client at
+			runtime. The modules can be modified in the development environment and can be deployed
+			as individual entities to runtime. If caching is configured properly, only the modified
+			modules are reloaded when the client is refreshed.</p>
+<p class="p">In a productive system, however, bundling several modules into one single file helps to
+			recude the number of roundtrips and can help to reduce the impact of network latency. At
+			the same time, the flexibility and transparency of the dependency management should not
+			get lost.</p>
+<p class="p">For this, SAPUI5 provides the dependency resolution tool. The tool analyzes a module file and
+			all its dependencies and creates a new file containing the original module content, as
+			well as any required modules. It automatically avoids double inclusion of modules. The
+			tool can be used in two ways: Either via an Ant task at build time to create a merged
+			super module which can then be referenced in any HTML page instead of the original file,
+			or at runtime by using a servlet on server side.</p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Dependency Resolution Tools";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

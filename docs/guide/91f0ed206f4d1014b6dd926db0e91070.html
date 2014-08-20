@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=9022062416714223"/>
+<title>Defining a Binding Path</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f0ed206f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Defining a Binding Path</h1>
+<div class="body taskbody"><div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div><p class="p">You use binding paths to address the different
+			properties and lists contained in a model. The binding path defines how a
+			specific node in the hierarchical data tree can be found. A binding path
+			contains a number of name tokens, which are separated by a separator char. In
+			all models provided by the framework, the separator char is the slash "/".
+		</p>
+<p class="p">A binding path can either be absolute or relative:
+			Absolute binding paths start with a slash, relative binding paths start with a
+			name token and are resolved relative to the contet of the control that is
+			bound. 
+		</p>
+<p class="p">A context exists either for each entry of the
+			aggregation in case of aggregation binding or can be set explicitly for a
+			control by using the 
+			<samp class="ph codeph">setBindingContext</samp>
+			method. Relative bindings without a defined context are resolved relative to
+			the model root.
+		</p>
+<p class="p">The syntax is specific to the respective model.</p>
+
+			</div><div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><div class="li step p"><span class="ph cmd">The syntax to define a binding path is different for each model:</span><ul class="ul choices"><li class="li choice">JSON model: <a class="xref" href="91f107eb6f4d1014b6dd926db0e91070.html" title="The JSON model can be used to bind controls to JavaScript object data, which is usually serialized in the JSON format. The JSON model is a client-side model and, therefore, intended for small datasets, which are completely available on the client. The JSON model does not support mechanisms for server-based paging or loading of deltas. It supports, however, two-way binding.">Implementing a JSON Model</a></li>
+<li class="li choice"/>
+<li class="li choice"/>
+<li class="li choice"/>
+</ul>
+</div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Defining a Binding Path";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

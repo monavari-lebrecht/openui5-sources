@@ -1,0 +1,275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.core.delegate.ScrollEnablement</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static protected">
+					
+					Class sap.ui.core.delegate.ScrollEnablement
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.ui.base.Object" href="../symbols/sap.ui.base.Object.html">Object</a></div>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>Delegate for touch scrolling on mobile devices</p>
+						
+						
+							<p class="tagExperimental"><span class="title">Experimental API:</span><span class="desc">Since 1.5.2. This class is experimental and provides only limited functionality. Also the API might be changed in future.</span></p> 
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static protected">
+									<div class="itemName">
+										<b class="icon protected" title="Creates a ScrollEnablement delegate that can be attached to Controls requiring capabilities for scrolling of a certain part of their DOM on mobile devices.">new <a href="../symbols/sap.ui.core.delegate.ScrollEnablement.html#constructor">sap.ui.core.delegate.ScrollEnablement</a></b>
+										<span class='signature'>(<span title="(sap.ui.core.Control) the Control of which this Scroller is the delegate">oControl</span>, <span title="(string) the Id of the element within the DOM of the Control which should be scrollable">sScrollContentDom</span>, <span title="(object) the configuration of the scroll delegate">oConfig</span>)</span>
+										<span class='description'>Creates a ScrollEnablement delegate that can be attached to Controls requiring capabilities for scrolling of a certain part of their DOM on mobile devices.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.Object.html">sap.ui.base.Object</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.Object.html#destroy">destroy</a>, <a href="../symbols/sap.ui.base.Object.html#getInterface">getInterface</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static protected">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon protected">
+											new <b>sap.ui.core.delegate.ScrollEnablement</b>(<span title="(sap.ui.core.Control) the Control of which this Scroller is the delegate">oControl</span>, <span title="(string) the Id of the element within the DOM of the Control which should be scrollable">sScrollContentDom</span>, <span title="(object) the configuration of the scroll delegate">oConfig</span>)
+										</div>
+										
+										<div class="full-description">
+											Creates a ScrollEnablement delegate that can be attached to Controls requiring
+capabilities for scrolling of a certain part of their DOM on mobile devices.
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oControl</b>
+													</td>
+													<td class="methodItemDesc">
+												    the Control of which this Scroller is the delegate
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sScrollContentDom</b>
+													</td>
+													<td class="methodItemDesc">
+												    the Id of the element within the DOM of the Control which should be scrollable
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oConfig</b>
+													</td>
+													<td class="methodItemDesc">
+												    the configuration of the scroll delegate
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oConfig.horizontal</b><i class="help" title="Optional parameter">?, Default: false</i>
+													</td>
+													<td class="methodItemDesc">
+												    Whether the element should be scrollable horizontally
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oConfig.vertical</b><i class="help" title="Optional parameter">?, Default: false</i>
+													</td>
+													<td class="methodItemDesc">
+												    Whether the element should be scrollable vertically
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oConfig.zynga</b><i class="help" title="Optional parameter">?, Default: false</i>
+													</td>
+													<td class="methodItemDesc">
+												    If set, then the Zynga scroller (http://zynga.github.com/scroller/) is used
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oConfig.iscroll</b><i class="help" title="Optional parameter">?, Default: false</i>
+													</td>
+													<td class="methodItemDesc">
+												    If set, then iScroll (http://cubiq.org/iscroll-4) is used
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oConfig.preventDefault</b><i class="help" title="Optional parameter">?, Default: false</i>
+													</td>
+													<td class="methodItemDesc">
+												    If set, the default of touchmove is prevented
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oConfig.nonTouchScrolling</b><i class="help" title="Optional parameter">?, Default: false</i>
+													</td>
+													<td class="methodItemDesc">
+												    If true, the delegate will also be active to allow touch like scrolling with the mouse on non-touch platforms; if set to "scrollbar", there will be normal scrolling with scrollbars and no touch-like scrolling where the content is dragged
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

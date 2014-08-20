@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=6780202033465238"/>
+<title>Assigning the Model to the UI</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f0d1c56f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Assigning the Model to the UI</h1>
+<div class="body taskbody"><div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+		
+		
+		<p class="p">Before you can bind controls to a model instance, you have to make it known to the framework.
+			SAPUI5 provides a flexible and modularized concept in which you can not only define one
+			model for your applications, but define different areas in your application with
+			different models and assign single controls to a model. You can also define nested
+			models, for example, a JSON model defined for the application and an OData model for a
+			table control contained in the application. </p>
+<p class="p">In order to find the model it should bind to, the
+		control looks up the parent hierarchy until it finds a control or UI area that
+		has an assigned model. A control can only bind to one model, so if you have a
+		container control with an assigned model, all controls contained in this
+		container can only see the local model of the container and are no longer able
+		to bind to the global model.
+	 </p>
+
+	 </div><div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><div class="li step p"><span class="ph cmd">Choose one of the following options:</span><ul class="ul choices" id="loio91f0d1c56f4d1014b6dd926db0e91070__choices_bnc_3vt_5k"><li class="li choice">
+						<p class="p">You can define a global model that can be accessed by all controls from
+							all UI areas by using the <samp class="ph codeph">setModel</samp> method on the SAPUI5
+							core object. This is useful for simple form applications or demo
+							applications. </p>
+
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.getCore().setModel(oModel);</pre></div>
+
+					</li>
+<li class="li choice">
+						<p class="p">You can also define a specific model for sections within a UI area, for
+							example, inside a panel or for a table control. In this case, you can
+							use the <samp class="ph codeph">setModel</samp> method available on any control: </p>
+
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oTable = sap.ui.getCore().byId("table");
+oTable.setModel(oModel);</pre></div>
+
+					</li>
+</ul>
+</div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Assigning the Model to the UI";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

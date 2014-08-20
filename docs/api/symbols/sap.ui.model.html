@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.model</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Namespace sap.ui.model
+					</h1>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>The SAPUI5 Data Binding API.
+</p><p>
+The default binding mode for model implementations (if not implemented otherwise) is two way and the supported binding modes by the model
+are one way, two way and one time. The default binding mode can be changed by the application for each model instance.
+A model implementation should specify its supported binding modes and set the default binding mode accordingly
+(e.g. if the model supports only one way binding the default binding mode should also be set to one way).</p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+						
+						
+							<div class="summary section">
+								<div class="sectionTitle">Namespaces &amp; Classes</div>
+								<div class="sectionItems">
+								
+									<div class="sectionItem itemName namespace static">
+										<b class="icon" title="Analytical Adapter for ODataModels"><a href="../symbols/sap.ui.model.analytics.html">analytics</a></b>
+										<span class='description'>Analytical Adapter for ODataModels</span>
+									</div>
+								
+									<div class="sectionItem itemName static">
+										<b class="icon" title="The Binding is the object, which holds the necessary information for a data binding, like the binding path and the binding context, and acts like an interface to the model for the control, so it is the event provider for changes in the data model and provides getters for accessing properties or lists."><a href="../symbols/sap.ui.model.Binding.html">Binding</a></b>
+										<span class='description'>The Binding is the object, which holds the necessary information for a data binding, like the binding path and the binding context, and acts like an interface to the model for the control, so it is the event provider for changes in the data model and provides getters for accessing properties or lists.</span>
+									</div>
+								
+									<div class="sectionItem itemName namespace static">
+										<b class="icon" title="Binding type definitions."><a href="../symbols/sap.ui.model.BindingMode.html">BindingMode</a></b>
+										<span class='description'>Binding type definitions.</span>
+									</div>
+								
+									<div class="sectionItem itemName namespace static">
+										<b class="icon" title="Change Reason for ListBindings."><a href="../symbols/sap.ui.model.ChangeReason.html">ChangeReason</a></b>
+										<span class='description'>Change Reason for ListBindings.</span>
+									</div>
+								
+									<div class="sectionItem itemName static">
+										<b class="icon" title="The ContextBinding is a specific binding for a setting context for the model"><a href="../symbols/sap.ui.model.ClientContextBinding.html">ClientContextBinding</a></b>
+										<span class='description'>The ContextBinding is a specific binding for a setting context for the model</span>
+									</div>
+								
+									<div class="sectionItem itemName static">
+										<b class="icon" title="Model implementation for Client models"><a href="../symbols/sap.ui.model.ClientModel.html">ClientModel</a></b>
+										<span class='description'>Model implementation for Client models</span>
+									</div>
+								
+									<div class="sectionItem itemName static">
+										<b class="icon" title="The CompositeBinding is used to bundle multiple property bindings which are be used to provide a single binding against these property bindings."><a href="../symbols/sap.ui.model.CompositeBinding.html">CompositeBinding</a></b>
+										<span class='description'>The CompositeBinding is used to bundle multiple property bindings which are be used to provide a single binding against these property bindings.</span>
+									</div>
+								
+									<div class="sectionItem itemName static">
+										<b class="icon" title="The Context is a pointer to an object in the model data, which is used to allow definition of relative bindings, which are resolved relative to the defined object."><a href="../symbols/sap.ui.model.Context.html">Context</a></b>
+										<span class='description'>The Context is a pointer to an object in the model data, which is used to allow definition of relative bindings, which are resolved relative to the defined object.</span>
+									</div>
+								
+									<div class="sectionItem itemName static">
+										<b class="icon" title="The ContextBinding is a specific binding for a setting context for the model"><a href="../symbols/sap.ui.model.ContextBinding.html">ContextBinding</a></b>
+										<span class='description'>The ContextBinding is a specific binding for a setting context for the model</span>
+									</div>
+								
+									<div class="sectionItem itemName namespace static">
+										<b class="icon" title="Control-based DataBinding"><a href="../symbols/sap.ui.model.control.html">control</a></b>
+										<span class='description'>Control-based DataBinding</span>
+									</div>
+								
+									<div class="sectionItem itemName static">
+										<b class="icon" title="Filter for the list binding"><a href="../symbols/sap.ui.model.Filter.html">Filter</a></b>
+										<span class='description'>Filter for the list binding</span>
+									</div>
+								
+									<div class="sectionItem itemName namespace static">
+										<b class="icon" title="Operators for the Filter."><a href="../symbols/sap.ui.model.FilterOperator.html">FilterOperator</a></b>
+										<span class='description'>Operators for the Filter.</span>
+									</div>
+								
+									<div class="sectionItem itemName namespace static">
+										<b class="icon" title="Operators for the Filter."><a href="../symbols/sap.ui.model.FilterType.html">FilterType</a></b>
+										<span class='description'>Operators for the Filter.</span>
+									</div>
+								
+									<div class="sectionItem itemName namespace static">
+										<b class="icon" title="JSON-based DataBinding"><a href="../symbols/sap.ui.model.json.html">json</a></b>
+										<span class='description'>JSON-based DataBinding</span>
+									</div>
+								
+									<div class="sectionItem itemName static">
+										<b class="icon" title="The ListBinding is a specific binding for lists in the model, which can be used to populate Tables or ItemLists."><a href="../symbols/sap.ui.model.ListBinding.html">ListBinding</a></b>
+										<span class='description'>The ListBinding is a specific binding for lists in the model, which can be used to populate Tables or ItemLists.</span>
+									</div>
+								
+									<div class="sectionItem itemName static">
+										<b class="icon" title="This is an abstract base class for model objects."><a href="../symbols/sap.ui.model.Model.html">Model</a></b>
+										<span class='description'>This is an abstract base class for model objects.</span>
+									</div>
+								
+									<div class="sectionItem itemName namespace static">
+										<b class="icon" title="OData-based DataBinding Utility Class"><a href="../symbols/sap.ui.model.odata.html">odata</a></b>
+										<span class='description'>OData-based DataBinding Utility Class</span>
+									</div>
+								
+									<div class="sectionItem itemName static">
+										<b class="icon" title="The PropertyBinding is used to access single data values in the data model."><a href="../symbols/sap.ui.model.PropertyBinding.html">PropertyBinding</a></b>
+										<span class='description'>The PropertyBinding is used to access single data values in the data model.</span>
+									</div>
+								
+									<div class="sectionItem itemName namespace static">
+										<b class="icon" title="ResourceBundle-based DataBinding"><a href="../symbols/sap.ui.model.resource.html">resource</a></b>
+										<span class='description'>ResourceBundle-based DataBinding</span>
+									</div>
+								
+									<div class="sectionItem itemName static">
+										<b class="icon" title="sap.ui.model.SelectionModel"><a href="../symbols/sap.ui.model.SelectionModel.html">SelectionModel</a></b>
+										<span class='description'>sap.ui.model.SelectionModel</span>
+									</div>
+								
+									<div class="sectionItem itemName static">
+										<b class="icon" title="This is an abstract base class for simple types."><a href="../symbols/sap.ui.model.SimpleType.html">SimpleType</a></b>
+										<span class='description'>This is an abstract base class for simple types.</span>
+									</div>
+								
+									<div class="sectionItem itemName static">
+										<b class="icon" title="Sorter for the list binding This object defines the sort order for the list binding."><a href="../symbols/sap.ui.model.Sorter.html">Sorter</a></b>
+										<span class='description'>Sorter for the list binding This object defines the sort order for the list binding.</span>
+									</div>
+								
+									<div class="sectionItem itemName static">
+										<b class="icon" title="The TreeBinding is a specific binding for trees in the model, which can be used to populate Trees."><a href="../symbols/sap.ui.model.TreeBinding.html">TreeBinding</a></b>
+										<span class='description'>The TreeBinding is a specific binding for trees in the model, which can be used to populate Trees.</span>
+									</div>
+								
+									<div class="sectionItem itemName static">
+										<b class="icon" title="This is an abstract base class for type objects."><a href="../symbols/sap.ui.model.Type.html">Type</a></b>
+										<span class='description'>This is an abstract base class for type objects.</span>
+									</div>
+								
+									<div class="sectionItem itemName namespace static">
+										<b class="icon" title=""><a href="../symbols/sap.ui.model.type-1.html">type</a></b>
+										<span class='description'></span>
+									</div>
+								
+									<div class="sectionItem itemName namespace static">
+										<b class="icon" title="XML-based DataBinding"><a href="../symbols/sap.ui.model.xml.html">xml</a></b>
+										<span class='description'>XML-based DataBinding</span>
+									</div>
+								
+								</div>
+							</div>
+						
+					
+		
+			
+
+					
+		
+
+
+					
+						
+						
+						
+						
+					
+		
+
+
+					
+
+
+
+					
+		
+		
+
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

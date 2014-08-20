@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=09609556665145957"/>
+<title>Declarative Support: Aggregations</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f136c76f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Declarative Support: Aggregations</h1>
+<div class="body"><p class="p">Agrregation support is required to allow nested
+		controls for layout containers and/or add elements to a control, for example,
+		for 
+		<samp class="ph codeph">ComboBox</samp>. 
+	 </p>
+<p class="p">SAPUI5 uses the control's default aggregation as
+		default. If, for example, the panel control has the default aggregation
+		content, all child elements of the 
+		<samp class="ph codeph">data-sap-ui-type="sap.ui.commons.Panel"</samp> element are
+		added to this aggregation: 
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;div data-sap-ui-type="sap.ui.commons.Panel"&gt;
+    &lt;div data-sap-ui-type="sap.ui.commons.Button" data-text="My Button 1"&gt;&lt;/div&gt;
+    &lt;div data-sap-ui-type="sap.ui.commons.Button" data-text="My Button 2"&gt;&lt;/div&gt;
+    &lt;div data-sap-ui-type="sap.ui.commons.Button" data-text="My Button 3"&gt;&lt;/div&gt;
+    &lt;div data-sap-ui-type="sap.ui.commons.Button" data-text="My Button 4"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+<p class="p">The markup in the example above generates an instance
+		of the 
+		<samp class="ph codeph">sap.ui.commons.Panel</samp> control and adds implicit four
+		buttons to the default aggregation content of the control. 
+	 </p>
+<p class="p">You can also explicitly declare an aggregation. In
+		general, an explicit aggregation is expressed with a meta HTML tag between the
+		parent controls HTML tag and the HTML tags of the children. The following code
+		adds four buttons explicitly to the "content" aggregation of the declared
+		panel: 
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;div data-sap-ui-type="sap.ui.commons.Panel"&gt;
+  &lt;div data-sap-ui-aggregation="content"&gt;
+    &lt;div data-sap-ui-type="sap.ui.commons.Button" data-text="My Button 1"&gt;&lt;/div&gt;
+    &lt;div data-sap-ui-type="sap.ui.commons.Button" data-text="My Button 2"&gt;&lt;/div&gt;
+    &lt;div data-sap-ui-type="sap.ui.commons.Button" data-text="My Button 3"&gt;&lt;/div&gt;
+    &lt;div data-sap-ui-type="sap.ui.commons.Button" data-text="My Button 4"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+<p class="p">For aggregations with the cardinality "0..1" the
+				<samp class="ph codeph">"data-sap-ui-aggregation"</samp> attribute can be written directly to the
+			control tag:  </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;div data-sap-ui-type="sap.ui.commons.Panel"&gt;
+  &lt;div data-sap-ui-aggregation="title" div data-sap-ui-type="sap.ui.commons.Title" data-text="My Panel"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+<p class="p">The default aggregation of the declarative support is usually also the default
+			aggregation of the control as defined in the control's meta information. However, when
+			no default aggregation is set or another aggregation should be used as a default, for
+			example to avoid unnecessary meta tags, it can be useful to define a so-called default
+			aggregration attribute on the parent controls HTML tag. This is done as follows:  </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">data-sap-ui-default-aggregation="title"</pre></div>
+<p class="p">With this, all children which are not included in the
+				<samp class="ph codeph">data-sap-ui-aggregation</samp> meta tag are added to the default
+			aggregation. This is shown in the following example: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;div data-sap-ui-type="sap.ui.commons.Panel" data-sap-ui-default-aggregation="title"&gt;
+  &lt;div data-sap-ui-type="sap.ui.commons.Title" text="My Panel"&gt;&lt;/div&gt;
+  &lt;div data-sap-ui-default-aggregation="content"&gt;
+    &lt;div data-sap-ui-type="sap.ui.commons.Button" data-text="My Button 1"&gt;&lt;/div&gt;
+    &lt;div data-sap-ui-type="sap.ui.commons.Button" data-text="My Button 2"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+/div&gt;</pre></div>
+<p class="p">You can now apply this to the <samp class="ph codeph">MatrixLayout</samp> as follows: </p>
+<div class="p">
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;div data-sap-ui-type="sap.ui.commons.layout.MatrixLayout" data-layout-fixed="false&gt;
+  &lt;div data-sap-ui-type="sap.ui.commons.layout.MatrixLayoutRow"&gt;
+    &lt;div data-sap-ui-type="sap.ui.commons.layout.MatrixLayoutCell"&gt;
+      &lt;div data-sap-ui-type="sap.ui.commons.TextField" data-value="Hello World"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div data-sap-ui-type="sap.ui.commons.layout.MatrixLayoutCell"&gt;
+      &lt;div data-sap-ui-type="sap.ui.commons.Button" data-text="Hello World"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+
+		</div>
+<div class="p">Or you can add <samp class="ph codeph">ListItems</samp> to a <samp class="ph codeph">ComboBox</samp>:
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;div data-sap-ui-type="sap.ui.commons.ComboBox" data-value="Item 1"&gt;
+  &lt;div data-sap-ui-type="sap.ui.core.ListItem" data-text="Item 1"&gt;&lt;/div&gt;
+  &lt;div data-sap-ui-type="sap.ui.core.ListItem" data-text="Item 2"&gt;&lt;/div&gt;
+  &lt;div data-sap-ui-type="sap.ui.core.ListItem" data-text="Item 3"&gt;&lt;/div&gt;
+  &lt;div data-sap-ui-type="sap.ui.core.ListItem" data-text="Item 4"&gt;&lt;/div&gt;
+  &lt;div data-sap-ui-type="sap.ui.core.ListItem" data-text="Item 5"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+
+		</div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Declarative Support: Aggregations";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=41209325843636035"/>
+<title>Create an Additional View</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio727bc3f650e24af7932d4fc9a6695a16">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Create an Additional View</h1>
+<div class="body taskbody"><p class="shortdesc"/>
+<div class="section context" id="loio727bc3f650e24af7932d4fc9a6695a16__context_N10014_N10011_N10001"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<ul class="ul" id="loio727bc3f650e24af7932d4fc9a6695a16__ul_uyc_ysd_bj"><li class="li">A SAPUI5 application view can only be created for a SAPUI5 application project
+					that has been created with the SAPUI5 Application Wizard and <strong class="ph b">not</strong> for
+					other kinds of projects.</li>
+<li class="li">A SAPUI5 application view name needs to be unique inside the project
+					folder.</li>
+<li class="li">The specified folder for a SAPUI5 application view needs to be
+						<span class="ph filepath">WebContent/&lt;application name&gt;</span> or a sub
+					folder.</li>
+</ul>
+
+		</div><div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand" id="loio727bc3f650e24af7932d4fc9a6695a16__step_N1003A_N10037_N10011_N10001"><span class="ph cmd">Choose <span class="ph menucascade"><img src="images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">New</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Other...</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">SAPUI5 Application Development</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">View</span> <img src="images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> to open the New <span class="keyword wintitle">SAPUI5 Application View</span>
+					wizard.</span> <img class="image" id="loio727bc3f650e24af7932d4fc9a6695a16__image_pfp_nfk_hj" src="820160c42a3a47c7b51b7aaec85f907c.image" alt="SAPUI5 ApplTools Create View Wizard 1" title="SAPUI5 ApplTools Create View Wizard 1"/></li>
+<li class="li step stepexpand" id="loio727bc3f650e24af7932d4fc9a6695a16__step_N1005F_N10037_N10011_N10001"><span class="ph cmd">Fill in the required data: </span><ul class="ul choices" id="loio727bc3f650e24af7932d4fc9a6695a16__choices_v4p_nqd_bj"><li class="li choice">Select the SAPUI5 application project, in which you want to create the view.</li>
+<li class="li choice">Select a folder, in which you want to store the view (default is
+							<span class="ph filepath">WebContent/&lt;application name&gt;</span>).</li>
+<li class="li choice">Enter a name for the view.</li>
+<li class="li choice">Select the development paradigm with which you want to develop your view. </li>
+</ul>
+ <img class="image" id="loio727bc3f650e24af7932d4fc9a6695a16__image_ff4_vhn_2k" src="8aa6a7f052f04640926892fa96313ae3.image" alt="Create a New View Wizard" title="Create a New View Wizard"/></li>
+</ol>
+<div class="section result" id="loio727bc3f650e24af7932d4fc9a6695a16__result_N10084_N10011_N10001"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Results</h2></div><p class="p">When you finish the wizard, the system creates the
+				view in the specified folder. The file name suffix indicates the development
+				paradigm:</p>
+<ul class="ul" id="loio727bc3f650e24af7932d4fc9a6695a16__ul_rvp_1rd_bj"><li class="li"><samp class="ph codeph">&lt;viewname&gt;.view.js</samp> for JavaScript views</li>
+<li class="li"><samp class="ph codeph">&lt;viewname&gt;.view.xml</samp> for XML views</li>
+<li class="li"><samp class="ph codeph">&lt;viewname&gt;.view.json</samp> for JSON views</li>
+<li class="li"><samp class="ph codeph">&lt;viewname&gt;.view.html</samp> for HTML views</li>
+</ul>
+<p class="p">If the corresponding index.html file contains <samp class="ph codeph">sap.m</samp> lib in the
+				bootstrap, that is, if the SAPUI5 application project has been created for a mobile
+				target device, the view contains coding for instantiating a mobile page control
+					 <samp class="ph codeph">sap.m.Page</samp>.</p>
+<p class="p">The system also creates a controller file <samp class="ph codeph">&lt;viewname&gt;.controller.js</samp> with
+				draft coding. </p>
+
+			<p class="p">For JavaScript views, code completion is available, see <a class="xref" href="85ce1edb55dd4de3beac5b6d24d36d8a.html" title="When using the SAPUI5 tools, code completion is enabled automatically, without the tools, you need to enable it.">JavaScript Code
+				Completion</a>.</p>
+<div class="note note" id="loio727bc3f650e24af7932d4fc9a6695a16__note_N100C7_N10084_N10011_N10001"><span class="notetitle">Note</span> If you rename the view or controller file, or
+				move them to a different folder, the coding in the view and controller and in the
+				places where the view is used needs to be adapted manually.</div>
+</div></div>
+<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="91f27e3e6f4d1014b6dd926db0e91070.html">Views</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Create an Additional View";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

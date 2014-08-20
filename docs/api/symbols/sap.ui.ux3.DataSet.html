@@ -1,0 +1,3362 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.ux3.DataSet</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class sap.ui.ux3.DataSet
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.ui.core.Control" href="../symbols/sap.ui.core.Control.html">Control</a></div>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>DataSet</p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="Constructor for a new DataSet.">new <a href="../symbols/sap.ui.ux3.DataSet.html#constructor">sap.ui.ux3.DataSet</a></b>
+										<span class='signature'>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)</span>
+										<span class='description'>Constructor for a new DataSet.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+						
+						
+						
+						
+					
+		
+
+
+					
+						
+						
+						<div class="summary section" cellspacing="0" summary="A summary of the events documented in the class sap.ui.ux3.DataSet.">
+							<div class="sectionTitle">Event Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Event which is fired when the user triggers a search"><a href="../symbols/sap.ui.ux3.DataSet.html#event:search">search</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>Event which is fired when the user triggers a search</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="selection Changed"><a href="../symbols/sap.ui.ux3.DataSet.html#event:selectionChanged">selectionChanged</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>selection Changed</span>
+								</div>
+							
+							</div>
+						</div>
+						
+				
+						
+						
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Creates a new subclass of class sap.ui.ux3.DataSet with name sClassName and enriches it with the information contained in oClassInfo."><a href="../symbols/sap.ui.ux3.DataSet.html#.extend">sap.ui.ux3.DataSet.extend</a></b><span class='signature'>(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Creates a new subclass of class sap.ui.ux3.DataSet with name <code>sClassName</code> and enriches it with the information contained in <code>oClassInfo</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Rerendering of the FilterArea"><a href="../symbols/sap.ui.ux3.DataSet.html#_rerenderFilter">_rerenderFilter</a></b><span class='signature'>()</span>
+									<span class='description'>Rerendering of the FilterArea</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Rerendering of the Toolbar"><a href="../symbols/sap.ui.ux3.DataSet.html#_rerenderToolbar">_rerenderToolbar</a></b><span class='signature'>()</span>
+									<span class='description'>Rerendering of the Toolbar</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Adds some filter oFilter to the aggregation named filter."><a href="../symbols/sap.ui.ux3.DataSet.html#addFilter">addFilter</a></b><span class='signature'>(<span title="(sap.ui.core.Control) the filter to add; if empty, nothing is inserted">oFilter</span>)</span>
+									<span class='description'>Adds some filter <code>oFilter</code> to the aggregation named <code>filter</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Adds some item oItem to the aggregation named items."><a href="../symbols/sap.ui.ux3.DataSet.html#addItem">addItem</a></b><span class='signature'>(<span title="(sap.ui.ux3.DataSetItem) the item to add; if empty, nothing is inserted">oItem</span>)</span>
+									<span class='description'>Adds some item <code>oItem</code> to the aggregation named <code>items</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="add a toolbarItem to the toolbar"><a href="../symbols/sap.ui.ux3.DataSet.html#addToolbarItem">addToolbarItem</a></b><span class='signature'>(<span title="(sap.ui.commons.ToolbarItem) ToolbarItem">oOToolbarItem</span>)</span>
+									<span class='description'>add a toolbarItem to the toolbar</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Adds some view oView to the aggregation named views."><a href="../symbols/sap.ui.ux3.DataSet.html#addView">addView</a></b><span class='signature'>(<span title="(sap.ui.ux3.DataSetView) the view to add; if empty, nothing is inserted">oView</span>)</span>
+									<span class='description'>Adds some view <code>oView</code> to the aggregation named <code>views</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Attach event handler fnFunction to the 'search' event of this sap.ui.ux3.DataSet."><a href="../symbols/sap.ui.ux3.DataSet.html#attachSearch">attachSearch</a></b><span class='signature'>(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Attach event handler <code>fnFunction</code> to the 'search' event of this <code>sap.ui.ux3.DataSet</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Attach event handler fnFunction to the 'selectionChanged' event of this sap.ui.ux3.DataSet."><a href="../symbols/sap.ui.ux3.DataSet.html#attachSelectionChanged">attachSelectionChanged</a></b><span class='signature'>(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Attach event handler <code>fnFunction</code> to the 'selectionChanged' event of this <code>sap.ui.ux3.DataSet</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Binder for aggregation items."><a href="../symbols/sap.ui.ux3.DataSet.html#bindItems">bindItems</a></b><span class='signature'>(<span title="(string) path to a list in the model">sPath</span>, <span title="(sap.ui.core.Element) the control template for this aggregation">oTemplate</span>, <span title="(sap.ui.model.Sorter) the initial sort order (optional)">oSorter</span>, <span title="(array) the predefined filters for this aggregation (optional)">aFilters</span>)</span>
+									<span class='description'>Binder for aggregation <code>items</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="clears dataset from all previous selections"><a href="../symbols/sap.ui.ux3.DataSet.html#clearSelection">clearSelection</a></b><span class='signature'>()</span>
+									<span class='description'>clears dataset from all previous selections</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Creates a view switch button"><a href="../symbols/sap.ui.ux3.DataSet.html#createViewSwitch">createViewSwitch</a></b><span class='signature'>(<span title="(object) View">oView</span>, <span title="(int) Index of view">iIndex</span>)</span>
+									<span class='description'>Creates a view switch button</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys all the filter in the aggregation named filter."><a href="../symbols/sap.ui.ux3.DataSet.html#destroyFilter">destroyFilter</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys all the filter in the aggregation named <code>filter</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys all the items in the aggregation named items."><a href="../symbols/sap.ui.ux3.DataSet.html#destroyItems">destroyItems</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys all the items in the aggregation named <code>items</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys all the views in the aggregation named views."><a href="../symbols/sap.ui.ux3.DataSet.html#destroyViews">destroyViews</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys all the views in the aggregation named <code>views</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Detach event handler fnFunction from the 'search' event of this sap.ui.ux3.DataSet."><a href="../symbols/sap.ui.ux3.DataSet.html#detachSearch">detachSearch</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Detach event handler <code>fnFunction</code> from the 'search' event of this <code>sap.ui.ux3.DataSet</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Detach event handler fnFunction from the 'selectionChanged' event of this sap.ui.ux3.DataSet."><a href="../symbols/sap.ui.ux3.DataSet.html#detachSelectionChanged">detachSelectionChanged</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Detach event handler <code>fnFunction</code> from the 'selectionChanged' event of this <code>sap.ui.ux3.DataSet</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Fire event search to attached listeners."><a href="../symbols/sap.ui.ux3.DataSet.html#fireSearch">fireSearch</a></b><span class='signature'>(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event search to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Fire event selectionChanged to attached listeners."><a href="../symbols/sap.ui.ux3.DataSet.html#fireSelectionChanged">fireSelectionChanged</a></b><span class='signature'>(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event selectionChanged to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation filter."><a href="../symbols/sap.ui.ux3.DataSet.html#getFilter">getFilter</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>filter</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation items."><a href="../symbols/sap.ui.ux3.DataSet.html#getItems">getItems</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>items</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Returns the LeadSelection index"><a href="../symbols/sap.ui.ux3.DataSet.html#getLeadSelection">getLeadSelection</a></b><span class='signature'>(<span title="(string) Id of the selected DataSetItem">sItemId</span>)</span>
+									<span class='description'>Returns the LeadSelection index</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property multiSelect."><a href="../symbols/sap.ui.ux3.DataSet.html#getMultiSelect">getMultiSelect</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>multiSelect</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="use this function to retrieve the lead selected index"><a href="../symbols/sap.ui.ux3.DataSet.html#getSelectedIndex">getSelectedIndex</a></b><span class='signature'>()</span>
+									<span class='description'>use this function to retrieve the lead selected index</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="use this function to retrieve all selected indices if multiple select is enabled"><a href="../symbols/sap.ui.ux3.DataSet.html#getSelectedIndices">getSelectedIndices</a></b><span class='signature'>()</span>
+									<span class='description'>use this function to retrieve all selected indices if multiple select is enabled</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Returns id of selected Item from given index"><a href="../symbols/sap.ui.ux3.DataSet.html#getSelectedItemId">getSelectedItemId</a></b><span class='signature'>(<span title="(int) index of selection">iIndex</span>)</span>
+									<span class='description'>Returns id of selected Item from given index</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Selected view of the Dataset"><a href="../symbols/sap.ui.ux3.DataSet.html#getSelectedView">getSelectedView</a></b><span class='signature'>()</span>
+									<span class='description'>Selected view of the Dataset</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property showFilter."><a href="../symbols/sap.ui.ux3.DataSet.html#getShowFilter">getShowFilter</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>showFilter</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property showSearchField."><a href="../symbols/sap.ui.ux3.DataSet.html#getShowSearchField">getShowSearchField</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>showSearchField</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property showToolbar."><a href="../symbols/sap.ui.ux3.DataSet.html#getShowToolbar">getShowToolbar</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>showToolbar</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation views."><a href="../symbols/sap.ui.ux3.DataSet.html#getViews">getViews</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>views</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Checks for the provided sap.ui.core.Control in the aggregation named filter and returns its index if found or -1 otherwise."><a href="../symbols/sap.ui.ux3.DataSet.html#indexOfFilter">indexOfFilter</a></b><span class='signature'>(<span title="(sap.ui.core.Control) the filter whose index is looked for.">oFilter</span>)</span>
+									<span class='description'>Checks for the provided <code>sap.ui.core.Control</code> in the aggregation named <code>filter</code> and returns its index if found or -1 otherwise.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Checks for the provided sap.ui.ux3.DataSetItem in the aggregation named items and returns its index if found or -1 otherwise."><a href="../symbols/sap.ui.ux3.DataSet.html#indexOfItem">indexOfItem</a></b><span class='signature'>(<span title="(sap.ui.ux3.DataSetItem) the item whose index is looked for.">oItem</span>)</span>
+									<span class='description'>Checks for the provided <code>sap.ui.ux3.DataSetItem</code> in the aggregation named <code>items</code> and returns its index if found or -1 otherwise.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Checks for the provided sap.ui.ux3.DataSetView in the aggregation named views and returns its index if found or -1 otherwise."><a href="../symbols/sap.ui.ux3.DataSet.html#indexOfView">indexOfView</a></b><span class='signature'>(<span title="(sap.ui.ux3.DataSetView) the view whose index is looked for.">oView</span>)</span>
+									<span class='description'>Checks for the provided <code>sap.ui.ux3.DataSetView</code> in the aggregation named <code>views</code> and returns its index if found or -1 otherwise.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Inserts a filter into the aggregation named filter."><a href="../symbols/sap.ui.ux3.DataSet.html#insertFilter">insertFilter</a></b><span class='signature'>(<span title="(sap.ui.core.Control) the filter to insert; if empty, nothing is inserted">oFilter</span>, <span title="(int) the 0-based index the filter should be inserted at; for a negative value of iIndex, the filter is inserted at position 0; for a value greater than the current size of the aggregation, the filter is inserted at the last position">iIndex</span>)</span>
+									<span class='description'>Inserts a filter into the aggregation named <code>filter</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Inserts a item into the aggregation named items."><a href="../symbols/sap.ui.ux3.DataSet.html#insertItem">insertItem</a></b><span class='signature'>(<span title="(sap.ui.ux3.DataSetItem) the item to insert; if empty, nothing is inserted">oItem</span>, <span title="(int) the 0-based index the item should be inserted at; for a negative value of iIndex, the item is inserted at position 0; for a value greater than the current size of the aggregation, the item is inserted at the last position">iIndex</span>)</span>
+									<span class='description'>Inserts a item into the aggregation named <code>items</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Inserts a view into the aggregation named views."><a href="../symbols/sap.ui.ux3.DataSet.html#insertView">insertView</a></b><span class='signature'>(<span title="(sap.ui.ux3.DataSetView) the view to insert; if empty, nothing is inserted">oView</span>, <span title="(int) the 0-based index the view should be inserted at; for a negative value of iIndex, the view is inserted at position 0; for a value greater than the current size of the aggregation, the view is inserted at the last position">iIndex</span>)</span>
+									<span class='description'>Inserts a view into the aggregation named <code>views</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Returns true if iIndex is selected"><a href="../symbols/sap.ui.ux3.DataSet.html#isSelectedIndex">isSelectedIndex</a></b><span class='signature'>(<span title="(int) index of selection">iIndex</span>)</span>
+									<span class='description'>Returns true if iIndex is selected</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes all the controls in the aggregation named filter."><a href="../symbols/sap.ui.ux3.DataSet.html#removeAllFilter">removeAllFilter</a></b><span class='signature'>()</span>
+									<span class='description'>Removes all the controls in the aggregation named <code>filter</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes all the controls in the aggregation named items."><a href="../symbols/sap.ui.ux3.DataSet.html#removeAllItems">removeAllItems</a></b><span class='signature'>()</span>
+									<span class='description'>Removes all the controls in the aggregation named <code>items</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes all the controls in the aggregation named views."><a href="../symbols/sap.ui.ux3.DataSet.html#removeAllViews">removeAllViews</a></b><span class='signature'>()</span>
+									<span class='description'>Removes all the controls in the aggregation named <code>views</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes an filter from the aggregation named filter."><a href="../symbols/sap.ui.ux3.DataSet.html#removeFilter">removeFilter</a></b><span class='signature'>(<span title="(int | string | sap.ui.core.Control) the filter to remove or its index or id">vFilter</span>)</span>
+									<span class='description'>Removes an filter from the aggregation named <code>filter</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes an item from the aggregation named items."><a href="../symbols/sap.ui.ux3.DataSet.html#removeItem">removeItem</a></b><span class='signature'>(<span title="(int | string | sap.ui.ux3.DataSetItem) the item to remove or its index or id">vItem</span>)</span>
+									<span class='description'>Removes an item from the aggregation named <code>items</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="remove a toolbarItem to the toolbar"><a href="../symbols/sap.ui.ux3.DataSet.html#removeToolbarItem">removeToolbarItem</a></b><span class='signature'>(<span title="(sap.ui.commons.ToolbarItem) sap.ui.commons.ToolbarItem">oOToolbarItem</span>)</span>
+									<span class='description'>remove a toolbarItem to the toolbar</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes an view from the aggregation named views."><a href="../symbols/sap.ui.ux3.DataSet.html#removeView">removeView</a></b><span class='signature'>(<span title="(int | string | sap.ui.ux3.DataSetView) the view to remove or its index or id">vView</span>)</span>
+									<span class='description'>Removes an view from the aggregation named <code>views</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Set the LeadSelection index"><a href="../symbols/sap.ui.ux3.DataSet.html#setLeadSelection">setLeadSelection</a></b><span class='signature'>(<span title="(int) set LeadSelection index">iIndex</span>)</span>
+									<span class='description'>Set the LeadSelection index</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="setter for multi selection mode * @param {boolean} bMode true for multi mode, false for single mode"><a href="../symbols/sap.ui.ux3.DataSet.html#setMultiSelect">setMultiSelect</a></b><span class='signature'>(<span>bMode</span>)</span>
+									<span class='description'>setter for multi selection mode * @param {boolean} bMode true for multi mode, false for single mode</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Selected view of the Dataset"><a href="../symbols/sap.ui.ux3.DataSet.html#setSelectedView">setSelectedView</a></b><span class='signature'>(<span title="(string | sap.ui.ux3.DataSetView) Id of an element which becomes the new target of this selectedView association.">vSelectedView</span>)</span>
+									<span class='description'>Selected view of the Dataset</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property showFilter."><a href="../symbols/sap.ui.ux3.DataSet.html#setShowFilter">setShowFilter</a></b><span class='signature'>(<span title="(boolean) new value for property showFilter">bShowFilter</span>)</span>
+									<span class='description'>Setter for property <code>showFilter</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property showSearchField."><a href="../symbols/sap.ui.ux3.DataSet.html#setShowSearchField">setShowSearchField</a></b><span class='signature'>(<span title="(boolean) new value for property showSearchField">bShowSearchField</span>)</span>
+									<span class='description'>Setter for property <code>showSearchField</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property showToolbar."><a href="../symbols/sap.ui.ux3.DataSet.html#setShowToolbar">setShowToolbar</a></b><span class='signature'>(<span title="(boolean) new value for property showToolbar">bShowToolbar</span>)</span>
+									<span class='description'>Setter for property <code>showToolbar</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Unbinder for aggregation items."><a href="../symbols/sap.ui.ux3.DataSet.html#unbindItems">unbindItems</a></b><span class='signature'>()</span>
+									<span class='description'>Unbinder for aggregation <code>items</code>.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Control.html#addStyleClass">addStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#allowTextSelection">allowTextSelection</a>, <a href="../symbols/sap.ui.core.Control.html#attachBrowserEvent">attachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#clone">clone</a>, <a href="../symbols/sap.ui.core.Control.html#detachBrowserEvent">detachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#getBusy">getBusy</a>, <a href="../symbols/sap.ui.core.Control.html#getBusyIndicatorDelay">getBusyIndicatorDelay</a>, <a href="../symbols/sap.ui.core.Control.html#getIdForLabel">getIdForLabel</a>, <a href="../symbols/sap.ui.core.Control.html#getRenderer">getRenderer</a>, <a href="../symbols/sap.ui.core.Control.html#hasStyleClass">hasStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#invalidate">invalidate</a>, <a href="../symbols/sap.ui.core.Control.html#isBusy">isBusy</a>, <a href="../symbols/sap.ui.core.Control.html#onAfterRendering">onAfterRendering</a>, <a href="../symbols/sap.ui.core.Control.html#onBeforeRendering">onBeforeRendering</a>, <a href="../symbols/sap.ui.core.Control.html#placeAt">placeAt</a>, <a href="../symbols/sap.ui.core.Control.html#removeStyleClass">removeStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#rerender">rerender</a>, <a href="../symbols/sap.ui.core.Control.html#setBusy">setBusy</a>, <a href="../symbols/sap.ui.core.Control.html#setBusyIndicatorDelay">setBusyIndicatorDelay</a>, <a href="../symbols/sap.ui.core.Control.html#toggleStyleClass">toggleStyleClass</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Element.html#$">$</a>, <a href="../symbols/sap.ui.core.Element.html#addCustomData">addCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#addDependent">addDependent</a>, <a href="../symbols/sap.ui.core.Element.html#addEventDelegate">addEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#applyFocusInfo">applyFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#bindElement">bindElement</a>, <a href="../symbols/sap.ui.core.Element.html#data">data</a>, <a href="../symbols/sap.ui.core.Element.html#destroy">destroy</a>, <a href="../symbols/sap.ui.core.Element.html#destroyCustomData">destroyCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#destroyDependents">destroyDependents</a>, <a href="../symbols/sap.ui.core.Element.html#enhanceAccessibilityState">enhanceAccessibilityState</a>, <a href="../symbols/sap.ui.core.Element.html#exit">exit</a>, <a href="../symbols/sap.ui.core.Element.html#findElements">findElements</a>, <a href="../symbols/sap.ui.core.Element.html#fireEvent">fireEvent</a>, <a href="../symbols/sap.ui.core.Element.html#getCustomData">getCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#getDependents">getDependents</a>, <a href="../symbols/sap.ui.core.Element.html#getDomRef">getDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getElementBinding">getElementBinding</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusDomRef">getFocusDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusInfo">getFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#getInterface">getInterface</a>, <a href="../symbols/sap.ui.core.Element.html#getLayoutData">getLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#getMetadata">getMetadata</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip">getTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_AsString">getTooltip_AsString</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_Text">getTooltip_Text</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfCustomData">indexOfCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfDependent">indexOfDependent</a>, <a href="../symbols/sap.ui.core.Element.html#init">init</a>, <a href="../symbols/sap.ui.core.Element.html#insertCustomData">insertCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#insertDependent">insertDependent</a>, <a href="../symbols/sap.ui.core.Element.html#prop">prop</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllCustomData">removeAllCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllDependents">removeAllDependents</a>, <a href="../symbols/sap.ui.core.Element.html#removeCustomData">removeCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeDependent">removeDependent</a>, <a href="../symbols/sap.ui.core.Element.html#removeEventDelegate">removeEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#setLayoutData">setLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#setTooltip">setTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#toString">toString</a>, <a href="../symbols/sap.ui.core.Element.html#unbindElement">unbindElement</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.ManagedObject.html">sap.ui.base.ManagedObject</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.ManagedObject.html#addAggregation">addAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#addAssociation">addAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#applySettings">applySettings</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindAggregation">bindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindContext">bindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindObject">bindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindProperty">bindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#destroyAggregation">destroyAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#findAggregatedObjects">findAggregatedObjects</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAggregation">getAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAssociation">getAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBinding">getBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingContext">getBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingInfo">getBindingInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingPath">getBindingPath</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getEventingParent">getEventingParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getId">getId</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getModel">getModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getObjectBinding">getObjectBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getOriginInfo">getOriginInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getParent">getParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getProperty">getProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#hasModel">hasModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#indexOfAggregation">indexOfAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#insertAggregation">insertAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isBound">isBound</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isInvalidateSuppressed">isInvalidateSuppressed</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isTreeBinding">isTreeBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAggregation">removeAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAggregation">removeAllAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAssociation">removeAllAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAssociation">removeAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAggregation">setAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAssociation">setAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setBindingContext">setBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setModel">setModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setProperty">setProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindAggregation">unbindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindContext">unbindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindObject">unbindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindProperty">unbindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateAggregation">validateAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateProperty">validateProperty</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.EventProvider.html#attachEvent">attachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#attachEventOnce">attachEventOnce</a>, <a href="../symbols/sap.ui.base.EventProvider.html#detachEvent">detachEvent</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.ui.ux3.DataSet</b>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)
+										</div>
+										
+										<div class="full-description">
+											Constructor for a new DataSet.
+</p><p>
+Accepts an object literal <code>mSettings</code> that defines initial 
+property values, aggregated and associated objects as well as event handlers. 
+</p><p>
+If the name of a setting is ambiguous (e.g. a property has the same name as an event), 
+then the framework assumes property, aggregation, association, event in that order. 
+To override this automatic resolution, one of the prefixes "aggregation:", "association:" 
+or "event:" can be added to the name of the setting (such a prefixed name must be
+enclosed in single or double quotes).
+</p><p>
+The supported settings are:
+<ul>
+<li>Properties
+<ul>
+<li><a href="#getShowToolbar">showToolbar</a> : boolean (default: true)</li>
+<li><a href="#getShowFilter">showFilter</a> : boolean (default: true)</li>
+<li><a href="#getShowSearchField">showSearchField</a> : boolean (default: true)</li>
+<li><a href="#getMultiSelect">multiSelect</a> : boolean (default: false)</li></ul>
+</li>
+<li>Aggregations
+<ul>
+<li><a href="#getItems">items</a> : sap.ui.ux3.DataSetItem[]</li>
+<li><a href="#getViews">views</a> : sap.ui.ux3.DataSetView[]</li>
+<li><a href="#getFilter">filter</a> : sap.ui.core.Control[]</li></ul>
+</li>
+<li>Associations
+<ul>
+<li><a href="#getSelectedView">selectedView</a> : string | sap.ui.ux3.DataSetView</li></ul>
+</li>
+<li>Events
+<ul>
+<li><a href="../symbols/sap.ui.ux3.DataSet.html#event:selectionChanged">selectionChanged</a> : fnListenerFunction or [fnListenerFunction, oListenerObject] or [oData, fnListenerFunction, oListenerObject]</li>
+<li><a href="../symbols/sap.ui.ux3.DataSet.html#event:search">search</a> : fnListenerFunction or [fnListenerFunction, oListenerObject] or [oData, fnListenerFunction, oListenerObject]</li></ul>
+</li>
+</ul>
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    id for the new control, generated automatically if no id is given
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mSettings</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    initial settings for the new control
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Event Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:search"> </a>
+									<div class="itemTitle icon">
+										search<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										Event which is fired when the user triggers a search
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.query</b>
+												</td>
+												<td class="methodItemDesc">
+											    The search query
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:selectionChanged"> </a>
+									<div class="itemTitle icon">
+										selectionChanged<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										selection Changed
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{int}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.oldLeadSelectedIndex</b>
+												</td>
+												<td class="methodItemDesc">
+											    Old lead selected index
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{int}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.newLeadSelectedIndex</b>
+												</td>
+												<td class="methodItemDesc">
+											    New lead selected index
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+							</div>
+						</div>
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".extend"> </a>
+										<div class="itemTitle icon">
+											sap.ui.ux3.DataSet.extend<span class="signature">(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns function">: function</span>
+										</div>
+										<div class="full-description">
+											Creates a new subclass of class sap.ui.ux3.DataSet with name <code>sClassName</code> 
+and enriches it with the information contained in <code>oClassInfo</code>.
+</p><p>
+<code>oClassInfo</code> might contain the same kind of informations as described in <a href="../symbols/sap.ui.core.Element.html#.extend">Element.extend</a>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sClassName</b>
+													</td>
+													<td class="methodItemDesc">
+												    name of the class to be created
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oClassInfo</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    object literal with informations about the class
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>FNMetaImpl</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    constructor function for the metadata object. If not given, it defaults to sap.ui.core.ElementMetadata.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{function}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the created class / constructor function
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="_rerenderFilter"> </a>
+										<div class="itemTitle icon protected">
+											_rerenderFilter<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Rerendering of the FilterArea
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="_rerenderToolbar"> </a>
+										<div class="itemTitle icon protected">
+											_rerenderToolbar<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Rerendering of the Toolbar
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addFilter"> </a>
+										<div class="itemTitle icon">
+											addFilter<span class="signature">(<span title="(sap.ui.core.Control) the filter to add; if empty, nothing is inserted">oFilter</span>)</span>
+											<span class="light" title="returns sap.ui.ux3.DataSet">: <a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a></span>
+										</div>
+										<div class="full-description">
+											Adds some filter <code>oFilter</code> 
+to the aggregation named <code>filter</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oFilter</b>
+													</td>
+													<td class="methodItemDesc">
+												    the filter to add; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addItem"> </a>
+										<div class="itemTitle icon">
+											addItem<span class="signature">(<span title="(sap.ui.ux3.DataSetItem) the item to add; if empty, nothing is inserted">oItem</span>)</span>
+											<span class="light" title="returns sap.ui.ux3.DataSet">: <a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a></span>
+										</div>
+										<div class="full-description">
+											Adds some item <code>oItem</code> 
+to the aggregation named <code>items</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.ux3.DataSetItem.html">sap.ui.ux3.DataSetItem</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    the item to add; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addToolbarItem"> </a>
+										<div class="itemTitle icon">
+											addToolbarItem<span class="signature">(<span title="(sap.ui.commons.ToolbarItem) ToolbarItem">oOToolbarItem</span>)</span>
+											<span class="light" title="returns void">: void</span>
+										</div>
+										<div class="full-description">
+											add a toolbarItem to the toolbar
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.commons.ToolbarItem.html">sap.ui.commons.ToolbarItem</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oOToolbarItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    ToolbarItem
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addView"> </a>
+										<div class="itemTitle icon">
+											addView<span class="signature">(<span title="(sap.ui.ux3.DataSetView) the view to add; if empty, nothing is inserted">oView</span>)</span>
+											<span class="light" title="returns sap.ui.ux3.DataSet">: <a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a></span>
+										</div>
+										<div class="full-description">
+											Adds some view <code>oView</code> 
+to the aggregation named <code>views</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.ux3.DataSetView.html">sap.ui.ux3.DataSetView</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oView</b>
+													</td>
+													<td class="methodItemDesc">
+												    the view to add; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachSearch"> </a>
+										<div class="itemTitle icon">
+											attachSearch<span class="signature">(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.ux3.DataSet">: <a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a></span>
+										</div>
+										<div class="full-description">
+											Attach event handler <code>fnFunction</code> to the 'search' event of this <code>sap.ui.ux3.DataSet</code>.<br/>.
+When called, the context of the event handler (its <code>this</code>) will be bound to <code>oListener<code> if specified
+otherwise to this <code>sap.ui.ux3.DataSet</code>.<br/> itself. 
+</p><p>
+Event which is fired when the user triggers a search
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oData</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    An application specific payload object, that will be passed to the event handler along with the event object when firing the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Context object to call the event handler with. Defaults to this <code>sap.ui.ux3.DataSet</code>.<br/> itself.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachSelectionChanged"> </a>
+										<div class="itemTitle icon">
+											attachSelectionChanged<span class="signature">(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.ux3.DataSet">: <a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a></span>
+										</div>
+										<div class="full-description">
+											Attach event handler <code>fnFunction</code> to the 'selectionChanged' event of this <code>sap.ui.ux3.DataSet</code>.<br/>.
+When called, the context of the event handler (its <code>this</code>) will be bound to <code>oListener<code> if specified
+otherwise to this <code>sap.ui.ux3.DataSet</code>.<br/> itself. 
+</p><p>
+selection Changed
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oData</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    An application specific payload object, that will be passed to the event handler along with the event object when firing the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Context object to call the event handler with. Defaults to this <code>sap.ui.ux3.DataSet</code>.<br/> itself.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="bindItems"> </a>
+										<div class="itemTitle icon">
+											bindItems<span class="signature">(<span title="(string) path to a list in the model">sPath</span>, <span title="(sap.ui.core.Element) the control template for this aggregation">oTemplate</span>, <span title="(sap.ui.model.Sorter) the initial sort order (optional)">oSorter</span>, <span title="(array) the predefined filters for this aggregation (optional)">aFilters</span>)</span>
+											<span class="light" title="returns sap.ui.ux3.DataSet">: <a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a></span>
+										</div>
+										<div class="full-description">
+											Binder for aggregation <code>items</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sPath</b>
+													</td>
+													<td class="methodItemDesc">
+												    path to a list in the model
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oTemplate</b>
+													</td>
+													<td class="methodItemDesc">
+												    the control template for this aggregation
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.model.Sorter.html">sap.ui.model.Sorter</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oSorter</b>
+													</td>
+													<td class="methodItemDesc">
+												    the initial sort order (optional)
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{array}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>aFilters</b>
+													</td>
+													<td class="methodItemDesc">
+												    the predefined filters for this aggregation (optional)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="clearSelection"> </a>
+										<div class="itemTitle icon">
+											clearSelection<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											clears dataset from all previous selections
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="createViewSwitch"> </a>
+										<div class="itemTitle icon protected">
+											createViewSwitch<span class="signature">(<span title="(object) View">oView</span>, <span title="(int) Index of view">iIndex</span>)</span>
+											<span class="light" title="returns object">: object</span>
+										</div>
+										<div class="full-description">
+											Creates a view switch button
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oView</b>
+													</td>
+													<td class="methodItemDesc">
+												    View
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    Index of view
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{object}</span> 
+													</td>
+													<td class="methodItemDesc">
+														viewSwitch instance
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyFilter"> </a>
+										<div class="itemTitle icon">
+											destroyFilter<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.ux3.DataSet">: <a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a></span>
+										</div>
+										<div class="full-description">
+											Destroys all the filter in the aggregation 
+named <code>filter</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyItems"> </a>
+										<div class="itemTitle icon">
+											destroyItems<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.ux3.DataSet">: <a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a></span>
+										</div>
+										<div class="full-description">
+											Destroys all the items in the aggregation 
+named <code>items</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyViews"> </a>
+										<div class="itemTitle icon">
+											destroyViews<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.ux3.DataSet">: <a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a></span>
+										</div>
+										<div class="full-description">
+											Destroys all the views in the aggregation 
+named <code>views</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachSearch"> </a>
+										<div class="itemTitle icon">
+											detachSearch<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.ui.ux3.DataSet">: <a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a></span>
+										</div>
+										<div class="full-description">
+											Detach event handler <code>fnFunction</code> from the 'search' event of this <code>sap.ui.ux3.DataSet</code>.<br/>
+</p><p>
+The passed function and listener object must match the ones used for event registration.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Context object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachSelectionChanged"> </a>
+										<div class="itemTitle icon">
+											detachSelectionChanged<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.ui.ux3.DataSet">: <a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a></span>
+										</div>
+										<div class="full-description">
+											Detach event handler <code>fnFunction</code> from the 'selectionChanged' event of this <code>sap.ui.ux3.DataSet</code>.<br/>
+</p><p>
+The passed function and listener object must match the ones used for event registration.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Context object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="fireSearch"> </a>
+										<div class="itemTitle icon protected">
+											fireSearch<span class="signature">(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.ux3.DataSet">: <a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a></span>
+										</div>
+										<div class="full-description">
+											Fire event search to attached listeners.
+</p><p>
+Expects following event parameters:
+<ul>
+<li>'query' of type <code>string</code> The search query</li>
+</ul>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Map}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="fireSelectionChanged"> </a>
+										<div class="itemTitle icon protected">
+											fireSelectionChanged<span class="signature">(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.ux3.DataSet">: <a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a></span>
+										</div>
+										<div class="full-description">
+											Fire event selectionChanged to attached listeners.
+</p><p>
+Expects following event parameters:
+<ul>
+<li>'oldLeadSelectedIndex' of type <code>int</code> Old lead selected index</li>
+<li>'newLeadSelectedIndex' of type <code>int</code> New lead selected index</li>
+</ul>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Map}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getFilter"> </a>
+										<div class="itemTitle icon">
+											getFilter<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.Control[]">: <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>[]</span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>filter</code>.<br/>
+Filter control (e.g. a FacetFilter) for the DataSet
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getItems"> </a>
+										<div class="itemTitle icon">
+											getItems<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.ux3.DataSetItem[]">: <a href="../symbols/sap.ui.ux3.DataSetItem.html">sap.ui.ux3.DataSetItem</a>[]</span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>items</code>.<br/>
+Aggregation of DataSetItems
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.ux3.DataSetItem.html">sap.ui.ux3.DataSetItem</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="getLeadSelection"> </a>
+										<div class="itemTitle icon protected">
+											getLeadSelection<span class="signature">(<span title="(string) Id of the selected DataSetItem">sItemId</span>)</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Returns the LeadSelection index
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sItemId</b>
+													</td>
+													<td class="methodItemDesc">
+												    Id of the selected DataSetItem
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														selected index
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getMultiSelect"> </a>
+										<div class="itemTitle icon">
+											getMultiSelect<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>multiSelect</code>.
+Selection mode of the DataSet
+</p><p>
+Default value is <code>false</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>multiSelect</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getSelectedIndex"> </a>
+										<div class="itemTitle icon">
+											getSelectedIndex<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											use this function to retrieve the lead selected index
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getSelectedIndices"> </a>
+										<div class="itemTitle icon">
+											getSelectedIndices<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											use this function to retrieve all selected indices if multiple select is enabled
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="getSelectedItemId"> </a>
+										<div class="itemTitle icon protected">
+											getSelectedItemId<span class="signature">(<span title="(int) index of selection">iIndex</span>)</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Returns id of selected Item from given index
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    index of selection
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														id of selected item
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getSelectedView"> </a>
+										<div class="itemTitle icon">
+											getSelectedView<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Selected view of the Dataset
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Id of the element which is the current target of the <code>selectedView</code> association, or null
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getShowFilter"> </a>
+										<div class="itemTitle icon">
+											getShowFilter<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>showFilter</code>.
+show filter
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>showFilter</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getShowSearchField"> </a>
+										<div class="itemTitle icon">
+											getShowSearchField<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>showSearchField</code>.
+Show/hide SearchField in Toolbar
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>showSearchField</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getShowToolbar"> </a>
+										<div class="itemTitle icon">
+											getShowToolbar<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>showToolbar</code>.
+show Toolbar
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>showToolbar</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getViews"> </a>
+										<div class="itemTitle icon">
+											getViews<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.ux3.DataSetView[]">: <a href="../symbols/sap.ui.ux3.DataSetView.html">sap.ui.ux3.DataSetView</a>[]</span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>views</code>.<br/>
+views
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.ux3.DataSetView.html">sap.ui.ux3.DataSetView</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="indexOfFilter"> </a>
+										<div class="itemTitle icon">
+											indexOfFilter<span class="signature">(<span title="(sap.ui.core.Control) the filter whose index is looked for.">oFilter</span>)</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Checks for the provided <code>sap.ui.core.Control</code> in the aggregation named <code>filter</code> 
+and returns its index if found or -1 otherwise.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oFilter</b>
+													</td>
+													<td class="methodItemDesc">
+												    the filter whose index is looked for.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the index of the provided control in the aggregation if found, or -1 otherwise
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="indexOfItem"> </a>
+										<div class="itemTitle icon">
+											indexOfItem<span class="signature">(<span title="(sap.ui.ux3.DataSetItem) the item whose index is looked for.">oItem</span>)</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Checks for the provided <code>sap.ui.ux3.DataSetItem</code> in the aggregation named <code>items</code> 
+and returns its index if found or -1 otherwise.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.ux3.DataSetItem.html">sap.ui.ux3.DataSetItem</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    the item whose index is looked for.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the index of the provided control in the aggregation if found, or -1 otherwise
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="indexOfView"> </a>
+										<div class="itemTitle icon">
+											indexOfView<span class="signature">(<span title="(sap.ui.ux3.DataSetView) the view whose index is looked for.">oView</span>)</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Checks for the provided <code>sap.ui.ux3.DataSetView</code> in the aggregation named <code>views</code> 
+and returns its index if found or -1 otherwise.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.ux3.DataSetView.html">sap.ui.ux3.DataSetView</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oView</b>
+													</td>
+													<td class="methodItemDesc">
+												    the view whose index is looked for.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the index of the provided control in the aggregation if found, or -1 otherwise
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="insertFilter"> </a>
+										<div class="itemTitle icon">
+											insertFilter<span class="signature">(<span title="(sap.ui.core.Control) the filter to insert; if empty, nothing is inserted">oFilter</span>, <span title="(int) the 0-based index the filter should be inserted at; for a negative value of iIndex, the filter is inserted at position 0; for a value greater than the current size of the aggregation, the filter is inserted at the last position">iIndex</span>)</span>
+											<span class="light" title="returns sap.ui.ux3.DataSet">: <a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a></span>
+										</div>
+										<div class="full-description">
+											Inserts a filter into the aggregation named <code>filter</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oFilter</b>
+													</td>
+													<td class="methodItemDesc">
+												    the filter to insert; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    the <code>0</code>-based index the filter should be inserted at; for 
+            a negative value of <code>iIndex</code>, the filter is inserted at position 0; for a value 
+            greater than the current size of the aggregation, the filter is inserted at 
+            the last position
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="insertItem"> </a>
+										<div class="itemTitle icon">
+											insertItem<span class="signature">(<span title="(sap.ui.ux3.DataSetItem) the item to insert; if empty, nothing is inserted">oItem</span>, <span title="(int) the 0-based index the item should be inserted at; for a negative value of iIndex, the item is inserted at position 0; for a value greater than the current size of the aggregation, the item is inserted at the last position">iIndex</span>)</span>
+											<span class="light" title="returns sap.ui.ux3.DataSet">: <a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a></span>
+										</div>
+										<div class="full-description">
+											Inserts a item into the aggregation named <code>items</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.ux3.DataSetItem.html">sap.ui.ux3.DataSetItem</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    the item to insert; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    the <code>0</code>-based index the item should be inserted at; for 
+            a negative value of <code>iIndex</code>, the item is inserted at position 0; for a value 
+            greater than the current size of the aggregation, the item is inserted at 
+            the last position
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="insertView"> </a>
+										<div class="itemTitle icon">
+											insertView<span class="signature">(<span title="(sap.ui.ux3.DataSetView) the view to insert; if empty, nothing is inserted">oView</span>, <span title="(int) the 0-based index the view should be inserted at; for a negative value of iIndex, the view is inserted at position 0; for a value greater than the current size of the aggregation, the view is inserted at the last position">iIndex</span>)</span>
+											<span class="light" title="returns sap.ui.ux3.DataSet">: <a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a></span>
+										</div>
+										<div class="full-description">
+											Inserts a view into the aggregation named <code>views</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.ux3.DataSetView.html">sap.ui.ux3.DataSetView</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oView</b>
+													</td>
+													<td class="methodItemDesc">
+												    the view to insert; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    the <code>0</code>-based index the view should be inserted at; for 
+            a negative value of <code>iIndex</code>, the view is inserted at position 0; for a value 
+            greater than the current size of the aggregation, the view is inserted at 
+            the last position
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="isSelectedIndex"> </a>
+										<div class="itemTitle icon protected">
+											isSelectedIndex<span class="signature">(<span title="(int) index of selection">iIndex</span>)</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Returns true if iIndex is selected
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    index of selection
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														index selected true/false
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeAllFilter"> </a>
+										<div class="itemTitle icon">
+											removeAllFilter<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.Control[]">: <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>[]</span>
+										</div>
+										<div class="full-description">
+											Removes all the controls in the aggregation named <code>filter</code>.<br/>
+Additionally unregisters them from the hosting UIArea.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														an array of the removed elements (might be empty)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeAllItems"> </a>
+										<div class="itemTitle icon">
+											removeAllItems<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.ux3.DataSetItem[]">: <a href="../symbols/sap.ui.ux3.DataSetItem.html">sap.ui.ux3.DataSetItem</a>[]</span>
+										</div>
+										<div class="full-description">
+											Removes all the controls in the aggregation named <code>items</code>.<br/>
+Additionally unregisters them from the hosting UIArea.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.ux3.DataSetItem.html">sap.ui.ux3.DataSetItem</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														an array of the removed elements (might be empty)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeAllViews"> </a>
+										<div class="itemTitle icon">
+											removeAllViews<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.ux3.DataSetView[]">: <a href="../symbols/sap.ui.ux3.DataSetView.html">sap.ui.ux3.DataSetView</a>[]</span>
+										</div>
+										<div class="full-description">
+											Removes all the controls in the aggregation named <code>views</code>.<br/>
+Additionally unregisters them from the hosting UIArea.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.ux3.DataSetView.html">sap.ui.ux3.DataSetView</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														an array of the removed elements (might be empty)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeFilter"> </a>
+										<div class="itemTitle icon">
+											removeFilter<span class="signature">(<span title="(int | string | sap.ui.core.Control) the filter to remove or its index or id">vFilter</span>)</span>
+											<span class="light" title="returns sap.ui.core.Control">: <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></span>
+										</div>
+										<div class="full-description">
+											Removes an filter from the aggregation named <code>filter</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int|string|<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vFilter</b>
+													</td>
+													<td class="methodItemDesc">
+												    the filter to remove or its index or id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the removed filter or null
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeItem"> </a>
+										<div class="itemTitle icon">
+											removeItem<span class="signature">(<span title="(int | string | sap.ui.ux3.DataSetItem) the item to remove or its index or id">vItem</span>)</span>
+											<span class="light" title="returns sap.ui.ux3.DataSetItem">: <a href="../symbols/sap.ui.ux3.DataSetItem.html">sap.ui.ux3.DataSetItem</a></span>
+										</div>
+										<div class="full-description">
+											Removes an item from the aggregation named <code>items</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int|string|<a href="../symbols/sap.ui.ux3.DataSetItem.html">sap.ui.ux3.DataSetItem</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    the item to remove or its index or id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.ux3.DataSetItem.html">sap.ui.ux3.DataSetItem</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the removed item or null
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeToolbarItem"> </a>
+										<div class="itemTitle icon">
+											removeToolbarItem<span class="signature">(<span title="(sap.ui.commons.ToolbarItem) sap.ui.commons.ToolbarItem">oOToolbarItem</span>)</span>
+											<span class="light" title="returns void">: void</span>
+										</div>
+										<div class="full-description">
+											remove a toolbarItem to the toolbar
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.commons.ToolbarItem.html">sap.ui.commons.ToolbarItem</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oOToolbarItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeView"> </a>
+										<div class="itemTitle icon">
+											removeView<span class="signature">(<span title="(int | string | sap.ui.ux3.DataSetView) the view to remove or its index or id">vView</span>)</span>
+											<span class="light" title="returns sap.ui.ux3.DataSetView">: <a href="../symbols/sap.ui.ux3.DataSetView.html">sap.ui.ux3.DataSetView</a></span>
+										</div>
+										<div class="full-description">
+											Removes an view from the aggregation named <code>views</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int|string|<a href="../symbols/sap.ui.ux3.DataSetView.html">sap.ui.ux3.DataSetView</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vView</b>
+													</td>
+													<td class="methodItemDesc">
+												    the view to remove or its index or id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.ux3.DataSetView.html">sap.ui.ux3.DataSetView</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the removed view or null
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="setLeadSelection"> </a>
+										<div class="itemTitle icon protected">
+											setLeadSelection<span class="signature">(<span title="(int) set LeadSelection index">iIndex</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Set the LeadSelection index
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    set LeadSelection index
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setMultiSelect"> </a>
+										<div class="itemTitle icon">
+											setMultiSelect<span class="signature">(<span>bMode</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											setter for multi selection mode
+ * @param {boolean}
+           bMode true for multi mode, false for single mode
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  
+													</td>
+													<td class="methodItemName">
+													  <b>bMode</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setSelectedView"> </a>
+										<div class="itemTitle icon">
+											setSelectedView<span class="signature">(<span title="(string | sap.ui.ux3.DataSetView) Id of an element which becomes the new target of this selectedView association.">vSelectedView</span>)</span>
+											<span class="light" title="returns sap.ui.ux3.DataSet">: <a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a></span>
+										</div>
+										<div class="full-description">
+											Selected view of the Dataset
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string|<a href="../symbols/sap.ui.ux3.DataSetView.html">sap.ui.ux3.DataSetView</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vSelectedView</b>
+													</td>
+													<td class="methodItemDesc">
+												    Id of an element which becomes the new target of this <code>selectedView</code> association.
+   Alternatively, an element instance may be given.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setShowFilter"> </a>
+										<div class="itemTitle icon">
+											setShowFilter<span class="signature">(<span title="(boolean) new value for property showFilter">bShowFilter</span>)</span>
+											<span class="light" title="returns sap.ui.ux3.DataSet">: <a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>showFilter</code>.
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bShowFilter</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>showFilter</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setShowSearchField"> </a>
+										<div class="itemTitle icon">
+											setShowSearchField<span class="signature">(<span title="(boolean) new value for property showSearchField">bShowSearchField</span>)</span>
+											<span class="light" title="returns sap.ui.ux3.DataSet">: <a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>showSearchField</code>.
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bShowSearchField</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>showSearchField</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setShowToolbar"> </a>
+										<div class="itemTitle icon">
+											setShowToolbar<span class="signature">(<span title="(boolean) new value for property showToolbar">bShowToolbar</span>)</span>
+											<span class="light" title="returns sap.ui.ux3.DataSet">: <a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>showToolbar</code>.
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bShowToolbar</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>showToolbar</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="unbindItems"> </a>
+										<div class="itemTitle icon">
+											unbindItems<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.ux3.DataSet">: <a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a></span>
+										</div>
+										<div class="full-description">
+											Unbinder for aggregation <code>items</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.ux3.DataSet.html">sap.ui.ux3.DataSet</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

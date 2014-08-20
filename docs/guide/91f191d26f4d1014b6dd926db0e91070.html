@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=5488398219576373"/>
+<title>Experimental Two-Way Binding</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f191d26f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Experimental Two-Way Binding</h1>
+<div class="body"><div class="note note" id="loio91f191d26f4d1014b6dd926db0e91070__note_N10015_N10013_N10001"><span class="notetitle">Note</span> This feature is experimental and may change in future versions
+			of SAPUI5. </div>
+<p class="p">The two-way binding mode enables the application to
+		update values of a single collection entry without triggering an immediate
+		change request. 
+		<samp class="ph codeph">create</samp> and 
+		<samp class="ph codeph">delete</samp> operations are not collected and can be called by
+		the application as described above. 
+	 </p>
+<p class="p">If the two-way binding mode is enabled, the 
+		<samp class="ph codeph">setProperty</samp> function of
+		the OData model is called automatically to update the value in the specified
+		entry upon user input. If an update to a property of another entry is performed
+		and there is already an update to an existing entry pending, a 
+		<samp class="ph codeph">rejectChange</samp> event is
+		fired and no change to the property value is stored in the model. The
+		application can register to this event. Thus, before updating a different
+		entry, the application has to submit or reset existing changes of the current
+		entry:
+	 </p>
+<ul class="ul"><li class="li">To reset the current changes the application can call the
+					<samp class="ph codeph">resetChanges</samp> function.</li>
+<li class="li">To trigger the final update
+		  request for the modified entry the application should call the 
+		  <samp class="ph codeph">submitChanges</samp>
+		  function. 
+		</li>
+</ul>
+<p class="p">Callback handlers for these functions can be handed
+		over as parameters. 
+	 </p>
+<p class="p">To enable the two-way binding for the OData model the
+		default binding mode has to be changed as follows: 
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">oModel.setDefaultBindingMode(sap.ui.model.BindingMode.TwoWay);</pre></div>
+<p class="p">After the binding is done, the application should
+		attach to the 
+		<samp class="ph codeph">rejectChange</samp> event to
+		handle the user modifications to different entries accordingly and, for
+		example, allow or reject user input for a specific entry. 
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">oModel.attachRejectChange(this,function(oEvent){
+ 	alert("You are already editing another Entry! Please submit or reject your pending changes!");
+});</pre></div>
+<p class="p">The application can use the 
+		<samp class="ph codeph">hasPendingChanges</samp>
+		function to determine if there is a pending change.
+	 </p>
+<p class="p">The application can then decide (or let the user
+		decide) when to submit or reject the changes: 
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oUpdateBtn = new sap.ui.commons.Button({
+ 		text : "Update",
+ 		style : sap.ui.commons.ButtonStyle.Emph,
+ 		press : function(){
+ 			oModel.submitChanges(function(){
+	 				alert("Update successful"););
+ 				},function(){
+ 					alert("Update failed");});
+	}
+});
+
+var oCancelBtn = new sap.ui.commons.Button({
+ 		text : "Cancel",
+ 		style : sap.ui.commons.ButtonStyle.Reject,
+ 		press : function(){
+			oModel.resetChanges();
+ 	}
+});</pre></div>
+<p class="p">The <samp class="ph codeph">submitChanges</samp> function also has an optional parameter
+				<samp class="ph codeph">oParameters</samp> which currently can have an attribute for an ETag.</p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Experimental Two-Way Binding";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

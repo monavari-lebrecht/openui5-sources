@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=3694053350198896"/>
+<title>Troubleshooting: Common Issues</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio55356e6b3b9c4c8d89114553b5d86635">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Troubleshooting: Common Issues</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">The following sections provide information on common issues.</p>
+<div class="section"><div class="section_title">An Empty Page Comes Up</div><div type="An Empty Page Comes Up">
+			
+			<p class="p">An empty page is most likely caused by a JavaScript error. JavaScript errors stop all
+				subsequent execution.</p>
+
+			<p class="p">To solve the issue, check the browser's JavaScript console or the Firefox error
+				console. If they do not indicate that an error has occurred, check if you added the
+				UI controls to an existing element in the page by using <samp class="ph codeph">placeAt(…)</samp>.
+				If this is not the cause, check in the browser's DOM inspector whether this
+				"existing element" actually contains child HTML which resembles the controls you
+				have added. Check if the HTML elements are set to be visible and check the
+				dimensions. The height (or width) may have collapsed to zero, thus making the
+				element invisible. This happens, for example, if an HTML element with no height set
+				has a child element with a height set to 100%, as this height refers to the height
+				of the parent element with an undefined height.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Content or Control is not Visible</div><div type="Content or Control is not Visible">
+			
+			<p class="p">If content or a control is not visible, check in the DOM inspector of your browser
+				whether the respective HTML exists in the document, or not. You can either search
+				for the control ID or drill down the control hierarchy. It is often the case that
+				the height has collapsed to zero, thus making the element invisible. A possible
+				cause is if you have set no height for an HTML element, but set the height for a
+				child element to 100%. The 100% refer to the height of the parent element with an
+				undefined height, meaning that the child element wants to be as tall as its parent.
+				You can also check whether the control and its parents are set to <em class="ph i">visible</em>.
+				Or, if you use data binding, check if the elements are properly bound. You can also
+				use the support tool for this check.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Content or Control is set to 100% Height, but Setting Does not Work</div><div type="Content or Control is set to 100% Height, but Setting Does not Work">
+			
+			<p class="p">Check the height settings of the parent elements. In CSS, a percentage height only
+				works when the parent has a defined height. This issue is often caused by parent
+				elemnt with no height setting or again a percentage height and one ancestor with no
+				defined height. In CSS, this results in a height that is collapsed to the minimum
+				height accomodating all content. Some typical controls, however, adapt their height
+				to the content are the sap.ui.core.View (all types) and the sap.m.Page controls. By
+				setting the View height to any fixed height or setting the View and all ancestors to
+				100% height, you can define its height and 100%-height children will work fine. And
+				the Page control can be set to enableScrolling: false: when scrolling is allowed,
+				the scroll container in the Page control grows with the content, but when you want
+				to set the content to 100% height scrolling does not make sense because by
+				definition there is no scrolling when the content is as tall as the available
+				space.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Proportions of a Rendered Control Look Odd</div><div type="Proportions of a Rendered Control Look Odd">
+			
+			<p class="p">Check if the doctype is set correctly in your page. Some controls are not rendered
+				correctly if the doctype is missing or is not correct. Table headers, for example,
+				become exceptionally high.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Style of an Application or a Control Looks Odd</div><div type="Style of an Application or a Control Looks Odd">
+			
+			<p class="p">Check if  you have used custom styles in your application. If yes, they probably
+				collide with styling in the theming libraries. One approach is to use the browser's
+				debugging tools to inspect the element which has the wrong styling. You can usually
+				see on the <span class="ph uicontrol">HTML</span> tab which styles are applied to a DOM
+				element. If you have styles in the list that your application adds, disable these
+				styles in the debugger to see whether this solves the problem. Note that
+				SAPUI5-specific CSS classes and IDs start with a sapUi prefix, for example,
+					<samp class="ph codeph">sapUiButton</samp>.</p>
+
+			<p class="p">If this does not solve the issue, check for inline styles that are be applied to the element
+				in the HTML code. You can also try to isolate the control from the application to
+				see if there is an issue with the control instead of a collision of styles.</p>
+
+			<p class="p">If none of the above solves the problem and the issue does not seem to be application
+				specific, open a CSS message. </p>
+
+		</div></div>
+<div class="section"><div class="section_title">Console Shows an Error Indicating That Something is Wrong With SAP-UI-CORE.JS, Line 2</div><div type="Console Shows an Error Indicating That Something is Wrong With SAP-UI-CORE.JS, Line 2">
+			
+			<p class="p">Although an issue in <samp class="ph codeph">SAP-UI-CORE.JS</samp> is not impossible, the error often
+				originates elsewhere. To find the actual issue, activate the SAPUI5 debugging
+				sources. This enables you to see in more detail where the message is thrown and it
+				gives you the opportunity to set a breakpoint at the corresponding line. From there,
+				you can dig deeper into the problem and also have a look at the call stack to see
+				where it has started.</p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Troubleshooting: Common Issues";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

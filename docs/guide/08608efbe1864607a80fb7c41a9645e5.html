@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=5257916720676521"/>
+<title>Example: Component Configuration</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio08608efbe1864607a80fb7c41a9645e5">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Example: Component Configuration</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">The component configuration contains the required information about the extension metadata and
+            the objects that are replaced or extended. It is contained in the component.js file of
+            the custom application.</p>
+<div class="note note"><span class="notetitle">Note</span> 
+            <ul class="ul" id="loio08608efbe1864607a80fb7c41a9645e5__ul_vnn_qp2_rl"><li class="li">The component of the custom application needs to inherit from the main component
+                    of the original application.</li>
+<li class="li">To make the location of the original application or component known to SAPUI5,
+                    it may be necessary to use <samp class="ph codeph">registerModulePath(...)</samp>.</li>
+<li class="li">The configuration in the customizing section contains the extension metadata and
+                    describes the objects that are replaced or extended.</li>
+</ul>
+
+        </div>
+<p class="p"> The following code snippet shows an example of a configuration structure.</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">some.sap.Component.extend("some.customer.Component", {
+    
+    metadata : {
+        .....some configuration
+        config: {
+            .....some configuration
+        },
+        customizing: {
+                      
+            "sap.ui.viewExtensions": {        
+                "samples.components.ext.sap.Sub2": {    
+                    "extension2": {    
+                        className: "sap.ui.core.Fragment",    
+                        fragmentName: "samples.components.ext.customer.CustomFrag1",
+                        type: "XML"
+                    },    
+                    "extension3": {    
+                        className: "sap.ui.core.mvc.View",
+                        viewName: "samples.components.ext.customer.CustomSubSubView1",            
+                        type: "XML"
+                    }    
+                }
+            },
+            
+            "sap.ui.viewModifications": {        
+                "samples.components.ext.sap.Sub3": {    
+                    "customizableText": {    
+                        "visible": false
+                    }
+                }    
+            },
+
+            "sap.ui.viewReplacements": {
+                "samples.components.ext.sap.Sub1": {
+                    viewName: "samples.components.ext.customer.CustomSub1",
+                    type: "XML"
+                }
+            },
+            
+            "sap.ui.controllerExtensions": {    
+                "samples.components.ext.sap.Main": {
+                    "controllerName": "samples.components.ext.customer.MainExtension"
+                }
+            }
+        }
+    }
+});
+</pre></div>
+<p class="p"><samp class="ph codeph">"sap.ui.viewExtensions"</samp>: Provides customized view content in a specified
+            extension point in the standard application</p>
+<p class="p"><samp class="ph codeph">sap.ui.viewModifications"</samp>: Used for overriding control properties of the
+            standard application</p>
+<p class="p"><samp class="ph codeph">"sap.ui.viewReplacements"</samp>: Used for replacing a standard view with a
+            customized view</p>
+<p class="p"><samp class="ph codeph">"sap.ui.controllerExtensions"</samp>: Used for replacing a standard controller with a
+            customized controller</p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Example: Component Configuration";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

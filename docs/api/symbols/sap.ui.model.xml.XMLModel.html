@@ -1,0 +1,724 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.model.xml.XMLModel</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class sap.ui.model.xml.XMLModel
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.ui.model.Model" href="../symbols/sap.ui.model.Model.html">Model</a></div>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>Model implementation for XML format</p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="Constructor for a new XMLModel.">new <a href="../symbols/sap.ui.model.xml.XMLModel.html#constructor">sap.ui.model.xml.XMLModel</a></b>
+										<span class='signature'>(<span title="(object) either the URL where to load the XML from or a XML">oData</span>)</span>
+										<span class='description'>Constructor for a new XMLModel.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+		
+
+
+					
+						
+						
+				
+						
+						
+						
+							
+								<div class="summary section">
+									<div class="sectionTitle">Events borrowed from class <a href="../symbols/sap.ui.model.Model.html">sap.ui.model.Model</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.model.Model.html#event:parseError">parseError</a>, <a href="../symbols/sap.ui.model.Model.html#event:requestCompleted">requestCompleted</a>, <a href="../symbols/sap.ui.model.Model.html#event:requestFailed">requestFailed</a>, <a href="../symbols/sap.ui.model.Model.html#event:requestSent">requestSent</a>
+									</div>
+								</div>
+							
+						
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the object for the given path"><a href="../symbols/sap.ui.model.xml.XMLModel.html#getObject">getObject</a></b><span class='signature'>(<span title="(string) the path to the object">sPath</span>, <span title="(object) the context which will be used to retrieve the object">oContext</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Returns the object for the given <code>path</code></span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the value for the property with the given sPropertyName"><a href="../symbols/sap.ui.model.xml.XMLModel.html#getProperty">getProperty</a></b><span class='signature'>(<span title="(string) the path to the property">sPath</span>, <span title="(object) the context which will be used to retrieve the property">oContext</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Returns the value for the property with the given <code>sPropertyName</code></span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Serializes the current XML data of the model into a string."><a href="../symbols/sap.ui.model.xml.XMLModel.html#getXML">getXML</a></b><span class='signature'>()</span>
+									<span class='description'>Serializes the current XML data of the model into a string.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Load XML-encoded data from the server using a GET HTTP request and store the resulting XML data in the model."><a href="../symbols/sap.ui.model.xml.XMLModel.html#loadData">loadData</a></b><span class='signature'>(<span title="(string) A string containing the URL to which the request is sent.">sURL</span>, <span title="(object | string) A map or string that is sent to the server with the request.">oParameters</span><i class="help" title="Optional parameter">?</i>, <span title="(boolean) if the request should be asynchron or not.">bAsync</span><i class="help" title="Optional parameter">?</i>, <span title="(string) of request.">sType</span><i class="help" title="Optional parameter">?</i>, <span title="(string) force no caching if false.">bCache</span><i class="help" title="Optional parameter">?</i>, <span title="(object) An object of additional header key/value pairs to send along with the request">mHeaders</span>)</span>
+									<span class='description'>Load XML-encoded data from the server using a GET HTTP request and store the resulting XML data in the model.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Sets the provided XML encoded data object to the model"><a href="../symbols/sap.ui.model.xml.XMLModel.html#setData">setData</a></b><span class='signature'>(<span title="(object) the data to set to the model">oData</span>)</span>
+									<span class='description'>Sets the provided XML encoded data object to the model</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Sets an XML namespace to use in the binding path"><a href="../symbols/sap.ui.model.xml.XMLModel.html#setNameSpace">setNameSpace</a></b><span class='signature'>(<span title="(string) the namespace URI">sNameSpace</span>, <span title="(string) the prefix for the namespace (optional)">sPrefix</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Sets an XML namespace to use in the binding path</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Sets a new value for the given property sPropertyName in the model."><a href="../symbols/sap.ui.model.xml.XMLModel.html#setProperty">setProperty</a></b><span class='signature'>(<span title="(string) path of the property to set">sPath</span>, <span title="(any) value to set the property to">oValue</span>, <span title="(object) the context which will be used to set the property">oContext</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Sets a new value for the given property <code>sPropertyName</code> in the model.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Sets the specified XML formatted string text to the model"><a href="../symbols/sap.ui.model.xml.XMLModel.html#setXML">setXML</a></b><span class='signature'>(<span title="(string) the XML data as string">sXMLText</span>)</span>
+									<span class='description'>Sets the specified XML formatted string text to the model</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.model.Model.html">sap.ui.model.Model</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.model.Model.html#attachParseError">attachParseError</a>, <a href="../symbols/sap.ui.model.Model.html#attachRequestCompleted">attachRequestCompleted</a>, <a href="../symbols/sap.ui.model.Model.html#attachRequestFailed">attachRequestFailed</a>, <a href="../symbols/sap.ui.model.Model.html#attachRequestSent">attachRequestSent</a>, <a href="../symbols/sap.ui.model.Model.html#bindContext">bindContext</a>, <a href="../symbols/sap.ui.model.Model.html#createBindingContext">createBindingContext</a>, <a href="../symbols/sap.ui.model.Model.html#destroy">destroy</a>, <a href="../symbols/sap.ui.model.Model.html#destroyBindingContext">destroyBindingContext</a>, <a href="../symbols/sap.ui.model.Model.html#detachParseError">detachParseError</a>, <a href="../symbols/sap.ui.model.Model.html#detachRequestCompleted">detachRequestCompleted</a>, <a href="../symbols/sap.ui.model.Model.html#detachRequestFailed">detachRequestFailed</a>, <a href="../symbols/sap.ui.model.Model.html#detachRequestSent">detachRequestSent</a>, <a href="../symbols/sap.ui.model.Model.html#fireParseError">fireParseError</a>, <a href="../symbols/sap.ui.model.Model.html#fireRequestCompleted">fireRequestCompleted</a>, <a href="../symbols/sap.ui.model.Model.html#fireRequestFailed">fireRequestFailed</a>, <a href="../symbols/sap.ui.model.Model.html#fireRequestSent">fireRequestSent</a>, <a href="../symbols/sap.ui.model.Model.html#getDefaultBindingMode">getDefaultBindingMode</a>, <a href="../symbols/sap.ui.model.Model.html#isBindingModeSupported">isBindingModeSupported</a>, <a href="../symbols/sap.ui.model.Model.html#isLegacySyntax">isLegacySyntax</a>, <a href="../symbols/sap.ui.model.Model.html#refresh">refresh</a>, <a href="../symbols/sap.ui.model.Model.html#setDefaultBindingMode">setDefaultBindingMode</a>, <a href="../symbols/sap.ui.model.Model.html#setLegacySyntax">setLegacySyntax</a>, <a href="../symbols/sap.ui.model.Model.html#setSizeLimit">setSizeLimit</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.ui.model.xml.XMLModel</b>(<span title="(object) either the URL where to load the XML from or a XML">oData</span>)
+										</div>
+										
+										<div class="full-description">
+											Constructor for a new XMLModel.
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oData</b>
+													</td>
+													<td class="methodItemDesc">
+												    either the URL where to load the XML from or a XML
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod'>
+										<a name="getObject"> </a>
+										<div class="itemTitle icon">
+											getObject<span class="signature">(<span title="(string) the path to the object">sPath</span>, <span title="(object) the context which will be used to retrieve the object">oContext</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns any">: any</span>
+										</div>
+										<div class="full-description">
+											Returns the object for the given <code>path</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sPath</b>
+													</td>
+													<td class="methodItemDesc">
+												    the path to the object
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oContext</b><i class="help" title="Optional parameter">?, Default: null</i>
+													</td>
+													<td class="methodItemDesc">
+												    the context which will be used to retrieve the object
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														
+													</td>
+													<td class="methodItemDesc">
+														the object
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getProperty"> </a>
+										<div class="itemTitle icon">
+											getProperty<span class="signature">(<span title="(string) the path to the property">sPath</span>, <span title="(object) the context which will be used to retrieve the property">oContext</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns any">: any</span>
+										</div>
+										<div class="full-description">
+											Returns the value for the property with the given <code>sPropertyName</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sPath</b>
+													</td>
+													<td class="methodItemDesc">
+												    the path to the property
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oContext</b><i class="help" title="Optional parameter">?, Default: null</i>
+													</td>
+													<td class="methodItemDesc">
+												    the context which will be used to retrieve the property
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														
+													</td>
+													<td class="methodItemDesc">
+														the value of the property
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getXML"> </a>
+										<div class="itemTitle icon">
+											getXML<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Serializes the current XML data of the model into a string.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														
+													</td>
+													<td class="methodItemDesc">
+														the XML document serialized as string
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="loadData"> </a>
+										<div class="itemTitle icon">
+											loadData<span class="signature">(<span title="(string) A string containing the URL to which the request is sent.">sURL</span>, <span title="(object | string) A map or string that is sent to the server with the request.">oParameters</span><i class="help" title="Optional parameter">?</i>, <span title="(boolean) if the request should be asynchron or not.">bAsync</span><i class="help" title="Optional parameter">?</i>, <span title="(string) of request.">sType</span><i class="help" title="Optional parameter">?</i>, <span title="(string) force no caching if false.">bCache</span><i class="help" title="Optional parameter">?</i>, <span title="(object) An object of additional header key/value pairs to send along with the request">mHeaders</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Load XML-encoded data from the server using a GET HTTP request and store the resulting XML data in the model.
+Note: Due to browser security restrictions, most "Ajax" requests are subject to the same origin policy,
+the request can not successfully retrieve data from a different domain, subdomain, or protocol.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sURL</b>
+													</td>
+													<td class="methodItemDesc">
+												    A string containing the URL to which the request is sent.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object|string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oParameters</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    A map or string that is sent to the server with the request.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bAsync</b><i class="help" title="Optional parameter">?, Default: true</i>
+													</td>
+													<td class="methodItemDesc">
+												    if the request should be asynchron or not. Default is true.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sType</b><i class="help" title="Optional parameter">?, Default: GET</i>
+													</td>
+													<td class="methodItemDesc">
+												    of request. Default is 'GET'
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bCache</b><i class="help" title="Optional parameter">?, Default: false</i>
+													</td>
+													<td class="methodItemDesc">
+												    force no caching if false. Default is false
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mHeaders</b>
+													</td>
+													<td class="methodItemDesc">
+												    An object of additional header key/value pairs to send along with the request
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setData"> </a>
+										<div class="itemTitle icon">
+											setData<span class="signature">(<span title="(object) the data to set to the model">oData</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Sets the provided XML encoded data object to the model
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oData</b>
+													</td>
+													<td class="methodItemDesc">
+												    the data to set to the model
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setNameSpace"> </a>
+										<div class="itemTitle icon">
+											setNameSpace<span class="signature">(<span title="(string) the namespace URI">sNameSpace</span>, <span title="(string) the prefix for the namespace (optional)">sPrefix</span><i class="help" title="Optional parameter">?</i>)</span>
+											
+										</div>
+										<div class="full-description">
+											Sets an XML namespace to use in the binding path
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sNameSpace</b>
+													</td>
+													<td class="methodItemDesc">
+												    the namespace URI
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sPrefix</b><i class="help" title="Optional parameter">?, Default: null</i>
+													</td>
+													<td class="methodItemDesc">
+												    the prefix for the namespace (optional)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setProperty"> </a>
+										<div class="itemTitle icon">
+											setProperty<span class="signature">(<span title="(string) path of the property to set">sPath</span>, <span title="(any) value to set the property to">oValue</span>, <span title="(object) the context which will be used to set the property">oContext</span><i class="help" title="Optional parameter">?</i>)</span>
+											
+										</div>
+										<div class="full-description">
+											Sets a new value for the given property <code>sPropertyName</code> in the model.
+If the model value changed all interested parties are informed.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sPath</b>
+													</td>
+													<td class="methodItemDesc">
+												    path of the property to set
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{any}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oValue</b>
+													</td>
+													<td class="methodItemDesc">
+												    value to set the property to
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oContext</b><i class="help" title="Optional parameter">?, Default: null</i>
+													</td>
+													<td class="methodItemDesc">
+												    the context which will be used to set the property
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setXML"> </a>
+										<div class="itemTitle icon">
+											setXML<span class="signature">(<span title="(string) the XML data as string">sXMLText</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Sets the specified XML formatted string text to the model
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sXMLText</b>
+													</td>
+													<td class="methodItemDesc">
+												    the XML data as string
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

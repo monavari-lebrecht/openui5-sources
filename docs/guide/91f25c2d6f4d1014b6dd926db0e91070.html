@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=03901847635543165"/>
+<title>File Names and Locations (View and Controller)</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f25c2d6f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">File Names and Locations (View and Controller)</h1>
+<div class="body"><p class="p">Controllers and views are defined and instantiated
+		via a name that equals a SAPUI5 module name within the require/declare concept.
+		This means that by default all files have to be located in a subfolder of the 
+		<samp class="ph codeph">resources</samp> folder of the
+		Web application. If this location is not appropriate, deviations can be
+		configured as described in the following example:
+	 </p>
+<p class="p">The following example assumes that your views and controllers are located on your local machine
+			where the SAPUI5 runtime is loaded from another machine. When you instantiate a view or
+			a controller, SAPUI5 runtime loads them in relation to the <samp class="ph codeph">resources</samp>
+			folder of the machine where SAPUI5 runtime was loaded. To inform SAPUI5 runtime that
+			your views and controllers are located on your local machine, use the following code: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">jQuery.sap.registerModulePath(sModuleNamePrefix, sURL);</pre></div>
+<p class="p">or 
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.localResources(sModuleNamePrefix);</pre></div>
+<p class="p">It is usually sufficient to use 
+		<samp class="ph codeph">sap.ui.localResources</samp>
+		which internally registers 
+		<samp class="ph codeph">sModuleNamePrefix</samp> to the
+		URL 
+		<samp class="ph codeph">"./" +
+		  sTransformedModuleNamePrefix</samp>, where all dots are replaced by slashes
+		in the transformed name. All files starting with 
+		<samp class="ph codeph">sModuleNamePrefix</samp> will
+		then be loaded in relation to the location of the HTML page that called 
+		<samp class="ph codeph">sap.ui.localResources</samp>. 
+	 </p>
+<p class="p">If your files are located at <samp class="ph codeph">http://&lt;localhost:8080&gt;/&lt;myapp&gt;/</samp>, for
+			example, you can use <samp class="ph codeph">registerModulePath</samp> as follows: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">jQuery.sap.registerModulePath("myapp", "http://&lt;localhost:8080&gt;/&lt;myapp&gt;/");</pre></div>
+<p class="p">or 
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.localResources("myapp");</pre></div>
+<p class="p">All views and controllers with a name starting with 
+		<samp class="ph codeph">myapp</samp>, for example 
+		<samp class="ph codeph">myapp.MyView</samp>, will then
+		be loaded from your local machine. 
+	 </p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="File Names and Locations (View and Controller)";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

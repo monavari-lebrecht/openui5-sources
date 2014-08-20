@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=17592924051325665"/>
+<title>Scrolling: Implementation Details</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiof5f6a475d58a4b39923465221b485d6c">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Scrolling: Implementation Details</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">Scrolling support in mobile browsers is weak and inconsistent. Only the latest platforms and
+			browsers start to support partially usable scrolling functionality. </p>
+<p class="p">Hence, SAPUI5 embeds the open source library iScroll4 that takes care of scrolling in the
+			application. Though the library is globally available in a SAPUI5 application,
+			programmers should not call it directly. The
+				<samp class="ph codeph">sap.ui.core.delegate.ScrollEnablement</samp> delegate provides all
+			functionality and smooth integration of iScroll4 into the SAPUI5 library. </p>
+<p class="p">For more information, see <a class="xref" href="../../docs/api/symbols/sap.ui.core.delegate.ScrollEnablement.html">sap.ui.core.delegate.ScrollEnablement</a>
+		</p>
+<div class="section" id="loiof5f6a475d58a4b39923465221b485d6c__section_N10028_N10011_N10001"><div class="section_title">Do not use nested scrolling</div><div type="Do not use nested scrolling">
+			
+			<p class="p">We do not recommend to use nested levels of scrolling, for example, when a page with
+				enabled vertical scrolling contains a scroll container that has vertical scrolling
+				too. Such combinations may lead to behavior that is unexpected both for programmers
+				and users. </p>
+
+		</div></div>
+<div class="section" id="loiof5f6a475d58a4b39923465221b485d6c__section_N10035_N10011_N10001"><div class="section_title">Implement a custom scroll container</div><div type="Implement a custom scroll container">
+			
+			<p class="p">A custom control that needs to provide a scrollable area for its content should
+				implement the following steps: </p>
+
+			<ol class="ol" id="loiof5f6a475d58a4b39923465221b485d6c__ol_wpn_5jp_2j"><li class="li">Instantiate a <samp class="ph codeph">sap.ui.core.delegate.ScrollEnablement</samp> delegate, at best in
+					the <samp class="ph codeph">.onAfterRendering</samp> callback. </li>
+<li class="li">Implement a <samp class="ph codeph">.getScrollDelegate</samp> method that returns the current instance of
+					the delegate to other controls. </li>
+<li class="li">Destroy the <samp class="ph codeph">ScrollEnablement</samp> delegate on exit. </li>
+</ol>
+
+			<p class="p">Example: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+myCustomScroller.prototype.onAfterRendering = function() {
+  if(!this._oScroller){
+    jQuery.sap.require("sap.ui.core.delegate.ScrollEnablement");
+    // attach a scroller to the scrollable container DOM element
+    this._oScroller = new sap.ui.core.delegate.ScrollEnablement(this, this._scrollContainerId, {
+      horizontal: false,
+      vertical: true
+    });
+  }
+};
+
+myCustomScroller.prototype.getScrollDelegate = function() {
+  return this._oScroller;
+};
+
+myCustomScroller.prototype.exit = function() {
+  if(this._oScroller){
+    this._oScroller.destroy();
+    this._oScroller = null;
+  }
+}; </pre></div>
+
+			<div class="p">
+				<div class="note note" id="loiof5f6a475d58a4b39923465221b485d6c__note_N1006E_N1006B_N10035_N10011_N10001"><span class="notetitle">Note</span> The Zynga scroller that is included in the
+					SAPUI5 library is deprecated. The configuration parameter
+						<samp class="ph codeph">oConfig.zynga=true</samp> of the scrolling delegate should not be
+					used. </div>
+
+			</div>
+
+		</div></div>
+<div class="section" id="loiof5f6a475d58a4b39923465221b485d6c__section_N10078_N10011_N10001"><div class="section_title">Interaction with the scroll containers</div><div type="Interaction with the scroll containers">
+			
+			<p class="p">There are cases, when an embedded control controls scrolling of the parent container,
+				if required. These are </p>
+
+			<ul class="ul" id="loiof5f6a475d58a4b39923465221b485d6c__ul_gqn_5jp_2j"><li class="li">a <samp class="ph codeph">sap.m.ScrollContainer</samp> inside a <samp class="ph codeph">sap.m.Page</samp> may block
+					parent scrolling, if it scrolls in the same direction itself; </li>
+<li class="li">a  <samp class="ph codeph">sap.m.TextArea</samp> control in edit mode blocks parent scrolling, so that the
+					user can scroll text contents during input; </li>
+<li class="li">a <samp class="ph codeph">sap.m.GrowingList</samp> control scrolls parent container to update positions of
+					visible items after the new items have been loaded from the server.</li>
+</ul>
+
+			<p class="p">When using a <samp class="ph codeph">sap.m.FlexBox</samp> with <samp class="ph codeph">fitContainer:true</samp> or
+					<samp class="ph codeph">sap.m.TileContainer</samp> inside a page, the
+					<samp class="ph codeph">enableScrolling</samp> property of the page needs to be set to false
+				for the FlexBox or TileContainer to fit the viewport. </p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Scrolling: Implementation Details";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

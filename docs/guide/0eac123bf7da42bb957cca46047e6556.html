@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=7163859327109224"/>
+<title>Example: Using Data Types</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio0eac123bf7da42bb957cca46047e6556">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Example: Using Data Types</h1>
+<div class="body conbody"><p class="shortdesc"/>
+<div class="section" id="loio0eac123bf7da42bb957cca46047e6556__section_1D48469DF84A4191B56DF0791E8113E8">
+			<p class="p">The following example shows how to use data types: </p>
+
+			<p class="p">A <samp class="ph codeph">sap.ui.model.type.Float</samp> type is created with the formatting
+				options minimum/maximum fraction digits equals 2 and a maximum value constraint of
+				10: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">// creating of a float type with 2 format options and one constraint
+var oFloat = new sap.ui.model.type.Float(
+  {
+     minFractionDigits: 2,
+     maxFractionDigits: 2    		
+  },
+  {
+     maximum: 10
+  }
+);</pre></div>
+
+			<p class="p">To use the defined data type for the binding, proceed as follows: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">// specify the binding and the type directly in the control constructor
+var oText = new sap.ui.commons.TextField({value: {path: "/sliderValue", type: oFloat}});
+// or alternatively do it afterwards
+oText.bindValue("/sliderValue", oFloat);</pre></div>
+
+			<p class="p">Input parsing and output formatting are now carried out automatically. If, for
+				example, the float value in the model is 2.3345, the text field displays the value
+				2.33. A user enters a value which is validated after user entry. To be valid, the
+				entered value must be lower than 10. </p>
+
+			<p class="p">
+				
+			</p>
+
+		</div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Example: Using Data Types";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

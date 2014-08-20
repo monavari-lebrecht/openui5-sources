@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=2776084188667195"/>
+<title>Declarative Support: Data Binding</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio020990b1210e47c89a58a4f4e790c476">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Declarative Support: Data Binding</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">Data binding is supported seamlessly by the declarative support. Just add the model path
+			in curly brackets and bind the model to the control (or parent control): </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;div data-sap-ui-type="sap.ui.commons.Button" data-text="{/stringValue}" data-enabled="{model2&gt;/booleanValue}"&gt;&lt;/div&gt;</pre></div>
+<p class="p">0..n aggregations can define templates to use for the aggregation binding: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;div data-sap-ui-type="sap.ui.commons.Carousel" data-content="{/buttons}"&gt;
+    &lt;div data-sap-ui-type="sap.ui.commons.Button" data-text="{title}"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+<p class="p">In the example above, the button template is used for the carousel content data binding.
+		</p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="91f0ca956f4d1014b6dd926db0e91070.html">Data Binding</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Declarative Support: Data Binding";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

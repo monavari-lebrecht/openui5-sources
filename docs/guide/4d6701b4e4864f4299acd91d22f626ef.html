@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=5111697679316957"/>
+<title>Run Your First Mobile App</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio4d6701b4e4864f4299acd91d22f626ef">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Run Your First Mobile App</h1>
+<div class="body taskbody"><p class="shortdesc"/>
+<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>Assumption for these instructions to work exactly as described: you have a Windows
+			Computer (other operating systems will work as well, but the instructions may differ)
+			and a current browser.</div>
+<div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand" id="loio4d6701b4e4864f4299acd91d22f626ef__step_N10043_N10040_N10011_N10001"><span class="ph cmd">Right-click on your desktop and choose <span class="ph menucascade"><img src="images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">New</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Text Document</span> <img src="images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</span></li>
+<li class="li step stepexpand" id="loio4d6701b4e4864f4299acd91d22f626ef__step_N10058_N10040_N10011_N10001"><span class="ph cmd">Enter a name for the new file, for example <span class="ph filepath">mobile.html</span>, and confirm
+					the extension change warning.</span></li>
+<li class="li step stepexpand" id="loio4d6701b4e4864f4299acd91d22f626ef__step_N10061_N10040_N10011_N10001"><span class="ph cmd">Right-click on the new file and choose <span class="ph uicontrol">Edit</span>. Make sure
+					it opens in Notepad and <strong class="ph b">not</strong> in MS Word.</span></li>
+<li class="li step stepexpand" id="loio4d6701b4e4864f4299acd91d22f626ef__step_N10072_N10040_N10011_N10001"><span class="ph cmd">Copy and paste the HTML code below and save the file. Keep in mind that the
+					SAPUI5 URL may need to be adapted.</span></li>
+<li class="li step stepexpand" id="loio4d6701b4e4864f4299acd91d22f626ef__step_N1007B_N10040_N10011_N10001"><span class="ph cmd">Drag and drop the file into the browser window.</span></li>
+<li class="li step stepexpand" id="loio4d6701b4e4864f4299acd91d22f626ef__step_N10084_N10040_N10011_N10001"><span class="ph cmd">To load the example on a mobile device, you put the file on a server.</span><div class="itemgroup stepresult">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!text/html</samp>
+&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge" /&gt;
+    &lt;meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/&gt;
+
+    &lt;title&gt;Mobile App in 23 Seconds Example&lt;/title&gt;
+
+
+
+
+    &lt;!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme --&gt;
+
+    &lt;script&gt;
+ 
+      // create a mobile App
+      // it initializes the HTML page for mobile use and provides animated page handling
+      var app = new sap.m.App("myApp", {initialPage:"page1"}); // page1 should be displayed first
+      
+      
+      // create the first page of your application
+      var page1 = new sap.m.Page("page1", {
+          title: "Initial Page",
+          content : new sap.m.Button({   // content is just one Button
+              text : "Go to Page 2",
+              press: function() {
+                  app.to("page2");   // when pressed, it triggers drilldown to page 2
+              }
+          })                
+      });
+      
+      
+      // create the second page of your application
+      var page2 = new sap.m.Page("page2", {
+          title: "Page 2",
+          showNavButton: true,       // page 2 should display a back button
+          navButtonPress: function(){ 
+              app.back();            // when pressed, the back button should navigate back up to page 1
+          },
+          content : new sap.m.Text({text:"Hello Mobile World!"})
+      });
+      
+      app.addPage(page1).addPage(page2); // add both pages to the App
+      
+      app.placeAt("content"); // place the App into the HTML document
+       
+    &lt;/script&gt;
+
+  &lt;/head&gt;
+  &lt;body class="sapUiBody"&gt;
+    &lt;div id="content"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre></div>
+
+				</div></li>
+</ol>
+<div class="section result" id="loio4d6701b4e4864f4299acd91d22f626ef__result_N100A0_N10011_N10001"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Results</h2></div>
+			<p class="p">You should now see the following mobile App:</p>
+
+			<div class="fig fignone"><div class="figcontainer"><img class="image" id="loio4d6701b4e4864f4299acd91d22f626ef__image_k2b_mld_mn" src="f7c6440b9a544b858e25289fe80b37ee.image"/></div></div>
+
+			<p class="p">Now you can navigate to the second page by clicking the button.</p>
+
+			
+			<p class="p">To open the application on a real mobile device, you can also put the HTML document
+				on a Web server and load the resulting URL in your mobile browser.</p>
+
+		</div><div class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div>
+            <p class="p">You could now…</p>
+
+            <ul class="ul" id="loio4d6701b4e4864f4299acd91d22f626ef__ul_uww_zsc_qn"><li class="li">Try different navigation animation types (e.g. add <samp class="ph codeph">fade</samp> or
+                        <samp class="ph codeph">flip</samp> as second parameter to the
+                        <samp class="ph codeph">app.to("page2")</samp> call)</li>
+<li class="li">Add more pages</li>
+<li class="li">Add more content to the pages</li>
+<li class="li">Try out other mobile controls like the<samp class="ph codeph"> sap.m.Popover</samp></li>
+<li class="li">…</li>
+</ul>
+
+        </div></div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Run Your First Mobile App";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

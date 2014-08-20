@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="You want to use a theme that is not at the same location as the default libraries, you need to tell SAPUI5 where to find it."/>
+<meta name="description" content="You want to use a theme that is not at the same location as the default libraries, you need to tell SAPUI5 where to find it."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=004956553799871255"/>
+<title>Loading External Custom Themes</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio5a2df7b50f714d8bb5e9b519a88aa1d6">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Loading External Custom Themes</h1>
+<div class="body taskbody"><p class="shortdesc">You want to use a theme that is not at the same location as the default libraries, you
+		need to tell SAPUI5 where to find it.</p>
+<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">You set this theme either by static declaring in the page or by using the
+					<samp class="ph codeph">Core.setThemeRoot()</samp> method. This is very much like using
+					<samp class="ph codeph">registerModulePath()</samp> for libraries that are at a different
+				location.</p>
+
+		</div><div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand"><span class="ph cmd">To define the path to the theme, add the following code:
+						<samp class="ph codeph">sap.ui.getCore().setThemeRoot("my_theme",
+						"http://url.to/the/root/dir");</samp></span> 
+					<p class="p">This will cause SAPUI5 to load all theme resources from below this URL, for example the
+							<span class="ph filepath">library.css</span> file of the
+							<samp class="ph codeph">sap.ui.core</samp> library will be loaded from:
+							<span class="ph filepath">http://url.to/the/root/dir/sap/ui/core/themes/my_theme/library.css</span></p>
+
+				<ul class="ul choices" id="loio5a2df7b50f714d8bb5e9b519a88aa1d6__choices_s51_dxy_c4"><li class="li choice">
+						<p class="p">For easier usage this base directory can also be given as second argument
+							to <samp class="ph codeph">core.applyTheme(...)</samp> .</p>
+
+					</li>
+</ul>
+</li>
+<li class="li step stepexpand"><span class="ph cmd">If some parts of the theme are at are at different locations than others, you can use the
+					above call to set the default, but override the theme location for specific
+					libraries by specifying them in an array as second parameter:
+						<samp class="ph codeph">sap.ui.getCore().setThemeRoot("my_theme",
+						["my.lib.one","my.lib.two"],
+					"http://url.to/the/other/root/dir");</samp></span></li>
+<li class="li step stepexpand"><span class="ph cmd">To statically configure the theme, you can use the global configuation object. Insert the
+					following before the SAPUI5 bootstart script tag:</span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+&lt;script type="text/javascript"&gt;
+window["sap-ui-config"] = {
+	themeRoots : {
+		"my_preconfigured_theme" : "http://preconfig.com/ui5-themes",
+		
+		"my_second_preconfigured_theme" : {
+			"" : "http://preconfig.com/ui5-themes",
+			"sap.ui.core" : "http://core.com/ui5"
+		}
+	}
+}
+&lt;/script&gt;</pre></div>
+
+					<p class="p">The first theme is completely at one location, while the second theme has the
+						default location changed plus the location changed for the part of the theme
+						that covers the <samp class="ph codeph">sap.ui.core</samp> library.</p>
+
+				<ul class="ul choices" id="loio5a2df7b50f714d8bb5e9b519a88aa1d6__choices_qhp_jyy_c4"><li class="li choice">
+						<p class="p">Or it can be done (using the same object structure as JSON string) in an attribute of the
+							SAPUI5 bootstrap script tag, for example:</p>
+
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+<samp class="ph codeph">#!js</samp>&lt;script id="sap-ui-bootstrap" 
+	type="text/javascript"
+	src="......../sap-ui-core.js"
+	data-sap-ui-theme-roots='{"my_theme" : "http://themes.org/ui5"}'&gt;
+&lt;/script&gt;</pre></div>
+
+					</li>
+<li class="li choice">
+						<p class="p">Last but not least, the location of a theme can be specified with a URL parameter:</p>
+
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">http://myserver.com/sap/myapp/?sap-ui-theme=my-theme@/sap/public/bc/themes/~client-111</pre></div>
+
+					</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="91f2d03b6f4d1014b6dd926db0e91070.html">Configuration Options</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Loading External Custom Themes";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

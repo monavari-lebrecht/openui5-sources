@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=5814995760789375"/>
+<title>Synchronizing with the SAPUI5 Repository</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f346786f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Synchronizing with the SAPUI5 Repository</h1>
+<div class="body"><p class="p">The following sections describe how to use the SAPUI5 Repository and how to deploy the SAPUI5
+			application project on the ABAP Server. For this application type, the ABAP Server is
+			used as a file share to serve browser requests. The SAPUI5 Repository is technically
+			based on the BSP Repository of the ABAP Server. The BSP repository is only used as a
+			repository or storage for SAPUI5 application files; the BSP runtime, however, is not
+			used at runtime and, hence, the flow logic ABAP parts cannot be used as they are not
+			executed at runtime.</p>
+<div class="section" id="loio91f346786f4d1014b6dd926db0e91070__section_E3530B3A127642F4A9C22551EDD7E466"><div class="section_title">Availability</div><div type="Availability">
+			
+			<p class="p">The SAPUI5 repository is available in SAP Business Suite systems with version 7.00 or higher
+				containing the User Interface Add-On for SAP NetWeaver, which contains the software
+				component <samp class="ph codeph">UI_INFRA</samp>. The team repository provider functionality,
+				which is available in the Eclipse IDE, is available in SAP Business Suite systems
+				with version <strong class="ph b">7.31</strong> containing the User Interface Add-On, which contains the
+				software components <samp class="ph codeph">UI_INFRA</samp> and <samp class="ph codeph">UI5_731</samp>. </p>
+
+			<p class="p">The used SAPUI5 libraries are available in SAP Business Suite systems with version
+				7.00 or higher containing the NetWeaver UI Add-On in the software component
+					<samp class="ph codeph">UISAPUI5</samp>.</p>
+
+			<p class="p">As of NetWeaver 7.40 SP1 all required SAPUI5 parts are already part of software
+				component <samp class="ph codeph">SAP_UI</samp>.</p>
+
+			<p class="p">As an alternative for SAP Business Suite system of version 7.00 and higher you can
+				use an interactive ABAP report offering similiar functionality. For more
+				information, see the report documentation <a class="xref" href="a560bd6ed4654fd1b338df065d331872.html" title="You can either upload a SAPUI5 application to or download a SAPUI5 application from the SAPUI5 repository by using an interactive ABAP report.">Using an Interactive ABAP Report to Synchronize</a>.</p>
+
+		</div></div>
+<div class="section" id="loio91f346786f4d1014b6dd926db0e91070__section_DE87631174F443D5A899DC414BA4B955"><div class="section_title">Enabling Virus Scan During Upload</div><div type="Enabling Virus Scan During Upload">
+			
+			<p class="p">When uploading the files to the SAPUI repository, you can perform a virus scan. </p>
+
+			<p class="p">As of SAP NetWeaver 7.00, SAP delivers the following virus scan profile for ABAP with the UI
+				Add-On: <samp class="ph codeph">/UI5/UI5_INFRA_APP/REP_DT_PUT</samp>. </p>
+
+			<p class="p">This profile is used by the SAPUI5 repository API to store files in the SAPUI5
+				repository based on BSP repository. For example: Upload of a local file using SAPUI5
+				repository API <samp class="ph codeph">/UI5/CL_REP_DT</samp>, method
+					<samp class="ph codeph">/UI5/IF_UI5_REP_DT~PUT_FILE</samp> from NetWeaver 7.00 on, or the
+				SAPUI5 team repository provider in NetWeaver 7.31 or 7.40. </p>
+
+			<p class="p">The profile is deactivated when delivered. To activate it, create at least one basis
+				profile. You can then activate one of the delivered profiles. By default, it links
+				to a reference profile, which is the default profile. </p>
+
+		</div></div>
+<div class="section"><div class="section_title">Remarks</div><div type="Remarks">
+			
+		</div></div>
+<p class="p">If you view the corresponding BSP pages on the ABAP server, they might look different to
+			the version in Eclipse or at runtime: </p>
+<ul class="ul" id="loio91f346786f4d1014b6dd926db0e91070__ul_bf1_xbf_5l"><li class="li">
+				<p class="p">Trailing spaces in text lines are escaped with "!&amp;nbsp;" in the respective
+					BSP pages. </p>
+
+			</li>
+<li class="li">
+				<p class="p">Lines longer than 254 are broken into several lines and have a + on position 255.
+				</p>
+
+			</li>
+</ul>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Synchronizing with the SAPUI5 Repository";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

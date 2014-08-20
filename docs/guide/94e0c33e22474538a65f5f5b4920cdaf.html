@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=8153281783764651"/>
+<title>Application Cache Buster: Enhanced Concept</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio94e0c33e22474538a65f5f5b4920cdaf">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Application Cache Buster: Enhanced Concept</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">The first iteration of the Application Cache Buster only supports files which have been loaded
+			via <samp class="ph codeph">jQuery.ajax</samp>. The enhanced concept supports the transformation of
+			URLs for <samp class="ph codeph">jQuery.sap.includeScript</samp>,
+				<samp class="ph codeph">jQuery.sap.includeStyleSheet</samp>, and properties of the type
+				<samp class="ph codeph">sap.ui.core/URI</samp>. This ensures that the Application Cache Buster
+			mechanism takes care about most of the URLs in a general way. Additionally the enhanced
+			concept allows to register components or base URLs which are considered by the
+			Application Cache Buster. This base URL is used to load the index file with the
+			timestamp information.</p>
+<div class="section" id="loio94e0c33e22474538a65f5f5b4920cdaf__section_N10028_N10011_N10001"><div class="section_title">Registration of external URLs</div><div type="Registration of external URLs">
+			
+			<p class="p">If you do not specify all the applications in the bootstrap configuration, you can
+				also register them during runtime. To register additional locations, use the
+				following API: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.core.AppCacheBuster.register("/sap/bc/my/other/component");</pre></div>
+
+		</div></div>
+<div class="section" id="loio94e0c33e22474538a65f5f5b4920cdaf__section_N1003A_N10011_N10001"><div class="section_title">Avoid handling of specific URLs</div><div type="Avoid handling of specific URLs">
+			
+			<p class="p">To avoid handling of specific URLs, you can override the default behavior as follows:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.core.AppCacheBuster.handleURL = function(sURL) {
+  return sURL !== "my/specific/url";
+};</pre></div>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Application Cache Buster: Enhanced Concept";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

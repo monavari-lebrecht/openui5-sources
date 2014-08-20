@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=28027142740324407"/>
+<title>XML Views</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f292806f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">XML Views</h1>
+<div class="body conbody"><p class="p">The XML view type is defined in an XML file. The file
+		name either ends with 
+		<samp class="ph codeph">.view.xml</samp> or as an XML
+		string. The file name and the folder structure together specify the name of the
+		view that equals the SAPUI5 module name within the require/declare concept.
+	 </p>
+<div class="note Example" id="loio91f292806f4d1014b6dd926db0e91070__note_N1001C_N10013_N10001"><span class="Exampletitle"/>  
+		<p class="p">For 
+		  <samp class="ph codeph">resources/sap/hcm/Address.view.xml</samp>,
+		  the view name is 
+		  <samp class="ph codeph">sap.hcm.Address</samp>. The
+		  application uses this view name for displaying an instance of this view. If you
+		  define the XML view by means of an XML string, no file or require/declare is
+		  needed. 
+		</p>
+ 
+		<p class="p">The file looks as follows:
+		</p>
+ 
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;mvc:View controllerName="sap.hcm.Address" xmlns="sap.ui.commons" xmlns:core="sap.ui.core"&gt;
+   &lt;Panel&gt;
+      &lt;Image src="http://www.sap.com/global/ui/images/global/sap-logo.png"/&gt;
+      &lt;Button text="Press Me!"/&gt;
+   &lt;/Panel&gt;
+&lt;/mvc:View&gt;</pre></div>
+ 
+	 </div>
+<p class="p">Nest the XML tags analogous to the nesting sequence
+		of SAPUI5 controls and add the property values as attributes. For information
+		on more complex views see the following sections. 
+	 </p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e3b5323649b44d9a883a6233fb01ee9d.html">Implementing XML Views</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="XML Views";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

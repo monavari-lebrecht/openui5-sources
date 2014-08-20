@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=921694262496887"/>
+<title>Providing Hooks in the Standard Controller</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio8fbf4e728bd146fcb2053aeb6ca741f9">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Providing Hooks in the Standard Controller</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">Controller extensions can override any method. As this is a powerful but also fragile feature,
+			you can provide specific extension points in the controller code, so-called
+				<dfn class="term">hooks</dfn>. You can document these controller points and keep them stable,
+			thus providing more robust hooks across application updates for your extensions.</p>
+<p class="p">The process for this is as follows:</p>
+<ol class="ol" id="loio8fbf4e728bd146fcb2053aeb6ca741f9__ol_gzs_mqt_pl"><li class="li">In the application, identify a strategic location within the controller code where customers
+				may want to plug in and execute their customized code.</li>
+<li class="li">In the application, define a new function name which is reserved for the extension, document
+				the function and any arguments the function may receive or return.</li>
+<li class="li">Add code lines in the application (see code snippet below) to check whether the function has
+				been implemented, and, if so, to call the function. We also recommend to implement
+				sanity checks for return values.</li>
+<li class="li">The customer can then configure a controller extension, implementing exactly this one
+				function.</li>
+<li class="li">The SAPUI5 runtime merges the new controller extension into the standard controller. If the
+				customizing is enabled, the new function can be executed. </li>
+</ol>
+<div class="section"><div class="section_title">Example</div><div type="Example">
+			
+			<p class="p">By receiving the data object <samp class="ph codeph">oSomeData</samp> from the server, the application
+				enables you to access and modify the data object. The extension function name is
+					<samp class="ph codeph">onDataReceived</samp> and gets a reference to the data object as
+				argument.</p>
+
+			<p class="p">Standard controller:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">// ...data object oSomeData has been received, possibly from an Ajax response...
+   if (this.onDataReceived) {         // check whether any extension has implemented the hook...
+      this.onDataReceived(oSomeData); // ...and call it
+   }
+   // ...continue working with the (now possibly modified) data...</pre></div>
+
+			<p class="p">New controller: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.controller("customer.xy.Sub2ControllerExtension", {
+   onDataReceived: function(oData){ // oSomeData will be passed in
+      if (oData &amp;&amp; oData.status === "important") {
+         oData.message = oData.message + "!!!"; // modify some part of the data object, adding exclamation marks to a message text
+      }
+   } // no need to return anything as in this example the original object is modified
+});
+</pre></div>
+
+			<div class="note note"><span class="notetitle">Note</span> This only works for one extension layer as the most specific or last extension overrides
+				any other hook implementations. To allow multi-layer extensions, we recommend that
+				middle-layer extensions provide and document their own hook functions.</div>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Providing Hooks in the Standard Controller";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

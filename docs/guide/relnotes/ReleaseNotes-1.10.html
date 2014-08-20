@@ -1,0 +1,473 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+  
+
+  
+
+
+  
+
+  <head>
+    <title>
+      Documentation/ReleaseNotes/ReleaseNotes-1.10 – SAPUI5 Wiki (TIP CORE User Interface)
+    </title>
+        
+        
+        
+        
+        
+        
+        
+      
+    
+    
+    
+    
+    <script src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+    <link rel="stylesheet" type="text/css" href="../css/relnotes.css" />
+  </head>
+  <body>
+    
+    
+    
+    <div id="content" class="wiki">
+      
+      <div class="wikipage searchable">
+        
+          <p>
+</p><p>
+</p>
+<style>
+.topic {
+  color : #e09800;
+  font-weight : bold;
+}
+</style>
+<h1 id="ReleaseNotesforVersion1.10.x">Release Notes for Version 1.10.x</h1>
+<h2 style="color:red;">final patch - codeline closed</h2>
+<h2 id="Version1.10.5April2013">Version 1.10.5 (April 2013)</h2>
+<p>
+<strong>Fixes</strong>
+</p>
+<ul><li>AppCacheBuster: fix to ignore the Servlet 3.0 static resources
+</li><li> TextField - Edit mode
+</li><li> AppCacheBuster - exclude the OSGI-INF folder
+</li><li> DeclarativeSupport - added cleanup of root DIV
+</li><li> NavigationBar: Fix overflow detection
+</li><li> ComboBox/DropdownBox - SeparatorItem no error
+</li><li> Form - keyboard navigation and not focusable element
+</li><li> Send count requests after filtering
+</li><li> TextField in Form and numPad &plusmn;
+</li><li> fix extraction of entity type
+</li><li>HTML/XML/JSON view: Avoid unnecessary resource model creation
+</li><li>Initial Filter API for Inbox.
+</li><li>Paginator: Fix for focus-problems when using keyboard navigation
+</li><li> Toolbar: overflow button issue
+</li></ul><h2 id="Version1.10.4April2013">Version 1.10.4 (April 2013)</h2>
+<p>
+<strong>Mobile Controls</strong>
+</p>
+<ul><li>NEW: Property <tt>showBusyIndicator</tt> added to <tt>sap.m.Carousel</tt>: Show or hide a busy indicator in the carousel when loading pages after swipe. These busy indicators are part of the carousel and can be swiped as well: they do not block the carousel. Up to now, these busy indicators have always been shown. Now, the application developer has a choice. By default, busy indicators are shown.
+</li><li>NEW: Property <tt>busyIndicatorSize</tt> added to <tt>sap.m.Carousel</tt>: Size of the busy indicators which can be displayed in the carousel, when loading pages after swipe. The default size is rather big (6em) to make sure that users notice that they may swipe the busy indicator. 
+</li><li>CHANGED: Return value of method <tt>removePage</tt> of <tt>sap.m.Carousel</tt>: returns the page that has been removed instead of returning the carousel
+</li><li>CHANGED: Return value of method <tt>removeAllPages</tt> of <tt>sap.m.Carousel</tt>: returns an array of removed pages instead of returning the carousel
+</li></ul><p>
+<strong>Fixes</strong>
+</p>
+<ul><li><tt>sap.m.Carousel</tt>: carousel is now displayed even if it is embedded in a scrollable page
+</li><li><tt>sap.m.Carousel</tt>: width problem with view control pages is fixed
+</li><li><tt>sap.m.Carousel</tt>: carousel works properly now in loop mode with less than 3 pages
+</li><li><tt>sap.m.Carousel</tt>: Fixed hide busy indicator order issue
+</li><li>AppCacheBuster: fixed the normalization of URLs (avoid search/hash)
+</li><li>AutoComplete: fix exit calls on items
+</li><li> Sync issue with Overlay and Shell
+</li><li> ToolPopup: Attached ToolPopup on Resize-Handler
+</li><li> Table: fixed text-align to only apply to table tds
+</li><li> Table: fixed text-align to only apply to table tds
+</li><li> Paginator not reset if number of rows changed
+</li><li> ScrollBar: fixed that SB is visible on iPad in Shell
+</li><li> DropdownBox - possible to enter invalid text using IME
+</li><li> ComboBox, value check after rerendering
+</li><li> NotificationBar: Fixed Focusbility of Inplace Message
+</li><li> TextField setting Editable in TreeTable fails
+</li><li> Table: fixed the boundary calc for Pagination
+</li><li> Only fire ValidationSuccess, if type is used
+</li><li> Paginator: IE8 throws an error when trying to switch to
+</li><li> Make getBindingPath work again
+</li><li> prevent the encoding of the URL path
+</li><li> Column visibility menu shows scrollbar in IE
+</li><li>CSN: 1362724/2013 Association in HTML View: added createid for
+</li><li>DropdownBox - fix qUnit test for IE9
+</li><li>Fix makit height issue when use placeAt immediately
+</li><li>Fixed HTMLViews for canary Chrome which supports WebComponents
+</li><li>ODataModel: Make filter BT including instead of excluding
+</li><li>Proxy: fixed critical violation in Sonar - missing null check.
+</li><li>ResourceHandler: make the ClasspathUtil more error safe.
+</li><li>Table: fixed the multi-selection behavior with SHIFT.
+</li></ul><h2 id="Version1.10.3March2013">Version 1.10.3 (March 2013)</h2>
+<p>
+A patch for the rel-1.10 code line. It contains the following fixes for the UI5 Core and Controls:
+</p>
+<p>
+<strong>Fixes</strong>
+</p>
+<ul><li> RadioButtonGroup remove from tabchain if disabled
+</li><li> TextField/ComboBox toggle enabled - announcement
+</li><li> Element bindings are not cloned correctly
+</li><li> Error in updateBindingContext
+</li><li> TextField/ComboBox on ToolPopup - Escape
+</li><li> DropdownBox wrong value after rerendering
+</li><li> Feeder - no empty lines in IE
+</li><li> TabStrip, wrong rendered if all Tabs are disabled
+</li><li> disabled DatePicker on iPad with iOS6
+</li><li> Image of toggle button not updated
+</li><li> SearchField: Switch to disable Cache
+</li><li> DropdownBox error by rerendering
+</li><li> Mobile UI5 Applications Inside iFrames
+</li><li> Fixed height issues in the RichTextEditor
+</li><li> DatePicker tooltip read twice if no label
+</li><li> [Makit]Problem with charts on Android JellyBean
+</li><li> Fix for IE10 specific close button in text field and
+</li><li> Toolbar Overflow Pop-up
+</li><li> Change: fire change event with filter/sort parameter
+</li><li>Fixed QUnit test
+</li><li>Mobile: MessageToast control fix qUnit timing issue
+</li><li>Mobile: Select removeItem() method return always consistent value
+</li></ul><h2 id="Version1.10.2March2013">Version 1.10.2 (March 2013)</h2>
+<p>
+A patch for the rel-1.10 code line. It contains the following fixes for the UI5 Core and Controls:
+</p>
+<p>
+<strong>Fixes</strong>
+</p>
+<ul><li> ComboBox/DropdownBox fix cloning/item update
+</li><li> Translation error fixes
+</li><li> SearchField: Fix ARIA and HCB Theme
+</li><li> TriStateCheckBox ARIA Fix + QUnit test
+</li><li> sap.m.SearchField - wrong keyboard type
+</li><li> NotificationBar: Fixed Splitting the ID in 'onclick'
+</li><li> NotificationBar: Fixed Removal of One Single Message
+</li><li> RefixTable getContexts
+</li><li> Swipe Direction for List is added
+</li><li> SearchField: Make destroy more robust
+</li><li> Space not working in cells
+</li><li> NavigationBar: Fix scroll animation
+</li><li> ToolPopup: Fixed Too High ToolPopup
+</li><li> Avoid error in setProperty with invalid context
+</li><li> MOBILE: Custom DateTimeInput checker is added for
+</li><li> ComboBox change event if same item selected
+</li><li> RichTooltip: Long word wrapping
+</li><li> RichTooltip: word wrapping
+</li><li> Scrollbar: Chrom with zoom factor 90%
+</li><li>FIX: Dataset: Dirty state management in setSelectedView
+</li><li>HCB related issues in Task Execution UI.
+</li><li>ManagedObject: fix property propagation when parent changes
+</li><li>RichTextEditor not working correctly in PopUp when opened twice
+</li><li>Table Fixed column feature not working correctly in chrome 25
+</li><li>Table control: modified test page for visual tests
+</li><li>ToolPopup: Adapted CSS-Styles for the Shell
+</li></ul><h2 id="Version1.10.1February2013">Version 1.10.1 (February 2013)</h2>
+<p>
+A patch for the 1.10 code line. It contains the following fixes for the UI5 Core and Controls:
+</p>
+<p>
+<strong>Fixes</strong>
+</p>
+<ul><li>Fix the landscape/portrait detection
+</li><li>AutoComplete: Fix ARIA
+</li><li> applyTheme crashes in 1.10
+</li><li> AppCacheBuster - fix for property validation
+</li><li> Rangesldier method was assigned to slider prototype
+</li><li> Carousel and RowRepeater don't work together
+</li><li> sap.m.PullToRefresh - translated texts are too long
+</li><li> SearchField: Fix ARIA
+</li><li> Bindings updated for wrong Models
+</li><li> Ensure Preserve Area does not increase screen size
+</li><li> DropdownBox typing brings error in IE9
+</li><li> Launch task in new tab for inbox
+</li><li> SP7 functionality issues
+</li><li> Sort on Custom Attributes and select filter does not
+</li><li> Popup: Changed Check of UIArea
+</li><li> fix: Scrolling problem of TextArea for And2.3.4
+</li><li> Core: Extend OS Detection for Desktop
+</li><li> Fix cursor position in Webkit on Mac
+</li><li> TextField/DropdownBox drop handling
+</li><li> ExactBrowser: Fix vertical list collapse
+</li><li> GridLayout fix alignment issues in IE9
+</li><li> Carousel wrong index after rerendering
+</li><li> OData E-Tag Fix reduced to oData Fix for update method
+</li><li> AutoComplete: Provide special suggest event
+</li><li> DatePicker, validation of blank values
+</li><li> ToolPopup: Changed Default Value of Collision
+</li><li> jQuery.sap.encodeURL: * is not encoded
+</li><li> MenuButton/Menu: Use control ref instead of DOM on Menu
+</li><li> remove of 100 accounts leads to wrong member display
+</li><li> Fix paging: iLength should always be the Visible row
+</li><li> FileUploader: rerendering with wrong size
+</li><li> ODataModel: fix incasesensitive headers: security token
+</li><li>Carousel: Better scrolling behaviour
+</li><li>Carousel: Don't scroll window when using arrow keys
+</li><li>Carousel: Make sure all visible items are displayed
+</li><li>Carousel: Optimized rendering and animation
+</li><li>DataBinding: avoid incomplete bindings, fix bUpdateAll case
+</li><li>Documentation: replace link to internal server with SDK reference
+</li><li>Fix encoding of several test pages
+</li><li>Fortify: split code transformation to avoid out of memory
+</li><li> sap.m disable tap events during scrolling
+</li><li>Script: Added jquery.sap.each which ignores length property in objects
+</li><li>Table: modified test page for visual tests
+</li><li>Table: Fixed Columns: Posititon horizontal scrollbar correct for RTL
+</li><li>Table: Fixed scrolling behavior and page scroll onclick
+</li><li>VIZ Charts: avoid access to console in unit tests
+</li><li>VIZ Charts: fix memory leak reg. VIZ instances
+</li><li>VIZ Charts: fix typo in FlDataset filling + enable unit tests
+</li><li>VIZ Charts: properly transform sparse data
+</li><li>VIZ Charts: use own message bundles, support alt text
+</li><li>sap.m.PullToRefresh: use standard busy indicator
+</li></ul><h2 id="Version1.10.0January2013">Version 1.10.0 (January 2013)</h2>
+<p>
+<strong>Framework</strong>
+</p>
+<ul><li>NEW: <tt>sap.ui.core.Component</tt> A basic concept for components in UI5 has been defined and implemented. (see <a class="ext-link" href="../../api/symbols/sap.ui.core.Component.html" title="symbols/sap.ui.core.Component.html in Merged JSDoc"><span class="icon"> </span>API</a>)
+</li><li>NEW: <tt>jQuery.sap.storage</tt>: Option to define a custom key prefix instead of a default one: e.g. <tt>jQuery.sap.storage(jQuery.sap.storage.Type.session, "MyOwnPrefix")</tt>
+</li><li>NEW: <tt>sap.ui.core.mvc.HTMLView</tt> An HTML based format for declaring MVC views.
+</li><li>NEW: <tt>sap.ui.model.odata.ODataModel</tt> Added function <tt>setHeaders</tt> to allow to set custom headers which will be sent in each request against the server. This is now also possible in the constructor as a parameter. Function <tt>getHeaders</tt> provides access to all headers.
+</li><li>NEW: Data Binding: Aggregation binding support for named models.
+</li></ul><p>
+<strong>Tools</strong>
+</p>
+<ul><li>FIX: Correction in UI5 Application Development Tool to have <tt>com.sap.ui5.resource.DEV_MODE</tt> switched off in generated web.xml
+</li></ul><p>
+<strong>Desktop Controls</strong>
+</p>
+<ul><li>NEW: Property <i>autoClose</i> added to <tt>sap.ui.commons.Dialog</tt> control. If set to true the Dialog will behave like a Popup on 'autoclose'.
+</li><li>NEW: <tt>sap.ui.commons.form.ResponsiveLayout</tt> added. This layout is another Layout to be used in conjunction with the Form.
+</li><li>NEW: <tt>sap.ui.commons.AutoComplete</tt> added: Textfield with suggestion list (see <a class="ext-link" href="../../api/symbols/sap.ui.commons.AutoComplete.html" title="symbols/sap.ui.commons.AutoComplete.html in Merged JSDoc"><span class="icon"> </span>API</a>)
+</li></ul><p>
+<strong>Mobile Controls</strong>
+</p>
+<ul><li>NEW: All controls in library sap.m now support <strong>BlackBerry 10</strong> devices. This does not apply to library sap.makit.
+</li><li>NEW: <tt>sap.m.SplitApp</tt> control. SplitApp is another top level control in application, which has a master and a detail area. It manages the show/hide of the master area according to the device and orientation. See <a class="ext-link" href="../../api/symbols/sap.m.SplitApp.html" title="symbols/sap.m.SplitApp.html in Merged JSDoc"><span class="icon"> </span>API</a>
+</li><li>NEW: <tt>sap.m.InstanceManager</tt> Utility Class. InstanceManager is a utility class which manages instance under given category. Currently all open sap.m.Dialog, sap.m.Popover, sap.m.ActionSheet, option picker for sap.m.Select when runs in Android 2.3 and date(time) picker when runs in Android 2.3 are managed inside. It provides the possibility to close all of them at the same time which is required for handling the tap of physical back button in Android device. See <a class="ext-link" href="../../api/symbols/sap.m.InstanceManager.html" title="symbols/sap.m.InstanceManager.html in Merged JSDoc"><span class="icon"> </span>API</a>
+</li><li>NEW: <tt>sap.m.MessageBox</tt> Utility Class. MessageBox provides an easier way for showing short message to user than creating a sap.m.Dialog with type sap.m.DialogType.Message. See <a class="ext-link" href="../../api/symbols/sap.m.MessageBox.html" title="symbols/sap.m.MessageBox.html in Merged JSDoc"><span class="icon"> </span>API</a>
+</li><li>NEW: Scroll bars in scroll areas, scrolling enabled pages and dialogs.
+</li><li>NEW: Type <tt>sap.m.DialogType.Message</tt> added to <tt>sap.m.Dialog</tt>: Dialog with type Message aims to show message to end user which has a similar design as the "alert" dialog in Javascript.
+</li><li>NEW: <tt>sap.m.ActionListItem</tt> control. ActionListItem is a list item, with a centered text for triggering actions and also by default uses the active type.
+</li><li>NEW: No Data Handling for lists added. a text will be shown for empty list, which can be customized and also be deactivated.
+</li><li>NEW: <tt>sap.m.ListItemBase</tt> feature. Through the ListItemBase all list items can now use a counter feature, which shows a bubble containing an integer.
+</li><li>NEW: <tt>sap.m.ListItemBase</tt> feature. Through the ListItemBase all list items can now use an unread indicator in a form of a little blue bubble.
+</li><li>NEW: <tt>sap.m.StandardListItem</tt> feature. The StandardListitem now provides an info field, which can be used to show information texts. These texts support semantic colors based on the usage e.g. 'Warning','Error', 'Info'.  
+</li></ul><p>
+<strong>Experimental Features:</strong>
+</p>
+<p>
+<strong>Experimental features</strong> are not part of the officially delivered scope that SAP is going to guarantee for future releases – means experimental Features may be changed by SAP at any time for any reason without notice. The <strong>Experimental features</strong> are <strong>"NOT FOR PRODUCTION USE"</strong>. 
+You may not demonstrate, test, examine, evaluate or otherwise use the Experimental Features in a live operating environment or with data that has not been sufficiently backed up.
+</p>
+<p>
+The purpose of Experimental features is to get feedback at an early point of time allowing customers/partners to influence the future product accordingly. Please use the SCN Developer Center <a class="ext-link" href="http://scn.sap.com/community/developer-center/front-end"><span class="icon"> </span>http://scn.sap.com/community/developer-center/front-end</a> to provide feedback accepting that Intellectual Property rights of the contributions or derivative works shall remain the exclusive property of SAP.
+</p>
+<p>
+For general information about <strong>Experimental features</strong>, please check the <a class="wiki" href="../../guide/91f087396f4d1014b6dd926db0e91070.html">Compatibility Rules</a>, for a detailed list check out the list below:
+</p>
+<ul><li><tt>Mobile Tablet Support:</tt> The controls of the UI libraries sap.ui.core, sap.ui.commons, sap.ui.ux3 and sap.ui.table are only partially optimized or adapted for mobile tablet usage.
+</li><li><tt>OData Write Support:</tt> First experiments for two way binding.
+</li><li><tt>Module sap.ui.core.plugin.LessSupport:</tt> Current status is prototype.
+</li><li><tt>Module sap.ui.core.delegate.ScrollEnablement:</tt> Current status is prototype.
+</li><li><tt>Configuration Parameters</tt> with "-xx-" and the corresponding features: e.g. sap-ui-xx-test-mobile
+</li><li><tt>Weinre Server Configuration:</tt> Might change or removed in future releases
+</li><li><tt>Control sap.ui.table.Table:</tt> Current status for Threshold and Column Grouping is prototype.
+</li><li><tt>Deprecated Message Controls in sap.ui.commons:</tt> MessageBar, Message, MessageList, MessageToast - Use <tt>sap.ui.ux3.NotificationBar</tt> instead
+</li><li><tt>Control sap.ui.core.HTML:</tt> Support of HTML with multiple root nodes
+</li><li><tt>Control sap.uiext.inbox.Inbox,sap.uiext.inbox.SubstitutionRulesManager:</tt> API is not yet finished and might change
+</li><li><tt>Control sap.ui.suite.TaskCircle:</tt> API is not yet finished and might change
+</li><li><tt>Control sap.ui.suite.VerticalProgressIndicator:</tt> API is not yet finished and might change
+</li><li><tt>Control sap.ui.ux3.ThingViewer:</tt> API is not yet finished and might change
+</li><li><tt>Control sap.ui.ux3.Shell:</tt> Personalization, Color Picker (<tt>Control sap.ui.ux3.ShellColorPicker</tt>) and "Inspect"-Tool
+</li><li><tt>Controls / Types sap.ui.ux3.Feed*:</tt> Open discusses might result in API changes and adaptation. Especially the text presentation (e.g. @-references and formatted text) is not yet clear. Also Feed Model topic still open.
+</li><li><tt>Control sap.ui.ux3.Exact:</tt> Open discussions might result in API changes and adaptation. Especially the Result Area is not final.
+</li><li><tt>Control sap.ui.ux3.ExactArea:</tt> Open discussions might result in API changes and adaptation.
+</li><li><tt>Type sap.ui.ux3.ActionBarSocialActions:</tt> Open discussions might result in API changes and adaptation.
+</li><li><tt>Theme Editor:</tt> This application allows for easy branding of SAPUI5 applications. Currently optimized for the use with Chrome and Firefox. 
+</li><li>Improved performance for touch devices: Mouse events are now fired on their corresponding touch events
+</li><li>Control <tt>sap.makit.*:</tt> API is not yet finished and might change
+</li><li>All Theme Parameters for <tt>sap.m</tt> and <tt>sap.makit</tt> are not yet finished and might change
+</li><li><tt>Controls sap.viz.*:</tt> API of the new charting library is not yet finished and might change
+</li><li><tt>View sap.ui.core.mvc.HTMLView</tt> The HTML view concept is still under discussion so this will be changed in future. 
+</li><li><tt>sap.ui.core.Component,sap.ui.core.ComponentContainer</tt> The Component concept is still under construction, so some implementation details can be changed in future. 
+</li><li><tt>Control sap.m.GrowingList</tt>. API is not yet finished and might change completely
+</li><li>Performance recorder: API is not yet finished and might change
+</li><li><tt>Control sap.m.Input </tt>. API is not yet finished and might change completely 
+</li><li><tt>Layout sap.ui.commons.form.ResponsiveLayout</tt> This layout is not 100% finished yet. 
+</li><li><tt>sap.ui.ux3.FacetFilterList</tt> API is not yet finished and might change completely 
+</li></ul><p>
+<strong>Fixes</strong>
+</p>
+<ul><li> sap.m.Select: Back button does not close popup in Android 2.3
+</li><li> sap.m.Bar: Search field is not shown on Page footer with flip animation
+</li><li> sap.m.Bar: Binding of icons does not work in Page Header
+</li><li> sap.m.Input: Displaced cursor by scroll
+</li><li> sap.m.Input: Outside touch does not close the soft keyboard
+</li><li> sap.m.Carousel: No resize during orientation change
+</li><li> sap.m.Carousel: Carousel in split app: wrong width after orientation change
+</li><li> sap.m.Carousel: Pages overlap when swiping
+</li><li> sap.m.Carousel: 2 paged carousel bug
+</li><li> sap.m.Carousel: Mobile Carousel not working after orientation change
+</li><li> sap.m.Carousel: Carousel waiting indicator after last page
+</li><li> sap.m.Dialog: Fix blinking issue when reposition dialog in iPhone.
+</li><li> sap.m.Dialog: Fix "No feedback color when tap Dialog Button" issue.
+</li><li> sap.m.ActionSheet: Fix "no active color for buttons in <a class="missing wiki">ActionSheet?</a> for Android 2.3".
+</li><li> sap.m.ActionSheet: Fix "cancel button hidden after orientation change" issue.
+</li></ul><p>
+ 
+</p>
+<h2 id="Version1.9.2January2013">Version 1.9.2 (January 2013)</h2>
+<p>
+<strong>Framework</strong>
+</p>
+<ul><li>NEW: Databinding: Calculated fields. It is possible to bind multiple path from different models to a control property. The values can be accessed via the formatter function. See the databinding documentation for more details.
+</li><li>NEW: A first, still experimental implementation of <a class="ext-link" href="../../api/symbols/sap.ui.core.Component.html" title="symbols/sap.ui.core.Component.html in Merged JSDoc"><span class="icon"> </span>Component</a>s has been added to the Core. 
+</li><li>NEW: <tt>sap.ui.core.mvc.HTMLView</tt> Added experimental HTMLView. You can now create views with declarative HTML.
+</li><li>CHANGE: <tt>sap.ui.core.DeclarativeSupport</tt> Enhanced aggregation handling in declarative support: Added support for alternative types and added support for 0..n aggregation binding with templates.
+</li><li>NEW: the <tt>sap.ui.core.ApplicationCacheBuster</tt> now has experimental support for multiple index locations and can manage more types of URL modifications 
+</li><li>NEW: all Controls and Elements (all objects derived from <tt>sap.ui.base.ManagedObject</tt>) now support setting models and the binding context already in the constructor (property names <tt>models</tt> and <tt>bindingContexts</tt>). The <tt>models</tt> property can be set either to a single model (by definition this will be the default model) or to a map of models (keyed by their name, use the value <tt>undefined</tt> (not the string 'undefined'!) for the default model). In 1.9.2, the <tt>bindingContexts</tt> may only be set to a single context, but in one of the next releases, UI5 will support one binding context per model (means: aggregation bindings will finally be supported for named models, too). The semantics of these properties is equal to calling the corresponding setters after construction. But note that using the properties might result in an earlier resolution of property and aggregation bindings. The properties can be used in Views. This finally allows to access the models in the controller without setting them manually in onInit.
+</li><li>NEW: Added Sinon.JS as third party library. Use spies, mocks, stubs, faked timers / XHR in QUnit tests.
+</li><li>NEW: Added URI.js as third party library. Supports URI parsing, construction, normalization etc.
+</li></ul><p>
+<strong>Tools</strong>
+</p>
+<ul><li> 
+</li><li>FEATURE: Time needed to launch a SAPUI5 application served from a SAPUI5 ABAP Repository and with the application cache buster in place has been reduced (by .2 to 3 seconds depending on the use case). Report /UI5/RESET_CACHEBUSTER to reset related server side cookies after system- and language imports.
+</li><li>FIX: Correction in UI5 Application Development Tool regarding view name and folder name validation 
+</li></ul><p>
+<strong>Desktop Controls</strong>
+</p>
+<ul><li>NEW: Properties <i>responsive</i> and <i>itemMinWidth</i> added to <tt>sap.ui.ux3.DataSetSimpleView</tt> control. See this <a class="ext-link" href="../../../content/Controls/UX3Controls/DataSet.html" title="demokit/#content/Controls/UX3Controls/DataSet.html in Sandbox for Applications"><span class="icon"> </span>example</a> for details.
+</li><li>NEW: Property <i>enableSave</i> and event <i>save</i> added to <tt>sap.ui.ux3.ExactBrowser</tt> control. If activated a save button is shown in the toolbar of the ExactBrowser.
+</li><li>NEW: Keyboard Handling added to <tt>sap.ui.commons.form.Form</tt> control and <tt>sap.ui.commons.form.GridLayout</tt>. Action Mode and Navigation Mode added (also affects <tt>sap.ui.commons.Toolbar</tt>).
+</li><li>NEW: <tt>sap.ui.core.VariantLayoutData</tt> created. This ist to add multiple <tt>LayoutData</tt> to controls. Currently it's only used for form layouts. 
+</li><li>NEW: <tt>sap.ui.table.Table</tt> has a new property <tt>visibleRowCountMode</tt> which allows to activate auto height calculation (Table shows as many rows as possible) or manual height changes by the end user. See API documentation for details.
+</li><li>NEW: <tt>sap.ui.table.Column</tt> has a new property <tt>filterType</tt> that allows to specify a data type for the filter field. The data type should match the type used for formatting/parsing data in the same column. This allows end users to use the same data format in the filter field as is used for the data in the table column.
+</li></ul><p>
+<strong>Mobile Controls</strong>
+</p>
+<ul><li>NEW: <tt>sap.m.URLHelper</tt> Added to trigger native applications(e.g Email, SMS, Telephone) easily over URI Schemes. See <a class="ext-link" href="../../../docs/api/symbols/sap.m.URLHelper.html"><span class="icon"> </span>API</a> and  <a class="wiki" href="../../guide/4f1c1075d88c41a5904389fa12b28f6b.html">Documentation</a>
+</li><li>NEW: Swipe List for Action is added into <tt>sap.m.List</tt>.  See <a href="../../guide/a01822c503014bc0bc6e31dfe7906817.html">Documentation</a>
+</li><li>NEW: <tt>sap.m.PullToRefresh</tt> control. The control adds the "Pull Down to Refresh" functionality to pages and scroll containers. See  <a class="wiki" href="../../guide/66029f6f5a554a4eb700676bec1460dc.html#PulltoRefresh">Pull to Refresh</a>
+</li><li>NEW: <tt>sap.m.MessageToast</tt> control. A message toast offers simple feedback about an operation in a small Pop-up. See <a class="ext-link" href="../../../docs/api/symbols/sap.m.MessageToast.html"><span class="icon"> </span>API</a>
+</li></ul><h2 id="Version1.9.1December2012">Version 1.9.1 (December 2012)</h2>
+<p>
+<strong>Framework</strong>
+</p>
+<ul><li>NEW: Many of the basic features of <tt>Element</tt> (support for declared properties, aggregations, associations, events &hellip;) have been factored out in a new base class <tt>sap.ui.base.ManagedObject</tt>. This class is not intended for control development (it intentionally does not cover rendering aspects), but might be helpful when creating other classes that don't need rendering capabilities. The <tt>extend</tt> function is available on the new class and can be used to subclass it.
+</li><li>CHANGE: Cloning of Views has been fixed. Instead of cloning the content <strong>and</strong> going through the MVC lifecycle, which resulted in duplicate content, Views only go through the lifecycle (<tt>createContent()</tt>) and just clone those aspects that aren ot covered by <tt>createContent()</tt>. See <a class="wiki" href="../../guide/91f233476f4d1014b6dd926db0e91070.html#Viewcloning">the MVC documentation</a> for more details.
+</li><li>CHANGE: The validation for aggregations and for property and aggregation bindings (<tt>bindProperty</tt>, <tt>bindAggregation</tt>) has been activated. Those methods now can only be called for existing properties/aggregations and only valid types must be used for the aggregated objects. The only important exception is the often discussed <tt>Toolbar.items</tt> aggregation, for which only a warning is raised when an invalid type is added to that aggregation. 
+</li><li>CHANGE: The databinding implementation has been enhanced wrt. performance. Until 1.9.0, controls/elements always had to use their parent hierarchy to find a model or a binding context. As this code was executed quite often, it could result in a performance penalty for more complex UIs. Starting with 1.9.0, the model/context information is pushed down the hierarchy when it changes. <br />
+<strong>Note</strong>: This change has a significant impact on custom composite controls: composite controls now always should use aggregations for their parts (composite components). Just setting the parent relationship is no longer sufficient wrt. databinding.
+</li><li>CHANGE: OData Write functionality now also supports the use of ETags for concurrency control.<br />
+</li></ul><p>
+ 
+<strong>Desktop Controls</strong>
+</p>
+<ul><li>NEW: two new layouts have been added: <tt>sap.ui.commons.form.GridLayout</tt> (used in the <tt>sap.ui.commons.form.Form</tt> control) and <tt>sap.ui.commons.layout.ResponsiveFlowLayout</tt>.
+</li></ul><p>
+<strong>Mobile Controls</strong>
+</p>
+<ul><li>NEW: Control <tt>sap.m.ActionSheet</tt> is added. The main usage is to show some options and let the end user choose one from them. <tt>sap.m.ActionSheet</tt> behaves as a <tt>sap.m.Popover</tt> and as a standard <tt>sap.m.Dialog</tt> in the other devices.
+</li><li>NEW: A new mode PopoverMode is added to Control <tt>sap.m.SplitApp</tt>. With PopoverMode the Master Panel is shown inside a Popover.
+</li><li>NEW: Properties <i>width</i> and <i>height</i> added to FlexBox control in sap.m library
+</li><li>NEW: Control <tt>sap.m.InputDateTime</tt> is added. Let end users to interact with date and/or time pickers.
+</li><li>NEW: event <tt>liveChange</tt> in <tt>sap.m.SearchField</tt>
+</li><li> FIX <tt>sap.m.SearchField</tt>/<tt>sap.m.Input</tt>: on-screen keyboard remains open after page navigation
+</li><li>NEW: <tt>sap.m.Slider</tt> support for floating point numbers
+</li><li>NEW: <tt>sap.m.Page</tt> control has now a <tt>headerContent</tt> aggregation which can be used to add items (usually Buttons) to the right side of a Page header without creating a custom header
+</li><li>NEW: the <tt>sap.m.NavContainer</tt> (and <tt>sap.m.App</tt>) control sets its direct children to display:block and height:100% to avoid additional effort in applications, in particular when using MVC Views
+</li><li>DEPRECATED: <tt>Date</tt>, <tt>Time</tt>, <tt>Datetime</tt>, <tt>DatetimeLocal</tt>, <tt>Week</tt> and <tt>Month</tt> are deprecated in <tt>sap.m.InputType</tt>
+</li><li>DEPRECATED: <tt>dateFormat</tt> is deprecated  in <tt>sap.m.Input</tt>
+</li></ul><p>
+<strong>Tools</strong>
+</p>
+<ul><li>FEATURE: Report to synchronize UI5 Application in local file system with UI5 Repository located in a SAP NetWeaver Application Server 7.00 or higher. For details see SAP Note 1793771 "Up/Download SAPUI5 Application into/from UI5 Repository".
+</li><li>FEATURE: When a project has been shared with the SAPUI5 ABAP Repository you can directly start a preview of the deployed application on the server from Eclipse
+</li><li>FIX: Open External Browser button in application preview considers the Eclipse settings which browser to use
+</li></ul><h2 id="Version1.9.0November2012">Version 1.9.0 (November 2012)</h2>
+<p>
+<strong>Framework</strong>
+</p>
+<ul><li>FEATURE: CustomData attached to controls (with the <tt>.data(...)</tt> function) can now optionally be written to the HTML document. See the <a class="wiki" href="../../guide/91f0c3ee6f4d1014b6dd926db0e91070.html#WritingdatatotheHTMLDOMasdata-attribute">documentation</a>.
+</li><li>FEATURE: the new methods <tt>addEventDelegate</tt> and <tt>removeEventDelegate</tt> are now available on all Elements/Controls and can be used by applications to also react on all events which are happening to those Elements (this is different than listening to events fired <i>by</i> those elements, which was always possible). This is basically a public version of the private method <tt>addDelegate</tt>.
+</li><li>FEATURE: <tt>sap.ui.core.CSSSize</tt> now also allows value <tt>inherit</tt>. However, there are some usages of this type where <tt>inherit</tt> doesn't make sense.
+</li></ul><p>
+<strong>Desktop Controls</strong>
+</p>
+<ul><li>FEATURE: <tt>sap.ui.ux3.Shell</tt>:
+<ul><li>NEW: Property <tt>fullHeightContent</tt> to activate / deactivate 100% height of the content area
+</li><li>NEW: Property <tt>applyContentPadding</tt> to switch padding of the content on / off
+</li><li>NEW: Application, header and background image can be set via theme-editor
+</li></ul></li><li>NEW: control <tt>sap.ui.commons.FormattedTextView</tt>
+</li><li>NEW: control <tt>sap.ui.ux3.CollectionInspector</tt>
+</li><li>NEW: Property <tt>displaySecondaryValues</tt> on control <tt>sap.ui.ux3.FacetFilterList</tt>
+</li><li><tt>sap.ui.commons.RichTooltip</tt>
+<ul><li>NEW: support for {{addStyleClass}}}
+</li></ul></li><li><tt>sap.ui.commons.Toolbar</tt>
+<ul><li>NEW: keyboard support for right (end) items
+</li></ul></li><li>CHANGE: <tt>sap.viz</tt> library has been updated and refactored as documented below for <a class="wiki" href="ReleaseNotes.html#Version1.8.4Novemeber2012">version 1.8.4</a>.
+</li></ul><p>
+<strong>Fixes</strong>
+</p>
+<ul><li> ThingInspector: Add aria-labelledby to links on ACC testpage
+</li><li> Page in Popover direcly causes wrong display.
+</li><li> fix iScroll to ignore subsequent touches
+</li><li> open multiple dialog can't hide block layer when close
+</li><li> Issues fixed in Popover:
+</li><li> Reason: fix Desc: Toolbar error handling
+</li><li> Roadmap: Fix ARIA
+</li><li> Shell: Fix ARIA
+</li><li> Button: Fix Platinum Theme
+</li><li> ExactBrowser: Fix QUnit test on FF10
+</li><li> Reason: fix Desc: BC-WD-HTM - Fix Pegasus Environment test for Firefox ESR
+</li><li> ThinkInspector doesn't show long Type properly
+</li><li> TextField - remove hover effect for iPad
+</li><li> FileUploader: tabbing backwards does not work
+</li><li> MenuButton, MenuBar, Column: Change Menu open
+</li><li> Table: FF only, Empty table has header only, no rows
+</li><li> Accordion: last open section cannot be closed
+</li><li> Dialog doesn't fit the screen in Android 2.3
+</li><li> sap.m.Select and sap.m.Slider controls in the input list item are still not aligned horizontally to the right
+</li><li> sap.m.Select dropdown does not even open in most cases, sometimes the wrong one opens in Android 2.3
+</li><li> DropdownBox - visualization of wrong input
+</li><li> OverlayContainer rendering issue in Shell
+</li><li> Table - fixed the ff default selection behavior
+</li><li> ODataModel: make methods parameters and doc consistent
+</li><li> DropdownBox error if update via binding
+</li><li> ComboBox setSelectedKey("") initialize control
+</li><li> ODataModel: add language accept headers
+</li><li> ComboBox change text of selected item
+</li><li> VIZ Charts: use position:relative by default
+</li><li> VIZ Charts: support 'controller' properties
+</li><li> Fixed rendering for Toggle Button (when rendered in table control)
+</li><li> Switch of History feature in DropdownBox and SearchField by default
+</li><li> NavContainer: content looks blurry
+</li><li> NotificationBar: Fixed width of inplace message
+</li><li> DatePicker chinese day names
+</li><li> VIZ Charts ignore settings via method calls
+</li><li> VIZ Charts: null values in dataset lead to exception
+</li><li> Support default values for array types
+</li><li> Fix "NO Feedback color when tap Dialog Button"
+</li><li> EPM Demo app: do not say "Northwind when loading data
+</li><li> XMLView: Encode HTML properties and content
+</li></ul><p>
+<strong>Mobile Controls</strong>
+</p>
+<ul><li> FIX Select doesn't open every time
+</li></ul>
+        
+        
+      </div>
+    </div>
+    
+  </body>
+</html>

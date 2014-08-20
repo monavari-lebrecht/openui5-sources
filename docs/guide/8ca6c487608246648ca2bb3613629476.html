@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=5235551958928392"/>
+<title>Attributes of Text Elements</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio8ca6c487608246648ca2bb3613629476">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Attributes of Text Elements</h1>
+<div class="body"><p class="shortdesc"/>
+<div class="section" id="loio8ca6c487608246648ca2bb3613629476__section_2238C0D7F1CE4747927FD21793F093B3"><div class="section_title">Text Type</div><div type="Text Type">
+			
+			<p class="p">Each text element must have a text type assignment. Text types can be, for example,
+				XBUT for button texts, XFLD for field labels, or XTXT for general texts. A list of
+				the various possible text types is provided below. </p>
+
+		</div></div>
+<div class="section" id="loio8ca6c487608246648ca2bb3613629476__section_A5B8C70BB16F474BA191077C62E641DE"><div class="section_title">Maximum Field Length</div><div type="Maximum Field Length">
+			
+			<p class="p">The optional maximum text length information can be provided directly after the text
+				type, separated by a comma. The maximum text length must be higher than the original
+				text length and must never exceed 255.</p>
+
+			<p class="p">To support a proper translatability of the text, the developer should set an
+				appropriate maximum text length according to the following rules:</p>
+
+			<ul class="ul" id="loio8ca6c487608246648ca2bb3613629476__ul_cx1_gpb_qn"><li class="li">
+					<p class="p">Source text length &lt; 8 characters : max. text length: multiply by 5, min.
+						12 characters</p>
+
+				</li>
+<li class="li">
+					<p class="p">Source text length between 8 and 30 characters: max. text length: multiply by
+						3</p>
+
+				</li>
+<li class="li">
+					<p class="p">Source text length &gt; 31 characters: max. text length: multiply by 1.5</p>
+
+				</li>
+</ul>
+
+			<p class="p">If possible, the maximum text length should always be significantly higher than the
+				original text length.</p>
+
+		</div></div>
+<div class="section" id="loio8ca6c487608246648ca2bb3613629476__section_4DEE9F4F62194534A3EBBA48E700CCDE"><div class="section_title">Additional Context Information</div><div type="Additional Context Information">
+			
+			<p class="p">An optional additional comment is provided for the translator, separated by a colon. </p>
+
+		</div></div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Attributes of Text Elements";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

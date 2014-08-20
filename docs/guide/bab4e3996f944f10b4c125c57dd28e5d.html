@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=8401326315818324"/>
+<title>Accessing Translated Texts During Runtime</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiobab4e3996f944f10b4c125c57dd28e5d">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Accessing Translated Texts During Runtime</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">During runtime, translated texts are read directly from the table and sent to the browser.</p>
+<p class="p">The browser sends a request for a certain property file with a language extension to the
+			backend, for example <samp class="ph codeph">i18n_en_US.properties</samp>. The handler class in the
+			backend analyzes the file name and extracts the language key. All text elements in the
+			default property file are read with this language key from the corresponding tables in
+			the SAPUI5 text repository. These text elements are collected and sent back to the
+			browser, as if a property file with this language extension would physically exist, but
+			it is not present in the repository.</p>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Accessing Translated Texts During Runtime";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

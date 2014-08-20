@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>qUnit Page for sap.m.SplitContainer</title>
+		<script id="sap-ui-bootstrap" 
+			type="text/javascript"
+			src="../../../../resources/sap-ui-core.js"
+			data-sap-ui-theme="sap_bluecrystal"
+			data-sap-ui-noConflict="true"
+			data-sap-ui-libs="sap.m">
+		</script>
+		<link rel="stylesheet" href="../../../../resources/sap/ui/thirdparty/qunit.css" type="text/css" media="screen" />
+		<script type="text/javascript" src="../../../../resources/sap/ui/thirdparty/qunit.js"></script>
+		<script type="text/javascript" src="../../../../resources/sap/ui/thirdparty/sinon.js"></script>
+		<!--[if IE]>
+		<script type="text/javascript" src="../../../../resources/sap/ui/thirdparty/sinon-ie.js"></script>
+		<![endif]-->
+	
+		<script type="text/javascript" src="../../../../resources/sap/ui/qunit/QUnitUtils.js"></script>
+		<script type="text/javascript">
+			test("Should add a MasterPage only once", function() {
+				//System under Test
+				var	sut = new sap.m.SplitContainer();
+
+				var page = new sap.m.Page("master");
+				var page2 = new sap.m.Page("master2");
+				
+				//Act
+				sut.addMasterPage(page);
+				sut.addMasterPage(page);
+				sut.addMasterPage(page2);
+
+				//Assert
+				strictEqual(sut._aMasterPages.length, 2, "did add the master page only once");
+			});
+
+			test("Should add a DetailPage only once", function() {
+				//System under Test
+				var	sut = new sap.m.SplitContainer();
+
+				var page = new sap.m.Page("detail");
+				var page2 = new sap.m.Page("detail2");
+
+				//Act
+				sut.addDetailPage(page);
+				sut.addDetailPage(page);
+				sut.addDetailPage(page2);
+
+				//Assert
+				strictEqual(sut._aDetailPages.length, 2, "did add the detail page only once");
+			});
+
+			asyncTest("Destroy showMasterBtn during page navigation", function(){
+				var oSplitContainer = new sap.m.SplitContainer({
+					detailNavigate: function(){
+						ok(this._oShowMasterBtn.bIsDestroyed, "showMasterBtn is destroyed with the customHeader together");
+					},
+					afterDetailNavigate: function(){
+						ok(!this._oShowMasterBtn.bIsDestroyed, "showMasterBtn should be recreated after page navigation");
+						this.destroy();
+						start();
+					}
+				});
+				oSplitContainer.setMode(sap.m.SplitAppMode.HideMode);
+
+				var oPage1Header = new sap.m.Bar({
+					contentMiddle: new sap.m.Label({
+						text: "Page1"
+					})
+				});
+
+				var oButton = new sap.m.Button({
+					text: "Go to Page 2",
+					press: function() {
+						oPage1Header.destroy();
+						oSplitContainer.toDetail("page2");
+					}
+				});
+
+				var oPage1 = new sap.m.Page("page1", {
+					customHeader: oPage1Header,
+					content: oButton
+				});
+
+				var oPage2 = new sap.m.Page("page2", {
+					title: "Page 2"
+				});
+
+				oSplitContainer.addDetailPage(oPage1).addDetailPage(oPage2);
+
+				oSplitContainer.placeAt("content");
+				sap.ui.getCore().applyChanges();
+
+				oButton.firePress();
+			});
+</script>
+</head>
+<body id="body" class="sapUiBody">
+	<h1 id="qunit-header">qUnit Page for sap.m.SplitContainer</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture"></div>
+	<div id="content"></div>
+</body>
+</html>

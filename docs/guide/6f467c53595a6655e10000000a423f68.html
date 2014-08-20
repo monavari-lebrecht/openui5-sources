@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="LOIO.FOLDER.IWB_FOLDER_ID" content="1234AC50C238B656E10000000A445394"/>
+<meta name="LOIO.FOLDER.IWB_TECH_NAME" content="HELPX.UI_EXT"/>
+<meta name="LOIO.FOLDER.IWB_FOLDER_GROUP" content="SAPXH"/>
+<meta name="LOIO.FOLDER.IWB_SHH_KEY" content=""/>
+<meta name="LOIO.FOLDER.IWB_TRANSLATION_MEMORY" content=""/>
+<meta name="LOIO.FOLDER.TERM_DOMAIN" content="FF"/>
+<meta name="LOIO.IWB_TYPE" content="ICG"/>
+<meta name="LOIO.IWB_SHH_KEY" content=""/>
+<meta name="LOIO.KW_CONVREF.CLASS" content=""/>
+<meta name="LOIO.KW_CONVREF.OBJID" content=""/>
+<meta name="PHIO.IWB_INDUSTRY" content="SHL"/>
+<meta name="PHIO.RELEASE" content="1.0_2014Q3"/>
+<meta name="PHIO.CREATED_AT" content="20140605161056"/>
+<meta name="PHIO.LAST_CHANGED_AT" content="20140605161057"/>
+<meta name="PHIO.IWB_LEVEL" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=19236301057291838"/>
+<title>The Representation Type Object</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio6f467c53595a6655e10000000a423f68">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">The Representation Type Object</h1>
+<div class="body"><div class="note note"><span class="notetitle">Note</span> <p class="p">This step is required only if you want to define your own representation types in addition to the predefined ones shipped with APF. For more information, see <a class="xref" href="74db7d53b5c19456e10000000a423f68.html">Predefined Representation Types</a>.</p>
+ </div>
+<p class="p">The <span class="ph sap-technical-name sap-technical-name">representation type</span> object defines how data is depicted on the UI. It has the following format:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+{
+  "type" : "representationType",    // optional
+  "id" : <var class="keyword varname">&lt;id::string&gt;</var>,
+  "constructor" : <var class="keyword varname">&lt;constructor&gt;</var>,
+  "picture" : "<var class="keyword varname">&lt;path/file&gt;</var>,    // relative to Web application root
+  "label" : <var class="keyword varname">&lt;label&gt;</var>
+}</pre></div>
+<p class="p">The attributes used in the <span class="ph sap-technical-name sap-technical-name">representation type</span> object denote the following:</p>
+
+<div class="tablenoborder"><table summary="" class="table" frame="border" border="1" rules="all"><thead class="thead" align="left"><tr class="row"><th class="entry" valign="top" id="d500398e70"><p class="p">Attribute</p>
+ </th>
+<th class="entry" valign="top" id="d500398e74"><p class="p">Description</p>
+ </th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry" valign="top" headers="d500398e70 d500398e74 "><p class="p"><span class="ph sap-technical-name sap-technical-name">id</span></p>
+ </td>
+<td class="entry" valign="top" headers="d500398e70 d500398e74 "><p class="p">Unique ID of type string.</p>
+ </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d500398e70 d500398e74 "><p class="p"><span class="ph sap-technical-name sap-technical-name">constructor</span></p>
+ </td>
+<td class="entry" valign="top" headers="d500398e70 d500398e74 "><p class="p">Defines the implementing function object of the representation.</p>
+ </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d500398e70 d500398e74 "><p class="p"><span class="ph sap-technical-name sap-technical-name">picture</span></p>
+ </td>
+<td class="entry" valign="top" headers="d500398e70 d500398e74 "><p class="p">Icon indicating the representation type.</p>
+ </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d500398e70 d500398e74 "><p class="p"><span class="ph sap-technical-name sap-technical-name">label</span></p>
+ </td>
+<td class="entry" valign="top" headers="d500398e70 d500398e74 "><p class="p">Defines the label text.</p>
+ </td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="The Representation Type Object";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

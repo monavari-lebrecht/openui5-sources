@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=9613797346801417"/>
+<title>Instantiation of Fragments</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio04129b2798c447368f4c8922c3c33cd7">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Instantiation of Fragments</h1>
+<div class="body conbody"><p class="shortdesc"/>
+<p class="p">Comparing fragments to views, there is one important difference: Fragments are no controls.
+			While views are control instances which have their own HTML and their own set of
+			properties and may contain other controls, fragments just consist of their content.
+			Views contain their content controls, while fragments consist of their content controls. </p>
+<p class="p">For example, when a fragment containing a button is instantiated, the result is just this
+			button.</p>
+<p class="p">The generic function to instantiate fragments is <samp class="ph codeph">sap.ui.fragment()</samp>. This
+			method can be called with either the name, the type, and optionally a controller, or
+			with a configuration object and an optional controller. It either returns the root
+			control contained in the fragment or an array of root controls, depending on the type of
+			the fragment. This fragment type is usually known in advance. Therefore, a specific
+			method for each fragment type can be used to programmatically instantiate a fragment.
+			You find more information on the instantiation process in the respective topics linked
+			in the related link section below. </p>
+<p class="p">The different methods used for the instantiation of a fragment have the following
+			commonalities:</p>
+<ul class="ul" id="loio04129b2798c447368f4c8922c3c33cd7__ul_z1b_fcx_lm"><li class="li">A fragment name must be given. This name must be resolvable to the fragment file URL by the
+				SAPUI5 module loading mechanism. In case of JS fragments the name may also be
+				defined inline. </li>
+<li class="li">A controller can be optionally given. Some fragments may require a controller and certain
+				methods to be present in this controller. </li>
+<li class="li">An ID can be optionally given. <p class="p">If no ID is given, any control IDs specified in the
+					fragment are used as is. The repeated use of a fragment can lead to duplicate
+					IDs. One way to avoid that problem is to specify a unique fragment ID. For more
+					information see <a class="xref" href="5da591c5a5a54740948acfe56b22fbc3.html" title="You can use a unique ID for a fragment that will be used as prefix for all controls in a fragment instance.">Unique IDs</a>. This ID
+					will then be used as prefix for all controls in this fragment instance.</p>
+</li>
+</ul>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="36a5b130076e4b4aac2c27eebf324909.html" title="Fragments are pieces of UI, just like SAPUI5 MVC views, but without the view control around the content and without their own controller.">Fragments</a></div>
+<div><a class="link" href="3cff5d0fa6754c0d9fdacd80653b81fb.html">Programmatically Instantiating JS Fragments</a></div>
+<div><a class="link" href="d6af195124cf430599530668ddea7425.html">Programmatically Instantiating XML Fragments</a></div>
+<div><a class="link" href="79e967d093c247639cf60f77cee810d2.html">Programmatically Instantiating HTML Fragments</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Instantiation of Fragments";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=905637001379798"/>
+<title>Property Metadata Binding</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiof5aa4bb75c20445194494b264d3b3cd2">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Property Metadata Binding</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">The OData services include metadata for certain properties of an entity, such as heading,
+			label, precision. With the extended data binding syntax, this information can now be
+			accessed. The extended data binding syntax is only valid for
+				<samp class="ph codeph">PropertyBindings</samp>. The annotations can be addressed either absolute
+			or relative to a data path.</p>
+<p class="p">The consumption of label and description within an application is an example for a
+			possible integration. Instead of copying the corresponding label text to a properties
+			file, which in turn will be tanslated, a developer can bind a label against the label
+			metadata field for the respective input field.</p>
+<p class="p">The binding must know the metadata part of the binding expression. The path to metadata must
+			therefore start with <samp class="ph codeph">/#</samp>.</p>
+<ul class="ul" id="loiof5aa4bb75c20445194494b264d3b3cd2__ul_gyq_2l2_k4"><li class="li">
+				<p class="p">Absolute bindings</p>
+
+				<p class="p">An absolute binding path starts with the entity name followed by the property
+					name. Property attributes can be accessed with <samp class="ph codeph">@</samp> +
+						<samp class="ph codeph">propertyName</samp>, nodes can be accesses with the node name
+					only.</p>
+
+				<p class="p">Example:</p>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var myLabel = new sap.m.Label({text:"{/#Company/CompanyName/@sap:label}"});</pre></div>
+
+			</li>
+<li class="li">
+				<p class="p">Relative bindings</p>
+
+				<p class="p">A relative binding path can be resolved relative to a data path/context.</p>
+
+				<p class="p">Example:</p>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var myLabel = new sap.m.Label({text:"{/Companies(1)/CompanyCode/#@sap:label}"});
+var myLabel2 = new sap.m.Label({text:"{City/#@sap:label}"});
+myLabel2.bindElement("Companies(1)");</pre></div>
+
+			</li>
+</ul>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Property Metadata Binding";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

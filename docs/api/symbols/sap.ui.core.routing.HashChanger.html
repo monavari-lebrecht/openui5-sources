@@ -1,0 +1,559 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.core.routing.HashChanger</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class sap.ui.core.routing.HashChanger
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.ui.base.EventProvider" href="../symbols/sap.ui.base.EventProvider.html">EventProvider</a></div>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p></p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="Class for manipulating and receiving changes of the browserhash with the hasher framework.">new <a href="../symbols/sap.ui.core.routing.HashChanger.html#constructor">sap.ui.core.routing.HashChanger</a></b>
+										<span class='signature'>()</span>
+										<span class='description'>Class for manipulating and receiving changes of the browserhash with the hasher framework.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+						
+						
+						
+						
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Gets a global singleton of the HashChanger."><a href="../symbols/sap.ui.core.routing.HashChanger.html#.getInstance">sap.ui.core.routing.HashChanger.getInstance</a></b><span class='signature'>(<span title="{sap.ui.core.routing.HashChanger} The instance for the global singleton.">oHashChanger</span>)</span>
+									<span class='description'>Gets a global singleton of the HashChanger.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Cleans the event registration"><a href="../symbols/sap.ui.core.routing.HashChanger.html#destroy">destroy</a></b><span class='signature'>()</span>
+									<span class='description'>Cleans the event registration</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Fires the hashchanged event, may be extended to modify the hash before fireing the event"><a href="../symbols/sap.ui.core.routing.HashChanger.html#fireHashChanged">fireHashChanged</a></b><span class='signature'>(<span title="(string) the new hash of the browser">newHash</span>, <span title="(string) - the previous hash">oldHash</span>)</span>
+									<span class='description'>Fires the hashchanged event, may be extended to modify the hash before fireing the event</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Gets the current hash"><a href="../symbols/sap.ui.core.routing.HashChanger.html#getHash">getHash</a></b><span class='signature'>()</span>
+									<span class='description'>Gets the current hash</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Will start listening to hashChanges with the parseHash function."><a href="../symbols/sap.ui.core.routing.HashChanger.html#init">init</a></b><span class='signature'>()</span>
+									<span class='description'>Will start listening to hashChanges with the parseHash function.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Replaces the hash to a certain value."><a href="../symbols/sap.ui.core.routing.HashChanger.html#replaceHash">replaceHash</a></b><span class='signature'>(<span title="(string) the hash">sHash</span>)</span>
+									<span class='description'>Replaces the hash to a certain value.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static protected">
+									<b class="icon protected" title="Sets the hashChanger to a new instance, destroys the old one and copies all its event listeners to the new one"><a href="../symbols/sap.ui.core.routing.HashChanger.html#.replaceHashChanger">sap.ui.core.routing.HashChanger.replaceHashChanger</a></b><span class='signature'>(<span title="{sap.ui.core.routing.HashChanger} the new instance for the global singleton">oHashChanger</span>)</span>
+									<span class='description'>Sets the hashChanger to a new instance, destroys the old one and copies all its event listeners to the new one</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Sets the hash to a certain value."><a href="../symbols/sap.ui.core.routing.HashChanger.html#setHash">setHash</a></b><span class='signature'>(<span title="(string) the hash">sHash</span>)</span>
+									<span class='description'>Sets the hash to a certain value.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.EventProvider.html#attachEvent">attachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#attachEventOnce">attachEventOnce</a>, <a href="../symbols/sap.ui.base.EventProvider.html#detachEvent">detachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#fireEvent">fireEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#getEventingParent">getEventingParent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#toString">toString</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.Object.html">sap.ui.base.Object</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.Object.html#getInterface">getInterface</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.ui.core.routing.HashChanger</b>()
+										</div>
+										
+										<div class="full-description">
+											Class for manipulating and receiving changes of the browserhash with the hasher framework.
+Fires a "hashChanged" event if the browser hash changes.
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".getInstance"> </a>
+										<div class="itemTitle icon">
+											sap.ui.core.routing.HashChanger.getInstance<span class="signature">(<span title="{sap.ui.core.routing.HashChanger} The instance for the global singleton.">oHashChanger</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Gets a global singleton of the HashChanger. The singleton will get created when this function is invoked for the first time.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  
+													</td>
+													<td class="methodItemName">
+													  <b>oHashChanger</b>
+													</td>
+													<td class="methodItemDesc">
+												    {sap.ui.core.routing.HashChanger} The instance for the global singleton.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="destroy"> </a>
+										<div class="itemTitle icon protected">
+											destroy<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Cleans the event registration
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+											<div class="heading">See:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemDesc">
+														sap.ui.base.Object.prototype.destroy
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="fireHashChanged"> </a>
+										<div class="itemTitle icon protected">
+											fireHashChanged<span class="signature">(<span title="(string) the new hash of the browser">newHash</span>, <span title="(string) - the previous hash">oldHash</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Fires the hashchanged event, may be extended to modify the hash before fireing the event
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>newHash</b>
+													</td>
+													<td class="methodItemDesc">
+												    the new hash of the browser
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oldHash</b>
+													</td>
+													<td class="methodItemDesc">
+												    - the previous hash
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getHash"> </a>
+										<div class="itemTitle icon">
+											getHash<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Gets the current hash
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the current hash
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="init"> </a>
+										<div class="itemTitle icon">
+											init<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Will start listening to hashChanges with the parseHash function.
+This will also fire a hashchanged event with the initial hash.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														
+													</td>
+													<td class="methodItemDesc">
+														false if it was initialized before, true if it was initialized the first time
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="replaceHash"> </a>
+										<div class="itemTitle icon">
+											replaceHash<span class="signature">(<span title="(string) the hash">sHash</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Replaces the hash to a certain value. When using the replace function no browser history is written. 
+If you want to have an entry in the browser history, please use set setHash function.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sHash</b>
+													</td>
+													<td class="methodItemDesc">
+												    the hash
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected static protected'>
+										<a name=".replaceHashChanger"> </a>
+										<div class="itemTitle icon protected">
+											sap.ui.core.routing.HashChanger.replaceHashChanger<span class="signature">(<span title="{sap.ui.core.routing.HashChanger} the new instance for the global singleton">oHashChanger</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Sets the hashChanger to a new instance, destroys the old one and copies all its event listeners to the new one
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  
+													</td>
+													<td class="methodItemName">
+													  <b>oHashChanger</b>
+													</td>
+													<td class="methodItemDesc">
+												    {sap.ui.core.routing.HashChanger} the new instance for the global singleton
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setHash"> </a>
+										<div class="itemTitle icon">
+											setHash<span class="signature">(<span title="(string) the hash">sHash</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Sets the hash to a certain value. When using the set function a browser history  entry is written. 
+If you do not want to have an entry in the browser history, please use set replaceHash function.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sHash</b>
+													</td>
+													<td class="methodItemDesc">
+												    the hash
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

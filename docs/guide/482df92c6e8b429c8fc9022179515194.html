@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=1732356501014387"/>
+<title>Step 6: Custom Utilities</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio482df92c6e8b429c8fc9022179515194">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Step 6: Custom Utilities</h1>
+<div class="body conbody"><p class="shortdesc"/>
+<p class="p">When developing an application there is always the need to reuse JavaScript coding in multiple
+			views and controllers. This is achieved by storing this code in separate files in the
+			util folder. The UI5 modularization concept is used to dynamically load this code at
+			runtime. </p>
+<p class="p">One prominent example is the reuse of formatters in data bindings. In our sample
+			application, we have properties in data bindings that need to be formatted. The code is
+			defined in a <span class="ph filepath">Formatter.js</span> file in the util folder.</p>
+<p class="p">Here's the content of the file:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+jQuery.sap.declare("sap.ui.demo.tdg.util.Formatter");
+
+sap.ui.demo.tdg.util.Formatter = {
+
+	uppercaseFirstChar : function(sStr) {
+		return sStr.charAt(0).toUpperCase() + sStr.slice(1);
+	},
+
+	discontinuedStatusState : function(sDate) {
+		return sDate ? "Error" : "None";
+	},
+
+	discontinuedStatusValue : function(sDate) {
+		return sDate ? "Discontinued" : "";
+	},
+
+	currencyValue : function (value) {
+		return parseFloat(value).toFixed(2);
+	}
+
+};
+</pre></div>
+<p class="p">Here are a couple of examples of where these formatting functions are used - one from the
+			Master view:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!xml</samp>
+&lt;ObjectStatus
+    text="{
+        path: 'Rating',
+        formatter: 'sap.ui.demo.tdg.util.Formatter.ratingStatusValue' 
+    }"
+    state="{
+        path: 'Rating',
+        formatter: 'sap.ui.demo.tdg.util.Formatter.ratingStatusState' 
+    }" /&gt;
+</pre></div>
+<p class="p">and one from the Detail view:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!xml</samp>
+&lt;ObjectHeader
+    title="{Name}"
+    icon="sap-icon://database"
+    number="{
+        path: 'Price',
+        formatter: 'sap.ui.demo.tdg.util.Formatter.currencyValue'
+    }"
+    numberUnit="USD"&gt;
+    ...
+&lt;/ObjectHeader&gt;</pre></div>
+<p class="p">We see from the Master view example that the formatter functions are used not only to
+			format numeric values, but also to supply the appropriate value from an enumeration
+			(such as the <samp class="ph codeph">sap.ui.core.ValueState</samp> for an
+				<samp class="ph codeph">sap.m.ObjectStatus</samp>).</p>
+<div class="section"><div class="section_title">Progress Check</div><div type="Progress Check">
+			
+			<p class="p">After adding the<span class="ph filepath"> Formatter.js</span> file in the new util subfolder,
+				our app folder content looks like this:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+tdg/
+  |
+  +-- i18n/
+  |     |
+  |     +-- messageBundle.properties
+  |
+  +-- util/
+  |     |
+  |     +-- Formatter.js
+  |
+  +-- Component.js
+  +-- index.html
+  +-- MyRouter.html</pre></div>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="91f2412f6f4d1014b6dd926db0e91070.html" title="The SAPUI5 framework has built-in support for modularizing comprehensive JavaScript applications. That means, instead of defining and loading one large bundle of JavaScript code, an application can be splitted into smaller parts which then can be loaded at runtime at the time when they are needed. These smaller individual files are called modules.">Modularization and Resource Handling</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Step 6: Custom Utilities";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

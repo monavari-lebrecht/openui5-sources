@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=030209194719748256"/>
+<title>URL White List Filtering</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f3768f6f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">URL White List Filtering</h1>
+<div class="body"><p class="p">The SAPUI5 framework provides a client-side API to manage a whitelist for URLs. This whitelist
+			can be used to validate arbitrary URLs if they are permitted or not.</p>
+<p class="p">Internal examples of how controls can use this feature are those controls which accept
+			arbitrary HTML content like the <samp class="ph codeph">sap.ui.richttexteditor.RichTextEditor</samp>
+			and the <samp class="ph codeph">sap.ui.core.HTML</samp>. These controls use the URL white list when a
+			check (sanitization) is performed on the content. URLs inside their content are then
+			automatically removed, except if they are listed in the URL white list. The option to
+			sanitize the value can be enabled or disabled in the respective control properly via the
+				<samp class="ph codeph">RichTextEditor.sanitizeValue</samp> or the
+				<samp class="ph codeph">HTML.sanitizeContent</samp> property. For the HTML control it is disabled
+			by default whereas for the !RichTextEditor the sanitize option is enabled. When adding a
+			Path to the Whitelist be aware to add a "/" at the start of the Path if necessary, so
+			"/index.epx" would be the correct entry instead of "index.epx". The last example below
+			shows this.</p>
+<div class="section" id="loio91f3768f6f4d1014b6dd926db0e91070__section_16EB929B857E45C2B245F2E97E9E5E8D"><div class="section_title">Maintaining the URL White List</div><div type="Maintaining the URL White List"> 
+		 
+		<p class="p">The white list can be maintained with the following API: 
+		</p>
+ 
+		<ul class="ul"><li class="li"> 
+			 <p class="p"> 
+				<samp class="ph codeph">jQuery.sap.addUrlWhitelist</samp> 
+			 </p>
+ 
+		  </li>
+<li class="li"> 
+			 <p class="p"><samp class="ph codeph">jQuery.sap.clearUrlWhitelist</samp>
+					</p>
+ 
+		  </li>
+<li class="li"> 
+			 <p class="p"><samp class="ph codeph">jQuery.sap.getUrlWhitelist</samp>
+					</p>
+ 
+		  </li>
+<li class="li"> 
+			 <p class="p"> 
+				<samp class="ph codeph">jQuery.sap.removeUrlWhitelist</samp> 
+			 </p>
+ 
+		  </li>
+</ul>
+ 
+		<p class="p">Here is an example how valid URLs can be added to the whitelist: </p>
+ 
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+
+// jQuery.sap.addUrlWhitelist(/* protocol */ undefined, /* host */ undefined, /* port */ undefined, /* path */ undefined);
+
+
+jQuery.sap.addUrlWhitelist(undefined, "www.sap.com");
+
+jQuery.sap.addUrlWhitelist("https", "sdn.sap.com");
+
+jQuery.sap.addUrlWhitelist(undefined, "sap.de", "1080");</pre></div>
+ 
+	 </div></div>
+<div class="section" id="loio91f3768f6f4d1014b6dd926db0e91070__section_D3F15D5E106B41C0A037A91D5EAD13DC"><div class="section_title">Validating a URL</div><div type="Validating a URL"> 
+		 
+		<p class="p">A URL can be validated by using the following API: 
+		  <samp class="ph codeph">jQuerysapvalidateUrl</samp>. 
+		</p>
+ 
+		<p class="p">Here is an example how a given URL is validated against the before maintained whitelist: </p>
+ 
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+
+jQuery.sap.validateUrl("http://www.sap.com"); // =&gt; true
+
+jQuery.sap.validateUrl("http://sdn.sap.com"); // =&gt; false (wrong protocol)
+
+jQuery.sap.validateUrl("https://sdn.sap.com"); // =&gt; true
+
+jQuery.sap.validateUrl("ftp://sap.de:1080/anyftpfolder"); // =&gt; true</pre></div>
+ 
+		<p class="p">If no whitelist is maintained the URL validity check also basically checks the URL for being
+				defined in a valid format. </p>
+ 
+	 </div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="URL White List Filtering";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

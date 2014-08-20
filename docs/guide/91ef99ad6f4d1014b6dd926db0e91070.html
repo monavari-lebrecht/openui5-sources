@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=5348560536884135"/>
+<title>Support and Maintenance Strategy</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91ef99ad6f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Support and Maintenance Strategy</h1>
+<div class="body"><div class="section" id="loio91ef99ad6f4d1014b6dd926db0e91070__section_F7E2A69BD6F442ECA8C079090C21CA2B"><div class="section_title">Server</div><div type="Server"> 
+		 
+		<p class="p">The UI development toolkit for HTML5 (SAPUI5) is comprised of a server and a client component
+				for both the SAPUI5 tools and runtime. The support and maintenance strategy of both
+				parts differs from the general SAP NetWeaver support and maintenance strategy, see
+					<a class="extlink" href="http://help.sap.com/disclaimer?site=http://service.sap.com/maintenance">SAP Maintenance
+					Strategy<img src="images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a>. The SAPUI5 components are downward-compatible software
+				components and follow the same strategy as the SAP GUI. They can be replaced by a
+				higher software component version during the lifetime of the software product
+				version they are built into without adaptations or changes to other software
+				component versions within the relevant software product version. Therefore, the
+				SAPUI5 software component versions are usually not maintained for the entire
+				maintenance period of the software product version they are built into. Instead,
+				they have to be replaced by a higher software component version.</p>
+ 
+		<p class="p">Downward-compatible means, for example, for SAP NetWeaver ABAP that starting with SAP NetWeaver
+				UI extensions add-on SP01, the most current client version of SAPUI5 runtime and
+				tools will always be compatible with all future SAP NetWeaver support packages. We
+				recommend, therefore, that customers apply the most recent client updates of SAPUI5
+				tools and runtime on a regular basis. As the SAPUI5 tools client has many
+				dependencies, this may require additional updates.</p>
+ 
+	 </div></div>
+<div class="section" id="loio91ef99ad6f4d1014b6dd926db0e91070__section_1BA88E6C03784442AA082A95078C5029"><div class="section_title">Client</div><div type="Client"> 
+		 
+		<p class="p">SAPUI5 tools are build into Eclipse, but are <strong class="ph b">not</strong> shipped as a bundle with Eclipse, but
+				separately as an Eclipse p2 repository. Eclipse is supported for different
+				individual platforms. The support of individual platforms also depends on the
+				support of the operating systems by the manufacturers. SAP cannot provide support
+				for a platform or for an operating system which is no longer supported by its vendor
+				or manufacturer. In the same sense, SAP cannot provide support for an Eclipse
+				version or any other Open Source software version, which is no longer supported by
+				the Eclipse Foundation or the Open Source community. </p>
+ 
+	 </div></div>
+<div class="section" id="loio91ef99ad6f4d1014b6dd926db0e91070__section_AD3B4F920FC448A0B4D1F2C55800C2F9"><div class="section_title">Support Platform Matrix</div><div type="Support Platform Matrix"> 
+		 
+		<p class="p"> SAPUI5 tools is only supported for a subset of the
+		  individual platform and operating system versions that are also supported by
+		  Eclipse. The list of different individual operating system versions, Java
+		  Runtime versions, Eclipse versions, and Browser versions that are supported by
+		  SAPUI5 tools is provided in the SAPUI5 tools Support Platform Matrix (SPM). SAP
+		  does not support to run SAPUI5 tools on operating system versions, Java Runtime
+		  versions, Eclipse versions, and Browser versions that are not listed in the
+		  SAPUI5 tools SPM. 
+		</p>
+ 
+		<p class="p">The following table gives an overview of the
+		  supported platforms and operating systems: 
+		</p>
+ 
+		<table summary="" border="1" class="simpletable"><tr class="strow"><td valign="top" class="stentry">Operating System</td>
+<td valign="top" class="stentry">Windows XP, Vista 7 (32- or 64-Bit) 
+			 </td>
+</tr>
+<tr class="strow"><td valign="top" class="stentry">Java
+				Runtime 
+			 </td>
+<td valign="top" class="stentry">JRE 1.6,
+				32/64-Bit</td>
+</tr>
+<tr class="strow"><td valign="top" class="stentry">Browser
+				
+			 </td>
+<td valign="top" class="stentry">Internet Explorer 9.0 or
+				higher</td>
+</tr>
+<tr class="strow"><td valign="top" class="stentry">ABAP
+				Tools for SAP NetWeaver</td>
+<td valign="top" class="stentry">When using
+				the SAPUI5 ABAP Team Provider, the Support Platform Matrix of ABAP Development
+				Tools for SAP NetWeaver applies</td>
+</tr>
+<tr class="strow"><td valign="top" class="stentry">Eclipse
+				platform 
+			 </td>
+<td valign="top" class="stentry">Eclipse Indigo 3.7, Eclipse Juno 3.8 or 4.2, and Eclipse Kepler 4.3</td>
+</tr>
+</table>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p">Eclipse Indigo 3.7 is only supported for SAPUI5 tools. For ABAP Tools for SAP
+					NetWeaver, only Eclipse Kepler 4.3 and Eclipse Juno 3.8 or 4.2 are
+					supported.</p>
+
+			</div>
+ 
+		<p class="p"> The SAPUI5 runtime supports the browsers that are listed in the Product Availability Matrix
+				for the UI add-on for SAP NetWeaver. </p>
+ 
+	 </div></div>
+<div class="section" id="loio91ef99ad6f4d1014b6dd926db0e91070__section_94D2E008654D4C6795DD287C9FB1F45C"><div class="section_title">Special Terms for Operating Systems</div><div type="Special Terms for Operating Systems"> 
+		
+		
+		<p class="p"> SAP recommends that you always use a current
+		  Support Package (SP) for the relevant operating system as listed on the SAPUI5
+		  tools SPM. An operating system, which is no longer supported by the operating
+		  system's manufacturer should no longer be used in conjunction with SAPUI5
+		  tools. If an issue occurs only on an unsupported operating system, SAP will not
+		  analyse nor solve the issue, but instead reply by recommending an update of the
+		  operating system. Additionally, SAP does not test SAPUI5 tools on such
+		  operating systems anymore. 
+		</p>
+ 
+	 </div></div>
+<div class="section" id="loio91ef99ad6f4d1014b6dd926db0e91070__section_00A6DD53E89C4F97B03F81F57484487B"><div class="section_title">Special Terms for Java Runtime versions</div><div type="Special Terms for Java Runtime versions"> 
+		 
+		<p class="p"> SAP recommends that you always use a current Java
+		  Runtime version as listed on the SAPUI5 tools SPM. A Java Runtime version,
+		  which is no longer supported by the Java Runtime version manufacturer should no
+		  longer be used in conjunction with SAPUI5 tools. If an issue occurs only on an
+		  unsupported Java Runtime version SAP will not analyse nor solve the issue, but
+		  instead reply by recommending an upgrade of the Java Runtime version.
+		  Additionally, SAP does not test SAPUI5 tools on such Java Runtime versions
+		  anymore. 
+		</p>
+ 
+	 </div></div>
+<div class="section" id="loio91ef99ad6f4d1014b6dd926db0e91070__section_75D25301795F48B5988A6BE18F57ADCE"><div class="section_title">Special Terms for Eclipse versions</div><div type="Special Terms for Eclipse versions"> 
+		
+		
+		<p class="p"> SAP recommends that you always use a current
+		  Eclipse version as listed on the SAPUI5 tools SPM. An Eclipse version, which is
+		  no longer supported by the Eclipse foundation should no longer be used in
+		  conjunction with SAPUI5 tools. If an issue occurs only on an unsupported
+		  Eclipse version SAP will not analyse nor solve the issue, but instead reply by
+		  recommending an upgrade of the Eclipse version. Additionally, SAP does not test
+		  UI5 tools on such Eclipse versions anymore. 
+		</p>
+ 
+	 </div></div>
+<div class="section" id="loio91ef99ad6f4d1014b6dd926db0e91070__section_1CFCBE6F9F5F4013BB734D984FE684ED"><div class="section_title">Special Terms for Browser versions</div><div type="Special Terms for Browser versions"> 
+		
+		
+		<p class="p"> SAP recommends that you always use a current
+		  Browser version as listed on the SAPUI5 tools SPM. A Browser version which is
+		  no longer supported by the Browser manufacturer should no longer be used in
+		  conjunction with UI5 tools. If an issue occurs only on an unsupported Browser
+		  version SAP will not analyse nor solve the issue, but instead reply by
+		  recommending an upgrade of the Browser version. Additionally, SAP does not test
+		  SAPUI5 tools on such Browser versions anymore. 
+		</p>
+ 
+	 </div></div>
+<div class="section" id="loio91ef99ad6f4d1014b6dd926db0e91070__section_2125690FA0B04F95A791865245DD3391"><div class="section_title">Language Support</div><div type="Language Support"> 
+		 
+		<p class="p"> If the SAPUI5 ABAP TeamProvider is used, the
+		  SAPUI5 tools are released in English language only. 
+		</p>
+ 
+	 </div></div>
+<div class="section" id="loio91ef99ad6f4d1014b6dd926db0e91070__section_275FE0E2BD21466F8D58FAA06AC1291B"><div class="section_title">SAP Shipment Channel and License Agreement</div><div type="SAP Shipment Channel and License Agreement"> 
+		 
+		<p class="p"> The use of SAPUI5 is subject to the terms and
+		  conditions of your license agreement with SAP which is directly related to the
+		  SAP shipment channel where SAPUI5 has been initially been downloaded and
+		  installed from. SAP does not support to update SAPUI5 with software from a
+		  different SAP shipment channel than the initial installation of SAPUI5 has been
+		  done. Example: An update of an older SAPUI5 installation which has originally
+		  been downloaded and installed from the SAP Service Marketplace with a newer
+		  SAPUI5version which is provided on the SAP Developer Center is not recommended
+		  and not supported by SAP. 
+		</p>
+ 
+	 </div></div>
+<div class="section" id="loio91ef99ad6f4d1014b6dd926db0e91070__section_FAC046B5550D4EAA8D656AB718A7E148"><div class="section_title">Disclaimer</div><div type="Disclaimer"> 
+		 
+		<p class="p"> Some components of this product are based on
+		  Java™. Any code change in these components may cause unpredictable and severe
+		  malfunctions and is therefore expressly prohibited, as is any decompilation of
+		  these components. 
+		</p>
+ 
+		<p class="p">Any Java™ Source Code delivered with this product
+		  is only to be used by SAP's Support Services and may not be modified or altered
+		  in any way. 
+		</p>
+ 
+	 </div></div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Support and Maintenance Strategy";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

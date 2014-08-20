@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="Fragments are pieces of UI, just like SAPUI5 MVC views, but without the view control around the content and without their own controller."/>
+<meta name="description" content="Fragments are pieces of UI, just like SAPUI5 MVC views, but without the view control around the content and without their own controller."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=3833958850055509"/>
+<title>Fragments</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio36a5b130076e4b4aac2c27eebf324909">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Fragments</h1>
+<div class="body conbody"><p class="shortdesc">Fragments are pieces of UI, just like SAPUI5 MVC views, but without the view control
+		around the content and without their own controller. </p>
+<p class="p">UI parts which are to be used in several views cannot be easily defined. Either they have
+			to be created as new controls, or they have to be created as views. Creating them as new
+			controls results in a development overhead, while creating them as separate views
+			results in a runtime overhead. In the latter case they would have a separate controller
+			instead of having the same controller as the view does. </p>
+<p class="p">Furthermore, views and popup controls like dialogs do not go well together - the dialog content
+			can be defined as a view but the dialog control itself always has to be written in the
+			program. </p>
+<p class="p">To solve these issues, fragments have been introduced as a new concept. Fragments are
+			light-weight UI parts (UI sub-trees) which can be re-used, defined similar to views, but
+			do not have any controller or other behavior code involved. If source code is required,
+			and for event handler methods, they should be able to connect to existing controllers of
+			the "owning" view. This means that one important characteristic of fragments is that
+			they are independent of the MVC concept and can be used without using MVC. However, if
+			fragments are used together with views and controllers, fragments can make use of them
+			and integrate them neatly.</p>
+<p class="p">Similar to <span class="keyword apiname">DocumentFragments</span> in HTML, the fragment itself has no HTML
+			representation when it is inserted into a UI5 UI tree. Instead, its content is inserted.
+			This means that fragments are not like controls, but more like a factory creating the
+			contained controls. They support re-use and view modularization without adding overhead. </p>
+<p class="p">Because of the huge similarities of fragments and the definition and usage of MVC views,
+			it is important to be familiar with the SAPUI5 MVC concept. Many topics, such as the
+			fragment content definition, are identical. A link is provided below in the related
+			links section. </p>
+<p class="p">The reason why there are different types of fragments is because usecases are different
+			and because some developers prefer declarative UIs while others prefer to
+			programmatically construct them. There is no best choice, but the suggestions when to
+			use which view type also apply to fragments. </p>
+<p class="p">At the moment there are three different types of fragments: </p>
+<ul class="ul" id="loio36a5b130076e4b4aac2c27eebf324909__ul_zgg_rgv_3m"><li class="li"><a class="xref" href="2c677b574ea2486a8d5f5414d15e21c5.html">XML Fragments</a></li>
+<li class="li"><a class="xref" href="08d220676c1c4de38fa8bbc515e2477f.html">HTML Fragments</a></li>
+<li class="li"><a class="xref" href="9c069828d0064136ac6a499aa2cdace3.html">JS Fragments</a></li>
+</ul>
+<p class="p">More fragment types can be implemented and plugged in.</p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="91f233476f4d1014b6dd926db0e91070.html">Model View Controller (MVC)</a></div>
+<div><a class="link" href="454b208d49cb4f169d483e4223674cfd.html">Fragments</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Fragments";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

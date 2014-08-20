@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=9544209873944667"/>
+<title>Logging and Tracing</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio9f4d62c6648a423d85aaf2bfc2c7ddfe">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Logging and Tracing</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">You can use the SAPUI5 logging for debugging purposes, but also use jQuery.sap.log.* or
+			$.sap.log.* functions log in your application code with different security levels:</p>
+<p class="p">The following code line issues a log statement with severity level <em class="ph i">error</em>. The
+			browser highlights this statement in red color and displays it like a JavaScript
+			error:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">jQuery.sap.log.error("This should never have happened!");</pre></div>
+<p class="p">This code line issues a log statement with severity level <em class="ph i">information</em>. The browser
+			does <strong class="ph b">not</strong> display this statement if your log console is set to filter for errors
+			only:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">jQuery.sap.log.info("FYI: something has happened");</pre></div>
+<div class="section"><div class="section_title">Locating the Logger Output</div><div type="Locating the Logger Output"><p class="p">The developer tools of Internet
+				Explorer, Chrome, and Safari, as well as Firefoxe's Firebug extension offer a
+				console API that you can use for logging. The log output is additionally directed to
+				the console.</p>
+<img class="image" id="loio9f4d62c6648a423d85aaf2bfc2c7ddfe__image_wmb_jc3_hl" src="b6ec1e84cd1e487c8c23da1eb29231ee.image" alt="SAPUI5 Troubleshooting Logging Console" title="SAPUI5 Troubleshooting Logging Console"/></div></div>
+<div class="section"><div class="section_title">Using the Network Trace</div><div type="Using the Network Trace"><p class="p">If content misses in your application,
+				check the network trace of your page for occurrences of errors like 404
+					(<em class="ph i">Page/file not found</em>) or 500 (<em class="ph i">Internal server errors</em>). This also
+				tells you if an OData request has failed or if resources are not being loaded
+				because of a wrong URL.</p>
+<p class="p">To start a network trace, for example, in Chrome, open
+				the developer tools and switch to the <span class="ph uicontrol">Network</span> tab. In the
+				button bar at the bottom of this tab you can start and stop tracing. To see the
+				network requests that are sent from your application, you have to start the trace
+				and then reload the page. Once the loading has finished, you see a list of all
+				requests that were triggered, along with the request status (and highlighting to
+				show errors). Click on a request to view you further details, for example headers
+				that were sent or the response that was retrieved.</p>
+<img class="image" id="loio9f4d62c6648a423d85aaf2bfc2c7ddfe__image_tvq_4d3_hl" width="960px" src="631be8366d3442a4877c1108d271ec86.image" alt="SAPUI5 Troubleshooting Network Trace" title="SAPUI5 Troubleshooting Network Trace"/></div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Logging and Tracing";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

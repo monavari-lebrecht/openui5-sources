@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="The use of native HTML depends on the XHTML feature set."/>
+<meta name="description" content="The use of native HTML depends on the XHTML feature set."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=848211435724325"/>
+<title>Using Native HTML in XML Views</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiobe54950cae1041f59d4aa97a6bade2d8">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Using Native HTML in XML Views</h1>
+<div class="body taskbody"><p class="shortdesc">The use of native HTML depends on the XHTML feature set.</p>
+<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p"> When mixing XHTML and SAPUI5 controls, observe the following rules: </p>
+
+			<ul class="ul" id="loiobe54950cae1041f59d4aa97a6bade2d8__ul_sps_3bq_1j"><li class="li">
+					<p class="p">XHTML elements can be used instead of the SAPUI5 type control, for example,
+						in the root of an XML view or in the content aggregation of a layout
+						container. </p>
+
+				</li>
+<li class="li">
+					<p class="p">When embedding XHTML in an aggregation of a SAPUI5 control, the XHTML must
+						not consist of a single text node. The topmost node of an embedded XHTML
+						tree must be an XHTML element. Embedding pure text into an aggregation is
+						not supported. </p>
+
+				</li>
+<li class="li">
+					<p class="p">The XHTML nodes are converted 1:1 to HTML, the XMLView does not deal with any
+						differences between XHTML and HTML (for example rewriting and auto-closing
+						tags) </p>
+
+				</li>
+<li class="li">
+					<p class="p">The created HTML DOM nodes are preserved during re-rendering of an XML view:
+						Modifications to the DOM are not lost. </p>
+
+				</li>
+</ul>
+
+			<div class="note note" id="loiobe54950cae1041f59d4aa97a6bade2d8__note_N1003D_N10011_N10001"><span class="notetitle">Note</span> As an alternative to embedding XHTML, you can use
+				the <samp class="ph codeph">sap.ui.core.HTML</samp> control. As this requires content encoding it
+				is, however, less convenient. </div>
+
+		</div><div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><div class="li step p"><span class="ph cmd">To mix SAPUI5 controls with native XHTML, you only need the XHTML namespace to use (X)HTML: </span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;core:View controllerName="sap.hcm.Address" xmlns="sap.ui.commons" xmlns:core="sap.ui.core"
+           xmlns:html="http://www.w3.org/1999/xhtml"&gt;
+   &lt;Panel&gt;
+      &lt;Button text="Press Me. I am a SAPUI5 Button"/&gt;
+      &lt;html:button&gt;No, press me. I am native HTML Button.&lt;/html:button&gt;
+   &lt;/Panel&gt;
+&lt;core:View&gt;</pre></div>
+
+				</div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Using Native HTML in XML Views";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

@@ -1,0 +1,2557 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.m.Carousel</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class sap.m.Carousel
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.ui.core.Control" href="../symbols/sap.ui.core.Control.html">Control</a></div>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>The Carousel control can be used to navigate through a list of sap.m controls just like flipping through the pages of a book by swiping right or left. An indicator shows the current position within the control list. When displayed in a desktop browser, a left- and right-arrow button is displayed on the carousel's sides, which can be used to navigate through the carousel.
+</p><p>
+Note: when displa Internet Explorer 9, page changes are not animated.</p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="Constructor for a new Carousel.">new <a href="../symbols/sap.m.Carousel.html#constructor">sap.m.Carousel</a></b>
+										<span class='signature'>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)</span>
+										<span class='description'>Constructor for a new Carousel.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+						
+						
+						
+						
+					
+		
+
+
+					
+						
+						
+						<div class="summary section" cellspacing="0" summary="A summary of the events documented in the class sap.m.Carousel.">
+							<div class="sectionTitle">Event Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="This event is fired after a carousel swipe has been completed."><a href="../symbols/sap.m.Carousel.html#event:pageChanged">pageChanged</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>This event is fired after a carousel swipe has been completed.</span>
+								</div>
+							
+								<div class="sectionItem classMethod deprecated">
+									<b class="icon" title="Carousel requires a new page to be loaded."><a href="../symbols/sap.m.Carousel.html#event:loadPage">loadPage</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>Carousel requires a new page to be loaded.</span>
+								</div>
+							
+								<div class="sectionItem classMethod deprecated">
+									<b class="icon" title="Carousel does not display a page any longer and unloads it."><a href="../symbols/sap.m.Carousel.html#event:unloadPage">unloadPage</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>Carousel does not display a page any longer and unloads it.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+				
+						
+						
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Creates a new subclass of class sap.m.Carousel with name sClassName and enriches it with the information contained in oClassInfo."><a href="../symbols/sap.m.Carousel.html#.extend">sap.m.Carousel.extend</a></b><span class='signature'>(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Creates a new subclass of class sap.m.Carousel with name <code>sClassName</code> and enriches it with the information contained in <code>oClassInfo</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Adds some page oPage to the aggregation named pages."><a href="../symbols/sap.m.Carousel.html#addPage">addPage</a></b><span class='signature'>(<span title="(sap.ui.core.Control) the page to add; if empty, nothing is inserted">oPage</span>)</span>
+									<span class='description'>Adds some page <code>oPage</code> to the aggregation named <code>pages</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Attach event handler fnFunction to the 'pageChanged' event of this sap.m.Carousel."><a href="../symbols/sap.m.Carousel.html#attachPageChanged">attachPageChanged</a></b><span class='signature'>(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Attach event handler <code>fnFunction</code> to the 'pageChanged' event of this <code>sap.m.Carousel</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys all the pages in the aggregation named pages."><a href="../symbols/sap.m.Carousel.html#destroyPages">destroyPages</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys all the pages in the aggregation named <code>pages</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Detach event handler fnFunction from the 'pageChanged' event of this sap.m.Carousel."><a href="../symbols/sap.m.Carousel.html#detachPageChanged">detachPageChanged</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Detach event handler <code>fnFunction</code> from the 'pageChanged' event of this <code>sap.m.Carousel</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Fire event pageChanged to attached listeners."><a href="../symbols/sap.m.Carousel.html#firePageChanged">firePageChanged</a></b><span class='signature'>(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event pageChanged to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Provides getter and setter for the currently displayed page."><a href="../symbols/sap.m.Carousel.html#getActivePage">getActivePage</a></b><span class='signature'>()</span>
+									<span class='description'>Provides getter and setter for the currently displayed page.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property height."><a href="../symbols/sap.m.Carousel.html#getHeight">getHeight</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>height</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property loop."><a href="../symbols/sap.m.Carousel.html#getLoop">getLoop</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>loop</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property pageIndicatorPlacement."><a href="../symbols/sap.m.Carousel.html#getPageIndicatorPlacement">getPageIndicatorPlacement</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>pageIndicatorPlacement</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation pages."><a href="../symbols/sap.m.Carousel.html#getPages">getPages</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>pages</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property showPageIndicator."><a href="../symbols/sap.m.Carousel.html#getShowPageIndicator">getShowPageIndicator</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>showPageIndicator</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property visible."><a href="../symbols/sap.m.Carousel.html#getVisible">getVisible</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>visible</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property width."><a href="../symbols/sap.m.Carousel.html#getWidth">getWidth</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>width</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Checks for the provided sap.ui.core.Control in the aggregation named pages and returns its index if found or -1 otherwise."><a href="../symbols/sap.m.Carousel.html#indexOfPage">indexOfPage</a></b><span class='signature'>(<span title="(sap.ui.core.Control) the page whose index is looked for.">oPage</span>)</span>
+									<span class='description'>Checks for the provided <code>sap.ui.core.Control</code> in the aggregation named <code>pages</code> and returns its index if found or -1 otherwise.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Inserts a page into the aggregation named pages."><a href="../symbols/sap.m.Carousel.html#insertPage">insertPage</a></b><span class='signature'>(<span title="(sap.ui.core.Control) the page to insert; if empty, nothing is inserted">oPage</span>, <span title="(int) the 0-based index the page should be inserted at; for a negative value of iIndex, the page is inserted at position 0; for a value greater than the current size of the aggregation, the page is inserted at the last position">iIndex</span>)</span>
+									<span class='description'>Inserts a page into the aggregation named <code>pages</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="API method to show the previous page in the page list."><a href="../symbols/sap.m.Carousel.html#next">next</a></b><span class='signature'>()</span>
+									<span class='description'>API method to show the previous page in the page list.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="API method to show the next page in the page list."><a href="../symbols/sap.m.Carousel.html#previous">previous</a></b><span class='signature'>()</span>
+									<span class='description'>API method to show the next page in the page list.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes all the controls in the aggregation named pages."><a href="../symbols/sap.m.Carousel.html#removeAllPages">removeAllPages</a></b><span class='signature'>()</span>
+									<span class='description'>Removes all the controls in the aggregation named <code>pages</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes an page from the aggregation named pages."><a href="../symbols/sap.m.Carousel.html#removePage">removePage</a></b><span class='signature'>(<span title="(int | string | sap.ui.core.Control) the page to remove or its index or id">vPage</span>)</span>
+									<span class='description'>Removes an page from the aggregation named <code>pages</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="API method to set the carousel's height"><a href="../symbols/sap.m.Carousel.html#setHeight">setHeight</a></b><span class='signature'>(<span title="the new height as CSSSize">oHeight</span>)</span>
+									<span class='description'>API method to set the carousel's height</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="API method to set whether the carousel should loop, i.e show the first page after the last page is reached and vice versa."><a href="../symbols/sap.m.Carousel.html#setLoop">setLoop</a></b><span class='signature'>(<span title="the new loop property">bLoop</span>)</span>
+									<span class='description'>API method to set whether the carousel should loop, i.e show the first page after the last page is reached and vice versa.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="API method to place the page inidicator."><a href="../symbols/sap.m.Carousel.html#setPageIndicatorPlacement">setPageIndicatorPlacement</a></b><span class='signature'>(<span title="either sap.m.PlacementType.Top or sap.m.PlacementType.Bottom">sPlacement</span>)</span>
+									<span class='description'>API method to place the page inidicator.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="API method to set whether the carousel should display the page indicator"><a href="../symbols/sap.m.Carousel.html#setShowPageIndicator">setShowPageIndicator</a></b><span class='signature'>(<span title="the new show property">bShowPageIndicator</span>)</span>
+									<span class='description'>API method to set whether the carousel should display the page indicator</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property visible."><a href="../symbols/sap.m.Carousel.html#setVisible">setVisible</a></b><span class='signature'>(<span title="(boolean) new value for property visible">bVisible</span>)</span>
+									<span class='description'>Setter for property <code>visible</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="API method to set the carousel's width"><a href="../symbols/sap.m.Carousel.html#setWidth">setWidth</a></b><span class='signature'>(<span title="the new width as CSSSize">oWidth</span>)</span>
+									<span class='description'>API method to set the carousel's width</span>
+								</div>
+							
+								<div class="sectionItem classMethod deprecated">
+									<b class="icon" title="Attach event handler fnFunction to the 'loadPage' event of this sap.m.Carousel."><a href="../symbols/sap.m.Carousel.html#attachLoadPage">attachLoadPage</a></b><span class='signature'>(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Attach event handler <code>fnFunction</code> to the 'loadPage' event of this <code>sap.m.Carousel</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod deprecated">
+									<b class="icon" title="Attach event handler fnFunction to the 'unloadPage' event of this sap.m.Carousel."><a href="../symbols/sap.m.Carousel.html#attachUnloadPage">attachUnloadPage</a></b><span class='signature'>(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Attach event handler <code>fnFunction</code> to the 'unloadPage' event of this <code>sap.m.Carousel</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod deprecated">
+									<b class="icon" title="Detach event handler fnFunction from the 'loadPage' event of this sap.m.Carousel."><a href="../symbols/sap.m.Carousel.html#detachLoadPage">detachLoadPage</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Detach event handler <code>fnFunction</code> from the 'loadPage' event of this <code>sap.m.Carousel</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod deprecated">
+									<b class="icon" title="Detach event handler fnFunction from the 'unloadPage' event of this sap.m.Carousel."><a href="../symbols/sap.m.Carousel.html#detachUnloadPage">detachUnloadPage</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Detach event handler <code>fnFunction</code> from the 'unloadPage' event of this <code>sap.m.Carousel</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod deprecated protected">
+									<b class="icon protected" title="Fire event loadPage to attached listeners."><a href="../symbols/sap.m.Carousel.html#fireLoadPage">fireLoadPage</a></b><span class='signature'>(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event loadPage to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod deprecated protected">
+									<b class="icon protected" title="Fire event unloadPage to attached listeners."><a href="../symbols/sap.m.Carousel.html#fireUnloadPage">fireUnloadPage</a></b><span class='signature'>(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event unloadPage to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="API method to retrieve the carousel's busy indicator size."><a href="../symbols/sap.m.Carousel.html#getBusyIndicatorSize">getBusyIndicatorSize</a></b><span class='signature'>()</span>
+									<span class='description'>API method to retrieve the carousel's busy indicator size.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="API method to check whether the carousel should display the busy indicators."><a href="../symbols/sap.m.Carousel.html#getShowBusyIndicator">getShowBusyIndicator</a></b><span class='signature'>()</span>
+									<span class='description'>API method to check whether the carousel should display the busy indicators.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="API method to set the carousel's busy indicator size."><a href="../symbols/sap.m.Carousel.html#setBusyIndicatorSize">setBusyIndicatorSize</a></b><span class='signature'>()</span>
+									<span class='description'>API method to set the carousel's busy indicator size.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="API method to set whether the carousel should display the busy indicators."><a href="../symbols/sap.m.Carousel.html#setShowBusyIndicator">setShowBusyIndicator</a></b><span class='signature'>()</span>
+									<span class='description'>API method to set whether the carousel should display the busy indicators.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Control.html#addStyleClass">addStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#allowTextSelection">allowTextSelection</a>, <a href="../symbols/sap.ui.core.Control.html#attachBrowserEvent">attachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#clone">clone</a>, <a href="../symbols/sap.ui.core.Control.html#detachBrowserEvent">detachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#getBusy">getBusy</a>, <a href="../symbols/sap.ui.core.Control.html#getBusyIndicatorDelay">getBusyIndicatorDelay</a>, <a href="../symbols/sap.ui.core.Control.html#getIdForLabel">getIdForLabel</a>, <a href="../symbols/sap.ui.core.Control.html#getRenderer">getRenderer</a>, <a href="../symbols/sap.ui.core.Control.html#hasStyleClass">hasStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#invalidate">invalidate</a>, <a href="../symbols/sap.ui.core.Control.html#isBusy">isBusy</a>, <a href="../symbols/sap.ui.core.Control.html#placeAt">placeAt</a>, <a href="../symbols/sap.ui.core.Control.html#removeStyleClass">removeStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#rerender">rerender</a>, <a href="../symbols/sap.ui.core.Control.html#setBusy">setBusy</a>, <a href="../symbols/sap.ui.core.Control.html#setBusyIndicatorDelay">setBusyIndicatorDelay</a>, <a href="../symbols/sap.ui.core.Control.html#toggleStyleClass">toggleStyleClass</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Element.html#$">$</a>, <a href="../symbols/sap.ui.core.Element.html#addCustomData">addCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#addDependent">addDependent</a>, <a href="../symbols/sap.ui.core.Element.html#addEventDelegate">addEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#applyFocusInfo">applyFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#bindElement">bindElement</a>, <a href="../symbols/sap.ui.core.Element.html#data">data</a>, <a href="../symbols/sap.ui.core.Element.html#destroy">destroy</a>, <a href="../symbols/sap.ui.core.Element.html#destroyCustomData">destroyCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#destroyDependents">destroyDependents</a>, <a href="../symbols/sap.ui.core.Element.html#enhanceAccessibilityState">enhanceAccessibilityState</a>, <a href="../symbols/sap.ui.core.Element.html#findElements">findElements</a>, <a href="../symbols/sap.ui.core.Element.html#fireEvent">fireEvent</a>, <a href="../symbols/sap.ui.core.Element.html#getCustomData">getCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#getDependents">getDependents</a>, <a href="../symbols/sap.ui.core.Element.html#getDomRef">getDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getElementBinding">getElementBinding</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusDomRef">getFocusDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusInfo">getFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#getInterface">getInterface</a>, <a href="../symbols/sap.ui.core.Element.html#getLayoutData">getLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#getMetadata">getMetadata</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip">getTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_AsString">getTooltip_AsString</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_Text">getTooltip_Text</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfCustomData">indexOfCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfDependent">indexOfDependent</a>, <a href="../symbols/sap.ui.core.Element.html#insertCustomData">insertCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#insertDependent">insertDependent</a>, <a href="../symbols/sap.ui.core.Element.html#prop">prop</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllCustomData">removeAllCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllDependents">removeAllDependents</a>, <a href="../symbols/sap.ui.core.Element.html#removeCustomData">removeCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeDependent">removeDependent</a>, <a href="../symbols/sap.ui.core.Element.html#removeEventDelegate">removeEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#setLayoutData">setLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#setTooltip">setTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#toString">toString</a>, <a href="../symbols/sap.ui.core.Element.html#unbindElement">unbindElement</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.ManagedObject.html">sap.ui.base.ManagedObject</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.ManagedObject.html#addAggregation">addAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#addAssociation">addAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#applySettings">applySettings</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindAggregation">bindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindContext">bindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindObject">bindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindProperty">bindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#destroyAggregation">destroyAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#findAggregatedObjects">findAggregatedObjects</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAggregation">getAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAssociation">getAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBinding">getBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingContext">getBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingInfo">getBindingInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingPath">getBindingPath</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getEventingParent">getEventingParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getId">getId</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getModel">getModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getObjectBinding">getObjectBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getOriginInfo">getOriginInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getParent">getParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getProperty">getProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#hasModel">hasModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#indexOfAggregation">indexOfAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#insertAggregation">insertAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isBound">isBound</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isInvalidateSuppressed">isInvalidateSuppressed</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isTreeBinding">isTreeBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAggregation">removeAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAggregation">removeAllAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAssociation">removeAllAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAssociation">removeAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAggregation">setAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAssociation">setAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setBindingContext">setBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setModel">setModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setProperty">setProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindAggregation">unbindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindContext">unbindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindObject">unbindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindProperty">unbindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateAggregation">validateAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateProperty">validateProperty</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.EventProvider.html#attachEvent">attachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#attachEventOnce">attachEventOnce</a>, <a href="../symbols/sap.ui.base.EventProvider.html#detachEvent">detachEvent</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.m.Carousel</b>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)
+										</div>
+										
+										<div class="full-description">
+											Constructor for a new Carousel.
+</p><p>
+Accepts an object literal <code>mSettings</code> that defines initial 
+property values, aggregated and associated objects as well as event handlers. 
+</p><p>
+If the name of a setting is ambiguous (e.g. a property has the same name as an event), 
+then the framework assumes property, aggregation, association, event in that order. 
+To override this automatic resolution, one of the prefixes "aggregation:", "association:" 
+or "event:" can be added to the name of the setting (such a prefixed name must be
+enclosed in single or double quotes).
+</p><p>
+The supported settings are:
+<ul>
+<li>Properties
+<ul>
+<li><a href="#getHeight">height</a> : sap.ui.core.CSSSize (default: '100%')</li>
+<li><a href="#getWidth">width</a> : sap.ui.core.CSSSize (default: '100%')</li>
+<li><a href="#getLoop">loop</a> : boolean (default: false)</li>
+<li><a href="#getVisible">visible</a> : boolean (default: true)</li>
+<li><a href="#getShowPageIndicator">showPageIndicator</a> : boolean (default: true)</li>
+<li><a href="#getPageIndicatorPlacement">pageIndicatorPlacement</a> : sap.m.PlacementType (default: sap.m.PlacementType.Bottom)</li>
+<li><a href="#getShowBusyIndicator">showBusyIndicator</a> : boolean (default: true)</li>
+<li><a href="#getBusyIndicatorSize">busyIndicatorSize</a> : sap.ui.core.CSSSize (default: '6em')</li></ul>
+</li>
+<li>Aggregations
+<ul>
+<li><a href="#getPages">pages</a> <strong>(default aggregation)</strong> : sap.ui.core.Control[]</li></ul>
+</li>
+<li>Associations
+<ul>
+<li><a href="#getActivePage">activePage</a> : string | sap.ui.core.Control</li></ul>
+</li>
+<li>Events
+<ul>
+<li><a href="../symbols/sap.m.Carousel.html#event:loadPage">loadPage</a> : fnListenerFunction or [fnListenerFunction, oListenerObject] or [oData, fnListenerFunction, oListenerObject]</li>
+<li><a href="../symbols/sap.m.Carousel.html#event:unloadPage">unloadPage</a> : fnListenerFunction or [fnListenerFunction, oListenerObject] or [oData, fnListenerFunction, oListenerObject]</li>
+<li><a href="../symbols/sap.m.Carousel.html#event:pageChanged">pageChanged</a> : fnListenerFunction or [fnListenerFunction, oListenerObject] or [oData, fnListenerFunction, oListenerObject]</li></ul>
+</li>
+</ul>
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    id for the new control, generated automatically if no id is given
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mSettings</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    initial settings for the new control
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Event Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:pageChanged"> </a>
+									<div class="itemTitle icon">
+										pageChanged<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										This event is fired after a carousel swipe has been completed. It is triggered both by physical swipe events and through API carousel manipulations such as calling 'next', 'previous' or 'setActivePageId' functions.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.oldActivePageId</b>
+												</td>
+												<td class="methodItemDesc">
+											    Id of the page which was active before the page change.
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.newActivePageId</b>
+												</td>
+												<td class="methodItemDesc">
+											    Id of the page which is active after the page change.
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+									<div class='sectionItem classProperty deprecated'>
+									<a name="event:loadPage"> </a>
+									<div class="itemTitle icon">
+										loadPage<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										Carousel requires a new page to be loaded. This event may be used to fill the content of that page
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.pageId</b>
+												</td>
+												<td class="methodItemDesc">
+											    Id of the page which will be loaded
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+										<dl class="detailList deprecation">
+											<dt class="heading">Deprecated:</dt>
+											<dt>
+												Since version 1.18.7. 
+Since 1.18.7 pages are no longer loaded or unloaded
+											</dt>
+										</dl>
+									
+									
+									
+									
+									
+									
+									</div>
+								
+									<div class='sectionItem classProperty deprecated'>
+									<a name="event:unloadPage"> </a>
+									<div class="itemTitle icon">
+										unloadPage<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										Carousel does not display a page any longer and unloads it. This event may be used to clean up the content of that page.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.pageId</b>
+												</td>
+												<td class="methodItemDesc">
+											    Id of the page which will be unloaded
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+										<dl class="detailList deprecation">
+											<dt class="heading">Deprecated:</dt>
+											<dt>
+												Since version 1.18.7. 
+Since 1.18.7 pages are no longer loaded or unloaded
+											</dt>
+										</dl>
+									
+									
+									
+									
+									
+									
+									</div>
+								
+							</div>
+						</div>
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".extend"> </a>
+										<div class="itemTitle icon">
+											sap.m.Carousel.extend<span class="signature">(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns function">: function</span>
+										</div>
+										<div class="full-description">
+											Creates a new subclass of class sap.m.Carousel with name <code>sClassName</code> 
+and enriches it with the information contained in <code>oClassInfo</code>.
+</p><p>
+<code>oClassInfo</code> might contain the same kind of informations as described in <a href="../symbols/sap.ui.core.Element.html#.extend">Element.extend</a>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sClassName</b>
+													</td>
+													<td class="methodItemDesc">
+												    name of the class to be created
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oClassInfo</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    object literal with informations about the class
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>FNMetaImpl</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    constructor function for the metadata object. If not given, it defaults to sap.ui.core.ElementMetadata.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{function}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the created class / constructor function
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addPage"> </a>
+										<div class="itemTitle icon">
+											addPage<span class="signature">(<span title="(sap.ui.core.Control) the page to add; if empty, nothing is inserted">oPage</span>)</span>
+											<span class="light" title="returns sap.m.Carousel">: <a href="../symbols/sap.m.Carousel.html">sap.m.Carousel</a></span>
+										</div>
+										<div class="full-description">
+											Adds some page <code>oPage</code> 
+to the aggregation named <code>pages</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oPage</b>
+													</td>
+													<td class="methodItemDesc">
+												    the page to add; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Carousel.html">sap.m.Carousel</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachPageChanged"> </a>
+										<div class="itemTitle icon">
+											attachPageChanged<span class="signature">(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.m.Carousel">: <a href="../symbols/sap.m.Carousel.html">sap.m.Carousel</a></span>
+										</div>
+										<div class="full-description">
+											Attach event handler <code>fnFunction</code> to the 'pageChanged' event of this <code>sap.m.Carousel</code>.<br/>.
+When called, the context of the event handler (its <code>this</code>) will be bound to <code>oListener<code> if specified
+otherwise to this <code>sap.m.Carousel</code>.<br/> itself. 
+</p><p>
+This event is fired after a carousel swipe has been completed. It is triggered both by physical swipe events and through API carousel manipulations such as calling 'next', 'previous' or 'setActivePageId' functions.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oData</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    An application specific payload object, that will be passed to the event handler along with the event object when firing the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Context object to call the event handler with. Defaults to this <code>sap.m.Carousel</code>.<br/> itself.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Carousel.html">sap.m.Carousel</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyPages"> </a>
+										<div class="itemTitle icon">
+											destroyPages<span class="signature">()</span>
+											<span class="light" title="returns sap.m.Carousel">: <a href="../symbols/sap.m.Carousel.html">sap.m.Carousel</a></span>
+										</div>
+										<div class="full-description">
+											Destroys all the pages in the aggregation 
+named <code>pages</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Carousel.html">sap.m.Carousel</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachPageChanged"> </a>
+										<div class="itemTitle icon">
+											detachPageChanged<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.m.Carousel">: <a href="../symbols/sap.m.Carousel.html">sap.m.Carousel</a></span>
+										</div>
+										<div class="full-description">
+											Detach event handler <code>fnFunction</code> from the 'pageChanged' event of this <code>sap.m.Carousel</code>.<br/>
+</p><p>
+The passed function and listener object must match the ones used for event registration.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Context object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Carousel.html">sap.m.Carousel</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="firePageChanged"> </a>
+										<div class="itemTitle icon protected">
+											firePageChanged<span class="signature">(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.m.Carousel">: <a href="../symbols/sap.m.Carousel.html">sap.m.Carousel</a></span>
+										</div>
+										<div class="full-description">
+											Fire event pageChanged to attached listeners.
+</p><p>
+Expects following event parameters:
+<ul>
+<li>'oldActivePageId' of type <code>string</code> Id of the page which was active before the page change.</li>
+<li>'newActivePageId' of type <code>string</code> Id of the page which is active after the page change.</li>
+</ul>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Map}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Carousel.html">sap.m.Carousel</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getActivePage"> </a>
+										<div class="itemTitle icon">
+											getActivePage<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Provides getter and setter for the currently displayed page. For the setter, argument may be the control itself, which must be member of the carousel's page list, or the control's id.
+The getter will return the control id
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Id of the element which is the current target of the <code>activePage</code> association, or null
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getHeight"> </a>
+										<div class="itemTitle icon">
+											getHeight<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.CSSSize">: <a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a></span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>height</code>.
+The height of the carousel. Note that when a percentage value is used, the height of the surrounding container must be defined.
+</p><p>
+Default value is <code>100%</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>height</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getLoop"> </a>
+										<div class="itemTitle icon">
+											getLoop<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>loop</code>.
+Defines whether the carousel should loop, i.e show the first page after the last page is reached and vice versa.
+</p><p>
+Default value is <code>false</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>loop</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getPageIndicatorPlacement"> </a>
+										<div class="itemTitle icon">
+											getPageIndicatorPlacement<span class="signature">()</span>
+											<span class="light" title="returns sap.m.PlacementType">: <a href="../symbols/sap.m.PlacementType.html">sap.m.PlacementType</a></span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>pageIndicatorPlacement</code>.
+Defines where the carousel's page indicator is displayed. Possible values are sap.m.PlacementType.Top, sap.m.PlacementType.Bottom. Other values are ignored and the default value will be applied. The default value is sap.m.PlacementType.Bottom.
+</p><p>
+Default value is <code>Bottom</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.PlacementType.html">sap.m.PlacementType</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>pageIndicatorPlacement</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getPages"> </a>
+										<div class="itemTitle icon">
+											getPages<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.Control[]">: <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>[]</span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>pages</code>.<br/>
+The content which the carousel displays.
+</p><p>
+<strong>Note</strong>: this is the default aggregation for Carousel.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getShowPageIndicator"> </a>
+										<div class="itemTitle icon">
+											getShowPageIndicator<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>showPageIndicator</code>.
+Show or hide carousel's page indicator.
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>showPageIndicator</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getVisible"> </a>
+										<div class="itemTitle icon">
+											getVisible<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>visible</code>.
+Shows or hides the carousel.
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>visible</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getWidth"> </a>
+										<div class="itemTitle icon">
+											getWidth<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.CSSSize">: <a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a></span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>width</code>.
+The width of the carousel. Note that when a percentage value is used, the height of the surrounding container must be defined.
+</p><p>
+Default value is <code>100%</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>width</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="indexOfPage"> </a>
+										<div class="itemTitle icon">
+											indexOfPage<span class="signature">(<span title="(sap.ui.core.Control) the page whose index is looked for.">oPage</span>)</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Checks for the provided <code>sap.ui.core.Control</code> in the aggregation named <code>pages</code> 
+and returns its index if found or -1 otherwise.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oPage</b>
+													</td>
+													<td class="methodItemDesc">
+												    the page whose index is looked for.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the index of the provided control in the aggregation if found, or -1 otherwise
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="insertPage"> </a>
+										<div class="itemTitle icon">
+											insertPage<span class="signature">(<span title="(sap.ui.core.Control) the page to insert; if empty, nothing is inserted">oPage</span>, <span title="(int) the 0-based index the page should be inserted at; for a negative value of iIndex, the page is inserted at position 0; for a value greater than the current size of the aggregation, the page is inserted at the last position">iIndex</span>)</span>
+											<span class="light" title="returns sap.m.Carousel">: <a href="../symbols/sap.m.Carousel.html">sap.m.Carousel</a></span>
+										</div>
+										<div class="full-description">
+											Inserts a page into the aggregation named <code>pages</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oPage</b>
+													</td>
+													<td class="methodItemDesc">
+												    the page to insert; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    the <code>0</code>-based index the page should be inserted at; for 
+            a negative value of <code>iIndex</code>, the page is inserted at position 0; for a value 
+            greater than the current size of the aggregation, the page is inserted at 
+            the last position
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Carousel.html">sap.m.Carousel</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="next"> </a>
+										<div class="itemTitle icon">
+											next<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											API method to show the previous page in the page list.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="previous"> </a>
+										<div class="itemTitle icon">
+											previous<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											API method to show the next page in the page list.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeAllPages"> </a>
+										<div class="itemTitle icon">
+											removeAllPages<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.Control[]">: <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>[]</span>
+										</div>
+										<div class="full-description">
+											Removes all the controls in the aggregation named <code>pages</code>.<br/>
+Additionally unregisters them from the hosting UIArea.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														an array of the removed elements (might be empty)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removePage"> </a>
+										<div class="itemTitle icon">
+											removePage<span class="signature">(<span title="(int | string | sap.ui.core.Control) the page to remove or its index or id">vPage</span>)</span>
+											<span class="light" title="returns sap.ui.core.Control">: <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></span>
+										</div>
+										<div class="full-description">
+											Removes an page from the aggregation named <code>pages</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int|string|<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vPage</b>
+													</td>
+													<td class="methodItemDesc">
+												    the page to remove or its index or id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the removed page or null
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setHeight"> </a>
+										<div class="itemTitle icon">
+											setHeight<span class="signature">(<span title="the new height as CSSSize">oHeight</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											API method to set the carousel's height
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  
+													</td>
+													<td class="methodItemName">
+													  <b>oHeight</b>
+													</td>
+													<td class="methodItemDesc">
+												    the new height as CSSSize
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setLoop"> </a>
+										<div class="itemTitle icon">
+											setLoop<span class="signature">(<span title="the new loop property">bLoop</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											API method to set whether the carousel should loop, i.e
+show the first page after the last page is reached and vice 
+versa.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  
+													</td>
+													<td class="methodItemName">
+													  <b>bLoop</b>
+													</td>
+													<td class="methodItemDesc">
+												    the new loop property
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setPageIndicatorPlacement"> </a>
+										<div class="itemTitle icon">
+											setPageIndicatorPlacement<span class="signature">(<span title="either sap.m.PlacementType.Top or sap.m.PlacementType.Bottom">sPlacement</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											API method to place the page inidicator.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  
+													</td>
+													<td class="methodItemName">
+													  <b>sPlacement</b>
+													</td>
+													<td class="methodItemDesc">
+												    either sap.m.PlacementType.Top or sap.m.PlacementType.Bottom
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setShowPageIndicator"> </a>
+										<div class="itemTitle icon">
+											setShowPageIndicator<span class="signature">(<span title="the new show property">bShowPageIndicator</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											API method to set whether the carousel should display the page indicator
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  
+													</td>
+													<td class="methodItemName">
+													  <b>bShowPageIndicator</b>
+													</td>
+													<td class="methodItemDesc">
+												    the new show property
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setVisible"> </a>
+										<div class="itemTitle icon">
+											setVisible<span class="signature">(<span title="(boolean) new value for property visible">bVisible</span>)</span>
+											<span class="light" title="returns sap.m.Carousel">: <a href="../symbols/sap.m.Carousel.html">sap.m.Carousel</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>visible</code>.
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bVisible</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>visible</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Carousel.html">sap.m.Carousel</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setWidth"> </a>
+										<div class="itemTitle icon">
+											setWidth<span class="signature">(<span title="the new width as CSSSize">oWidth</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											API method to set the carousel's width
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  
+													</td>
+													<td class="methodItemName">
+													  <b>oWidth</b>
+													</td>
+													<td class="methodItemDesc">
+												    the new width as CSSSize
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod deprecated'>
+										<a name="attachLoadPage"> </a>
+										<div class="itemTitle icon">
+											attachLoadPage<span class="signature">(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.m.Carousel">: <a href="../symbols/sap.m.Carousel.html">sap.m.Carousel</a></span>
+										</div>
+										<div class="full-description">
+											Attach event handler <code>fnFunction</code> to the 'loadPage' event of this <code>sap.m.Carousel</code>.<br/>.
+When called, the context of the event handler (its <code>this</code>) will be bound to <code>oListener<code> if specified
+otherwise to this <code>sap.m.Carousel</code>.<br/> itself. 
+</p><p>
+Carousel requires a new page to be loaded. This event may be used to fill the content of that page
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oData</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    An application specific payload object, that will be passed to the event handler along with the event object when firing the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Context object to call the event handler with. Defaults to this <code>sap.m.Carousel</code>.<br/> itself.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+											<dl class="detailList deprecation">
+												<dt class="heading">Deprecated:</dt>
+												<dt>
+													Since version 1.18.7. 
+Since 1.18.7 pages are no longer loaded or unloaded
+												</dt>
+											</dl>
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Carousel.html">sap.m.Carousel</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod deprecated'>
+										<a name="attachUnloadPage"> </a>
+										<div class="itemTitle icon">
+											attachUnloadPage<span class="signature">(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.m.Carousel">: <a href="../symbols/sap.m.Carousel.html">sap.m.Carousel</a></span>
+										</div>
+										<div class="full-description">
+											Attach event handler <code>fnFunction</code> to the 'unloadPage' event of this <code>sap.m.Carousel</code>.<br/>.
+When called, the context of the event handler (its <code>this</code>) will be bound to <code>oListener<code> if specified
+otherwise to this <code>sap.m.Carousel</code>.<br/> itself. 
+</p><p>
+Carousel does not display a page any longer and unloads it. This event may be used to clean up the content of that page.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oData</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    An application specific payload object, that will be passed to the event handler along with the event object when firing the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Context object to call the event handler with. Defaults to this <code>sap.m.Carousel</code>.<br/> itself.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+											<dl class="detailList deprecation">
+												<dt class="heading">Deprecated:</dt>
+												<dt>
+													Since version 1.18.7. 
+Since 1.18.7 pages are no longer loaded or unloaded
+												</dt>
+											</dl>
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Carousel.html">sap.m.Carousel</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod deprecated'>
+										<a name="detachLoadPage"> </a>
+										<div class="itemTitle icon">
+											detachLoadPage<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.m.Carousel">: <a href="../symbols/sap.m.Carousel.html">sap.m.Carousel</a></span>
+										</div>
+										<div class="full-description">
+											Detach event handler <code>fnFunction</code> from the 'loadPage' event of this <code>sap.m.Carousel</code>.<br/>
+</p><p>
+The passed function and listener object must match the ones used for event registration.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Context object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+											<dl class="detailList deprecation">
+												<dt class="heading">Deprecated:</dt>
+												<dt>
+													Since version 1.18.7. 
+Since 1.18.7 pages are no longer loaded or unloaded
+												</dt>
+											</dl>
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Carousel.html">sap.m.Carousel</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod deprecated'>
+										<a name="detachUnloadPage"> </a>
+										<div class="itemTitle icon">
+											detachUnloadPage<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.m.Carousel">: <a href="../symbols/sap.m.Carousel.html">sap.m.Carousel</a></span>
+										</div>
+										<div class="full-description">
+											Detach event handler <code>fnFunction</code> from the 'unloadPage' event of this <code>sap.m.Carousel</code>.<br/>
+</p><p>
+The passed function and listener object must match the ones used for event registration.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Context object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+											<dl class="detailList deprecation">
+												<dt class="heading">Deprecated:</dt>
+												<dt>
+													Since version 1.18.7. 
+Since 1.18.7 pages are no longer loaded or unloaded
+												</dt>
+											</dl>
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Carousel.html">sap.m.Carousel</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected deprecated protected'>
+										<a name="fireLoadPage"> </a>
+										<div class="itemTitle icon protected">
+											fireLoadPage<span class="signature">(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.m.Carousel">: <a href="../symbols/sap.m.Carousel.html">sap.m.Carousel</a></span>
+										</div>
+										<div class="full-description">
+											Fire event loadPage to attached listeners.
+</p><p>
+Expects following event parameters:
+<ul>
+<li>'pageId' of type <code>string</code> Id of the page which will be loaded</li>
+</ul>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Map}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+											<dl class="detailList deprecation">
+												<dt class="heading">Deprecated:</dt>
+												<dt>
+													Since version 1.18.7. 
+Since 1.18.7 pages are no longer loaded or unloaded
+												</dt>
+											</dl>
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Carousel.html">sap.m.Carousel</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected deprecated protected'>
+										<a name="fireUnloadPage"> </a>
+										<div class="itemTitle icon protected">
+											fireUnloadPage<span class="signature">(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.m.Carousel">: <a href="../symbols/sap.m.Carousel.html">sap.m.Carousel</a></span>
+										</div>
+										<div class="full-description">
+											Fire event unloadPage to attached listeners.
+</p><p>
+Expects following event parameters:
+<ul>
+<li>'pageId' of type <code>string</code> Id of the page which will be unloaded</li>
+</ul>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Map}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+											<dl class="detailList deprecation">
+												<dt class="heading">Deprecated:</dt>
+												<dt>
+													Since version 1.18.7. 
+Since 1.18.7 pages are no longer loaded or unloaded
+												</dt>
+											</dl>
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Carousel.html">sap.m.Carousel</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getBusyIndicatorSize"> </a>
+										<div class="itemTitle icon">
+											getBusyIndicatorSize<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											API method to retrieve the carousel's busy indicator size.
+This property has been deprecated since 1.18.6. Always returns an empty string.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getShowBusyIndicator"> </a>
+										<div class="itemTitle icon">
+											getShowBusyIndicator<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											API method to check whether the carousel should display the busy indicators.
+This property has been deprecated since 1.18.7. Always returns false,
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setBusyIndicatorSize"> </a>
+										<div class="itemTitle icon">
+											setBusyIndicatorSize<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											API method to set the carousel's busy indicator size.
+This property has been deprecated since 1.18.7. Does nothing and returns the carousel reference.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setShowBusyIndicator"> </a>
+										<div class="itemTitle icon">
+											setShowBusyIndicator<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											API method to set whether the carousel should display the busy indicators.
+This property has been deprecated since 1.18.7. Does nothing and returns the carousel reference.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

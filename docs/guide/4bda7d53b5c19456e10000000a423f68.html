@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="LOIO.FOLDER.IWB_FOLDER_ID" content="1234AC50C238B656E10000000A445394"/>
+<meta name="LOIO.FOLDER.IWB_TECH_NAME" content="HELPX.UI_EXT"/>
+<meta name="LOIO.FOLDER.IWB_FOLDER_GROUP" content="SAPXH"/>
+<meta name="LOIO.FOLDER.IWB_SHH_KEY" content=""/>
+<meta name="LOIO.FOLDER.IWB_TRANSLATION_MEMORY" content=""/>
+<meta name="LOIO.FOLDER.TERM_DOMAIN" content="FF"/>
+<meta name="LOIO.IWB_TYPE" content="ICG"/>
+<meta name="LOIO.IWB_SHH_KEY" content=""/>
+<meta name="LOIO.KW_CONVREF.CLASS" content=""/>
+<meta name="LOIO.KW_CONVREF.OBJID" content=""/>
+<meta name="PHIO.IWB_INDUSTRY" content="SHL"/>
+<meta name="PHIO.RELEASE" content="1.0_2014Q3"/>
+<meta name="PHIO.CREATED_AT" content="20140605161056"/>
+<meta name="PHIO.LAST_CHANGED_AT" content="20140605161056"/>
+<meta name="PHIO.IWB_LEVEL" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=051932136072936674"/>
+<title>The Step Object</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio4bda7d53b5c19456e10000000a423f68">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">The Step Object</h1>
+<div class="body"><p class="p">The <span class="ph sap-technical-name sap-technical-name">step</span> object in the analytical content
+            configuration file defines static data such as labels and the category in which the step
+            is displayed in the analysis step gallery.</p>
+<p class="p">The <span class="ph sap-technical-name sap-technical-name">step</span> object consists of a <span class="ph sap-technical-name sap-technical-name">request</span> object and a <span class="ph sap-technical-name sap-technical-name">binding</span> object. The <span class="ph sap-technical-name sap-technical-name">request</span> defines the access to the server resource, that is, it retrieves the data that is displayed on the UI. The <span class="ph sap-technical-name sap-technical-name">binding</span> maps the required representation types to the analysis step, which defines the way in which the data is displayed on the UI, for example, in a chart or a list.</p>
+<p class="p">On the UI, analysis steps are shown in the analysis step gallery as template objects. The step template object is derived from the <span class="ph sap-technical-name sap-technical-name">step</span> object in the configuration file, but contains only the information that is required on the UI, for example, the texts and the representations. When a user selects an analysis step from the gallery, a new step instance is created. An instance of a <span class="ph sap-technical-name sap-technical-name">step</span> object provides the representation type that is currently used both in the analysis step display as a chart or a list, and in the analysis path display as a thumbnail.</p>
+<p class="p">The step object has the following format:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+{
+  "type" : "step",    // optional
+  "id" : <var class="keyword varname">&lt;id::string&gt;</var>,
+  "title" : <var class="keyword varname">&lt;label&gt;</var>    // optional
+  "longTitle" : <var class="keyword varname">&lt;label&gt;</var>    // optional
+  "request" : <var class="keyword varname">&lt;request ID&gt;</var>,
+  "binding" : <var class="keyword varname">&lt;binding ID&gt;</var>,
+  "thumbnail" : <var class="keyword varname">&lt;thumbnail&gt;</var>
+  "categories" : [ <var class="keyword varname">&lt;categroyID&gt;</var>* ],
+}</pre></div>
+<p class="p">The properties used in the step object denote the following:</p>
+
+<div class="tablenoborder"><table summary="" class="table" frame="border" border="1" rules="all"><thead class="thead" align="left"><tr class="row"><th class="entry" valign="top" id="d367140e96"><p class="p">Property</p>
+ </th>
+<th class="entry" valign="top" id="d367140e100"><p class="p">Description</p>
+ </th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry" valign="top" headers="d367140e96 d367140e100 "><p class="p"><span class="ph sap-technical-name sap-technical-name">id</span></p>
+ </td>
+<td class="entry" valign="top" headers="d367140e96 d367140e100 "><p class="p">Unique ID of type string</p>
+ </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d367140e96 d367140e100 "><p class="p"><span class="ph sap-technical-name sap-technical-name">title</span></p>
+ </td>
+<td class="entry" valign="top" headers="d367140e96 d367140e100 "><p class="p">Title displayed in the analysis step gallery and in the analysis path display.</p>
+ </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d367140e96 d367140e100 "><p class="p"><span class="ph sap-technical-name sap-technical-name">longTitle</span></p>
+ </td>
+<td class="entry" valign="top" headers="d367140e96 d367140e100 "><p class="p">Title displayed above the representation in the analysis step display. If no long title is defined, the title is used instead.</p>
+ </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d367140e96 d367140e100 "><p class="p"><span class="ph sap-technical-name sap-technical-name">request</span></p>
+ </td>
+<td class="entry" valign="top" headers="d367140e96 d367140e100 "><p class="p">ID of the request used for this analysis step.</p>
+ </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d367140e96 d367140e100 "><p class="p"><span class="ph sap-technical-name sap-technical-name">binding</span></p>
+ </td>
+<td class="entry" valign="top" headers="d367140e96 d367140e100 "><p class="p">ID of the binding used for this analysis step.</p>
+ </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d367140e96 d367140e100 "><p class="p"><span class="ph sap-technical-name sap-technical-name">thumbnail</span></p>
+ </td>
+<td class="entry" valign="top" headers="d367140e96 d367140e100 "><p class="p">Displayed in the analysis path display.</p>
+ </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d367140e96 d367140e100 "><p class="p"><span class="ph sap-technical-name sap-technical-name">categories</span></p>
+ </td>
+<td class="entry" valign="top" headers="d367140e96 d367140e100 "><p class="p">ID of the categories in which the analysis step is displayed in the analysis step gallery.</p>
+ </td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="The Step Object";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

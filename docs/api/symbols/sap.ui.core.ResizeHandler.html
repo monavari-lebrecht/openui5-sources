@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.core.ResizeHandler</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Namespace sap.ui.core.ResizeHandler
+					</h1>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>API for resize handling on registered DOM elements and controls.
+</p><p>
+This API provides firing of resize events on all browsers by regularly 
+checking width and height of registered DOM elements and controls and firing events accordingly.</p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+		
+
+
+					
+						
+						
+						
+						
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Deregisters the registered handler for resize events with the given ID."><a href="../symbols/sap.ui.core.ResizeHandler.html#deregister">deregister</a></b><span class='signature'>(<span title="(string) ID">Registration</span>)</span>
+									<span class='description'>Deregisters the registered handler for resize events with the given ID.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Registers the given handler for resize events on the given DOM reference or Control."><a href="../symbols/sap.ui.core.ResizeHandler.html#register">register</a></b><span class='signature'>(<span title="(Element|sap.ui.core.Control) the Control or the DOM reference for which the given handler should be registered (beside the window)">oRef</span>, <span title="(function) the handler which should be called on a resize event">fHandler</span>)</span>
+									<span class='description'>Registers the given handler for resize events on the given DOM reference or Control.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+					
+		
+		
+
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod'>
+										<a name="deregister"> </a>
+										<div class="itemTitle icon">
+											deregister<span class="signature">(<span title="(string) ID">Registration</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Deregisters the registered handler for resize events with the given ID.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>Registration</b>
+													</td>
+													<td class="methodItemDesc">
+												    ID
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="register"> </a>
+										<div class="itemTitle icon">
+											register<span class="signature">(<span title="(Element|sap.ui.core.Control) the Control or the DOM reference for which the given handler should be registered (beside the window)">oRef</span>, <span title="(function) the handler which should be called on a resize event">fHandler</span>)</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Registers the given handler for resize events on the given
+DOM reference or Control.
+In case the core is not initialized yet, the timer cannot be registered and this method
+will return null. Please use sap.ui.getCore().attachInit() with a callback as parameter 
+that calls ResizeHandler.register().
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Element|<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oRef</b>
+													</td>
+													<td class="methodItemDesc">
+												    the Control or the DOM reference for which the given handler should be registered (beside the window)
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fHandler</b>
+													</td>
+													<td class="methodItemDesc">
+												    the handler which should be called on a resize event
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Registration ID which can be used for deregistering
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=3106012309178625"/>
+<title>sap.ui.model.type.Date</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f2fff06f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">sap.ui.model.type.Date</h1>
+<div class="body"><p class="p">The 
+		<samp class="ph codeph">Date</samp> type represents a
+		date (without time). It transforms a source value (given value in the model)
+		into a formatted date string and the other way round. 
+	 </p>
+<p class="p">The format patterns must be defined in LDML Date
+		Format notation. For the output, the use of a style ("short, "medium", "long"
+		or "full") instead of a pattern is preferred, as it will automatically use a
+		locale-dependent date pattern. 
+	 </p>
+<p class="p">Examples how a 
+		<samp class="ph codeph">Date</samp> type can be
+		initialized: 
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">// The source value is given as Javascript Date object. The used output pattern depends on the locale settings (default).
+var oType = new sap.ui.model.type.Date();
+// The source value is given as Javascript Date object. The used output pattern is "yy-MM-dd": e.g. 09-11-27
+oType = new sap.ui.model.type.Date({pattern: "yy-MM-dd"}); 
+// The source value is given as string in "yyyy/MM/dd" format. The used output style is "long". The styles are language dependent.
+// The following styles are possible: short, medium (default), long, full
+// This usecase might be the common one.
+oType = new sap.ui.model.type.Date({source: {pattern: "yyyy/MM/dd"}, style: "long"}); 
+// The source value is given as string in "yyyy/MM/dd" format. The used output pattern is "EEEE, MMMM d, yyyy": e.g. Saturday, August 22, 2043
+oType = new sap.ui.model.type.Date({source: {pattern: "yyyy/MM/dd"}, pattern: "EEEE, MMMM d, yyyy"}); 
+// The source value is given as timestamp. The used output pattern is "dd.MM.yyyy": e.g. 22.12.2010
+oType = new sap.ui.model.type.Date({source: {pattern: "timestamp"}, pattern: "dd.MM.yyyy"}); 
+// The source value is given as string. The used input pattern depends on the locale settings (default). The used output pattern is "dd '|' MM '|' yyyy": e.g. 22 | 12 | 2010
+oType = new sap.ui.model.type.Date({source: {}, pattern: "dd.MM.yyyy"});</pre></div>
+<p class="p">The 
+		<samp class="ph codeph">Date</samp> type supports the
+		following validation constraints: 
+	 </p>
+<ul class="ul"><li class="li"><samp class="ph codeph">maximum</samp> (expects an date presented in the source-pattern format) </li>
+<li class="li"><samp class="ph codeph">minimum</samp> (expects an date presented in the source-pattern format) </li>
+</ul>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="sap.ui.model.type.Date";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

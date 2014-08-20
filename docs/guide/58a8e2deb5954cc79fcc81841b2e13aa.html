@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=22532353410939965"/>
+<title>Expressions and Helpers for HTML Templating</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio58a8e2deb5954cc79fcc81841b2e13aa">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Expressions and Helpers for HTML Templating</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">For HTML templating in SAPUI5, you can use the following expressions and helpers:</p>
+<ul class="ul" id="loio58a8e2deb5954cc79fcc81841b2e13aa__ul_xpw_xfd_rl"><li class="li">
+				<p class="p">plain handlebars</p>
+
+				<p class="p">The plain handlebars expressions do not refer to SAPUI5 models, but to a context
+					which is passed along when, for example, an instance for the template is
+					created. The following example shows how you can use plain handlebars
+					expressions and helpers.</p>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;h3&gt;{{title}}&lt;/h3&gt;
+&lt;ul&gt;
+{{#each persons}}
+    &lt;li&gt;{{firstName}} {{lastName}}&lt;/li&gt;
+{{/each}}
+&lt;/ul&gt;</pre></div>
+
+				<p class="p">For more information about handlebars expressions and helpers, see the handlebars
+					documentation.</p>
+
+			</li>
+<li class="li">
+				<p class="p">SAPUI5-specific helpers</p>
+
+				<p class="p">SAPUI5 provides the following helpers for HTML templating</p>
+
+				<ul class="ul" id="loio58a8e2deb5954cc79fcc81841b2e13aa__ul_vcx_3gd_rl"><li class="li">
+						<p class="p"><samp class="ph codeph">{{text}}</samp></p>
+
+						<p class="p">You use the <samp class="ph codeph">text</samp> helper to bind texts to properties of
+							SAPUI5 models. The helper registers to changes in the SAPUI5 model and
+							updates the template instance if the property in the model changes. When
+							the templating engine parses the helper, it is replaced with the new
+							value in the model. The <samp class="ph codeph">path</samp> attribute supports the
+							standard SAPUI5 data binding syntax.</p>
+
+						<p class="p">Example: <samp class="ph codeph">{{text path="/title"}}</samp></p>
+
+						<p class="p">To bin proprties from named models, such as translatable text, you can
+							specify this in the path attribute as follows:</p>
+
+						<p class="p"><samp class="ph codeph">{{text path="i18n&gt;MY_TEXT"}}</samp></p>
+
+					</li>
+<li class="li">
+						<p class="p"><samp class="ph codeph">{{element}}</samp></p>
+
+						<p class="p">You use the <samp class="ph codeph">element</samp> helper to create single DOM
+							elements. You can nest DOM elements and bind DOM attributes against
+							values of the model.</p>
+
+						<p class="p">Example: <samp class="ph codeph">{{element tag="div" text="Hello World"
+								data-myattr="myvalue" style="border: 1px solid black;"
+								class="myStyleClass"}}</samp></p>
+
+						<p class="p">Example for use with data binding with a <samp class="ph codeph">span</samp> DOM
+							element as default tag name: <samp class="ph codeph">{{element
+								text="{/title}"}}</samp></p>
+
+						<p class="p">Example for use with data binding and named models: <samp class="ph codeph">{{element
+								tag="div" text="{i18n&gt;MY_TEXT}"}}</samp></p>
+
+						<p class="p">Example for use with editable DOM elements for two-way binding (binding
+							the value of an input field against a model property): </p>
+
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">{{element tag="input" value="{/title}"}}
+{{element tag="textarea" text="{/title}"}}</pre></div>
+
+						<p class="p">DOM elements have the advantage that you can update them individually
+							when the property value in the model has changed. You do not need to
+							re-render the template completely.</p>
+
+					</li>
+<li class="li">
+						<p class="p"><samp class="ph codeph">{{control}}</samp></p>
+
+						<p class="p">You use the <samp class="ph codeph">control</samp> helper to creat or embed SAPui5
+							controle intro a template instance. It is aligned with declarative
+							support. The following example shows how you embed a
+								<samp class="ph codeph">sap.ui.commons.TextField</samp> in a template:</p>
+
+						<p class="p"><samp class="ph codeph">{{control sap-ui-type="sap.ui.commons.TextField"
+								value="{/title}"}}</samp></p>
+
+					</li>
+<li class="li">
+						<p class="p"><samp class="ph codeph">{{each}}</samp></p>
+
+						<p class="p">You can use the <samp class="ph codeph">each</samp> helper together with SAPUI5 data
+							binding by specifiying the path attribute:</p>
+
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">{{#each path="/persons"}}
+  {{element text="firstName"}}
+{{/each}}
+</pre></div>
+
+					</li>
+</ul>
+
+			</li>
+</ul>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Expressions and Helpers for HTML Templating";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

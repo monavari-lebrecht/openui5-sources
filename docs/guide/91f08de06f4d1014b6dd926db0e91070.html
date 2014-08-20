@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=22843087729586864"/>
+<title>Configuration of the SAPUI5 Runtime</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f08de06f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Configuration of the SAPUI5 Runtime</h1>
+<div class="body"><p class="p">SAPUI5 provides the following options for providing configuration settings for SAPUI5
+			runtime:</p>
+<ul class="ul" id="loio91f08de06f4d1014b6dd926db0e91070__ul_hrl_xtl_wk"><li class="li">Runtime default values</li>
+<li class="li">Individual script tag attributes</li>
+<li class="li">Single and complex configuration attributes</li>
+<li class="li">Global configuration object</li>
+<li class="li">URL parameters</li>
+<li class="li">Runtime configuration object</li>
+</ul>
+<p class="p">The following order of significance applies:</p>
+<p class="p">Attributes of the DOM reference override the system defaults. URL parameters override the
+			DOM attributes; empty URL parameters set the parameter back to its system default. If
+			you call setters at runtime, any previous settings calculated during object creation are
+			overwritten.</p>
+<div class="section" id="loio91f08de06f4d1014b6dd926db0e91070__section_A97AD77396744B57A767212774F987EA"><div class="section_title">Configuration Using Runtime Default Values</div><div type="Configuration Using Runtime Default Values">
+			
+			<p class="p">SAPUI5 runtime provides a default value for each configuration option. For an
+				overview of the default values, see <a class="xref" href="91f2d03b6f4d1014b6dd926db0e91070.html">Configuration Options</a>.</p>
+
+		</div></div>
+<div class="section" id="loio91f08de06f4d1014b6dd926db0e91070__section_8407D29C8FA646FFAB6C1187BEF42405"><div class="section_title">Individual Script Tag Attributes</div><div type="Individual Script Tag Attributes">
+			
+			<p class="p">You can specify the configuration settings by means of one or more attribute in the
+				bootstrap script tag. For each configuration option, SAPUI5 accepts an attribute
+				with a corresponding name in the bootstrap script tag with the following
+				information:</p>
+
+			<ul class="ul" id="loio91f08de06f4d1014b6dd926db0e91070__ul_tqf_ttl_wk"><li class="li">
+					<p class="p">Attribute name </p>
+
+					<p class="p">The attribute name is composed of the configuration option name and the
+							<samp class="ph codeph">data-sap-ui-</samp> prefix. The first part of the prefix
+							(<samp class="ph codeph">data-</samp>) is necessary to comply with the W3C
+						recommendations for custom attributes in HTML. The second part
+							(<samp class="ph codeph">-sap-ui-</samp>) separates SAPUI5 attributes from custom
+						attributes defined by any other framework.</p>
+
+					<p class="p">Attribute names in HTML are case-insensitive and the same applies to the
+						configuration attribute names. However, SAPUI5 has defined some
+						configuration options names in camel case, for example
+							<samp class="ph codeph">originInfo</samp>. SAPUI5 converts these names automatically
+						to lower case when accessing the configuration.</p>
+
+				</li>
+<li class="li">
+					<p class="p">Value</p>
+
+					<p class="p">Element attributes in HTML have a <samp class="ph codeph">string</samp> value by
+						definition. For configuration options of type <samp class="ph codeph">string</samp>, the
+						attribute value is equivalent to the value of the option.</p>
+
+					<div class="note note" id="loio91f08de06f4d1014b6dd926db0e91070__note_N10069_N10056_N10039_N1002D_N10013_N10001"><span class="notetitle">Note</span> 
+						<p class="p">If the value contains specific HTML characters, such as '&lt;' or '&gt;',
+							or if the value contains the same quote character that is used to wrap
+							the attribute value, the usual HTML escape mechanisms must be used: Use
+							entities for the specific HTML characters, for example &amp;lt; instead
+							of &lt;, and switch the type of quotes from single to double or vice
+							versa.</p>
+
+					</div>
+
+					<p class="p">For configuration options that are <strong class="ph b">not</strong> of type
+						<samp class="ph codeph">string</samp>, the format of the allowed values has to be defined
+						as follows: </p>
+
+					<table summary="" id="loio91f08de06f4d1014b6dd926db0e91070__simpletable_zrf_ttl_wk" border="1" class="simpletable"><tr class="sthead"><th valign="bottom" align="left" id="d707054e107" class="stentry">Type</th>
+<th valign="bottom" align="left" id="d707054e109" class="stentry">Notation/Values</th>
+</tr>
+<tr class="strow"><td valign="top" headers="d707054e107" class="stentry"><samp class="ph codeph">string</samp></td>
+<td valign="top" headers="d707054e109" class="stentry">Just a string, but escaped according to the HTML
+								conventions</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d707054e107" class="stentry"><samp class="ph codeph">boolean</samp></td>
+<td valign="top" headers="d707054e109" class="stentry">'true' and 'x' are both accepted as true values
+								(case-insensitive), all others are false. We recommend to use
+								'false' for false values</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d707054e107" class="stentry"><samp class="ph codeph">int</samp></td>
+<td valign="top" headers="d707054e109" class="stentry">Any integer value</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d707054e107" class="stentry">string array</td>
+<td valign="top" headers="d707054e109" class="stentry">Comma separated list of values; comma is not supported in the
+								values (no escaping)</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d707054e107" class="stentry">map from string to string</td>
+<td valign="top" headers="d707054e109" class="stentry">JavaScript object literal (preferably JSON syntax)</td>
+</tr>
+</table>
+
+				</li>
+</ul>
+
+		</div></div>
+<div class="section" id="loio91f08de06f4d1014b6dd926db0e91070__section_54A4E7886B044020B5C288261D2C5431"><div class="section_title">Single and Complex Configuration Attributes</div><div type="Single and Complex Configuration Attributes">
+			
+			<p class="p">Instead of attaching individual options with individual configuration attributes to
+				the script tag, you can use a single attribute with a more complex structure. The
+				attribute name for the complex configuration is <samp class="ph codeph">data-sap-ui-config</samp>.
+				Its content is similar to the global configuration object, but without the enclosing
+				parenthesis: It is a comma separated list of key/value pairs.</p>
+
+			<div class="note note" id="loio91f08de06f4d1014b6dd926db0e91070__note_N100CF_N100BF_N10013_N10001"><span class="notetitle">Note</span> The usual HTML escape mechanisms must be
+				used if the value contains specific HTML characters (&lt;, &gt;, &amp;) or the quote
+				character that is used to enclose the attribute value.</div>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+	&lt;script id="sap-ui-bootstrap" 
+		type="text/javascript"
+		src="resources/sap-ui-core.js"
+		data-sap-ui-config="theme:'sap_platinum',libs:'sap.ui.commons'"
+		&gt;
+	&lt;/script&gt;</pre></div>
+
+		</div></div>
+<div class="section" id="loio91f08de06f4d1014b6dd926db0e91070__section_3578F22D6436447E804BA2242F624593"><div class="section_title">Global Configuration Object</div><div type="Global Configuration Object">
+			
+			<p class="p">Another way of specifying the configuration is to create a property in the global
+					<samp class="ph codeph">window</samp> object with property name
+				<samp class="ph codeph">sap-ui-config</samp>. The property must be a simple object, where each
+				property represents the configuration option of the corresponding name. </p>
+
+			<div class="note note" id="loio91f08de06f4d1014b6dd926db0e91070__note_N100ED_N100D9_N10013_N10001"><span class="notetitle">Note</span> The name of the <samp class="ph codeph">window</samp>
+				property intentionally is not a valid JavaScript identifier. This helps to avoid
+				conflicts with typical JavaScript coding and the structured nature of the name is
+				intended to avoid conflicts with SAP objects. To define the object, quotes must be
+				used.</div>
+
+			<div class="note note" id="loio91f08de06f4d1014b6dd926db0e91070__note_N100F2_N100D9_N10013_N10001"><span class="notetitle">Note</span> If a configuration option has a name that is
+				not a valid JavaScript identifier or that is a reserved token in JavaScript, the
+				property name in the configuration object must be quoted. Currently, such a
+				configuration option does <strong class="ph b">not</strong> exist. </div>
+
+			<div class="note note" id="loio91f08de06f4d1014b6dd926db0e91070__note_N100F7_N100D9_N10013_N10001"><span class="notetitle">Note</span> As the configuration is evaluated during
+				bootstrap, the configuration object must be created <strong class="ph b">before</strong> SAPUI5 is booted.
+				Otherwise, the contained configuration cannot be evaluated. As a consequenece, using
+				the global configuration object requires another script tag in front of the
+				bootstrap script tag. It is up to the application whether it uses an inline script
+				tag or a separate JavaScript file, which is loaded via a script tag, for this
+				purpose. If you use a dedicated file, it may require more work initially, but offers
+				the following advantages: <ul class="ul" id="loio91f08de06f4d1014b6dd926db0e91070__ul_osf_ttl_wk"><li class="li">Several pages can share the file and, thus, use the same configuration.</li>
+<li class="li">The Content Security Policy (CSP) mechanism as introduced, for example, by
+						FireFox 4.0 and others requires the use of a file.</li>
+</ul>
+
+			</div>
+
+			<p class="p">The following code snippet shows an example for an inline script tag:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+	&lt;script type="text/javascript"&gt;
+		window["sap-ui-config"] = {
+			theme : "sap_platinum",
+			libs : "sap.ui.commons",
+		};
+	&lt;/script&gt;
+	&lt;script id="sap-ui-bootstrap" 
+		type="text/javascript"
+		src="resources/sap-ui-core.js"
+		&gt;
+	&lt;/script&gt;</pre></div>
+
+			<p class="p">Although this option requires  an additional script/script tag, it offers the
+				possibility to share configuration between pages, it can be used in environments
+				where the scrip tag cannot be influenced (for example, because it is created out of
+				some configuration, like in some mashup frameworks), and it allows to provide
+				configuration before the core boots.</p>
+
+		</div></div>
+<div class="section" id="loio91f08de06f4d1014b6dd926db0e91070__section_72FD0A456E694DD89F2F9828D1CFB99E"><div class="section_title">URL Parameters</div><div type="URL Parameters">
+			
+			<p class="p">You can specify confiuration parameters by adding them as parameters to the start URL
+				of an application. The name of the URL parameters is composed of the name of the
+				configuration option and the <samp class="ph codeph">sap-ui-</samp> prefix.</p>
+
+			<div class="note note" id="loio91f08de06f4d1014b6dd926db0e91070__note_N1013A_N1012A_N10013_N10001"><span class="notetitle">Note</span> The W3C proposed <samp class="ph codeph">data-</samp>
+				prefix is not needed and even not allowed here as all URL parameters are kind of
+				custom parameters.</div>
+
+			<p class="p">The value of a URL parameter is of type <samp class="ph codeph">string</samp> and the same type mapping as
+				for HTML attributes applies. However, URLs require a different encoding than HTML;
+				they use, for example % encoding instead of entity encoding.</p>
+
+			<p class="p">For security reasons, only some configuration options can be set via URL parameters. An
+				application can set the <samp class="ph codeph">ignoreUrlParameters</samp> option to
+					<samp class="ph codeph">true</samp> to disable URL configuration parameters completely.</p>
+
+		</div></div>
+<div class="section" id="loio91f08de06f4d1014b6dd926db0e91070__section_4DB989A6E883458EA284F5E04B037C02"><div class="section_title">Runtime Configuration Object</div><div type="Runtime Configuration Object">
+			
+			<p class="p">The above described options for configuration are all evaluated during SAPUI5 runtime boots.
+				After that, all changes to these parameters are ignored. The final configuration
+				result can be read by means of the
+					<samp class="ph codeph">sap.ui.getCore().getConfiguration()</samp> method.</p>
+
+			<p class="p">The same object also provides set methods for a very limited set of configuration
+				options. Such options can be modified at runtime and the runtime and/or the controls
+				can react on the configuration changes. The most prominent (and so far only) example
+				for such a configuration option is the theme. </p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="91f2d03b6f4d1014b6dd926db0e91070.html">Configuration Options</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Configuration of the SAPUI5 Runtime";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

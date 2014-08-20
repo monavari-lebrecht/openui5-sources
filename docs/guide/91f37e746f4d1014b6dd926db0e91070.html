@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=22819851546959158"/>
+<title>Using the Data Binding Type System</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f37e746f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Using the Data Binding Type System</h1>
+<div class="body"><p class="p">Data binding supports the definition of types which
+		can be handed over when binding properties. These types define the data type
+		for properties in the model. The values are then automatically formatted for
+		display in the UI. In addition to this, the input values in UI controls are
+		parsed and converted back to the defined type in the model. If an error occurs
+		during formatting or parsing, the following exception occurs: 
+		<samp class="ph codeph">sap.ui.model.FormatException</samp> / 
+		<samp class="ph codeph">sap.ui.model.ParseException</samp>. 
+	 </p>
+<p class="p">All types inherit from the abstract <samp class="ph codeph">sap.ui.model.Type</samp> class. A subclass of this
+			class is <samp class="ph codeph">sap.ui.model.SimpleType</samp>. The currently available types inherit
+			from <samp class="ph codeph">SimpleType</samp> class.</p>
+<p class="p">You can generate the following parameters for each 
+		<samp class="ph codeph">SimpleType</samp> in the
+		constructor: 
+	 </p>
+<ul class="ul"><li class="li"> 
+		  <p class="p"><samp class="ph codeph">format
+				options</samp>: Format options define how a value is formatted and displayed
+			 in the UI. 
+		  </p>
+ 
+		</li>
+<li class="li"> 
+		  <p class="p"> 
+			 <samp class="ph codeph">constraints</samp>:
+			 Constraints are optional and define how an input value entered in the UI should
+			 look like. During parsing the value is validated against these constraints. For
+			 example, a 
+			 <samp class="ph codeph">String</samp> type has a
+			 constraint for 
+			 <samp class="ph codeph">maxLength</samp> and 
+			 <samp class="ph codeph">minLength</samp> which are
+			 automatically validated when parsing the input values. 
+		  </p>
+ 
+		</li>
+</ul>
+<p class="p">The following sections describe the available
+		constraints and format options for each type. 
+	 </p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Using the Data Binding Type System";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

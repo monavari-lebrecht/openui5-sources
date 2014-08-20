@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="Both sap.m.List and sap.m.Table offer the same events, inheriting them from sap.m.ListBase"/>
+<meta name="description" content="Both sap.m.List and sap.m.Table offer the same events, inheriting them from sap.m.ListBase"/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=012405582913654234"/>
+<title>List and Table Events</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio35b8a947b95344958b776699c116ad12">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">List and Table Events</h1>
+<div class="body conbody"><p class="shortdesc">Both <samp class="ph codeph">sap.m.List</samp> and <samp class="ph codeph">sap.m.Table</samp> offer the same events,
+        inheriting them from <samp class="ph codeph">sap.m.ListBase</samp></p>
+<p class="p">The events are:</p>
+<ul class="ul" id="loio35b8a947b95344958b776699c116ad12__ul_ub5_1xj_ln"><li class="li">delete</li>
+<li class="li">selectionChange</li>
+<li class="li">swipe</li>
+</ul>
+<p class="p">All are handled in the same way, in that an event is fired, and the event object that is
+			passed contains listItem data that tells you which items were affected.</p>
+<p class="p">There is a demo page showing a table and the events that it emits.</p>
+<p class="p"><img class="image" id="loio35b8a947b95344958b776699c116ad12__image_xcm_xrd_mn" src="4be41d1360d447bd961612a06c4e0987.image"/></p>
+<p class="p">The table is constructed in the normal way, with a toggle button to cycle through the
+			different modes (<strong class="ph b">SingleSelect</strong>, <strong class="ph b">MultiSelect</strong>, <strong class="ph b">Delete</strong>, and so on).</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+<samp class="ph codeph">#!js</samp>
+     headerToolbar: new sap.m.Toolbar({ content: [
+            new sap.m.Text({text: "Sales By Area"}),
+            new sap.m.ToolbarSpacer(),
+            new sap.m.Button({
+                text: "Toggle Mode",
+                icon: "sap-icon://share",
+                press: function() {
+                    var aModes = Object.keys(sap.m.ListMode);
+                    var oData = oTable.data();
+                    var iMode = "listmode" in oData ? oData.listmode : 0;
+                    iMode++;
+                    var sMode = aModes[iMode % aModes.length];
+                    oTable.setMode(sMode);
+                    oTable.data({"listmode": iMode});
+                    sap.ui.getCore().byId("idListMode").setText(sMode);
+                }
+            }),
+        ]}),</pre></div>
+<p class="p">After binding the JSON model to the table's items aggregation, we also set a control as
+			the <strong class="ph b">SwipeContent</strong> aggregation, and set the swipe direction to be from right to
+			left:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+<samp class="ph codeph">#!js</samp>
+  oTable.setSwipeContent(new sap.m.Button("idSwipeButton", {
+        text: "Press me for action",
+        press: function() {
+            jQuery.sap.log.info("Swiped item:", oTable.getSwipedItem());
+            oTable.swipeOut();
+        }
+    }));
+
+    oTable.setSwipeDirection(sap.m.SwipeDirection.RightToLeft);</pre></div>
+<p class="p">The <strong class="ph b">SwipeContent</strong> is a control that appears on the right hand side of a list item
+			when a swipe gesture is made on the item.</p>
+<p class="p">We then set up some logging for the different events that will be triggered:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+<samp class="ph codeph">#!js</samp>
+function logItemInfo(sAction, oEvent) {
+        var sId = oEvent.getParameter('listItem').getId();
+        jQuery.sap.log.info(sAction + " " + sId);
+    }
+    
+    oTable.attachDelete(function(oEvent) { logItemInfo("deleted", oEvent); });
+    oTable.attachSwipe(function(oEvent) { logItemInfo("swiped", oEvent); });
+    oTable.attachSelectionChange(function(oEvent) {
+        jQuery.sap.log.info(
+            "selection changed (" + (oEvent.getParameter('selected') ? "selected" : "unselected") + ") for the following items: " +
+            oEvent.getParameter('listItems').map(function (oItem) { return oItem.getId(); }).join(", ")
+        );
+    });</pre></div>
+<p class="p">Note: The oEvent object that is passed when the events are fired contains information on
+			the item(s) that were involved in the action. In the case of the <strong class="ph b">selectionChange</strong>
+			event, one or more items can be involved, depending on the list mode - if the mode is
+				<strong class="ph b">MultiSelect</strong> then more than one item can be set as selected (or unselected) at
+			once.</p>
+<p class="p">When a swipe is made on an item, the button, defined as the <strong class="ph b">SwipeContent</strong>, appears
+			on the item like this:</p>
+<p class="p"><img class="image" id="loio35b8a947b95344958b776699c116ad12__image_urx_qtd_mn" src="c5663f8d5a6f452fa95a13b4425a535d.image"/></p>
+<p class="p">and the item can be identified with the <strong class="ph b">getSwipedItem</strong> method.</p>
+<p class="p">Note: To test swipe gestures on the desktop, open the Chrome developer tools, and within
+			Settings → Overrides, select the "Emulate touch events" checkbox and reload the
+			page.</p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="List and Table Events";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

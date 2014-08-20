@@ -1,0 +1,1256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.m.MultiInput</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class sap.m.MultiInput
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.m.Input" href="../symbols/sap.m.Input.html">Input</a></div>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>MultiInput provides functionality to add / remove / enter tokens</p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="Constructor for a new MultiInput.">new <a href="../symbols/sap.m.MultiInput.html#constructor">sap.m.MultiInput</a></b>
+										<span class='signature'>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)</span>
+										<span class='description'>Constructor for a new MultiInput.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+						
+						
+						
+						
+														
+							
+								<div class="summary section">
+									<div class="sectionTitle">Fields borrowed from class <a href="../symbols/sap.m.InputBase.html">sap.m.InputBase</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.m.InputBase.html#bindToInputEvent">bindToInputEvent</a>, <a href="../symbols/sap.m.InputBase.html#isSpecialKey">isSpecialKey</a>, <a href="../symbols/sap.m.InputBase.html#updateDomValue">updateDomValue</a>
+									</div>
+								</div>
+							
+						
+					
+		
+
+
+					
+						
+						
+						<div class="summary section" cellspacing="0" summary="A summary of the events documented in the class sap.m.MultiInput.">
+							<div class="sectionTitle">Event Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="fired when the tokens aggregation changed (add / remove token)"><a href="../symbols/sap.m.MultiInput.html#event:tokenChange">tokenChange</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>fired when the tokens aggregation changed (add / remove token)</span>
+								</div>
+							
+							</div>
+						</div>
+						
+				
+						
+						
+						
+							
+								<div class="summary section">
+									<div class="sectionTitle">Events borrowed from class <a href="../symbols/sap.m.Input.html">sap.m.Input</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.m.Input.html#event:liveChange">liveChange</a>, <a href="../symbols/sap.m.Input.html#event:suggest">suggest</a>, <a href="../symbols/sap.m.Input.html#event:suggestionItemSelected">suggestionItemSelected</a>, <a href="../symbols/sap.m.Input.html#event:valueHelpRequest">valueHelpRequest</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Events borrowed from class <a href="../symbols/sap.m.InputBase.html">sap.m.InputBase</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.m.InputBase.html#event:change">change</a>
+									</div>
+								</div>
+							
+						
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Creates a new subclass of class sap.m.MultiInput with name sClassName and enriches it with the information contained in oClassInfo."><a href="../symbols/sap.m.MultiInput.html#.extend">sap.m.MultiInput.extend</a></b><span class='signature'>(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Creates a new subclass of class sap.m.MultiInput with name <code>sClassName</code> and enriches it with the information contained in <code>oClassInfo</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Adds some token oToken to the aggregation named tokens."><a href="../symbols/sap.m.MultiInput.html#addToken">addToken</a></b><span class='signature'>(<span title="(sap.m.Token) the token to add; if empty, nothing is inserted">oToken</span>)</span>
+									<span class='description'>Adds some token <code>oToken</code> to the aggregation named <code>tokens</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Function adds an validation callback called before any new token gets added to the tokens aggregation"><a href="../symbols/sap.m.MultiInput.html#addValidator">addValidator</a></b><span class='signature'>(<span title="(function) function">fValidator</span>)</span>
+									<span class='description'>Function adds an validation callback called before any new token gets added to the tokens aggregation</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Attach event handler fnFunction to the 'tokenChange' event of this sap.m.MultiInput."><a href="../symbols/sap.m.MultiInput.html#attachTokenChange">attachTokenChange</a></b><span class='signature'>(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Attach event handler <code>fnFunction</code> to the 'tokenChange' event of this <code>sap.m.MultiInput</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys all the tokens in the aggregation named tokens."><a href="../symbols/sap.m.MultiInput.html#destroyTokens">destroyTokens</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys all the tokens in the aggregation named <code>tokens</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Detach event handler fnFunction from the 'tokenChange' event of this sap.m.MultiInput."><a href="../symbols/sap.m.MultiInput.html#detachTokenChange">detachTokenChange</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Detach event handler <code>fnFunction</code> from the 'tokenChange' event of this <code>sap.m.MultiInput</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Fire event tokenChange to attached listeners."><a href="../symbols/sap.m.MultiInput.html#fireTokenChange">fireTokenChange</a></b><span class='signature'>(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event tokenChange to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation tokens."><a href="../symbols/sap.m.MultiInput.html#getTokens">getTokens</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>tokens</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Checks for the provided sap.m.Token in the aggregation named tokens and returns its index if found or -1 otherwise."><a href="../symbols/sap.m.MultiInput.html#indexOfToken">indexOfToken</a></b><span class='signature'>(<span title="(sap.m.Token) the token whose index is looked for.">oToken</span>)</span>
+									<span class='description'>Checks for the provided <code>sap.m.Token</code> in the aggregation named <code>tokens</code> and returns its index if found or -1 otherwise.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Inserts a token into the aggregation named tokens."><a href="../symbols/sap.m.MultiInput.html#insertToken">insertToken</a></b><span class='signature'>(<span title="(sap.m.Token) the token to insert; if empty, nothing is inserted">oToken</span>, <span title="(int) the 0-based index the token should be inserted at; for a negative value of iIndex, the token is inserted at position 0; for a value greater than the current size of the aggregation, the token is inserted at the last position">iIndex</span>)</span>
+									<span class='description'>Inserts a token into the aggregation named <code>tokens</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes all the controls in the aggregation named tokens."><a href="../symbols/sap.m.MultiInput.html#removeAllTokens">removeAllTokens</a></b><span class='signature'>()</span>
+									<span class='description'>Removes all the controls in the aggregation named <code>tokens</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Function removes all validation callbacks"><a href="../symbols/sap.m.MultiInput.html#removeAllValidators">removeAllValidators</a></b><span class='signature'>()</span>
+									<span class='description'>Function removes all validation callbacks</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes an token from the aggregation named tokens."><a href="../symbols/sap.m.MultiInput.html#removeToken">removeToken</a></b><span class='signature'>(<span title="(int | string | sap.m.Token) the token to remove or its index or id">vToken</span>)</span>
+									<span class='description'>Removes an token from the aggregation named <code>tokens</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Function removes an validation callback"><a href="../symbols/sap.m.MultiInput.html#removeValidator">removeValidator</a></b><span class='signature'>(<span title="(function) function">fValidator</span>)</span>
+									<span class='description'>Function removes an validation callback</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Function sets an array of tokens, existing tokens will get overridden"><a href="../symbols/sap.m.MultiInput.html#setTokens">setTokens</a></b><span class='signature'>(<span title="(sap.m.Token[]) - the new token set">aTokens</span>)</span>
+									<span class='description'>Function sets an array of tokens, existing tokens will get overridden</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.m.Input.html">sap.m.Input</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.m.Input.html#addSuggestionColumn">addSuggestionColumn</a>, <a href="../symbols/sap.m.Input.html#addSuggestionItem">addSuggestionItem</a>, <a href="../symbols/sap.m.Input.html#addSuggestionRow">addSuggestionRow</a>, <a href="../symbols/sap.m.Input.html#attachLiveChange">attachLiveChange</a>, <a href="../symbols/sap.m.Input.html#attachSuggest">attachSuggest</a>, <a href="../symbols/sap.m.Input.html#attachSuggestionItemSelected">attachSuggestionItemSelected</a>, <a href="../symbols/sap.m.Input.html#attachValueHelpRequest">attachValueHelpRequest</a>, <a href="../symbols/sap.m.Input.html#bindAggregation">bindAggregation</a>, <a href="../symbols/sap.m.Input.html#bindSuggestionColumns">bindSuggestionColumns</a>, <a href="../symbols/sap.m.Input.html#bindSuggestionRows">bindSuggestionRows</a>, <a href="../symbols/sap.m.Input.html#destroySuggestionColumns">destroySuggestionColumns</a>, <a href="../symbols/sap.m.Input.html#destroySuggestionItems">destroySuggestionItems</a>, <a href="../symbols/sap.m.Input.html#destroySuggestionRows">destroySuggestionRows</a>, <a href="../symbols/sap.m.Input.html#detachLiveChange">detachLiveChange</a>, <a href="../symbols/sap.m.Input.html#detachSuggest">detachSuggest</a>, <a href="../symbols/sap.m.Input.html#detachSuggestionItemSelected">detachSuggestionItemSelected</a>, <a href="../symbols/sap.m.Input.html#detachValueHelpRequest">detachValueHelpRequest</a>, <a href="../symbols/sap.m.Input.html#fireLiveChange">fireLiveChange</a>, <a href="../symbols/sap.m.Input.html#fireSuggest">fireSuggest</a>, <a href="../symbols/sap.m.Input.html#fireSuggestionItemSelected">fireSuggestionItemSelected</a>, <a href="../symbols/sap.m.Input.html#fireValueHelpRequest">fireValueHelpRequest</a>, <a href="../symbols/sap.m.Input.html#getDateFormat">getDateFormat</a>, <a href="../symbols/sap.m.Input.html#getFilterSuggests">getFilterSuggests</a>, <a href="../symbols/sap.m.Input.html#getMaxLength">getMaxLength</a>, <a href="../symbols/sap.m.Input.html#getMaxSuggestionWidth">getMaxSuggestionWidth</a>, <a href="../symbols/sap.m.Input.html#getShowSuggestion">getShowSuggestion</a>, <a href="../symbols/sap.m.Input.html#getShowTableSuggestionValueHelp">getShowTableSuggestionValueHelp</a>, <a href="../symbols/sap.m.Input.html#getShowValueHelp">getShowValueHelp</a>, <a href="../symbols/sap.m.Input.html#getShowValueStateMessage">getShowValueStateMessage</a>, <a href="../symbols/sap.m.Input.html#getStartSuggestion">getStartSuggestion</a>, <a href="../symbols/sap.m.Input.html#getSuggestionColumns">getSuggestionColumns</a>, <a href="../symbols/sap.m.Input.html#getSuggestionItems">getSuggestionItems</a>, <a href="../symbols/sap.m.Input.html#getSuggestionRows">getSuggestionRows</a>, <a href="../symbols/sap.m.Input.html#getType">getType</a>, <a href="../symbols/sap.m.Input.html#getValueHelpOnly">getValueHelpOnly</a>, <a href="../symbols/sap.m.Input.html#getValueStateText">getValueStateText</a>, <a href="../symbols/sap.m.Input.html#getWidth">getWidth</a>, <a href="../symbols/sap.m.Input.html#indexOfSuggestionColumn">indexOfSuggestionColumn</a>, <a href="../symbols/sap.m.Input.html#indexOfSuggestionItem">indexOfSuggestionItem</a>, <a href="../symbols/sap.m.Input.html#indexOfSuggestionRow">indexOfSuggestionRow</a>, <a href="../symbols/sap.m.Input.html#insertSuggestionColumn">insertSuggestionColumn</a>, <a href="../symbols/sap.m.Input.html#insertSuggestionItem">insertSuggestionItem</a>, <a href="../symbols/sap.m.Input.html#insertSuggestionRow">insertSuggestionRow</a>, <a href="../symbols/sap.m.Input.html#ontap">ontap</a>, <a href="../symbols/sap.m.Input.html#removeAllSuggestionColumns">removeAllSuggestionColumns</a>, <a href="../symbols/sap.m.Input.html#removeAllSuggestionItems">removeAllSuggestionItems</a>, <a href="../symbols/sap.m.Input.html#removeAllSuggestionRows">removeAllSuggestionRows</a>, <a href="../symbols/sap.m.Input.html#removeSuggestionColumn">removeSuggestionColumn</a>, <a href="../symbols/sap.m.Input.html#removeSuggestionItem">removeSuggestionItem</a>, <a href="../symbols/sap.m.Input.html#removeSuggestionRow">removeSuggestionRow</a>, <a href="../symbols/sap.m.Input.html#setDateFormat">setDateFormat</a>, <a href="../symbols/sap.m.Input.html#setFilterSuggests">setFilterSuggests</a>, <a href="../symbols/sap.m.Input.html#setMaxLength">setMaxLength</a>, <a href="../symbols/sap.m.Input.html#setMaxSuggestionWidth">setMaxSuggestionWidth</a>, <a href="../symbols/sap.m.Input.html#setShowSuggestion">setShowSuggestion</a>, <a href="../symbols/sap.m.Input.html#setShowTableSuggestionValueHelp">setShowTableSuggestionValueHelp</a>, <a href="../symbols/sap.m.Input.html#setShowValueHelp">setShowValueHelp</a>, <a href="../symbols/sap.m.Input.html#setShowValueStateMessage">setShowValueStateMessage</a>, <a href="../symbols/sap.m.Input.html#setStartSuggestion">setStartSuggestion</a>, <a href="../symbols/sap.m.Input.html#setType">setType</a>, <a href="../symbols/sap.m.Input.html#setValueHelpOnly">setValueHelpOnly</a>, <a href="../symbols/sap.m.Input.html#setValueStateText">setValueStateText</a>, <a href="../symbols/sap.m.Input.html#setWidth">setWidth</a>, <a href="../symbols/sap.m.Input.html#unbindSuggestionColumns">unbindSuggestionColumns</a>, <a href="../symbols/sap.m.Input.html#unbindSuggestionRows">unbindSuggestionRows</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.m.InputBase.html">sap.m.InputBase</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.m.InputBase.html#attachChange">attachChange</a>, <a href="../symbols/sap.m.InputBase.html#bindValue">bindValue</a>, <a href="../symbols/sap.m.InputBase.html#detachChange">detachChange</a>, <a href="../symbols/sap.m.InputBase.html#fireChange">fireChange</a>, <a href="../symbols/sap.m.InputBase.html#fireChangeEvent">fireChangeEvent</a>, <a href="../symbols/sap.m.InputBase.html#getEditable">getEditable</a>, <a href="../symbols/sap.m.InputBase.html#getEnabled">getEnabled</a>, <a href="../symbols/sap.m.InputBase.html#getName">getName</a>, <a href="../symbols/sap.m.InputBase.html#getPlaceholder">getPlaceholder</a>, <a href="../symbols/sap.m.InputBase.html#getValue">getValue</a>, <a href="../symbols/sap.m.InputBase.html#getValueState">getValueState</a>, <a href="../symbols/sap.m.InputBase.html#getVisible">getVisible</a>, <a href="../symbols/sap.m.InputBase.html#onChange">onChange</a>, <a href="../symbols/sap.m.InputBase.html#selectText">selectText</a>, <a href="../symbols/sap.m.InputBase.html#setEditable">setEditable</a>, <a href="../symbols/sap.m.InputBase.html#setEnabled">setEnabled</a>, <a href="../symbols/sap.m.InputBase.html#setName">setName</a>, <a href="../symbols/sap.m.InputBase.html#setPlaceholder">setPlaceholder</a>, <a href="../symbols/sap.m.InputBase.html#setValue">setValue</a>, <a href="../symbols/sap.m.InputBase.html#setValueState">setValueState</a>, <a href="../symbols/sap.m.InputBase.html#setVisible">setVisible</a>, <a href="../symbols/sap.m.InputBase.html#unbindValue">unbindValue</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Control.html#addStyleClass">addStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#allowTextSelection">allowTextSelection</a>, <a href="../symbols/sap.ui.core.Control.html#attachBrowserEvent">attachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#clone">clone</a>, <a href="../symbols/sap.ui.core.Control.html#detachBrowserEvent">detachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#getBusy">getBusy</a>, <a href="../symbols/sap.ui.core.Control.html#getBusyIndicatorDelay">getBusyIndicatorDelay</a>, <a href="../symbols/sap.ui.core.Control.html#getIdForLabel">getIdForLabel</a>, <a href="../symbols/sap.ui.core.Control.html#getRenderer">getRenderer</a>, <a href="../symbols/sap.ui.core.Control.html#hasStyleClass">hasStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#invalidate">invalidate</a>, <a href="../symbols/sap.ui.core.Control.html#isBusy">isBusy</a>, <a href="../symbols/sap.ui.core.Control.html#placeAt">placeAt</a>, <a href="../symbols/sap.ui.core.Control.html#removeStyleClass">removeStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#rerender">rerender</a>, <a href="../symbols/sap.ui.core.Control.html#setBusy">setBusy</a>, <a href="../symbols/sap.ui.core.Control.html#setBusyIndicatorDelay">setBusyIndicatorDelay</a>, <a href="../symbols/sap.ui.core.Control.html#toggleStyleClass">toggleStyleClass</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Element.html#$">$</a>, <a href="../symbols/sap.ui.core.Element.html#addCustomData">addCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#addDependent">addDependent</a>, <a href="../symbols/sap.ui.core.Element.html#addEventDelegate">addEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#applyFocusInfo">applyFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#bindElement">bindElement</a>, <a href="../symbols/sap.ui.core.Element.html#data">data</a>, <a href="../symbols/sap.ui.core.Element.html#destroy">destroy</a>, <a href="../symbols/sap.ui.core.Element.html#destroyCustomData">destroyCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#destroyDependents">destroyDependents</a>, <a href="../symbols/sap.ui.core.Element.html#enhanceAccessibilityState">enhanceAccessibilityState</a>, <a href="../symbols/sap.ui.core.Element.html#findElements">findElements</a>, <a href="../symbols/sap.ui.core.Element.html#fireEvent">fireEvent</a>, <a href="../symbols/sap.ui.core.Element.html#getCustomData">getCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#getDependents">getDependents</a>, <a href="../symbols/sap.ui.core.Element.html#getDomRef">getDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getElementBinding">getElementBinding</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusDomRef">getFocusDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusInfo">getFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#getInterface">getInterface</a>, <a href="../symbols/sap.ui.core.Element.html#getLayoutData">getLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#getMetadata">getMetadata</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip">getTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_AsString">getTooltip_AsString</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_Text">getTooltip_Text</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfCustomData">indexOfCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfDependent">indexOfDependent</a>, <a href="../symbols/sap.ui.core.Element.html#insertCustomData">insertCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#insertDependent">insertDependent</a>, <a href="../symbols/sap.ui.core.Element.html#prop">prop</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllCustomData">removeAllCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllDependents">removeAllDependents</a>, <a href="../symbols/sap.ui.core.Element.html#removeCustomData">removeCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeDependent">removeDependent</a>, <a href="../symbols/sap.ui.core.Element.html#removeEventDelegate">removeEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#setLayoutData">setLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#setTooltip">setTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#toString">toString</a>, <a href="../symbols/sap.ui.core.Element.html#unbindElement">unbindElement</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.ManagedObject.html">sap.ui.base.ManagedObject</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.ManagedObject.html#addAggregation">addAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#addAssociation">addAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#applySettings">applySettings</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindContext">bindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindObject">bindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindProperty">bindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#destroyAggregation">destroyAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#findAggregatedObjects">findAggregatedObjects</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAggregation">getAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAssociation">getAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBinding">getBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingContext">getBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingInfo">getBindingInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingPath">getBindingPath</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getEventingParent">getEventingParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getId">getId</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getModel">getModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getObjectBinding">getObjectBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getOriginInfo">getOriginInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getParent">getParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getProperty">getProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#hasModel">hasModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#indexOfAggregation">indexOfAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#insertAggregation">insertAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isBound">isBound</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isInvalidateSuppressed">isInvalidateSuppressed</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isTreeBinding">isTreeBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAggregation">removeAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAggregation">removeAllAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAssociation">removeAllAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAssociation">removeAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAggregation">setAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAssociation">setAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setBindingContext">setBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setModel">setModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindAggregation">unbindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindContext">unbindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindObject">unbindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindProperty">unbindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateAggregation">validateAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateProperty">validateProperty</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.EventProvider.html#attachEvent">attachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#attachEventOnce">attachEventOnce</a>, <a href="../symbols/sap.ui.base.EventProvider.html#detachEvent">detachEvent</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.m.MultiInput</b>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)
+										</div>
+										
+										<div class="full-description">
+											Constructor for a new MultiInput.
+</p><p>
+Accepts an object literal <code>mSettings</code> that defines initial 
+property values, aggregated and associated objects as well as event handlers. 
+</p><p>
+If the name of a setting is ambiguous (e.g. a property has the same name as an event), 
+then the framework assumes property, aggregation, association, event in that order. 
+To override this automatic resolution, one of the prefixes "aggregation:", "association:" 
+or "event:" can be added to the name of the setting (such a prefixed name must be
+enclosed in single or double quotes).
+</p><p>
+The supported settings are:
+<ul>
+<li>Properties
+<ul></ul>
+</li>
+<li>Aggregations
+<ul>
+<li><a href="#getTokens">tokens</a> : sap.m.Token[]</li></ul>
+</li>
+<li>Associations
+<ul></ul>
+</li>
+<li>Events
+<ul>
+<li><a href="../symbols/sap.m.MultiInput.html#event:tokenChange">tokenChange</a> : fnListenerFunction or [fnListenerFunction, oListenerObject] or [oData, fnListenerFunction, oListenerObject]</li></ul>
+</li>
+</ul> 
+</p><p>
+</p><p>
+In addition, all settings applicable to the base type <a href="../symbols/sap.m.Input.html#constructor">sap.m.Input</a>
+can be used as well.
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    id for the new control, generated automatically if no id is given
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mSettings</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    initial settings for the new control
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Event Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:tokenChange"> </a>
+									<div class="itemTitle icon">
+										tokenChange<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										fired when the tokens aggregation changed (add / remove token)
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+							</div>
+						</div>
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".extend"> </a>
+										<div class="itemTitle icon">
+											sap.m.MultiInput.extend<span class="signature">(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns function">: function</span>
+										</div>
+										<div class="full-description">
+											Creates a new subclass of class sap.m.MultiInput with name <code>sClassName</code> 
+and enriches it with the information contained in <code>oClassInfo</code>.
+</p><p>
+<code>oClassInfo</code> might contain the same kind of informations as described in <a href="../symbols/sap.ui.core.Element.html#.extend">Element.extend</a>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sClassName</b>
+													</td>
+													<td class="methodItemDesc">
+												    name of the class to be created
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oClassInfo</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    object literal with informations about the class
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>FNMetaImpl</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    constructor function for the metadata object. If not given, it defaults to sap.ui.core.ElementMetadata.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{function}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the created class / constructor function
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addToken"> </a>
+										<div class="itemTitle icon">
+											addToken<span class="signature">(<span title="(sap.m.Token) the token to add; if empty, nothing is inserted">oToken</span>)</span>
+											<span class="light" title="returns sap.m.MultiInput">: <a href="../symbols/sap.m.MultiInput.html">sap.m.MultiInput</a></span>
+										</div>
+										<div class="full-description">
+											Adds some token <code>oToken</code> 
+to the aggregation named <code>tokens</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.Token.html">sap.m.Token</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oToken</b>
+													</td>
+													<td class="methodItemDesc">
+												    the token to add; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.MultiInput.html">sap.m.MultiInput</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addValidator"> </a>
+										<div class="itemTitle icon">
+											addValidator<span class="signature">(<span title="(function) function">fValidator</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Function adds an validation callback called before any new token gets added to the tokens aggregation
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fValidator</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachTokenChange"> </a>
+										<div class="itemTitle icon">
+											attachTokenChange<span class="signature">(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.m.MultiInput">: <a href="../symbols/sap.m.MultiInput.html">sap.m.MultiInput</a></span>
+										</div>
+										<div class="full-description">
+											Attach event handler <code>fnFunction</code> to the 'tokenChange' event of this <code>sap.m.MultiInput</code>.<br/>.
+When called, the context of the event handler (its <code>this</code>) will be bound to <code>oListener<code> if specified
+otherwise to this <code>sap.m.MultiInput</code>.<br/> itself. 
+</p><p>
+fired when the tokens aggregation changed (add / remove token)
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oData</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    An application specific payload object, that will be passed to the event handler along with the event object when firing the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Context object to call the event handler with. Defaults to this <code>sap.m.MultiInput</code>.<br/> itself.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.MultiInput.html">sap.m.MultiInput</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyTokens"> </a>
+										<div class="itemTitle icon">
+											destroyTokens<span class="signature">()</span>
+											<span class="light" title="returns sap.m.MultiInput">: <a href="../symbols/sap.m.MultiInput.html">sap.m.MultiInput</a></span>
+										</div>
+										<div class="full-description">
+											Destroys all the tokens in the aggregation 
+named <code>tokens</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.MultiInput.html">sap.m.MultiInput</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachTokenChange"> </a>
+										<div class="itemTitle icon">
+											detachTokenChange<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.m.MultiInput">: <a href="../symbols/sap.m.MultiInput.html">sap.m.MultiInput</a></span>
+										</div>
+										<div class="full-description">
+											Detach event handler <code>fnFunction</code> from the 'tokenChange' event of this <code>sap.m.MultiInput</code>.<br/>
+</p><p>
+The passed function and listener object must match the ones used for event registration.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Context object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.MultiInput.html">sap.m.MultiInput</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="fireTokenChange"> </a>
+										<div class="itemTitle icon protected">
+											fireTokenChange<span class="signature">(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.m.MultiInput">: <a href="../symbols/sap.m.MultiInput.html">sap.m.MultiInput</a></span>
+										</div>
+										<div class="full-description">
+											Fire event tokenChange to attached listeners.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Map}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.MultiInput.html">sap.m.MultiInput</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getTokens"> </a>
+										<div class="itemTitle icon">
+											getTokens<span class="signature">()</span>
+											<span class="light" title="returns sap.m.Token[]">: <a href="../symbols/sap.m.Token.html">sap.m.Token</a>[]</span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>tokens</code>.<br/>
+the currently displayed tokens
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Token.html">sap.m.Token</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="indexOfToken"> </a>
+										<div class="itemTitle icon">
+											indexOfToken<span class="signature">(<span title="(sap.m.Token) the token whose index is looked for.">oToken</span>)</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Checks for the provided <code>sap.m.Token</code> in the aggregation named <code>tokens</code> 
+and returns its index if found or -1 otherwise.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.Token.html">sap.m.Token</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oToken</b>
+													</td>
+													<td class="methodItemDesc">
+												    the token whose index is looked for.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the index of the provided control in the aggregation if found, or -1 otherwise
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="insertToken"> </a>
+										<div class="itemTitle icon">
+											insertToken<span class="signature">(<span title="(sap.m.Token) the token to insert; if empty, nothing is inserted">oToken</span>, <span title="(int) the 0-based index the token should be inserted at; for a negative value of iIndex, the token is inserted at position 0; for a value greater than the current size of the aggregation, the token is inserted at the last position">iIndex</span>)</span>
+											<span class="light" title="returns sap.m.MultiInput">: <a href="../symbols/sap.m.MultiInput.html">sap.m.MultiInput</a></span>
+										</div>
+										<div class="full-description">
+											Inserts a token into the aggregation named <code>tokens</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.Token.html">sap.m.Token</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oToken</b>
+													</td>
+													<td class="methodItemDesc">
+												    the token to insert; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    the <code>0</code>-based index the token should be inserted at; for 
+            a negative value of <code>iIndex</code>, the token is inserted at position 0; for a value 
+            greater than the current size of the aggregation, the token is inserted at 
+            the last position
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.MultiInput.html">sap.m.MultiInput</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeAllTokens"> </a>
+										<div class="itemTitle icon">
+											removeAllTokens<span class="signature">()</span>
+											<span class="light" title="returns sap.m.Token[]">: <a href="../symbols/sap.m.Token.html">sap.m.Token</a>[]</span>
+										</div>
+										<div class="full-description">
+											Removes all the controls in the aggregation named <code>tokens</code>.<br/>
+Additionally unregisters them from the hosting UIArea.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Token.html">sap.m.Token</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														an array of the removed elements (might be empty)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeAllValidators"> </a>
+										<div class="itemTitle icon">
+											removeAllValidators<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Function removes all validation callbacks
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeToken"> </a>
+										<div class="itemTitle icon">
+											removeToken<span class="signature">(<span title="(int | string | sap.m.Token) the token to remove or its index or id">vToken</span>)</span>
+											<span class="light" title="returns sap.m.Token">: <a href="../symbols/sap.m.Token.html">sap.m.Token</a></span>
+										</div>
+										<div class="full-description">
+											Removes an token from the aggregation named <code>tokens</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int|string|<a href="../symbols/sap.m.Token.html">sap.m.Token</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vToken</b>
+													</td>
+													<td class="methodItemDesc">
+												    the token to remove or its index or id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Token.html">sap.m.Token</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the removed token or null
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeValidator"> </a>
+										<div class="itemTitle icon">
+											removeValidator<span class="signature">(<span title="(function) function">fValidator</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Function removes an validation callback
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fValidator</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setTokens"> </a>
+										<div class="itemTitle icon">
+											setTokens<span class="signature">(<span title="(sap.m.Token[]) - the new token set">aTokens</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Function sets an array of tokens, existing tokens will get overridden
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.Token.html">sap.m.Token</a>[]}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>aTokens</b>
+													</td>
+													<td class="methodItemDesc">
+												    - the new token set
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="Navigation in SAPUI5 enables you to pass data from the hash to any view, and to adjust a current hash so that you can use it as a bookmarkable URL. Depending on the hash, you can also generate views automatically."/>
+<meta name="description" content="Navigation in SAPUI5 enables you to pass data from the hash to any view, and to adjust a current hash so that you can use it as a bookmarkable URL. Depending on the hash, you can also generate views automatically."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=3223898205001824"/>
+<title>Navigation</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio3d18f20bd2294228acb6910d8e8a5fb5">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Navigation</h1>
+<div class="body conbody"><p class="shortdesc">Navigation in SAPUI5 enables you to pass data from the hash to any view, and to adjust a
+        current hash so that you can use it as a bookmarkable URL. Depending on the hash, you can
+        also generate views automatically.</p>
+<p class="p">To notify your application that a hash has changed to a certain value, you use a route. If the
+            route matches the hash, it provides the data that has been passed over to the hash to a
+            defined handler. If you use a UI component, the component creates the router. In the
+            following example, the URL is www.myApp.com#product/5. To get the information that the
+            hash points to the product and that the value is "5", you need the following
+            configuration:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"> //Somewhere at the start of your application
+        var aRoutes = [
+                    {
+                        pattern : "product/{id}", // will be the url and from has to be provided in the data
+                        name : "specificProduct" // name used for listening or navigating to this route
+                    }
+                ];
+
+        var oRouter = new sap.ui.core.routing.Router(aRoutes);
+
+        //this is used to retrieve the instance again
+        oRouter.register("appRouter");
+
+        //starts reacting on the hashchange + parses the current hash and notifies callbacks
+    oRouter.initialize();</pre></div>
+<p class="p">With this configuration, the route pattern is matched against the hash. The curly brackets
+            indicate that this segment of the URL is passed to a handler with the contained value.
+            In the example the value is "5".</p>
+<p class="p">The following code snippet shows how you can register to this:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.controller("MyApp.View1", {
+ //inside of a controller
+    onInit: function() {
+        var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+
+        oRouter.attachRouteMatched(function(oEvent) {
+            if (oEvent.getParameter("name") !== "specificProduct") {
+                            return; //we only want to react to events for the specificProductRoute
+                        }
+                        //We now know we hit the specificProduct route and retrieve the id
+            this._selectItemWithId(oEvent.getParameter("arguments").id);
+                  //bind the this pointer to the callback
+        }, this);
+       },
+
+    _selectItemWithId : function(id) {
+        //implementation eg: select an item in a list
+       }</pre></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Navigation";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

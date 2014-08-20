@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=6081442643991108"/>
+<title>Step 2: Component</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio170638b7a2b4424e8580fb473af6a3cd">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Step 2: Component</h1>
+<div class="body conbody"><p class="shortdesc"/>
+<p class="p">The component encapsulates all of our sample application. That doesn't mean that all the view
+			definitions and application logic is to be found here, rather, it represents an
+			independent unit which can be instantiated either inside a container or elsewhere. From
+			this unit, the child artifacts, such as views, are brought into play.</p>
+<p class="p">Components do not need to be complete applications; they can also be smaller clusters of
+			functionality. Here we are using an <samp class="ph codeph">sap.ui.core.UIComponent</samp> to define
+			our "application unit".</p>
+<p class="p">We can view our sample application's Component as having three main sections, and we'll cover
+			them one by one. For that we create a new JavaScript file in the same location as our
+				<span class="ph filepath">index.html</span> and call it <span class="ph filepath">Component.js</span>. </p>
+<div class="section"><div class="section_title">Metadata</div><div type="Metadata"><p class="p">After the initial declaration of the component itself, with the
+				fully qualified name <samp class="ph codeph">sap.ui.demo.tdg.Component</samp>, and the loading of
+				our custom router module, we start with a definition of the component as an
+					<samp class="ph codeph">sap.ui.core.UIComponent</samp>.</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+jQuery.sap.declare("sap.ui.demo.tdg.Component");
+jQuery.sap.require("sap.ui.demo.tdg.MyRouter");
+
+sap.ui.core.UIComponent.extend("sap.ui.demo.tdg.Component", {
+</pre></div>
+<p class="p">As
+				is typical with components, the first thing we see is the component's settings
+				configuration, in the form of the metadata. We'll tackle the configuration in three
+				arbitrary sections: general, config and
+					routing.</p>
+<div class="sectiondiv"><span class="ph emphasis emphasis">General</span><div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+ metadata : {
+        name : "TDG Demo App",
+        version : "1.0",
+        includes : [],
+        dependencies : {
+            libs : ["sap.m", "sap.ui.layout"],
+            components : []
+        },
+ rootView : "sap.ui.demo.tdg.view.App",
+</pre></div>
+<p class="p">In
+					this general section we specify the name of the app and its version. We also
+					specify the library dependencies, which, when the component is instantiated,
+					will be loaded directly. In this case it is the <samp class="ph codeph">sap.m</samp> and
+						<samp class="ph codeph">sap.ui.layout</samp> libraries that we need (the latter being for
+					the <samp class="ph codeph">sap.ui.layout.form.SimpleForm</samp> controls that we use to
+					display supplier and category information in the Detail view. This application
+					component doesn't rely on any other components or other files, so the rest of
+					this section is empty.</p>
+<p class="p">Ultimately the component, being visual
+						(<samp class="ph codeph">sap.ui.core.component.UIComponent</samp>) needs to return
+					something for the user to see. In this case it's the App view (in
+						<span class="ph filepath">App.view.xml </span>in the view folder). You can do this by
+					specifying a <samp class="ph codeph">createContent</samp> function in the component and
+					returning the view there. This is a similar pattern to JavaScript-based view and
+					fragment definitions. However, if you don't need to enhance your view (with
+					additional data, for example) and you would just be returning a fresh
+					instantiation, then you should avoid using the <samp class="ph codeph">createContent</samp>
+					function, and instead, specify the view as shown here, using the
+						<samp class="ph codeph">rootView</samp> metadata parameter. The component itself will then
+					take care of the
+					instantiation.</p>
+</div><div class="sectiondiv"><span class="ph emphasis emphasis">Config</span><div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+config : {
+            resourceBundle : "i18n/messageBundle.properties",
+            serviceConfig : {
+                name : "Northwind",
+                serviceUrl : "/uilib-sample/proxy/http/services.odata.org/V2/(S(sapuidemotdg))/OData/OData.svc/"
+            }
+        },
+</pre></div>
+<p class="p">The
+					sample application is fairly simple and does not require much configuration.
+					Here we have the name of the resource bundle we'll be using for our
+					internationalization, and the URL of the OData service we'll be using for our
+					main, or "domain"
+					model.</p>
+</div><div class="sectiondiv"><span class="ph emphasis emphasis">Routing</span><div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+  routing: {
+            //...
+        }
+    },
+</pre></div>
+<p class="p">The
+					routing configuration is not shown here; please refer to the separate section on
+						<a class="xref" href="688f36bd758e4ce2b4e682eef4dc794e.html">Navigation and
+						Routing</a> for detailed information.</p>
+</div></div></div>
+<div class="section"><div class="section_title">Initialization</div><div type="Initialization"><p class="p">Now that we have the configuration out of the way, it's
+				time to initialize the
+				component.</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+  init : function() {
+
+        sap.ui.core.UIComponent.prototype.init.apply(this, arguments);
+
+        var mConfig = this.getMetadata().getConfig();
+
+        // always use absolute paths relative to our own component
+        // (relative paths will fail if running in the Fiori Launchpad)
+        var rootPath = jQuery.sap.getModulePath("sap.ui.demo.tdg");
+
+        // set i18n model
+        var i18nModel = new sap.ui.model.resource.ResourceModel({
+            bundleUrl : [rootPath, mConfig.resourceBundle].join("/")
+        });
+        this.setModel(i18nModel, "i18n");
+        
+        // Create and set domain model to the component
+        var sServiceUrl = mConfig.serviceConfig.serviceUrl;
+        var oModel = new sap.ui.model.odata.ODataModel(sServiceUrl, true);
+        this.setModel(oModel);
+
+        // set device model
+        var deviceModel = new sap.ui.model.json.JSONModel({
+            isTouch : sap.ui.Device.support.touch,
+            isNoTouch : !sap.ui.Device.support.touch,
+            isPhone : sap.ui.Device.system.phone,
+            isNoPhone : !sap.ui.Device.system.phone,
+            listMode : sap.ui.Device.system.phone ? "None" : "SingleSelectMaster",
+            listItemType : sap.ui.Device.system.phone ? "Active" : "Inactive"
+        });
+        deviceModel.setDefaultBindingMode("OneWay");
+        this.setModel(deviceModel, "device");
+        
+        this.getRouter().initialize();
+
+            
+    },
+});
+</pre></div>
+<p dir="ltr" class="p">In the component initialization, we perform various setup activities.
+				First, we retrieve the component configuration from the metadata section shown
+				earlier. We're particularly interested in the service URL as that is going to be
+				used when we create our domain model.</p>
+<p class="p">There are actually three models that are
+				created here, and they're all set on the component, meaning they're available to the
+				views within. After setting the models on the component, we initialize the
+				router.</p>
+<div class="sectiondiv"><span class="ph emphasis emphasis">Internationalization Model</span><p class="p">This is for
+					application texts that can be translated. See the section on <a class="xref" href="b6d1a9511f994b3a86e2f34a32e40a34.html">Internationalization</a>
+					for more details.</p>
+</div><div class="sectiondiv"><span class="ph emphasis emphasis">Domain
+					Model</span><p dir="ltr" class="p">The domain model is also created based upon the
+					service URL specified in the configuration. This is usually an OData
+					service.</p>
+</div><div class="sectiondiv"><span class="ph emphasis emphasis">Device Model</span><p dir="ltr" class="p">Building a responsive app means ensuring that the controls behave
+					appropriately on different devices and screen sizes. Some responsiveness within
+					controls is implicit, where as other aspects must be determined explicitly,
+					based on the device on which it is running. For these latter cases we need to
+					detect the device and use the information to determine how to configure the
+					control behaviours. </p>
+<p dir="ltr" class="p">Detecting the device is done using the
+						<samp class="ph codeph">sap.ui.Device</samp> support, and the information obtained is
+					stored in a model. See the <a class="xref" href="325b8edafcfa4c9c8fbd42455a60e379.html">Device Model</a> section for more details.</p>
+</div></div></div>
+<div class="section"><div class="section_title">Progress Check</div><div type="Progress Check">
+			
+			<p class="p">We've added <span class="ph filepath">Component.js</span>, so our app folder content looks like
+				this:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+tdg/
+  |
+  +-- Component.js
+  +-- index.html</pre></div>
+
+			<p dir="ltr" class="p">But we're still getting a Blue Crystal styled empty screen:</p>
+
+			<div class="fig fignone"><div class="figcontainer"><img class="image" id="loio170638b7a2b4424e8580fb473af6a3cd__image_rsr_dhr_4n" src="f4df91930eb3497a860a03da34318127.image"/></div></div>
+
+			<p class="p">This time, we see an error in the console:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">Uncaught Error: failed to load 'sap/ui/demo/tdg/Component.js' from ./Component.js: Error:
+        failed to load 'sap/ui/demo/tdg/MyRouter.js' from ./MyRouter.js: 404 - Not Found</pre></div>
+
+			<p dir="ltr" class="p">This is also not unexpected. We've said we need the
+					<samp class="ph codeph">sap.ui.demo.tdg.MyRouter</samp> via the call to
+					<samp class="ph codeph">jQuery.sap.require</samp>, but we don't have it yet. </p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="958ead51e2e94ab8bcdc90fb7e9d53d0.html" title="Components are independent and reusable parts used in SAPUI5 applications. An application can use components from different locations from where the application is running. Thus, components can be developed by different development teams and be used in different projects. Components also support the encapsulation of closely related parts of an application into a particular component. This makes the structure of an application and its code easier to understand and to maintain.">SAPUI5 Components</a></div>
+<div><a class="link" href="3d18f20bd2294228acb6910d8e8a5fb5.html" title="Navigation in SAPUI5 enables you to pass data from the hash to any view, and to adjust a current hash so that you can use it as a bookmarkable URL. Depending on the hash, you can also generate views automatically.">Navigation</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Step 2: Component";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

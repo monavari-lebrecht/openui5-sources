@@ -1,0 +1,822 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.m.SplitApp</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class sap.m.SplitApp
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.m.SplitContainer" href="../symbols/sap.m.SplitContainer.html">SplitContainer</a></div>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>SplitApp is another root element of a UI5 mobile application besides App control. It maintains two NavContainers if runs in tablet and one NavContainer in phone. The display of master NavContainer depends on the portrait/landscape of the device and the mode of SplitApp.</p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="Constructor for a new SplitApp.">new <a href="../symbols/sap.m.SplitApp.html#constructor">sap.m.SplitApp</a></b>
+										<span class='signature'>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)</span>
+										<span class='description'>Constructor for a new SplitApp.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+						
+						
+						
+						
+					
+		
+
+
+					
+						
+						
+						<div class="summary section" cellspacing="0" summary="A summary of the events documented in the class sap.m.SplitApp.">
+							<div class="sectionTitle">Event Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="This event will be fired when orientation (portrait/landscape) is changed."><a href="../symbols/sap.m.SplitApp.html#event:orientationChange">orientationChange</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>This event will be fired when orientation (portrait/landscape) is changed.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+				
+						
+						
+						
+							
+								<div class="summary section">
+									<div class="sectionTitle">Events borrowed from class <a href="../symbols/sap.m.SplitContainer.html">sap.m.SplitContainer</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.m.SplitContainer.html#event:afterDetailNavigate">afterDetailNavigate</a>, <a href="../symbols/sap.m.SplitContainer.html#event:afterMasterClose">afterMasterClose</a>, <a href="../symbols/sap.m.SplitContainer.html#event:afterMasterNavigate">afterMasterNavigate</a>, <a href="../symbols/sap.m.SplitContainer.html#event:afterMasterOpen">afterMasterOpen</a>, <a href="../symbols/sap.m.SplitContainer.html#event:beforeMasterClose">beforeMasterClose</a>, <a href="../symbols/sap.m.SplitContainer.html#event:beforeMasterOpen">beforeMasterOpen</a>, <a href="../symbols/sap.m.SplitContainer.html#event:detailNavigate">detailNavigate</a>, <a href="../symbols/sap.m.SplitContainer.html#event:masterButton">masterButton</a>, <a href="../symbols/sap.m.SplitContainer.html#event:masterNavigate">masterNavigate</a>
+									</div>
+								</div>
+							
+						
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Creates a new subclass of class sap.m.SplitApp with name sClassName and enriches it with the information contained in oClassInfo."><a href="../symbols/sap.m.SplitApp.html#.extend">sap.m.SplitApp.extend</a></b><span class='signature'>(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Creates a new subclass of class sap.m.SplitApp with name <code>sClassName</code> and enriches it with the information contained in <code>oClassInfo</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Attach event handler fnFunction to the 'orientationChange' event of this sap.m.SplitApp."><a href="../symbols/sap.m.SplitApp.html#attachOrientationChange">attachOrientationChange</a></b><span class='signature'>(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Attach event handler <code>fnFunction</code> to the 'orientationChange' event of this <code>sap.m.SplitApp</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Detach event handler fnFunction from the 'orientationChange' event of this sap.m.SplitApp."><a href="../symbols/sap.m.SplitApp.html#detachOrientationChange">detachOrientationChange</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Detach event handler <code>fnFunction</code> from the 'orientationChange' event of this <code>sap.m.SplitApp</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Fire event orientationChange to attached listeners."><a href="../symbols/sap.m.SplitApp.html#fireOrientationChange">fireOrientationChange</a></b><span class='signature'>(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event orientationChange to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property homeIcon."><a href="../symbols/sap.m.SplitApp.html#getHomeIcon">getHomeIcon</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>homeIcon</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property homeIcon."><a href="../symbols/sap.m.SplitApp.html#setHomeIcon">setHomeIcon</a></b><span class='signature'>(<span title="(any) new value for property homeIcon">oHomeIcon</span>)</span>
+									<span class='description'>Setter for property <code>homeIcon</code>.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.m.SplitContainer.html">sap.m.SplitContainer</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.m.SplitContainer.html#addDetailPage">addDetailPage</a>, <a href="../symbols/sap.m.SplitContainer.html#addMasterPage">addMasterPage</a>, <a href="../symbols/sap.m.SplitContainer.html#addPage">addPage</a>, <a href="../symbols/sap.m.SplitContainer.html#attachAfterDetailNavigate">attachAfterDetailNavigate</a>, <a href="../symbols/sap.m.SplitContainer.html#attachAfterMasterClose">attachAfterMasterClose</a>, <a href="../symbols/sap.m.SplitContainer.html#attachAfterMasterNavigate">attachAfterMasterNavigate</a>, <a href="../symbols/sap.m.SplitContainer.html#attachAfterMasterOpen">attachAfterMasterOpen</a>, <a href="../symbols/sap.m.SplitContainer.html#attachBeforeMasterClose">attachBeforeMasterClose</a>, <a href="../symbols/sap.m.SplitContainer.html#attachBeforeMasterOpen">attachBeforeMasterOpen</a>, <a href="../symbols/sap.m.SplitContainer.html#attachDetailNavigate">attachDetailNavigate</a>, <a href="../symbols/sap.m.SplitContainer.html#attachMasterButton">attachMasterButton</a>, <a href="../symbols/sap.m.SplitContainer.html#attachMasterNavigate">attachMasterNavigate</a>, <a href="../symbols/sap.m.SplitContainer.html#backDetail">backDetail</a>, <a href="../symbols/sap.m.SplitContainer.html#backMaster">backMaster</a>, <a href="../symbols/sap.m.SplitContainer.html#backToPage">backToPage</a>, <a href="../symbols/sap.m.SplitContainer.html#backToTopDetail">backToTopDetail</a>, <a href="../symbols/sap.m.SplitContainer.html#backToTopMaster">backToTopMaster</a>, <a href="../symbols/sap.m.SplitContainer.html#destroyDetailPages">destroyDetailPages</a>, <a href="../symbols/sap.m.SplitContainer.html#destroyMasterPages">destroyMasterPages</a>, <a href="../symbols/sap.m.SplitContainer.html#detachAfterDetailNavigate">detachAfterDetailNavigate</a>, <a href="../symbols/sap.m.SplitContainer.html#detachAfterMasterClose">detachAfterMasterClose</a>, <a href="../symbols/sap.m.SplitContainer.html#detachAfterMasterNavigate">detachAfterMasterNavigate</a>, <a href="../symbols/sap.m.SplitContainer.html#detachAfterMasterOpen">detachAfterMasterOpen</a>, <a href="../symbols/sap.m.SplitContainer.html#detachBeforeMasterClose">detachBeforeMasterClose</a>, <a href="../symbols/sap.m.SplitContainer.html#detachBeforeMasterOpen">detachBeforeMasterOpen</a>, <a href="../symbols/sap.m.SplitContainer.html#detachDetailNavigate">detachDetailNavigate</a>, <a href="../symbols/sap.m.SplitContainer.html#detachMasterButton">detachMasterButton</a>, <a href="../symbols/sap.m.SplitContainer.html#detachMasterNavigate">detachMasterNavigate</a>, <a href="../symbols/sap.m.SplitContainer.html#fireAfterDetailNavigate">fireAfterDetailNavigate</a>, <a href="../symbols/sap.m.SplitContainer.html#fireAfterMasterClose">fireAfterMasterClose</a>, <a href="../symbols/sap.m.SplitContainer.html#fireAfterMasterNavigate">fireAfterMasterNavigate</a>, <a href="../symbols/sap.m.SplitContainer.html#fireAfterMasterOpen">fireAfterMasterOpen</a>, <a href="../symbols/sap.m.SplitContainer.html#fireBeforeMasterClose">fireBeforeMasterClose</a>, <a href="../symbols/sap.m.SplitContainer.html#fireBeforeMasterOpen">fireBeforeMasterOpen</a>, <a href="../symbols/sap.m.SplitContainer.html#fireDetailNavigate">fireDetailNavigate</a>, <a href="../symbols/sap.m.SplitContainer.html#fireMasterButton">fireMasterButton</a>, <a href="../symbols/sap.m.SplitContainer.html#fireMasterNavigate">fireMasterNavigate</a>, <a href="../symbols/sap.m.SplitContainer.html#getBackgroundColor">getBackgroundColor</a>, <a href="../symbols/sap.m.SplitContainer.html#getBackgroundImage">getBackgroundImage</a>, <a href="../symbols/sap.m.SplitContainer.html#getBackgroundOpacity">getBackgroundOpacity</a>, <a href="../symbols/sap.m.SplitContainer.html#getBackgroundRepeat">getBackgroundRepeat</a>, <a href="../symbols/sap.m.SplitContainer.html#getCurrentDetailPage">getCurrentDetailPage</a>, <a href="../symbols/sap.m.SplitContainer.html#getCurrentMasterPage">getCurrentMasterPage</a>, <a href="../symbols/sap.m.SplitContainer.html#getCurrentPage">getCurrentPage</a>, <a href="../symbols/sap.m.SplitContainer.html#getDefaultTransitionNameDetail">getDefaultTransitionNameDetail</a>, <a href="../symbols/sap.m.SplitContainer.html#getDefaultTransitionNameMaster">getDefaultTransitionNameMaster</a>, <a href="../symbols/sap.m.SplitContainer.html#getDetailPage">getDetailPage</a>, <a href="../symbols/sap.m.SplitContainer.html#getDetailPages">getDetailPages</a>, <a href="../symbols/sap.m.SplitContainer.html#getInitialDetail">getInitialDetail</a>, <a href="../symbols/sap.m.SplitContainer.html#getInitialMaster">getInitialMaster</a>, <a href="../symbols/sap.m.SplitContainer.html#getMasterButtonText">getMasterButtonText</a>, <a href="../symbols/sap.m.SplitContainer.html#getMasterPage">getMasterPage</a>, <a href="../symbols/sap.m.SplitContainer.html#getMasterPages">getMasterPages</a>, <a href="../symbols/sap.m.SplitContainer.html#getMode">getMode</a>, <a href="../symbols/sap.m.SplitContainer.html#getPage">getPage</a>, <a href="../symbols/sap.m.SplitContainer.html#getPreviousPage">getPreviousPage</a>, <a href="../symbols/sap.m.SplitContainer.html#hideMaster">hideMaster</a>, <a href="../symbols/sap.m.SplitContainer.html#indexOfDetailPage">indexOfDetailPage</a>, <a href="../symbols/sap.m.SplitContainer.html#indexOfMasterPage">indexOfMasterPage</a>, <a href="../symbols/sap.m.SplitContainer.html#insertDetailPage">insertDetailPage</a>, <a href="../symbols/sap.m.SplitContainer.html#insertMasterPage">insertMasterPage</a>, <a href="../symbols/sap.m.SplitContainer.html#insertPreviousPage">insertPreviousPage</a>, <a href="../symbols/sap.m.SplitContainer.html#isMasterShown">isMasterShown</a>, <a href="../symbols/sap.m.SplitContainer.html#removeAllDetailPages">removeAllDetailPages</a>, <a href="../symbols/sap.m.SplitContainer.html#removeAllMasterPages">removeAllMasterPages</a>, <a href="../symbols/sap.m.SplitContainer.html#removeDetailPage">removeDetailPage</a>, <a href="../symbols/sap.m.SplitContainer.html#removeMasterPage">removeMasterPage</a>, <a href="../symbols/sap.m.SplitContainer.html#setBackgroundColor">setBackgroundColor</a>, <a href="../symbols/sap.m.SplitContainer.html#setBackgroundImage">setBackgroundImage</a>, <a href="../symbols/sap.m.SplitContainer.html#setBackgroundOpacity">setBackgroundOpacity</a>, <a href="../symbols/sap.m.SplitContainer.html#setBackgroundRepeat">setBackgroundRepeat</a>, <a href="../symbols/sap.m.SplitContainer.html#setDefaultTransitionNameDetail">setDefaultTransitionNameDetail</a>, <a href="../symbols/sap.m.SplitContainer.html#setDefaultTransitionNameMaster">setDefaultTransitionNameMaster</a>, <a href="../symbols/sap.m.SplitContainer.html#setInitialDetail">setInitialDetail</a>, <a href="../symbols/sap.m.SplitContainer.html#setInitialMaster">setInitialMaster</a>, <a href="../symbols/sap.m.SplitContainer.html#setMasterButtonText">setMasterButtonText</a>, <a href="../symbols/sap.m.SplitContainer.html#setMode">setMode</a>, <a href="../symbols/sap.m.SplitContainer.html#showMaster">showMaster</a>, <a href="../symbols/sap.m.SplitContainer.html#to">to</a>, <a href="../symbols/sap.m.SplitContainer.html#toDetail">toDetail</a>, <a href="../symbols/sap.m.SplitContainer.html#toMaster">toMaster</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Control.html#addStyleClass">addStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#allowTextSelection">allowTextSelection</a>, <a href="../symbols/sap.ui.core.Control.html#attachBrowserEvent">attachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#clone">clone</a>, <a href="../symbols/sap.ui.core.Control.html#detachBrowserEvent">detachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#getBusy">getBusy</a>, <a href="../symbols/sap.ui.core.Control.html#getBusyIndicatorDelay">getBusyIndicatorDelay</a>, <a href="../symbols/sap.ui.core.Control.html#getIdForLabel">getIdForLabel</a>, <a href="../symbols/sap.ui.core.Control.html#getRenderer">getRenderer</a>, <a href="../symbols/sap.ui.core.Control.html#hasStyleClass">hasStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#invalidate">invalidate</a>, <a href="../symbols/sap.ui.core.Control.html#isBusy">isBusy</a>, <a href="../symbols/sap.ui.core.Control.html#onAfterRendering">onAfterRendering</a>, <a href="../symbols/sap.ui.core.Control.html#onBeforeRendering">onBeforeRendering</a>, <a href="../symbols/sap.ui.core.Control.html#placeAt">placeAt</a>, <a href="../symbols/sap.ui.core.Control.html#removeStyleClass">removeStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#rerender">rerender</a>, <a href="../symbols/sap.ui.core.Control.html#setBusy">setBusy</a>, <a href="../symbols/sap.ui.core.Control.html#setBusyIndicatorDelay">setBusyIndicatorDelay</a>, <a href="../symbols/sap.ui.core.Control.html#toggleStyleClass">toggleStyleClass</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Element.html#$">$</a>, <a href="../symbols/sap.ui.core.Element.html#addCustomData">addCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#addDependent">addDependent</a>, <a href="../symbols/sap.ui.core.Element.html#addEventDelegate">addEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#applyFocusInfo">applyFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#bindElement">bindElement</a>, <a href="../symbols/sap.ui.core.Element.html#data">data</a>, <a href="../symbols/sap.ui.core.Element.html#destroy">destroy</a>, <a href="../symbols/sap.ui.core.Element.html#destroyCustomData">destroyCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#destroyDependents">destroyDependents</a>, <a href="../symbols/sap.ui.core.Element.html#enhanceAccessibilityState">enhanceAccessibilityState</a>, <a href="../symbols/sap.ui.core.Element.html#exit">exit</a>, <a href="../symbols/sap.ui.core.Element.html#findElements">findElements</a>, <a href="../symbols/sap.ui.core.Element.html#fireEvent">fireEvent</a>, <a href="../symbols/sap.ui.core.Element.html#getCustomData">getCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#getDependents">getDependents</a>, <a href="../symbols/sap.ui.core.Element.html#getDomRef">getDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getElementBinding">getElementBinding</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusDomRef">getFocusDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusInfo">getFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#getInterface">getInterface</a>, <a href="../symbols/sap.ui.core.Element.html#getLayoutData">getLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#getMetadata">getMetadata</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip">getTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_AsString">getTooltip_AsString</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_Text">getTooltip_Text</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfCustomData">indexOfCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfDependent">indexOfDependent</a>, <a href="../symbols/sap.ui.core.Element.html#insertCustomData">insertCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#insertDependent">insertDependent</a>, <a href="../symbols/sap.ui.core.Element.html#prop">prop</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllCustomData">removeAllCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllDependents">removeAllDependents</a>, <a href="../symbols/sap.ui.core.Element.html#removeCustomData">removeCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeDependent">removeDependent</a>, <a href="../symbols/sap.ui.core.Element.html#removeEventDelegate">removeEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#setLayoutData">setLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#setTooltip">setTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#toString">toString</a>, <a href="../symbols/sap.ui.core.Element.html#unbindElement">unbindElement</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.ManagedObject.html">sap.ui.base.ManagedObject</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.ManagedObject.html#addAggregation">addAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#addAssociation">addAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#applySettings">applySettings</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindAggregation">bindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindContext">bindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindObject">bindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindProperty">bindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#destroyAggregation">destroyAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#findAggregatedObjects">findAggregatedObjects</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAggregation">getAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAssociation">getAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBinding">getBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingContext">getBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingInfo">getBindingInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingPath">getBindingPath</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getEventingParent">getEventingParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getId">getId</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getModel">getModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getObjectBinding">getObjectBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getOriginInfo">getOriginInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getParent">getParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getProperty">getProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#hasModel">hasModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#indexOfAggregation">indexOfAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#insertAggregation">insertAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isBound">isBound</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isInvalidateSuppressed">isInvalidateSuppressed</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isTreeBinding">isTreeBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAggregation">removeAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAggregation">removeAllAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAssociation">removeAllAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAssociation">removeAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAggregation">setAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAssociation">setAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setBindingContext">setBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setModel">setModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setProperty">setProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindAggregation">unbindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindContext">unbindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindObject">unbindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindProperty">unbindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateProperty">validateProperty</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.EventProvider.html#attachEvent">attachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#attachEventOnce">attachEventOnce</a>, <a href="../symbols/sap.ui.base.EventProvider.html#detachEvent">detachEvent</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.m.SplitApp</b>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)
+										</div>
+										
+										<div class="full-description">
+											Constructor for a new SplitApp.
+</p><p>
+Accepts an object literal <code>mSettings</code> that defines initial 
+property values, aggregated and associated objects as well as event handlers. 
+</p><p>
+If the name of a setting is ambiguous (e.g. a property has the same name as an event), 
+then the framework assumes property, aggregation, association, event in that order. 
+To override this automatic resolution, one of the prefixes "aggregation:", "association:" 
+or "event:" can be added to the name of the setting (such a prefixed name must be
+enclosed in single or double quotes).
+</p><p>
+The supported settings are:
+<ul>
+<li>Properties
+<ul>
+<li><a href="#getHomeIcon">homeIcon</a> : any</li></ul>
+</li>
+<li>Aggregations
+<ul></ul>
+</li>
+<li>Associations
+<ul></ul>
+</li>
+<li>Events
+<ul>
+<li><a href="../symbols/sap.m.SplitApp.html#event:orientationChange">orientationChange</a> : fnListenerFunction or [fnListenerFunction, oListenerObject] or [oData, fnListenerFunction, oListenerObject]</li></ul>
+</li>
+</ul> 
+</p><p>
+</p><p>
+In addition, all settings applicable to the base type <a href="../symbols/sap.m.SplitContainer.html#constructor">sap.m.SplitContainer</a>
+can be used as well.
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    id for the new control, generated automatically if no id is given
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mSettings</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    initial settings for the new control
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Event Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:orientationChange"> </a>
+									<div class="itemTitle icon">
+										orientationChange<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										This event will be fired when orientation (portrait/landscape) is changed.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{boolean}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.landscape</b>
+												</td>
+												<td class="methodItemDesc">
+											    Returns true if the device is in landscape.
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+							</div>
+						</div>
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".extend"> </a>
+										<div class="itemTitle icon">
+											sap.m.SplitApp.extend<span class="signature">(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns function">: function</span>
+										</div>
+										<div class="full-description">
+											Creates a new subclass of class sap.m.SplitApp with name <code>sClassName</code> 
+and enriches it with the information contained in <code>oClassInfo</code>.
+</p><p>
+<code>oClassInfo</code> might contain the same kind of informations as described in <a href="../symbols/sap.ui.core.Element.html#.extend">Element.extend</a>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sClassName</b>
+													</td>
+													<td class="methodItemDesc">
+												    name of the class to be created
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oClassInfo</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    object literal with informations about the class
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>FNMetaImpl</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    constructor function for the metadata object. If not given, it defaults to sap.ui.core.ElementMetadata.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{function}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the created class / constructor function
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachOrientationChange"> </a>
+										<div class="itemTitle icon">
+											attachOrientationChange<span class="signature">(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.m.SplitApp">: <a href="../symbols/sap.m.SplitApp.html">sap.m.SplitApp</a></span>
+										</div>
+										<div class="full-description">
+											Attach event handler <code>fnFunction</code> to the 'orientationChange' event of this <code>sap.m.SplitApp</code>.<br/>.
+When called, the context of the event handler (its <code>this</code>) will be bound to <code>oListener<code> if specified
+otherwise to this <code>sap.m.SplitApp</code>.<br/> itself. 
+</p><p>
+This event will be fired when orientation (portrait/landscape) is changed.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oData</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    An application specific payload object, that will be passed to the event handler along with the event object when firing the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Context object to call the event handler with. Defaults to this <code>sap.m.SplitApp</code>.<br/> itself.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.SplitApp.html">sap.m.SplitApp</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachOrientationChange"> </a>
+										<div class="itemTitle icon">
+											detachOrientationChange<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.m.SplitApp">: <a href="../symbols/sap.m.SplitApp.html">sap.m.SplitApp</a></span>
+										</div>
+										<div class="full-description">
+											Detach event handler <code>fnFunction</code> from the 'orientationChange' event of this <code>sap.m.SplitApp</code>.<br/>
+</p><p>
+The passed function and listener object must match the ones used for event registration.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Context object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.SplitApp.html">sap.m.SplitApp</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="fireOrientationChange"> </a>
+										<div class="itemTitle icon protected">
+											fireOrientationChange<span class="signature">(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.m.SplitApp">: <a href="../symbols/sap.m.SplitApp.html">sap.m.SplitApp</a></span>
+										</div>
+										<div class="full-description">
+											Fire event orientationChange to attached listeners.
+</p><p>
+Expects following event parameters:
+<ul>
+<li>'landscape' of type <code>boolean</code> Returns true if the device is in landscape.</li>
+</ul>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Map}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.SplitApp.html">sap.m.SplitApp</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getHomeIcon"> </a>
+										<div class="itemTitle icon">
+											getHomeIcon<span class="signature">()</span>
+											<span class="light" title="returns any">: any</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>homeIcon</code>.
+The icon to be displayed on the home screen of iOS devices after the user does "add to home screen".
+</p><p>
+Note that only the first attempt to set the homeIcon will be executed, subsequent settings are ignored.
+</p><p>
+This icon must be in PNG format. The property can either hold the URL of one single icon which is used for all devices (and possibly scaled, which looks not perfect), or an object holding icon URLs for the different required sizes.
+</p><p>
+A desktop icon (used for bookmarks and overriding the favicon) can also be configured. This requires an object to be given and the "icon" property of this object then defines the desktop bookmark icon. For this icon, PNG is not supported by Internet Explorer. The ICO format is supported by all browsers. ICO is also preferred for this desktop icon setting because the file can contain different images for different resolutions.
+</p><p>
+One example is:
+</p><p>
+app.setHomeIcon({
+'phone':'phone-icon.png',
+'phone@2':'phone-retina.png',
+'tablet':'tablet-icon.png',
+'tablet@2':'tablet-retina.png',
+'icon':'desktop.ico'
+});
+</p><p>
+The respective image sizes are 57/114 px for the phone and 72/144 px for the tablet.
+If an object is given but one of the sizes is not given, the largest given icon will be used for this size.
+</p><p>
+On Android these icons may or may not be used by the device. Apparently chances can be improved by adding glare effect and rounded corners, setting the file name so it ends with "-precomposed.png" and setting the "homeIconPrecomposed" property to "true".
+</p><p>
+Default value is empty/<code>undefined</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{any}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>homeIcon</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setHomeIcon"> </a>
+										<div class="itemTitle icon">
+											setHomeIcon<span class="signature">(<span title="(any) new value for property homeIcon">oHomeIcon</span>)</span>
+											<span class="light" title="returns sap.m.SplitApp">: <a href="../symbols/sap.m.SplitApp.html">sap.m.SplitApp</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>homeIcon</code>.
+</p><p>
+Default value is empty/<code>undefined</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{any}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oHomeIcon</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>homeIcon</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.SplitApp.html">sap.m.SplitApp</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

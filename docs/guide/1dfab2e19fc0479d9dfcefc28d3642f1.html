@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=43647254814733694"/>
+<title>Multiple Module Locations</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio1dfab2e19fc0479d9dfcefc28d3642f1">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Multiple Module Locations</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">In web applications, modules can be located in different locations, such as servers and web
+			apps. A web application can, for example, be deployed as an individual web app and
+			contain modules that have to be loaded at runtime. SAPUI5 and its modules, however, have
+			to be loaded either from a content delivery network (CDN) or from a centrally deployed
+			web app. By default, SAPUI5 loads modules from its resource root URL, that is, from the
+			centrally deployed web application. This would fail for modules that are contained in
+			your web application.</p>
+<p class="p">To facilitate mixed location scenarios, SAPUI5 provides the
+				<samp class="ph codeph">jQuery.sap.registerModulePath</samp> function:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">   jQuery.sap.registerModulePath = function(sModuleNamePrefix, sURL);</pre></div>
+<p class="p">The function associates a module name prefix with a URL prefix. All modules whose names start
+			with the module name prefix are loaded from the registered URL instead of the standard
+			resource root URL. Thus, it is possible to redirect the request for the
+			application-specific modules to the corresponding web application:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">   &lt;!-- bootstrap tag which implicitly defines the resource root as 'http://www.sap.com/sapui5/1.0/resources/' --&gt;
+   &lt;script src="http://www.sap.com/sapui5/1.0/resources/sap-ui-core.js" &gt;&lt;/script&gt;
+
+   &lt;script&gt;
+      // request will be mapped to http://www.sap.com/sapui5/1.0/resources/sap/ui/core/Core.js
+      jQuery.sap.require('sap.ui.core.Core'); 
+
+      // redirect the 'my.webapp' package to the local web app
+      jQuery.sap.registerModulePath('my.webapp', '/my-webapp/resources/my/webapp/');
+
+      // loads /my-webapp/resources/my/webapp/MyModule01.js
+      jQuery.sap.require('my.webapp.MyModule01');
+   &lt;/script&gt;</pre></div>
+<div class="note note" id="loio1dfab2e19fc0479d9dfcefc28d3642f1__note_N100D3_N100B1_N10013_N10001"><span class="notetitle">Note</span> 
+			<p class="p">The registered URL above contains the transformed module name prefix 'my/webapp/'. This allows
+				a more flexible packaging of the modules, for example, if you decide to deploy all
+				modules named 'my.company.*' to the central URL 'http://my.company/shared/' without
+				packaging them into a two level hierarchy of subfolders:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">jQuery.sap.registerModulePath('my.company', 'http://my.company/shared/');</pre></div>
+
+		</div>
+<p class="p">However, when the standard build tools of the SAPUI5 framework are used, the full package name
+			will be part of the runtime file hierarchy and the registration must contain the
+			transformed package hierarchy as above.</p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Multiple Module Locations";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

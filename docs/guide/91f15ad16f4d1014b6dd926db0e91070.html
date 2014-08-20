@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=42093158481232784"/>
+<title>Declarative Support: Events</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f15ad16f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Declarative Support: Events</h1>
+<div class="body"><p class="p">The value of the event data attribute contains the name of a JavaScript function which
+			will be used as callback once the event has been triggered. The following code snippet
+			gives an example how a change of <samp class="ph codeph">TextField</samp> results in an alert with its
+			new value when the focus is lost:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;script&gt;
+  function handleChange (oEvent) {
+    alert (oEvent.getSource().getValue());
+  }
+&lt;/script&gt;
+
+&lt;div data-sap-ui-type="sap.ui.commons.TextField" data-value="Change me!" data-change="handleChange"&gt;&lt;/div&gt;</pre></div>
+<p class="p">Currently, SAPUI5 only supports to specify the name of a callback function. You can define
+			callback functions within any class, see the following code example: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;div data-sap-ui-type="sap.ui.commons.TextField" data-value="Change me!" data-change= "my.company.MyClass.handleChange"&gt;&lt;/div&gt;</pre></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Declarative Support: Events";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

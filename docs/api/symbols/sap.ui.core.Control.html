@@ -1,0 +1,1498 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.core.Control</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static abstract">
+					
+					abstract Class sap.ui.core.Control
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.ui.core.Element" href="../symbols/sap.ui.core.Element.html">Element</a></div>
+					
+					
+					
+						<div class="classRelation subclasses"><span class="caption">known direct subclasses: </span><a title="sap.ui.commons.layout.AbsoluteLayout" href="../symbols/sap.ui.commons.layout.AbsoluteLayout.html">AbsoluteLayout</a>, <a title="sap.ui.commons.Accordion" href="../symbols/sap.ui.commons.Accordion.html">Accordion</a>, <a title="sap.ui.ux3.ActionBar" href="../symbols/sap.ui.ux3.ActionBar.html">ActionBar</a>, <a title="sap.m.ActionSheet" href="../symbols/sap.m.ActionSheet.html">ActionSheet</a>, <a title="sap.ui.commons.ApplicationHeader" href="../symbols/sap.ui.commons.ApplicationHeader.html">ApplicationHeader</a>, <a title="sap.m.Bar" href="../symbols/sap.m.Bar.html">Bar</a>, <a title="sap.ui.commons.layout.BorderLayout" href="../symbols/sap.ui.commons.layout.BorderLayout.html">BorderLayout</a>, <a title="sap.m.BusyDialog" href="../symbols/sap.m.BusyDialog.html">BusyDialog</a>, <a title="sap.m.BusyIndicator" href="../symbols/sap.m.BusyIndicator.html">BusyIndicator</a>, <a title="sap.m.Button" href="../symbols/sap.m.Button.html">Button</a>, <a title="sap.ui.commons.Button" href="../symbols/sap.ui.commons.Button.html">Button</a>, <a title="sap.ui.unified.Calendar" href="../symbols/sap.ui.unified.Calendar.html">Calendar</a>, <a title="sap.m.Carousel" href="../symbols/sap.m.Carousel.html">Carousel</a>, <a title="sap.ui.commons.Carousel" href="../symbols/sap.ui.commons.Carousel.html">Carousel</a>, <a title="sap.m.CheckBox" href="../symbols/sap.m.CheckBox.html">CheckBox</a>, <a title="sap.ui.commons.CheckBox" href="../symbols/sap.ui.commons.CheckBox.html">CheckBox</a>, <a title="sap.ui.ux3.CollectionInspector" href="../symbols/sap.ui.ux3.CollectionInspector.html">CollectionInspector</a>, <a title="sap.ui.commons.ColorPicker" href="../symbols/sap.ui.commons.ColorPicker.html">ColorPicker</a>, <a title="sap.ui.core.ComponentContainer" href="../symbols/sap.ui.core.ComponentContainer.html">ComponentContainer</a>, <a title="sap.ui.unified.ContentSwitcher" href="../symbols/sap.ui.unified.ContentSwitcher.html">ContentSwitcher</a>, <a title="sap.ui.unified.Currency" href="../symbols/sap.ui.unified.Currency.html">Currency</a>, <a title="sap.ui.core.tmpl.DOMElement" href="../symbols/sap.ui.core.tmpl.DOMElement.html">DOMElement</a>, <a title="sap.ui.ux3.DataSet" href="../symbols/sap.ui.ux3.DataSet.html">DataSet</a>, <a title="sap.ui.ux3.DataSetSimpleView" href="../symbols/sap.ui.ux3.DataSetSimpleView.html">DataSetSimpleView</a>, <a title="sap.m.Dialog" href="../symbols/sap.m.Dialog.html">Dialog</a>, <a title="sap.ui.commons.Dialog" href="../symbols/sap.ui.commons.Dialog.html">Dialog</a>, <a title="sap.ui.ux3.Exact" href="../symbols/sap.ui.ux3.Exact.html">Exact</a>, <a title="sap.ui.ux3.ExactArea" href="../symbols/sap.ui.ux3.ExactArea.html">ExactArea</a>, <a title="sap.ui.ux3.ExactBrowser" href="../symbols/sap.ui.ux3.ExactBrowser.html">ExactBrowser</a>, <a title="sap.ui.core.util.Export" href="../symbols/sap.ui.core.util.Export.html">Export</a>, <a title="sap.m.FacetFilter" href="../symbols/sap.m.FacetFilter.html">FacetFilter</a>, <a title="sap.ui.ux3.FacetFilter" href="../symbols/sap.ui.ux3.FacetFilter.html">FacetFilter</a>, <a title="sap.ui.ux3.FacetFilterList" href="../symbols/sap.ui.ux3.FacetFilterList.html">FacetFilterList</a>, <a title="sap.ui.ux3.Feed" href="../symbols/sap.ui.ux3.Feed.html">Feed</a>, <a title="sap.ui.ux3.FeedChunk" href="../symbols/sap.ui.ux3.FeedChunk.html">FeedChunk</a>, <a title="sap.m.FeedInput" href="../symbols/sap.m.FeedInput.html">FeedInput</a>, <a title="sap.ui.ux3.Feeder" href="../symbols/sap.ui.ux3.Feeder.html">Feeder</a>, <a title="sap.ui.unified.FileUploader" href="../symbols/sap.ui.unified.FileUploader.html">FileUploader</a>, <a title="sap.m.FlexBox" href="../symbols/sap.m.FlexBox.html">FlexBox</a>, <a title="sap.ui.layout.form.Form" href="../symbols/sap.ui.layout.form.Form.html">Form</a>, <a title="sap.ui.layout.form.FormLayout" href="../symbols/sap.ui.layout.form.FormLayout.html">FormLayout</a>, <a title="sap.ui.commons.FormattedTextView" href="../symbols/sap.ui.commons.FormattedTextView.html">FormattedTextView</a>, <a title="sap.ui.layout.Grid" href="../symbols/sap.ui.layout.Grid.html">Grid</a>, <a title="sap.ui.core.HTML" href="../symbols/sap.ui.core.HTML.html">HTML</a>, <a title="sap.ui.commons.HorizontalDivider" href="../symbols/sap.ui.commons.HorizontalDivider.html">HorizontalDivider</a>, <a title="sap.ui.layout.HorizontalLayout" href="../symbols/sap.ui.layout.HorizontalLayout.html">HorizontalLayout</a>, <a title="sap.ui.core.Icon" href="../symbols/sap.ui.core.Icon.html">Icon</a>, <a title="sap.m.IconTabBar" href="../symbols/sap.m.IconTabBar.html">IconTabBar</a>, <a title="sap.m.IconTabHeader" href="../symbols/sap.m.IconTabHeader.html">IconTabHeader</a>, <a title="sap.m.Image" href="../symbols/sap.m.Image.html">Image</a>, <a title="sap.ui.commons.Image" href="../symbols/sap.ui.commons.Image.html">Image</a>, <a title="sap.ui.commons.ImageMap" href="../symbols/sap.ui.commons.ImageMap.html">ImageMap</a>, <a title="sap.ui.commons.InPlaceEdit" href="../symbols/sap.ui.commons.InPlaceEdit.html">InPlaceEdit</a>, <a title="sap.m.InputBase" href="../symbols/sap.m.InputBase.html">InputBase</a>, <a title="sap.m.Label" href="../symbols/sap.m.Label.html">Label</a>, <a title="sap.ui.commons.Label" href="../symbols/sap.ui.commons.Label.html">Label</a>, <a title="sap.m.Link" href="../symbols/sap.m.Link.html">Link</a>, <a title="sap.ui.commons.Link" href="../symbols/sap.ui.commons.Link.html">Link</a>, <a title="sap.m.ListBase" href="../symbols/sap.m.ListBase.html">ListBase</a>, <a title="sap.ui.commons.ListBox" href="../symbols/sap.ui.commons.ListBox.html">ListBox</a>, <a title="sap.m.ListItemBase" href="../symbols/sap.m.ListItemBase.html">ListItemBase</a>, <a title="sap.ui.core.LocalBusyIndicator" href="../symbols/sap.ui.core.LocalBusyIndicator.html">LocalBusyIndicator</a>, <a title="sap.ui.commons.layout.MatrixLayout" href="../symbols/sap.ui.commons.layout.MatrixLayout.html">MatrixLayout</a>, <a title="sap.ui.unified.Menu" href="../symbols/sap.ui.unified.Menu.html">Menu</a>, <a title="sap.ui.commons.MenuBar" href="../symbols/sap.ui.commons.MenuBar.html">MenuBar</a>, <a title="sap.ui.commons.Message" href="../symbols/sap.ui.commons.Message.html">Message</a>, <a title="sap.ui.commons.MessageBar" href="../symbols/sap.ui.commons.MessageBar.html">MessageBar</a>, <a title="sap.ui.commons.MessageList" href="../symbols/sap.ui.commons.MessageList.html">MessageList</a>, <a title="sap.ui.commons.MessageToast" href="../symbols/sap.ui.commons.MessageToast.html">MessageToast</a>, <a title="sap.m.NavContainer" href="../symbols/sap.m.NavContainer.html">NavContainer</a>, <a title="sap.ui.ux3.NavigationBar" href="../symbols/sap.ui.ux3.NavigationBar.html">NavigationBar</a>, <a title="sap.ui.ux3.NotificationBar" href="../symbols/sap.ui.ux3.NotificationBar.html">NotificationBar</a>, <a title="sap.m.ObjectAttribute" href="../symbols/sap.m.ObjectAttribute.html">ObjectAttribute</a>, <a title="sap.m.ObjectHeader" href="../symbols/sap.m.ObjectHeader.html">ObjectHeader</a>, <a title="sap.m.ObjectIdentifier" href="../symbols/sap.m.ObjectIdentifier.html">ObjectIdentifier</a>, <a title="sap.m.ObjectNumber" href="../symbols/sap.m.ObjectNumber.html">ObjectNumber</a>, <a title="sap.m.ObjectStatus" href="../symbols/sap.m.ObjectStatus.html">ObjectStatus</a>, <a title="sap.ui.ux3.Overlay" href="../symbols/sap.ui.ux3.Overlay.html">Overlay</a>, <a title="sap.m.Page" href="../symbols/sap.m.Page.html">Page</a>, <a title="sap.ui.commons.Paginator" href="../symbols/sap.ui.commons.Paginator.html">Paginator</a>, <a title="sap.m.Panel" href="../symbols/sap.m.Panel.html">Panel</a>, <a title="sap.ui.commons.Panel" href="../symbols/sap.ui.commons.Panel.html">Panel</a>, <a title="sap.m.Popover" href="../symbols/sap.m.Popover.html">Popover</a>, <a title="sap.m.ProgressIndicator" href="../symbols/sap.m.ProgressIndicator.html">ProgressIndicator</a>, <a title="sap.ui.commons.ProgressIndicator" href="../symbols/sap.ui.commons.ProgressIndicator.html">ProgressIndicator</a>, <a title="sap.m.PullToRefresh" href="../symbols/sap.m.PullToRefresh.html">PullToRefresh</a>, <a title="sap.m.RadioButton" href="../symbols/sap.m.RadioButton.html">RadioButton</a>, <a title="sap.ui.commons.RadioButton" href="../symbols/sap.ui.commons.RadioButton.html">RadioButton</a>, <a title="sap.ui.commons.RadioButtonGroup" href="../symbols/sap.ui.commons.RadioButtonGroup.html">RadioButtonGroup</a>, <a title="sap.m.RatingIndicator" href="../symbols/sap.m.RatingIndicator.html">RatingIndicator</a>, <a title="sap.ui.commons.RatingIndicator" href="../symbols/sap.ui.commons.RatingIndicator.html">RatingIndicator</a>, <a title="sap.ui.commons.ResponsiveContainer" href="../symbols/sap.ui.commons.ResponsiveContainer.html">ResponsiveContainer</a>, <a title="sap.ui.commons.ResponsiveContainerRange" href="../symbols/sap.ui.commons.ResponsiveContainerRange.html">ResponsiveContainerRange</a>, <a title="sap.ui.layout.ResponsiveFlowLayout" href="../symbols/sap.ui.layout.ResponsiveFlowLayout.html">ResponsiveFlowLayout</a>, <a title="sap.m.ResponsivePopover" href="../symbols/sap.m.ResponsivePopover.html">ResponsivePopover</a>, <a title="sap.ui.commons.RoadMap" href="../symbols/sap.ui.commons.RoadMap.html">RoadMap</a>, <a title="sap.ui.commons.RowRepeater" href="../symbols/sap.ui.commons.RowRepeater.html">RowRepeater</a>, <a title="sap.ui.core.ScrollBar" href="../symbols/sap.ui.core.ScrollBar.html">ScrollBar</a>, <a title="sap.m.ScrollContainer" href="../symbols/sap.m.ScrollContainer.html">ScrollContainer</a>, <a title="sap.m.SearchField" href="../symbols/sap.m.SearchField.html">SearchField</a>, <a title="sap.ui.commons.SearchField" href="../symbols/sap.ui.commons.SearchField.html">SearchField</a>, <a title="sap.m.SegmentedButton" href="../symbols/sap.m.SegmentedButton.html">SegmentedButton</a>, <a title="sap.ui.commons.SegmentedButton" href="../symbols/sap.ui.commons.SegmentedButton.html">SegmentedButton</a>, <a title="sap.m.Select" href="../symbols/sap.m.Select.html">Select</a>, <a title="sap.m.SelectDialog" href="../symbols/sap.m.SelectDialog.html">SelectDialog</a>, <a title="sap.m.Shell" href="../symbols/sap.m.Shell.html">Shell</a>, <a title="sap.ui.unified.Shell" href="../symbols/sap.ui.unified.Shell.html">Shell</a>, <a title="sap.ui.ux3.Shell" href="../symbols/sap.ui.ux3.Shell.html">Shell</a>, <a title="sap.ui.unified.ShellOverlay" href="../symbols/sap.ui.unified.ShellOverlay.html">ShellOverlay</a>, <a title="sap.ui.layout.form.SimpleForm" href="../symbols/sap.ui.layout.form.SimpleForm.html">SimpleForm</a>, <a title="sap.m.Slider" href="../symbols/sap.m.Slider.html">Slider</a>, <a title="sap.ui.commons.Slider" href="../symbols/sap.ui.commons.Slider.html">Slider</a>, <a title="sap.m.SplitContainer" href="../symbols/sap.m.SplitContainer.html">SplitContainer</a>, <a title="sap.ui.unified.SplitContainer" href="../symbols/sap.ui.unified.SplitContainer.html">SplitContainer</a>, <a title="sap.ui.commons.Splitter" href="../symbols/sap.ui.commons.Splitter.html">Splitter</a>, <a title="sap.ui.layout.Splitter" href="../symbols/sap.ui.layout.Splitter.html">Splitter</a>, <a title="sap.m.Switch" href="../symbols/sap.m.Switch.html">Switch</a>, <a title="sap.ui.commons.TabStrip" href="../symbols/sap.ui.commons.TabStrip.html">TabStrip</a>, <a title="sap.ui.table.Table" href="../symbols/sap.ui.table.Table.html">Table</a>, <a title="sap.m.TableSelectDialog" href="../symbols/sap.m.TableSelectDialog.html">TableSelectDialog</a>, <a title="sap.ui.suite.TaskCircle" href="../symbols/sap.ui.suite.TaskCircle.html">TaskCircle</a>, <a title="sap.ui.core.tmpl.TemplateControl" href="../symbols/sap.ui.core.tmpl.TemplateControl.html">TemplateControl</a>, <a title="sap.m.Text" href="../symbols/sap.m.Text.html">Text</a>, <a title="sap.ui.commons.TextField" href="../symbols/sap.ui.commons.TextField.html">TextField</a>, <a title="sap.ui.commons.TextView" href="../symbols/sap.ui.commons.TextView.html">TextView</a>, <a title="sap.ui.ux3.ThingViewer" href="../symbols/sap.ui.ux3.ThingViewer.html">ThingViewer</a>, <a title="sap.m.Tile" href="../symbols/sap.m.Tile.html">Tile</a>, <a title="sap.m.TileContainer" href="../symbols/sap.m.TileContainer.html">TileContainer</a>, <a title="sap.m.Token" href="../symbols/sap.m.Token.html">Token</a>, <a title="sap.m.Tokenizer" href="../symbols/sap.m.Tokenizer.html">Tokenizer</a>, <a title="sap.ui.ux3.ToolPopup" href="../symbols/sap.ui.ux3.ToolPopup.html">ToolPopup</a>, <a title="sap.m.Toolbar" href="../symbols/sap.m.Toolbar.html">Toolbar</a>, <a title="sap.ui.commons.Toolbar" href="../symbols/sap.ui.commons.Toolbar.html">Toolbar</a>, <a title="sap.m.ToolbarSpacer" href="../symbols/sap.m.ToolbarSpacer.html">ToolbarSpacer</a>, <a title="sap.ui.core.TooltipBase" href="../symbols/sap.ui.core.TooltipBase.html">TooltipBase</a>, <a title="sap.ui.commons.Tree" href="../symbols/sap.ui.commons.Tree.html">Tree</a>, <a title="sap.ui.commons.TriStateCheckBox" href="../symbols/sap.ui.commons.TriStateCheckBox.html">TriStateCheckBox</a>, <a title="sap.ui.layout.VerticalLayout" href="../symbols/sap.ui.layout.VerticalLayout.html">VerticalLayout</a>, <a title="sap.ui.suite.VerticalProgressIndicator" href="../symbols/sap.ui.suite.VerticalProgressIndicator.html">VerticalProgressIndicator</a>, <a title="sap.ui.core.mvc.View" href="../symbols/sap.ui.core.mvc.View.html">View</a>, <a title="sap.m.ViewSettingsDialog" href="../symbols/sap.m.ViewSettingsDialog.html">ViewSettingsDialog</a></div>
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>Base Class for Controls.</p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static abstract">
+									<div class="itemName">
+										<b class="icon" title="Creates and initializes a new control with the given sId and settings.">new <a href="../symbols/sap.ui.core.Control.html#constructor">sap.ui.core.Control</a></b>
+										<span class='signature'>(<span title="(string) optional id for the new control; generated automatically if no non-empty id is given Note: this can be omitted, no matter whether mSettings will be given or not!">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) optional map/JSON-object with initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)</span>
+										<span class='description'>Creates and initializes a new control with the given <code>sId</code> and settings.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+						
+						
+						
+						
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Creates a new subclass of class sap.ui.core.Control with name sClassName and enriches it with the information contained in oClassInfo."><a href="../symbols/sap.ui.core.Control.html#.extend">sap.ui.core.Control.extend</a></b><span class='signature'>(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Creates a new subclass of class sap.ui.core.Control with name <code>sClassName</code> and enriches it with the information contained in <code>oClassInfo</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="The string given as &quot;sStyleClass&quot; will be added to the &quot;class&quot; attribute of this control's root HTML element."><a href="../symbols/sap.ui.core.Control.html#addStyleClass">addStyleClass</a></b><span class='signature'>(<span title="(string) the CSS class name to be added">sStyleClass</span>)</span>
+									<span class='description'>The string given as "sStyleClass" will be added to the "class" attribute of this control's root HTML element.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Defines whether the user can select text inside this control."><a href="../symbols/sap.ui.core.Control.html#allowTextSelection">allowTextSelection</a></b><span class='signature'>(<span title="(boolean) to allow text selection or not">whether</span>)</span>
+									<span class='description'>Defines whether the user can select text inside this control.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Allows binding handlers for any native browser event to the root HTML element of this Control."><a href="../symbols/sap.ui.core.Control.html#attachBrowserEvent">attachBrowserEvent</a></b><span class='signature'>(<span title="(string) A string containing one or more JavaScript event types, such as &quot;click&quot; or &quot;blur&quot;.">sEventType</span><i class="help" title="Optional parameter">?</i>, <span title="(function) A function to execute each time the event is triggered.">fnHandler</span><i class="help" title="Optional parameter">?</i>, <span title="(object) The object, that wants to be notified, when the event occurs">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Allows binding handlers for any native browser event to the root HTML element of this Control.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Overrides sap.ui.core.Element#clone Element.clone to clone additional internal state."><a href="../symbols/sap.ui.core.Control.html#clone">clone</a></b><span class='signature'>(<span title="(string) a suffix to be appended to the cloned element id">sIdSuffix</span><i class="help" title="Optional parameter">?</i>, <span title="(string[]) an array of local IDs within the cloned hierarchy (internally used)">aLocalIds</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Overrides <a href="../symbols/sap.ui.core.Element.html#clone">Element.clone</a> to clone additional internal state.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes event handlers which have been previously attached using #attachBrowserEvent."><a href="../symbols/sap.ui.core.Control.html#detachBrowserEvent">detachBrowserEvent</a></b><span class='signature'>(<span title="(string) A string containing one or more JavaScript event types, such as &quot;click&quot; or &quot;blur&quot;.">sEventType</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function that is to be no longer executed.">fnHandler</span><i class="help" title="Optional parameter">?</i>, <span title="(object) The context object that was given in the call to attachBrowserEvent.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Removes event handlers which have been previously attached using <a href="#attachBrowserEvent">#attachBrowserEvent</a>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property busy."><a href="../symbols/sap.ui.core.Control.html#getBusy">getBusy</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>busy</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property busyIndicatorDelay."><a href="../symbols/sap.ui.core.Control.html#getBusyIndicatorDelay">getBusyIndicatorDelay</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>busyIndicatorDelay</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the DOMNode Id to be used for the &quot;labelFor&quot; attribute of the label."><a href="../symbols/sap.ui.core.Control.html#getIdForLabel">getIdForLabel</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the DOMNode Id to be used for the "labelFor" attribute of the label.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Returns a renderer for this control instance."><a href="../symbols/sap.ui.core.Control.html#getRenderer">getRenderer</a></b><span class='signature'>()</span>
+									<span class='description'>Returns a renderer for this control instance.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns true if the given style class string is valid and if this control has this style class set via a previous call to addStyleClass()."><a href="../symbols/sap.ui.core.Control.html#hasStyleClass">hasStyleClass</a></b><span class='signature'>(<span title="(string) the style to check for">sStyleClass</span>)</span>
+									<span class='description'>Returns true if the given style class string is valid and if this control has this style class set via a previous call to addStyleClass().</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Triggers rerendering of this element and its children."><a href="../symbols/sap.ui.core.Control.html#invalidate">invalidate</a></b><span class='signature'>()</span>
+									<span class='description'>Triggers rerendering of this element and its children.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Function is called when the rendering of the control is completed."><a href="../symbols/sap.ui.core.Control.html#onAfterRendering">onAfterRendering</a></b><span class='signature'>()</span>
+									<span class='description'>Function is called when the rendering of the control is completed.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Function is called before the rendering of the control is started."><a href="../symbols/sap.ui.core.Control.html#onBeforeRendering">onBeforeRendering</a></b><span class='signature'>()</span>
+									<span class='description'>Function is called before the rendering of the control is started.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Puts this control into the specified container (oRef) at the given position (oPosition)."><a href="../symbols/sap.ui.core.Control.html#placeAt">placeAt</a></b><span class='signature'>(<span title="(string|Element|sap.ui.core.Control) container into which the control should be put">oRef</span>, <span title="(string|int) Describes the position where the control should be put into the container">oPosition</span>)</span>
+									<span class='description'>Puts <code>this</code> control into the specified container (<code>oRef</code>) at the given position (<code>oPosition</code>).</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes the given string from the list of custom style classes that have been set previously."><a href="../symbols/sap.ui.core.Control.html#removeStyleClass">removeStyleClass</a></b><span class='signature'>(<span title="(string) the style to be removed">sStyleClass</span>)</span>
+									<span class='description'>Removes the given string from the list of custom style classes that have been set previously.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Tries to replace its DOM reference by re-rendering."><a href="../symbols/sap.ui.core.Control.html#rerender">rerender</a></b><span class='signature'>()</span>
+									<span class='description'>Tries to replace its DOM reference by re-rendering.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Set the controls busy state."><a href="../symbols/sap.ui.core.Control.html#setBusy">setBusy</a></b><span class='signature'>(<span title="(boolean) The new busy state to be set">bBusy</span>)</span>
+									<span class='description'>Set the controls busy state.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Define the delay, after which the busy indicator will show up"><a href="../symbols/sap.ui.core.Control.html#setBusyIndicatorDelay">setBusyIndicatorDelay</a></b><span class='signature'>(<span title="(int) The delay in ms">iDelay</span>)</span>
+									<span class='description'>Define the delay, after which the busy indicator will show up</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="The string given as &quot;sStyleClass&quot; will be be either added to or removed from the &quot;class&quot; attribute of this control's root HTML element, depending on the value of &quot;bAdd&quot;: if bAdd is true, sStyleClass will be added."><a href="../symbols/sap.ui.core.Control.html#toggleStyleClass">toggleStyleClass</a></b><span class='signature'>(<span title="(string) the CSS class name to be added or removed">sStyleClass</span>, <span title="(boolean) whether sStyleClass should be added (or removed); when this parameter is not given, sStyleClass will be toggled (removed, if present, and added if not present)">bAdd</span>)</span>
+									<span class='description'>The string given as "sStyleClass" will be be either added to or removed from the "class" attribute of this control's root HTML element, depending on the value of "bAdd": if bAdd is true, sStyleClass will be added.</span>
+								</div>
+							
+								<div class="sectionItem classMethod deprecated">
+									<b class="icon" title="Check if the control is currently in busy state"><a href="../symbols/sap.ui.core.Control.html#isBusy">isBusy</a></b><span class='signature'>()</span>
+									<span class='description'>Check if the control is currently in busy state</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Element.html#$">$</a>, <a href="../symbols/sap.ui.core.Element.html#addCustomData">addCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#addDependent">addDependent</a>, <a href="../symbols/sap.ui.core.Element.html#addEventDelegate">addEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#applyFocusInfo">applyFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#bindElement">bindElement</a>, <a href="../symbols/sap.ui.core.Element.html#data">data</a>, <a href="../symbols/sap.ui.core.Element.html#destroy">destroy</a>, <a href="../symbols/sap.ui.core.Element.html#destroyCustomData">destroyCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#destroyDependents">destroyDependents</a>, <a href="../symbols/sap.ui.core.Element.html#enhanceAccessibilityState">enhanceAccessibilityState</a>, <a href="../symbols/sap.ui.core.Element.html#exit">exit</a>, <a href="../symbols/sap.ui.core.Element.html#findElements">findElements</a>, <a href="../symbols/sap.ui.core.Element.html#fireEvent">fireEvent</a>, <a href="../symbols/sap.ui.core.Element.html#getCustomData">getCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#getDependents">getDependents</a>, <a href="../symbols/sap.ui.core.Element.html#getDomRef">getDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getElementBinding">getElementBinding</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusDomRef">getFocusDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusInfo">getFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#getInterface">getInterface</a>, <a href="../symbols/sap.ui.core.Element.html#getLayoutData">getLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#getMetadata">getMetadata</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip">getTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_AsString">getTooltip_AsString</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_Text">getTooltip_Text</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfCustomData">indexOfCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfDependent">indexOfDependent</a>, <a href="../symbols/sap.ui.core.Element.html#init">init</a>, <a href="../symbols/sap.ui.core.Element.html#insertCustomData">insertCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#insertDependent">insertDependent</a>, <a href="../symbols/sap.ui.core.Element.html#prop">prop</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllCustomData">removeAllCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllDependents">removeAllDependents</a>, <a href="../symbols/sap.ui.core.Element.html#removeCustomData">removeCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeDependent">removeDependent</a>, <a href="../symbols/sap.ui.core.Element.html#removeEventDelegate">removeEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#setLayoutData">setLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#setTooltip">setTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#toString">toString</a>, <a href="../symbols/sap.ui.core.Element.html#unbindElement">unbindElement</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.ManagedObject.html">sap.ui.base.ManagedObject</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.ManagedObject.html#addAggregation">addAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#addAssociation">addAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#applySettings">applySettings</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindAggregation">bindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindContext">bindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindObject">bindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindProperty">bindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#destroyAggregation">destroyAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#findAggregatedObjects">findAggregatedObjects</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAggregation">getAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAssociation">getAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBinding">getBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingContext">getBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingInfo">getBindingInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingPath">getBindingPath</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getEventingParent">getEventingParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getId">getId</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getModel">getModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getObjectBinding">getObjectBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getOriginInfo">getOriginInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getParent">getParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getProperty">getProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#hasModel">hasModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#indexOfAggregation">indexOfAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#insertAggregation">insertAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isBound">isBound</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isInvalidateSuppressed">isInvalidateSuppressed</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isTreeBinding">isTreeBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAggregation">removeAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAggregation">removeAllAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAssociation">removeAllAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAssociation">removeAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAggregation">setAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAssociation">setAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setBindingContext">setBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setModel">setModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setProperty">setProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindAggregation">unbindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindContext">unbindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindObject">unbindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindProperty">unbindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateAggregation">validateAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateProperty">validateProperty</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.EventProvider.html#attachEvent">attachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#attachEventOnce">attachEventOnce</a>, <a href="../symbols/sap.ui.base.EventProvider.html#detachEvent">detachEvent</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static abstract">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.ui.core.Control</b>(<span title="(string) optional id for the new control; generated automatically if no non-empty id is given Note: this can be omitted, no matter whether mSettings will be given or not!">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) optional map/JSON-object with initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)
+										</div>
+										
+										<div class="full-description">
+											Creates and initializes a new control with the given <code>sId</code> and settings.
+</p><p>
+The set of allowed entries in the <code>mSettings</code> object depends on the concrete
+subclass and is described there. See <a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a> for a general description of this
+argument.
+</p><p>
+The settings supported by Control are:
+<ul>
+<li>Properties
+<ul>
+<li><a href="#getBusy">busy</a> : boolean (default: false)</li>
+<li><a href="#getBusyIndicatorDelay">busyIndicatorDelay</a> : int (default: 1000)</li>
+</ul>
+</li>
+</ul>
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    optional id for the new control; generated automatically if no non-empty id is given
+     Note: this can be omitted, no matter whether <code>mSettings</code> will be given or not!
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mSettings</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    optional map/JSON-object with initial settings for the new control
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".extend"> </a>
+										<div class="itemTitle icon">
+											sap.ui.core.Control.extend<span class="signature">(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns function">: function</span>
+										</div>
+										<div class="full-description">
+											Creates a new subclass of class sap.ui.core.Control with name <code>sClassName</code> 
+and enriches it with the information contained in <code>oClassInfo</code>.
+</p><p>
+<code>oClassInfo</code> might contain the same kind of informations as described in <a href="../symbols/sap.ui.core.Element.html#.extend">Element.extend</a>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sClassName</b>
+													</td>
+													<td class="methodItemDesc">
+												    name of the class to be created
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oClassInfo</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    object literal with informations about the class
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>FNMetaImpl</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    constructor function for the metadata object. If not given, it defaults to sap.ui.core.ElementMetadata.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{function}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the created class / constructor function
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addStyleClass"> </a>
+										<div class="itemTitle icon">
+											addStyleClass<span class="signature">(<span title="(string) the CSS class name to be added">sStyleClass</span>)</span>
+											<span class="light" title="returns sap.ui.core.Control">: <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></span>
+										</div>
+										<div class="full-description">
+											The string given as "sStyleClass" will be added to the "class" attribute of this control's root HTML element.
+</p><p>
+This method is intended to be used to mark controls as being of a special type for which
+special styling can be provided using CSS selectors that reference this style class name.
+</p><p>
+<pre>
+Example:
+   myButton.addStyleClass("myRedTextButton"); // add a CSS class to one button instance
+
+...and in CSS:
+   .myRedTextButton {
+      color: red;
+   }
+</pre>
+</p><p>
+This will add the CSS class "myRedTextButton" to the Button HTML and the CSS code above will then
+make the text in this particular button red.
+</p><p>
+Only characters allowed inside HTML attributes are allowed.
+Quotes are not allowed and this method will ignore any strings containing quotes.
+Strings containing spaces are interpreted as ONE custom style class (even though CSS selectors interpret them
+as different classes) and can only removed later by calling removeStyleClass() with exactly the
+same (space-containing) string as parameter.
+Multiple calls with the same sStyleClass will have no different effect than calling once.
+If sStyleClass is null, the call is ignored.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sStyleClass</b>
+													</td>
+													<td class="methodItemDesc">
+												    the CSS class name to be added
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Returns <code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="allowTextSelection"> </a>
+										<div class="itemTitle icon">
+											allowTextSelection<span class="signature">(<span title="(boolean) to allow text selection or not">whether</span>)</span>
+											<span class="light" title="returns sap.ui.core.Control">: <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></span>
+										</div>
+										<div class="full-description">
+											Defines whether the user can select text inside this control.
+Defaults to <code>true</code> as long as this method has not been called.
+</p><p>
+<b>Note:</b>This only works in IE and Safari; for Firefox the element's style must
+be set to:
+<pre>
+  -moz-user-select: none;
+</pre>
+in order to prevent text selection.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>whether</b>
+													</td>
+													<td class="methodItemDesc">
+												    to allow text selection or not
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Returns <code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachBrowserEvent"> </a>
+										<div class="itemTitle icon">
+											attachBrowserEvent<span class="signature">(<span title="(string) A string containing one or more JavaScript event types, such as &quot;click&quot; or &quot;blur&quot;.">sEventType</span><i class="help" title="Optional parameter">?</i>, <span title="(function) A function to execute each time the event is triggered.">fnHandler</span><i class="help" title="Optional parameter">?</i>, <span title="(object) The object, that wants to be notified, when the event occurs">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.core.Control">: <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></span>
+										</div>
+										<div class="full-description">
+											Allows binding handlers for any native browser event to the root HTML element of this Control. This internally handles
+DOM element replacements caused by re-rendering.
+</p><p>
+IMPORTANT:
+This should be only used as FALLBACK when the Control events do not cover a specific use-case! Always try using
+SAPUI5 control events, as e.g. accessibility-related functionality is then provided automatically.
+E.g. when working with a sap.ui.commons.Button, always use the Button's "press" event, not the native "click" event, because
+"press" is also guaranteed to be fired when certain keyboard activity is supposed to trigger the Button.
+</p><p>
+In the event handler, "this" refers to the Control - not to the root DOM element like in jQuery. While the DOM element can
+be used and modified, the general caveats for working with SAPUI5 control DOM elements apply. In particular the DOM element
+may be destroyed and replaced by a new one at any time, so modifications that are required to have permanent effect may not
+be done. E.g. use Control.addStyleClass() instead if the modification is of visual nature.
+</p><p>
+Use detachBrowserEvent() to remove the event handler(s) again.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sEventType</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    A string containing one or more JavaScript event types, such as "click" or "blur".
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnHandler</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    A function to execute each time the event is triggered.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    The object, that wants to be notified, when the event occurs
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Returns <code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="clone"> </a>
+										<div class="itemTitle icon protected">
+											clone<span class="signature">(<span title="(string) a suffix to be appended to the cloned element id">sIdSuffix</span><i class="help" title="Optional parameter">?</i>, <span title="(string[]) an array of local IDs within the cloned hierarchy (internally used)">aLocalIds</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.core.Element">: <a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a></span>
+										</div>
+										<div class="full-description">
+											Overrides <a href="../symbols/sap.ui.core.Element.html#clone">Element.clone</a> to clone additional 
+internal state.
+</p><p>
+The additionally cloned information contains:
+<ul>
+<li>browser event handlers attached with <a href="#attachBrowserEvent">#attachBrowserEvent</a>
+<li>text selection behavior
+<li>style classes added with <a href="#addStyleClass">#addStyleClass</a>
+</ul>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sIdSuffix</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    a suffix to be appended to the cloned element id
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string[]}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>aLocalIds</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    an array of local IDs within the cloned hierarchy (internally used)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														reference to the newly created clone
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachBrowserEvent"> </a>
+										<div class="itemTitle icon">
+											detachBrowserEvent<span class="signature">(<span title="(string) A string containing one or more JavaScript event types, such as &quot;click&quot; or &quot;blur&quot;.">sEventType</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function that is to be no longer executed.">fnHandler</span><i class="help" title="Optional parameter">?</i>, <span title="(object) The context object that was given in the call to attachBrowserEvent.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											
+										</div>
+										<div class="full-description">
+											Removes event handlers which have been previously attached using <a href="#attachBrowserEvent">#attachBrowserEvent</a>.
+</p><p>
+Note: listeners are only removed, if the same combination of event type, callback function 
+and context object is given as in the call to <code>attachBrowserEvent</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sEventType</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    A string containing one or more JavaScript event types, such as "click" or "blur".
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnHandler</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    The function that is to be no longer executed.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    The context object that was given in the call to attachBrowserEvent.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getBusy"> </a>
+										<div class="itemTitle icon">
+											getBusy<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>busy</code>.
+</p><p>
+Whether the control is currently in busy state.
+</p><p>
+Default value is <code>false</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>busy</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getBusyIndicatorDelay"> </a>
+										<div class="itemTitle icon">
+											getBusyIndicatorDelay<span class="signature">()</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>busyIndicatorDelay</code>.
+</p><p>
+The time in milliseconds after which the control displays a busy indicator after becoming busy.
+</p><p>
+Default value is <code>1000</code> ms.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>busyIndicatorDelay</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getIdForLabel"> </a>
+										<div class="itemTitle icon">
+											getIdForLabel<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Returns the DOMNode Id to be used for the "labelFor" attribute of the label.
+</p><p>
+By default, this is the Id of the control itself.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Id to be used for the <code>labelFor</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="getRenderer"> </a>
+										<div class="itemTitle icon protected">
+											getRenderer<span class="signature">()</span>
+											<span class="light" title="returns object">: object</span>
+										</div>
+										<div class="full-description">
+											Returns a renderer for this control instance.
+</p><p>
+It is retrieved using the RenderManager as done during rendering.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{object}</span> 
+													</td>
+													<td class="methodItemDesc">
+														a Renderer suitable for this Control instance.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="hasStyleClass"> </a>
+										<div class="itemTitle icon">
+											hasStyleClass<span class="signature">(<span title="(string) the style to check for">sStyleClass</span>)</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Returns true if the given style class string is valid and if this control has this style class set
+via a previous call to addStyleClass().
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sStyleClass</b>
+													</td>
+													<td class="methodItemDesc">
+												    the style to check for
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														
+													</td>
+													<td class="methodItemDesc">
+														whether the given style has been set before
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="invalidate"> </a>
+										<div class="itemTitle icon protected">
+											invalidate<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Triggers rerendering of this element and its children.
+</p><p>
+As <code>sap.ui.core.Element</code> "bubbles up" the invalidate, changes to children
+potentially result in rerendering of the whole sub tree.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="onAfterRendering"> </a>
+										<div class="itemTitle icon protected">
+											onAfterRendering<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Function is called when the rendering of the control is completed.
+</p><p>
+Applications must not call this hook method directly, it is called by the framework.
+</p><p>
+Subclasses of Control should override this hook to implement any necessary actions after the rendering.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="onBeforeRendering"> </a>
+										<div class="itemTitle icon protected">
+											onBeforeRendering<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Function is called before the rendering of the control is started.
+</p><p>
+Applications must not call this hook method directly, it is called by the framework.
+</p><p>
+Subclasses of Control should override this hook to implement any necessary actions before the rendering.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="placeAt"> </a>
+										<div class="itemTitle icon">
+											placeAt<span class="signature">(<span title="(string|Element|sap.ui.core.Control) container into which the control should be put">oRef</span>, <span title="(string|int) Describes the position where the control should be put into the container">oPosition</span>)</span>
+											<span class="light" title="returns sap.ui.core.Control">: <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></span>
+										</div>
+										<div class="full-description">
+											Puts <code>this</code> control into the specified container (<code>oRef</code>) at the given
+position (<code>oPosition</code>).
+</p><p>
+First it is checked whether <code>oRef</code> is a container element / control (has a
+multiple aggregation with type <code>sap.ui.core.Control</code> and name 'content') or is an Id String
+of such an container.
+If this is not the case <code>oRef</code> can either be a Dom Reference or Id String of the UIArea
+(if it does not yet exist implicitly a new UIArea is created),
+</p><p>
+The <code>oPosition</code> can be one of the following:
+</p><p>
+<ul>
+ <li>"first": The control is added as the first element to the container.</li>
+ <li>"last": The control is added as the last element to the container (default).</li>
+ <li>"only": All existing children of the container are removed (not destroyed!) and the control is added as new child.</li>
+ <li><i>index</i>: The control is added at the specified <i>index</i> to the container.</li>
+</ul>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string|Element|<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oRef</b>
+													</td>
+													<td class="methodItemDesc">
+												    container into which the control should be put
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string|int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oPosition</b>
+													</td>
+													<td class="methodItemDesc">
+												    Describes the position where the control should be put into the container
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Returns <code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeStyleClass"> </a>
+										<div class="itemTitle icon">
+											removeStyleClass<span class="signature">(<span title="(string) the style to be removed">sStyleClass</span>)</span>
+											<span class="light" title="returns sap.ui.core.Control">: <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></span>
+										</div>
+										<div class="full-description">
+											Removes the given string from the list of custom style classes that have been set previously.
+Regular style classes like "sapUiBtn" cannot be removed.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sStyleClass</b>
+													</td>
+													<td class="methodItemDesc">
+												    the style to be removed
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Returns <code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="rerender"> </a>
+										<div class="itemTitle icon protected">
+											rerender<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Tries to replace its DOM reference by re-rendering.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setBusy"> </a>
+										<div class="itemTitle icon">
+											setBusy<span class="signature">(<span title="(boolean) The new busy state to be set">bBusy</span>)</span>
+											<span class="light" title="returns sap.ui.core.Control">: <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></span>
+										</div>
+										<div class="full-description">
+											Set the controls busy state.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bBusy</b>
+													</td>
+													<td class="methodItemDesc">
+												    The new busy state to be set
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setBusyIndicatorDelay"> </a>
+										<div class="itemTitle icon">
+											setBusyIndicatorDelay<span class="signature">(<span title="(int) The delay in ms">iDelay</span>)</span>
+											<span class="light" title="returns sap.ui.core.Control">: <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></span>
+										</div>
+										<div class="full-description">
+											Define the delay, after which the busy indicator will show up
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iDelay</b>
+													</td>
+													<td class="methodItemDesc">
+												    The delay in ms
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="toggleStyleClass"> </a>
+										<div class="itemTitle icon">
+											toggleStyleClass<span class="signature">(<span title="(string) the CSS class name to be added or removed">sStyleClass</span>, <span title="(boolean) whether sStyleClass should be added (or removed); when this parameter is not given, sStyleClass will be toggled (removed, if present, and added if not present)">bAdd</span>)</span>
+											<span class="light" title="returns sap.ui.core.Control">: <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></span>
+										</div>
+										<div class="full-description">
+											The string given as "sStyleClass" will be be either added to or removed from the "class" attribute of this control's root HTML element,
+depending on the value of "bAdd": if bAdd is true, sStyleClass will be added.
+If bAdd is not given, sStyleClass will be removed if it is currently present and will be added if not present.
+If sStyleClass is null, the call is ignored.
+</p><p>
+See addStyleClass and removeStyleClass for further documentation.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sStyleClass</b>
+													</td>
+													<td class="methodItemDesc">
+												    the CSS class name to be added or removed
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bAdd</b>
+													</td>
+													<td class="methodItemDesc">
+												    whether sStyleClass should be added (or removed); when this parameter is not given, sStyleClass will be toggled (removed, if present, and added if not present)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Returns <code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod deprecated'>
+										<a name="isBusy"> </a>
+										<div class="itemTitle icon">
+											isBusy<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Check if the control is currently in busy state
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+											<dl class="detailList deprecation">
+												<dt class="heading">Deprecated:</dt>
+												<dt>
+													Use getBusy instead
+												</dt>
+											</dl>
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														
+													</td>
+													<td class="methodItemDesc">
+														boolean
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

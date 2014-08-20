@@ -1,0 +1,3675 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.m.TableSelectDialog</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class sap.m.TableSelectDialog
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.ui.core.Control" href="../symbols/sap.ui.core.Control.html">Control</a></div>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>A TableSelectDialog provides you a easier way to create a dialog that contains a list with grouping and search functionality.
+The Table used in a SelectDialog is a Table with Columns. After selecting an item, the dialog will be closed and a callback function will return the item being selected.</p>
+						
+						
+						
+						
+						
+						
+							<br />
+							<i>Since: </i>1.16.
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="Constructor for a new TableSelectDialog.">new <a href="../symbols/sap.m.TableSelectDialog.html#constructor">sap.m.TableSelectDialog</a></b>
+										<span class='signature'>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)</span>
+										<span class='description'>Constructor for a new TableSelectDialog.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+						
+						
+						
+						
+					
+		
+
+
+					
+						
+						
+						<div class="summary section" cellspacing="0" summary="A summary of the events documented in the class sap.m.TableSelectDialog.">
+							<div class="sectionTitle">Event Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="This event will be fired when the cancel button is clicked"><a href="../symbols/sap.m.TableSelectDialog.html#event:cancel">cancel</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>This event will be fired when the cancel button is clicked</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="This event will be fired when the dialog is confirmed by selecting an item in single selection mode or by pressing the confirmation button in multi selection mode ."><a href="../symbols/sap.m.TableSelectDialog.html#event:confirm">confirm</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>This event will be fired when the dialog is confirmed by selecting an item in single selection mode or by pressing the confirmation button in multi selection mode .</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="This event is fired when the value of the search field is changed by a user - e.g."><a href="../symbols/sap.m.TableSelectDialog.html#event:liveChange">liveChange</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>This event is fired when the value of the search field is changed by a user - e.g.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Fired when the search button has been clicked on dialog."><a href="../symbols/sap.m.TableSelectDialog.html#event:search">search</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>Fired when the search button has been clicked on dialog.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+				
+						
+						
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Creates a new subclass of class sap.m.TableSelectDialog with name sClassName and enriches it with the information contained in oClassInfo."><a href="../symbols/sap.m.TableSelectDialog.html#.extend">sap.m.TableSelectDialog.extend</a></b><span class='signature'>(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Creates a new subclass of class sap.m.TableSelectDialog with name <code>sClassName</code> and enriches it with the information contained in <code>oClassInfo</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Adds some column oColumn to the aggregation named columns."><a href="../symbols/sap.m.TableSelectDialog.html#addColumn">addColumn</a></b><span class='signature'>(<span title="(sap.m.Column) the column to add; if empty, nothing is inserted">oColumn</span>)</span>
+									<span class='description'>Adds some column <code>oColumn</code> to the aggregation named <code>columns</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Adds some item oItem to the aggregation named items."><a href="../symbols/sap.m.TableSelectDialog.html#addItem">addItem</a></b><span class='signature'>(<span title="(sap.m.ColumnListItem) the item to add; if empty, nothing is inserted">oItem</span>)</span>
+									<span class='description'>Adds some item <code>oItem</code> to the aggregation named <code>items</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Forward method to the inner dialog: addStyleClass"><a href="../symbols/sap.m.TableSelectDialog.html#addStyleClass">addStyleClass</a></b><span class='signature'>()</span>
+									<span class='description'>Forward method to the inner dialog: addStyleClass</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Attach event handler fnFunction to the 'cancel' event of this sap.m.TableSelectDialog."><a href="../symbols/sap.m.TableSelectDialog.html#attachCancel">attachCancel</a></b><span class='signature'>(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Attach event handler <code>fnFunction</code> to the 'cancel' event of this <code>sap.m.TableSelectDialog</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Attach event handler fnFunction to the 'confirm' event of this sap.m.TableSelectDialog."><a href="../symbols/sap.m.TableSelectDialog.html#attachConfirm">attachConfirm</a></b><span class='signature'>(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Attach event handler <code>fnFunction</code> to the 'confirm' event of this <code>sap.m.TableSelectDialog</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Attach event handler fnFunction to the 'liveChange' event of this sap.m.TableSelectDialog."><a href="../symbols/sap.m.TableSelectDialog.html#attachLiveChange">attachLiveChange</a></b><span class='signature'>(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Attach event handler <code>fnFunction</code> to the 'liveChange' event of this <code>sap.m.TableSelectDialog</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Attach event handler fnFunction to the 'search' event of this sap.m.TableSelectDialog."><a href="../symbols/sap.m.TableSelectDialog.html#attachSearch">attachSearch</a></b><span class='signature'>(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Attach event handler <code>fnFunction</code> to the 'search' event of this <code>sap.m.TableSelectDialog</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Forwards aggregations with the name of items or columns to the internal table."><a href="../symbols/sap.m.TableSelectDialog.html#bindAggregation">bindAggregation</a></b><span class='signature'>(<span title="(string) the name for the binding">sAggregationName</span>, <span title="(object) the configuration parameters for the binding">oBindingInfo</span>)</span>
+									<span class='description'>Forwards aggregations with the name of items or columns to the internal table.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Binder for aggregation columns."><a href="../symbols/sap.m.TableSelectDialog.html#bindColumns">bindColumns</a></b><span class='signature'>(<span title="(string) path to a list in the model">sPath</span>, <span title="(sap.ui.core.Element) the control template for this aggregation">oTemplate</span>, <span title="(sap.ui.model.Sorter) the initial sort order (optional)">oSorter</span>, <span title="(array) the predefined filters for this aggregation (optional)">aFilters</span>)</span>
+									<span class='description'>Binder for aggregation <code>columns</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Binder for aggregation items."><a href="../symbols/sap.m.TableSelectDialog.html#bindItems">bindItems</a></b><span class='signature'>(<span title="(string) path to a list in the model">sPath</span>, <span title="(sap.ui.core.Element) the control template for this aggregation">oTemplate</span>, <span title="(sap.ui.model.Sorter) the initial sort order (optional)">oSorter</span>, <span title="(array) the predefined filters for this aggregation (optional)">aFilters</span>)</span>
+									<span class='description'>Binder for aggregation <code>items</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys all the columns in the aggregation named columns."><a href="../symbols/sap.m.TableSelectDialog.html#destroyColumns">destroyColumns</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys all the columns in the aggregation named <code>columns</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys all the items in the aggregation named items."><a href="../symbols/sap.m.TableSelectDialog.html#destroyItems">destroyItems</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys all the items in the aggregation named <code>items</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Detach event handler fnFunction from the 'cancel' event of this sap.m.TableSelectDialog."><a href="../symbols/sap.m.TableSelectDialog.html#detachCancel">detachCancel</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Detach event handler <code>fnFunction</code> from the 'cancel' event of this <code>sap.m.TableSelectDialog</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Detach event handler fnFunction from the 'confirm' event of this sap.m.TableSelectDialog."><a href="../symbols/sap.m.TableSelectDialog.html#detachConfirm">detachConfirm</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Detach event handler <code>fnFunction</code> from the 'confirm' event of this <code>sap.m.TableSelectDialog</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Detach event handler fnFunction from the 'liveChange' event of this sap.m.TableSelectDialog."><a href="../symbols/sap.m.TableSelectDialog.html#detachLiveChange">detachLiveChange</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Detach event handler <code>fnFunction</code> from the 'liveChange' event of this <code>sap.m.TableSelectDialog</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Detach event handler fnFunction from the 'search' event of this sap.m.TableSelectDialog."><a href="../symbols/sap.m.TableSelectDialog.html#detachSearch">detachSearch</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Detach event handler <code>fnFunction</code> from the 'search' event of this <code>sap.m.TableSelectDialog</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Fire event cancel to attached listeners."><a href="../symbols/sap.m.TableSelectDialog.html#fireCancel">fireCancel</a></b><span class='signature'>(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event cancel to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Fire event confirm to attached listeners."><a href="../symbols/sap.m.TableSelectDialog.html#fireConfirm">fireConfirm</a></b><span class='signature'>(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event confirm to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Fire event liveChange to attached listeners."><a href="../symbols/sap.m.TableSelectDialog.html#fireLiveChange">fireLiveChange</a></b><span class='signature'>(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event liveChange to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Fire event search to attached listeners."><a href="../symbols/sap.m.TableSelectDialog.html#fireSearch">fireSearch</a></b><span class='signature'>(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event search to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation columns."><a href="../symbols/sap.m.TableSelectDialog.html#getColumns">getColumns</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>columns</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Reflector for the internal Dialog's contentWidth property"><a href="../symbols/sap.m.TableSelectDialog.html#getContentWidth">getContentWidth</a></b><span class='signature'>()</span>
+									<span class='description'>Reflector for the internal Dialog's contentWidth property</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Forward method to the inner dialog: getDomRef"><a href="../symbols/sap.m.TableSelectDialog.html#getDomRef">getDomRef</a></b><span class='signature'>()</span>
+									<span class='description'>Forward method to the inner dialog: getDomRef</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property growingThreshold."><a href="../symbols/sap.m.TableSelectDialog.html#getGrowingThreshold">getGrowingThreshold</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>growingThreshold</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation items."><a href="../symbols/sap.m.TableSelectDialog.html#getItems">getItems</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>items</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property multiSelect."><a href="../symbols/sap.m.TableSelectDialog.html#getMultiSelect">getMultiSelect</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>multiSelect</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Reflector for the internal List's no data text property"><a href="../symbols/sap.m.TableSelectDialog.html#getNoDataText">getNoDataText</a></b><span class='signature'>()</span>
+									<span class='description'>Reflector for the internal List's no data text property</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property rememberSelections."><a href="../symbols/sap.m.TableSelectDialog.html#getRememberSelections">getRememberSelections</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>rememberSelections</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property title."><a href="../symbols/sap.m.TableSelectDialog.html#getTitle">getTitle</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>title</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Forward method to the inner dialog: hasStyleClass"><a href="../symbols/sap.m.TableSelectDialog.html#hasStyleClass">hasStyleClass</a></b><span class='signature'>()</span>
+									<span class='description'>Forward method to the inner dialog: hasStyleClass</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Checks for the provided sap.m.Column in the aggregation named columns and returns its index if found or -1 otherwise."><a href="../symbols/sap.m.TableSelectDialog.html#indexOfColumn">indexOfColumn</a></b><span class='signature'>(<span title="(sap.m.Column) the column whose index is looked for.">oColumn</span>)</span>
+									<span class='description'>Checks for the provided <code>sap.m.Column</code> in the aggregation named <code>columns</code> and returns its index if found or -1 otherwise.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Checks for the provided sap.m.ColumnListItem in the aggregation named items and returns its index if found or -1 otherwise."><a href="../symbols/sap.m.TableSelectDialog.html#indexOfItem">indexOfItem</a></b><span class='signature'>(<span title="(sap.m.ColumnListItem) the item whose index is looked for.">oItem</span>)</span>
+									<span class='description'>Checks for the provided <code>sap.m.ColumnListItem</code> in the aggregation named <code>items</code> and returns its index if found or -1 otherwise.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Inserts a column into the aggregation named columns."><a href="../symbols/sap.m.TableSelectDialog.html#insertColumn">insertColumn</a></b><span class='signature'>(<span title="(sap.m.Column) the column to insert; if empty, nothing is inserted">oColumn</span>, <span title="(int) the 0-based index the column should be inserted at; for a negative value of iIndex, the column is inserted at position 0; for a value greater than the current size of the aggregation, the column is inserted at the last position">iIndex</span>)</span>
+									<span class='description'>Inserts a column into the aggregation named <code>columns</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Inserts a item into the aggregation named items."><a href="../symbols/sap.m.TableSelectDialog.html#insertItem">insertItem</a></b><span class='signature'>(<span title="(sap.m.ColumnListItem) the item to insert; if empty, nothing is inserted">oItem</span>, <span title="(int) the 0-based index the item should be inserted at; for a negative value of iIndex, the item is inserted at position 0; for a value greater than the current size of the aggregation, the item is inserted at the last position">iIndex</span>)</span>
+									<span class='description'>Inserts a item into the aggregation named <code>items</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Opens the internal dialog with a searchfield and a table."><a href="../symbols/sap.m.TableSelectDialog.html#open">open</a></b><span class='signature'>(<span title="(string) Value for the table search.">sValue</span>)</span>
+									<span class='description'>Opens the internal dialog with a searchfield and a table.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes all the controls in the aggregation named columns."><a href="../symbols/sap.m.TableSelectDialog.html#removeAllColumns">removeAllColumns</a></b><span class='signature'>()</span>
+									<span class='description'>Removes all the controls in the aggregation named <code>columns</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes all the controls in the aggregation named items."><a href="../symbols/sap.m.TableSelectDialog.html#removeAllItems">removeAllItems</a></b><span class='signature'>()</span>
+									<span class='description'>Removes all the controls in the aggregation named <code>items</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes an column from the aggregation named columns."><a href="../symbols/sap.m.TableSelectDialog.html#removeColumn">removeColumn</a></b><span class='signature'>(<span title="(int | string | sap.m.Column) the column to remove or its index or id">vColumn</span>)</span>
+									<span class='description'>Removes an column from the aggregation named <code>columns</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes an item from the aggregation named items."><a href="../symbols/sap.m.TableSelectDialog.html#removeItem">removeItem</a></b><span class='signature'>(<span title="(int | string | sap.m.ColumnListItem) the item to remove or its index or id">vItem</span>)</span>
+									<span class='description'>Removes an item from the aggregation named <code>items</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Forward method to the inner dialog: removeStyleClass"><a href="../symbols/sap.m.TableSelectDialog.html#removeStyleClass">removeStyleClass</a></b><span class='signature'>()</span>
+									<span class='description'>Forward method to the inner dialog: removeStyleClass</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Reflector for the internal Dialog's contentWidth property"><a href="../symbols/sap.m.TableSelectDialog.html#setContentWidth">setContentWidth</a></b><span class='signature'>(<span title="(sap.ui.core.CSSSize) the new content width value for the dialog">sWidth</span>)</span>
+									<span class='description'>Reflector for the internal Dialog's contentWidth property</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Sets the growing threshold to the internal table"><a href="../symbols/sap.m.TableSelectDialog.html#setGrowingThreshold">setGrowingThreshold</a></b><span class='signature'>(<span title="(int) Value for the table's growing threshold.">iValue</span>)</span>
+									<span class='description'>Sets the growing threshold to the internal table</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Enable/Disable multi selection mode."><a href="../symbols/sap.m.TableSelectDialog.html#setMultiSelect">setMultiSelect</a></b><span class='signature'>(<span title="(boole) flag for multi selection mode">bMulti</span>)</span>
+									<span class='description'>Enable/Disable multi selection mode.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Set the no data text of the internal table"><a href="../symbols/sap.m.TableSelectDialog.html#setNoDataText">setNoDataText</a></b><span class='signature'>(<span title="(string) the no data text for the table">sNoDataText</span>)</span>
+									<span class='description'>Set the no data text of the internal table</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property rememberSelections."><a href="../symbols/sap.m.TableSelectDialog.html#setRememberSelections">setRememberSelections</a></b><span class='signature'>(<span title="(boolean) new value for property rememberSelections">bRememberSelections</span>)</span>
+									<span class='description'>Setter for property <code>rememberSelections</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Set the title of the internal dialog"><a href="../symbols/sap.m.TableSelectDialog.html#setTitle">setTitle</a></b><span class='signature'>(<span title="(string) the title text for the dialog">sTitle</span>)</span>
+									<span class='description'>Set the title of the internal dialog</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Forward method to the inner dialog: toggleStyleClass"><a href="../symbols/sap.m.TableSelectDialog.html#toggleStyleClass">toggleStyleClass</a></b><span class='signature'>()</span>
+									<span class='description'>Forward method to the inner dialog: toggleStyleClass</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Unbinder for aggregation columns."><a href="../symbols/sap.m.TableSelectDialog.html#unbindColumns">unbindColumns</a></b><span class='signature'>()</span>
+									<span class='description'>Unbinder for aggregation <code>columns</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Unbinder for aggregation items."><a href="../symbols/sap.m.TableSelectDialog.html#unbindItems">unbindItems</a></b><span class='signature'>()</span>
+									<span class='description'>Unbinder for aggregation <code>items</code>.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Control.html#allowTextSelection">allowTextSelection</a>, <a href="../symbols/sap.ui.core.Control.html#attachBrowserEvent">attachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#clone">clone</a>, <a href="../symbols/sap.ui.core.Control.html#detachBrowserEvent">detachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#getBusy">getBusy</a>, <a href="../symbols/sap.ui.core.Control.html#getBusyIndicatorDelay">getBusyIndicatorDelay</a>, <a href="../symbols/sap.ui.core.Control.html#getIdForLabel">getIdForLabel</a>, <a href="../symbols/sap.ui.core.Control.html#getRenderer">getRenderer</a>, <a href="../symbols/sap.ui.core.Control.html#invalidate">invalidate</a>, <a href="../symbols/sap.ui.core.Control.html#isBusy">isBusy</a>, <a href="../symbols/sap.ui.core.Control.html#onAfterRendering">onAfterRendering</a>, <a href="../symbols/sap.ui.core.Control.html#onBeforeRendering">onBeforeRendering</a>, <a href="../symbols/sap.ui.core.Control.html#placeAt">placeAt</a>, <a href="../symbols/sap.ui.core.Control.html#rerender">rerender</a>, <a href="../symbols/sap.ui.core.Control.html#setBusy">setBusy</a>, <a href="../symbols/sap.ui.core.Control.html#setBusyIndicatorDelay">setBusyIndicatorDelay</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Element.html#$">$</a>, <a href="../symbols/sap.ui.core.Element.html#addCustomData">addCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#addDependent">addDependent</a>, <a href="../symbols/sap.ui.core.Element.html#addEventDelegate">addEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#applyFocusInfo">applyFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#bindElement">bindElement</a>, <a href="../symbols/sap.ui.core.Element.html#data">data</a>, <a href="../symbols/sap.ui.core.Element.html#destroy">destroy</a>, <a href="../symbols/sap.ui.core.Element.html#destroyCustomData">destroyCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#destroyDependents">destroyDependents</a>, <a href="../symbols/sap.ui.core.Element.html#enhanceAccessibilityState">enhanceAccessibilityState</a>, <a href="../symbols/sap.ui.core.Element.html#findElements">findElements</a>, <a href="../symbols/sap.ui.core.Element.html#fireEvent">fireEvent</a>, <a href="../symbols/sap.ui.core.Element.html#getCustomData">getCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#getDependents">getDependents</a>, <a href="../symbols/sap.ui.core.Element.html#getElementBinding">getElementBinding</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusDomRef">getFocusDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusInfo">getFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#getInterface">getInterface</a>, <a href="../symbols/sap.ui.core.Element.html#getLayoutData">getLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#getMetadata">getMetadata</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip">getTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_AsString">getTooltip_AsString</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_Text">getTooltip_Text</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfCustomData">indexOfCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfDependent">indexOfDependent</a>, <a href="../symbols/sap.ui.core.Element.html#insertCustomData">insertCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#insertDependent">insertDependent</a>, <a href="../symbols/sap.ui.core.Element.html#prop">prop</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllCustomData">removeAllCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllDependents">removeAllDependents</a>, <a href="../symbols/sap.ui.core.Element.html#removeCustomData">removeCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeDependent">removeDependent</a>, <a href="../symbols/sap.ui.core.Element.html#removeEventDelegate">removeEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#setLayoutData">setLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#setTooltip">setTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#toString">toString</a>, <a href="../symbols/sap.ui.core.Element.html#unbindElement">unbindElement</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.ManagedObject.html">sap.ui.base.ManagedObject</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.ManagedObject.html#addAggregation">addAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#addAssociation">addAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#applySettings">applySettings</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindContext">bindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindObject">bindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindProperty">bindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#destroyAggregation">destroyAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#findAggregatedObjects">findAggregatedObjects</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAggregation">getAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAssociation">getAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBinding">getBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingContext">getBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingInfo">getBindingInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingPath">getBindingPath</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getEventingParent">getEventingParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getId">getId</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getModel">getModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getObjectBinding">getObjectBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getOriginInfo">getOriginInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getParent">getParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getProperty">getProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#hasModel">hasModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#indexOfAggregation">indexOfAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#insertAggregation">insertAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isBound">isBound</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isInvalidateSuppressed">isInvalidateSuppressed</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isTreeBinding">isTreeBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAggregation">removeAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAggregation">removeAllAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAssociation">removeAllAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAssociation">removeAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAggregation">setAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAssociation">setAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setBindingContext">setBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setModel">setModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setProperty">setProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindAggregation">unbindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindContext">unbindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindObject">unbindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindProperty">unbindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateAggregation">validateAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateProperty">validateProperty</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.EventProvider.html#attachEvent">attachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#attachEventOnce">attachEventOnce</a>, <a href="../symbols/sap.ui.base.EventProvider.html#detachEvent">detachEvent</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.m.TableSelectDialog</b>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)
+										</div>
+										
+										<div class="full-description">
+											Constructor for a new TableSelectDialog.
+</p><p>
+Accepts an object literal <code>mSettings</code> that defines initial 
+property values, aggregated and associated objects as well as event handlers. 
+</p><p>
+If the name of a setting is ambiguous (e.g. a property has the same name as an event), 
+then the framework assumes property, aggregation, association, event in that order. 
+To override this automatic resolution, one of the prefixes "aggregation:", "association:" 
+or "event:" can be added to the name of the setting (such a prefixed name must be
+enclosed in single or double quotes).
+</p><p>
+The supported settings are:
+<ul>
+<li>Properties
+<ul>
+<li><a href="#getTitle">title</a> : string</li>
+<li><a href="#getNoDataText">noDataText</a> : string</li>
+<li><a href="#getMultiSelect">multiSelect</a> : boolean (default: false)</li>
+<li><a href="#getGrowingThreshold">growingThreshold</a> : int</li>
+<li><a href="#getContentWidth">contentWidth</a> : sap.ui.core.CSSSize</li>
+<li><a href="#getRememberSelections">rememberSelections</a> : boolean (default: false)</li></ul>
+</li>
+<li>Aggregations
+<ul>
+<li><a href="#getItems">items</a> <strong>(default aggregation)</strong> : sap.m.ColumnListItem[]</li>
+<li><a href="#getColumns">columns</a> : sap.m.Column[]</li></ul>
+</li>
+<li>Associations
+<ul></ul>
+</li>
+<li>Events
+<ul>
+<li><a href="../symbols/sap.m.TableSelectDialog.html#event:confirm">confirm</a> : fnListenerFunction or [fnListenerFunction, oListenerObject] or [oData, fnListenerFunction, oListenerObject]</li>
+<li><a href="../symbols/sap.m.TableSelectDialog.html#event:search">search</a> : fnListenerFunction or [fnListenerFunction, oListenerObject] or [oData, fnListenerFunction, oListenerObject]</li>
+<li><a href="../symbols/sap.m.TableSelectDialog.html#event:liveChange">liveChange</a> : fnListenerFunction or [fnListenerFunction, oListenerObject] or [oData, fnListenerFunction, oListenerObject]</li>
+<li><a href="../symbols/sap.m.TableSelectDialog.html#event:cancel">cancel</a> : fnListenerFunction or [fnListenerFunction, oListenerObject] or [oData, fnListenerFunction, oListenerObject]</li></ul>
+</li>
+</ul>
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    id for the new control, generated automatically if no id is given
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mSettings</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    initial settings for the new control
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Event Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:cancel"> </a>
+									<div class="itemTitle icon">
+										cancel<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										This event will be fired when the cancel button is clicked
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:confirm"> </a>
+									<div class="itemTitle icon">
+										confirm<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										This event will be fired when the dialog is confirmed by selecting an item in single selection mode or by pressing the confirmation button in multi selection mode . The items being selected are returned as event parameters.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.m.StandardListItem.html">sap.m.StandardListItem</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.selectedItem</b>
+												</td>
+												<td class="methodItemDesc">
+											    Returns the selected list item. When no item is selected, "null" is returned. When multi-selection is enabled and multiple items are selected, only the first selected item is returned.
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.m.StandardListItem.html">sap.m.StandardListItem</a>[]}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.selectedItems</b>
+												</td>
+												<td class="methodItemDesc">
+											    Returns an array containing the visible selected list items. If no items are selected, an empty array is returned.
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.selectedContexts</b>
+												</td>
+												<td class="methodItemDesc">
+											    Returns the binding contexts of the selected items including the non-visible items.
+        Note: In contrast to the parameter "selectedItems", this parameter will also include the selected but NOT visible items (e.g. due to list filtering). An empty array will be set for this parameter if no Databinding is used.
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:liveChange"> </a>
+									<div class="itemTitle icon">
+										liveChange<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										This event is fired when the value of the search field is changed by a user - e.g. at each key press.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.value</b>
+												</td>
+												<td class="methodItemDesc">
+											    The value entered in the search field.
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{any}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.itemsBinding</b>
+												</td>
+												<td class="methodItemDesc">
+											    The Items binding of the Table Select Dialog. It will only be available if the items aggregation is bound to a model.
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:search"> </a>
+									<div class="itemTitle icon">
+										search<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										Fired when the search button has been clicked on dialog.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.value</b>
+												</td>
+												<td class="methodItemDesc">
+											    The value entered in the search field.
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{any}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.itemsBinding</b>
+												</td>
+												<td class="methodItemDesc">
+											    The Items binding of the Table Select Dialog. It will only be available if the items aggregation is bound to a model.
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+							</div>
+						</div>
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".extend"> </a>
+										<div class="itemTitle icon">
+											sap.m.TableSelectDialog.extend<span class="signature">(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns function">: function</span>
+										</div>
+										<div class="full-description">
+											Creates a new subclass of class sap.m.TableSelectDialog with name <code>sClassName</code> 
+and enriches it with the information contained in <code>oClassInfo</code>.
+</p><p>
+<code>oClassInfo</code> might contain the same kind of informations as described in <a href="../symbols/sap.ui.core.Element.html#.extend">Element.extend</a>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sClassName</b>
+													</td>
+													<td class="methodItemDesc">
+												    name of the class to be created
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oClassInfo</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    object literal with informations about the class
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>FNMetaImpl</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    constructor function for the metadata object. If not given, it defaults to sap.ui.core.ElementMetadata.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{function}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the created class / constructor function
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addColumn"> </a>
+										<div class="itemTitle icon">
+											addColumn<span class="signature">(<span title="(sap.m.Column) the column to add; if empty, nothing is inserted">oColumn</span>)</span>
+											<span class="light" title="returns sap.m.TableSelectDialog">: <a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a></span>
+										</div>
+										<div class="full-description">
+											Adds some column <code>oColumn</code> 
+to the aggregation named <code>columns</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.Column.html">sap.m.Column</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oColumn</b>
+													</td>
+													<td class="methodItemDesc">
+												    the column to add; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addItem"> </a>
+										<div class="itemTitle icon">
+											addItem<span class="signature">(<span title="(sap.m.ColumnListItem) the item to add; if empty, nothing is inserted">oItem</span>)</span>
+											<span class="light" title="returns sap.m.TableSelectDialog">: <a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a></span>
+										</div>
+										<div class="full-description">
+											Adds some item <code>oItem</code> 
+to the aggregation named <code>items</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.ColumnListItem.html">sap.m.ColumnListItem</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    the item to add; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addStyleClass"> </a>
+										<div class="itemTitle icon">
+											addStyleClass<span class="signature">()</span>
+											<span class="light" title="returns this">: this</span>
+										</div>
+										<div class="full-description">
+											Forward method to the inner dialog: addStyleClass
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{this}</span> 
+													</td>
+													<td class="methodItemDesc">
+														this pointer for chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachCancel"> </a>
+										<div class="itemTitle icon">
+											attachCancel<span class="signature">(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.m.TableSelectDialog">: <a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a></span>
+										</div>
+										<div class="full-description">
+											Attach event handler <code>fnFunction</code> to the 'cancel' event of this <code>sap.m.TableSelectDialog</code>.<br/>.
+When called, the context of the event handler (its <code>this</code>) will be bound to <code>oListener<code> if specified
+otherwise to this <code>sap.m.TableSelectDialog</code>.<br/> itself. 
+</p><p>
+This event will be fired when the cancel button is clicked
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oData</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    An application specific payload object, that will be passed to the event handler along with the event object when firing the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Context object to call the event handler with. Defaults to this <code>sap.m.TableSelectDialog</code>.<br/> itself.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachConfirm"> </a>
+										<div class="itemTitle icon">
+											attachConfirm<span class="signature">(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.m.TableSelectDialog">: <a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a></span>
+										</div>
+										<div class="full-description">
+											Attach event handler <code>fnFunction</code> to the 'confirm' event of this <code>sap.m.TableSelectDialog</code>.<br/>.
+When called, the context of the event handler (its <code>this</code>) will be bound to <code>oListener<code> if specified
+otherwise to this <code>sap.m.TableSelectDialog</code>.<br/> itself. 
+</p><p>
+This event will be fired when the dialog is confirmed by selecting an item in single selection mode or by pressing the confirmation button in multi selection mode . The items being selected are returned as event parameters.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oData</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    An application specific payload object, that will be passed to the event handler along with the event object when firing the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Context object to call the event handler with. Defaults to this <code>sap.m.TableSelectDialog</code>.<br/> itself.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachLiveChange"> </a>
+										<div class="itemTitle icon">
+											attachLiveChange<span class="signature">(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.m.TableSelectDialog">: <a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a></span>
+										</div>
+										<div class="full-description">
+											Attach event handler <code>fnFunction</code> to the 'liveChange' event of this <code>sap.m.TableSelectDialog</code>.<br/>.
+When called, the context of the event handler (its <code>this</code>) will be bound to <code>oListener<code> if specified
+otherwise to this <code>sap.m.TableSelectDialog</code>.<br/> itself. 
+</p><p>
+This event is fired when the value of the search field is changed by a user - e.g. at each key press.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oData</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    An application specific payload object, that will be passed to the event handler along with the event object when firing the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Context object to call the event handler with. Defaults to this <code>sap.m.TableSelectDialog</code>.<br/> itself.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachSearch"> </a>
+										<div class="itemTitle icon">
+											attachSearch<span class="signature">(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.m.TableSelectDialog">: <a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a></span>
+										</div>
+										<div class="full-description">
+											Attach event handler <code>fnFunction</code> to the 'search' event of this <code>sap.m.TableSelectDialog</code>.<br/>.
+When called, the context of the event handler (its <code>this</code>) will be bound to <code>oListener<code> if specified
+otherwise to this <code>sap.m.TableSelectDialog</code>.<br/> itself. 
+</p><p>
+Fired when the search button has been clicked on dialog.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oData</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    An application specific payload object, that will be passed to the event handler along with the event object when firing the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Context object to call the event handler with. Defaults to this <code>sap.m.TableSelectDialog</code>.<br/> itself.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="bindAggregation"> </a>
+										<div class="itemTitle icon">
+											bindAggregation<span class="signature">(<span title="(string) the name for the binding">sAggregationName</span>, <span title="(object) the configuration parameters for the binding">oBindingInfo</span>)</span>
+											<span class="light" title="returns this">: this</span>
+										</div>
+										<div class="full-description">
+											Forwards aggregations with the name of items or columns to the internal table.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sAggregationName</b>
+													</td>
+													<td class="methodItemDesc">
+												    the name for the binding
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oBindingInfo</b>
+													</td>
+													<td class="methodItemDesc">
+												    the configuration parameters for the binding
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{this}</span> 
+													</td>
+													<td class="methodItemDesc">
+														this pointer for chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="bindColumns"> </a>
+										<div class="itemTitle icon">
+											bindColumns<span class="signature">(<span title="(string) path to a list in the model">sPath</span>, <span title="(sap.ui.core.Element) the control template for this aggregation">oTemplate</span>, <span title="(sap.ui.model.Sorter) the initial sort order (optional)">oSorter</span>, <span title="(array) the predefined filters for this aggregation (optional)">aFilters</span>)</span>
+											<span class="light" title="returns sap.m.TableSelectDialog">: <a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a></span>
+										</div>
+										<div class="full-description">
+											Binder for aggregation <code>columns</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sPath</b>
+													</td>
+													<td class="methodItemDesc">
+												    path to a list in the model
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oTemplate</b>
+													</td>
+													<td class="methodItemDesc">
+												    the control template for this aggregation
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.model.Sorter.html">sap.ui.model.Sorter</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oSorter</b>
+													</td>
+													<td class="methodItemDesc">
+												    the initial sort order (optional)
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{array}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>aFilters</b>
+													</td>
+													<td class="methodItemDesc">
+												    the predefined filters for this aggregation (optional)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="bindItems"> </a>
+										<div class="itemTitle icon">
+											bindItems<span class="signature">(<span title="(string) path to a list in the model">sPath</span>, <span title="(sap.ui.core.Element) the control template for this aggregation">oTemplate</span>, <span title="(sap.ui.model.Sorter) the initial sort order (optional)">oSorter</span>, <span title="(array) the predefined filters for this aggregation (optional)">aFilters</span>)</span>
+											<span class="light" title="returns sap.m.TableSelectDialog">: <a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a></span>
+										</div>
+										<div class="full-description">
+											Binder for aggregation <code>items</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sPath</b>
+													</td>
+													<td class="methodItemDesc">
+												    path to a list in the model
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oTemplate</b>
+													</td>
+													<td class="methodItemDesc">
+												    the control template for this aggregation
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.model.Sorter.html">sap.ui.model.Sorter</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oSorter</b>
+													</td>
+													<td class="methodItemDesc">
+												    the initial sort order (optional)
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{array}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>aFilters</b>
+													</td>
+													<td class="methodItemDesc">
+												    the predefined filters for this aggregation (optional)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyColumns"> </a>
+										<div class="itemTitle icon">
+											destroyColumns<span class="signature">()</span>
+											<span class="light" title="returns sap.m.TableSelectDialog">: <a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a></span>
+										</div>
+										<div class="full-description">
+											Destroys all the columns in the aggregation 
+named <code>columns</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyItems"> </a>
+										<div class="itemTitle icon">
+											destroyItems<span class="signature">()</span>
+											<span class="light" title="returns sap.m.TableSelectDialog">: <a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a></span>
+										</div>
+										<div class="full-description">
+											Destroys all the items in the aggregation 
+named <code>items</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachCancel"> </a>
+										<div class="itemTitle icon">
+											detachCancel<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.m.TableSelectDialog">: <a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a></span>
+										</div>
+										<div class="full-description">
+											Detach event handler <code>fnFunction</code> from the 'cancel' event of this <code>sap.m.TableSelectDialog</code>.<br/>
+</p><p>
+The passed function and listener object must match the ones used for event registration.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Context object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachConfirm"> </a>
+										<div class="itemTitle icon">
+											detachConfirm<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.m.TableSelectDialog">: <a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a></span>
+										</div>
+										<div class="full-description">
+											Detach event handler <code>fnFunction</code> from the 'confirm' event of this <code>sap.m.TableSelectDialog</code>.<br/>
+</p><p>
+The passed function and listener object must match the ones used for event registration.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Context object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachLiveChange"> </a>
+										<div class="itemTitle icon">
+											detachLiveChange<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.m.TableSelectDialog">: <a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a></span>
+										</div>
+										<div class="full-description">
+											Detach event handler <code>fnFunction</code> from the 'liveChange' event of this <code>sap.m.TableSelectDialog</code>.<br/>
+</p><p>
+The passed function and listener object must match the ones used for event registration.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Context object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachSearch"> </a>
+										<div class="itemTitle icon">
+											detachSearch<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.m.TableSelectDialog">: <a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a></span>
+										</div>
+										<div class="full-description">
+											Detach event handler <code>fnFunction</code> from the 'search' event of this <code>sap.m.TableSelectDialog</code>.<br/>
+</p><p>
+The passed function and listener object must match the ones used for event registration.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Context object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="fireCancel"> </a>
+										<div class="itemTitle icon protected">
+											fireCancel<span class="signature">(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.m.TableSelectDialog">: <a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a></span>
+										</div>
+										<div class="full-description">
+											Fire event cancel to attached listeners.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Map}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="fireConfirm"> </a>
+										<div class="itemTitle icon protected">
+											fireConfirm<span class="signature">(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.m.TableSelectDialog">: <a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a></span>
+										</div>
+										<div class="full-description">
+											Fire event confirm to attached listeners.
+</p><p>
+Expects following event parameters:
+<ul>
+<li>'selectedItem' of type <code>sap.m.StandardListItem</code> Returns the selected list item. When no item is selected, "null" is returned. When multi-selection is enabled and multiple items are selected, only the first selected item is returned.</li>
+<li>'selectedItems' of type <code>sap.m.StandardListItem[]</code> Returns an array containing the visible selected list items. If no items are selected, an empty array is returned.</li>
+<li>'selectedContexts' of type <code>string</code> Returns the binding contexts of the selected items including the non-visible items. 
+Note: In contrast to the parameter "selectedItems", this parameter will also include the selected but NOT visible items (e.g. due to list filtering). An empty array will be set for this parameter if no Databinding is used.</li>
+</ul>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Map}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="fireLiveChange"> </a>
+										<div class="itemTitle icon protected">
+											fireLiveChange<span class="signature">(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.m.TableSelectDialog">: <a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a></span>
+										</div>
+										<div class="full-description">
+											Fire event liveChange to attached listeners.
+</p><p>
+Expects following event parameters:
+<ul>
+<li>'value' of type <code>string</code> The value entered in the search field.</li>
+<li>'itemsBinding' of type <code>any</code> The Items binding of the Table Select Dialog. It will only be available if the items aggregation is bound to a model.</li>
+</ul>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Map}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="fireSearch"> </a>
+										<div class="itemTitle icon protected">
+											fireSearch<span class="signature">(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.m.TableSelectDialog">: <a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a></span>
+										</div>
+										<div class="full-description">
+											Fire event search to attached listeners.
+</p><p>
+Expects following event parameters:
+<ul>
+<li>'value' of type <code>string</code> The value entered in the search field.</li>
+<li>'itemsBinding' of type <code>any</code> The Items binding of the Table Select Dialog. It will only be available if the items aggregation is bound to a model.</li>
+</ul>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Map}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getColumns"> </a>
+										<div class="itemTitle icon">
+											getColumns<span class="signature">()</span>
+											<span class="light" title="returns sap.m.Column[]">: <a href="../symbols/sap.m.Column.html">sap.m.Column</a>[]</span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>columns</code>.<br/>
+The columns bindings.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Column.html">sap.m.Column</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getContentWidth"> </a>
+										<div class="itemTitle icon">
+											getContentWidth<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.CSSSize">: <a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a></span>
+										</div>
+										<div class="full-description">
+											Reflector for the internal Dialog's contentWidth property
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														sWidth the content width of the internal dialog
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getDomRef"> </a>
+										<div class="itemTitle icon">
+											getDomRef<span class="signature">()</span>
+											<span class="light" title="returns Element">: Element</span>
+										</div>
+										<div class="full-description">
+											Forward method to the inner dialog: getDomRef
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{Element}</span> 
+													</td>
+													<td class="methodItemDesc">
+														The Element's DOM Element sub DOM Element or null
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getGrowingThreshold"> </a>
+										<div class="itemTitle icon">
+											getGrowingThreshold<span class="signature">()</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>growingThreshold</code>.
+Number of items initially displayed in the table
+</p><p>
+Default value is empty/<code>undefined</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>growingThreshold</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getItems"> </a>
+										<div class="itemTitle icon">
+											getItems<span class="signature">()</span>
+											<span class="light" title="returns sap.m.ColumnListItem[]">: <a href="../symbols/sap.m.ColumnListItem.html">sap.m.ColumnListItem</a>[]</span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>items</code>.<br/>
+The items of the table.
+</p><p>
+<strong>Note</strong>: this is the default aggregation for TableSelectDialog.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ColumnListItem.html">sap.m.ColumnListItem</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getMultiSelect"> </a>
+										<div class="itemTitle icon">
+											getMultiSelect<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>multiSelect</code>.
+If on, the user can select several options from the table.
+</p><p>
+Default value is <code>false</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>multiSelect</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getNoDataText"> </a>
+										<div class="itemTitle icon">
+											getNoDataText<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Reflector for the internal List's no data text property
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the current no data text
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getRememberSelections"> </a>
+										<div class="itemTitle icon">
+											getRememberSelections<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>rememberSelections</code>.
+This flag controls whether the dialog clears the selection or not. When the dialog is opened multiple times in the same context to allow for corrections of previous user inputs, set this flag to "true". When the dialog should reset the selection to allow for a new selection each time set it to "false"
+Note: This property must be set before the dialog is opened to have an effect.
+</p><p>
+Default value is <code>false</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.18</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>rememberSelections</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getTitle"> </a>
+										<div class="itemTitle icon">
+											getTitle<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>title</code>.
+The title text appears in the dialog header.
+</p><p>
+Default value is empty/<code>undefined</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>title</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="hasStyleClass"> </a>
+										<div class="itemTitle icon">
+											hasStyleClass<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Forward method to the inner dialog: hasStyleClass
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														true if the class is set, false otherwise
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="indexOfColumn"> </a>
+										<div class="itemTitle icon">
+											indexOfColumn<span class="signature">(<span title="(sap.m.Column) the column whose index is looked for.">oColumn</span>)</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Checks for the provided <code>sap.m.Column</code> in the aggregation named <code>columns</code> 
+and returns its index if found or -1 otherwise.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.Column.html">sap.m.Column</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oColumn</b>
+													</td>
+													<td class="methodItemDesc">
+												    the column whose index is looked for.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the index of the provided control in the aggregation if found, or -1 otherwise
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="indexOfItem"> </a>
+										<div class="itemTitle icon">
+											indexOfItem<span class="signature">(<span title="(sap.m.ColumnListItem) the item whose index is looked for.">oItem</span>)</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Checks for the provided <code>sap.m.ColumnListItem</code> in the aggregation named <code>items</code> 
+and returns its index if found or -1 otherwise.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.ColumnListItem.html">sap.m.ColumnListItem</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    the item whose index is looked for.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the index of the provided control in the aggregation if found, or -1 otherwise
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="insertColumn"> </a>
+										<div class="itemTitle icon">
+											insertColumn<span class="signature">(<span title="(sap.m.Column) the column to insert; if empty, nothing is inserted">oColumn</span>, <span title="(int) the 0-based index the column should be inserted at; for a negative value of iIndex, the column is inserted at position 0; for a value greater than the current size of the aggregation, the column is inserted at the last position">iIndex</span>)</span>
+											<span class="light" title="returns sap.m.TableSelectDialog">: <a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a></span>
+										</div>
+										<div class="full-description">
+											Inserts a column into the aggregation named <code>columns</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.Column.html">sap.m.Column</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oColumn</b>
+													</td>
+													<td class="methodItemDesc">
+												    the column to insert; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    the <code>0</code>-based index the column should be inserted at; for 
+            a negative value of <code>iIndex</code>, the column is inserted at position 0; for a value 
+            greater than the current size of the aggregation, the column is inserted at 
+            the last position
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="insertItem"> </a>
+										<div class="itemTitle icon">
+											insertItem<span class="signature">(<span title="(sap.m.ColumnListItem) the item to insert; if empty, nothing is inserted">oItem</span>, <span title="(int) the 0-based index the item should be inserted at; for a negative value of iIndex, the item is inserted at position 0; for a value greater than the current size of the aggregation, the item is inserted at the last position">iIndex</span>)</span>
+											<span class="light" title="returns sap.m.TableSelectDialog">: <a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a></span>
+										</div>
+										<div class="full-description">
+											Inserts a item into the aggregation named <code>items</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.ColumnListItem.html">sap.m.ColumnListItem</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    the item to insert; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    the <code>0</code>-based index the item should be inserted at; for 
+            a negative value of <code>iIndex</code>, the item is inserted at position 0; for a value 
+            greater than the current size of the aggregation, the item is inserted at 
+            the last position
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="open"> </a>
+										<div class="itemTitle icon">
+											open<span class="signature">(<span title="(string) Value for the table search.">sValue</span>)</span>
+											<span class="light" title="returns this">: this</span>
+										</div>
+										<div class="full-description">
+											Opens the internal dialog with a searchfield and a table.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sValue</b>
+													</td>
+													<td class="methodItemDesc">
+												    Value for the table search.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{this}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeAllColumns"> </a>
+										<div class="itemTitle icon">
+											removeAllColumns<span class="signature">()</span>
+											<span class="light" title="returns sap.m.Column[]">: <a href="../symbols/sap.m.Column.html">sap.m.Column</a>[]</span>
+										</div>
+										<div class="full-description">
+											Removes all the controls in the aggregation named <code>columns</code>.<br/>
+Additionally unregisters them from the hosting UIArea.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Column.html">sap.m.Column</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														an array of the removed elements (might be empty)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeAllItems"> </a>
+										<div class="itemTitle icon">
+											removeAllItems<span class="signature">()</span>
+											<span class="light" title="returns sap.m.ColumnListItem[]">: <a href="../symbols/sap.m.ColumnListItem.html">sap.m.ColumnListItem</a>[]</span>
+										</div>
+										<div class="full-description">
+											Removes all the controls in the aggregation named <code>items</code>.<br/>
+Additionally unregisters them from the hosting UIArea.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ColumnListItem.html">sap.m.ColumnListItem</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														an array of the removed elements (might be empty)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeColumn"> </a>
+										<div class="itemTitle icon">
+											removeColumn<span class="signature">(<span title="(int | string | sap.m.Column) the column to remove or its index or id">vColumn</span>)</span>
+											<span class="light" title="returns sap.m.Column">: <a href="../symbols/sap.m.Column.html">sap.m.Column</a></span>
+										</div>
+										<div class="full-description">
+											Removes an column from the aggregation named <code>columns</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int|string|<a href="../symbols/sap.m.Column.html">sap.m.Column</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vColumn</b>
+													</td>
+													<td class="methodItemDesc">
+												    the column to remove or its index or id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Column.html">sap.m.Column</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the removed column or null
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeItem"> </a>
+										<div class="itemTitle icon">
+											removeItem<span class="signature">(<span title="(int | string | sap.m.ColumnListItem) the item to remove or its index or id">vItem</span>)</span>
+											<span class="light" title="returns sap.m.ColumnListItem">: <a href="../symbols/sap.m.ColumnListItem.html">sap.m.ColumnListItem</a></span>
+										</div>
+										<div class="full-description">
+											Removes an item from the aggregation named <code>items</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int|string|<a href="../symbols/sap.m.ColumnListItem.html">sap.m.ColumnListItem</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    the item to remove or its index or id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ColumnListItem.html">sap.m.ColumnListItem</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the removed item or null
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeStyleClass"> </a>
+										<div class="itemTitle icon">
+											removeStyleClass<span class="signature">()</span>
+											<span class="light" title="returns this">: this</span>
+										</div>
+										<div class="full-description">
+											Forward method to the inner dialog: removeStyleClass
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{this}</span> 
+													</td>
+													<td class="methodItemDesc">
+														this pointer for chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setContentWidth"> </a>
+										<div class="itemTitle icon">
+											setContentWidth<span class="signature">(<span title="(sap.ui.core.CSSSize) the new content width value for the dialog">sWidth</span>)</span>
+											<span class="light" title="returns this">: this</span>
+										</div>
+										<div class="full-description">
+											Reflector for the internal Dialog's contentWidth property
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sWidth</b>
+													</td>
+													<td class="methodItemDesc">
+												    the new content width value for the dialog
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{this}</span> 
+													</td>
+													<td class="methodItemDesc">
+														this pointer for chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setGrowingThreshold"> </a>
+										<div class="itemTitle icon">
+											setGrowingThreshold<span class="signature">(<span title="(int) Value for the table's growing threshold.">iValue</span>)</span>
+											<span class="light" title="returns this">: this</span>
+										</div>
+										<div class="full-description">
+											Sets the growing threshold to the internal table
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iValue</b>
+													</td>
+													<td class="methodItemDesc">
+												    Value for the table's growing threshold.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{this}</span> 
+													</td>
+													<td class="methodItemDesc">
+														this pointer for chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setMultiSelect"> </a>
+										<div class="itemTitle icon">
+											setMultiSelect<span class="signature">(<span title="(boole) flag for multi selection mode">bMulti</span>)</span>
+											<span class="light" title="returns this">: this</span>
+										</div>
+										<div class="full-description">
+											Enable/Disable multi selection mode.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boole}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bMulti</b>
+													</td>
+													<td class="methodItemDesc">
+												    flag for multi selection mode
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{this}</span> 
+													</td>
+													<td class="methodItemDesc">
+														this pointer for chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setNoDataText"> </a>
+										<div class="itemTitle icon">
+											setNoDataText<span class="signature">(<span title="(string) the no data text for the table">sNoDataText</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Set the no data text of the internal table
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sNoDataText</b>
+													</td>
+													<td class="methodItemDesc">
+												    the no data text for the table
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setRememberSelections"> </a>
+										<div class="itemTitle icon">
+											setRememberSelections<span class="signature">(<span title="(boolean) new value for property rememberSelections">bRememberSelections</span>)</span>
+											<span class="light" title="returns sap.m.TableSelectDialog">: <a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>rememberSelections</code>.
+</p><p>
+Default value is <code>false</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bRememberSelections</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>rememberSelections</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.18</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setTitle"> </a>
+										<div class="itemTitle icon">
+											setTitle<span class="signature">(<span title="(string) the title text for the dialog">sTitle</span>)</span>
+											<span class="light" title="returns this">: this</span>
+										</div>
+										<div class="full-description">
+											Set the title of the internal dialog
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sTitle</b>
+													</td>
+													<td class="methodItemDesc">
+												    the title text for the dialog
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{this}</span> 
+													</td>
+													<td class="methodItemDesc">
+														this pointer for chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="toggleStyleClass"> </a>
+										<div class="itemTitle icon">
+											toggleStyleClass<span class="signature">()</span>
+											<span class="light" title="returns this">: this</span>
+										</div>
+										<div class="full-description">
+											Forward method to the inner dialog: toggleStyleClass
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{this}</span> 
+													</td>
+													<td class="methodItemDesc">
+														this pointer for chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="unbindColumns"> </a>
+										<div class="itemTitle icon">
+											unbindColumns<span class="signature">()</span>
+											<span class="light" title="returns sap.m.TableSelectDialog">: <a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a></span>
+										</div>
+										<div class="full-description">
+											Unbinder for aggregation <code>columns</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="unbindItems"> </a>
+										<div class="itemTitle icon">
+											unbindItems<span class="signature">()</span>
+											<span class="light" title="returns sap.m.TableSelectDialog">: <a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a></span>
+										</div>
+										<div class="full-description">
+											Unbinder for aggregation <code>items</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.TableSelectDialog.html">sap.m.TableSelectDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

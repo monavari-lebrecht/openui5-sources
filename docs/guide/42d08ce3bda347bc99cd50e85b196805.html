@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=176411123276352"/>
+<title>Why not Simply Concatenating Modules?</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio42d08ce3bda347bc99cd50e85b196805">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Why not Simply Concatenating Modules?</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">Multiple modules can <span class="ph emphasis emphasis">not</span> simply be concatenated into a bigger module, but
+			have to be parsed and nested according to the original
+				<samp class="ph codeph">jQuery.sap.require</samp> calls. This is because the runtime behavior of
+			the merged file is more predictable. For modules with complex or cyclic dependencies,
+			the order of module execution is important. The <samp class="ph codeph">jQuery.sap.require</samp>
+			function ensures that the caller only continues after the required module has been
+			successfully loaded and executed. And this is only possible if the required module is
+			embedded exactly at the place where the <samp class="ph codeph">jQuery.sap.require</samp> call was
+			located.</p>
+<p class="p">However, if the use of the dependency resolution tool is <span class="ph emphasis emphasis">not</span> possible,
+			concatenating the modules is possible if the developer ensures the following:</p>
+<ul class="ul" id="loio42d08ce3bda347bc99cd50e85b196805__ul_hs2_trr_m4"><li class="li">
+				<p class="p">File order according to the dependencies: A module must not 'require' another module that is
+					merged later.</p>
+
+			</li>
+<li class="li">
+				<p class="p">Merged modules must declare by using the <samp class="ph codeph">jQuery.sap.declare</samp> function; this
+					ensures that SAPUI5 knows that the modules have been loaded and thus does
+						<span class="ph emphasis emphasis">not</span> load them again.</p>
+
+			</li>
+</ul>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Why not Simply Concatenating Modules?";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

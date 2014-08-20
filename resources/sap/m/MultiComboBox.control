@@ -1,0 +1,101 @@
+<?xml version="1.0" ?>
+<control xmlns="http://www.sap.com/sap.ui.library.xsd">
+
+	<name>MultiComboBox</name>
+	<author>SAP AG </author>
+	<since>1.22.0</since>
+	<documentation>The MultiComboBox  control provides a list box with items and a text field allowing the user to either type a value directly into the control or choose from the list of existing items.</documentation>
+
+	<baseType>InputBase</baseType>
+	<properties>
+		<property group="Dimension" name="maxWidth" type="sap.ui.core/CSSSize" defaultValue="100%">
+			<documentation>Defines the maximum width of the text field.</documentation>
+		</property>
+	</properties>
+	<events>
+		<event name="selectionChange">
+			<documentation>Event is fired when selection of an item is changed.
+			</documentation>
+			<parameters>
+				<parameter name="changedItem" type="sap.ui.core/Item">
+					<documentation>Item which selection is changed</documentation>
+				</parameter>
+				<parameter name="selected" type="sap.ui.core/boolean">
+					<documentation>Selection state: true if item is selected, false if
+						item is not selected</documentation>
+				</parameter>
+			</parameters>
+		</event>
+		<event name="selectionFinish">
+			<documentation>Event is fired when user has finished a selection of items in a list box and list box has been closed.</documentation>
+			<parameters>
+				<parameter name="selectedItems" type="sap.ui.core/Item">
+					<documentation>The selected items which are selected after list box has been closed.</documentation>
+				</parameter>
+			</parameters>
+		</event>
+	</events>
+	<aggregations default="items">
+		<aggregation cardinality="0..n" name="items" type="sap.ui.core/Item">
+			<documentation>Aggregation of items to be displayed.</documentation>
+		</aggregation>
+		<aggregation cardinality="0..1" name="popup" type="sap.ui.core/Control"
+			visibility="hidden">
+			<documentation>Internal aggregation to hold the inner sap.m.Popover
+				or sap.m.Dialog.</documentation>
+		</aggregation>
+	</aggregations>
+	<associations>
+		<association name="selectedItems" type="sap.ui.core/Item"
+			cardinality="0..n">
+			<documentation>Provides getter and setter for the selected items from
+				the aggregation named items.
+			</documentation>
+		</association>
+	</associations>
+	<methods>
+		<method type="sap.ui.core/boolean" name="isOpen">
+			<documentation>Indicates whether list box of the MultiComboBox is currently open. It returns True if list box is open and False if it is closed.</documentation>
+		</method>
+		<method name="close" type="sap.m/MultiComboBox">
+			<documentation>Closes the list box of the MultiComboBox.</documentation>
+		</method>
+		<method name="getItemByKey" type="sap.ui.core/Item">
+			<documentation>Retrieves the first item from the aggregation named items, based on its key.</documentation>
+			<parameters>
+				<parameter name="key" type="sap.ui.core/string">
+					<documentation>An item key that identifies the item to be
+						retrieved.</documentation>
+				</parameter>
+			</parameters>
+		</method>
+		<method name="setSelectedKeys" type="sap.m/MultiComboBox">
+			<documentation>Sets selected items. Only items with valid keys are set as selected. Previous selection is removed.</documentation>
+			<parameters>
+				<parameter name="keys" type="sap.ui.core/string[]">
+					<documentation>An array of item keys that identifies the items to
+						be set as selected.</documentation>
+				</parameter>
+			</parameters>
+		</method>
+		<method name="getSelectedKeys" type="sap.ui.core/string[]">
+			<documentation>Gets keys of selected items. Returns empty array if no items	are selected.</documentation>
+		</method>
+		<method name="addSelectedKeys" type="sap.m/MultiComboBox">
+			<documentation>Adds selected items. Only items with valid keys are added as selected.</documentation>
+			<parameters>
+				<parameter name="keys" type="sap.ui.core/string[]">
+					<documentation>An array of item keys that identifies the items to be added as selected</documentation>
+				</parameter>
+			</parameters>
+		</method>
+		<method name="removeSelectedKeys" type="sap.m/MultiComboBox">
+			<documentation>Removes selected items. Only items with valid keys are removed.</documentation>
+			<parameters>
+				<parameter name="keys" type="sap.ui.core/string[]">
+					<documentation>An array of item keys that identifies the items to be removed</documentation>
+				</parameter>
+			</parameters>
+		</method>
+	</methods>
+</control>

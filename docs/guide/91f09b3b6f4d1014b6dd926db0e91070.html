@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=07260027811295888"/>
+<title>UI Control Constructors</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f09b3b6f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">UI Control Constructors</h1>
+<div class="body"><p class="p">The constructor is a special type of subroutine called to create an object. The
+			constructor uses values to set control properties, thus preparing the new object for
+			use. The following paragraphs explain the use of  UI control constructors in SAPUI5.</p>
+<p class="p">In SAPUI5, control constructors accept the following arguments in the specified
+			order:</p>
+<ol class="ol" id="loio91f09b3b6f4d1014b6dd926db0e91070__ol_tc2_jvj_1j"><li class="li">An optional unique identifier of type <samp class="ph codeph">string</samp> which must either be
+				the first argument, or omitted altogether. If you omit the ID, the SAPUI5 framework
+				automatically computes an ID. Specifying your own identifier allows your application
+				to easily find the control and, for example, retrieve the current user input from
+				it. Alternatively, you can keep a reference to the control in a variable.</li>
+<li class="li"> One JSON-like object (object literal) as <samp class="ph codeph">mSettings</samp> parameter that
+				defines values for any property, aggregation, association, or event. If a specific
+				name for a control is ambiguous, meaning that a property has the same name as an
+				event, the framework assumes in the following order: Property, aggregation,
+				association. To resolve ambiguities, add the respective prefix to the key in the
+				JSON object: "aggregation:", "association:", or "event:".</li>
+</ol>
+<p class="p">The following code snippet shows an example of a constructor that is called to create a
+			new text field "Hello World" with the specified tooltip and width:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oTextField = new sap.ui.commons.TextField("testTextField",
+     {value : "Hello SAPUI5", tooltip: "This is an example tooltip", width: "100px"});</pre></div>
+<p class="p">The above example is an abbreviated version of the following code snippet with a detailed
+			list of statements, which is alternatively supported:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">    var oTextField = new sap.ui.commons.TextField("testTextField"); 
+    oTextField.setValue("Hello SAPUI5");
+    oTextField.setTooltip("This is an example
+          tooltip");
+    oTextField.setWidth("100px");</pre></div>
+<p class="p">The supported parameters are documented in the JsDoc of the respective control.</p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="UI Control Constructors";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

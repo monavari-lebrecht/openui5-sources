@@ -1,0 +1,266 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>qUnit Page for sap.m.IconTabBar</title>
+
+		<script id="sap-ui-bootstrap"
+			type="text/javascript"
+			src="../../../../resources/sap-ui-core.js"
+			data-sap-ui-theme="sap_bluecrystal"
+			data-sap-ui-noConflict="true"
+			data-sap-ui-libs="sap.m">
+		</script>
+
+		<link rel="stylesheet" href="../../../../resources/sap/ui/thirdparty/qunit.css" type="text/css" media="screen" />
+		<script type="text/javascript" src="../../../../resources/sap/ui/thirdparty/qunit.js"></script>
+		<script type="text/javascript" src="../../../../resources/sap/ui/qunit/QUnitUtils.js"></script>
+
+	<script>
+
+		//create IconTabBar
+
+		var oIconTabFilterAll = new sap.m.IconTabFilter("iconTabFilterAll", {
+			showAll: true,
+			count: "9",
+			text: "Orders",
+			key: "All"
+		});
+
+		var oIconTabFilter = new sap.m.IconTabFilter("iconTabFilter1", {
+			icon: "sap-icon://task",
+			iconColor: sap.ui.core.IconColor.Negative,
+			count: "3",
+			text: "Open",
+			key: "Open",
+			content: new sap.m.Button("button", {text: "click me"})
+		});
+
+		var oIconTabSeparator = new sap.m.IconTabSeparator("iconTabSeparator");
+
+		var oIconTabBar = new sap.m.IconTabBar("iconTabBar", {
+			items: [
+				oIconTabFilterAll,
+				oIconTabSeparator,
+				oIconTabFilter,
+				new sap.m.IconTabFilter("iconTabFilter2", {
+					icon: "sap-icon://instance",
+					iconColor: sap.ui.core.IconColor.Negative,
+					design: sap.m.IconTabFilterDesign.Horizontal,
+					count: "4",
+					text: "In Process",
+					key: "InProcess"
+				})
+			],
+			select: function(oEvent) {
+				ok(true, "selectEvent was fired");
+			},
+			expand: function(oEvent) {
+				ok(true, "expandCollapse Event was fired");
+			},
+			content: new sap.m.Label("contentLabel", {text: "info info info"})
+		});
+
+		// create and add a page
+		var page = new sap.m.Page("tabBarPage", {
+			title:"IconTabBar",
+			content : oIconTabBar
+		});
+
+		// create and add app
+		var app = new sap.m.App("myApp", {initialPage:"tabBarPage"});
+		app.placeAt("content");
+		app.addPage(page);
+
+		//testing
+		test("basic rendering", function() {
+			expect(3);
+			ok(jQuery.sap.domById("iconTabBar"), "IconTabBar should be rendered");
+			ok(jQuery.sap.domById("iconTabFilter1"), "First IconTabBarFilter should be rendered");
+			ok(jQuery.sap.domById("iconTabSeparator"), "IconTabSeparator should be rendered");
+		});
+
+		/* test("layout/design", function() {
+			expect(13);
+			ok(jQuery.sap.byId(oIconTabFilter.getId()).hasClass("sapMITBVertical"), "default design should be vertical")
+			ok(!jQuery.sap.byId(oIconTabFilter.getId()).hasClass("sapMITBHorizontal"), "default design should not be horizontal")
+			ok(jQuery.sap.byId("iconTabFilter2").hasClass("sapMITBHorizontal"), "design should be horizontal");
+			ok(!jQuery.sap.byId("iconTabFilter2").hasClass("sapMITBVertical"), "design should not be vertical")
+			ok(jQuery.sap.byId(oIconTabFilterAll.getId()).hasClass("sapMITBAll"), "should have class for showAll property");
+			ok(!jQuery.sap.byId(oIconTabFilter.getId()).hasClass("sapMITBAll"), "should not have class for showAll property");
+			ok(jQuery.sap.byId("iconTabSeparator").hasClass("sapMITBSep"), "should have class for seperator");
+
+			ok(!jQuery.sap.byId(oIconTabBar.getId() + "-head").hasClass("sapMITBNoText"), "should not have class for no-text version");
+			ok(!jQuery.sap.byId(oIconTabBar.getId() + "-head").hasClass("sapMITBTextOnly"), "should not have class for text-only version");
+
+			var oTabBarNoText = new sap.m.IconTabBar({
+				items: [
+						new sap.m.IconTabFilter ({
+							icon: "sap-icon://instance",
+							key: "key1"
+						}),
+						new sap.m.IconTabFilter ({
+							icon: "sap-icon://instance",
+							key: "key2"
+						})
+					],
+					selectedKey: "key1",
+					content: new sap.m.Label({text:"label"})
+			});
+			page.addContent(oTabBarNoText);
+			sap.ui.getCore().applyChanges();
+			ok(jQuery.sap.byId(oTabBarNoText.getId() + "-head").hasClass("sapMITBNoText"), "should have class for no-text version");
+			ok(!jQuery.sap.byId(oTabBarNoText.getId() + "-head").hasClass("sapMITBTextOnly"), "should not have class for text-only version");
+
+			var oTabBarTextOnly = new sap.m.IconTabBar({
+				items: [
+						new sap.m.IconTabFilter ({
+							text: "text1",
+							key: "key1"
+						}),
+						new sap.m.IconTabFilter ({
+							text: "text2",
+							key: "key2"
+						})
+					],
+					selectedKey: "key1",
+					content: new sap.m.Label({text:"label"})
+			});
+			page.addContent(oTabBarTextOnly);
+			sap.ui.getCore().applyChanges();
+			ok(!jQuery.sap.byId(oTabBarTextOnly.getId() + "-head").hasClass("sapMITBNoText"), "should not have class for no-text version");
+			ok(jQuery.sap.byId(oTabBarTextOnly.getId() + "-head").hasClass("sapMITBTextOnly"), "should have class for text-only version");
+		});
+
+		test("events", function() {
+			expect(4);
+			// trigger event
+			oIconTabBar.setSelectedItem(oIconTabFilter); //select event should be fired
+			oIconTabBar.setSelectedItem(oIconTabFilter); //select and expand event should be fired
+			oIconTabBar.setExpanded(true); //expand event should be fired
+		}); */
+
+		asyncTest("toggle/expand", function() {
+			expect(2);
+			var oTabBar = new sap.m.IconTabBar("oTabBar", {
+				expandable: true,
+				expanded: true,
+				items: [
+					new sap.m.IconTabFilter ({
+						icon: "sap-icon://instance",
+						key: "key1"
+					}),
+					new sap.m.IconTabFilter ({
+						icon: "sap-icon://instance",
+						key: "key2"
+					}),
+					new sap.m.IconTabFilter ({
+						icon: "sap-icon://instance",
+						key: "key3"
+					})
+				],
+				selectedKey: "key1",
+				content: new sap.m.Label({text:"label"})
+			});
+			page.addContent(oTabBar);
+			sap.ui.getCore().applyChanges();
+			$content = jQuery.sap.byId(oTabBar.getId() + "-containerContent");
+			ok(!$content.hasClass("sapMITBContentClosed"), "content should be open");
+			oTabBar.setExpanded(false);
+			setTimeout( function() {
+				ok($content.hasClass("sapMITBContentClosed"), "content should be closed");
+				start();
+			}, 500);
+		});
+
+		test("icon color", function() {
+			expect(4);
+			var $itbf = jQuery.sap.byId(oIconTabFilter.getId());
+			ok ($itbf.hasClass("sapMITBFilterNegative"), "color should be negative");
+			ok (!$itbf.hasClass("sapMITBFilterPositive"), "color should not be positive");
+			//now change the icon color for one IconTabFilter after it was rendered (there was an error before)
+			oIconTabFilter.setIconColor(sap.ui.core.IconColor.Critical);
+			sap.ui.getCore().applyChanges();
+			var $itbf = jQuery.sap.byId(oIconTabFilter.getId());
+			ok ($itbf.hasClass("sapMITBFilterCritical"), "color should be critical");
+			ok (!$itbf.hasClass("sapMITBFilterNegative"), "color should not be negative anymore");
+		});
+		
+		test("content", function() {
+			expect(2);
+			oIconTabBar.setSelectedKey("InProcess");
+			equal(jQuery.sap.byId(oIconTabBar.getId() + "-content").children()[0].id, "contentLabel", "content should be label from the general content of the bar");
+			oIconTabBar.setSelectedKey("Open");
+			equal(jQuery.sap.byId(oIconTabBar.getId() + "-content").children()[0].id, "button", "content should be button from the specific content of the tab");
+		});
+
+		/* // test case for: [openui5] sap.m.IconTabBar doesn't support PreserveContent functionality (#26)
+		test("preserve dom", function() {
+			expect(4);
+
+			var oSpan,
+				oIconTabBar,
+				oHtml,
+				oPage = page;
+
+			// prepare dom content
+			oSpan1 = document.createElement("SPAN");
+			oSpan1.id = "PreserveContent1";
+			oSpan1.innerHTML = "Test1"; 
+			oHtml1 = new sap.ui.core.HTML();
+			oHtml1.setDOMContent(oSpan1);
+			
+			// prepare dom content
+			oSpan2 = document.createElement("SPAN");
+			oSpan2.id = "PreserveContent2";
+			oSpan2.innerHTML = "Test2"; 
+			oHtml2 = new sap.ui.core.HTML();
+			oHtml2.setDOMContent(oSpan2);
+
+			oIconTabBar= new sap.m.IconTabBar("iconTabBarPreserve", {
+				items: [
+					new sap.m.IconTabFilter("iconTabBarPreserve1", {
+						icon: "sap-icon://media-play",
+						text: "one",
+						key: "key1",
+						content: [oHtml1]
+					}),
+					new sap.m.IconTabFilter("iconTabBarPreserve2", {
+						icon: "sap-icon://media-reverse",
+						text: "two",
+						key: "key2",
+						content: [oHtml2]
+					})
+				]
+			});
+
+			// add item to page & render
+			oPage.addContent(oIconTabBar);
+			sap.ui.getCore().applyChanges();
+
+			// checks
+			strictEqual(jQuery.sap.byId("PreserveContent1").length, 1, "The span node \"PreserveContent\" is in the DOM");
+			oIconTabBar.setSelectedItem(oIconTabBar.getItems()[1]);
+			sap.ui.getCore().applyChanges();
+			strictEqual(jQuery.sap.byId("PreserveContent2").length, 1, "The span node \"PreserveContent2\" is in the DOM");
+			oIconTabBar.setSelectedItem(oIconTabBar.getItems()[0]);
+			sap.ui.getCore().applyChanges();
+			strictEqual(jQuery.sap.byId("PreserveContent1").length, 1, "The span node \"PreserveContent1\" is in the DOM");
+			strictEqual(jQuery.sap.byId("PreserveContent2").length, 1, "The span node \"PreserveContent2\" is in the DOM");
+
+			// cleanup
+			oIconTabBar.destroy();
+		}); */
+
+		</script>
+
+
+	</head>
+	<body id="body" class="sapUiBody">
+		<h1 id="qunit-header">qUnit Page for sap.m.IconTabBar</h1>
+		<h2 id="qunit-banner"></h2>
+		<h2 id="qunit-userAgent"></h2>
+		<ol id="qunit-tests"></ol>
+		<div id="content"></div>
+	</body>
+</html>

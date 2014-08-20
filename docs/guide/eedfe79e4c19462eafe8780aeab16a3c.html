@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="Using SplitApp you can ensure that your UI automatically adapts to the size available on the respective device."/>
+<meta name="description" content="Using SplitApp you can ensure that your UI automatically adapts to the size available on the respective device."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=7245226712799977"/>
+<title>Adapting Automatically to Different Screen Sizes using SplitApp</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loioeedfe79e4c19462eafe8780aeab16a3c">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Adapting Automatically to Different Screen Sizes using SplitApp</h1>
+<div class="body conbody"><p class="shortdesc">Using SplitApp you can ensure that your UI automatically adapts to the size available on
+		the respective device. </p>
+<p class="p">As tablets such as iPad or Google Nexus7 provide more space compared to smartphones,
+			porting existing mobile apps to tablets leads to a lot of unused space.</p>
+<p class="p">A common pattern to address this is called master-detail, and is often used in native iOS and
+			Android development. Good examples are the native <span class="ph uicontrol">Settings</span> and
+				<span class="ph uicontrol">E-Mail</span> applications of iOS and Android tablets. This pattern
+			can be used with the <samp class="ph codeph">SplitApp</samp> control.</p>
+<p class="p">The figure shows the basic idea of the pattern. The app is divided into two views, the master
+			and the detail view. The master view presents a list of items and is used as the main
+			navigation within the application. The detail view shows detail information for the
+			selected item.</p>
+<img class="image" id="loioeedfe79e4c19462eafe8780aeab16a3c__image_lgz_xwj_hj" src="613a3fe6daf6423094b47cf85bd2e1e5.image" alt="SAPUI5 Mobile SplitApp Pattern" title="SAPUI5 Mobile SplitApp Pattern"/><p class="p">Whereas the selection of an item on a mobile devices navigates the user to the detail
+			page, the user can see the list of items and the detail view at the same time on a
+			tablet device. </p>
+<p class="p">If the tablet device is used in portrait mode it has less available width space. For this, the
+				<samp class="ph codeph">SplitApp</samp> control provides three different modes for displaying the
+			master and detail view in portrait mode:</p>
+<ul class="ul" id="loioeedfe79e4c19462eafe8780aeab16a3c__ul_etr_xhn_2j"><li class="li">
+				<p class="p"><strong class="ph b">ShowHideMode</strong></p>
+
+				<p class="p">This is the default mode. This mode hides the master view automatically when the user turns
+					the device into portrait mode. To display the master view, the user swipes right
+					on the detail view or uses the button which is placed on the header of the
+					detail view. </p>
+
+				<p class="p">The Master view slides in from the left hand side. The user can choose another list item
+					which will update the detail view and automatically hides the master view
+					again.</p>
+
+			</li>
+</ul>
+<ul class="ul" id="loioeedfe79e4c19462eafe8780aeab16a3c__ul_itr_xhn_2j"><li class="li">
+				<p class="p"><strong class="ph b">PopoverMode</strong></p>
+
+				<p class="p">This mode places the master view inside a popover which can be opened via the button in the
+					header of the detail view.</p>
+
+			</li>
+</ul>
+<ul class="ul" id="loioeedfe79e4c19462eafe8780aeab16a3c__ul_mtr_xhn_2j"><li class="li">
+				<p class="p"><strong class="ph b">StretchCompressMode</strong></p>
+
+				<p class="p">This mode displays the master view in both, the portrait and the landscape mode. In portrait
+					mode, the detail view has less space available.</p>
+
+			</li>
+</ul>
+<p class="p">In landscape mode, all three modes described above display the master view.</p>
+<p class="p">If you run a <samp class="ph codeph">SplitApp</samp> on a mobile device, it automatically behaves like
+			a standard mobile application. The following figure shows the difference: </p>
+<img class="image" id="loioeedfe79e4c19462eafe8780aeab16a3c__image_f5v_nxj_hj" src="7de0375279414783a77e7b4811661f34.image" alt="SAPUI5 Mobile Splitt App Mobile" title="SAPUI5 Mobile Splitt App Mobile"/><p class="p">As only one page per screen can be displayed, the master and detail view are automatically
+			displayed on separate pages and the standard page navigation is applied.</p>
+<p class="p">The following section explains how a <samp class="ph codeph">SplitApp</samp> application is build, see
+				<a class="xref" href="dfadb6b7247e4826b0fcde472b029840.html" title="To develop a SplitApp application, use the sap.m.SplitApp control instead of the sap.m.App control..">The First SplitApp</a>. </p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Adapting Automatically to Different Screen Sizes using SplitApp";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

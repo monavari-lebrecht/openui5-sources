@@ -1,0 +1,48 @@
+<mvc:View
+	controllerName="sap.m.sample.DateRangeSelection.C"
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" >
+	<VBox class="marginBoxContent">
+		<Label text="Simple default DateRangeSelection with original old API:" labelFor="DRS1"/>
+		<DateRangeSelection
+			id="DRS1"
+			from="{path:'/fromDRS1'}"
+			to="{path:'/toDRS1'}"
+			change="handleChange"
+		/>
+
+		<Text text=""/>
+
+		<Label text="DateRangeSelection with original old API, delimiter '#' and displayFormat 'dd.MM.yyyy', set via binding:" labelFor="DRS2"/>
+		<DateRangeSelection
+			id="DRS2"
+			delimiter="{path:'/delimiterDRS2'}"
+			from="{path:'/fromDRS2'}"
+			to="{path:'/toDRS2'}"
+			displayFormat="{path:'/dateFormatDRS2'}"
+			change="handleChange"
+		/>
+
+		<Text text=""/>
+
+		<Label text="DateRangeSelection with new API, delimiter '@' and displayFormat 'yyyy/MM/dd', set via binding:" labelFor="DRS3"/>
+		<DateRangeSelection
+			id="DRS3"
+			delimiter="{path:'/delimiterDRS3'}"
+			dateValue="{path:'/dateValueDRS3'}"
+			secondDateValue="{path:'/secondDateValueDRS3'}"
+			displayFormat="{path:'/dateFormatDRS3'}"
+			change="handleChange"
+		/>
+
+		<Text text=""/>
+		<Text text=""/>
+		<Text text=""/>
+
+		<Label text="Change event" labelFor="TextEvent" />
+		<Text
+			id="TextEvent"
+		/>
+	</VBox>
+</mvc:View>

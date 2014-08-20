@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=7129986149401119"/>
+<title>Implementing a Custom Model</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f1c7ef6f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Implementing a Custom Model</h1>
+<div class="body taskbody"><div class="section context" id="loio91f1c7ef6f4d1014b6dd926db0e91070__context_N10015_N10013_N10001"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div> 
+		<p class="p">To create a custom model implementation, proceed as follows: </p>
+ 
+	 </div><div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step" id="loio91f1c7ef6f4d1014b6dd926db0e91070__step_N1001F_N1001D_N10013_N10001"><span class="ph cmd">Extend the 
+			 <samp class="ph codeph">Model</samp> class and
+			 specify the binding modes that the model should support (for example, two-way,
+			 one-way, one-time). 
+		  </span></li>
+<li class="li step" id="loio91f1c7ef6f4d1014b6dd926db0e91070__step_N10029_N1001D_N10013_N10001"><span class="ph cmd">Extend the 
+			 <samp class="ph codeph">Binding</samp> class to
+			 suit your specific binding or reuse the existing specific binding
+			 implementations 
+			 <samp class="ph codeph">PropertyBinding</samp>, 
+			 <samp class="ph codeph">ListBinding</samp>, and/or 
+			 <samp class="ph codeph">TreeBinding</samp>. 
+		  </span></li>
+<li class="li step" id="loio91f1c7ef6f4d1014b6dd926db0e91070__step_N1003F_N1001D_N10013_N10001"><span class="ph cmd">To enable the filtering
+			 functionality, use the 
+			 <samp class="ph codeph">Filter</samp> class with 
+			 <samp class="ph codeph">FilterOperator</samp> enum
+			 in your binding implementation. 
+		  </span></li>
+<li class="li step" id="loio91f1c7ef6f4d1014b6dd926db0e91070__step_N1004D_N1001D_N10013_N10001"><span class="ph cmd">To enable the sorting functionality,
+			 use the 
+			 <samp class="ph codeph">Sorter</samp> class in your
+			 binding implementation. 
+		  </span></li>
+</ol>
+<div class="section result" id="loio91f1c7ef6f4d1014b6dd926db0e91070__result_N10053_N10013_N10001"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Results</h2></div> 
+		<p class="p">You can find all necessary classes in the 
+		  <samp class="ph codeph">sap.ui.model</samp>
+		  namespace. 
+		</p>
+ 
+		<p class="p">
+				
+			</p>
+ 
+		<p class="p">As a starting point, take a look at the 
+		  <samp class="ph codeph">JSONModel</samp>
+		  implementation in 
+		  <samp class="ph codeph">sap.ui.model.json.JSONModel</samp>. 
+		</p>
+ 
+	 </div></div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Implementing a Custom Model";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

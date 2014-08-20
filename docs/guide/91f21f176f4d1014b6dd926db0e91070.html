@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=3850263364784354"/>
+<title>Identifying the Language Code / Locale</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f21f176f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Identifying the Language Code / Locale</h1>
+<div class="body"><p class="p">For the identification of languages, the framework uses a language code of type
+				<samp class="ph codeph">string</samp>. Currently, SAPUI5 accepts the following syntax forms: </p>
+<ul class="ul"><li class="li">
+				<p class="p">The language codes according to the de facto standard BCP-47, which are used by most browsers
+					for language identification. As of JDK 1.7 they are also supported by the Java
+					locale class.</p>
+
+				<p class="p">Example: <samp class="ph codeph">de</samp>, <samp class="ph codeph">en-US</samp>, <samp class="ph codeph">zh-Hans-CN</samp></p>
+
+			</li>
+<li class="li"> 
+		  <p class="p">The Java Locale syntax that combines a lower case
+			 ISO 639 alpha-2 or alpha-3 language code with an ISO 3166 alpha-2 country code.
+			 Both codes are combined with an underscore. An arbitrary sequence of variant
+			 identifiers (also separated by underscores) can be appended as a third
+			 component. 
+		  </p>
+ 
+		  <p class="p">Example: <samp class="ph codeph">de</samp>, <samp class="ph codeph">en_US</samp>, <samp class="ph codeph">zh_TW_Traditional</samp>
+				</p>
+ 
+		</li>
+<li class="li">
+				<p class="p">The SAP proprietary language codes. SAPUI5 applications are often used to connect to
+					ABAP-based SAP application servers. These servers use SAP proprietary language
+					codes for compatibility reasons. These language codes often match an ISO 639
+					alpha-2 language code, but not in all cases. If the language code for a SAPUI5
+					application is specified with the traditional URL parameter
+						<samp class="ph codeph">sap-language</samp>, SAPUI5 assumes that it is a SAP proprietary
+					language code and converts it to a BCP-47 language tag as follows:</p>
+
+				<table summary="" id="loio91f21f176f4d1014b6dd926db0e91070__simpletable_q3y_h5b_jm" border="1" class="simpletable"><tr class="sthead"><th valign="bottom" align="left" id="d803897e61" class="stentry" width="33.333333333333336%">SAP Language Code</th>
+<th valign="bottom" align="left" id="d803897e63" class="stentry" width="33.333333333333336%">BCP47 Language Tag</th>
+<th valign="bottom" align="left" id="d803897e65" class="stentry" width="33.333333333333336%">Description</th>
+</tr>
+<tr class="strow"><td valign="top" headers="d803897e61" class="stentry"><samp class="ph codeph">ZH</samp></td>
+<td valign="top" headers="d803897e63" class="stentry"><samp class="ph codeph">zh-Hans</samp></td>
+<td valign="top" headers="d803897e65" class="stentry"><samp class="ph codeph">ZH</samp> is the SAP language code for Simplified
+							Chinese. The most generic representation in BCP47 is
+								<samp class="ph codeph">zh-Hans</samp>. <samp class="ph codeph">zh-CN</samp> (Chinese, China) is
+							another representation, but SAPUI5 decided to use
+								<samp class="ph codeph">zh-Hans</samp>.</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d803897e61" class="stentry"><samp class="ph codeph">ZF</samp></td>
+<td valign="top" headers="d803897e63" class="stentry"><samp class="ph codeph">zh-Hant</samp></td>
+<td valign="top" headers="d803897e65" class="stentry"><samp class="ph codeph">ZF</samp> is the SAP language code for Simplified
+							Chinese. The most generic representation in BCP47 is
+								<samp class="ph codeph">zh-Hant</samp>. <samp class="ph codeph">zh-TW</samp> (Chinese, Taiwan)
+							is another representation, but SAPUI5 decided to use
+								<samp class="ph codeph">zh-Hant</samp>.</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d803897e61" class="stentry"><samp class="ph codeph">1Q</samp></td>
+<td valign="top" headers="d803897e63" class="stentry"><samp class="ph codeph">en-US-x-saptrc</samp></td>
+<td valign="top" headers="d803897e65" class="stentry"><samp class="ph codeph">1Q</samp> is a technical SAP language code used in
+							support scenarios, for example for translation issues. When you select
+							this language code, the technical keys are display instead of the actual
+							data. As no ISO639 code for this exists, the information has been added
+							as a BCP47 private extension to the <samp class="ph codeph">en-US</samp> language tag:
+							"trc" stands for "trace" or "traceability".</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d803897e61" class="stentry"><samp class="ph codeph">2Q</samp></td>
+<td valign="top" headers="d803897e63" class="stentry"><samp class="ph codeph">en-US-x-sappsd</samp></td>
+<td valign="top" headers="d803897e65" class="stentry"><samp class="ph codeph">2Q</samp> is also used as a technical SAP language code
+							in support scenarios and displays a pseudo translation ("psd" in the
+							private extensions name).</td>
+</tr>
+</table>
+
+			</li>
+</ul>
+<div class="section" id="loio91f21f176f4d1014b6dd926db0e91070__section_6CAF7D95C27C487CB201CE83345AC370"><div class="section_title">Current Language Code / Locale</div><div type="Current Language Code / Locale"> 
+		 
+		<p class="p">SAPUI5 has the notion of a <dfn class="term">current language</dfn>. It is determined from the following
+				sources of information. The sources are ordered increasingly by priority and the
+				last available user language/locale wins: </p>
+ 
+		<ol class="ol"><li class="li">Hard-coded UI5 default locale ('en') </li>
+<li class="li">Potentially configured browser language (<samp class="ph codeph">window.navigator.browserLanguage</samp>); for
+					Internet Explorer this is the language of the Operating System</li>
+<li class="li">Potentially configured user language (<samp class="ph codeph">window.navigator.userLanguage</samp>); for
+					Internet Explorer this is the language in the Region settings</li>
+<li class="li">General language information from the browser (<samp class="ph codeph">window.navigator.language</samp>)</li>
+<li class="li">Android: Language contained in the user agent string
+						(<samp class="ph codeph">window.navigator.userAgent</samp>)</li>
+<li class="li">Locale configured in the application coding
+						(<samp class="ph codeph">jsdoc:symbols/sap.ui.core.Configuration</samp>) </li>
+<li class="li">Locale configured via URL parameters </li>
+</ol>
+ 
+		<p class="p">You use the configuration API to retrieve the
+		  resulting current language as follows: 
+		</p>
+ 
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var sCurrentLocale = sap.ui.getCore().getConfiguration().getLanguage();</pre></div>
+ 
+		<div class="note note" id="loio91f21f176f4d1014b6dd926db0e91070__note_N10086_N10034_N10013_N10001"><span class="notetitle">Note</span> The syntax of the returned value depends on
+		  the syntax used for configuration. If the information source is one of the
+		  browser language properties, the returned language most likely is in BCP-47
+		  format. If it is configured as a URL parameter, the user might have choosen the
+		  JDK Locale syntax. 
+		</div>
+ 
+		<div class="note note" id="loio91f21f176f4d1014b6dd926db0e91070__note_N1008B_N10034_N10013_N10001"><span class="notetitle">Note</span> None of the <samp class="ph codeph">window.navigator.*</samp>
+				properties in Internet Explorer (IE) reflect the settings of the <span class="keyword wintitle">Language
+					Preference</span> dialog. Instead, IE returns the language of the Operating
+				System installation as <samp class="ph codeph">browserLanguage</samp> and the language from the
+				Operating System regional settings as <samp class="ph codeph">userLanguage</samp>. As a result,
+				the settings in the <span class="keyword wintitle">Language Preference</span> dialog <strong class="ph b">cannot</strong> be
+				used for the current language of SAPUI5. This is often confusing for developers and
+				a known shortcoming in IE. To circumvent this, an additional server request is
+				required where IE provides the corresponding setting in
+					the<samp class="ph codeph">Accept-Language</samp> header. This server request, however,
+				requires a backend component. SAPUI5 must be able to run without a server component
+				and, thus, the server request is not implemented yet.</div>
+ 
+	 </div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Identifying the Language Code / Locale";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=6902790069731616"/>
+<title>Upgrading jQuery for SAPUI5</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiobe0a4af183f34c36aa16e996e6983cd4">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Upgrading jQuery for SAPUI5</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">When upgrading to SAPUI5 1.20.0, check whether the changes listed below influence the
+			application:</p>
+<div class="section"><div class="section_title">Upgrade to jQuery version 1.10.2</div><div type="Upgrade to jQuery version 1.10.2">
+			
+			<p class="p">This upgrade requires changes to SAPUI5 controls and may also influence other controls or the
+				application. For more information about the jQuery upgrade, see the jQuery Upgrade
+				Guide. The following list gives an overview of the changes that affect SAPUI5.</p>
+
+			<ul class="ul" id="loiobe0a4af183f34c36aa16e996e6983cd4__ul_vps_qgg_gn"><li class="li">
+					<p class="p">Findings</p>
+
+					<ul class="ul" id="loiobe0a4af183f34c36aa16e996e6983cd4__ul_tmd_z1m_fn"><li class="li">
+							<p class="p">Setting height or width of a JQuery object</p>
+
+							<p class="p">When setting the height or width of an object via
+									<samp class="ph codeph">jQuery(...).height("1px")</samp> and the object used
+								the CSS-property <samp class="ph codeph">box-sizing</samp>, the height of the box
+								instead of the content was changed. As of jQuery 1.8.0, the function
+								changes the content height regardless of the
+									<samp class="ph codeph">box-sizing</samp> property.</p>
+
+							<p class="p">For more information and recommendations, see the jQuery API
+								documentation on <a class="extlink" href="http://help.sap.com/disclaimer?site=http://api.jquery.com">http://api.jquery.com<img src="images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</p>
+
+						</li>
+<li class="li">
+							<p class="p"><samp class="ph codeph">jQuery(…).data("events")</samp></p>
+
+							<p class="p"><samp class="ph codeph">jQuery(...).data("events")</samp> has been removed with jQuery 1.9. An
+								alternative is now available and part of the
+									<samp class="ph codeph">QUnitUtils</samp>:
+									<samp class="ph codeph">jQuery#_sapTest_dataEvents()</samp>.</p>
+
+						</li>
+<li class="li">
+							<p class="p"><samp class="ph codeph">strictEqual</samp> in QUnit tests</p>
+
+							<p class="p">Do <span class="ph emphasis emphasis">not</span> compare
+									<samp class="ph codeph">jQuery(...).attr("tabindex")</samp> with
+									<samp class="ph codeph">strictEqual</samp> or <samp class="ph codeph">===</samp>. As an
+								alternative, use string values or <samp class="ph codeph">prop("tabindex")</samp>
+								which returns a parsed value.</p>
+
+						</li>
+<li class="li">
+							<p class="p"><samp class="ph codeph">font-weight: "normal"</samp></p>
+
+							<p class="p">jQuery 1.10 converts <samp class="ph codeph">font-weight: "normal"</samp> to the
+								value 400. The workaround
+									<samp class="ph codeph">jQuery#_sapTest_cssFontWeight()</samp> is provided in
+									<samp class="ph codeph">QUnitUtils</samp> that hides the differences between
+								browser and jQuery.</p>
+
+						</li>
+</ul>
+
+				</li>
+<li class="li">
+					<p class="p">Check for jQuery version</p>
+
+					<p class="p">To fix issues for a newer or different jQuery version, you can use
+							<samp class="ph codeph">jQuery.sap.Version(jQuery.fn.jquery).toString()</samp> or
+							<samp class="ph codeph">jQuery.sap.Version(jQuery.fn.jquery).getMajor()</samp> to
+						check the version. You use this core function to check the major, minor,
+						patch and all appending stuff of the version.</p>
+
+				</li>
+<li class="li">
+					<p class="p">Deprecated and removed functions</p>
+
+					<ul class="ul" id="loiobe0a4af183f34c36aa16e996e6983cd4__ul_ajt_xgg_gn"><li class="li">
+							<p class="p">Common</p>
+
+							<p class="p">Check for functions that have been deprecated in jQuery versions 1.7,
+								1.8, or 1.9 and may have been removed in jQuery 1.10. See the
+								corresponding jQuery documentation.</p>
+
+						</li>
+<li class="li">
+							<p class="p"><samp class="ph codeph">.live()</samp></p>
+
+							<p class="p">This function has been set as deprecated in jQuery version 1.7 and
+								was removed in jQuery version 1.9. For recommendations how to
+								replace the <samp class="ph codeph">.live()</samp> function, see the respective
+								jQery documentation.</p>
+
+						</li>
+</ul>
+
+				</li>
+</ul>
+
+		</div></div>
+<div class="section"><div class="section_title">JQuery UI Upgrade to 1.10.4</div><div type="JQuery UI Upgrade to 1.10.4">
+			
+			<p class="p">jQuery UI version 1.10.4 contains incompatiple changes to jQuery UI version 1.8.23.
+				For more information, see the jQuery UI 1.9 Upgrade Guide and the jQuery UI 1.10
+				Upgrade Guide.</p>
+
+			<p class="p">A major incompatiple change is in <samp class="ph codeph">jQuery.ui.position</samp>, where the
+				offset property has been removed. SAPUI5 runtime adopted this change, for example in
+					<samp class="ph codeph">Popup</samp>, but applications may need to adopt their logic too.</p>
+
+			<p class="p">Also, the file names for jQuery UI effects have changed. Applications using the
+				jQuery UI effects may also have to adopt their logic. In IE8 and jQuery version
+				&lt;1.8, the detection whether the new <samp class="ph codeph">jQueryUi</samp> logic is active or
+				not fails. This may be due to interaction issues between jQuery UI version 1.10 and
+				jQuery version 1.7. In this case, the new jQuery UI position logic is used:
+				Applications that still want to use jQuery version 1.7.1 and jQuery UI version 1.8
+				or older have to load the jQueryUI core and not only the position module).</p>
+
+		</div></div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Upgrading jQuery for SAPUI5";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=013295765744642862"/>
+<title>JS Views</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f262ef6f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">JS Views</h1>
+<div class="body conbody"><p class="p">You create a JS (JavaScript) view in the same way as a controller and use the suffix
+				<samp class="ph codeph">.view.js</samp>. for the file. SAPUI5 provides the following two default
+			methods for implementation: </p>
+<ul class="ul"><li class="li"> 
+		  <p class="p"><samp class="ph codeph">
+				getControllerName()</samp>: Specifies the controller belonging to this view 
+		  </p>
+ 
+		  <p class="p">If this method is not implemented or returns 
+			 <samp class="ph codeph">NULL</samp>, the view has
+			 no controller. 
+		  </p>
+ 
+		</li>
+<li class="li">
+				<p class="p"><samp class="ph codeph"> createContent()</samp>: Called initially once after the controller has
+					been instantiated </p>
+
+				<p class="p">This method is used to create the UI. As the method knows the controller, it can
+					directly attach the event handlers. </p>
+
+			</li>
+</ul>
+<div class="note Example" id="loio91f262ef6f4d1014b6dd926db0e91070__note_N10040_N10013_N10001"><span class="Exampletitle"/>  
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.jsview("sap.hcm.Address", {  // this View file is called Address.view.js
+   
+   getControllerName: function() {
+      return "sap.hcm.Address";     // the Controller lives in Address.controller.js
+   },
+
+   createContent: function(oController) {
+      var oButton = new sap.ui.commons.Button({text:"Hello JS View"});
+      oButton.attachPress(oController.handleButtonClicked);
+      return oButton;
+   }
+
+});</pre></div>
+ 
+	 </div>
+<p class="p">The string in quotes denotes the view name that equals the SAPUI5 module name within the
+			require/declare concept.</p>
+<div class="note caution"><span class="cautiontitle">Caution</span> 
+			<p class="p">In event handlers for controls "this" usually denotes the control itself. This is
+				unexpected when it happens in event handlers that are implemented inside
+				controllers: The controller would usually expected to be denoted as "this". This is
+				no issue for declarative view types, but for JSViews the view developer may need to
+				modify the "this" context as follows:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">   ...
+      oButton.attachPress(jQuery.proxy(oController.handleButtonClicked, oController));
+   ...
+</pre></div>
+
+			<p class="p">Alternatively, the view developer can give the event handler method in an array where
+				the second element is the "this" object:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">   ...
+      var oButton = new sap.ui.commons.Button({
+         text: "Hello JS View",
+         press: [oController.handleButtonClicked, oController]
+      });
+   ...
+</pre></div>
+
+		</div>
+<div class="note caution"><span class="cautiontitle">Caution</span> 
+			<p class="p">If you want to define IDs for controls inside a JSView to guarantee their uniqueness
+				when reusing views, you can <span class="ph emphasis emphasis">not</span> give hardcoded IDs, but have to
+				give the view the opportunity to add its own instance ID as a prefix. This is done
+				by using the <samp class="ph codeph">View.createId(...)</samp> method. For the example above, this
+				is done as follows:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oButton = new sap.ui.commons.Button(this.createId("myButton"), {text:"Hello JS View"});</pre></div>
+
+			<p class="p">This is not required for declarative view types as the view parser can manage this
+				automatically, see <a class="xref" href="91f28be26f4d1014b6dd926db0e91070.html">Support for Unique IDs</a>.</p>
+
+		</div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="JS Views";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

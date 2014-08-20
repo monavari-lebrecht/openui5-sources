@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=9631095182933842"/>
+<title>Extended Syntax for Calculated Fields</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio0c803921b1bf4b3a97a038fbd51ef542">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Extended Syntax for Calculated Fields</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">The extended syntax for calculated fields can be used in declarative views such as HTML and XML
+			views.</p>
+<div class="note note"><span class="notetitle">Note</span> 
+			<p class="p">This extended syntax feature is marked as experimental. The feature is
+					<span class="ph emphasis emphasis">not</span> fully compatible with existing syntax: If you use the
+				feature, you have to escape curly brackets {}. Otherwise, the content in curly
+				brackets is interpreted as extended calculated fields syntax.</p>
+
+		</div>
+<p class="p">To use the feature in your SAPUI5 application, set the configuration flag
+				<samp class="ph codeph">xx-bindingSyntax</samp> in the bootstrap as follows:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;script id="sap-ui-bootstrap"
+      ...
+        data-sap-ui-xx-bindingSyntax="complex"&gt;
+    &lt;/script&gt;</pre></div>
+<p class="p">The following examples show how to use the feature:</p>
+<ul class="ul" id="loio0c803921b1bf4b3a97a038fbd51ef542__ul_drs_fst_ym"><li class="li">
+				<p class="p">You can mix text with calculated fields as follows:</p>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;Label text="Hello Mr. {
+                         path:'/singleEntry/firstName', 
+                         formatter: '.myFormatter'
+                        }, 
+                        {
+                         /singleEntry/lastName
+                        }
+ " /&gt;</pre></div>
+
+				<div class="note note"><span class="notetitle">Note</span> 
+					<p class="p">Use translatable text in your application.</p>
+
+				</div>
+
+			</li>
+<li class="li">
+				<p class="p">Use a syntax with leading quotation marks ("...") if you use MVC and your formatter or type
+					is located in the controller. In the following example, the existing type or
+					formatter function in the controller is used:</p>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;TextField value="{
+                   path:'gender', 
+                   formatter:'.myGenderFormatter'
+                  } 
+                  {firstName}, 
+                  {lastName}
+"/&gt;</pre></div>
+
+			</li>
+<li class="li">
+				<p class="p">If you have a global formatter function, use the following syntax:</p>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;TextField value="{
+              parts: [
+                      {path:'birthday/day'},
+                      {path:'birthday/month'},
+                      {path:'birthday/year'}
+                     ], 
+              formatter:'my.globalFormatter'
+}"/&gt;</pre></div>
+
+			</li>
+<li class="li">
+				<p class="p">For a global type that is created with the specified format options, see the following
+					example:</p>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;Label text="A type test: {
+                           path:'/singleEntry/amount', 
+                           type:'sap.ui.model.type.Float', 
+                           formatOptions: { minFractionDigits: 1}
+                          } EUR
+"/&gt;</pre></div>
+
+			</li>
+</ul>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Extended Syntax for Calculated Fields";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

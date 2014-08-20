@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=2755034298258623"/>
+<title>Handling Placeholders in Transaction SE63</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio6cdc6ebf746e4d9f961a1358d4a3a74c">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Handling Placeholders in Transaction SE63</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">Texts with placeholders are transformed for the display in transaction SE63 as follows:</p>
+<ul class="ul" id="loio6cdc6ebf746e4d9f961a1358d4a3a74c__ul_qqy_yjb_qn"><li class="li">
+				<p class="p">Placeholders in the original text such as {0}, {1}, or, in general, {N}, where N
+					is a natural number, appear in transaction SE63 with an additionally ampersand:
+					{0} -&gt; {&amp;0}</p>
+
+			</li>
+<li class="li">
+				<p class="p">Escaped placeholders, that is, placeholders embraced by single apostrophes such
+					as '{0}', are displayed without the apostrophes: '{0}' -&gt; {0}</p>
+
+			</li>
+</ul>
+<p class="p">When the texts are written back to the database, the placeholders and escaped
+			placeholders are transformed back to the original state. According to the specification,
+			texts in SAPUI5 need to have single apostrophes doubled in case the text contains
+			placeholders, otherwise the single apostrophes will not appear on the UI during
+			runtime.</p>
+<div class="note note"><span class="notetitle">Note</span> 
+			<p class="p">Translators do not need to take care of this, as transaction SE63 automatically
+				doubles single apostrophes when writing the text to the database. Double apostrophes
+				of the original text, however, are displayed only with a single apostrophe in
+				transaction SE63. This is shown in the following example:</p>
+
+			<ul class="ul" id="loio6cdc6ebf746e4d9f961a1358d4a3a74c__ul_djt_sjb_qn"><li class="li">
+					<p class="p">Original text: Mark''s placeholder is used {0} times</p>
+
+					<p class="p">Display in SE63: Marks's placeholder is used {&amp;0} times</p>
+
+				</li>
+<li class="li">
+					<p class="p">Original text: Note: '{0}' is an escaped placeholder</p>
+
+					<p class="p">Display in SE63: Note: {0} is an escaped placeholder</p>
+
+				</li>
+</ul>
+
+		</div>
+<p class="p">Translators must not change placeholder characters in SE63: Character sequences like
+			{&amp;0} or {0} or '{&amp;0}' must not be touched. The developer must ensure that the
+			original text is formally correct, for example, use notion {0} for placeholders and
+			double apostrophes in presence of placeholders. Character &amp;0 is not a valid
+			placeholder in SAPUI5 texts.</p>
+<div class="note note"><span class="notetitle">Note</span> 
+			<p class="p">This functionality is available in transaction SE63 as of SP08 (software component
+					<samp class="ph codeph">UI_INFRA</samp>) and is available with SAP note 1963287.</p>
+
+		</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Handling Placeholders in Transaction SE63";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

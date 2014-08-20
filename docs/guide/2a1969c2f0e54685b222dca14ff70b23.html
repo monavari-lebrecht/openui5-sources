@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=9767501966677578"/>
+<title>HTML Templating in SAPUI5</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio2a1969c2f0e54685b222dca14ff70b23">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">HTML Templating in SAPUI5</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">The HTML templating concept in SAPUI5 is based on handlebars, which supports you in building
+			semantic templates. You can either use standard expressions and helpers together for the
+			context of a template instance, or the custom helpers for handlebars provided by SAPUI5,
+			which you can use together with the SAPUI5 models. This enables you to bind texts
+			against properties in the model. If the property in the model changes, the text is
+			updated accordingly. You can create and bind the value DOM elements including their DOM
+			attributes. For input DOM elements like <samp class="ph codeph">INPUT</samp>,
+				<samp class="ph codeph">TEXTAREA</samp> or <samp class="ph codeph">SELECT</samp>, SAPUI5 establishes a two-way
+			binding: On change of the DOM element value the model is updated if the value is bound
+			against a SAPUI5 model. You can also define controls in the template similar to the
+			declarative support but in handlebars helper notation.</p>
+<div class="section"><div class="section_title">Prerequisites</div><div type="Prerequisites">
+			
+			<p class="p">To get started with HTML templating, you must comply with the following
+				requirements:</p>
+
+			<ul class="ul" id="loio2a1969c2f0e54685b222dca14ff70b23__ul_tgl_txd_rl"><li class="li">An inline template is defined.</li>
+<li class="li">The templating framework is triggered to parse the inline template.</li>
+</ul>
+
+			<p class="p">Example:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">    &lt;div id="myControlTemplate" data-type="text/x-handlebars-template"&gt;
+    
+        &lt;h3&gt;Control Template (using "control" expression)&lt;/h3&gt;
+        {{control sap-ui-type="sap.ui.commons.Label" design="Bold" text="{/title}"}}
+        &lt;ul&gt;
+        {{#each path="/persons"}}
+            &lt;li&gt;{{control sap-ui-type="sap.ui.commons.TextView" text="{lastName}, {firstName}"}}&lt;/li&gt;
+        {{/each}}
+        &lt;/ul&gt;
+    
+    &lt;/div&gt;</pre></div>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">// register all available templates in the document
+sap.ui.template();</pre></div>
+
+			<p class="p">SAPUI5 looks up all DOM elements with a <samp class="ph codeph">data-type</samp> attribute and
+				checks if the respective  data type is supported. If yes, SAPUI5 creates a new
+				instance of <samp class="ph codeph">sap.ui.core.tmpl.Template</samp> which represents the raw
+				template and contains the markup of the template that is later used by the
+				templating engine to create the final HTML markup. You can use the
+					<samp class="ph codeph">placeAt</samp> method to add the template instance to the DOM. If you
+				define a template in the head with a <samp class="ph codeph">SCRIPT</samp> tag, for example,
+				SAPUI5 only creates the template instance. For inline templates, this instance is
+				then placed at the same location of the document.</p>
+
+			<p class="p">You can use the factory function <samp class="ph codeph">sap.ui.template</samp> to parse all
+				templates defined in <samp class="ph codeph">SCRIPT</samp> tags in the head or in
+					<samp class="ph codeph">DIV</samp> tags in the body. If you do <span class="ph emphasis emphasis">not</span>
+				specify a parameter, SAPUI5 templating looks up all available templates.</p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="HTML Templating in SAPUI5";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

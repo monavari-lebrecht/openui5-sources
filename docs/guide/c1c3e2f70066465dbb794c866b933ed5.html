@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=41666496161565025"/>
+<title>Application Cache Buster: Configuration</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loioc1c3e2f70066465dbb794c866b933ed5">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Application Cache Buster: Configuration</h1>
+<div class="body conbody"><p class="shortdesc"/>
+<p class="p">To activate the <strong class="ph b">Application Cache Buster</strong> the configuration
+				<samp class="ph codeph">data-sap-ui-appCacheBuster="./"</samp> must be added to the bootstrap
+			script of the application page: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;script id="sap-ui-bootstrap"
+  src="resources/sap-ui-cachebuster/sap-ui-core.js"
+  data-sap-ui-libs="sap.ui.core,sap.ui.commons,sap.ui.table"
+  data-sap-ui-theme="sap_bluecrystal"
+  data-sap-ui-appCacheBuster="./"&gt;&lt;/script&gt;</pre></div>
+<p class="p">The parameter <samp class="ph codeph">data-sap-ui-appCacheBuster</samp> is a <samp class="ph codeph">string[]</samp>
+			which means you can pass a list of base URLs for other applications. By default it
+			should contain the base path of your local application.</p>
+<p class="p">These base URLs are used to load the index files. This allows to handle not only the
+			local resources via the Application Cache Buster. Furthermore other applications could
+			then also be handled.</p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Application Cache Buster: Configuration";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

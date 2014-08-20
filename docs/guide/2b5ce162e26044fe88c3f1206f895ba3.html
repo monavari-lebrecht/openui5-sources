@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="The sap.m library provides a control called App which is meant to be the root control of a mobile application. It provides the initialization of the HTML page, sets some meta tags to ensure an as-native-as-possible look&amp;feel, and can manage different pages and the animations between them."/>
+<meta name="description" content="The sap.m library provides a control called App which is meant to be the root control of a mobile application. It provides the initialization of the HTML page, sets some meta tags to ensure an as-native-as-possible look&amp;feel, and can manage different pages and the animations between them."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=2255292416810567"/>
+<title>Initialize the Mobile App</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio2b5ce162e26044fe88c3f1206f895ba3">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Initialize the Mobile App</h1>
+<div class="body taskbody"><p class="shortdesc">The sap.m library provides a control called <samp class="ph codeph">App</samp> which is meant to be
+		the root control of a mobile application. It provides the initialization of the HTML page,
+		sets some meta tags to ensure an as-native-as-possible look&amp;feel, and can manage
+		different pages and the animations between them.</p>
+<div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><div class="li step p" id="loio2b5ce162e26044fe88c3f1206f895ba3__step_N1003D_N1003A_N10011_N10001"><span class="ph cmd">Create the control and define the page that you want to display first:</span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">  // create a mobile App
+  // it initializes the HTML page for mobile use and provides animated page handling
+    var app = new sap.m.App("myApp", {initialPage:"page1"}); 
+  // page1 should be displayed first</pre></div>
+
+				<ul class="ul choices" id="loio2b5ce162e26044fe88c3f1206f895ba3__choices_vhk_5tf_zj"><li class="li choice">
+						<p class="p">Instead of using the <span class="keyword apiname">App</span> control, you can also use
+								<samp class="ph codeph">jQuery.sap.initMobile()</samp> to set up the HTML and use
+							other full screen controls, such as <samp class="ph codeph">sap.m.Page</samp> or
+								<samp class="ph codeph">sap.m.Carousel</samp> as root element of your app.</p>
+
+					</li>
+</ul>
+</div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Initialize the Mobile App";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

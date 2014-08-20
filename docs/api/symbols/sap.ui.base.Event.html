@@ -1,0 +1,465 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.base.Event</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class sap.ui.base.Event
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.ui.base.Object" href="../symbols/sap.ui.base.Object.html">Object</a></div>
+					
+					
+						<div class="classRelation implements"><span class="caption">implements </span> <a title="sap.ui.base.Poolable" href="../symbols/sap.ui.base.Poolable.html">Poolable</a></div>
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>An Event object consisting of an id, a source and a map of parameters</p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="Creates an event with the given sId, linked to the provided oSource and enriched with the mParameters.">new <a href="../symbols/sap.ui.base.Event.html#constructor">sap.ui.base.Event</a></b>
+										<span class='signature'>(<span title="(string) The id of the event">sId</span>, <span title="(sap.ui.base.EventProvider) The source of the event">oSource</span>, <span title="(object) A map of parameters for this event">mParameters</span>)</span>
+										<span class='description'>Creates an event with the given sId, linked to the provided oSource and enriched with the mParameters.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Cancel bubbling of the event."><a href="../symbols/sap.ui.base.Event.html#cancelBubble">cancelBubble</a></b><span class='signature'>()</span>
+									<span class='description'>Cancel bubbling of the event.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the id of the event"><a href="../symbols/sap.ui.base.Event.html#getId">getId</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the id of the event</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the value of the parameter with the given sName."><a href="../symbols/sap.ui.base.Event.html#getParameter">getParameter</a></b><span class='signature'>(<span title="(string) the name of the parameter to return">sName</span>)</span>
+									<span class='description'>Returns the value of the parameter with the given sName.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns all parameter values of the event keyed by their names."><a href="../symbols/sap.ui.base.Event.html#getParameters">getParameters</a></b><span class='signature'>()</span>
+									<span class='description'>Returns all parameter values of the event keyed by their names.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the source of the event"><a href="../symbols/sap.ui.base.Event.html#getSource">getSource</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the source of the event</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Prevent the default action of this event."><a href="../symbols/sap.ui.base.Event.html#preventDefault">preventDefault</a></b><span class='signature'>()</span>
+									<span class='description'>Prevent the default action of this event.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.Object.html">sap.ui.base.Object</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.Object.html#destroy">destroy</a>, <a href="../symbols/sap.ui.base.Object.html#getInterface">getInterface</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.ui.base.Event</b>(<span title="(string) The id of the event">sId</span>, <span title="(sap.ui.base.EventProvider) The source of the event">oSource</span>, <span title="(object) A map of parameters for this event">mParameters</span>)
+										</div>
+										
+										<div class="full-description">
+											Creates an event with the given sId, linked to the provided oSource and enriched with the mParameters.
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b>
+													</td>
+													<td class="methodItemDesc">
+												    The id of the event
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oSource</b>
+													</td>
+													<td class="methodItemDesc">
+												    The source of the event
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mParameters</b>
+													</td>
+													<td class="methodItemDesc">
+												    A map of parameters for this event
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod'>
+										<a name="cancelBubble"> </a>
+										<div class="itemTitle icon">
+											cancelBubble<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Cancel bubbling of the event.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getId"> </a>
+										<div class="itemTitle icon">
+											getId<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Returns the id of the event
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														The id of the event
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getParameter"> </a>
+										<div class="itemTitle icon">
+											getParameter<span class="signature">(<span title="(string) the name of the parameter to return">sName</span>)</span>
+											<span class="light" title="returns any">: any</span>
+										</div>
+										<div class="full-description">
+											Returns the value of the parameter with the given sName.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sName</b>
+													</td>
+													<td class="methodItemDesc">
+												    the name of the parameter to return
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{any}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value for the named parameter
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getParameters"> </a>
+										<div class="itemTitle icon">
+											getParameters<span class="signature">()</span>
+											<span class="light" title="returns map">: map</span>
+										</div>
+										<div class="full-description">
+											Returns all parameter values of the event keyed by their names.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{map}</span> 
+													</td>
+													<td class="methodItemDesc">
+														All parameters of the event keyed by name
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getSource"> </a>
+										<div class="itemTitle icon">
+											getSource<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.base.EventProvider">: <a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a></span>
+										</div>
+										<div class="full-description">
+											Returns the source of the event
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														The source of the event
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="preventDefault"> </a>
+										<div class="itemTitle icon">
+											preventDefault<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Prevent the default action of this event.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

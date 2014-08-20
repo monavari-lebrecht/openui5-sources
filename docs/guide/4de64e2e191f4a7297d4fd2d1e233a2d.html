@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=8464128779025074"/>
+<title>Prevention of Cross-site Scripting</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio4de64e2e191f4a7297d4fd2d1e233a2d">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Prevention of Cross-site Scripting</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">To prevent cross-site scripting (XSS), ensure that it is <span class="ph emphasis emphasis">not</span> possible to
+			inject script code into an application page that runs in a browser. Controls must,
+			therefore, prohibited to write scripts to the page that comes from the application or
+			from business data saved by a different user. To ensure this, the following two measures
+			must be combined:</p>
+<ul class="ul" id="loio4de64e2e191f4a7297d4fd2d1e233a2d__ul_hl4_qrn_bn"><li class="li">
+				<p class="p">Validation of typed control properties</p>
+
+				<p class="p">SAPUI5 core validates the value of properties set by the application against the type of the
+					property. This guarantees that an <samp class="ph codeph">int</samp> is always an
+						<samp class="ph codeph">int</samp>, and a <samp class="ph codeph">sap.ui.core/CSSSize</samp> is a string
+					representing a CSS size and does <span class="ph emphasis emphasis">not</span> contain a script tag.
+					This also applies to enumerations and control IDs. The control renderer can rely
+					on this check when writing the HTML.</p>
+
+			</li>
+<li class="li">
+				<p class="p">Escaping</p>
+
+				<p class="p">Control developers must ensure that string control properties and other values coming from
+					the application are escaped wheen they create the renderer. For this, the
+						<samp class="ph codeph">RenderManager</samp> and SAPUI5 core provide helper methods.</p>
+
+			</li>
+</ul>
+<div class="section"><div class="section_title">Avoiding XSS for your new renderer</div><div type="Avoiding XSS for your new renderer">
+			
+			<p class="p">To ensure maximum security for a renderer, note the following:</p>
+
+			<ul class="ul" id="loio4de64e2e191f4a7297d4fd2d1e233a2d__ul_xvc_xrn_bn"><li class="li">
+					<p class="p">For control properties, always use the most specific type that ist available. For example,
+						use <samp class="ph codeph">sap.ui.core/CSSSize</samp> instead of <samp class="ph codeph">string</samp>
+						(or <samp class="ph codeph">sap.ui.core/string</samp>) for control properties that refer
+						to a CSS size.</p>
+
+				</li>
+<li class="li">
+					<p class="p">Use helper methods to escape the value of a string property that is written to the HTML:</p>
+
+					<ul class="ul" id="loio4de64e2e191f4a7297d4fd2d1e233a2d__ul_mwc_xrn_bn"><li class="li">
+							<p class="p">Use <samp class="ph codeph">writeEscaped(oControl.getSomeStringProperty())</samp>
+								instead of just <samp class="ph codeph">write(...)</samp> for writing plainly to
+								the HTML.</p>
+
+						</li>
+<li class="li">
+							<p class="p">Use <samp class="ph codeph">writeAttributeEscaped("someHtmlProperty",
+									oControl.getSomeStringProperty())</samp> instead of just
+									<samp class="ph codeph">writeAttribute(...)</samp> for writing attributes.</p>
+
+						</li>
+<li class="li">
+							<p class="p">Use
+									<samp class="ph codeph">jQuery.sap.escapeHTML(oControl.getSomeStringProperty())</samp>
+								for string properties where none of the other twio options is
+								possible to escape the string and then process it further.</p>
+
+						</li>
+</ul>
+
+				</li>
+<li class="li">
+					<p class="p">Check your HTML coding whether application values can make their way into the HTML:</p>
+
+					<ul class="ul" id="loio4de64e2e191f4a7297d4fd2d1e233a2d__ul_cxc_xrn_bn"><li class="li">Check where the variable values come from: Can the application set a value directly or
+							only decide which of the hardcoded values are used?</li>
+<li class="li">Escape values given in parameters in method calls of controls because they are currently
+							not validated by SAPUI5 core</li>
+<li class="li">Keep in mind that XSS can happen anywhere and anytime in CSS classes, or in styles.</li>
+</ul>
+
+				</li>
+</ul>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Prevention of Cross-site Scripting";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

@@ -1,0 +1,1447 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.core.tmpl.DOMElement</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class sap.ui.core.tmpl.DOMElement
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.ui.core.Control" href="../symbols/sap.ui.core.Control.html">Control</a></div>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>Represents a DOM element. It allows to use databinding for the properties and nested DOM attributes.</p>
+						
+						
+							<p class="tagExperimental"><span class="title">Experimental API:</span><span class="desc">Since version 1.15. 
+The templating might be changed in future versions.</span></p> 
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="Constructor for a new tmpl/DOMElement.">new <a href="../symbols/sap.ui.core.tmpl.DOMElement.html#constructor">sap.ui.core.tmpl.DOMElement</a></b>
+										<span class='signature'>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)</span>
+										<span class='description'>Constructor for a new tmpl/DOMElement.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+						
+						
+						
+						
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Creates a new subclass of class sap.ui.core.tmpl.DOMElement with name sClassName and enriches it with the information contained in oClassInfo."><a href="../symbols/sap.ui.core.tmpl.DOMElement.html#.extend">sap.ui.core.tmpl.DOMElement.extend</a></b><span class='signature'>(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Creates a new subclass of class sap.ui.core.tmpl.DOMElement with name <code>sClassName</code> and enriches it with the information contained in <code>oClassInfo</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Adds some attribute oAttribute to the aggregation named attributes."><a href="../symbols/sap.ui.core.tmpl.DOMElement.html#addAttribute">addAttribute</a></b><span class='signature'>(<span title="(sap.ui.core.tmpl.DOMAttribute) the attribute to add; if empty, nothing is inserted">oAttribute</span>)</span>
+									<span class='description'>Adds some attribute <code>oAttribute</code> to the aggregation named <code>attributes</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Adds some element oElement to the aggregation named elements."><a href="../symbols/sap.ui.core.tmpl.DOMElement.html#addElement">addElement</a></b><span class='signature'>(<span title="(sap.ui.core.tmpl.DOMElement) the element to add; if empty, nothing is inserted">oElement</span>)</span>
+									<span class='description'>Adds some element <code>oElement</code> to the aggregation named <code>elements</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the value of a DOM attribute if available or undefined if the DOM attribute is not available when using this method with the parameter name only."><a href="../symbols/sap.ui.core.tmpl.DOMElement.html#attr">attr</a></b><span class='signature'>(<span title="(string) The name of the DOM attribute.">sName</span>, <span title="(string) The value of the DOM attribute.">sValue</span>)</span>
+									<span class='description'>Returns the value of a DOM attribute if available or undefined if the DOM attribute is not available when using this method with the parameter name only.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys all the attributes in the aggregation named attributes."><a href="../symbols/sap.ui.core.tmpl.DOMElement.html#destroyAttributes">destroyAttributes</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys all the attributes in the aggregation named <code>attributes</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys all the elements in the aggregation named elements."><a href="../symbols/sap.ui.core.tmpl.DOMElement.html#destroyElements">destroyElements</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys all the elements in the aggregation named <code>elements</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation attributes."><a href="../symbols/sap.ui.core.tmpl.DOMElement.html#getAttributes">getAttributes</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>attributes</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation elements."><a href="../symbols/sap.ui.core.tmpl.DOMElement.html#getElements">getElements</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>elements</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property tag."><a href="../symbols/sap.ui.core.tmpl.DOMElement.html#getTag">getTag</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>tag</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property text."><a href="../symbols/sap.ui.core.tmpl.DOMElement.html#getText">getText</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>text</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Checks for the provided sap.ui.core.tmpl.DOMAttribute in the aggregation named attributes and returns its index if found or -1 otherwise."><a href="../symbols/sap.ui.core.tmpl.DOMElement.html#indexOfAttribute">indexOfAttribute</a></b><span class='signature'>(<span title="(sap.ui.core.tmpl.DOMAttribute) the attribute whose index is looked for.">oAttribute</span>)</span>
+									<span class='description'>Checks for the provided <code>sap.ui.core.tmpl.DOMAttribute</code> in the aggregation named <code>attributes</code> and returns its index if found or -1 otherwise.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Checks for the provided sap.ui.core.tmpl.DOMElement in the aggregation named elements and returns its index if found or -1 otherwise."><a href="../symbols/sap.ui.core.tmpl.DOMElement.html#indexOfElement">indexOfElement</a></b><span class='signature'>(<span title="(sap.ui.core.tmpl.DOMElement) the element whose index is looked for.">oElement</span>)</span>
+									<span class='description'>Checks for the provided <code>sap.ui.core.tmpl.DOMElement</code> in the aggregation named <code>elements</code> and returns its index if found or -1 otherwise.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Inserts a attribute into the aggregation named attributes."><a href="../symbols/sap.ui.core.tmpl.DOMElement.html#insertAttribute">insertAttribute</a></b><span class='signature'>(<span title="(sap.ui.core.tmpl.DOMAttribute) the attribute to insert; if empty, nothing is inserted">oAttribute</span>, <span title="(int) the 0-based index the attribute should be inserted at; for a negative value of iIndex, the attribute is inserted at position 0; for a value greater than the current size of the aggregation, the attribute is inserted at the last position">iIndex</span>)</span>
+									<span class='description'>Inserts a attribute into the aggregation named <code>attributes</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Inserts a element into the aggregation named elements."><a href="../symbols/sap.ui.core.tmpl.DOMElement.html#insertElement">insertElement</a></b><span class='signature'>(<span title="(sap.ui.core.tmpl.DOMElement) the element to insert; if empty, nothing is inserted">oElement</span>, <span title="(int) the 0-based index the element should be inserted at; for a negative value of iIndex, the element is inserted at position 0; for a value greater than the current size of the aggregation, the element is inserted at the last position">iIndex</span>)</span>
+									<span class='description'>Inserts a element into the aggregation named <code>elements</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes all the controls in the aggregation named attributes."><a href="../symbols/sap.ui.core.tmpl.DOMElement.html#removeAllAttributes">removeAllAttributes</a></b><span class='signature'>()</span>
+									<span class='description'>Removes all the controls in the aggregation named <code>attributes</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes all the controls in the aggregation named elements."><a href="../symbols/sap.ui.core.tmpl.DOMElement.html#removeAllElements">removeAllElements</a></b><span class='signature'>()</span>
+									<span class='description'>Removes all the controls in the aggregation named <code>elements</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes the DOM attribute for the given name and returns the reference to this DOM element to support method chaining."><a href="../symbols/sap.ui.core.tmpl.DOMElement.html#removeAttr">removeAttr</a></b><span class='signature'>(<span title="(string) The name of the DOM attribute.">sName</span>)</span>
+									<span class='description'>Removes the DOM attribute for the given name and returns the reference to this DOM element to support method chaining.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes an attribute from the aggregation named attributes."><a href="../symbols/sap.ui.core.tmpl.DOMElement.html#removeAttribute">removeAttribute</a></b><span class='signature'>(<span title="(int | string | sap.ui.core.tmpl.DOMAttribute) the attribute to remove or its index or id">vAttribute</span>)</span>
+									<span class='description'>Removes an attribute from the aggregation named <code>attributes</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes an element from the aggregation named elements."><a href="../symbols/sap.ui.core.tmpl.DOMElement.html#removeElement">removeElement</a></b><span class='signature'>(<span title="(int | string | sap.ui.core.tmpl.DOMElement) the element to remove or its index or id">vElement</span>)</span>
+									<span class='description'>Removes an element from the aggregation named <code>elements</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property tag."><a href="../symbols/sap.ui.core.tmpl.DOMElement.html#setTag">setTag</a></b><span class='signature'>(<span title="(string) new value for property tag">sTag</span>)</span>
+									<span class='description'>Setter for property <code>tag</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property text."><a href="../symbols/sap.ui.core.tmpl.DOMElement.html#setText">setText</a></b><span class='signature'>(<span title="(string) new value for property text">sText</span>)</span>
+									<span class='description'>Setter for property <code>text</code>.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Control.html#addStyleClass">addStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#allowTextSelection">allowTextSelection</a>, <a href="../symbols/sap.ui.core.Control.html#attachBrowserEvent">attachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#clone">clone</a>, <a href="../symbols/sap.ui.core.Control.html#detachBrowserEvent">detachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#getBusy">getBusy</a>, <a href="../symbols/sap.ui.core.Control.html#getBusyIndicatorDelay">getBusyIndicatorDelay</a>, <a href="../symbols/sap.ui.core.Control.html#getIdForLabel">getIdForLabel</a>, <a href="../symbols/sap.ui.core.Control.html#getRenderer">getRenderer</a>, <a href="../symbols/sap.ui.core.Control.html#hasStyleClass">hasStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#invalidate">invalidate</a>, <a href="../symbols/sap.ui.core.Control.html#isBusy">isBusy</a>, <a href="../symbols/sap.ui.core.Control.html#onAfterRendering">onAfterRendering</a>, <a href="../symbols/sap.ui.core.Control.html#onBeforeRendering">onBeforeRendering</a>, <a href="../symbols/sap.ui.core.Control.html#placeAt">placeAt</a>, <a href="../symbols/sap.ui.core.Control.html#removeStyleClass">removeStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#rerender">rerender</a>, <a href="../symbols/sap.ui.core.Control.html#setBusy">setBusy</a>, <a href="../symbols/sap.ui.core.Control.html#setBusyIndicatorDelay">setBusyIndicatorDelay</a>, <a href="../symbols/sap.ui.core.Control.html#toggleStyleClass">toggleStyleClass</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Element.html#$">$</a>, <a href="../symbols/sap.ui.core.Element.html#addCustomData">addCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#addDependent">addDependent</a>, <a href="../symbols/sap.ui.core.Element.html#addEventDelegate">addEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#applyFocusInfo">applyFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#bindElement">bindElement</a>, <a href="../symbols/sap.ui.core.Element.html#data">data</a>, <a href="../symbols/sap.ui.core.Element.html#destroy">destroy</a>, <a href="../symbols/sap.ui.core.Element.html#destroyCustomData">destroyCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#destroyDependents">destroyDependents</a>, <a href="../symbols/sap.ui.core.Element.html#enhanceAccessibilityState">enhanceAccessibilityState</a>, <a href="../symbols/sap.ui.core.Element.html#exit">exit</a>, <a href="../symbols/sap.ui.core.Element.html#findElements">findElements</a>, <a href="../symbols/sap.ui.core.Element.html#fireEvent">fireEvent</a>, <a href="../symbols/sap.ui.core.Element.html#getCustomData">getCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#getDependents">getDependents</a>, <a href="../symbols/sap.ui.core.Element.html#getDomRef">getDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getElementBinding">getElementBinding</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusDomRef">getFocusDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusInfo">getFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#getInterface">getInterface</a>, <a href="../symbols/sap.ui.core.Element.html#getLayoutData">getLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#getMetadata">getMetadata</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip">getTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_AsString">getTooltip_AsString</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_Text">getTooltip_Text</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfCustomData">indexOfCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfDependent">indexOfDependent</a>, <a href="../symbols/sap.ui.core.Element.html#init">init</a>, <a href="../symbols/sap.ui.core.Element.html#insertCustomData">insertCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#insertDependent">insertDependent</a>, <a href="../symbols/sap.ui.core.Element.html#prop">prop</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllCustomData">removeAllCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllDependents">removeAllDependents</a>, <a href="../symbols/sap.ui.core.Element.html#removeCustomData">removeCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeDependent">removeDependent</a>, <a href="../symbols/sap.ui.core.Element.html#removeEventDelegate">removeEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#setLayoutData">setLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#setTooltip">setTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#toString">toString</a>, <a href="../symbols/sap.ui.core.Element.html#unbindElement">unbindElement</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.ManagedObject.html">sap.ui.base.ManagedObject</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.ManagedObject.html#addAggregation">addAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#addAssociation">addAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#applySettings">applySettings</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindAggregation">bindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindContext">bindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindObject">bindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindProperty">bindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#destroyAggregation">destroyAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#findAggregatedObjects">findAggregatedObjects</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAggregation">getAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAssociation">getAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBinding">getBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingContext">getBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingInfo">getBindingInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingPath">getBindingPath</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getEventingParent">getEventingParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getId">getId</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getModel">getModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getObjectBinding">getObjectBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getOriginInfo">getOriginInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getParent">getParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getProperty">getProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#hasModel">hasModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#indexOfAggregation">indexOfAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#insertAggregation">insertAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isBound">isBound</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isInvalidateSuppressed">isInvalidateSuppressed</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isTreeBinding">isTreeBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAggregation">removeAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAggregation">removeAllAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAssociation">removeAllAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAssociation">removeAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAggregation">setAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAssociation">setAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setBindingContext">setBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setModel">setModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setProperty">setProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindAggregation">unbindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindContext">unbindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindObject">unbindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindProperty">unbindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateAggregation">validateAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateProperty">validateProperty</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.EventProvider.html#attachEvent">attachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#attachEventOnce">attachEventOnce</a>, <a href="../symbols/sap.ui.base.EventProvider.html#detachEvent">detachEvent</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.ui.core.tmpl.DOMElement</b>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)
+										</div>
+										
+										<div class="full-description">
+											Constructor for a new tmpl/DOMElement.
+</p><p>
+Accepts an object literal <code>mSettings</code> that defines initial 
+property values, aggregated and associated objects as well as event handlers. 
+</p><p>
+If the name of a setting is ambiguous (e.g. a property has the same name as an event), 
+then the framework assumes property, aggregation, association, event in that order. 
+To override this automatic resolution, one of the prefixes "aggregation:", "association:" 
+or "event:" can be added to the name of the setting (such a prefixed name must be
+enclosed in single or double quotes).
+</p><p>
+The supported settings are:
+<ul>
+<li>Properties
+<ul>
+<li><a href="#getText">text</a> : string</li>
+<li><a href="#getTag">tag</a> : string (default: 'span')</li></ul>
+</li>
+<li>Aggregations
+<ul>
+<li><a href="#getAttributes">attributes</a> : sap.ui.core.tmpl.DOMAttribute[]</li>
+<li><a href="#getElements">elements</a> : sap.ui.core.tmpl.DOMElement[]</li></ul>
+</li>
+<li>Associations
+<ul></ul>
+</li>
+<li>Events
+<ul></ul>
+</li>
+</ul>
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    id for the new control, generated automatically if no id is given
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mSettings</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    initial settings for the new control
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".extend"> </a>
+										<div class="itemTitle icon">
+											sap.ui.core.tmpl.DOMElement.extend<span class="signature">(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns function">: function</span>
+										</div>
+										<div class="full-description">
+											Creates a new subclass of class sap.ui.core.tmpl.DOMElement with name <code>sClassName</code> 
+and enriches it with the information contained in <code>oClassInfo</code>.
+</p><p>
+<code>oClassInfo</code> might contain the same kind of informations as described in <a href="../symbols/sap.ui.core.Element.html#.extend">Element.extend</a>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sClassName</b>
+													</td>
+													<td class="methodItemDesc">
+												    name of the class to be created
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oClassInfo</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    object literal with informations about the class
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>FNMetaImpl</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    constructor function for the metadata object. If not given, it defaults to sap.ui.core.ElementMetadata.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{function}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the created class / constructor function
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addAttribute"> </a>
+										<div class="itemTitle icon">
+											addAttribute<span class="signature">(<span title="(sap.ui.core.tmpl.DOMAttribute) the attribute to add; if empty, nothing is inserted">oAttribute</span>)</span>
+											<span class="light" title="returns sap.ui.core.tmpl.DOMElement">: <a href="../symbols/sap.ui.core.tmpl.DOMElement.html">sap.ui.core.tmpl.DOMElement</a></span>
+										</div>
+										<div class="full-description">
+											Adds some attribute <code>oAttribute</code> 
+to the aggregation named <code>attributes</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.tmpl.DOMAttribute.html">sap.ui.core.tmpl.DOMAttribute</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oAttribute</b>
+													</td>
+													<td class="methodItemDesc">
+												    the attribute to add; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.tmpl.DOMElement.html">sap.ui.core.tmpl.DOMElement</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addElement"> </a>
+										<div class="itemTitle icon">
+											addElement<span class="signature">(<span title="(sap.ui.core.tmpl.DOMElement) the element to add; if empty, nothing is inserted">oElement</span>)</span>
+											<span class="light" title="returns sap.ui.core.tmpl.DOMElement">: <a href="../symbols/sap.ui.core.tmpl.DOMElement.html">sap.ui.core.tmpl.DOMElement</a></span>
+										</div>
+										<div class="full-description">
+											Adds some element <code>oElement</code> 
+to the aggregation named <code>elements</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.tmpl.DOMElement.html">sap.ui.core.tmpl.DOMElement</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oElement</b>
+													</td>
+													<td class="methodItemDesc">
+												    the element to add; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.tmpl.DOMElement.html">sap.ui.core.tmpl.DOMElement</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attr"> </a>
+										<div class="itemTitle icon">
+											attr<span class="signature">(<span title="(string) The name of the DOM attribute.">sName</span>, <span title="(string) The value of the DOM attribute.">sValue</span>)</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Returns the value of a DOM attribute if available or undefined if the DOM attribute is not available when using this method with the parameter name only. When using the method with the parameter name and value the method acts as a setter and sets the value of a DOM attribute. Int this case the return value is the reference to this DOM element to support method chaining. If you pass null as value of the attribute the attribute will be removed.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sName</b>
+													</td>
+													<td class="methodItemDesc">
+												    The name of the DOM attribute.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sValue</b>
+													</td>
+													<td class="methodItemDesc">
+												    The value of the DOM attribute. If the value is undefined the DOM attribute will be removed.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyAttributes"> </a>
+										<div class="itemTitle icon">
+											destroyAttributes<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.tmpl.DOMElement">: <a href="../symbols/sap.ui.core.tmpl.DOMElement.html">sap.ui.core.tmpl.DOMElement</a></span>
+										</div>
+										<div class="full-description">
+											Destroys all the attributes in the aggregation 
+named <code>attributes</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.tmpl.DOMElement.html">sap.ui.core.tmpl.DOMElement</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyElements"> </a>
+										<div class="itemTitle icon">
+											destroyElements<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.tmpl.DOMElement">: <a href="../symbols/sap.ui.core.tmpl.DOMElement.html">sap.ui.core.tmpl.DOMElement</a></span>
+										</div>
+										<div class="full-description">
+											Destroys all the elements in the aggregation 
+named <code>elements</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.tmpl.DOMElement.html">sap.ui.core.tmpl.DOMElement</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getAttributes"> </a>
+										<div class="itemTitle icon">
+											getAttributes<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.tmpl.DOMAttribute[]">: <a href="../symbols/sap.ui.core.tmpl.DOMAttribute.html">sap.ui.core.tmpl.DOMAttribute</a>[]</span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>attributes</code>.<br/>
+DOM attributes which are rendered as part of the DOM element and bindable
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.tmpl.DOMAttribute.html">sap.ui.core.tmpl.DOMAttribute</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getElements"> </a>
+										<div class="itemTitle icon">
+											getElements<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.tmpl.DOMElement[]">: <a href="../symbols/sap.ui.core.tmpl.DOMElement.html">sap.ui.core.tmpl.DOMElement</a>[]</span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>elements</code>.<br/>
+Nested DOM elements to support nested bindable structures
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.tmpl.DOMElement.html">sap.ui.core.tmpl.DOMElement</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getTag"> </a>
+										<div class="itemTitle icon">
+											getTag<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>tag</code>.
+The HTML-tag of the DOM element which contains the text
+</p><p>
+Default value is <code>span</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>tag</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getText"> </a>
+										<div class="itemTitle icon">
+											getText<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>text</code>.
+The text content of the DOM element
+</p><p>
+Default value is empty/<code>undefined</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>text</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="indexOfAttribute"> </a>
+										<div class="itemTitle icon">
+											indexOfAttribute<span class="signature">(<span title="(sap.ui.core.tmpl.DOMAttribute) the attribute whose index is looked for.">oAttribute</span>)</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Checks for the provided <code>sap.ui.core.tmpl.DOMAttribute</code> in the aggregation named <code>attributes</code> 
+and returns its index if found or -1 otherwise.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.tmpl.DOMAttribute.html">sap.ui.core.tmpl.DOMAttribute</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oAttribute</b>
+													</td>
+													<td class="methodItemDesc">
+												    the attribute whose index is looked for.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the index of the provided control in the aggregation if found, or -1 otherwise
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="indexOfElement"> </a>
+										<div class="itemTitle icon">
+											indexOfElement<span class="signature">(<span title="(sap.ui.core.tmpl.DOMElement) the element whose index is looked for.">oElement</span>)</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Checks for the provided <code>sap.ui.core.tmpl.DOMElement</code> in the aggregation named <code>elements</code> 
+and returns its index if found or -1 otherwise.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.tmpl.DOMElement.html">sap.ui.core.tmpl.DOMElement</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oElement</b>
+													</td>
+													<td class="methodItemDesc">
+												    the element whose index is looked for.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the index of the provided control in the aggregation if found, or -1 otherwise
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="insertAttribute"> </a>
+										<div class="itemTitle icon">
+											insertAttribute<span class="signature">(<span title="(sap.ui.core.tmpl.DOMAttribute) the attribute to insert; if empty, nothing is inserted">oAttribute</span>, <span title="(int) the 0-based index the attribute should be inserted at; for a negative value of iIndex, the attribute is inserted at position 0; for a value greater than the current size of the aggregation, the attribute is inserted at the last position">iIndex</span>)</span>
+											<span class="light" title="returns sap.ui.core.tmpl.DOMElement">: <a href="../symbols/sap.ui.core.tmpl.DOMElement.html">sap.ui.core.tmpl.DOMElement</a></span>
+										</div>
+										<div class="full-description">
+											Inserts a attribute into the aggregation named <code>attributes</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.tmpl.DOMAttribute.html">sap.ui.core.tmpl.DOMAttribute</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oAttribute</b>
+													</td>
+													<td class="methodItemDesc">
+												    the attribute to insert; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    the <code>0</code>-based index the attribute should be inserted at; for 
+            a negative value of <code>iIndex</code>, the attribute is inserted at position 0; for a value 
+            greater than the current size of the aggregation, the attribute is inserted at 
+            the last position
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.tmpl.DOMElement.html">sap.ui.core.tmpl.DOMElement</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="insertElement"> </a>
+										<div class="itemTitle icon">
+											insertElement<span class="signature">(<span title="(sap.ui.core.tmpl.DOMElement) the element to insert; if empty, nothing is inserted">oElement</span>, <span title="(int) the 0-based index the element should be inserted at; for a negative value of iIndex, the element is inserted at position 0; for a value greater than the current size of the aggregation, the element is inserted at the last position">iIndex</span>)</span>
+											<span class="light" title="returns sap.ui.core.tmpl.DOMElement">: <a href="../symbols/sap.ui.core.tmpl.DOMElement.html">sap.ui.core.tmpl.DOMElement</a></span>
+										</div>
+										<div class="full-description">
+											Inserts a element into the aggregation named <code>elements</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.tmpl.DOMElement.html">sap.ui.core.tmpl.DOMElement</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oElement</b>
+													</td>
+													<td class="methodItemDesc">
+												    the element to insert; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    the <code>0</code>-based index the element should be inserted at; for 
+            a negative value of <code>iIndex</code>, the element is inserted at position 0; for a value 
+            greater than the current size of the aggregation, the element is inserted at 
+            the last position
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.tmpl.DOMElement.html">sap.ui.core.tmpl.DOMElement</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeAllAttributes"> </a>
+										<div class="itemTitle icon">
+											removeAllAttributes<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.tmpl.DOMAttribute[]">: <a href="../symbols/sap.ui.core.tmpl.DOMAttribute.html">sap.ui.core.tmpl.DOMAttribute</a>[]</span>
+										</div>
+										<div class="full-description">
+											Removes all the controls in the aggregation named <code>attributes</code>.<br/>
+Additionally unregisters them from the hosting UIArea.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.tmpl.DOMAttribute.html">sap.ui.core.tmpl.DOMAttribute</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														an array of the removed elements (might be empty)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeAllElements"> </a>
+										<div class="itemTitle icon">
+											removeAllElements<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.tmpl.DOMElement[]">: <a href="../symbols/sap.ui.core.tmpl.DOMElement.html">sap.ui.core.tmpl.DOMElement</a>[]</span>
+										</div>
+										<div class="full-description">
+											Removes all the controls in the aggregation named <code>elements</code>.<br/>
+Additionally unregisters them from the hosting UIArea.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.tmpl.DOMElement.html">sap.ui.core.tmpl.DOMElement</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														an array of the removed elements (might be empty)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeAttr"> </a>
+										<div class="itemTitle icon">
+											removeAttr<span class="signature">(<span title="(string) The name of the DOM attribute.">sName</span>)</span>
+											<span class="light" title="returns sap.ui.core.tmpl.DOMElement">: <a href="../symbols/sap.ui.core.tmpl.DOMElement.html">sap.ui.core.tmpl.DOMElement</a></span>
+										</div>
+										<div class="full-description">
+											Removes the DOM attribute for the given name and returns the reference to this DOM element to support method chaining.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sName</b>
+													</td>
+													<td class="methodItemDesc">
+												    The name of the DOM attribute.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeAttribute"> </a>
+										<div class="itemTitle icon">
+											removeAttribute<span class="signature">(<span title="(int | string | sap.ui.core.tmpl.DOMAttribute) the attribute to remove or its index or id">vAttribute</span>)</span>
+											<span class="light" title="returns sap.ui.core.tmpl.DOMAttribute">: <a href="../symbols/sap.ui.core.tmpl.DOMAttribute.html">sap.ui.core.tmpl.DOMAttribute</a></span>
+										</div>
+										<div class="full-description">
+											Removes an attribute from the aggregation named <code>attributes</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int|string|<a href="../symbols/sap.ui.core.tmpl.DOMAttribute.html">sap.ui.core.tmpl.DOMAttribute</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vAttribute</b>
+													</td>
+													<td class="methodItemDesc">
+												    the attribute to remove or its index or id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.tmpl.DOMAttribute.html">sap.ui.core.tmpl.DOMAttribute</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the removed attribute or null
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeElement"> </a>
+										<div class="itemTitle icon">
+											removeElement<span class="signature">(<span title="(int | string | sap.ui.core.tmpl.DOMElement) the element to remove or its index or id">vElement</span>)</span>
+											<span class="light" title="returns sap.ui.core.tmpl.DOMElement">: <a href="../symbols/sap.ui.core.tmpl.DOMElement.html">sap.ui.core.tmpl.DOMElement</a></span>
+										</div>
+										<div class="full-description">
+											Removes an element from the aggregation named <code>elements</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int|string|<a href="../symbols/sap.ui.core.tmpl.DOMElement.html">sap.ui.core.tmpl.DOMElement</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vElement</b>
+													</td>
+													<td class="methodItemDesc">
+												    the element to remove or its index or id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.tmpl.DOMElement.html">sap.ui.core.tmpl.DOMElement</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the removed element or null
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setTag"> </a>
+										<div class="itemTitle icon">
+											setTag<span class="signature">(<span title="(string) new value for property tag">sTag</span>)</span>
+											<span class="light" title="returns sap.ui.core.tmpl.DOMElement">: <a href="../symbols/sap.ui.core.tmpl.DOMElement.html">sap.ui.core.tmpl.DOMElement</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>tag</code>.
+</p><p>
+Default value is <code>span</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sTag</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>tag</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.tmpl.DOMElement.html">sap.ui.core.tmpl.DOMElement</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setText"> </a>
+										<div class="itemTitle icon">
+											setText<span class="signature">(<span title="(string) new value for property text">sText</span>)</span>
+											<span class="light" title="returns sap.ui.core.tmpl.DOMElement">: <a href="../symbols/sap.ui.core.tmpl.DOMElement.html">sap.ui.core.tmpl.DOMElement</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>text</code>.
+</p><p>
+Default value is empty/<code>undefined</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sText</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>text</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.tmpl.DOMElement.html">sap.ui.core.tmpl.DOMElement</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

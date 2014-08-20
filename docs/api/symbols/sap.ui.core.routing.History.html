@@ -1,0 +1,333 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.core.routing.History</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class sap.ui.core.routing.History
+					</h1>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p></p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="Used to determine the {sap.ui.core.HistoryDirection} of the current or a future navigation, done with a {sap.ui.core.routing.Router} or {sap.ui.core.routing.HashChanger}.">new <a href="../symbols/sap.ui.core.routing.History.html#constructor">sap.ui.core.routing.History</a></b>
+										<span class='signature'>(<span title="(sap.ui.core.routing.HashChanger) - required without a HashChanger this class cannot work.">hashChanger</span>)</span>
+										<span class='description'>Used to determine the {sap.ui.core.HistoryDirection} of the current or a future navigation, done with a {sap.ui.core.routing.Router} or {sap.ui.core.routing.HashChanger}.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Determines what the navigation direction for a newly given hash would be It will say Unknown if there is a history foo - bar (current history) - foo If you now ask for the direction of the hash &quot;foo&quot; you get Unknown because it might be backwards or forwards."><a href="../symbols/sap.ui.core.routing.History.html#getDirection">getDirection</a></b><span class='signature'>(<span title="(string) optional, if this parameter is not passed the last hashChange is taken.">sNewHash</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Determines what the navigation direction for a newly given hash would be It will say Unknown if there is a history foo - bar (current history) - foo If you now ask for the direction of the hash "foo" you get Unknown because it might be backwards or forwards.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title=""><a href="../symbols/sap.ui.core.routing.History.html#.getInstance">sap.ui.core.routing.History.getInstance</a></b><span class='signature'>()</span>
+									<span class='description'></span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="gets the previous hash in the history - if the last direction was Unknown or there was no navigation yet, undefined will be returned"><a href="../symbols/sap.ui.core.routing.History.html#getPreviousHash">getPreviousHash</a></b><span class='signature'>()</span>
+									<span class='description'>gets the previous hash in the history - if the last direction was Unknown or there was no navigation yet, undefined will be returned</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.ui.core.routing.History</b>(<span title="(sap.ui.core.routing.HashChanger) - required without a HashChanger this class cannot work.">hashChanger</span>)
+										</div>
+										
+										<div class="full-description">
+											</p><p>
+Used to determine the {sap.ui.core.HistoryDirection} of the current or a future navigation, done with a 
+{sap.ui.core.routing.Router} or {sap.ui.core.routing.HashChanger}.
+ATTENTION: this class will not be accurate if someone does hash-replacement without the named classes above
+If you are manipulating the hash directly this class is not supported anymore.
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.routing.HashChanger.html">sap.ui.core.routing.HashChanger</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>hashChanger</b>
+													</td>
+													<td class="methodItemDesc">
+												    - required without a HashChanger this class cannot work. The class needs to be aware of the hash-changes.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod'>
+										<a name="getDirection"> </a>
+										<div class="itemTitle icon">
+											getDirection<span class="signature">(<span title="(string) optional, if this parameter is not passed the last hashChange is taken.">sNewHash</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.core.routing.HistoryDirection">: <a href="../symbols/sap.ui.core.routing.HistoryDirection.html">sap.ui.core.routing.HistoryDirection</a></span>
+										</div>
+										<div class="full-description">
+											Determines what the navigation direction for a newly given hash would be
+It will say Unknown if there is a history foo - bar (current history) - foo
+If you now ask for the direction of the hash "foo" you get Unknown because it might be backwards or forwards.
+For hash replacements, the history stack will be replaced at this position for the history.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sNewHash</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    optional, if this parameter is not passed the last hashChange is taken.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.routing.HistoryDirection.html">sap.ui.core.routing.HistoryDirection</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														or undefined, if no navigation has taken place yet.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".getInstance"> </a>
+										<div class="itemTitle icon">
+											sap.ui.core.routing.History.getInstance<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.routing.History">: <a href="../symbols/sap.ui.core.routing.History.html">sap.ui.core.routing.History</a></span>
+										</div>
+										<div class="full-description">
+											
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.routing.History.html">sap.ui.core.routing.History</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														a global singleton that gets created as soon as the sap.ui.core.routing.History is required
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getPreviousHash"> </a>
+										<div class="itemTitle icon">
+											getPreviousHash<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											gets the previous hash in the history - if the last direction was Unknown or there was no navigation yet, undefined will be returned
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														or undefined
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

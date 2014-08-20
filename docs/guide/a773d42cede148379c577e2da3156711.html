@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=7423676671757982"/>
+<title>Creating Alias for ICF Node with SAP Corbu Logon Screen</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loioa773d42cede148379c577e2da3156711">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Creating Alias for ICF Node with SAP Corbu Logon Screen</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">To create an alias for the ui5_ui5 ICF node with an SAP Corbu logon screen (available
+			with version 7.31 and higher), proceed as follows: </p>
+<ol class="ol" id="loioa773d42cede148379c577e2da3156711__ol_rc1_mgf_bj"><li class="li">In the ABAP Suite system, call transaction <samp class="ph codeph">SICF</samp> and choose
+					<span class="ph uicontrol">Execute (F8)</span>. </li>
+<li class="li">Choose <span class="ph uicontrol">External Aliases (Shift+F6)</span></li>
+<li class="li">Select the host, for example default_host, and choose <span class="ph uicontrol">Create New External
+					Alias (F5)</span>. </li>
+<li class="li">Enter a name in the <span class="ph uicontrol">External Alias</span> field. The name must start
+				with a slash, for example /ui5.</li>
+<li class="li">On the <span class="keyword wintitle">Trg Element</span> tab, double-click the target handler
+					<em class="ph i">/default_host/sap/bc/ui5_ui5</em> .</li>
+<li class="li">On the <span class="keyword wintitle">Error Page</span> tab, select the <span class="keyword wintitle">Logon
+					Errors</span> tab, then <span class="keyword wintitle">System Logon</span>, and choose
+					<span class="ph uicontrol">Configuration</span>. </li>
+<li class="li">In the <span class="keyword wintitle">System Logon Configuration</span> dialog, choose
+					<span class="ph uicontrol">Define Service-Specific Settings</span>. </li>
+<li class="li">Under <span class="ph uicontrol">Select Display</span>, select the fields that are to be
+				displayed on the logon screen; these are generally System ID, Client, and Language. </li>
+<li class="li">Under <span class="ph uicontrol">Logon Layout and Procedure</span> and <span class="ph uicontrol">SAP
+					Implementation</span>, select <span class="ph uicontrol">Signature Design</span> for
+				Screen and <span class="ph uicontrol">SAP Corbu</span> for Theme. </li>
+<li class="li">If you choose <span class="ph uicontrol">Adjust Links and Images</span>, you have the option
+				under <span class="ph uicontrol">Adjustment of the Logon Page</span> to specify the URLs for
+				the images you want to use instead of the standard images. </li>
+<li class="li">Choose <span class="ph uicontrol">Input (Enter)</span> to confirm the selection. </li>
+<li class="li">Choose <span class="ph uicontrol">Save (Ctrl+S)</span> to save the new alias.</li>
+</ol>
+<p class="p">For information on the ICF, see: </p>
+<ul class="ul" id="loioa773d42cede148379c577e2da3156711__ul_bd1_mgf_bj"><li class="li"><em class="ph i">System Logon</em> in the NetWeaver 7.0 EHP 3 application help on the Help Portal
+				under <a class="xref" href="http://help.sap.com/saphelp_nw70ehp3/helpdata/en/48/3a0638902131c3e10000000a42189d/frameset.htm"> System Logon</a></li>
+<li class="li"><em class="ph i">Administration of Server Functions </em> in the NetWeaver 7.0 EHP 3 application
+				help on the Help Portal  under <a class="xref" href="http://help.sap.com/saphelp_nw70ehp3/helpdata/en/10/361b3f7f9e3642e10000000a114084/frameset.htm">Administration of Server Functions</a></li>
+</ul>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Creating Alias for ICF Node with SAP Corbu Logon Screen";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

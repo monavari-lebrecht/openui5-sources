@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=524848917705691"/>
+<title>Step 12: NotFound View</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio9a3e13a8688144ec9e8b4075ee970224">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Step 12: NotFound View</h1>
+<div class="body conbody"><p class="shortdesc"/>
+<p class="p">There's one more thing that we need to finish off. In the Router configuration (see the <a class="xref" href="688f36bd758e4ce2b4e682eef4dc794e.html">Navigation and Routing</a> section)
+			there's a route definition for <dfn class="term">NotFound</dfn>. Navigation to this is invoked in
+			the Detail view's controller (see the <a class="xref" href="08887a263aa94c14838593aecddf1529.html">Detail View</a> section). So we
+			need to create this view so that the Router can load it, add it to the SplitApp, and
+			navigate to it. </p>
+<p class="p">This is the content of <span class="ph filepath">NotFound.view.xml</span> in the view subfolder:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!xml</samp>
+&lt;mvc:View
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"&gt;
+	&lt;Page
+		class="sapUiFioriObjectPage"
+		title="{i18n&gt;notFoundTitle}"&gt;
+		&lt;content&gt;
+		&lt;FlexBox
+			alignItems="Center"
+			justifyContent="Center"&gt;
+			&lt;items&gt;
+				&lt;Label
+					class="spacerTop"
+					textAlign="Center"
+					text="{i18n&gt;notFoundText}" /&gt;
+			&lt;/items&gt;
+		&lt;/FlexBox&gt;
+		&lt;/content&gt;
+		&lt;footer&gt;
+			&lt;Bar&gt;
+			&lt;/Bar&gt;
+		&lt;/footer&gt;
+	&lt;/Page&gt;
+&lt;/mvc:View&gt;
+</pre></div>
+<p class="p">It's a simple affair. To fit in with the app's overall look, we're using an
+				<samp class="ph codeph">sap.m.Page</samp> control with a title and a Bar in the footer. The Page's
+			default content aggregation contains an <samp class="ph codeph">sap.m.FlexBox</samp> control with an
+				<samp class="ph codeph">sap.m.Label</samp> control centrally aligned and justified. The Label has
+			a CSS class defined so we can use some custom CSS to move the text in the Label's text
+			property down a little bit. </p>
+<p class="p">Here's the custom CSS, which is stored in style.css in the css subfolder:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!css</samp>
+.spacerTop {
+	margin-top: 2rem;
+}
+</pre></div>
+<div class="section"><div class="section_title">Progress Check</div><div type="Progress Check">
+			
+			<p class="p">Finally, this is our complete app folder:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+tdg/
+  |
+  +-- css/
+  |     |
+  |     +-- style.css
+  |
+  +-- i18n/
+  |     |
+  |     +-- messageBundle.properties
+  |
+  +-- util/
+  |     |
+  |     +-- Formatter.js
+  |
+  +-- view/
+  |     |
+  |     +-- AddProduct.controller.js
+  |     +-- AddProduct.view.xml
+  |     +-- App.view.xml
+  |     +-- CategoryInfoForm.fragment.xml
+  |     +-- Detail.controller.js
+  |     +-- Detail.view.xml
+  |     +-- Master.controller.js
+  |     +-- Master.view.xml
+  |     +-- NameRequiredDialog.fragment.xml
+  |     +-- NotFound.view.xml
+  |     +-- SupplierAddressForm.fragment.xml
+  |
+  +-- Component.js
+  +-- index.html
+  +-- MyRouter.html</pre></div>
+
+			<p class="p">When navigating to an unknown URL, this is what the user will see:</p>
+
+			<div class="fig fignone" id="loio9a3e13a8688144ec9e8b4075ee970224__fig_a3w_nvx_4n"><div class="figcontainer"><img class="image" id="loio9a3e13a8688144ec9e8b4075ee970224__image_wwl_svx_4n" src="99444b8b494344c982ec1d098dd5c415.image"/></div></div>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Step 12: NotFound View";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

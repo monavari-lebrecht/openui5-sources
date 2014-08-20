@@ -1,0 +1,286 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title>AnalyticalTable - sap.ui.table</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/controls/sap.ui.table.Table.gif">
+
+<!-- ********************************************************************** -->
+<!-- SAPUI5 Bootstrap:                                                     -->
+<!-- Extend the "libs" property if you like to import additional libraries  -->
+<!-- ********************************************************************** -->
+<script id="sap-ui-bootstrap" 
+	type="text/javascript"
+	data-sap-ui-libs="sap.ui.table,sap.m,sap.ui.unified"
+	data-sap-ui-theme="sap_bluecrystal"
+	src="../../../../resources/sap-ui-core.js"></script>
+
+<script type="text/javascript">
+
+	jQuery.sap.require("sap.ui.model.FilterOperator");
+	var mURLParam = getURLParam();
+	var oUrlParam = { system: mURLParam["system"], service: mURLParam["service"], proxy: mURLParam["proxy"], 
+			variant: mURLParam["variant"], columns: mURLParam["columns"], batch: mURLParam["batch"], 
+			serviceUri: mURLParam["serviceuri"], resultSet: mURLParam["resultset"], 
+			https: mURLParam["https"], 
+			totalSize: mURLParam["totalsize"], grandTotals: mURLParam["grandtotals"],
+			numberOfExpandedLevels: mURLParam["numberofexpandedlevels"]};
+
+	// OData service address, default: VS6, CCA 
+	var bHttps       = false;
+	var sServiceRoot;
+	var sServiceDir;
+	var sServiceName;
+	var sResultSet;
+	var sResultPath;
+	var sColumns, aHiddenColumn = new Array();
+	var aFilter, aSorter;
+	var bUseBatchRequests = false;
+	
+	// check URL parameters requesting specific systems and OData services
+	if (oUrlParam.system)
+		oUrlParam.system = oUrlParam.system.toUpperCase();
+	if (oUrlParam.service)
+		oUrlParam.service = oUrlParam.service.toUpperCase();
+	if (oUrlParam.proxy != undefined)
+		oUrlParam.proxy = oUrlParam.proxy.toUpperCase();
+	else
+		oUrlParam.proxy = "TRUE";
+	if (oUrlParam.batch != undefined)
+		oUrlParam.batch = oUrlParam.batch.toLowerCase() == "true";
+	if (oUrlParam.https != undefined)
+		oUrlParam.https = oUrlParam.https.toLowerCase() == "true";
+	if (oUrlParam.totalSize != undefined)
+		oUrlParam.totalSize = oUrlParam.totalSize.toLowerCase() == "true";
+	if (oUrlParam.grandTotals != undefined)
+		oUrlParam.grandTotals = oUrlParam.grandTotals.toLowerCase() == "true";
+	
+	if ( !oUrlParam.system || oUrlParam.system == "VS6" ){
+		sServiceRoot = "ld9408.wdf.sap.corp:8000"; // VS6
+		bUseBatchRequests = true;
+		if ( !oUrlParam.service || oUrlParam.service == "CCA" ){
+			sServiceDir  = "/tmp/d041558/cca/";
+			sServiceName = "CCA.xsodata";
+			sResultSet   = "ActualPlannedCostsResults";
+			sResultPath  = "/ActualPlannedCosts(P_ControllingArea='US01',P_CostCenter='100-1000',P_CostCenterTo='999-9999')/Results";
+			sColumns     = "CostCenter,CostCenterText,CostElement,CostElementText,ActualCosts,PlannedCosts,Currency";
+		} else if ( oUrlParam.service == "WCA" ){
+			sServiceDir  = "/sap/hba/apps/wca/dso/s/odata/";
+			sServiceName = "wca.xsodata";
+			sResultSet   = "WCADaysSalesOutstandingQueryResults";
+			if ( !oUrlParam.variant || oUrlParam.variant == "1" ){
+				sResultPath  = "/WCADaysSalesOutstandingQuery(P_SAPClient='777',P_FromDate='20110601',P_ToDate='20120531',P_DisplayCurrency='USD',P_ExchangeRateType='M',P_ExchangeRateDate='00000000',P_AgingGridMeasureInDays=10,P_NetDueGridMeasureInDays=10,P_NetDueArrearsGridMsrInDays=10)/Results";
+				sColumns     ="CompanyCode,CompanyCodeName,CustomerCountry,CustomerCountryName,Year,Month,DaysSalesOutstanding,BestPossibleDaysSalesOutstndng,ArrearsDaysSalesOutstanding"
+			} else if ( oUrlParam.variant == "2" ){
+				sResultPath  = "/WCADaysSalesOutstandingQuery(P_SAPClient='778',P_FromDate='20100901',P_ToDate='20120531',P_DisplayCurrency='USD',P_ExchangeRateType='M',P_ExchangeRateDate='00000000',P_AgingGridMeasureInDays=10,P_NetDueGridMeasureInDays=10,P_NetDueArrearsGridMsrInDays=10)/Results";
+				aFilter      = [new sap.ui.model.Filter("CompanyCode", sap.ui.model.FilterOperator.EQ, "1000")];
+				sColumns     ="CustomerCountry,CustomerCountryName,Customer,CustomerName,Year,Month,DaysSalesOutstanding,BestPossibleDaysSalesOutstndng,ArrearsDaysSalesOutstanding"
+			}
+		}
+	} else if ( oUrlParam.system == "KIW" || oUrlParam.system == "GIQ" ){
+		sServiceRoot = "ld9460.wdf.sap.corp:50000"; // KIW
+		bUseBatchRequests = false;
+		if ( oUrlParam.system == "GIQ" ){
+			bHttps       = true;
+			sServiceRoot = "ldcigiq.wdf.sap.corp:44315"; 
+		}
+		sServiceDir  = "/sap/opu/odata/sap/";
+		if ( !oUrlParam.service || oUrlParam.service == "CCA" ){
+			sServiceName = "ZCCA_D21_Q0022";
+			if ( oUrlParam.system == "KIW" ){
+				sServiceName += "_SRV";
+			}
+			sResultSet   = "ZCCA_D21_Q0022Results";
+			sResultPath  = "/ZCCA_D21_Q0022Results";
+			sColumns     = "ZCOSTCENT,ZCOSTCENT_T,ZCOSTELMN,ZCOSTELMN_T,ZCOSTACTUAL0022,ZCOSTPLAN0022";
+			aHiddenColumn = ["ZCOSTPLAN0022"];
+			aFilter = [new sap.ui.model.Filter("TotaledProperties", sap.ui.model.FilterOperator.EQ, "")];			
+			aSorter      = [new sap.ui.model.Sorter("ZCOSTCENT", true), new sap.ui.model.Sorter("ZCOSTELMN", true)];
+/*			if ( oUrlParam.system == "GIQ" ){
+				aFilter = [new sap.ui.model.Filter("TotaledProperties", sap.ui.model.FilterOperator.EQ, "")]; 
+			} */
+		}
+	} else if ( oUrlParam.system == "E91" ){
+		bHttps       = true;
+		sServiceRoot = "ldcie91.wdf.sap.corp:44300"; 
+		sServiceDir  = "/sap/opu/odata/sap/";
+		sServiceName = "ZMK_FIORI_ALV2_SRV";
+		sResultSet   = "LineItemsSet";
+		sResultPath  = "/LineItemsSet";
+		sColumns     = "Bukrs,Gjahr,Kunnr,Name1,Hwaer,Dmbtr,Cnt";
+		aFilter      = [new sap.ui.model.Filter("Bukrs", sap.ui.model.FilterOperator.NE, ""),
+		                new sap.ui.model.Filter("Gjahr", sap.ui.model.FilterOperator.NE, "")];
+		aSorter      = [new sap.ui.model.Sorter("Bukrs", true), new sap.ui.model.Sorter("Gjahr", true)];
+		
+		if (oUrlParam.variant == "SINGLE_CURRENCY")
+			aFilter.push(new sap.ui.model.Filter("Hwaer", sap.ui.model.FilterOperator.EQ, "USD"));
+
+		bUseBatchRequests = true;
+	} else if ( oUrlParam.system == "E91_ALT_SRV" ){
+		bHttps       = true;
+		sServiceRoot = "ldai1e91.wdf.sap.corp:44300"; 
+		sServiceDir  = "/sap/opu/odata/sap/";
+		sServiceName = "ZMK_FIORI_ALV2_SRV";
+		sResultSet   = "LineItemsSet";
+		sResultPath  = "/LineItemsSet";
+		sColumns     = "Bukrs,Gjahr,Kunnr,Name1,Hwaer,Dmbtr,Cnt";
+		if (oUrlParam.variant == "SINGLE_CURRENCY") {
+			aFilter      = [new sap.ui.model.Filter("Hwaer", sap.ui.model.FilterOperator.EQ, "USD")];
+		}
+		bUseBatchRequests = false;
+	}
+	var sHttp = "http";
+	if (oUrlParam.https != undefined) bHttps = UrlParam.https;
+		
+	if ( bHttps ) sHttp += "s";
+	
+	var sServiceUri;
+	if (oUrlParam.serviceUri) sServiceUri = oUrlParam.serviceUri;
+	else sServiceUri  = sServiceRoot + sServiceDir + sServiceName;
+	
+	if (oUrlParam.resultSet) {
+		sResultSet = oUrlParam.resultSet;
+		sResultPath = "/" + sResultSet;
+		aFilter = aSorter = null;
+	}
+	var sProxyUrl    = (oUrlParam.proxy == "FALSE" ? "http://" : "../../../../proxy/" + sHttp + "/") + sServiceUri;
+
+	if ( oUrlParam.columns) sColumns = oUrlParam.columns;
+	
+	// create model
+	jQuery.sap.require("sap.ui.model.odata.ODataModel");
+	var oModel = new sap.ui.model.odata.ODataModel(sProxyUrl);
+	
+	// enhance the model
+	jQuery.sap.require("sap.ui.model.analytics.ODataModelAdapter");
+	sap.ui.model.analytics.ODataModelAdapter.apply(oModel);
+	
+	// get analytical extensions
+	var oModel_ = oModel.getAnalyticalExtensions(); 
+
+	// init result set  
+	if ( !sResultSet ){
+		sResultSet = oModel_.getAllQueryResultNames()[0];
+	};
+	var oResult    = oModel_.findQueryResultByName(sResultSet);
+	var aDimension = oResult.getAllDimensions();
+	var aMeasure   = oResult.getAllMeasures();
+	
+	// derive relevant column properties
+	var mColumns = {};
+	
+	for ( i in aDimension ) {
+		mColumns[aDimension[i].getKeyProperty().name] = {
+			grouped: true,
+			summed: false
+		};
+		if ( aDimension[i].getTextProperty() ){
+			mColumns[aDimension[i].getTextProperty().name] = {
+			};
+		}
+	};
+	
+	for ( i in aMeasure ) {
+		var sColumnName = aMeasure[i].getRawValueProperty().name;
+		mColumns[aMeasure[i].getRawValueProperty().name] = {
+			grouped: false,
+			visible: aHiddenColumn.indexOf(sColumnName) == -1,
+			summed: true,
+			template: new sap.m.Label({
+				text: {
+					path: sColumnName,
+					type: new sap.ui.model.type.Float()
+				},
+				textAlign: "End"
+			}),
+			filterType: new sap.ui.model.type.Float()
+		};
+		if ( aMeasure[i].getFormattedValueProperty() ){
+			mColumns[aMeasure[i].getFormattedValueProperty().name] = {
+			};
+		}
+	};
+
+	// prepare table 
+	var oTable = new sap.ui.table.AnalyticalTable({
+		selectionMode: sap.ui.table.SelectionMode.Single,
+		visibleRowCount: 20,
+		allowColumnReordering: true,
+		expandFirstLevel: false,
+		showColumnVisibilityMenu: true,
+		enableColumnFreeze: true,
+		enableCellFilter: true,
+		resultSet: sResultSet,
+		selectionMode: sap.ui.table.SelectionMode.MultiToggle,
+		rowHeight: 32,
+		numberOfExpandedLevels: oUrlParam.numberOfExpandedLevels == undefined ? 0 : +oUrlParam.numberOfExpandedLevels
+	});
+
+	// add columns 
+	var aColumnName = sColumns.split(",");
+	for ( i in aColumnName ){
+		var oColumn = mColumns[aColumnName[i]];
+		if (!oColumn) continue;
+		oTable.addColumn(new sap.ui.table.AnalyticalColumn({
+			grouped: oColumn.grouped,
+			summed: oColumn.summed,
+			visible: oColumn.visible,
+			template: oColumn.template || aColumnName[i],
+			sortProperty: aColumnName[i],
+			filterProperty: oColumn.filterProperty || aColumnName[i],
+			filterType: oColumn.filterType,
+			groupHeaderFormatter: function(value) { return "|" + value + "|";},
+			leadingProperty: aColumnName[i],
+			headerSpan: (aDimension[aColumnName[i]] && aDimension[aColumnName[i]].getTextProperty()) ? 2 : 1,
+			autoResizable: true
+		}));
+	};
+	
+	// place table on screen
+	oTable.placeAt("content");
+	
+	// bind model to Table
+	oTable.setModel(oModel);
+	// suppresss $count calls
+	oModel.setCountSupported(false);
+	
+
+	// bind analytical table to analytial model (-> create analytical binding)
+	oTable.bindRows({
+		path: sResultPath,
+		parameters: {
+			provideTotalResultSize: oUrlParam.totalSize == undefined ? true : oUrlParam.totalSize,
+
+			useBatchRequests: oUrlParam.batch == undefined ? bUseBatchRequests : oUrlParam.batch,
+			provideGrandTotals: oUrlParam.grandTotals == undefined ? true : oUrlParam.grandTotals,
+		},
+//		parameters: {select: sColumns},
+		filters: aFilter,
+		sorter: aSorter
+	});
+	
+	
+	function getURLParam() {
+		var idx = document.URL.indexOf('?');
+		var urlParam = new Object();
+		if (idx != -1) {
+			var pairs = document.URL.substring(idx+1, document.URL.length).split('&');
+			for (var i=0; i<pairs.length; i++) {
+				nameVal = pairs[i].split('=');
+				urlParam[nameVal[0]] = nameVal[1];
+			}
+		}
+		return urlParam;
+	};
+	
+</script>
+</head>
+<body class="sapUiBody sapUiSizeCompact" role="application">
+	<h1 id="header">Test Page for <code>sap.ui.table.AnalyticalTable</code></h1>
+	<div id="content"></div>
+	<p>
+</body>
+</html>
+	

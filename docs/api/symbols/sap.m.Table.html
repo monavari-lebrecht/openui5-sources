@@ -1,0 +1,1132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.m.Table</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class sap.m.Table
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.m.ListBase" href="../symbols/sap.m.ListBase.html">ListBase</a></div>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>The Table control provides a set of sophisticated and convenience functions for responsive table design.
+For mobile devices, the recommended limit of table rows is 100(based on 4 columns) to assure proper performance. To improve initial rendering on large tables, use the "growing" feature. Please refer to the SAPUI5 Developer Guide for more information</p>
+						
+						
+						
+						
+						
+						
+							<br />
+							<i>Since: </i>1.16.
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="Constructor for a new Table.">new <a href="../symbols/sap.m.Table.html#constructor">sap.m.Table</a></b>
+										<span class='signature'>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)</span>
+										<span class='description'>Constructor for a new Table.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+						
+						
+						
+						
+					
+		
+
+
+					
+						
+						
+				
+						
+						
+						
+							
+								<div class="summary section">
+									<div class="sectionTitle">Events borrowed from class <a href="../symbols/sap.m.ListBase.html">sap.m.ListBase</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.m.ListBase.html#event:delete">delete</a>, <a href="../symbols/sap.m.ListBase.html#event:growingFinished">growingFinished</a>, <a href="../symbols/sap.m.ListBase.html#event:growingStarted">growingStarted</a>, <a href="../symbols/sap.m.ListBase.html#event:itemPress">itemPress</a>, <a href="../symbols/sap.m.ListBase.html#event:select">select</a>, <a href="../symbols/sap.m.ListBase.html#event:selectionChange">selectionChange</a>, <a href="../symbols/sap.m.ListBase.html#event:swipe">swipe</a>, <a href="../symbols/sap.m.ListBase.html#event:updateFinished">updateFinished</a>, <a href="../symbols/sap.m.ListBase.html#event:updateStarted">updateStarted</a>
+									</div>
+								</div>
+							
+						
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Creates a new subclass of class sap.m.Table with name sClassName and enriches it with the information contained in oClassInfo."><a href="../symbols/sap.m.Table.html#.extend">sap.m.Table.extend</a></b><span class='signature'>(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Creates a new subclass of class sap.m.Table with name <code>sClassName</code> and enriches it with the information contained in <code>oClassInfo</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Adds some column oColumn to the aggregation named columns."><a href="../symbols/sap.m.Table.html#addColumn">addColumn</a></b><span class='signature'>(<span title="(sap.m.Column) the column to add; if empty, nothing is inserted">oColumn</span>)</span>
+									<span class='description'>Adds some column <code>oColumn</code> to the aggregation named <code>columns</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys all the columns in the aggregation named columns."><a href="../symbols/sap.m.Table.html#destroyColumns">destroyColumns</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys all the columns in the aggregation named <code>columns</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property backgroundDesign."><a href="../symbols/sap.m.Table.html#getBackgroundDesign">getBackgroundDesign</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>backgroundDesign</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation columns."><a href="../symbols/sap.m.Table.html#getColumns">getColumns</a></b><span class='signature'>(<span title="(Boolean) set true to get the columns in an order that respects personalization settings">bSort</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Getter for aggregation columns.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property fixedLayout."><a href="../symbols/sap.m.Table.html#getFixedLayout">getFixedLayout</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>fixedLayout</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property showOverlay."><a href="../symbols/sap.m.Table.html#getShowOverlay">getShowOverlay</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>showOverlay</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Checks for the provided sap.m.Column in the aggregation named columns and returns its index if found or -1 otherwise."><a href="../symbols/sap.m.Table.html#indexOfColumn">indexOfColumn</a></b><span class='signature'>(<span title="(sap.m.Column) the column whose index is looked for.">oColumn</span>)</span>
+									<span class='description'>Checks for the provided <code>sap.m.Column</code> in the aggregation named <code>columns</code> and returns its index if found or -1 otherwise.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Inserts a column into the aggregation named columns."><a href="../symbols/sap.m.Table.html#insertColumn">insertColumn</a></b><span class='signature'>(<span title="(sap.m.Column) the column to insert; if empty, nothing is inserted">oColumn</span>, <span title="(int) the 0-based index the column should be inserted at; for a negative value of iIndex, the column is inserted at position 0; for a value greater than the current size of the aggregation, the column is inserted at the last position">iIndex</span>)</span>
+									<span class='description'>Inserts a column into the aggregation named <code>columns</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes all the controls in the aggregation named columns."><a href="../symbols/sap.m.Table.html#removeAllColumns">removeAllColumns</a></b><span class='signature'>()</span>
+									<span class='description'>Removes all the controls in the aggregation named <code>columns</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes an column from the aggregation named columns."><a href="../symbols/sap.m.Table.html#removeColumn">removeColumn</a></b><span class='signature'>(<span title="(int | string | sap.m.Column) the column to remove or its index or id">vColumn</span>)</span>
+									<span class='description'>Removes an column from the aggregation named <code>columns</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property backgroundDesign."><a href="../symbols/sap.m.Table.html#setBackgroundDesign">setBackgroundDesign</a></b><span class='signature'>(<span title="(sap.m.BackgroundDesign) new value for property backgroundDesign">oBackgroundDesign</span>)</span>
+									<span class='description'>Setter for property <code>backgroundDesign</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property fixedLayout."><a href="../symbols/sap.m.Table.html#setFixedLayout">setFixedLayout</a></b><span class='signature'>(<span title="(boolean) new value for property fixedLayout">bFixedLayout</span>)</span>
+									<span class='description'>Setter for property <code>fixedLayout</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property showOverlay."><a href="../symbols/sap.m.Table.html#setShowOverlay">setShowOverlay</a></b><span class='signature'>(<span title="(boolean) new value for property showOverlay">bShowOverlay</span>)</span>
+									<span class='description'>Setter for property <code>showOverlay</code>.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.m.ListBase.html">sap.m.ListBase</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.m.ListBase.html#addItem">addItem</a>, <a href="../symbols/sap.m.ListBase.html#attachDelete">attachDelete</a>, <a href="../symbols/sap.m.ListBase.html#attachGrowingFinished">attachGrowingFinished</a>, <a href="../symbols/sap.m.ListBase.html#attachGrowingStarted">attachGrowingStarted</a>, <a href="../symbols/sap.m.ListBase.html#attachItemPress">attachItemPress</a>, <a href="../symbols/sap.m.ListBase.html#attachSelect">attachSelect</a>, <a href="../symbols/sap.m.ListBase.html#attachSelectionChange">attachSelectionChange</a>, <a href="../symbols/sap.m.ListBase.html#attachSwipe">attachSwipe</a>, <a href="../symbols/sap.m.ListBase.html#attachUpdateFinished">attachUpdateFinished</a>, <a href="../symbols/sap.m.ListBase.html#attachUpdateStarted">attachUpdateStarted</a>, <a href="../symbols/sap.m.ListBase.html#bindItems">bindItems</a>, <a href="../symbols/sap.m.ListBase.html#destroyHeaderToolbar">destroyHeaderToolbar</a>, <a href="../symbols/sap.m.ListBase.html#destroyInfoToolbar">destroyInfoToolbar</a>, <a href="../symbols/sap.m.ListBase.html#destroyItems">destroyItems</a>, <a href="../symbols/sap.m.ListBase.html#destroySwipeContent">destroySwipeContent</a>, <a href="../symbols/sap.m.ListBase.html#detachDelete">detachDelete</a>, <a href="../symbols/sap.m.ListBase.html#detachGrowingFinished">detachGrowingFinished</a>, <a href="../symbols/sap.m.ListBase.html#detachGrowingStarted">detachGrowingStarted</a>, <a href="../symbols/sap.m.ListBase.html#detachItemPress">detachItemPress</a>, <a href="../symbols/sap.m.ListBase.html#detachSelect">detachSelect</a>, <a href="../symbols/sap.m.ListBase.html#detachSelectionChange">detachSelectionChange</a>, <a href="../symbols/sap.m.ListBase.html#detachSwipe">detachSwipe</a>, <a href="../symbols/sap.m.ListBase.html#detachUpdateFinished">detachUpdateFinished</a>, <a href="../symbols/sap.m.ListBase.html#detachUpdateStarted">detachUpdateStarted</a>, <a href="../symbols/sap.m.ListBase.html#fireDelete">fireDelete</a>, <a href="../symbols/sap.m.ListBase.html#fireGrowingFinished">fireGrowingFinished</a>, <a href="../symbols/sap.m.ListBase.html#fireGrowingStarted">fireGrowingStarted</a>, <a href="../symbols/sap.m.ListBase.html#fireItemPress">fireItemPress</a>, <a href="../symbols/sap.m.ListBase.html#fireSelect">fireSelect</a>, <a href="../symbols/sap.m.ListBase.html#fireSelectionChange">fireSelectionChange</a>, <a href="../symbols/sap.m.ListBase.html#fireSwipe">fireSwipe</a>, <a href="../symbols/sap.m.ListBase.html#fireUpdateFinished">fireUpdateFinished</a>, <a href="../symbols/sap.m.ListBase.html#fireUpdateStarted">fireUpdateStarted</a>, <a href="../symbols/sap.m.ListBase.html#getEnableBusyIndicator">getEnableBusyIndicator</a>, <a href="../symbols/sap.m.ListBase.html#getFooterText">getFooterText</a>, <a href="../symbols/sap.m.ListBase.html#getGrowing">getGrowing</a>, <a href="../symbols/sap.m.ListBase.html#getGrowingInfo">getGrowingInfo</a>, <a href="../symbols/sap.m.ListBase.html#getGrowingScrollToLoad">getGrowingScrollToLoad</a>, <a href="../symbols/sap.m.ListBase.html#getGrowingThreshold">getGrowingThreshold</a>, <a href="../symbols/sap.m.ListBase.html#getGrowingTriggerText">getGrowingTriggerText</a>, <a href="../symbols/sap.m.ListBase.html#getHeaderDesign">getHeaderDesign</a>, <a href="../symbols/sap.m.ListBase.html#getHeaderText">getHeaderText</a>, <a href="../symbols/sap.m.ListBase.html#getHeaderToolbar">getHeaderToolbar</a>, <a href="../symbols/sap.m.ListBase.html#getIncludeItemInSelection">getIncludeItemInSelection</a>, <a href="../symbols/sap.m.ListBase.html#getInfoToolbar">getInfoToolbar</a>, <a href="../symbols/sap.m.ListBase.html#getInset">getInset</a>, <a href="../symbols/sap.m.ListBase.html#getItemNavigation">getItemNavigation</a>, <a href="../symbols/sap.m.ListBase.html#getItems">getItems</a>, <a href="../symbols/sap.m.ListBase.html#getMode">getMode</a>, <a href="../symbols/sap.m.ListBase.html#getModeAnimationOn">getModeAnimationOn</a>, <a href="../symbols/sap.m.ListBase.html#getNoDataText">getNoDataText</a>, <a href="../symbols/sap.m.ListBase.html#getRememberSelections">getRememberSelections</a>, <a href="../symbols/sap.m.ListBase.html#getSelectedContexts">getSelectedContexts</a>, <a href="../symbols/sap.m.ListBase.html#getSelectedItem">getSelectedItem</a>, <a href="../symbols/sap.m.ListBase.html#getSelectedItems">getSelectedItems</a>, <a href="../symbols/sap.m.ListBase.html#getShowNoData">getShowNoData</a>, <a href="../symbols/sap.m.ListBase.html#getShowSeparators">getShowSeparators</a>, <a href="../symbols/sap.m.ListBase.html#getShowUnread">getShowUnread</a>, <a href="../symbols/sap.m.ListBase.html#getSwipeContent">getSwipeContent</a>, <a href="../symbols/sap.m.ListBase.html#getSwipeDirection">getSwipeDirection</a>, <a href="../symbols/sap.m.ListBase.html#getSwipedItem">getSwipedItem</a>, <a href="../symbols/sap.m.ListBase.html#getVisible">getVisible</a>, <a href="../symbols/sap.m.ListBase.html#getWidth">getWidth</a>, <a href="../symbols/sap.m.ListBase.html#indexOfItem">indexOfItem</a>, <a href="../symbols/sap.m.ListBase.html#insertItem">insertItem</a>, <a href="../symbols/sap.m.ListBase.html#removeAllItems">removeAllItems</a>, <a href="../symbols/sap.m.ListBase.html#removeItem">removeItem</a>, <a href="../symbols/sap.m.ListBase.html#removeSelections">removeSelections</a>, <a href="../symbols/sap.m.ListBase.html#selectAll">selectAll</a>, <a href="../symbols/sap.m.ListBase.html#setEnableBusyIndicator">setEnableBusyIndicator</a>, <a href="../symbols/sap.m.ListBase.html#setFooterText">setFooterText</a>, <a href="../symbols/sap.m.ListBase.html#setGrowing">setGrowing</a>, <a href="../symbols/sap.m.ListBase.html#setGrowingScrollToLoad">setGrowingScrollToLoad</a>, <a href="../symbols/sap.m.ListBase.html#setGrowingThreshold">setGrowingThreshold</a>, <a href="../symbols/sap.m.ListBase.html#setGrowingTriggerText">setGrowingTriggerText</a>, <a href="../symbols/sap.m.ListBase.html#setHeaderDesign">setHeaderDesign</a>, <a href="../symbols/sap.m.ListBase.html#setHeaderText">setHeaderText</a>, <a href="../symbols/sap.m.ListBase.html#setHeaderToolbar">setHeaderToolbar</a>, <a href="../symbols/sap.m.ListBase.html#setIncludeItemInSelection">setIncludeItemInSelection</a>, <a href="../symbols/sap.m.ListBase.html#setInfoToolbar">setInfoToolbar</a>, <a href="../symbols/sap.m.ListBase.html#setInset">setInset</a>, <a href="../symbols/sap.m.ListBase.html#setMode">setMode</a>, <a href="../symbols/sap.m.ListBase.html#setModeAnimationOn">setModeAnimationOn</a>, <a href="../symbols/sap.m.ListBase.html#setNoDataText">setNoDataText</a>, <a href="../symbols/sap.m.ListBase.html#setRememberSelections">setRememberSelections</a>, <a href="../symbols/sap.m.ListBase.html#setSelectedItem">setSelectedItem</a>, <a href="../symbols/sap.m.ListBase.html#setSelectedItemById">setSelectedItemById</a>, <a href="../symbols/sap.m.ListBase.html#setShowNoData">setShowNoData</a>, <a href="../symbols/sap.m.ListBase.html#setShowSeparators">setShowSeparators</a>, <a href="../symbols/sap.m.ListBase.html#setShowUnread">setShowUnread</a>, <a href="../symbols/sap.m.ListBase.html#setSwipeContent">setSwipeContent</a>, <a href="../symbols/sap.m.ListBase.html#setSwipeDirection">setSwipeDirection</a>, <a href="../symbols/sap.m.ListBase.html#setVisible">setVisible</a>, <a href="../symbols/sap.m.ListBase.html#setWidth">setWidth</a>, <a href="../symbols/sap.m.ListBase.html#swipeOut">swipeOut</a>, <a href="../symbols/sap.m.ListBase.html#unbindItems">unbindItems</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Control.html#addStyleClass">addStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#allowTextSelection">allowTextSelection</a>, <a href="../symbols/sap.ui.core.Control.html#attachBrowserEvent">attachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#clone">clone</a>, <a href="../symbols/sap.ui.core.Control.html#detachBrowserEvent">detachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#getBusy">getBusy</a>, <a href="../symbols/sap.ui.core.Control.html#getBusyIndicatorDelay">getBusyIndicatorDelay</a>, <a href="../symbols/sap.ui.core.Control.html#getIdForLabel">getIdForLabel</a>, <a href="../symbols/sap.ui.core.Control.html#getRenderer">getRenderer</a>, <a href="../symbols/sap.ui.core.Control.html#hasStyleClass">hasStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#invalidate">invalidate</a>, <a href="../symbols/sap.ui.core.Control.html#isBusy">isBusy</a>, <a href="../symbols/sap.ui.core.Control.html#onAfterRendering">onAfterRendering</a>, <a href="../symbols/sap.ui.core.Control.html#onBeforeRendering">onBeforeRendering</a>, <a href="../symbols/sap.ui.core.Control.html#placeAt">placeAt</a>, <a href="../symbols/sap.ui.core.Control.html#removeStyleClass">removeStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#rerender">rerender</a>, <a href="../symbols/sap.ui.core.Control.html#setBusy">setBusy</a>, <a href="../symbols/sap.ui.core.Control.html#setBusyIndicatorDelay">setBusyIndicatorDelay</a>, <a href="../symbols/sap.ui.core.Control.html#toggleStyleClass">toggleStyleClass</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Element.html#$">$</a>, <a href="../symbols/sap.ui.core.Element.html#addCustomData">addCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#addDependent">addDependent</a>, <a href="../symbols/sap.ui.core.Element.html#addEventDelegate">addEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#applyFocusInfo">applyFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#bindElement">bindElement</a>, <a href="../symbols/sap.ui.core.Element.html#data">data</a>, <a href="../symbols/sap.ui.core.Element.html#destroy">destroy</a>, <a href="../symbols/sap.ui.core.Element.html#destroyCustomData">destroyCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#destroyDependents">destroyDependents</a>, <a href="../symbols/sap.ui.core.Element.html#enhanceAccessibilityState">enhanceAccessibilityState</a>, <a href="../symbols/sap.ui.core.Element.html#exit">exit</a>, <a href="../symbols/sap.ui.core.Element.html#findElements">findElements</a>, <a href="../symbols/sap.ui.core.Element.html#fireEvent">fireEvent</a>, <a href="../symbols/sap.ui.core.Element.html#getCustomData">getCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#getDependents">getDependents</a>, <a href="../symbols/sap.ui.core.Element.html#getDomRef">getDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getElementBinding">getElementBinding</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusDomRef">getFocusDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusInfo">getFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#getInterface">getInterface</a>, <a href="../symbols/sap.ui.core.Element.html#getLayoutData">getLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#getMetadata">getMetadata</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip">getTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_AsString">getTooltip_AsString</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_Text">getTooltip_Text</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfCustomData">indexOfCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfDependent">indexOfDependent</a>, <a href="../symbols/sap.ui.core.Element.html#init">init</a>, <a href="../symbols/sap.ui.core.Element.html#insertCustomData">insertCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#insertDependent">insertDependent</a>, <a href="../symbols/sap.ui.core.Element.html#prop">prop</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllCustomData">removeAllCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllDependents">removeAllDependents</a>, <a href="../symbols/sap.ui.core.Element.html#removeCustomData">removeCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeDependent">removeDependent</a>, <a href="../symbols/sap.ui.core.Element.html#removeEventDelegate">removeEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#setLayoutData">setLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#setTooltip">setTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#toString">toString</a>, <a href="../symbols/sap.ui.core.Element.html#unbindElement">unbindElement</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.ManagedObject.html">sap.ui.base.ManagedObject</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.ManagedObject.html#addAggregation">addAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#addAssociation">addAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#applySettings">applySettings</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindAggregation">bindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindContext">bindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindObject">bindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindProperty">bindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#destroyAggregation">destroyAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#findAggregatedObjects">findAggregatedObjects</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAggregation">getAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAssociation">getAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBinding">getBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingContext">getBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingInfo">getBindingInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingPath">getBindingPath</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getEventingParent">getEventingParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getId">getId</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getModel">getModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getObjectBinding">getObjectBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getOriginInfo">getOriginInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getParent">getParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getProperty">getProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#hasModel">hasModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#indexOfAggregation">indexOfAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#insertAggregation">insertAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isBound">isBound</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isInvalidateSuppressed">isInvalidateSuppressed</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isTreeBinding">isTreeBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAggregation">removeAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAggregation">removeAllAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAssociation">removeAllAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAssociation">removeAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAggregation">setAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAssociation">setAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setBindingContext">setBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setModel">setModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setProperty">setProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindAggregation">unbindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindContext">unbindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindObject">unbindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindProperty">unbindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateAggregation">validateAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateProperty">validateProperty</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.EventProvider.html#attachEvent">attachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#attachEventOnce">attachEventOnce</a>, <a href="../symbols/sap.ui.base.EventProvider.html#detachEvent">detachEvent</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.m.Table</b>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)
+										</div>
+										
+										<div class="full-description">
+											Constructor for a new Table.
+</p><p>
+Accepts an object literal <code>mSettings</code> that defines initial 
+property values, aggregated and associated objects as well as event handlers. 
+</p><p>
+If the name of a setting is ambiguous (e.g. a property has the same name as an event), 
+then the framework assumes property, aggregation, association, event in that order. 
+To override this automatic resolution, one of the prefixes "aggregation:", "association:" 
+or "event:" can be added to the name of the setting (such a prefixed name must be
+enclosed in single or double quotes).
+</p><p>
+The supported settings are:
+<ul>
+<li>Properties
+<ul>
+<li><a href="#getBackgroundDesign">backgroundDesign</a> : sap.m.BackgroundDesign (default: sap.m.BackgroundDesign.Translucent)</li>
+<li><a href="#getFixedLayout">fixedLayout</a> : boolean (default: true)</li>
+<li><a href="#getShowOverlay">showOverlay</a> : boolean (default: false)</li></ul>
+</li>
+<li>Aggregations
+<ul>
+<li><a href="#getColumns">columns</a> : sap.m.Column[]</li></ul>
+</li>
+<li>Associations
+<ul></ul>
+</li>
+<li>Events
+<ul></ul>
+</li>
+</ul> 
+</p><p>
+</p><p>
+In addition, all settings applicable to the base type <a href="../symbols/sap.m.ListBase.html#constructor">sap.m.ListBase</a>
+can be used as well.
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    id for the new control, generated automatically if no id is given
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mSettings</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    initial settings for the new control
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".extend"> </a>
+										<div class="itemTitle icon">
+											sap.m.Table.extend<span class="signature">(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns function">: function</span>
+										</div>
+										<div class="full-description">
+											Creates a new subclass of class sap.m.Table with name <code>sClassName</code> 
+and enriches it with the information contained in <code>oClassInfo</code>.
+</p><p>
+<code>oClassInfo</code> might contain the same kind of informations as described in <a href="../symbols/sap.ui.core.Element.html#.extend">Element.extend</a>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sClassName</b>
+													</td>
+													<td class="methodItemDesc">
+												    name of the class to be created
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oClassInfo</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    object literal with informations about the class
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>FNMetaImpl</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    constructor function for the metadata object. If not given, it defaults to sap.ui.core.ElementMetadata.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{function}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the created class / constructor function
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addColumn"> </a>
+										<div class="itemTitle icon">
+											addColumn<span class="signature">(<span title="(sap.m.Column) the column to add; if empty, nothing is inserted">oColumn</span>)</span>
+											<span class="light" title="returns sap.m.Table">: <a href="../symbols/sap.m.Table.html">sap.m.Table</a></span>
+										</div>
+										<div class="full-description">
+											Adds some column <code>oColumn</code> 
+to the aggregation named <code>columns</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.Column.html">sap.m.Column</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oColumn</b>
+													</td>
+													<td class="methodItemDesc">
+												    the column to add; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Table.html">sap.m.Table</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyColumns"> </a>
+										<div class="itemTitle icon">
+											destroyColumns<span class="signature">()</span>
+											<span class="light" title="returns sap.m.Table">: <a href="../symbols/sap.m.Table.html">sap.m.Table</a></span>
+										</div>
+										<div class="full-description">
+											Destroys all the columns in the aggregation 
+named <code>columns</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Table.html">sap.m.Table</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getBackgroundDesign"> </a>
+										<div class="itemTitle icon">
+											getBackgroundDesign<span class="signature">()</span>
+											<span class="light" title="returns sap.m.BackgroundDesign">: <a href="../symbols/sap.m.BackgroundDesign.html">sap.m.BackgroundDesign</a></span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>backgroundDesign</code>.
+This property is used to set the background color of the table. Depending on the theme you can change the state of the background from "Solid" over "Translucent" to "Transparent".
+</p><p>
+Default value is <code>Translucent</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.BackgroundDesign.html">sap.m.BackgroundDesign</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>backgroundDesign</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getColumns"> </a>
+										<div class="itemTitle icon">
+											getColumns<span class="signature">(<span title="(Boolean) set true to get the columns in an order that respects personalization settings">bSort</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.m.Column[]">: <a href="../symbols/sap.m.Column.html">sap.m.Column</a>[]</span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation columns.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bSort</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    set true to get the columns in an order that respects personalization settings
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Column.html">sap.m.Column</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														columns of the Table
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getFixedLayout"> </a>
+										<div class="itemTitle icon">
+											getFixedLayout<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>fixedLayout</code>.
+Defines the algorithm to be used to layout the table cells, rows, and columns.
+</p><p>
+If you set this property to false, then table is rendered with "auto" layout algorithm. This means, the width of the table and its cells depends on the content thereof. The column width is set by the widest unbreakable content in the cells. This can make the rendering slow, since the browser needs to read through all the content in the table, before determining the final layout.
+Note: Since table does not have own scroll container, setting fixedLayout to false can force the table to overflow and this can cause visual problems. So, we highly suggest to use this property when table has a few columns in wide screens or horizontal scroll container(e.g Dialog, Popover) to handle overflow.
+Please note that with "auto" layout mode Column width property is taken into account as minimum width.
+</p><p>
+By default, table is rendered with "fixed" layout algorithm. This means the horizontal layout only depends on the table's width and the width of the columns, not the contents of the cells. Cells in subsequent rows do not affect column widths. This allows a browser to layout the table faster than the auto table layout since the browser can begin to display the table once the first row has been analyzed.
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.22</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>fixedLayout</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getShowOverlay"> </a>
+										<div class="itemTitle icon">
+											getShowOverlay<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>showOverlay</code>.
+Setting this property to true will show an overlay on top of the Table content and users cannot click anymore on the Table content.
+</p><p>
+Default value is <code>false</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.22.1</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>showOverlay</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="indexOfColumn"> </a>
+										<div class="itemTitle icon">
+											indexOfColumn<span class="signature">(<span title="(sap.m.Column) the column whose index is looked for.">oColumn</span>)</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Checks for the provided <code>sap.m.Column</code> in the aggregation named <code>columns</code> 
+and returns its index if found or -1 otherwise.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.Column.html">sap.m.Column</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oColumn</b>
+													</td>
+													<td class="methodItemDesc">
+												    the column whose index is looked for.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the index of the provided control in the aggregation if found, or -1 otherwise
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="insertColumn"> </a>
+										<div class="itemTitle icon">
+											insertColumn<span class="signature">(<span title="(sap.m.Column) the column to insert; if empty, nothing is inserted">oColumn</span>, <span title="(int) the 0-based index the column should be inserted at; for a negative value of iIndex, the column is inserted at position 0; for a value greater than the current size of the aggregation, the column is inserted at the last position">iIndex</span>)</span>
+											<span class="light" title="returns sap.m.Table">: <a href="../symbols/sap.m.Table.html">sap.m.Table</a></span>
+										</div>
+										<div class="full-description">
+											Inserts a column into the aggregation named <code>columns</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.Column.html">sap.m.Column</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oColumn</b>
+													</td>
+													<td class="methodItemDesc">
+												    the column to insert; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    the <code>0</code>-based index the column should be inserted at; for 
+            a negative value of <code>iIndex</code>, the column is inserted at position 0; for a value 
+            greater than the current size of the aggregation, the column is inserted at 
+            the last position
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Table.html">sap.m.Table</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeAllColumns"> </a>
+										<div class="itemTitle icon">
+											removeAllColumns<span class="signature">()</span>
+											<span class="light" title="returns sap.m.Column[]">: <a href="../symbols/sap.m.Column.html">sap.m.Column</a>[]</span>
+										</div>
+										<div class="full-description">
+											Removes all the controls in the aggregation named <code>columns</code>.<br/>
+Additionally unregisters them from the hosting UIArea.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Column.html">sap.m.Column</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														an array of the removed elements (might be empty)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeColumn"> </a>
+										<div class="itemTitle icon">
+											removeColumn<span class="signature">(<span title="(int | string | sap.m.Column) the column to remove or its index or id">vColumn</span>)</span>
+											<span class="light" title="returns sap.m.Column">: <a href="../symbols/sap.m.Column.html">sap.m.Column</a></span>
+										</div>
+										<div class="full-description">
+											Removes an column from the aggregation named <code>columns</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int|string|<a href="../symbols/sap.m.Column.html">sap.m.Column</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vColumn</b>
+													</td>
+													<td class="methodItemDesc">
+												    the column to remove or its index or id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Column.html">sap.m.Column</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the removed column or null
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setBackgroundDesign"> </a>
+										<div class="itemTitle icon">
+											setBackgroundDesign<span class="signature">(<span title="(sap.m.BackgroundDesign) new value for property backgroundDesign">oBackgroundDesign</span>)</span>
+											<span class="light" title="returns sap.m.Table">: <a href="../symbols/sap.m.Table.html">sap.m.Table</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>backgroundDesign</code>.
+</p><p>
+Default value is <code>Translucent</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.BackgroundDesign.html">sap.m.BackgroundDesign</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oBackgroundDesign</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>backgroundDesign</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Table.html">sap.m.Table</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setFixedLayout"> </a>
+										<div class="itemTitle icon">
+											setFixedLayout<span class="signature">(<span title="(boolean) new value for property fixedLayout">bFixedLayout</span>)</span>
+											<span class="light" title="returns sap.m.Table">: <a href="../symbols/sap.m.Table.html">sap.m.Table</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>fixedLayout</code>.
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bFixedLayout</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>fixedLayout</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.22</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Table.html">sap.m.Table</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setShowOverlay"> </a>
+										<div class="itemTitle icon">
+											setShowOverlay<span class="signature">(<span title="(boolean) new value for property showOverlay">bShowOverlay</span>)</span>
+											<span class="light" title="returns sap.m.Table">: <a href="../symbols/sap.m.Table.html">sap.m.Table</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>showOverlay</code>.
+</p><p>
+Default value is <code>false</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bShowOverlay</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>showOverlay</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.22.1</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Table.html">sap.m.Table</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

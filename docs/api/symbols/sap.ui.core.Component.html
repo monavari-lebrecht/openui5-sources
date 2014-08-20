@@ -1,0 +1,721 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.core.Component</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static abstract">
+					
+					abstract Class sap.ui.core.Component
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.ui.base.ManagedObject" href="../symbols/sap.ui.base.ManagedObject.html">ManagedObject</a></div>
+					
+					
+					
+						<div class="classRelation subclasses"><span class="caption">known direct subclasses: </span><a title="sap.ui.app.Application" href="../symbols/sap.ui.app.Application.html">Application</a>, <a title="sap.ui.core.UIComponent" href="../symbols/sap.ui.core.UIComponent.html">UIComponent</a></div>
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>Base Class for Component.</p>
+						
+						
+						
+						
+						
+						
+							<br />
+							<i>Since: </i>1.9.2.
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static abstract">
+									<div class="itemName">
+										<b class="icon" title="Creates and initializes a new component with the given sId and settings.">new <a href="../symbols/sap.ui.core.Component.html#constructor">sap.ui.core.Component</a></b>
+										<span class='signature'>(<span title="(string) optional id for the new control; generated automatically if no non-empty id is given Note: this can be omitted, no matter whether mSettings will be given or not!">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) optional map/JSON-object with initial settings for the new component instance">mSettings</span><i class="help" title="Optional parameter">?</i>)</span>
+										<span class='description'>Creates and initializes a new component with the given <code>sId</code> and settings.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+						
+						
+						
+						
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Returns the ID of the owner UI Component in which the given Component or View has been created using  UIComponent.prototype.createContent(); "><a href="../symbols/sap.ui.core.Component.html#.getOwnerIdFor">sap.ui.core.Component.getOwnerIdFor</a></b><span class='signature'>(<span title="(sap.ui.core.Component|sap.ui.core.mvc.View) Object to retrieve the owner for">oObject</span>)</span>
+									<span class='description'>Returns the ID of the owner UI Component in which the given Component or View has been created using <pre> UIComponent.prototype.createContent(); </pre></span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Cleans up the component instance before destruction."><a href="../symbols/sap.ui.core.Component.html#exit">exit</a></b><span class='signature'>()</span>
+									<span class='description'>Cleans up the component instance before destruction.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns user specific data object"><a href="../symbols/sap.ui.core.Component.html#getComponentData">getComponentData</a></b><span class='signature'>()</span>
+									<span class='description'>Returns user specific data object</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the event bus of this component."><a href="../symbols/sap.ui.core.Component.html#getEventBus">getEventBus</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the event bus of this component.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title=""><a href="../symbols/sap.ui.core.Component.html#getInterface">getInterface</a></b><span class='signature'>()</span>
+									<span class='description'></span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Initializes the Component instance after creation."><a href="../symbols/sap.ui.core.Component.html#init">init</a></b><span class='signature'>()</span>
+									<span class='description'>Initializes the Component instance after creation.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="The hook which gets called when the static configuration of the component has been changed by some configuration extension."><a href="../symbols/sap.ui.core.Component.html#onConfigChange">onConfigChange</a></b><span class='signature'>(<span title="(string) The error message.">sConfigKey</span>)</span>
+									<span class='description'>The hook which gets called when the static configuration of the component has been changed by some configuration extension.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="The window error hook."><a href="../symbols/sap.ui.core.Component.html#onError">onError</a></b><span class='signature'>(<span title="(string) The error message.">sMessage</span>, <span title="(string) The file where the error occurred">sFile</span>, <span title="(number) The line number of the error">iLine</span>)</span>
+									<span class='description'>The window error hook.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="The window before unload hook."><a href="../symbols/sap.ui.core.Component.html#onWindowBeforeUnload">onWindowBeforeUnload</a></b><span class='signature'>()</span>
+									<span class='description'>The window before unload hook.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="The window unload hook."><a href="../symbols/sap.ui.core.Component.html#onWindowUnload">onWindowUnload</a></b><span class='signature'>()</span>
+									<span class='description'>The window unload hook.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.ManagedObject.html">sap.ui.base.ManagedObject</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.ManagedObject.html#addAggregation">addAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#addAssociation">addAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#applySettings">applySettings</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindAggregation">bindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindContext">bindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindObject">bindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindProperty">bindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#clone">clone</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#destroy">destroy</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#destroyAggregation">destroyAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#findAggregatedObjects">findAggregatedObjects</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAggregation">getAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAssociation">getAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBinding">getBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingContext">getBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingInfo">getBindingInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingPath">getBindingPath</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getEventingParent">getEventingParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getId">getId</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getModel">getModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getObjectBinding">getObjectBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getOriginInfo">getOriginInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getParent">getParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getProperty">getProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#hasModel">hasModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#indexOfAggregation">indexOfAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#insertAggregation">insertAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#invalidate">invalidate</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isBound">isBound</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isInvalidateSuppressed">isInvalidateSuppressed</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isTreeBinding">isTreeBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAggregation">removeAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAggregation">removeAllAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAssociation">removeAllAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAssociation">removeAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAggregation">setAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAssociation">setAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setBindingContext">setBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setModel">setModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setProperty">setProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#toString">toString</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindAggregation">unbindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindContext">unbindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindObject">unbindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindProperty">unbindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateAggregation">validateAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateProperty">validateProperty</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.EventProvider.html#attachEvent">attachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#attachEventOnce">attachEventOnce</a>, <a href="../symbols/sap.ui.base.EventProvider.html#detachEvent">detachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#fireEvent">fireEvent</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static abstract">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.ui.core.Component</b>(<span title="(string) optional id for the new control; generated automatically if no non-empty id is given Note: this can be omitted, no matter whether mSettings will be given or not!">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) optional map/JSON-object with initial settings for the new component instance">mSettings</span><i class="help" title="Optional parameter">?</i>)
+										</div>
+										
+										<div class="full-description">
+											Creates and initializes a new component with the given <code>sId</code> and
+settings.
+</p><p>
+The set of allowed entries in the <code>mSettings</code> object depends on
+the concrete subclass and is described there. See <a href="../symbols/sap.ui.core.Component.html">sap.ui.core.Component</a>
+for a general description of this argument.
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    optional id for the new control; generated automatically if
+           no non-empty id is given Note: this can be omitted, no matter
+           whether <code>mSettings</code> will be given or not!
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mSettings</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    optional map/JSON-object with initial settings for the
+           new component instance
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".getOwnerIdFor"> </a>
+										<div class="itemTitle icon">
+											sap.ui.core.Component.getOwnerIdFor<span class="signature">(<span title="(sap.ui.core.Component|sap.ui.core.mvc.View) Object to retrieve the owner for">oObject</span>)</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Returns the ID of the owner UI Component in which the given Component or View has been created using 
+<pre>
+  UIComponent.prototype.createContent();
+</pre>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Component.html">sap.ui.core.Component</a>|<a href="../symbols/sap.ui.core.mvc.View.html">sap.ui.core.mvc.View</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oObject</b>
+													</td>
+													<td class="methodItemDesc">
+												    Object to retrieve the owner for
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.15.1</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the owner component ID
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="exit"> </a>
+										<div class="itemTitle icon protected">
+											exit<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Cleans up the component instance before destruction.
+</p><p>
+Applications must not call this hook method directly, it is called by the
+framework when the element is <a href="#destroy">destroyed</a>.
+</p><p>
+Subclasses of Component should override this hook to implement any necessary
+cleanup.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getComponentData"> </a>
+										<div class="itemTitle icon">
+											getComponentData<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Returns user specific data object
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.15.0</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														
+													</td>
+													<td class="methodItemDesc">
+														object componentData
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getEventBus"> </a>
+										<div class="itemTitle icon">
+											getEventBus<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.EventBus">: <a href="../symbols/sap.ui.core.EventBus.html">sap.ui.core.EventBus</a></span>
+										</div>
+										<div class="full-description">
+											Returns the event bus of this component.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.20.0</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.EventBus.html">sap.ui.core.EventBus</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the event bus
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getInterface"> </a>
+										<div class="itemTitle icon">
+											getInterface<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+											<div class="heading">See:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemDesc">
+														<a href="../symbols/sap.ui.base.Object.html#getInterface">sap.ui.base.Object#getInterface</a>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="init"> </a>
+										<div class="itemTitle icon protected">
+											init<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Initializes the Component instance after creation.
+</p><p>
+Applications must not call this hook method directly, it is called by the
+framework while the constructor of an Component is executed.
+</p><p>
+Subclasses of Component should override this hook to implement any necessary
+initialization. <b>When overriding this function make sure to invoke the
+init function of the UIComponent as well!</b>
+											
+												<p class="fileName itemName"><i>Defined in: </i> <span class="icon">&lt;sap\ui\core\UIComponent.js&gt;.</span></p>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="onConfigChange"> </a>
+										<div class="itemTitle icon">
+											onConfigChange<span class="signature">(<span title="(string) The error message.">sConfigKey</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											The hook which gets called when the static configuration of the component 
+has been changed by some configuration extension.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sConfigKey</b>
+													</td>
+													<td class="methodItemDesc">
+												    The error message.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.15.1</dd>
+											</dl>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="onError"> </a>
+										<div class="itemTitle icon">
+											onError<span class="signature">(<span title="(string) The error message.">sMessage</span>, <span title="(string) The file where the error occurred">sFile</span>, <span title="(number) The line number of the error">iLine</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											The window error hook. Override this method in your Component class implementation 
+to listen to unhandled errors.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sMessage</b>
+													</td>
+													<td class="methodItemDesc">
+												    The error message.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sFile</b>
+													</td>
+													<td class="methodItemDesc">
+												    The file where the error occurred
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{number}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iLine</b>
+													</td>
+													<td class="methodItemDesc">
+												    The line number of the error
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.15.1</dd>
+											</dl>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="onWindowBeforeUnload"> </a>
+										<div class="itemTitle icon">
+											onWindowBeforeUnload<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											The window before unload hook. Override this method in your Component class 
+implementation, to handle cleanup before the real unload or to prompt a question 
+to the user, if the component should be exited.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.15.1</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														return a string if a prompt should be displayed to the user 
+                 confirming closing the component (e.g. when the component is not yet saved).
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="onWindowUnload"> </a>
+										<div class="itemTitle icon">
+											onWindowUnload<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											The window unload hook. Override this method in your Component class 
+implementation, to handle cleanup of the component once the window
+will be unloaded (e.g. closed).
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.15.1</dd>
+											</dl>
+										
+										
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

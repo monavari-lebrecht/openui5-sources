@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=19823130140802747"/>
+<title>Using Other Objects Instead of Controllers</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loioc24ea6d4d2a34792a7ea241128ad8550">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Using Other Objects Instead of Controllers</h1>
+<div class="body taskbody"><p class="shortdesc"/>
+<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">The oController object given when instantiating a fragment does not need to be an object of
+				type <samp class="ph codeph">sap.ui.core.mvc.Controller</samp>. It is entirely up to the fragment
+				what to expect from this object. This object is passed to the
+					<samp class="ph codeph">createContent</samp> method of JS fragments. In case of the
+				declarative fragment types, that is XML, or HTML fragments, the event handler
+				methods are searched on this object. This means that in most cases instead of a real
+				controller object any JavaScript object could be given - provided it has the
+				required methods. </p>
+
+			<p class="p">The following example of an HTML fragment can be used in an environment where no MVC is
+				used.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+var oDummyController = { 
+	doSomething: function() { 
+		// do whatever should happen when the button in the fragment is pushed...
+	} 
+};
+
+var myButton  = sap.ui.htmlfragment( "my.useful.UiPartZ", oDummyController); 
+// this specific fragment needs a controller and gets a dummy controller here. </pre></div>
+
+		</div></div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Using Other Objects Instead of Controllers";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

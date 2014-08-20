@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="When NavContainer.to(…) or NavContainer.back(…) are called, the NavContainer triggers events and the application can register for this events. The navigate event is fired before the transition animation starts, and the afterNavigate event is fired when the animation has been completed."/>
+<meta name="description" content="When NavContainer.to(…) or NavContainer.back(…) are called, the NavContainer triggers events and the application can register for this events. The navigate event is fired before the transition animation starts, and the afterNavigate event is fired when the animation has been completed."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=3279019698124114"/>
+<title>Events Fired Centrally by the App or the NavContainer</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio6ec0a7e1d3c64412a673b7dabe28c02b">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Events Fired Centrally by the App or the NavContainer</h1>
+<div class="body conbody"><p class="shortdesc">When <samp class="ph codeph">NavContainer.to(…)</samp> or <samp class="ph codeph">NavContainer.back(…)</samp> are
+		called, the <samp class="ph codeph">NavContainer</samp> triggers events and the application can register
+		for this events. The <samp class="ph codeph">navigate</samp> event is fired before the transition
+		animation starts, and the <samp class="ph codeph">afterNavigate</samp> event is fired when the animation
+		has been completed.</p>
+<p class="p">The events contain a lot of information about the page that is left and the target page of the
+			navigation, as well as what kind of navigation is happening.</p>
+<p class="p">Example:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">app.attachNavigate(function(evt) {
+   var isBack = !evt.getParameter("isTo"); // there are several types of back animation, but we want the general direction only
+   alert("Navigating " + (isBack ? "back " : "") + " to page " + evt.getParameter("toId"));
+});</pre></div>
+<div class="section"><div class="section_title">API References</div><div type="API References">
+			
+			<ul class="ul" id="loio6ec0a7e1d3c64412a673b7dabe28c02b__ul_l2b_pfx_xl"><li class="li"><a class="extlink" href="http://help.sap.com/disclaimer?site=https://sapui5.hana.ondemand.com/sdk/%23docs/api/symbols/sap.m.NavContainer.html#event:afterNavigate">event:afterNavigate<img src="images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></li>
+<li class="li"><a class="extlink" href="http://help.sap.com/disclaimer?site=https://sapui5.hana.ondemand.com/sdk/%23docs/api/symbols/sap.m.NavContainer.html#event:navigate">event:navigate<img src="images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></li>
+</ul>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Events Fired Centrally by the App or the NavContainer";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

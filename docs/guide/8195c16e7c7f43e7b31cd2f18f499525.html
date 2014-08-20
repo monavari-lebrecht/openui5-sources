@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=9490307315146124"/>
+<title>Loading of Additional Resources During Bootstrap</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio8195c16e7c7f43e7b31cd2f18f499525">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Loading of Additional Resources During Bootstrap</h1>
+<div class="body taskbody"><p class="shortdesc"/>
+<div class="section context" id="loio8195c16e7c7f43e7b31cd2f18f499525__context_N10014_N10011_N10001"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">During bootstrap, SAPUI5 runtime loads and interprets the following additional resources for
+				each control library that is loaded:</p>
+
+		</div><div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand" id="loio8195c16e7c7f43e7b31cd2f18f499525__step_N10020_N1001D_N10011_N10001"><span class="ph cmd">Library bootstrap file
+						<samp class="ph codeph">/''context-path''/resources/''library-name''/library.js</samp>
+				</span><div class="itemgroup stepresult">A JavaScript file that contains the JavaScript code for all enumeration types
+					provided by the library as well as library-specific initialization code that is
+					independent from the controls in the library. The file calls the
+						<samp class="ph codeph">sap.ui.getCore().initLibrary</samp> method with an object that
+					describes the content of the library (list of contained controls, elements
+					etc.). For libraries that have been developed with SAPUI5 application
+					development tools or the SAPUI5 offline build tools, this file is generated
+					automatically during the build.</div></li>
+<li class="li step stepexpand" id="loio8195c16e7c7f43e7b31cd2f18f499525__step_N10031_N1001D_N10011_N10001"><span class="ph cmd">Library style sheet file
+						<samp class="ph codeph">/''context-path''/resources/''library-name''/themes/''theme-name''/library.css</samp>
+				</span><div class="itemgroup stepresult">A standard CSS file that contains all styles relevant for this library. For
+					libraries that have been developed with the SAPUI5 application development
+					tools, this file is generated automatically during the build. </div></li>
+</ol>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Loading of Additional Resources During Bootstrap";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

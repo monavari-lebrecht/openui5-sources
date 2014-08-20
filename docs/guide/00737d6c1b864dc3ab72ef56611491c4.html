@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=9275107047927502"/>
+<title>Cyclic Dependencies</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio00737d6c1b864dc3ab72ef56611491c4">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Cyclic Dependencies</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">The functionality in two modules can be interdependent, for example, module A requires module B
+			to execute, and module B requires module A. The <samp class="ph codeph">jQuery.sap.require</samp>
+			function ensures that the execution of a calling module only continues when the
+			required module has been loaded and executed. Consequently, cyclic dependencies cannot
+			be resolved and would cause an endless series of requests
+			(A-&gt;B-&gt;A-&gt;B-&gt;...).</p>
+<p class="p">To avoid this, use the following workaround: As soon as a module A has been loaded and is about
+			to execute, it is regarded as <em class="ph i">declared</em>. So, when this module A embeds another
+			module B which has not been loaded, module B will be loaded and executed. If B now again
+			requires A, then the dependency resolution runtime will find that A has been declared
+			already (despite the fact that its execution has not been finished yet) and simply
+			returns. This workaround helps to break the endless loop, but it doesn't re-ensure the
+			original promise of <samp class="ph codeph">jQuery.sap.require</samp>. </p>
+<p class="p">Cyclic modules have to deal with that gap on their own. There are several ways/best
+			practices how to do this: </p>
+<ul class="ul" id="loio00737d6c1b864dc3ab72ef56611491c4__ul_oly_lsr_m4"><li class="li">
+				<p class="p">Variant 1: Merge A and B </p>
+
+				<p class="p">If the conflicts can not be resolved easily, or if the modules are so highly
+					related that they will be used together most of the time, then merging them into
+					one module is the most simple solution. </p>
+
+			</li>
+<li class="li">
+				<p class="p"> Variant 2: Interlaced Execution of A and B </p>
+
+				<p class="p">This variant makes use of the fact that the module loading takes place exactly at
+					the source location where the jQuery.sap.require function is executed. Let's
+					assume that the content of modules A and B can be structured as follows: </p>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">// Module A, Part A.1
+   
+
+    // Module Section A.1, does not depend on Module B and provides all code that module B depends on.
+
+
+    jQuery.sap.require("B");
+
+
+    // Module Section A.2, might depend on code in Module Section B.1</pre></div>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">// Module B, Part B.1
+  
+
+    // Module Section B.1, does not depend on Module A and provides all code that module A depends on.
+
+
+    jQuery.sap.require("A");
+
+
+    // Module Section B.2, might depend on code in Module Section A.1</pre></div>
+
+				<p class="p">Further assume (WLOG) that module A is loaded first. Then section A.1 will be
+					executed and will be available to the outside world before the
+						<samp class="ph codeph">require('B')</samp> is executed. During the require, the framework
+					will detect that B is not available yet, will load and execute it. The execution
+					starts with section B.1 which succeeds as it does not depend on A. When the
+					execution of B reaches the <samp class="ph codeph">require('A')</samp> statement, the
+					framework detects that A has been loaded already and continues without loading A
+					again. But remember, that the code from section A.2 is not available yet. The
+					execution of B however continues and succeeds as - by assumption - B.2 does not
+					depend on A.2. Now, the first <samp class="ph codeph">require('B')</samp> succeeds and returns
+					and section A.2 will be executed. And it might use the code from section B.1.
+				</p>
+
+			</li>
+</ul>
+<p class="p">Procedure and result are similar in the case that B is loaded first. </p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Cyclic Dependencies";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

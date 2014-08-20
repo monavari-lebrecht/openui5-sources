@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="When a model instance is created, the instance has a default binding mode. You can overwrite this default setting."/>
+<meta name="description" content="When a model instance is created, the instance has a default binding mode. You can overwrite this default setting."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=658460699144259"/>
+<title>Setting the Default Binding Mode</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio1a08f70951a744b1a7962b09665cc92f">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Setting the Default Binding Mode</h1>
+<div class="body taskbody"><p class="shortdesc">When a model instance is created, the instance has a default binding mode. You can
+		overwrite this default setting.</p>
+<div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand"><span class="ph cmd">To change the default binding mode directly after model creation, call the
+						<samp class="ph codeph">setDefaultBindingMode</samp> method on the model as follows: </span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oModel = new sap.ui.model.json.JSONModel();
+oModel.setDefaultBindingMode(sap.ui.model.BindingMode.OneWay);</pre></div>
+
+				<div class="itemgroup stepresult">
+					<p class="p">In this example, all new bindings for the model will have the one-way binding
+						mode by default. </p>
+
+				</div></li>
+<li class="li step stepexpand"><span class="ph cmd">You can, however, only set supported binding modes as default binding mode. You
+					can check if a binding mode is supported as follows:</span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oModel = new sap.ui.model.json.JSONModel();
+if (oModel.isBindingModeSupported(sap.ui.model.BindingMode.OneTime)) { // true
+    oModel.setDefaultBindingMode(sap.ui.model.BindingMode.OneTime); 
+}</pre></div>
+
+				</li>
+</ol>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Setting the Default Binding Mode";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

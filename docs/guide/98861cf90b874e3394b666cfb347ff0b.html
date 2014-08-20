@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=878101029696047"/>
+<title>View Replacement</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio98861cf90b874e3394b666cfb347ff0b">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">View Replacement</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">If the extension of a view is not sufficient to meet your requirement, you can replace a
+			standard view with a customized view. The following code snippet gives an example for a
+			view replacement.</p>
+<p class="p">The following view is delivered in the standard application:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;mvc:View xmlns="sap.ui.commons" xmlns:mvc="sap.ui.core.mvc"&gt;
+    &lt;TextView text="SAP View 'Sub1' - this one should have been replaced by the customer View"&gt;&lt;/TextView&gt;  
+&lt;/mvc:View&gt;</pre></div>
+<p class="p">You want to replace this standard view with the following customized view:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;mvc:View xmlns="sap.ui.commons" xmlns:mvc="sap.ui.core.mvc"&gt;
+    &lt;TextView text="Custom View 'Sub1' - this one replaces the original SAP View 'Sub1'"&gt;&lt;/TextView&gt;    
+&lt;/mvc:View&gt;</pre></div>
+<p class="p">You connect the two views in customizing:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">customizing: {
+    .....some more content
+    "sap.ui.viewReplacements": {
+        "samples.components.ext.sap.Sub1": {
+            viewName: "samples.components.ext.customer.CustomSub1",
+            type: "XML"
+        }
+    },
+    .....some more content</pre></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="View Replacement";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

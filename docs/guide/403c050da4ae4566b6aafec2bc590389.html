@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=030456032469563965"/>
+<title>View Extension</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio403c050da4ae4566b6aafec2bc590389">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">View Extension</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">SAPUI5 uses extension points to indicate the position within a view where you can insert
+            customized content. You insert the extension point in a standard view. In the code
+            snippet below, three extension points are defined: <samp class="ph codeph">extension1</samp>,
+                <samp class="ph codeph">extension2</samp>. and <samp class="ph codeph">extension</samp>.</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;mvc:View xmlns="sap.ui.commons"  xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"&gt;
+    &lt;core:ExtensionPoint name="extension1" /&gt;
+    &lt;TextView text="SAP View 'Sub2' - this one is extended by the customer and there should be a button after this text"&gt;&lt;/TextView&gt;    
+    &lt;core:ExtensionPoint name="extension2" /&gt;   
+    &lt;core:ExtensionPoint name="extension3" /&gt;   
+&lt;/mvc:View&gt;</pre></div>
+<p class="p">In the component customizing you can then assign the customized view to the respective
+            extension point:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">customizing: {
+        
+    "sap.ui.viewExtensions": {
+        "samples.components.ext.sap.Sub2": {
+            "extension2": {
+                className: "sap.ui.core.Fragment",
+                fragmentName: "samples.components.ext.customer.CustomFrag1",
+                type: "XML"
+            },
+            "extension3": {
+                className: "sap.ui.core.mvc.View",
+                viewName: "samples.components.ext.customer.CustomSubSubView1",
+                type: "XML"
+            }
+        },
+    .....some more content
+</pre></div>
+<p class="p">The following code snippet gives an example of a customized view that is assigned to
+                <samp class="ph codeph">extension2</samp>:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;mvc:View xmlns="sap.ui.commons"  xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"&gt;
+    &lt;core:ExtensionPoint name="extension1" /&gt;
+    &lt;TextView text="Customer View 'SubSubView1' - this one extends the original SAP View 'Sub2' - and even custom Views can be extended:"&gt;&lt;/TextView&gt;   
+    &lt;core:ExtensionPoint name="extension2" /&gt;   
+&lt;/mvc:View&gt;
+</pre></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="View Extension";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

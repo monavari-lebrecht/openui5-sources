@@ -1,0 +1,962 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - jQuery</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Static Class jQuery
+					</h1>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>Provides base functionality of the SAP jQuery plugin as extension of the jQuery framework.<br/>
+See also <a href="http://api.jquery.com/jQuery/">jQuery</a> for details.<br/>
+Although these functions appear as static ones, they are meant to be used on jQuery instances.<br/>
+If not stated differently, the functions follow the fluent interface paradigm and return the jQuery instance for chaining of statements.
+</p><p>
+Example for usage of an instance method:
+<pre>
+  var oRect = jQuery("#myDiv").rect();
+  alert("Top Position: " + oRect.top);
+</pre></p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+						
+						
+							<div class="summary section">
+								<div class="sectionTitle">Namespaces &amp; Classes</div>
+								<div class="sectionItems">
+								
+									<div class="sectionItem itemName namespace static">
+										<b class="icon" title=""><a href="../symbols/jQuery.device.html">device</a></b>
+										<span class='description'></span>
+									</div>
+								
+									<div class="sectionItem itemName static">
+										<b class="icon" title="Check the jQuery.Event class documentation available under &quot;http://www.jquery.com&quot; and &quot;http://api.jquery.com/category/events/event-object/&quot; for details."><a href="../symbols/jQuery.Event.html">Event</a></b>
+										<span class='description'>Check the jQuery.Event class documentation available under "http://www.jquery.com"<br/> and "http://api.jquery.com/category/events/event-object/" for details.</span>
+									</div>
+								
+									<div class="sectionItem itemName namespace static">
+										<b class="icon" title="Holds information about the current operating system"><a href="../symbols/jQuery.os.html">os</a></b>
+										<span class='description'>Holds information about the current operating system</span>
+									</div>
+								
+									<div class="sectionItem itemName namespace static">
+										<b class="icon" title="Root Namespace for the jQuery plug-in provided by SAP AG."><a href="../symbols/jQuery.sap.html">sap</a></b>
+										<span class='description'>Root Namespace for the jQuery plug-in provided by SAP AG.</span>
+									</div>
+								
+									<div class="sectionItem itemName namespace static">
+										<b class="icon" title="Holds information about the browser's capabilities and quirks."><a href="../symbols/jQuery.support.html">support</a></b>
+										<span class='description'>Holds information about the browser's capabilities and quirks.</span>
+									</div>
+								
+								</div>
+							</div>
+						
+					
+		
+			
+
+					
+		
+
+
+					
+						
+						
+						
+						
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Extension function to the jQuery.fn which identifies SAPUI5 controls in the given jQuery context."><a href="../symbols/jQuery.html#control">control</a></b><span class='signature'>(<span title="(int) optional parameter to return the control instance at the given idx's position in the array.">idx</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Extension function to the jQuery.fn which identifies SAPUI5 controls in the given jQuery context.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Sets or gets the position of the cursor in an element that supports cursor positioning"><a href="../symbols/jQuery.html#cursorPos">cursorPos</a></b><span class='signature'>(<span title="(int) The cursor position to set (or no parameter to retrieve the cursor position)">iPos</span>)</span>
+									<span class='description'>Sets or gets the position of the cursor in an element that supports cursor positioning</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the first focusable domRef in a given container (the first element of the collection)"><a href="../symbols/jQuery.html#firstFocusableDomRef">firstFocusableDomRef</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the first focusable domRef in a given container (the first element of the collection)</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns true if the first element has a set tabindex"><a href="../symbols/jQuery.html#hasTabIndex">hasTabIndex</a></b><span class='signature'>()</span>
+									<span class='description'>Returns true if the first element has a set tabindex</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the last focusable domRef in a given container"><a href="../symbols/jQuery.html#lastFocusableDomRef">lastFocusableDomRef</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the last focusable domRef in a given container</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the outer HTML of the given HTML element"><a href="../symbols/jQuery.html#outerHTML">outerHTML</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the outer HTML of the given HTML element</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Gets the next parent DOM element with a given attribute and attribute value starting above the first given element"><a href="../symbols/jQuery.html#parentByAttribute">parentByAttribute</a></b><span class='signature'>(<span title="(string) Name of the attribute">sAttibute</span>, <span title="(string) Value of the attribute (optional)">sValue</span>)</span>
+									<span class='description'>Gets the next parent DOM element with a given attribute and attribute value starting above the first given element</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns a rectangle describing the current visual positioning of the first DOM object in the collection (or null if no element was given)"><a href="../symbols/jQuery.html#rect">rect</a></b><span class='signature'>()</span>
+									<span class='description'>Returns a rectangle describing the current visual positioning of the first DOM object in the collection (or null if no element was given)</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns whether a point described by X and Y is inside this Rectangle's boundaries"><a href="../symbols/jQuery.html#rectContains">rectContains</a></b><span class='signature'>(<span title="(int) int">iPosX</span>, <span title="(int) int">iPosY</span>)</span>
+									<span class='description'>Returns whether a point described by X and Y is inside this Rectangle's boundaries</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title=""><a href="../symbols/jQuery.html#root">root</a></b><span class='signature'>()</span>
+									<span class='description'></span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Sets or returns the scrollLeft value of the first element in the given jQuery collection in right-to-left mode."><a href="../symbols/jQuery.html#scrollLeftRTL">scrollLeftRTL</a></b><span class='signature'>()</span>
+									<span class='description'>Sets or returns the scrollLeft value of the first element in the given jQuery collection in right-to-left mode.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the MIRRORED scrollLeft value of the first element in the given jQuery collection in right-to-left mode."><a href="../symbols/jQuery.html#scrollRightRTL">scrollRightRTL</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the MIRRORED scrollLeft value of the first element in the given jQuery collection in right-to-left mode.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Sets the text selection in the first element of the collection"><a href="../symbols/jQuery.html#selectText">selectText</a></b><span class='signature'>(<span title="(int) Start position of the selection (inclusive)">iStart</span>, <span title="(int) End position of the selection (exclusive)">iEnd</span>)</span>
+									<span class='description'>Sets the text selection in the first element of the collection</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title=""><a href="../symbols/jQuery.html#uiarea">uiarea</a></b><span class='signature'>()</span>
+									<span class='description'></span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+					
+		
+		
+
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod'>
+										<a name="control"> </a>
+										<div class="itemTitle icon">
+											control<span class="signature">(<span title="(int) optional parameter to return the control instance at the given idx's position in the array.">idx</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.core.Control[] | sap.ui.core.Control | null">: <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>[] | sap.ui.core.Control | null</span>
+										</div>
+										<div class="full-description">
+											Extension function to the jQuery.fn which identifies SAPUI5 controls in the given jQuery context.
+											
+												<p class="fileName itemName"><i>Defined in: </i> <span class="icon">&lt;jquery.sap.ui.js&gt;.</span></p>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>idx</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    optional parameter to return the control instance at the given idx's position in the array.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>[] | sap.ui.core.Control | null}</span> 
+													</td>
+													<td class="methodItemDesc">
+														depending on the given context and idx parameter an array of controls, an instance or null.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="cursorPos"> </a>
+										<div class="itemTitle icon">
+											cursorPos<span class="signature">(<span title="(int) The cursor position to set (or no parameter to retrieve the cursor position)">iPos</span>)</span>
+											<span class="light" title="returns int | jQuery">: int | jQuery</span>
+										</div>
+										<div class="full-description">
+											Sets or gets the position of the cursor in an element that supports cursor positioning
+											
+												<p class="fileName itemName"><i>Defined in: </i> <span class="icon">&lt;jquery.sap.dom.js&gt;.</span></p>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iPos</b>
+													</td>
+													<td class="methodItemDesc">
+												    The cursor position to set (or no parameter to retrieve the cursor position)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>0.9.0</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int | jQuery}</span> 
+													</td>
+													<td class="methodItemDesc">
+														The cursor position (or the jQuery collection if the position has been set)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="firstFocusableDomRef"> </a>
+										<div class="itemTitle icon">
+											firstFocusableDomRef<span class="signature">()</span>
+											<span class="light" title="returns Element">: Element</span>
+										</div>
+										<div class="full-description">
+											Returns the first focusable domRef in a given container (the first element of the collection)
+											
+												<p class="fileName itemName"><i>Defined in: </i> <span class="icon">&lt;jquery.sap.dom.js&gt;.</span></p>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>0.9.0</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{Element}</span> 
+													</td>
+													<td class="methodItemDesc">
+														The domRef
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="hasTabIndex"> </a>
+										<div class="itemTitle icon">
+											hasTabIndex<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Returns true if the first element has a set tabindex
+											
+												<p class="fileName itemName"><i>Defined in: </i> <span class="icon">&lt;jquery.sap.dom.js&gt;.</span></p>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>0.9.0</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														If the first element has a set tabindex
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="lastFocusableDomRef"> </a>
+										<div class="itemTitle icon">
+											lastFocusableDomRef<span class="signature">()</span>
+											<span class="light" title="returns Element">: Element</span>
+										</div>
+										<div class="full-description">
+											Returns the last focusable domRef in a given container
+											
+												<p class="fileName itemName"><i>Defined in: </i> <span class="icon">&lt;jquery.sap.dom.js&gt;.</span></p>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>0.9.0</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{Element}</span> 
+													</td>
+													<td class="methodItemDesc">
+														The last domRef
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="outerHTML"> </a>
+										<div class="itemTitle icon">
+											outerHTML<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Returns the outer HTML of the given HTML element
+											
+												<p class="fileName itemName"><i>Defined in: </i> <span class="icon">&lt;jquery.sap.dom.js&gt;.</span></p>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>0.9.0</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														outer HTML
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="parentByAttribute"> </a>
+										<div class="itemTitle icon">
+											parentByAttribute<span class="signature">(<span title="(string) Name of the attribute">sAttibute</span>, <span title="(string) Value of the attribute (optional)">sValue</span>)</span>
+											<span class="light" title="returns Element">: Element</span>
+										</div>
+										<div class="full-description">
+											Gets the next parent DOM element with a given attribute and attribute value starting above the first given element
+											
+												<p class="fileName itemName"><i>Defined in: </i> <span class="icon">&lt;jquery.sap.dom.js&gt;.</span></p>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sAttibute</b>
+													</td>
+													<td class="methodItemDesc">
+												    Name of the attribute
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sValue</b>
+													</td>
+													<td class="methodItemDesc">
+												    Value of the attribute (optional)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>0.9.0</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{Element}</span> 
+													</td>
+													<td class="methodItemDesc">
+														null or the DOM reference
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="rect"> </a>
+										<div class="itemTitle icon">
+											rect<span class="signature">()</span>
+											<span class="light" title="returns object">: object</span>
+										</div>
+										<div class="full-description">
+											Returns a rectangle describing the current visual positioning of the first DOM object in the collection
+(or null if no element was given)
+											
+												<p class="fileName itemName"><i>Defined in: </i> <span class="icon">&lt;jquery.sap.dom.js&gt;.</span></p>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>0.9.0</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{object}</span> 
+													</td>
+													<td class="methodItemDesc">
+														An object with left, top, width and height
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="rectContains"> </a>
+										<div class="itemTitle icon">
+											rectContains<span class="signature">(<span title="(int) int">iPosX</span>, <span title="(int) int">iPosY</span>)</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Returns whether a point described by X and Y is inside this Rectangle's boundaries
+											
+												<p class="fileName itemName"><i>Defined in: </i> <span class="icon">&lt;jquery.sap.dom.js&gt;.</span></p>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iPosX</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iPosY</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>0.18.0</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Whether X and Y are inside this Rectangle's boundaries
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="root"> </a>
+										<div class="itemTitle icon">
+											root<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											
+											
+												<p class="fileName itemName"><i>Defined in: </i> <span class="icon">&lt;jquery.sap.ui.js&gt;.</span></p>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="scrollLeftRTL"> </a>
+										<div class="itemTitle icon">
+											scrollLeftRTL<span class="signature">()</span>
+											<span class="light" title="returns jQuery | int">: <a href="../symbols/jQuery.html">jQuery</a> | int</span>
+										</div>
+										<div class="full-description">
+											Sets or returns the scrollLeft value of the first element in the given jQuery collection in right-to-left mode.
+Precondition: The element is rendered in RTL mode.
+</p><p>
+Reason for this method is that the major browsers use three different values for the same scroll position when in RTL mode.
+This method hides those differences and returns/applies the same value that would be returned in LTR mode: The distance in px
+how far the given container is scrolled away from the leftmost scroll position.
+</p><p>
+Returns "undefined" if no element and no iPos is given.
+											
+												<p class="fileName itemName"><i>Defined in: </i> <span class="icon">&lt;jquery.sap.dom.js&gt;.</span></p>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>0.20.0</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/jQuery.html">jQuery</a> | int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														The jQuery collection if iPos is given, otherwise the scroll position, counted from the leftmost position
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="scrollRightRTL"> </a>
+										<div class="itemTitle icon">
+											scrollRightRTL<span class="signature">()</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Returns the MIRRORED scrollLeft value of the first element in the given jQuery collection in right-to-left mode.
+Precondition: The element is rendered in RTL mode.
+</p><p>
+Reason for this method is that the major browsers return three different values for the same scroll position when in RTL mode.
+This method hides those differences and returns the value that would be returned in LTR mode if the UI would be mirrored horizontally:
+The distance in px how far the given container is scrolled away from the rightmost scroll position.
+</p><p>
+Returns "undefined" if no element is given.
+											
+												<p class="fileName itemName"><i>Defined in: </i> <span class="icon">&lt;jquery.sap.dom.js&gt;.</span></p>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>0.20.0</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														The scroll position, counted from the rightmost position
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="selectText"> </a>
+										<div class="itemTitle icon">
+											selectText<span class="signature">(<span title="(int) Start position of the selection (inclusive)">iStart</span>, <span title="(int) End position of the selection (exclusive)">iEnd</span>)</span>
+											<span class="light" title="returns jQuery">: <a href="../symbols/jQuery.html">jQuery</a></span>
+										</div>
+										<div class="full-description">
+											Sets the text selection in the first element of the collection
+											
+												<p class="fileName itemName"><i>Defined in: </i> <span class="icon">&lt;jquery.sap.dom.js&gt;.</span></p>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iStart</b>
+													</td>
+													<td class="methodItemDesc">
+												    Start position of the selection (inclusive)
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iEnd</b>
+													</td>
+													<td class="methodItemDesc">
+												    End position of the selection (exclusive)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>0.9.0</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/jQuery.html">jQuery</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														The jQuery collection
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="uiarea"> </a>
+										<div class="itemTitle icon">
+											uiarea<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											
+											
+												<p class="fileName itemName"><i>Defined in: </i> <span class="icon">&lt;jquery.sap.ui.js&gt;.</span></p>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

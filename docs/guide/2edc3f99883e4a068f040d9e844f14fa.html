@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=858944724383233"/>
+<title>I18n Resource Text Customization</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio2edc3f99883e4a068f040d9e844f14fa">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">I18n Resource Text Customization</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">You can enhance the <samp class="ph codeph">sap.ui.model.resource.ResourceModel</samp> with customized
+			resource bundles. For this, the <samp class="ph codeph">ResourceBundle</samp> provides the possibility
+			to enhance it with other bundles:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oModel = new sap.ui.model.resource.ResourceModel({bundleUrl:"./testdata/messages.properties"});
+oModel.enhance({bundleUrl:"./testdata/messages_custom.properties"});</pre></div>
+<p class="p">An enhanced <samp class="ph codeph">ResourceModel</samp> tries to resolve the i18n texts from the customized
+			bundle first. If a text does not exist there, it tries to look up the i18n text in the
+			standard bundle.</p>
+<p class="p">The additional resource bundles are not part of the customizing configuration, but can be added
+			as part of a controller extension.</p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="I18n Resource Text Customization";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

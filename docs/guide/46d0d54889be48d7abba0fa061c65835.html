@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=581895548910073"/>
+<title>Submitting the SAPUI5 Application Project to the SAPUI5 Repository</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio46d0d54889be48d7abba0fa061c65835">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Submitting the SAPUI5 Application Project to the SAPUI5 Repository</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">Before submitting, make sure that </p>
+<ul class="ul" id="loio46d0d54889be48d7abba0fa061c65835__ul_ndb_kz2_bj"><li class="li">
+				<p class="p">You have created a SAPUI5 application.</p>
+
+			</li>
+<li class="li">
+				<p class="p">You have shared your SAPUI5 application project</p>
+
+			</li>
+</ul>
+<p class="p">To submit the SAPUI5 application project to the SAPUI5 repository, proceed as follows: </p>
+<ol class="ol" id="loio46d0d54889be48d7abba0fa061c65835__ol_odb_kz2_bj"><li class="li">
+				<p class="p">In Eclipse, choose <span class="ph menucascade"><img src="images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Team</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Submit</span> <img src="images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the context menu of the selected SAPUI5 application project.
+					If a logon is required, enter your password in the logon popup and choose
+						<span class="ph uicontrol">OK</span>. </p>
+
+				<p class="p"><img class="image" id="loio46d0d54889be48d7abba0fa061c65835__image_rgm_g52_3j" src="458a1e0c7ba5443c9638971af6489477.image" alt="SAPUI5 Tools Repository Submit" title="SAPUI5 Tools Repository Submit"/></p>
+
+				<p class="p">If you submit changes of a SAPUI5 application project, the SAPUI5 runtime library version of
+					the server is compared against the versions which have been installed in
+					Eclipse. A warning is shown, if they do not match.</p>
+
+			</li>
+<li class="li">
+				<p class="p">Select all files. You get a list of files that have been modified (added,
+					updated, or deleted) in the client. The dialog shows the files for which submit
+					conflicts exist, for example, if another user has submitted a newer file version
+					in the meantime. Submit conflicts must be resolved before submission. If a file
+					is already locked in a transport request, the corresponding request is shown in
+					the dialog. If the SAPUI5 BSP application belongs to a transportable ABAP
+					package, you have to choose a transport request. Note that transport requests
+					are not automatically released when the files are submitted; you still have to
+					release them using transaction SE09 in the underlying ABAP system. </p>
+
+				<p class="p"><img class="image" id="loio46d0d54889be48d7abba0fa061c65835__image_dy5_452_3j" src="29d35be17c5840c6932e084a9230a74a.image" alt="SAPUI5 ApplTools Submit Popup" title="SAPUI5 ApplTools Submit Popup"/></p>
+
+			</li>
+<li class="li">Choose <em class="ph i">Finish</em>. </li>
+</ol>
+<p class="p">All files have been submitted to the SAPUI5 Repository and are available under the
+			corresponding SAPUI5 BSP application. The SAPUI5 application project can now be run from
+			a Web browser calling the underlying ABAP system. You have the convenient option in the
+			context menu for an HTML page of starting a browser with the correct URL from the BSP
+			application displayed in the ABAP Workbench (SE80).</p>
+<div class="note note"><span class="notetitle">Note</span> 
+			<p class="p">If you use the team provider, the file type is determined based on the Eclipse
+				preferences. If you submit binary files and the submit fails with an "End of line
+				marker not supported" error, the binary file type is probably not registered as
+				binary. To change that in Eclipse, choose <span class="ph menucascade"><img src="images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Window</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Preferences</span> <img src="images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> and then <span class="ph menucascade"><img src="images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Team</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">File Content</span> <img src="images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> and register the binary file type as type "binary".</p>
+
+			<p class="p">If you switch the file type of an uploaded file, delete the file and submit, then
+				change the file type and finally create it new and submit the new file.</p>
+
+		</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Submitting the SAPUI5 Application Project to the SAPUI5 Repository";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

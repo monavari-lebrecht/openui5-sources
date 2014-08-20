@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html>
+
+<!-- 
+	  Tested classes: sap.ui.test.OpaPlugin
+	-->
+
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>qUnit Page for sap.ui.test.OpaPlugin</title>
+
+<script id="sap-ui-bootstrap" type="text/javascript"
+	src="../../../../../resources/sap-ui-core.js"
+	data-sap-ui-theme="sap_bluecrystal" data-sap-ui-noConflict="true"
+	data-sap-ui-libs="sap.ui.commons,sap.ui.ux3"
+	data-sap-ui-resourceroots='{"sap.ui.testlib":"testdata/uilib/", "example.mvc": "testdata/mvc/"}'>
+	
+</script>
+
+<link rel="stylesheet" href="../../../../../resources/sap/ui/thirdparty/qunit.css" type="text/css" media="screen" />
+<script type="text/javascript" src="../../../../../resources/sap/ui/thirdparty/qunit.js"></script>
+<script type="text/javascript" src="../../../../../resources/sap/ui/qunit/QUnitUtils.js"></script>
+<script src="../../../../../resources/sap/ui/thirdparty/sinon.js"></script>
+<script src="../../../../../resources/sap/ui/thirdparty/sinon-qunit.js"></script>
+
+<script>
+jQuery.sap.require("sap.ui.test.OpaPlugin");
+jQuery.sap.require("sap.ui.test.opaQunit");
+var OpaPlugin = sap.ui.test.OpaPlugin;
+
+module("getControlByGlobalId");
+
+test("Should retrieve a control by a global id", function() {
+	// Arrange
+	var sId = "myId",
+		oButton = new sap.ui.commons.Button(sId);
+
+	oButton.placeAt("qunit-fixture");
+	sap.ui.getCore().applyChanges();
+
+	// System under Test
+	var oPlugin = new OpaPlugin();
+
+	// Act
+	oRetrievedButton = oPlugin.getControlByGlobalId({ id : sId });
+
+	// Assert
+	strictEqual(oButton, oRetrievedButton);
+
+	//Cleanup
+	oButton.destroy();
+});
+
+test("Should retrieve multiple controls by global id's", function() {
+	// Arrange
+	var oButton = new sap.ui.commons.Button(),
+		oButton2 = new sap.ui.commons.Button();
+
+	oButton.placeAt("qunit-fixture");
+	oButton2.placeAt("qunit-fixture");
+	sap.ui.getCore().applyChanges();
+
+	// System under Test
+	var oPlugin = new OpaPlugin();
+
+	// Act
+	aRetrievedButtons = oPlugin.getControlByGlobalId({ id : [oButton.getId(), oButton2.getId()] });
+
+	// Assert
+	strictEqual(aRetrievedButtons.length, 2, "did contain 2 buttons");
+	strictEqual(aRetrievedButtons[0], oButton, "did contain first button");
+	strictEqual(aRetrievedButtons[1], oButton2, "did contain second button");
+
+	//Cleanup
+	oButton.destroy();
+	oButton2.destroy();
+});
+
+test("Should retrieve multiple controls by global id's with regexp", function() {
+	// Arrange
+	var oButton = new sap.ui.commons.Button(),
+		oButton2 = new sap.ui.commons.Button();
+
+	oButton.placeAt("qunit-fixture");
+	oButton2.placeAt("qunit-fixture");
+	sap.ui.getCore().applyChanges();
+
+	// System under Test
+	var oPlugin = new OpaPlugin();
+
+	// Act
+	aRetrievedButtons = oPlugin.getControlByGlobalId({ id : /.*button.*/ });
+
+	// Assert
+	strictEqual(aRetrievedButtons.length, 2, "did contain 2 buttons");
+	strictEqual(aRetrievedButtons[0], oButton, "did contain first button");
+	strictEqual(aRetrievedButtons[1], oButton2, "did contain second button");
+
+	//Cleanup
+	oButton.destroy();
+	oButton2.destroy();
+});
+
+test("Should get an empty array if no control was found searching by regexp", function() {
+	// System under Test
+	var oPlugin = new OpaPlugin();
+
+	// Act
+	aRetrievedButtons = oPlugin.getControlByGlobalId({ id : /.*button.*/ });
+
+	// Assert
+	strictEqual(aRetrievedButtons.length, 0, "did not contain buttons");
+});
+
+test("Should get an empty array if no control was found searching multiple ids", function() {
+	// System under Test
+	var oPlugin = new OpaPlugin();
+
+	// Act
+	aRetrievedButtons = oPlugin.getControlByGlobalId({ id : ["myId" , "bar"] });
+
+	// Assert
+	strictEqual(aRetrievedButtons.length, 0, "did not contain buttons");
+});
+
+test("Should get null when no control is found with single id", function() {
+	// System under Test
+	var oPlugin = new OpaPlugin();
+
+	// Act
+	oRetrievedButtons = oPlugin.getControlByGlobalId({ id : "myId" });
+
+	// Assert
+	strictEqual(oRetrievedButtons, null, "did return null");
+});
+
+test("Should get null when nothing is provided", function() {
+	// System under Test
+	var oPlugin = new OpaPlugin();
+
+	// Act
+	oRetrievedButtons = oPlugin.getControlByGlobalId({});
+
+	// Assert
+	strictEqual(oRetrievedButtons, null, "did return null");
+});
+
+
+</script>
+</head>
+<body>
+	<h1 id="qunit-header">qUnit Page for sap.ui.test.OpaPlugin</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture"></div>
+
+</body>
+</html>

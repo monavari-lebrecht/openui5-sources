@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=38781469578359173"/>
+<title>SAP Smart Business Modeler Apps</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio28bb30fccab54b4a965c00d02a6ae343">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">SAP Smart Business Modeler Apps</h1>
+<div class="body conbody"><p class="shortdesc"/>
+<p class="p">The SAP Smart Business modeler apps are a set of SAP Fiori apps that you use to create and
+			manage SAP Smart Business entities.</p>
+<div class="section"><div class="section_title">Roles</div><div type="Roles">
+			
+			<p class="p">You must be assigned the following roles to use SAP Smart Business applications:</p>
+
+			
+<div class="tablenoborder"><table summary="" id="loio28bb30fccab54b4a965c00d02a6ae343__table_gn2_r3j_n4" class="table" frame="border" border="1" rules="all"><thead class="thead" align="left"><tr class="row"><th class="entry" valign="top" width="50%" id="d195728e27">SAP HANA Roles</th>
+<th class="entry" valign="top" width="50%" id="d195728e29">SAP ABAP Roles</th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry" valign="top" width="50%" headers="d195728e27 "><span class="ph sap-technical-name sap-technical-name">sap.hba.r.sb.core.roles::SAP_SMART_BUSINESS_MODELER</span></td>
+<td class="entry" valign="top" width="50%" headers="d195728e29 "><span class="ph sap-technical-name sap-technical-name">/UI2/SAP_KPIMOD_TCR_S</span></td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="50%" headers="d195728e27 "><span class="ph sap-technical-name sap-technical-name">sap.hba.r.sb.core.roles::SAP_SMART_BUSINESS_RUNTIME</span></td>
+<td class="entry" valign="top" width="50%" headers="d195728e29 "><span class="ph sap-technical-name sap-technical-name">/UI2/SAP_KPIFRW5_TCR_S</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+		</div></div>
+<div class="section"><div class="section_title">Key Features</div><div type="Key Features">
+			
+			<p class="p">The following SAP Smart Business modeler apps are available:</p>
+
+			<ul class="ul" id="loio28bb30fccab54b4a965c00d02a6ae343__ul_lct_2jj_n4"><li class="li">Create KPI<p class="p">You use this app to create KPIs or OPIs. Key performance indicators identify
+						and measure the key metrics of a business. Operational performance
+						indicators are similar to KPIs in that both measure the metrics of an aspect
+						of a business. But while a KPI looks at broad categories (for example, car
+						sales in particular country or region), an OPI measures a specific process
+						or operation - typically one at a bottleneck for a business. For example, an
+						OPI for a shipping company would look at orders shipped on time. You can
+						save KPIs or OPIs in an intermediate state if the complete information is
+						not yet available (for more information, see <a class="xref" href="2ee2365cbbdc405bad32401fee1a9fbb.html">Create KPI</a> under <span class="ph uicontrol">Related
+							Links</span> in this document). For more information about statues,
+						see section <span class="ph uicontrol">SAP Smart Business Entity Statuses</span> in
+						this document.</p>
+</li>
+<li class="li">Create Evaluation<p class="p">You create an evaluation to define a specific representation
+						of a KPI or OPI, which means that you define a certain selection of the KPI
+						data, the targets and thresholds that are relevant, together with some
+						additional information. For example, you have defined a KPI to monitor car
+						sales in a particular country. You can then create an evaluation that
+						restricts the results to a certain area of that country for which one sales
+						representative is responsible.</p>
+<p class="p">You must specify an active KPI or OPI
+						when you are creating an evaluation. The KPI data is copied to the
+						evaluation as a proposal but you can overwrite it later.</p>
+</li>
+<li class="li">Manage KPI Authorizations<p class="p">You use this app to authorize users or user roles
+						for evaluations. An SAP Smart Business user can only see an evaluation, its
+						tiles, and its drill-down views at runtime when you assign the user or role
+						to the evaluation using this app and when you have activated all
+						entities.</p>
+<div class="note note"><span class="notetitle">Note</span> An entity that you create using the SAP Smart Business
+						modeler apps is not automatically visible to you when you logon to the
+						runtime environment unless you have been authorized for the related
+						evaluation.</div>
+</li>
+<li class="li">Configure KPI Tiles<p class="p">With this app, you configure tiles for active evaluations as the
+						starting point for further analysis of a KPI or and OPI. At runtime, you
+						click the KPI or OPI tile to open either an SAP Smart Business generic
+						drill-down application or another type of specified analysis screen (for
+						example, <span class="ph pname">SAP Lumira</span>). You can choose how to visualize the
+						tile by selecting one of  the available tile types (numeric, comparison,
+						trend, or actual vs. target).</p>
+</li>
+</ul>
+
+			<ul class="ul" id="loio28bb30fccab54b4a965c00d02a6ae343__ul_dx5_mlj_n4"><li class="li">Configure KPI Drill-Down<p class="p">You use this app to configure different views, charts, filters,
+						and associated KPIs for an active evaluation. You configure the drill-down
+						so that you can analyze the KPI or OPI in further detail at runtime.
+					</p>
+</li>
+<li class="li">Manage KPI Associations<p class="p">This app allows you to define a relationship between
+						active KPIs. You can choose to define either a supporting or a conflicting
+						association depending on the relationship between the two KPIs. Supporting
+						associations apply when the two KPIs influence each other in a positive way,
+						for example, the net advertisement cost and the cost of manufacturing for
+						goods contribute to the cost of goods sold KPI. Conflicting associations
+						apply when two KPIs influence each other in a negative way, for example, the
+						net sales and net cost KPIs are associated in a conflicting way to provide a
+						value for the net revenue KPI.</p>
+</li>
+<li class="li">KPI Workspace<p class="p">The KPI Workspace app allows you to access all of your KPIs or
+						OPIs in one place. You can activate, edit, delete, or duplicate a KPI or OPI
+						as well as add them to your favorites.</p>
+</li>
+<li class="li">Migration Tool<p class="p">Former versions of SAP Smart Business used a different
+						architecture. You can use the migration tool app to migrate old KPIs and
+						related entities to the latest version of SAP Smart Business, which offers
+						improved usability and a newly designed user interface.</p>
+</li>
+</ul>
+
+		</div></div>
+<div class="section"><div class="section_title">Interaction Between SAP Smart Business Modeler Apps</div><div type="Interaction Between SAP Smart Business Modeler Apps">
+			
+			<p class="p">KPIs and OPIs are the central entities of SAP Smart Business. You can create KPIs and OPIs
+				using the <span class="ph pname">Create KPI</span> app. Based on this KPI or OPI, you can then
+				create an evaluation using the <span class="ph pname">Create Evaluation</span> app. </p>
+
+			<p class="p">When you have created an evaluation, you must choose a tile to visualize the KPI or OPI using
+				the Configure KPI Tiles app. This lets you define how the tile appears in the
+				runtime environment (for example, the SAP Fiori Launchpad). You must then define
+				what happens when the SAP Smart Business user clicks the KPI or OPI tile at runtime.
+				You define this using the <span class="ph pname">Configure KPI Drill-Down</span> app.</p>
+
+			<p class="p">If required, you can define associations between KPIs using the <span class="ph pname">Manage KPI
+					Associations</span> app. You can add associated KPIs to a KPI’s drill-down
+				where they are displayed in the header area in the form of KPI mini charts.Finally,
+				you must define which user or user role can access the evaluation and related
+				entities at runtime. You do this using the <span class="ph pname">Manage KPI Authorizations</span>
+				app.</p>
+
+			<p class="p">You can manage all KPIs, OPIs, and evaluations that are available in the system through the
+					<span class="ph pname">KPI Workspace</span> app. If you have used previous versions of SAP
+				Smart Business, you can migrate your existing KPIs and related entities to the new
+				SAP Smart Business version using the <span class="ph pname">Migration Tool</span> app.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">SAP Smart Business Modeler App Users</div><div type="SAP Smart Business Modeler App Users">
+			
+			<p class="p">The SAP Fiori Launchpad enables you to find and retain the modeler apps required to
+				carry out your work (for example, by using role-based allocation of default apps and
+				app groups and personalization to add or remove additional apps from a global
+				catalog).</p>
+
+			<p class="p">To create new KPIs, you must understand related KPIs from the same and from different
+				business areas. You must also be aware of the implications from a business
+				perspective of introducing the new KPI. Therefore, the <span class="ph pname">Create KPI</span> and
+				the <span class="ph pname">Manage KPI Associations</span> apps are used principally by data
+				analysts or operations office employees. In addition, technical knowledge and
+				alignment with development teams that build SAP HANA views is required to link a KPI
+				to a data source and provide the required input parameters. </p>
+
+			<p class="p">IT administrative knowledge is required to authorize users and roles for evaluations
+				and to define navigation targets for KPI tiles. Therefore, the <span class="ph pname">Manage KPI
+					Authorizations</span>, <span class="ph pname">Create Evaluation</span>, and <span class="ph pname">Configure
+					KPI Tiles</span> apps are used principally by IT personnel.</p>
+
+			<p class="p">Business knowledge is required to configure the drill-down views correctly and as a
+				result the <span class="ph pname">Configure KPI Drill-Down</span> app is used mainly by data
+				analysts and power users that are close to business users who benefit from and use
+				the drill-down views at runtime. </p>
+
+			<p class="p">All user groups benefit from the versatility that the <span class="ph pname">KPI Workspace</span>
+				app provides to search and browse through the KPI repository.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">SAP Smart Business Entity Statuses</div><div type="SAP Smart Business Entity Statuses">
+			
+			
+<div class="tablenoborder"><table summary="" id="loio28bb30fccab54b4a965c00d02a6ae343__table_mcy_gmj_n4" class="table" frame="border" border="1" rules="all"><thead class="thead" align="left"><tr class="row"><th class="entry" valign="top" width="50%" id="d195728e201">Status </th>
+<th class="entry" valign="top" width="50%" id="d195728e203">Description</th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry" valign="top" width="50%" headers="d195728e201 ">New</td>
+<td class="entry" valign="top" width="50%" headers="d195728e203 ">Entities are created but not yet active. All new entities that you create using the
+								SAP Smart Business modeler apps have this status by default. New
+								entities do not appear at runtime until you activate them. </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="50%" headers="d195728e201 ">Active</td>
+<td class="entry" valign="top" width="50%" headers="d195728e203 ">Active entities are visible in the runtime environment (for example, in the SAP Fiori
+								Launchpad). When you edit an already active entity, a draft version
+								is created and changes only become visible at runtime when you
+								reactivate the entity.</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="50%" headers="d195728e201 ">Draft</td>
+<td class="entry" valign="top" width="50%" headers="d195728e203 ">When you edit an already active entity, a draft copy is created
+								and all further changes are applied to this copy until it is
+								activated. They become visible at runtime when you activate the
+								draft and at that point it replaces the existing active
+									version.<div class="note note"><span class="notetitle">Note</span> Authorizations and drill-down configurations do
+									not have draft versions. They are immediately in an active state
+									when you save them.</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="2ee2365cbbdc405bad32401fee1a9fbb.html">Create KPI</a></div>
+<div><a class="link" href="4348711baf09464284eaea36751c2628.html">Create Evaluation</a></div>
+<div><a class="link" href="11cd984817f24248b4291899b510f466.html">Manage KPI Authorizations</a></div>
+<div><a class="link" href="cc627d93b81e4fb5ae034f1e3c949c9f.html" title="The Configure KPI Tiles app allows you to create tile visualizations for an active evaluation.">Configure KPI Tiles</a></div>
+<div><a class="link" href="ba3330d57f2f4361bd108adcde23cfdd.html" title="The Configure KPI Drill-Down app allows you to configure the generic drill-down application that you navigate to when you click the KPI or OPI tile in the runtime environment.">Configure KPI Drill-Down</a></div>
+<div><a class="link" href="1288e9cb3d4b432082ae408efac8d7ae.html" title="The Manage Associations app allows you to create associations between KPIs or OPIs. Two types of association are available: supporting or conflicting.">Manage KPI Associations</a></div>
+<div><a class="link" href="cefc748420eb49d2b0e639ca0c86c6c0.html" title="The KPI Workspace app allows you to manage all of your KPIs and OPIs and their evaluations.">KPI Workspace</a></div>
+<div><a class="link" href="77543cb4350147ac84937fc16a4182bb.html" title="The Migration Tool app allows you to migrate content that you created with SAP Smart Business 1.0 (SP 02) wave 4 KPI modeler to the new SAP Smart Business wave 5 version.">Migration Tool</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="SAP Smart Business Modeler Apps";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

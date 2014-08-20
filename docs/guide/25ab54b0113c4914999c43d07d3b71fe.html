@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=23336245801608302"/>
+<title>Using Extended Syntax in XML and HTML Views</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio25ab54b0113c4914999c43d07d3b71fe">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Using Extended Syntax in XML and HTML Views</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">In XML views, you use extended syntax for calculated fields as follows:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;mvc:View controllerName="testdata.complexsyntax" xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc" xmlns="sap.ui.commons" xmlns:table="sap.ui.table"
+    xmlns:html="http://www.w3.org/1999/xhtml"&gt;
+    &lt;html:h2&gt;
+        &lt;Label text="Hello Mr. {path:'/singleEntry/firstName', formatter:'.myFormatter'}, {/singleEntry/lastName}"&gt;&lt;/Label&gt;
+    &lt;/html:h2&gt;
+    &lt;table:Table rows="{/table}"&gt;
+        &lt;table:columns&gt;
+            &lt;table:Column&gt;
+                &lt;Label text="Name"&gt;&lt;/Label&gt;
+                &lt;table:template&gt;
+                    &lt;TextField value="{path:'gender', formatter:'.myGenderFormatter'} {firstName}, {lastName}"&gt;&lt;/TextField&gt;
+                &lt;/table:template&gt;
+            &lt;/table:Column&gt;
+            &lt;table:Column&gt;
+                &lt;Label text="Birthday"&gt;&lt;/Label&gt;
+                &lt;table:template&gt;
+                    &lt;TextField value="{parts:[{path:'birthday/day'},{path:'birthday/month'},{path:'birthday/year'}], formatter:'my.globalFormatter'}"&gt;&lt;/TextField&gt;
+                &lt;/table:template&gt;
+            &lt;/table:Column&gt;
+        &lt;/table:columns&gt;
+    &lt;/table:Table&gt;
+    &lt;html:h2&gt;
+        &lt;Label text="A type test: {path:'/singleEntry/amount', type:'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 1}} EUR"&gt;&lt;/Label&gt;
+    &lt;/html:h2&gt;
+&lt;/mvc:View&gt;
+</pre></div>
+<p class="p">In HTML views, you use extended syntax for calculated fields as follows:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;template data-controller-name="testdata.complexsyntax"&gt;
+    &lt;div&gt;
+        &lt;h2&gt;&lt;div data-sap-ui-type="sap.ui.core.HTML" id="MyHTMLControl" data-content="&lt;div&gt;Hello Mr. {/singleEntry/firstName}, {/singleEntry/lastName}&lt;/div&gt;"&gt;&lt;/div&gt;&lt;/h2&gt;
+        &lt;div data-sap-ui-type="sap.ui.table.Table" id="MyTable" data-rows="{/table}"&gt;
+            &lt;div data-sap-ui-aggregation="columns"&gt;
+                &lt;div data-sap-ui-type="sap.ui.table.Column"&gt;
+                    &lt;div data-sap-ui-type="sap.ui.commons.Label" data-text="Name"&gt;&lt;/div&gt;
+                    &lt;div data-sap-ui-aggregation="template"&gt;
+                        &lt;div data-sap-ui-type="sap.ui.commons.TextField" data-value="{firstName}, {lastName}"&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div data-sap-ui-type="sap.ui.table.Column"&gt;
+                    &lt;div data-sap-ui-type="sap.ui.commons.Label" data-text="Birthday"&gt;&lt;/div&gt;
+                    &lt;div data-sap-ui-aggregation="template"&gt;
+                        &lt;div data-sap-ui-type="sap.ui.commons.TextField" data-value="{parts:[{path:'birthday/day'},{path:'birthday/month'},{path:'birthday/year'}], formatter:'my.globalFormatter'}"&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;h2&gt;&lt;div data-sap-ui-type="sap.ui.commons.Label" id="MyLabelType" data-text="A type test: {path:'/singleEntry/amount', type:'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 1}} EUR"&gt;&lt;/div&gt;&lt;/h2&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+</pre></div>
+<p class="p">Example of the JSView. It is not declarative view, but you may use the same syntax as in
+			XML- and HTMLView, just do not forget to pass a controller instance as a parameter</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.jsview("testdata.complexsyntax", {
+    
+    getControllerName: function() {
+        return "testdata.complexsyntax";
+    },
+
+    /**
+     * 
+     * @param oController may be null
+     * @returns {sap.ui.cre.Control}
+     */
+    createContent: function(oController) {
+        var c = sap.ui.commons;
+        var aControls = [];
+        var oLabel = new c.Label({text:"Hello Mr. {path:'/singleEntry/firstName', formatter:'.myFormatter'}, {/singleEntry/lastName}"}, oController);
+        aControls.push(oLabel);
+        
+        var oTable = new sap.ui.table.Table({rows:"{/table}"});
+        var oColumn = new sap.ui.table.Column();
+        var oLabel2 = new c.Label({text:"Name"});
+        var oTextField = new c.TextField({value:"{path:'gender', formatter:'.myGenderFormatter'} {firstName}, {lastName}"}, oController);
+        oColumn.setLabel(oLabel2);
+        oColumn.setTemplate(oTextField);
+        oTable.addColumn(oColumn);
+        aControls.push(oTable);
+        var oLabel2 = new c.Label({text:"{path:'/singleEntry/amount', type:'sap.ui.model.type.Float'}"});
+        aControls.push(oLabel2);
+        return aControls;
+    }
+});
+</pre></div>
+<p class="p">Have a look at a complete UI5 Application example </p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Using Extended Syntax in XML and HTML Views";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

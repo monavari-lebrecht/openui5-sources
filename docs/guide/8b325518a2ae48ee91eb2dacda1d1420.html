@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=9342942943101213"/>
+<title>Retrieving Control Instances by their ID</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio8b325518a2ae48ee91eb2dacda1d1420">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Retrieving Control Instances by their ID</h1>
+<div class="body taskbody"><p class="shortdesc"/>
+<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">When a control inside a fragment has an ID, it can be found by using that ID. Due to
+				the above prefixing that guarantees unique IDs, there are different cases possible
+				which require different calls. </p>
+
+			<p class="p">Assuming the control has the ID <samp class="ph codeph">myControl</samp>, there are two ways how to
+				retrieve it by its ID.  </p>
+
+			<p class="p"/>
+
+			<p class="p">When NO Fragment ID was given: myControl = sap.ui.getCore().byId("myControl")When a
+				Fragment ID "myFrag" was given: myControl = sap.ui.core.Fragment.byId("myFrag",
+				"myControl")</p>
+
+			<ul class="ul" id="loio8b325518a2ae48ee91eb2dacda1d1420__ul_bhh_t14_5m"><li class="li"><strong class="ph b">Retrieving a control instance when the fragment is not part of a view</strong><ul class="ul" id="loio8b325518a2ae48ee91eb2dacda1d1420__ul_lm3_x14_5m"><li class="li">When no fragment ID was given: <samp class="ph codeph">myControl =
+								sap.ui.getCore().byId("myControl")</samp></li>
+<li class="li">When a fragment ID <samp class="ph codeph">myFrag</samp> was given: <samp class="ph codeph">myControl
+								= sap.ui.core.Fragment.byId("myFrag", "myControl")</samp></li>
+</ul>
+</li>
+<li class="li">
+					<p class="p">Retrieving a control instance when the fragment is embedded into a view and
+						the code is inside a controller. The controller is called this in the
+						following examples. </p>
+
+					<ul class="ul" id="loio8b325518a2ae48ee91eb2dacda1d1420__ul_wb2_gb4_5m"><li class="li">When no fragment ID was given: <samp class="ph codeph">myControl =
+								this.byId("myControl")</samp></li>
+<li class="li">
+							<p class="p">When a fragment ID <samp class="ph codeph">myFrag</samp> was given:
+									<samp class="ph codeph">myControl =
+									this.byId(sap.ui.core.Fragment.createId("myFrag",
+									"myControl"))</samp></p>
+
+						</li>
+</ul>
+
+				</li>
+</ul>
+
+		</div></div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Retrieving Control Instances by their ID";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="With SAPUI5 for Mobile you can easily trigger native mobile phone applications such as e-mail, telephone, and text messages."/>
+<meta name="description" content="With SAPUI5 for Mobile you can easily trigger native mobile phone applications such as e-mail, telephone, and text messages."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=20344892182952257"/>
+<title>Triggering Phone, SMS and E-Mail</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio4f1c1075d88c41a5904389fa12b28f6b">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Triggering Phone, SMS and E-Mail</h1>
+<div class="body conbody"><p class="shortdesc">With SAPUI5 for Mobile you can easily trigger native mobile phone applications such as
+		e-mail, telephone, and text messages. </p>
+<p class="p">You can set predefined values for the application so that a user does not need to enter this
+			information themselves. When personal information is displayed, for example phone
+			numbers and e-mail addresses, you can initiate a phone call or e-mail with just one
+			tap.</p>
+<p class="p">The URLHelper API contains the following triggers for telephone, texts, and e-mail
+			applications: </p>
+<ul class="ul" id="loio4f1c1075d88c41a5904389fa12b28f6b__ul_tym_lcq_xl"><li class="li">
+				<p class="p">Trigger telephone application</p>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.m.URLHelper.triggerTel( [Telephone Number] ); //Telephone number is optional</pre></div>
+
+			</li>
+<li class="li">
+				<p class="p">Trigger text messaging application</p>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.m.URLHelper.triggerSms( [Telephone Number] ); //Telephone number is optional</pre></div>
+
+			</li>
+<li class="li">
+				<p class="p">Trigger e-mail application</p>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.m.URLHelper.triggerEmail( [Destination Email], [Subject], [Default Message Text], [CC], [BCC] ); 
+// All parameters are optional</pre></div>
+
+			</li>
+<li class="li">
+				<p class="p">Redirect To custom URL</p>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.m.URLHelper.redirect( URL ); 
+//URL is required and can be used for custom protocols (e.g http, ftp, ...)</pre></div>
+
+			</li>
+</ul>
+<div class="section"><div class="section_title">API Reference</div><div type="API Reference">
+			
+			<ul class="ul" id="loio4f1c1075d88c41a5904389fa12b28f6b__ul_j4j_ddy_tk"><li class="li"><a class="extlink" href="../../docs/api/symbols/sap.m.URLHelper.html">sap.m.URLHelper<img src="images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></li>
+</ul>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Triggering Phone, SMS and E-Mail";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

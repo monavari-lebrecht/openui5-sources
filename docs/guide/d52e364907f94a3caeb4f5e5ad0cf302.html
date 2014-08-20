@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="As the JSONModel only consists of named objects (properties, arrays, or nested objects), it has a simple binding path syntax."/>
+<meta name="description" content="As the JSONModel only consists of named objects (properties, arrays, or nested objects), it has a simple binding path syntax."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=9827149106765958"/>
+<title>Binding Path Syntax for JSON Models</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiod52e364907f94a3caeb4f5e5ad0cf302">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Binding Path Syntax for JSON Models</h1>
+<div class="body conbody"><p class="shortdesc">As the JSONModel only consists of named objects (properties, arrays, or nested objects),
+		it has a simple binding path syntax.</p>
+<p class="p"> The following example shows a simple JSONModel with the different binding paths: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">{
+    company: {
+        name: "Treefish Inc",
+        info: {
+            employees: 3,
+        },
+        contacts: [
+            {
+                name: "Barbara",
+                phone: "873"
+            },
+            {
+                name: "Gerry",
+                phone: "734"
+            },
+            {
+                name: "Susan",
+                phone: "275"
+            }
+        ]
+    }
+}</pre></div>
+<p class="p">Absolute binding paths within this model: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">/company/name
+/company/info/employees
+/company/contacts</pre></div>
+<p class="p">Relative binding paths within the "/company" context: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">name
+info/employees
+contacts</pre></div>
+<p class="p">Relative binding paths within an aggregation binding of "/company/contacts": </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">name
+phone</pre></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Binding Path Syntax for JSON Models";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

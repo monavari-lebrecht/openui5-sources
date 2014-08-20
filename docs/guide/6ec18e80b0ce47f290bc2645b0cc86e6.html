@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=1501352582052765"/>
+<title>SAPUI5 Diagnostics</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio6ec18e80b0ce47f290bc2645b0cc86e6">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">SAPUI5 Diagnostics</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">SAPUI5 provides a support tool that you can run within an existing SAPUI5 application. To call
+			the support tool, use the following shortcut: <samp class="ph codeph">CTRL+SHIFT+ALT+S</samp>. The
+			following sections describe the functions SAPUI5 provides in the support tool.</p>
+<div class="section"><div class="section_title">Activating the Debug Sources</div><div type="Activating the Debug Sources"><p class="p">To use the debugging function, it is
+				important to use the debg sources. For this, set the <span class="ph uicontrol">Debug
+					Sources</span> function to <span class="ph uicontrol">ON</span>.</p>
+<img class="image" id="loio6ec18e80b0ce47f290bc2645b0cc86e6__image_tp2_t1m_rl" src="61907a5a44094e8d91dd07eeee600cda.image" alt="SAPUI5 Diagnostics Debug Sources" title="SAPUI5 Diagnostics Debug Sources"/></div></div>
+<div class="section"><div class="section_title">Control Tree</div><div type="Control Tree">
+			
+			<p class="p">The control tree shows all controls that are contained in the application in a tree
+				view. You can select controls either directly in the application by choosing
+					<samp class="ph codeph">CRTL+SHIFT+ALT</samp> and clicking on the control, or by selecting the
+				control in the control tree.</p>
+
+			<p class="p">The followig functions are available in the dialog:</p>
+
+			<ul class="ul" id="loio6ec18e80b0ce47f290bc2645b0cc86e6__ul_hpw_z1m_rl"><li class="li"><p class="p">On the <span class="ph uicontrol">Properties</span> tab you can change the defined properties of the
+						selected control. In the example below, you can change the value, the text
+						direction, and enable or disenable the control.</p>
+<img class="image" id="loio6ec18e80b0ce47f290bc2645b0cc86e6__image_v1x_wcm_rl" src="09bc00bbc88c41688256b95281f7d70c.image" alt="SAPUI5 Diagnostics Changing Control Properties" title="SAPUI5 Diagnostics Changing Control Properties"/></li>
+<li class="li">
+					<p class="p">The <span class="ph uicontrol">Binding Infos</span> tab shows all existing bindings for
+						the selected control together with additional information. To update the
+						binding, choose <span class="ph uicontrol">Refresh</span>.</p>
+
+					<p class="p"><img class="image" id="loio6ec18e80b0ce47f290bc2645b0cc86e6__image_m1z_nfm_rl" src="c1c21aef90264e9d8150f8520eb5e877.image" alt="SAPUI5 Diagnostics Binding Information" title="SAPUI5 Diagnostics Binding Information"/></p>
+
+					<p class="p">You can also see the binding context for the selected control. To navigate to
+						the respective controls, use the hyperlinks.</p>
+
+				</li>
+<li class="li">
+					<p class="p">On the <span class="ph uicontrol">Properties</span> tab, you can add or remove
+						breakpoints. Use the respective checkbox to add or remove a breakpoint for
+						the get/set method of a control property.</p>
+
+					<p class="p"><img class="image" id="loio6ec18e80b0ce47f290bc2645b0cc86e6__image_qx3_2gm_rl" src="0c1a0b1be01d4229ac1ad7293e8859e9.image" alt="SAPUI5 Diagnostics Property Breakpoints" title="SAPUI5 Diagnostics Property Breakpoints"/></p>
+
+				</li>
+<li class="li"><p class="p">On the <span class="ph uicontrol">Breakpoints</span> tab, you can add or remove
+						breakpoints for methods. You can either select the method from the dropdown
+						box, or use auto completion. To set the breakpoint, select the method and
+						choose <span class="ph uicontrol">Add breakpoint</span>. To remove a breakpoint, select
+						the red x.</p>
+<img class="image" id="loio6ec18e80b0ce47f290bc2645b0cc86e6__image_bd4_ypd_tl" src="f8decdce93a9440588ce2ea111b7b741.image" alt="SAPUI5 Diagnostics Method Breakpoints" title="SAPUI5 Diagnostics Method Breakpoints"/></li>
+</ul>
+
+		</div></div>
+<div class="section"><div class="section_title">Debugging a Method</div><div type="Debugging a Method"><p class="p">To debug a method, open and activate you browser's
+				debugging tool. If you execute a method with an active breakpoint, the script stops
+				at the debugger statement. To open the method, use the step-over/into function of
+				your debugger.</p>
+<img class="image" id="loio6ec18e80b0ce47f290bc2645b0cc86e6__image_ohz_kqd_tl" src="0c5fd07a09334613a439af5c0729137a.image" alt="SAPUI5 Diagnostics Debugging a Method" title="SAPUI5 Diagnostics Debugging a Method"/><img class="image" id="loio6ec18e80b0ce47f290bc2645b0cc86e6__image_cvm_brd_tl" src="960e88f004364a7d8bf0177c728d08ca.image" alt="SAPUI5 Diagnostics Debugging" title="SAPUI5 Diagnostics Debugging"/></div></div>
+<div class="section"><div class="section_title">Debugging View</div><div type="Debugging View"><p class="p">The <span class="ph uicontrol">Debugging</span> view allows you to
+				set breakpoints for methods on class level. Select the class from the dropdown box
+				or enter the name of the class. Choos <span class="ph uicontrol">Add</span> to set the
+				breakpoint. For each class, the system shows the number of active breakpoints and
+				all methods.</p>
+<img class="image" id="loio6ec18e80b0ce47f290bc2645b0cc86e6__image_uzg_lrd_tl" src="64d3bfdd0f784ae68030208523452899.image" alt="SAPUI5 Diagnostics Debugging View" title="SAPUI5 Diagnostics Debugging View"/></div></div>
+<div class="section"><div class="section_title">XML View Conversion</div><div type="XML View Conversion">
+			
+			<p class="p">Many code samples are witten in JavaScript. To facilitate the conversion of these
+				code samples into XML, SAPUI5 provides a generic conversion tool. To run the tool,
+				proceed as follows:</p>
+
+			<ol class="ol" id="loio6ec18e80b0ce47f290bc2645b0cc86e6__ol_ivj_llq_xm"><li class="li">Run the SAPUI5 app in your browser, for example, open a page in the test
+					suite.</li>
+<li class="li">Open the support tool by choosing CTRL+ALT+SHIFT+S.</li>
+<li class="li">Open the <span class="ph uicontrol">Control Tree</span> panel.</li>
+<li class="li">Select the root UI area in the tree on the left hand side.</li>
+<li class="li">Open th <span class="ph uicontrol">Export</span> tab and choose <span class="ph uicontrol">Export
+						XML</span>.</li>
+<li class="li">Open the ZIP archive and extract the files to your file system.</li>
+</ol>
+
+			<p class="p">If your app does <span class="ph emphasis emphasis">not</span> contain views, the content is put in one
+				view in the output. If your app contains views and all views are loaded, the content
+				is output as separate files.</p>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p">The conversion captures the runtime status of the app. This can differ from the
+					build declaration.</p>
+
+			</div>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="SAPUI5 Diagnostics";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

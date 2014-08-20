@@ -1,0 +1,679 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.core.IconPool</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class sap.ui.core.IconPool
+					</h1>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>The IconPool is a static class for retrieving or registering icons.
+It also provides helping methods for easier consumption of icons.
+There are already icons registered in IconPool, please follow this link and find the name of the icon:
+1. If you use the icon inside existing control, please call sap.ui.core.IconPool.getIconURI and assign the URI to controls which support icon.
+2. If you want to support icon and standard image in your own control, please call createControlByURI by giving the URI and a constructor when URI isn't a icon URI. Icon instance or instance created by calling the given constructor is returned.</p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="Constructor for IconPool - must not be used: all of the methods that are under IconPool are static methods.">new <a href="../symbols/sap.ui.core.IconPool.html#constructor">sap.ui.core.IconPool</a></b>
+										<span class='signature'>()</span>
+										<span class='description'>Constructor for IconPool - must not be used: all of the methods that are under IconPool are static methods.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Register an additional icon to the sap.ui.core.IconPool."><a href="../symbols/sap.ui.core.IconPool.html#.addIcon">sap.ui.core.IconPool.addIcon</a></b><span class='signature'>(<span title="(string) the name of the icon.">iconName</span>, <span title="(string) the name of icon collection.">collectionName</span>, <span title="(object) the icon info which contains the following properties:">iconInfo</span>)</span>
+									<span class='description'>Register an additional icon to the sap.ui.core.IconPool.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Creates an instance of sap.ui.core.Icon if the given URI is an icon URI, otherwise the given constructor is called."><a href="../symbols/sap.ui.core.IconPool.html#.createControlByURI">sap.ui.core.IconPool.createControlByURI</a></b><span class='signature'>(<span title="(string|object) contains the properties which will be used to instantiate the returned control.">setting</span>, <span title="(function) the constructor function which is called when the given URI isn't an icon URI">constructor</span>)</span>
+									<span class='description'>Creates an instance of sap.ui.core.Icon if the given URI is an icon URI, otherwise the given constructor is called.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Returns all names of registered collections in IconPool"><a href="../symbols/sap.ui.core.IconPool.html#.getIconCollectionNames">sap.ui.core.IconPool.getIconCollectionNames</a></b><span class='signature'>()</span>
+									<span class='description'>Returns all names of registered collections in IconPool</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Returns the info object of the icon which has the same given iconName and collectionName."><a href="../symbols/sap.ui.core.IconPool.html#.getIconInfo">sap.ui.core.IconPool.getIconInfo</a></b><span class='signature'>(<span title="(string) the name of the icon.">iconName</span>, <span title="(string) the name of icon collection.">collectionName</span>)</span>
+									<span class='description'>Returns the info object of the icon which has the same given iconName and collectionName.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Returns all name of icons that are registerd under the given collection."><a href="../symbols/sap.ui.core.IconPool.html#.getIconNames">sap.ui.core.IconPool.getIconNames</a></b><span class='signature'>(<span title="(string) the name of collection where icon names are retrieved.">collectionName</span>)</span>
+									<span class='description'>Returns all name of icons that are registerd under the given collection.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Returns the URI of the icon which has the same given iconName and collectionName."><a href="../symbols/sap.ui.core.IconPool.html#.getIconURI">sap.ui.core.IconPool.getIconURI</a></b><span class='signature'>(<span title="(string) the name of the icon.">iconName</span>, <span title="(string) the name of icon collection.">collectionName</span>)</span>
+									<span class='description'>Returns the URI of the icon which has the same given iconName and collectionName.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Returns If the given uri is an icon URI."><a href="../symbols/sap.ui.core.IconPool.html#.isIconURI">sap.ui.core.IconPool.isIconURI</a></b><span class='signature'>(<span title="(string) the icon uri which is in the format &quot;sap-icon://collectionName/iconName&quot;">uri</span>)</span>
+									<span class='description'>Returns If the given uri is an icon URI.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.ui.core.IconPool</b>()
+										</div>
+										
+										<div class="full-description">
+											Constructor for IconPool - must not be used: all of the methods that are under IconPool are static methods.
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".addIcon"> </a>
+										<div class="itemTitle icon">
+											sap.ui.core.IconPool.addIcon<span class="signature">(<span title="(string) the name of the icon.">iconName</span>, <span title="(string) the name of icon collection.">collectionName</span>, <span title="(object) the icon info which contains the following properties:">iconInfo</span>)</span>
+											<span class="light" title="returns object">: object</span>
+										</div>
+										<div class="full-description">
+											Register an additional icon to the sap.ui.core.IconPool.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iconName</b>
+													</td>
+													<td class="methodItemDesc">
+												    the name of the icon.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>collectionName</b>
+													</td>
+													<td class="methodItemDesc">
+												    the name of icon collection. The built in icons are with empty collectionName, so if additional icons need to be registered in IconPool, the collectionName can't be empty.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iconInfo</b>
+													</td>
+													<td class="methodItemDesc">
+												    the icon info which contains the following properties:
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iconInfo.fontFamily</b>
+													</td>
+													<td class="methodItemDesc">
+												    is the name of the font when importing the font using @font-face in CSS
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iconInfo.content</b>
+													</td>
+													<td class="methodItemDesc">
+												    is the special code without the prefix, for example "e000"
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iconInfo.overWrite</b><i class="help" title="Optional parameter">?, Default: false</i>
+													</td>
+													<td class="methodItemDesc">
+												    indicates if already registered icons should be overwritten when the same name and collection are given. The built in icons can never be overwritten.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iconInfo.suppressMirroring</b><i class="help" title="Optional parameter">?, Default: false</i>
+													</td>
+													<td class="methodItemDesc">
+												    indicates whether this icon should NOT be mirrored in RTL (right to left) mode.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{object}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the info object of the registered icon which has the name, collection, uri, fontFamily, content and suppressMirroring properties.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".createControlByURI"> </a>
+										<div class="itemTitle icon">
+											sap.ui.core.IconPool.createControlByURI<span class="signature">(<span title="(string|object) contains the properties which will be used to instantiate the returned control.">setting</span>, <span title="(function) the constructor function which is called when the given URI isn't an icon URI">constructor</span>)</span>
+											<span class="light" title="returns sap.ui.core.Control">: <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></span>
+										</div>
+										<div class="full-description">
+											Creates an instance of sap.ui.core.Icon if the given URI is an icon URI, otherwise the given constructor is called.
+The given URI is set to the src property of the control.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string|object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>setting</b>
+													</td>
+													<td class="methodItemDesc">
+												    contains the properties which will be used to instantiate the returned control. It should contain at least a property named src. If it's given with a string type, it will be taken as the value of src property.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>constructor</b>
+													</td>
+													<td class="methodItemDesc">
+												    the constructor function which is called when the given URI isn't an icon URI
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														either an instance of sap.ui.core.Icon or instance created by calling the given constructor
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".getIconCollectionNames"> </a>
+										<div class="itemTitle icon">
+											sap.ui.core.IconPool.getIconCollectionNames<span class="signature">()</span>
+											<span class="light" title="returns array">: array</span>
+										</div>
+										<div class="full-description">
+											Returns all names of registered collections in IconPool
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{array}</span> 
+													</td>
+													<td class="methodItemDesc">
+														An array contains all of the registered collections' names.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".getIconInfo"> </a>
+										<div class="itemTitle icon">
+											sap.ui.core.IconPool.getIconInfo<span class="signature">(<span title="(string) the name of the icon.">iconName</span>, <span title="(string) the name of icon collection.">collectionName</span>)</span>
+											<span class="light" title="returns object">: object</span>
+										</div>
+										<div class="full-description">
+											Returns the info object of the icon which has the same given iconName and collectionName.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iconName</b>
+													</td>
+													<td class="methodItemDesc">
+												    the name of the icon.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>collectionName</b>
+													</td>
+													<td class="methodItemDesc">
+												    the name of icon collection. The built in icons are with undefined collectionName, so if the built in icons need to be used, just ignore this parameter.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{object}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the info object of the registered icon which has the uri, fontFamily and content properties.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".getIconNames"> </a>
+										<div class="itemTitle icon">
+											sap.ui.core.IconPool.getIconNames<span class="signature">(<span title="(string) the name of collection where icon names are retrieved.">collectionName</span>)</span>
+											<span class="light" title="returns array">: array</span>
+										</div>
+										<div class="full-description">
+											Returns all name of icons that are registerd under the given collection.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>collectionName</b>
+													</td>
+													<td class="methodItemDesc">
+												    the name of collection where icon names are retrieved.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{array}</span> 
+													</td>
+													<td class="methodItemDesc">
+														An array contains all of the registered icon names under the given collection.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".getIconURI"> </a>
+										<div class="itemTitle icon">
+											sap.ui.core.IconPool.getIconURI<span class="signature">(<span title="(string) the name of the icon.">iconName</span>, <span title="(string) the name of icon collection.">collectionName</span>)</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Returns the URI of the icon which has the same given iconName and collectionName.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iconName</b>
+													</td>
+													<td class="methodItemDesc">
+												    the name of the icon.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>collectionName</b>
+													</td>
+													<td class="methodItemDesc">
+												    the name of icon collection. The built in icons are with undefined collectionName, so if the built in icons need to be used, just ignore this parameter.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the URI of the icon. if the icon can't be found in IconPool, undefined is returned.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".isIconURI"> </a>
+										<div class="itemTitle icon">
+											sap.ui.core.IconPool.isIconURI<span class="signature">(<span title="(string) the icon uri which is in the format &quot;sap-icon://collectionName/iconName&quot;">uri</span>)</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Returns If the given uri is an icon URI.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>uri</b>
+													</td>
+													<td class="methodItemDesc">
+												    the icon uri which is in the format "sap-icon://collectionName/iconName"
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														if the uri follows the icon uri format.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=8598847862982135"/>
+<title>HTML5 Sanitizer</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio2315f02c34a04ed9b7ff6e79db44c701">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">HTML5 Sanitizer</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">You use the HTML5 sanitizer to clean up HTML5 code snippets by removing potentially executable
+			JavaScript code. SAPUI5 reuses the HTML4 sanitizer by Google by adapting it for the use
+			of HTML5 coding. The Google sanitizer also supports CSS3 coding. In addition, the HTML5
+			sanitizer uses the URL white list which checks embedded URLs for correct formatting or
+			against a given white list.</p>
+<p class="p">For adapting the sanitizer to support HTML5, the HTML attributes and elements have been
+			reorganized according to the current HTML5 specification from W3C. All types and flags
+			have been  reviewed as accurately as possible and HTML4 elements that are no longer used
+			in HTML5 have been removed. You can, however, still see them as comments. New or changed
+			rules for HTML5 have been marked are "new" within the comments. The comments also state
+			which attributes and elements are assigned to respective types and flags. All rules
+			which were not 100% clear were analyzed in a way of similarity, so for example "audio"
+			and "video" content behaves like images etc. URIEFFECTS state if a URL is loaded inplace
+			within a tag where the actual document is in control of what type of content is loaded
+			like "image" or if a new document is loaded like with "a href". LOADERTYPES state if
+			content is loaded as sandboxed which means it is loaded within a specific surrounding
+			player like with video content for example or if it is loaded freely without
+			restrictions. Internally controls which accept arbitrary HTML content like the
+				<samp class="ph codeph">sap.ui.richttexteditor.RichTextEditor</samp> or the
+				<samp class="ph codeph">sap.ui.core.HTML</samp> use the HTML5 Sanitizer to sanitize the HTML code
+			of their content and value to not infiltrate any dangerous coding. The option to
+			sanitize the value can be enabled or disabled in the respective control properly via
+			property: <samp class="ph codeph">RichTextEditor.sanitizeValue</samp> or
+				<samp class="ph codeph">HTML.sanitizeContent</samp>. For the HTML control, it is disabled by
+			default whereas for the RichTextEditor the sanitize option is enabled. </p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="HTML5 Sanitizer";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

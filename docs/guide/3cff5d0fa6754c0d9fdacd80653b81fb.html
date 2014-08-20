@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=4570191035529705"/>
+<title>Programmatically Instantiating JS Fragments</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio3cff5d0fa6754c0d9fdacd80653b81fb">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Programmatically Instantiating JS Fragments</h1>
+<div class="body taskbody"><p class="shortdesc"/>
+<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">To give an example of a programmatic instantiation of a JS fragment, you first have to define
+				one. The following code presents an example definition:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+sap.ui.jsfragment ( "my.useful.UiPartX",{ 
+	createContent: function (oController ) {
+        var oButton  = new sap.ui.commons.Button({ 
+			text: "Hello World" , 
+			press:oController.doSomething 
+		}); 
+		return oButton; 
+	} 
+});</pre></div>
+
+			<p class="p"> This fragment can be instantiated from a controller as follows:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var myButton = sap.ui.jsfragment("my.useful.UiPartX",this); // assuming "this" is the controller</pre></div>
+
+			<p class="p">This button can now be used as if it had been created in a standard way. Note how a controller
+				instance is passed as second parameter. This is required because that particular
+				fragment tries to bind the button press handler to the method
+					<span class="keyword apiname">doSomething</span> in the given controller. With no controller
+				given, this would cause an error.</p>
+
+			<p class="p">For fragments that are used several times, an ID for the fragment can be given
+				optionally, see <a class="xref" href="5da591c5a5a54740948acfe56b22fbc3.html" title="You can use a unique ID for a fragment that will be used as prefix for all controls in a fragment instance.">Unique
+					IDs</a>:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var myButton = sap.ui.jsfragment("someId", "my.useful.UiPartX", this); // assuming "this" is the Controller</pre></div>
+
+			<p class="p">Within a JS view's <span class="keyword apiname">createContent()</span> method the fragment content
+				could be included like this: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+... 
+	createContent: function (oController ) {
+		var hLayout = new sap.ui.commons.layout HorizontalLayout (); 
+		...
+		var myFragment = sap.ui.jsfragment( "my.useful.UiPartX" , oController ); 
+		// here the fragment is instantiated       
+		hLayout.addContent (myFragment ); 
+		... 
+		return hLayout ; 
+	} 
+...</pre></div>
+
+			<p class="p">The fragment content (= the button) would be added to the layout which is the content of this
+				JSView. Other fragments not requiring a controller can of course be instantiated
+				without passing a controller. But it also does not hurt to pass the controller - it
+				is only used for setting up the event handlers (or within the
+					<span class="keyword apiname">createContent()</span> method, in case of JS fragments). </p>
+
+		</div></div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Programmatically Instantiating JS Fragments";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=4219329846363905"/>
+<title>XML Fragments</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio2c677b574ea2486a8d5f5414d15e21c5">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">XML Fragments</h1>
+<div class="body conbody"><p class="shortdesc"> </p>
+<div class="p">You can define a simple XML fragment like this:
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;Button xmlns="sap.ui.commons" id="btnInFragment" text="Hello
+        World"/&gt;</pre></div>
+</div>
+<p class="p">This simple UI definition can, for instance, be located in a file named
+				<span class="ph filepath">…/my/useful/VerySimpleUiPart.fragment.xml</span>, be referenced by its
+			name <span class="keyword apiname">my.useful.VerySimpleUiPart</span>, and then can be found by the module
+			loading mechanism.</p>
+<p class="p">In contrast to XMLviews, there is no <samp class="ph codeph">&lt;View&gt;</samp> tag as the root element.
+			Instead, there is a SAPUI5 control immediately. Apart from this difference, everything
+			else works identically.</p>
+<p class="p">A slightly more complex fragment can be defined like this: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;VBox xmlns="sap.m"&gt;
+		&lt;Label text="My Label inside an XML fragment"/&gt;
+		&lt;Button id="btnInFragment" text="Hello World" press="doSomething"/&gt;
+		&lt;Button text="{/someText}"/&gt;
+	&lt;/VBox&gt;</pre></div>
+<p class="p">The event handler is bound to the <samp class="ph codeph">doSomething</samp> method of a controller. This is
+			expressed by the <samp class="ph codeph">doSomething</samp> value of the <samp class="ph codeph">press</samp> event
+			attribute. This means that this fragment can only be instantiated with a controller if
+			the controller has this method. If not, the code  throws an error.</p>
+<p class="p">You can see how the data binding syntax is the same as  that of XML views. Of course, this
+			requires the fragment to be placed into a part of the UI tree where the model is
+			available. </p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="XML Fragments";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

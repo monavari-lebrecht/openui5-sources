@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="SAPUI5 event delegation automatically handles both mouse and touch events simultanuously. If you are using jQuery or native browser API (domElement.addEventListener) to handle events, you have to adapt your coding to support both."/>
+<meta name="description" content="SAPUI5 event delegation automatically handles both mouse and touch events simultanuously. If you are using jQuery or native browser API (domElement.addEventListener) to handle events, you have to adapt your coding to support both."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=7954704080938487"/>
+<title>Adapting Event Handling to Support Windows 8 Devices</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiob54d7d73eff245d3ab91b96e21177ebf">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Adapting Event Handling to Support Windows 8 Devices</h1>
+<div class="body taskbody"><p class="shortdesc">SAPUI5 event delegation automatically handles both mouse and touch events
+		simultanuously. If you are using jQuery or native browser API
+			(<samp class="ph codeph">domElement.addEventListener</samp>) to handle events, you have to adapt your
+		coding to support both.</p>
+<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">In addition, emulated mouse events shouldn't be handled otherwise the event handler
+				is called twice for the touch. This can be achieved by checking the flag
+					(<samp class="ph codeph">_sapui_delayedMouseEvent</samp>) we set to the emulated mouse events.
+				We have extended the <samp class="ph codeph">jQuery.Event</samp> object with
+					<samp class="ph codeph">isMarked</samp> function for checking UI5 specific flags on the real
+				event object. The <samp class="ph codeph">sapui</samp> prefix is already considered within the
+					<samp class="ph codeph">isMarked </samp>function so only the semantic part needs to be passed
+				into the function (for example, for checking if the flag
+					<samp class="ph codeph">_sapui_delayedMouseEvent</samp> is marked, simply call
+					<samp class="ph codeph">isMark</samp> (<samp class="ph codeph">delayedMouseEvent</samp>)). But when event
+				handler is bound using browser API like <samp class="ph codeph">addEventListener</samp>, flag
+				needs to be checked by using the full flag name since there's no
+					<samp class="ph codeph">isMarked</samp> function on the browser event object.</p>
+
+			<p class="p"> In most of the cases, the event handler was bound by checking if touch is supported,
+				like the code below:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+jQuery(document).on(sap.ui.Device.support.touch ? "touchmove" : "mousemove", function(oEvent) {
+    ......
+});</pre></div>
+
+		</div><div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step"><span class="ph cmd"> Since both mouse and touch should be supported, the code needs to be changed as
+					follows.</span><ul class="ul choices" id="loiob54d7d73eff245d3ab91b96e21177ebf__choices_hq4_j4c_4n"><li class="li choice">
+						<p class="p">When using jQuery: </p>
+
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+jQuery(document).on("touchmove mousemove", function(oEvent) {
+    if (oEvent.isMarked("delayedMouseEvent")) {
+
+        // Suppress the emulated mouse event from touch interface
+        return;
+    }
+    ......
+});</pre></div>
+
+					</li>
+<li class="li choice">
+						<p class="p">When using native browser event listeners:</p>
+
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+var fnHandler = function (oEvent ) { if (oEvent . _sapui_delayedMouseEvent ) { // Suppress the emulated mouse event from touch interface
+ return ; } ...... };
+
+document . addEventListener ( "touchmove" , fnHandler );
+document . addEventListener ( "mousemove" , fnHandler );</pre></div>
+
+					</li>
+</ul>
+</li>
+<li class="li step"><span class="ph cmd">Same should be applied for the all touch and mouse event pairs when the events
+					are needed:</span><ul class="ul choices" id="loiob54d7d73eff245d3ab91b96e21177ebf__choices_eq4_c4c_4n"><li class="li choice"><samp class="ph codeph">touchstart</samp> and <samp class="ph codeph">mousedown</samp></li>
+<li class="li choice"><samp class="ph codeph">touchmove</samp> and <samp class="ph codeph">mousemove</samp></li>
+<li class="li choice"><samp class="ph codeph">touchend</samp>, <samp class="ph codeph">touchcancel</samp> and
+							<samp class="ph codeph">mouseup</samp></li>
+</ul>
+</li>
+</ol>
+<div class="example"><h2 class="exampletitle">Example</h2>
+			<p class="p">We have also adapted some controls within <samp class="ph codeph">sap.m</samp> for Windows 8
+				support. Let's take <samp class="ph codeph">sap.m.RatingIndicator</samp> as an example. User can
+				drag the rating indicator to change the rating value. This is implemented by
+				registering to <samp class="ph codeph">touchmove</samp> or <samp class="ph codeph">mousemove</samp> event in
+					<samp class="ph codeph">ontouchstart</samp> function and <samp class="ph codeph">deregister</samp> from
+					<samp class="ph codeph">touchmove</samp> or <samp class="ph codeph">mousemove </samp>by listening to
+					<samp class="ph codeph">touchend</samp>, <samp class="ph codeph">touchcancel</samp> or
+					<samp class="ph codeph">mouseup</samp>.</p>
+
+			<p class="p"><span class="ph emphasis emphasis">Before the adaptation, code was:</span></p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+sap.m.RatingIndicator.prototype.ontouchstart = function(oEvent) {
+    if (this.getEnabled()) {
+        ......
+
+        if (!this._touchEndProxy) {
+            this._touchEndProxy = jQuery.proxy(this._ontouchend, this);
+        }
+
+        if (!this._touchMoveProxy) {
+            this._touchMoveProxy = jQuery.proxy(this._ontouchmove, this);
+        }
+
+        // here also bound to the mouseup mousemove event to enable it working in
+        // desktop browsers
+        if (sap.ui.Device.support.touch) {
+            jQuery(window.document).on("touchend touchcancel", this._touchEndProxy);
+            jQuery(window.document).on("touchmove", this._touchMoveProxy);
+        } else {
+            jQuery(window.document).on("mouseup", this._touchEndProxy);
+            jQuery(window.document).on("mousemove", this._touchMoveProxy);
+        }
+
+        ......
+    }
+};
+
+sap.m.RatingIndicator.prototype._ontouchmove = function(oEvent) {
+    ......
+};
+
+sap.m.RatingIndicator.prototype._ontouchend = function(oEvent) {
+    if (this.getEnabled()) {
+        ......
+        if (sap.ui.Device.support.touch) {
+            jQuery(window.document).off("touchend touchcancel", this._touchEndProxy);
+            jQuery(window.document).off("touchmove", this._touchMoveProxy);
+        } else {
+            jQuery(window.document).off("mouseup", this._touchEndProxy);
+            jQuery(window.document).off("mousemove", this._touchMoveProxy);
+        }
+        ......
+    }
+};</pre></div>
+
+			<p class="p"><span class="ph emphasis emphasis">After the code adaptation:</span></p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+sap.m.RatingIndicator.prototype.ontouchstart = function(oEvent) {
+    if (this.getEnabled()) {
+        ......
+
+        if (!this._touchEndProxy) {
+            this._touchEndProxy = jQuery.proxy(this._ontouchend, this);
+        }
+
+        if (!this._touchMoveProxy) {
+            this._touchMoveProxy = jQuery.proxy(this._ontouchmove, this);
+        }
+
+        // here also bound to the mouseup mousemove event to enable it working in
+        // desktop browsers
+        if (sap.ui.Device.support.touch) {
+            jQuery(window.document).on("touchend touchcancel", this._touchEndProxy);
+            jQuery(window.document).on("touchmove", this._touchMoveProxy);
+        } else {
+            jQuery(window.document).on("mouseup", this._touchEndProxy);
+            jQuery(window.document).on("mousemove", this._touchMoveProxy);
+        }
+
+        ......
+    }
+};
+
+sap.m.RatingIndicator.prototype._ontouchmove = function(oEvent) {
+    ......
+};
+
+sap.m.RatingIndicator.prototype._ontouchend = function(oEvent) {
+    if (this.getEnabled()) {
+        ......
+        if (sap.ui.Device.support.touch) {
+            jQuery(window.document).off("touchend touchcancel", this._touchEndProxy);
+            jQuery(window.document).off("touchmove", this._touchMoveProxy);
+        } else {
+            jQuery(window.document).off("mouseup", this._touchEndProxy);
+            jQuery(window.document).off("mousemove", this._touchMoveProxy);
+        }
+        ......
+    }
+};</pre></div>
+
+		</div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Adapting Event Handling to Support Windows 8 Devices";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

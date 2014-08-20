@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="In addition to the general browser and control events you can access specific events for touch-enabled devices."/>
+<meta name="description" content="In addition to the general browser and control events you can access specific events for touch-enabled devices."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=29641968292716536"/>
+<title>Mobile Events</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio9860cd2b183540f48ee054bcef44a8b5">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Mobile Events</h1>
+<div class="body conbody"><p class="shortdesc">In addition to the general browser and control events you can access specific events for
+		touch-enabled devices. </p>
+<p class="p">The following is the same for mobile and desktop events: </p>
+<ul class="ul" id="loio9860cd2b183540f48ee054bcef44a8b5__ul_bxg_xwv_gj"><li class="li">When running on mobile or touch devices, the application has still the possibility
+				to access to all native browser events, including the touch-related ones.</li>
+<li class="li">Handling of control events fired by SAPUI5 is also the same as on desktop PCs.</li>
+<li class="li">When implementing SAPUI5 controls, some browser events can be handled very easily by
+				implementing a method named <samp class="ph codeph">on&lt;eventName&gt;</samp>, so all the
+				bind/unbind effort is avoided. This is equally possible on mobile.</li>
+</ul>
+<p class="p">On touch-enabled platforms additional browser and pseudo events are available:</p>
+<div class="section" id="loio9860cd2b183540f48ee054bcef44a8b5__section_N1001C_N10011_N10001"><div class="section_title">Additional Mobile Browser Events</div><div type="Additional Mobile Browser Events">
+			
+			<p class="p">On touch-enabled platforms the following events are also provided within UI5 controls
+				to be handled in <samp class="ph codeph">on&lt;eventName&gt;</samp> methods: </p>
+
+			<ul class="ul" id="loio9860cd2b183540f48ee054bcef44a8b5__ul_bk5_flb_fj"><li class="li"><samp class="ph codeph">touchstart</samp>
+				</li>
+<li class="li"><samp class="ph codeph">touchend</samp>
+				</li>
+<li class="li"><samp class="ph codeph">touchmove</samp>
+				</li>
+<li class="li"><samp class="ph codeph">touchcancel</samp>
+				</li>
+</ul>
+
+		</div></div>
+<div class="section" id="loio9860cd2b183540f48ee054bcef44a8b5__section_N1004E_N10011_N10001"><div class="section_title">Additional Mobile Pseudo Events</div><div type="Additional Mobile Pseudo Events">
+			
+			<p class="p">jQuery mobile event handling is used in SAPUI5 when running on touch-enabled devices.
+				From the basic browser events it creates semantically richer events. Some of them
+				are also provided automatically in SAPUI5 controls: </p>
+
+			<ul class="ul" id="loio9860cd2b183540f48ee054bcef44a8b5__ul_jk5_flb_fj"><li class="li"><samp class="ph codeph">swipe</samp>
+				</li>
+<li class="li"><samp class="ph codeph">tap</samp>
+				</li>
+<li class="li"><samp class="ph codeph">swipeleft</samp>
+				</li>
+<li class="li"><samp class="ph codeph">swiperight</samp>
+				</li>
+<li class="li"><samp class="ph codeph">scrollstart</samp>
+				</li>
+<li class="li"><samp class="ph codeph">scrollstop</samp>
+				</li>
+</ul>
+
+			<p class="p">For more information, see <a class="extlink" href="http://help.sap.com/disclaimer?site=http://api.jquerymobile.com/">jQuery mobile<img src="images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>. </p>
+
+		</div></div>
+<div class="section"><div class="section_title">Windows 8</div><div type="Windows 8">
+			
+			<p class="p">With Microsoft Windows 8 devices are introduced that allow user interaction with both
+				mouse and touch. To be able to react to both kind of events, some new functionality
+				was introduced.</p>
+
+			<p class="p">For more information, see <a class="xref" href="1f9de72bea734beaafa86b80c2c4222c.html" title="Devices such as Windows 8 touch-enabled laptops now support both mouse and touch input methods together. As a control developer you have take this into consideration.">Windows 8 Support</a></p>
+
+		</div></div>
+<div class="section" id="loio9860cd2b183540f48ee054bcef44a8b5__section_N1008E_N10011_N10001"><div class="section_title">Simulation of touch events on non-touch platforms</div><div type="Simulation of touch events on non-touch platforms">
+			
+			<p class="p">For testing or demonstration purposes, the events listed above can also be simulated
+				on non-touch devices. When this simulation is enabled, the touch events will also be
+				triggered by mouse interaction.</p>
+
+			<div class="note caution" id="loio9860cd2b183540f48ee054bcef44a8b5__note_N1009A_N1008E_N10011_N10001"><span class="cautiontitle">Caution</span> Due to technical constraints the
+				simulation cannot be perfect, so it may not be used productively.</div>
+
+			<p class="p">To enable the simulation mode, set the SAPUI5 configuration parameter
+					<samp class="ph codeph">xx-test-mobile</samp> to <var class="keyword varname">&lt;true&gt;</var>, for example by
+				appending the URL parameter <samp class="ph codeph">sap-ui-xx-test-mobile=true</samp>.</p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="bdf3e9818cd84d37a18ee5680e97e1c1.html">Event Handler Methods</a></div>
+<div><a class="link" href="91f1b3856f4d1014b6dd926db0e91070.html">Handling Events in Controls</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Mobile Events";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

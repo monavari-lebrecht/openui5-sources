@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="An HTML View is defined by declarative HTML. Like the declarative support, the HTML view supports embedded HTML."/>
+<meta name="description" content="An HTML View is defined by declarative HTML. Like the declarative support, the HTML view supports embedded HTML."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=6118686179878212"/>
+<title>HTML Views</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio9756f4745c0548ba9fea24ad2c0799c3">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">HTML Views</h1>
+<div class="body conbody"><p class="shortdesc">An HTML View is defined by declarative HTML. Like the declarative support, the HTML view
+		supports embedded HTML.</p>
+<p class="p">The view file ends with view.html, for example <samp class="ph codeph">myview.view.html</samp>. </p>
+<p class="p">Example: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;template data-controller-name="example.mvc.test"&gt;
+   Hello
+  &lt;h1&gt;Title&lt;/h1&gt;
+  &lt;div&gt;Embedded HTML&lt;/div&gt;
+  &lt;div class="test test2 test3" data-sap-ui-type="sap.ui.commons.Panel" id="myPanel"&gt;
+  &lt;div class="test test2 test3" data-sap-ui-type="sap.ui.commons.Button" id="Button1" data-text="Hello World" data-press="doIt"&gt;&lt;/div&gt;
+  &lt;div data-sap-ui-type="sap.ui.commons.Button" id="Button2" data-text="Hello"&gt;&lt;/div&gt;
+  &lt;div data-sap-ui-type="sap.ui.core.mvc.HTMLView" id="MyHTMLView" data-view-name="example.mvc.test2"&gt;&lt;/div&gt;
+  &lt;div data-sap-ui-type="sap.ui.core.mvc.JSView" id="MyJSView" data-view-name="example.mvc.test2"&gt;&lt;/div&gt;
+  &lt;div data-sap-ui-type="sap.ui.core.mvc.JSONView" id="MyJSONView" data-view-name="example.mvc.test2"&gt;&lt;/div&gt;
+  &lt;div data-sap-ui-type="sap.ui.core.mvc.XMLView" id="MyXMLView" data-view-name="example.mvc.test2"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</pre></div>
+<p class="p">All view specific properties can be added to the <samp class="ph codeph">&lt;template&gt;</samp> tag as
+				<em class="ph i">data-*</em> attributes. </p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="91f130196f4d1014b6dd926db0e91070.html">Declarative Support</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="HTML Views";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

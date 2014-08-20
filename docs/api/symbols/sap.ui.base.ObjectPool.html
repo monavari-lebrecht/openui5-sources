@@ -1,0 +1,323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.base.ObjectPool</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class sap.ui.base.ObjectPool
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.ui.base.Object" href="../symbols/sap.ui.base.Object.html">Object</a></div>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>Manages a pool of objects all of the same type;
+the type has to be specified at pool construction time.
+</p><p>
+Maintains a list of free objects of the given type.
+If sap.ui.base.ObjectPool.prototype.borrowObject is called, an existing free object
+is taken from the pool and the <code>init</code> method is called on this
+object.
+</p><p>
+When no longer needed, any borrowed object should be returned to
+the pool by calling <a href="#returnObject">#returnObject</a>. At that point in time,
+the reset method is called on the object and the object is added to the
+list of free objects.
+</p><p>
+See <a href="../symbols/sap.ui.base.Poolable.html">sap.ui.base.Poolable</a> for a description of the contract for poolable objects.
+</p><p>
+Example:
+<pre>
+  this.oEventPool = new sap.ui.base.ObjectPool(sap.ui.base.Event);
+  var oEvent = this.oEventPool.borrowObject(iEventId, mParameters);
+</pre></p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="Creates an ObjectPool instance based on the given oObjectClass.">new <a href="../symbols/sap.ui.base.ObjectPool.html#constructor">sap.ui.base.ObjectPool</a></b>
+										<span class='signature'>(<span title="(function) constructor for the class of objects that this pool should manage">oObjectClass</span>)</span>
+										<span class='description'>Creates an ObjectPool instance based on the given oObjectClass.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Borrows a free object from the pool."><a href="../symbols/sap.ui.base.ObjectPool.html#borrowObject">borrowObject</a></b><span class='signature'>(<span title="(any) optional initialization parameters for the borrowed object">any</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Borrows a free object from the pool.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns an object to the pool."><a href="../symbols/sap.ui.base.ObjectPool.html#returnObject">returnObject</a></b><span class='signature'>(<span title="(object) object to return to the pool">the</span>)</span>
+									<span class='description'>Returns an object to the pool.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.Object.html">sap.ui.base.Object</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.Object.html#destroy">destroy</a>, <a href="../symbols/sap.ui.base.Object.html#getInterface">getInterface</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.ui.base.ObjectPool</b>(<span title="(function) constructor for the class of objects that this pool should manage">oObjectClass</span>)
+										</div>
+										
+										<div class="full-description">
+											Creates an ObjectPool instance based on the given oObjectClass.&lt;br/&gt;
+If there is a free pooled instance, returns that one, otherwise creates a new one.&lt;br/&gt;
+In order to be maintained by the ObjectPool, oObjectClass must implement
+methods described in the class description.
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oObjectClass</b>
+													</td>
+													<td class="methodItemDesc">
+												    constructor for the class of objects that this pool should manage
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod'>
+										<a name="borrowObject"> </a>
+										<div class="itemTitle icon">
+											borrowObject<span class="signature">(<span title="(any) optional initialization parameters for the borrowed object">any</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns object">: object</span>
+										</div>
+										<div class="full-description">
+											Borrows a free object from the pool. Any arguments to this method
+are forwarded to the init method of the borrowed object.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{any}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>any</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    optional initialization parameters for the borrowed object
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{object}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the borrowed object of the same type that has been specified for this pool
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="returnObject"> </a>
+										<div class="itemTitle icon">
+											returnObject<span class="signature">(<span title="(object) object to return to the pool">the</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Returns an object to the pool. The object must have been borrowed from this
+pool beforehand. The reset method is called on the object before it is added
+to the set of free objects.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>the</b>
+													</td>
+													<td class="methodItemDesc">
+												    object to return to the pool
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

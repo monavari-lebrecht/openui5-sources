@@ -1,0 +1,523 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - jQuery.sap.storage</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Function Namespace jQuery.sap.storage
+					</h1>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>Returns a <a href="../symbols/jQuery.sap.storage.Storage.html">Storage</a> object for a given HTML5 storage (type) and,
+as a convenience, provides static functions to access the default (session) storage.
+</p><p>
+When called as a function, it returns an instance of <a href="../symbols/jQuery.sap.storage.Storage.html">jQuery.sap.storage.Storage</a>, providing access 
+to the storage of the given <a href="../symbols/jQuery.sap.storage.Type.html">jQuery.sap.storage.Type</a> or to the given HTML5 Storage object.
+</p><p>
+The default session storage can be easily accessed with methods <a href="../symbols/jQuery.sap.storage.html#.get">jQuery.sap.storage.get</a>, 
+<a href="../symbols/jQuery.sap.storage.html#.put">jQuery.sap.storage.put</a>, <a href="../symbols/jQuery.sap.storage.html#.remove">jQuery.sap.storage.remove</a>, <a href="../symbols/jQuery.sap.storage.html#.clear">jQuery.sap.storage.clear</a>,
+<a href="../symbols/jQuery.sap.storage.html#.getType">jQuery.sap.storage.getType</a> and <a href="../symbols/jQuery.sap.storage.html#.removeAll">jQuery.sap.storage.removeAll</a></p>
+						
+						
+						
+						
+						
+						
+							<br />
+							<i>Since: </i>0.11.0.
+						
+					</div>
+					
+		
+
+
+					
+						
+						
+							<div class="summary section">
+								<div class="sectionTitle">Namespaces &amp; Classes</div>
+								<div class="sectionItems">
+								
+									<div class="sectionItem itemName interface static">
+										<b class="icon" title="A Storage API for JavaScript."><a href="../symbols/jQuery.sap.storage.Storage.html">Storage</a></b>
+										<span class='description'>A Storage API for JavaScript.</span>
+									</div>
+								
+									<div class="sectionItem itemName namespace static">
+										<b class="icon" title="Enumeration of the storage types supported by jQuery.sap.storage.Storage"><a href="../symbols/jQuery.sap.storage.Type.html">Type</a></b>
+										<span class='description'>Enumeration of the storage types supported by <a href="../symbols/jQuery.sap.storage.Storage.html">jQuery.sap.storage.Storage</a></span>
+									</div>
+								
+								</div>
+							</div>
+						
+					
+		
+			
+
+					
+		
+
+
+					
+						
+						
+						
+						
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Deletes all the entries saved in the session (Independent of the current Storage instance!)."><a href="../symbols/jQuery.sap.storage.html#.clear">jQuery.sap.storage.clear</a></b><span class='signature'>()</span>
+									<span class='description'>Deletes all the entries saved in the session (Independent of the current Storage instance!).</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Retrieves the state string stored in the session under the key sStorageKeyPrefix + sId  sStorageKeyPrefix is the id prefix defined for the storage instance (@see jQuery.sap#storage)"><a href="../symbols/jQuery.sap.storage.html#.get">jQuery.sap.storage.get</a></b><span class='signature'>(<span title="(string) Id for the state to retrieve">sId</span>)</span>
+									<span class='description'>Retrieves the state string stored in the session under the key sStorageKeyPrefix + sId </p><p> sStorageKeyPrefix is the id prefix defined for the storage instance (@see jQuery.sap#storage)</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Returns the type of the storage."><a href="../symbols/jQuery.sap.storage.html#.getType">jQuery.sap.storage.getType</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the type of the storage.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Stores the passed state string in the session, under the key sStorageKeyPrefix + sId  sStorageKeyPrefix is the id prefix defined for the storage instance (@see jQuery.sap#storage)"><a href="../symbols/jQuery.sap.storage.html#.put">jQuery.sap.storage.put</a></b><span class='signature'>(<span title="(string) Id for the state to store">sId</span>, <span title="(string) content to store">sStateToStore</span>)</span>
+									<span class='description'>Stores the passed state string in the session, under the key sStorageKeyPrefix + sId </p><p> sStorageKeyPrefix is the id prefix defined for the storage instance (@see jQuery.sap#storage)</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Deletes the state string stored in the session under the key sStorageKeyPrefix + sId  sStorageKeyPrefix is the id prefix defined for the storage instance (@see jQuery.sap#storage)"><a href="../symbols/jQuery.sap.storage.html#.remove">jQuery.sap.storage.remove</a></b><span class='signature'>(<span title="(string) Id for the state to delete">sId</span>)</span>
+									<span class='description'>Deletes the state string stored in the session under the key sStorageKeyPrefix + sId </p><p> sStorageKeyPrefix is the id prefix defined for the storage instance (@see jQuery.sap#storage)</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Deletes all state strings stored in the session under the key prefix sStorageKeyPrefix + sIdPrefix."><a href="../symbols/jQuery.sap.storage.html#.removeAll">jQuery.sap.storage.removeAll</a></b><span class='signature'>(<span title="(string) Id prefix for the states to delete">sIdPrefix</span>)</span>
+									<span class='description'>Deletes all state strings stored in the session under the key prefix sStorageKeyPrefix + sIdPrefix.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+					
+		
+		
+
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".clear"> </a>
+										<div class="itemTitle icon">
+											jQuery.sap.storage.clear<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Deletes all the entries saved in the session (Independent of the current Storage instance!).
+</p><p>
+CAUTION: This method should be called only in very particular situations,
+when a global erasing of data is required. Given that the method deletes
+the data saved under any ID, it should not be called when managing data
+for specific controls.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														true if execution of removal
+was successful or the data to remove doesn't exist,
+and false if the feature is unavailable or a problem occurred
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".get"> </a>
+										<div class="itemTitle icon">
+											jQuery.sap.storage.get<span class="signature">(<span title="(string) Id for the state to retrieve">sId</span>)</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Retrieves the state string stored in the session under the key
+sStorageKeyPrefix + sId
+</p><p>
+sStorageKeyPrefix is the id prefix defined for the storage instance (@see jQuery.sap#storage)
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b>
+													</td>
+													<td class="methodItemDesc">
+												    Id for the state to retrieve
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the string from the storage, if the retrieval
+was successful, and null otherwise
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".getType"> </a>
+										<div class="itemTitle icon">
+											jQuery.sap.storage.getType<span class="signature">()</span>
+											<span class="light" title="returns jQuery.sap.storage.Type | string">: <a href="../symbols/jQuery.sap.storage.Type.html">jQuery.sap.storage.Type</a> | string</span>
+										</div>
+										<div class="full-description">
+											Returns the type of the storage.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/jQuery.sap.storage.Type.html">jQuery.sap.storage.Type</a> | string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the type of the storage or "unknown"
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".put"> </a>
+										<div class="itemTitle icon">
+											jQuery.sap.storage.put<span class="signature">(<span title="(string) Id for the state to store">sId</span>, <span title="(string) content to store">sStateToStore</span>)</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Stores the passed state string in the session, under the key
+sStorageKeyPrefix + sId
+</p><p>
+sStorageKeyPrefix is the id prefix defined for the storage instance (@see jQuery.sap#storage)
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b>
+													</td>
+													<td class="methodItemDesc">
+												    Id for the state to store
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sStateToStore</b>
+													</td>
+													<td class="methodItemDesc">
+												    content to store
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														true if the data were successfully stored, false otherwise
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".remove"> </a>
+										<div class="itemTitle icon">
+											jQuery.sap.storage.remove<span class="signature">(<span title="(string) Id for the state to delete">sId</span>)</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Deletes the state string stored in the session under the key
+sStorageKeyPrefix + sId
+</p><p>
+sStorageKeyPrefix is the id prefix defined for the storage instance (@see jQuery.sap#storage)
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b>
+													</td>
+													<td class="methodItemDesc">
+												    Id for the state to delete
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														true if the deletion
+was successful or the data doesn't exist under the specified key,
+and false if the feature is unavailable or a problem occurred
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".removeAll"> </a>
+										<div class="itemTitle icon">
+											jQuery.sap.storage.removeAll<span class="signature">(<span title="(string) Id prefix for the states to delete">sIdPrefix</span>)</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Deletes all state strings stored in the session under the key prefix 
+sStorageKeyPrefix + sIdPrefix.
+</p><p>
+sStorageKeyPrefix is the id prefix defined for the storage instance (@see jQuery.sap#storage)
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sIdPrefix</b>
+													</td>
+													<td class="methodItemDesc">
+												    Id prefix for the states to delete
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.13.0</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														true if the deletion
+was successful or the data doesn't exist under the specified key,
+and false if the feature is unavailable or a problem occurred
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

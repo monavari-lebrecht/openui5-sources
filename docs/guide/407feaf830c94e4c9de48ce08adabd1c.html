@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=6251749450320151"/>
+<title>Controller Extension</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio407feaf830c94e4c9de48ce08adabd1c">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Controller Extension</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">In SAPUI5, you can extend or overwrite the functionality of a base controller by merging the
+			standard controller with a new controller that meets your specific requirements.</p>
+<div class="note note"><span class="notetitle">Note</span> 
+			<p class="p">The controller extension concept of SAPUI5 does <strong class="ph b">not</strong> use inheritance but merging on
+				JavaScript object level.</p>
+
+		</div>
+<p class="p">The methods of your new controller override the standard methods with the same name. The
+			following controller lifecycle methods are, however, an exception to this rule:
+				<samp class="ph codeph">onInit</samp>, <samp class="ph codeph">onExit</samp>,
+			<samp class="ph codeph">onBeforeRendering</samp>, <samp class="ph codeph">onAfterRendering</samp>. The controller
+			methods of your customized application are called either after (for
+				<samp class="ph codeph">onInit</samp> and <samp class="ph codeph">onAfterRendering</samp>), or before (for
+				<samp class="ph codeph">onExit</samp> and <samp class="ph codeph">onBeforeRendering</samp>) the standard
+			lifecycle methods. The following code snippets show how the replacment of controllers
+			works.</p>
+<p class="p">The following code snippet shows the standard controller <samp class="ph codeph">Main.controller.js</samp>
+			that you want to replace:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.controller("samples.components.ext.sap.Main", {
+    onInit : function () {
+        console.log("samples.components.ext.sap.Main - onInit");
+    },
+
+    doSomething: function() {
+        alert("this is an original standard action");
+    },
+
+    doSomeStandardAction: function() {
+        alert("this is another original standard action");
+    }
+});</pre></div>
+<p class="p">You replace the standard controller with the following new controller
+				<samp class="ph codeph">CustomMain.controller.js</samp>:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.controller("samples.components.ext.customer.CustomMain", {
+    onInit : function () {
+        console.log("samples.components.ext.customer.CustomMain - onInit");
+    },
+
+    doSomething: function() {
+        alert("this is a customer action");
+    },
+
+    doSomeCustomAction: function() {
+        alert("this is another customer action");
+    }
+});</pre></div>
+<p class="p">Im customizing, you connect the new controller with the standard controller:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">customizing: {  
+    "sap.ui.controllerExtensions": {
+        "samples.components.ext.sap.Main": {
+            controllerName: "samples.components.ext.customer.CustomMain"
+        }
+    },
+    .....some more content</pre></div>
+<p class="p">With this customizing, the <samp class="ph codeph">samples.components.ext.customer.CustomMain</samp>
+			controller functions are merged every time the controller is called. The log contains
+			the following messages after initialization:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">samples.components.ext.sap.Main - onInit
+samples.components.ext.customer.CustomMain - onInit</pre></div>
+<p class="p">The <samp class="ph codeph">doSomething</samp> method of the new controller overwrites the
+				<samp class="ph codeph">doSomething</samp> method of the standard Controller. Thus, if the method
+			is invoked, an alert popup with the following text appears: <em class="ph i">this is a customer
+				action</em>.</p>
+<p class="p">The <samp class="ph codeph">doSomeStandardAction</samp> method remains available without changes, as no
+			method with the same name exists in the new controller.</p>
+<p class="p">The <samp class="ph codeph">doSomeCustomAction</samp> method is additionally available and you can use it,
+			for example, in a view extension.</p>
+<p class="p">The controller extensions are applied to all controllers with the specified name within the
+			customized component, regardless of whether the controller is instantiated explicitly or
+			belongs to a view.</p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Controller Extension";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

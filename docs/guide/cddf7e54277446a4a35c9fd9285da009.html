@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="When you use the to(…) and back(…) methods of the NavContainer to trigger navigation, you can also give an optional payload data object."/>
+<meta name="description" content="When you use the to(…) and back(…) methods of the NavContainer to trigger navigation, you can also give an optional payload data object."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=00658895145698668"/>
+<title>Passing Data when Navigating</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiocddf7e54277446a4a35c9fd9285da009">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Passing Data when Navigating</h1>
+<div class="body conbody"><p class="shortdesc">When you use the <samp class="ph codeph">to(…)</samp> and <samp class="ph codeph">back(…)</samp> methods of the
+			<samp class="ph codeph">NavContainer</samp> to trigger navigation, you can also give an optional
+		payload data object. </p>
+<p class="p">This object is then available in the page events, for example <samp class="ph codeph">beforeShow</samp>
+			and <samp class="ph codeph">afterShow</samp>. You can also use this mechanism to decouple page
+			implementations.</p>
+<p class="p">Example:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">app.to("detailPage", {id:"42"}); // trigger navigation and hand over a data object
+                                 // this data object could also be a binding context when dealing with data binding
+...
+
+
+// and where the detail page is implemented:
+myDetailPage.addEventDelegate({
+   onBeforeShow: function(evt) {
+      var idToRetrieve = evt.data.id;
+      // ...now retrieve the data element with the given ID and update the page UI
+   }
+});</pre></div>
+<p class="p">When you navigate back to a page, it receives the original data object which has been
+			given when you first navigated to the page, but you can also give an additional data
+			object with the back navigation.</p>
+<div class="section"><div class="section_title">API References</div><div type="API References">
+			
+			<ul class="ul" id="loiocddf7e54277446a4a35c9fd9285da009__ul_vfs_xgx_xl"><li class="li"><a class="extlink" href="../../docs/api/symbols/sap.m.NavContainer.html">sap.m.NavContainer<img src="images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></li>
+<li class="li"><a class="extlink" href="../../docs/api/symbols/sap.m.NavContainerChild.html">sap.m.NavContainerChild<img src="images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></li>
+</ul>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Passing Data when Navigating";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

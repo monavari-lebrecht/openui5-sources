@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=4410318286415905"/>
+<title>Notes</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio47b93e8ca54a4b469a5e205c310cf953">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Notes</h1>
+<div class="body"><p class="shortdesc"/>
+<ul class="ul" id="loio47b93e8ca54a4b469a5e205c310cf953__ul_qmw_lfp_2j"><li class="li">
+				<p class="p">iOS does <strong class="ph b">not</strong> trigger a phone call if the phone number contains "*" or
+					"#".</p>
+
+			</li>
+<li class="li">
+				<p class="p">You can add multiple recipients for a text message in Android phones by
+					separating recipient numbers with ";".</p>
+
+			</li>
+<li class="li">
+				<p class="p">According to RFC 2368 you can set multiple subscribers for the e-mail application
+					by separating each with ","; however, this still depends on the application.
+					Outlook, for example, uses ";" as separator.</p>
+
+			</li>
+<li class="li">
+				<p class="p">You can use the <samp class="ph codeph">sap.m.URLHelper.redirect</samp> method to use custom
+					URL schemes: </p>
+
+				<ul class="ul" id="loio47b93e8ca54a4b469a5e205c310cf953__ul_z4n_s4v_gj"><li class="li">
+						<p class="p">For iOS: <a class="extlink" href="http://help.sap.com/disclaimer?site=http://developer.apple.com/library/safari/#featuredarticles/iPhoneURLScheme_Reference/Introduction/Introduction.html"> http://developer.apple.com/library/safari/#featuredarticles/iPhoneURLScheme_Reference/Introduction/Introduction.html<img src="images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></p>
+
+					</li>
+<li class="li">
+						<p class="p">For Android: <a class="extlink" href="http://help.sap.com/disclaimer?site=http://developer.android.com/guide/appendix/g-app-intents.html"> http://developer.android.com/guide/appendix/g-app-intents.html<img src="images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>
+						</p>
+
+					</li>
+<li class="li">
+						<p class="p">URI schemes: <a class="extlink" href="http://help.sap.com/disclaimer?site=http://en.wikipedia.org/wiki/URI_scheme"> http://en.wikipedia.org/wiki/URI_scheme<img src="images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></p>
+
+					</li>
+</ul>
+
+			</li>
+<li class="li">
+				<p class="p">If you just want to get a URI back without a redirect, you can use normalize
+					methods which have the same parameter as trigger methods, for example:</p>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">/*
+ * These methods do not redirect but return URI scheme back as string.
+ * All parameters are optional
+ */
+sap.m.URLHelper.normalizeTel( [Telephone Number] );
+sap.m.URLHelper.normalizeSms( [Telephone Number] );
+sap.m.URLHelper.normalizeEmail( [Destination Email], [Subject], [Default Message Text], [CC], [BCC] );  </pre></div>
+
+			</li>
+</ul>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Notes";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="LOIO.FOLDER.IWB_FOLDER_ID" content="1234AC50C238B656E10000000A445394"/>
+<meta name="LOIO.FOLDER.IWB_TECH_NAME" content="HELPX.UI_EXT"/>
+<meta name="LOIO.FOLDER.IWB_FOLDER_GROUP" content="SAPXH"/>
+<meta name="LOIO.FOLDER.IWB_SHH_KEY" content=""/>
+<meta name="LOIO.FOLDER.IWB_TRANSLATION_MEMORY" content=""/>
+<meta name="LOIO.FOLDER.TERM_DOMAIN" content="FF"/>
+<meta name="LOIO.IWB_TYPE" content="ICG"/>
+<meta name="LOIO.IWB_SHH_KEY" content=""/>
+<meta name="LOIO.KW_CONVREF.CLASS" content=""/>
+<meta name="LOIO.KW_CONVREF.OBJID" content=""/>
+<meta name="PHIO.IWB_INDUSTRY" content="SHL"/>
+<meta name="PHIO.RELEASE" content="1.0_2014Q3"/>
+<meta name="PHIO.CREATED_AT" content="20140605161055"/>
+<meta name="PHIO.LAST_CHANGED_AT" content="20140605161056"/>
+<meta name="PHIO.IWB_LEVEL" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=23866966193249484"/>
+<title>The Analysis Step Gallery</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio83db7d53b5c19456e10000000a423f68">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">The Analysis Step Gallery</h1>
+<div class="body"><p class="p">When the user clicks <span class="ph uicontrol">Add Analysis Step</span>, the analysis step gallery is instantiated. For each step template, the analytical content configuration provides the title, the icon, and the relevant categories.</p>
+<p class="p">The analysis step gallery displays all available analysis step templates in a hierarchical select dialog. This dialog first lists all available categories. The categories of the analysis step gallery are configured as <span class="ph sap-technical-name sap-technical-name">category</span> objects in the configuration file. The text key of a <span class="ph sap-technical-name sap-technical-name">category</span> object is used as the category title in the accordion of the analysis step gallery. The <span class="ph sap-technical-name sap-technical-name">step</span> object contains one or more category IDs to define the categories in which a particular step is displayed in the analysis step gallery.</p>
+<p class="p">When the user selects a category, all analysis steps available for this category are listed on the next level of the select dialog. On the final level, the representation types for the selected step are displayed.</p>
+<p class="p">For each analysis step template, the analysis step gallery displays a static icon as well as a title. Both the icon and the title are specified in the <span class="ph sap-technical-name sap-technical-name">step</span> object of the analytical content configuration file.</p>
+<p class="p">When the user selects an analysis step to add it to the analysis path, the analysis step gallery calls the <span class="ph sap-technical-name sap-technical-name">createStepAndSetActive()</span> API and adds the step to the analysis path as the active analysis step. The analysis step gallery is then closed and the <span class="ph sap-technical-name sap-technical-name">getSteps</span> API is called to get all analysis steps in the correct sequence.</p>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="The Analysis Step Gallery";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

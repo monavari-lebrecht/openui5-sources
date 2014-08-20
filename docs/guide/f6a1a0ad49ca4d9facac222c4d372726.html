@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=6739413013267923"/>
+<title>Performance Behavior</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiof6a1a0ad49ca4d9facac222c4d372726">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Performance Behavior</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">Mobile devices usually have a limited memory and processing power. Complex web pages may
+			therefore have a negative impact on the application performance. This also depends on
+			the mobile device.</p>
+<p class="p">The <samp class="ph codeph">sap.m.List</samp> and <samp class="ph codeph">sap.m.Table</samp> controls are most likely
+			affected by this as they are often bound to data sources and often dynamically generate
+			list items or table rows. The data may contain a large number of elements. Apart from
+			the performance, creating long lists or tables on mobile devices also affects usability:
+			navigating through large data sets on a mobile device is less convenient than on the
+			desktop. We recommend to restrict the number of elements in lists or tables to 100 on
+			mobile devices.</p>
+<p class="p">If a list contains too many items, the device needs more time for rendering and the user
+			has to wait before he can see the list or table on the device. The scrolling behavior
+			may also be affeted. To reduce the number of items that must be rendered initially, you
+			can use the <samp class="ph codeph">growing</samp> feature for the list or table. With this feature,
+			subsequent loads will not trigger a rerendering of the complete list and are more
+			performant. However, if a re-rendering of the entire list is triggered for another
+			reason, the rendering may have a reduced performance. </p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Performance Behavior";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

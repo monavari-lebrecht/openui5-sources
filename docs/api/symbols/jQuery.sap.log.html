@@ -1,0 +1,1214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - jQuery.sap.log</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Namespace jQuery.sap.log
+					</h1>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>A Logging API for JavaScript.
+</p><p>
+Provides methods to manage a client-side log and to create entries in it. Each of the logging methods
+jQuery.sap.log.#debug, jQuery.sap.log.#info, jQuery.sap.log.#warning,
+jQuery.sap.log.#error and jQuery.sap.log.#fatal creates and records a log entry,
+containing a timestamp, a log level, a message with details and a component info.
+The log level will be one of <a href="../symbols/jQuery.sap.log.Level.html">jQuery.sap.log.Level</a> and equals the name of the concrete logging method.
+</p><p>
+By using the <a href="../symbols/jQuery.sap.log.html#setLevel">jQuery.sap.log#setLevel</a> method, consumers can determine the least important
+log level which should be recorded. Less important entries will be filtered out. (Note that higher numeric
+values represent less important levels). The initially set level depends on the mode that UI5 is running in.
+When the optimized sources are executed, the default level will be <a href="../symbols/jQuery.sap.log.Level.html#.ERROR">jQuery.sap.log.Level.ERROR</a>.
+For normal (debug sources), the default level is <a href="../symbols/jQuery.sap.log.Level.html#.DEBUG">jQuery.sap.log.Level.DEBUG</a>.
+</p><p>
+All logging methods allow to specify a <b>component</b>. These components are simple strings and
+don't have a special meaning to the UI5 framework. However they can be used to semantically group
+log entries that belong to the same software component (or feature). There are two APIs that help
+to manage logging for such a component. With <code><a href="../symbols/jQuery.sap.log.html#.getLogger">jQuery.sap.log.getLogger</a>(sComponent)</code>,
+one can retrieve a logger that automatically adds the given <code>sComponent</code> as component
+parameter to each log entry, if no other component is specified. Typically, JavaScript code will
+retrieve such a logger once during startup and reuse it for the rest of its lifecycle.
+Second, the <a href="../symbols/jQuery.sap.log.Logger.html#setLevel">jQuery.sap.log.Logger#setLevel</a>(iLevel, sComponent) method allows to set the log level
+for a specific component only. This allows a more fine granular control about the created logging entries.
+jQuery.sap.log.Logger.getLevel allows to retrieve the currently effective log level for a given
+component.
+</p><p>
+jQuery.sap.log#getLog returns an array of the currently collected log entries.
+</p><p>
+Furthermore, a listener can be registered to the log. It will be notified whenever a new entry
+is added to the log. The listener can be used for displaying log entries in a separate page area,
+or for sending it to some external target (server).</p>
+						
+						
+						
+						
+						
+						
+							<br />
+							<i>Since: </i>0.9.0.
+						
+					</div>
+					
+		
+
+
+					
+						
+						
+							<div class="summary section">
+								<div class="sectionTitle">Namespaces &amp; Classes</div>
+								<div class="sectionItems">
+								
+									<div class="sectionItem itemName namespace static">
+										<b class="icon" title="Enumeration of the configurable log levels that a Logger should persist to the log."><a href="../symbols/jQuery.sap.log.Level.html">Level</a></b>
+										<span class='description'>Enumeration of the configurable log levels that a Logger should persist to the log.</span>
+									</div>
+								
+									<div class="sectionItem itemName static">
+										<b class="icon" title="A Logger class"><a href="../symbols/jQuery.sap.log.Logger.html">Logger</a></b>
+										<span class='description'>A Logger class</span>
+									</div>
+								
+									<div class="sectionItem itemName namespace static">
+										<b class="icon" title="Enumeration of levels that can be used in a call to jQuery.sap.log.Logger#setLevel(iLevel, sComponent)."><a href="../symbols/jQuery.sap.log.LogLevel.html">LogLevel</a></b>
+										<span class='description'>Enumeration of levels that can be used in a call to <a href="../symbols/jQuery.sap.log.Logger.html#setLevel">jQuery.sap.log.Logger#setLevel</a>(iLevel, sComponent).</span>
+									</div>
+								
+								</div>
+							</div>
+						
+					
+		
+			
+
+					
+		
+
+
+					
+						
+						
+						
+						
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Allows to add a new LogListener that will be notified for new log entries."><a href="../symbols/jQuery.sap.log.html#.addLogListener">jQuery.sap.log.addLogListener</a></b><span class='signature'>(<span title="(object) The new listener object that should be informed">oListener</span>)</span>
+									<span class='description'>Allows to add a new LogListener that will be notified for new log entries.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Returns the logged entries recorded so far as an array."><a href="../symbols/jQuery.sap.log.html#.getLogEntries">jQuery.sap.log.getLogEntries</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the logged entries recorded so far as an array.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Returns a jQuery.sap.log.Logger for the given component."><a href="../symbols/jQuery.sap.log.html#.getLogger">jQuery.sap.log.getLogger</a></b><span class='signature'>(<span title="(string) Component to create the logger for">sComponent</span>, <span title="(int) a default log level to be used for the component, if no log level has been defined for it so far.">iDefaultLogLevel</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Returns a <a href="../symbols/jQuery.sap.log.Logger.html">jQuery.sap.log.Logger</a> for the given component.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Allows to remove a registered LogListener."><a href="../symbols/jQuery.sap.log.html#.removeLogListener">jQuery.sap.log.removeLogListener</a></b><span class='signature'>(<span title="(object) The new listener object that should be removed">oListener</span>)</span>
+									<span class='description'>Allows to remove a registered LogListener.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Creates a new debug-level entry in the log with the given message, details and calling component."><a href="../symbols/jQuery.sap.log.html#debug">debug</a></b><span class='signature'>(<span title="(string) Message text to display">sMessage</span>, <span title="(string) Details about the message, might be omitted">sDetails</span><i class="help" title="Optional parameter">?</i>, <span title="(string) Name of the component that produced the log entry">sComponent</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Creates a new debug-level entry in the log with the given message, details and calling component.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Creates a new error-level entry in the log with the given message, details and calling component."><a href="../symbols/jQuery.sap.log.html#error">error</a></b><span class='signature'>(<span title="(string) Message text to display">sMessage</span>, <span title="(string) Details about the message, might be omitted">sDetails</span><i class="help" title="Optional parameter">?</i>, <span title="(string) Name of the component that produced the log entry">sComponent</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Creates a new error-level entry in the log with the given message, details and calling component.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Creates a new fatal-level entry in the log with the given message, details and calling component."><a href="../symbols/jQuery.sap.log.html#fatal">fatal</a></b><span class='signature'>(<span title="(string) Message text to display">sMessage</span>, <span title="(string) Details about the message, might be omitted">sDetails</span><i class="help" title="Optional parameter">?</i>, <span title="(string) Name of the component that produced the log entry">sComponent</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Creates a new fatal-level entry in the log with the given message, details and calling component.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the log level currently effective for the given component."><a href="../symbols/jQuery.sap.log.html#getLevel">getLevel</a></b><span class='signature'>(<span title="(string) Name of the component to retrieve the log level for">sComponent</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Returns the log level currently effective for the given component.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Creates a new info-level entry in the log with the given message, details and calling component."><a href="../symbols/jQuery.sap.log.html#info">info</a></b><span class='signature'>(<span title="(string) Message text to display">sMessage</span>, <span title="(string) Details about the message, might be omitted">sDetails</span><i class="help" title="Optional parameter">?</i>, <span title="(string) Name of the component that produced the log entry">sComponent</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Creates a new info-level entry in the log with the given message, details and calling component.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Checks whether logging is enabled for the given log level, depending on the currently effective log level for the given component."><a href="../symbols/jQuery.sap.log.html#isLoggable">isLoggable</a></b><span class='signature'>(<span title="(int) the log level in question">iLevel</span><i class="help" title="Optional parameter">?</i>, <span title="(string) Name of the component to check the log level for">sComponent</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Checks whether logging is enabled for the given log level, depending on the currently effective log level for the given component.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Defines the maximum jQuery.sap.log.Level of log entries that will be recorded."><a href="../symbols/jQuery.sap.log.html#setLevel">setLevel</a></b><span class='signature'>(<span title="(jQuery.sap.log.Level) jQuery.sap.log.Level">iLogLevel</span>, <span title="(string) The log component to set the log level for.">sComponent</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Defines the maximum jQuery.sap.log.Level of log entries that will be recorded.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Creates a new trace-level entry in the log with the given message, details and calling component."><a href="../symbols/jQuery.sap.log.html#trace">trace</a></b><span class='signature'>(<span title="(string) Message text to display">sMessage</span>, <span title="(string) Details about the message, might be omitted">sDetails</span><i class="help" title="Optional parameter">?</i>, <span title="(string) Name of the component that produced the log entry">sComponent</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Creates a new trace-level entry in the log with the given message, details and calling component.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Creates a new warning-level entry in the log with the given message, details and calling component."><a href="../symbols/jQuery.sap.log.html#warning">warning</a></b><span class='signature'>(<span title="(string) Message text to display">sMessage</span>, <span title="(string) Details about the message, might be omitted">sDetails</span><i class="help" title="Optional parameter">?</i>, <span title="(string) Name of the component that produced the log entry">sComponent</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Creates a new warning-level entry in the log with the given message, details and calling component.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static deprecated">
+									<b class="icon" title="Retrieves the currently recorded log entries."><a href="../symbols/jQuery.sap.log.html#.getLog">jQuery.sap.log.getLog</a></b><span class='signature'>()</span>
+									<span class='description'>Retrieves the currently recorded log entries.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+					
+		
+		
+
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".addLogListener"> </a>
+										<div class="itemTitle icon">
+											jQuery.sap.log.addLogListener<span class="signature">(<span title="(object) The new listener object that should be informed">oListener</span>)</span>
+											<span class="light" title="returns jQuery.sap.log">: <a href="../symbols/jQuery.sap.log.html">jQuery.sap.log</a></span>
+										</div>
+										<div class="full-description">
+											Allows to add a new LogListener that will be notified for new log entries.
+The given object must provide method <code>onLogEntry</code> and can also be informed
+about <code>onDetachFromLog</code> and <code>onAttachToLog</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    The new listener object that should be informed
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/jQuery.sap.log.html">jQuery.sap.log</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														The global logger
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".getLogEntries"> </a>
+										<div class="itemTitle icon">
+											jQuery.sap.log.getLogEntries<span class="signature">()</span>
+											<span class="light" title="returns object[]">: object[]</span>
+										</div>
+										<div class="full-description">
+											Returns the logged entries recorded so far as an array.
+</p><p>
+Log entries are plain JavaScript objects with the following properties
+<ul>
+<li>timestamp {number} point in time when the entry was created
+<li>level {int} LogLevel level of the entry
+<li>message {string} message text of the entry
+</ul>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.1.2</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{object[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														an array containing the recorded log entries
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".getLogger"> </a>
+										<div class="itemTitle icon">
+											jQuery.sap.log.getLogger<span class="signature">(<span title="(string) Component to create the logger for">sComponent</span>, <span title="(int) a default log level to be used for the component, if no log level has been defined for it so far.">iDefaultLogLevel</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns jQuery.sap.log.Logger">: <a href="../symbols/jQuery.sap.log.Logger.html">jQuery.sap.log.Logger</a></span>
+										</div>
+										<div class="full-description">
+											Returns a <a href="../symbols/jQuery.sap.log.Logger.html">jQuery.sap.log.Logger</a> for the given component.
+</p><p>
+The method might or might not return the same logger object across multiple calls.
+While loggers are assumed to be light weight objects, consumers should try to
+avoid redundant calls and instead keep references to already retrieved loggers.
+</p><p>
+The optional second parameter <code>iDefaultLogLevel</code> allows to specify 
+a default log level for the component. It is only applied when no log level has been 
+defined so far for that component (ignoring inherited log levels). If this method is 
+called multiple times for the same component but with different log levels, 
+only the first call one might be taken into account.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sComponent</b>
+													</td>
+													<td class="methodItemDesc">
+												    Component to create the logger for
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iDefaultLogLevel</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    a default log level to be used for the component, 
+  if no log level has been defined for it so far.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.1.2</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/jQuery.sap.log.Logger.html">jQuery.sap.log.Logger</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														A logger for the component.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".removeLogListener"> </a>
+										<div class="itemTitle icon">
+											jQuery.sap.log.removeLogListener<span class="signature">(<span title="(object) The new listener object that should be removed">oListener</span>)</span>
+											<span class="light" title="returns jQuery.sap.log">: <a href="../symbols/jQuery.sap.log.html">jQuery.sap.log</a></span>
+										</div>
+										<div class="full-description">
+											Allows to remove a registered LogListener.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    The new listener object that should be removed
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/jQuery.sap.log.html">jQuery.sap.log</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														The global logger
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="debug"> </a>
+										<div class="itemTitle icon">
+											debug<span class="signature">(<span title="(string) Message text to display">sMessage</span>, <span title="(string) Details about the message, might be omitted">sDetails</span><i class="help" title="Optional parameter">?</i>, <span title="(string) Name of the component that produced the log entry">sComponent</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns jQuery.sap.log.Logger">: <a href="../symbols/jQuery.sap.log.Logger.html">jQuery.sap.log.Logger</a></span>
+										</div>
+										<div class="full-description">
+											Creates a new debug-level entry in the log with the given message, details and calling component.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sMessage</b>
+													</td>
+													<td class="methodItemDesc">
+												    Message text to display
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sDetails</b><i class="help" title="Optional parameter">?, Default: ''</i>
+													</td>
+													<td class="methodItemDesc">
+												    Details about the message, might be omitted
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sComponent</b><i class="help" title="Optional parameter">?, Default: ''</i>
+													</td>
+													<td class="methodItemDesc">
+												    Name of the component that produced the log entry
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/jQuery.sap.log.Logger.html">jQuery.sap.log.Logger</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														The log instance
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="error"> </a>
+										<div class="itemTitle icon">
+											error<span class="signature">(<span title="(string) Message text to display">sMessage</span>, <span title="(string) Details about the message, might be omitted">sDetails</span><i class="help" title="Optional parameter">?</i>, <span title="(string) Name of the component that produced the log entry">sComponent</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns jQuery.sap.log.Logger">: <a href="../symbols/jQuery.sap.log.Logger.html">jQuery.sap.log.Logger</a></span>
+										</div>
+										<div class="full-description">
+											Creates a new error-level entry in the log with the given message, details and calling component.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sMessage</b>
+													</td>
+													<td class="methodItemDesc">
+												    Message text to display
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sDetails</b><i class="help" title="Optional parameter">?, Default: ''</i>
+													</td>
+													<td class="methodItemDesc">
+												    Details about the message, might be omitted
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sComponent</b><i class="help" title="Optional parameter">?, Default: ''</i>
+													</td>
+													<td class="methodItemDesc">
+												    Name of the component that produced the log entry
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/jQuery.sap.log.Logger.html">jQuery.sap.log.Logger</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														The log instance
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="fatal"> </a>
+										<div class="itemTitle icon">
+											fatal<span class="signature">(<span title="(string) Message text to display">sMessage</span>, <span title="(string) Details about the message, might be omitted">sDetails</span><i class="help" title="Optional parameter">?</i>, <span title="(string) Name of the component that produced the log entry">sComponent</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns jQuery.sap.log.Logger">: <a href="../symbols/jQuery.sap.log.Logger.html">jQuery.sap.log.Logger</a></span>
+										</div>
+										<div class="full-description">
+											Creates a new fatal-level entry in the log with the given message, details and calling component.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sMessage</b>
+													</td>
+													<td class="methodItemDesc">
+												    Message text to display
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sDetails</b><i class="help" title="Optional parameter">?, Default: ''</i>
+													</td>
+													<td class="methodItemDesc">
+												    Details about the message, might be omitted
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sComponent</b><i class="help" title="Optional parameter">?, Default: ''</i>
+													</td>
+													<td class="methodItemDesc">
+												    Name of the component that produced the log entry
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/jQuery.sap.log.Logger.html">jQuery.sap.log.Logger</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														The log instance for method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getLevel"> </a>
+										<div class="itemTitle icon">
+											getLevel<span class="signature">(<span title="(string) Name of the component to retrieve the log level for">sComponent</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Returns the log level currently effective for the given component.
+If no component is given or when no level has been configured for a
+given component, the log level for the default component of this logger is returned.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sComponent</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Name of the component to retrieve the log level for
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.1.2</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														The log level for the given component or the default log level
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="info"> </a>
+										<div class="itemTitle icon">
+											info<span class="signature">(<span title="(string) Message text to display">sMessage</span>, <span title="(string) Details about the message, might be omitted">sDetails</span><i class="help" title="Optional parameter">?</i>, <span title="(string) Name of the component that produced the log entry">sComponent</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns jQuery.sap.log.Logger">: <a href="../symbols/jQuery.sap.log.Logger.html">jQuery.sap.log.Logger</a></span>
+										</div>
+										<div class="full-description">
+											Creates a new info-level entry in the log with the given message, details and calling component.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sMessage</b>
+													</td>
+													<td class="methodItemDesc">
+												    Message text to display
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sDetails</b><i class="help" title="Optional parameter">?, Default: ''</i>
+													</td>
+													<td class="methodItemDesc">
+												    Details about the message, might be omitted
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sComponent</b><i class="help" title="Optional parameter">?, Default: ''</i>
+													</td>
+													<td class="methodItemDesc">
+												    Name of the component that produced the log entry
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/jQuery.sap.log.Logger.html">jQuery.sap.log.Logger</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														The log instance
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="isLoggable"> </a>
+										<div class="itemTitle icon">
+											isLoggable<span class="signature">(<span title="(int) the log level in question">iLevel</span><i class="help" title="Optional parameter">?</i>, <span title="(string) Name of the component to check the log level for">sComponent</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Checks whether logging is enabled for the given log level, 
+depending on the currently effective log level for the given component.
+</p><p>
+If no component is given, the default component of this logger will be taken into account.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iLevel</b><i class="help" title="Optional parameter">?, Default: Level.DEBUG</i>
+													</td>
+													<td class="methodItemDesc">
+												    the log level in question
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sComponent</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Name of the component to check the log level for
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.13.2</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Whether logging is enabled or not
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setLevel"> </a>
+										<div class="itemTitle icon">
+											setLevel<span class="signature">(<span title="(jQuery.sap.log.Level) jQuery.sap.log.Level">iLogLevel</span>, <span title="(string) The log component to set the log level for.">sComponent</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns jQuery.sap.log">: <a href="../symbols/jQuery.sap.log.html">jQuery.sap.log</a></span>
+										</div>
+										<div class="full-description">
+											Defines the maximum jQuery.sap.log.Level of log entries that will be recorded.
+Log entries with a higher (less important) log level will be omitted from the log.
+When a component name is given, the log level will be configured for that component
+only, otherwise the log level for the default component of this logger is set.
+For the global logger, the global default level is set.
+</p><p>
+<b>Note</b>: Setting a global default log level has no impact on already defined
+component log levels. They always override the global default log level.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/jQuery.sap.log.Level.html">jQuery.sap.log.Level</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iLogLevel</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sComponent</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    The log component to set the log level for.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/jQuery.sap.log.html">jQuery.sap.log</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														The global logger to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="trace"> </a>
+										<div class="itemTitle icon">
+											trace<span class="signature">(<span title="(string) Message text to display">sMessage</span>, <span title="(string) Details about the message, might be omitted">sDetails</span><i class="help" title="Optional parameter">?</i>, <span title="(string) Name of the component that produced the log entry">sComponent</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns jQuery.sap.log.Logger">: <a href="../symbols/jQuery.sap.log.Logger.html">jQuery.sap.log.Logger</a></span>
+										</div>
+										<div class="full-description">
+											Creates a new trace-level entry in the log with the given message, details and calling component.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sMessage</b>
+													</td>
+													<td class="methodItemDesc">
+												    Message text to display
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sDetails</b><i class="help" title="Optional parameter">?, Default: ''</i>
+													</td>
+													<td class="methodItemDesc">
+												    Details about the message, might be omitted
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sComponent</b><i class="help" title="Optional parameter">?, Default: ''</i>
+													</td>
+													<td class="methodItemDesc">
+												    Name of the component that produced the log entry
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/jQuery.sap.log.Logger.html">jQuery.sap.log.Logger</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														The log-instance
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="warning"> </a>
+										<div class="itemTitle icon">
+											warning<span class="signature">(<span title="(string) Message text to display">sMessage</span>, <span title="(string) Details about the message, might be omitted">sDetails</span><i class="help" title="Optional parameter">?</i>, <span title="(string) Name of the component that produced the log entry">sComponent</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns jQuery.sap.log.Logger">: <a href="../symbols/jQuery.sap.log.Logger.html">jQuery.sap.log.Logger</a></span>
+										</div>
+										<div class="full-description">
+											Creates a new warning-level entry in the log with the given message, details and calling component.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sMessage</b>
+													</td>
+													<td class="methodItemDesc">
+												    Message text to display
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sDetails</b><i class="help" title="Optional parameter">?, Default: ''</i>
+													</td>
+													<td class="methodItemDesc">
+												    Details about the message, might be omitted
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sComponent</b><i class="help" title="Optional parameter">?, Default: ''</i>
+													</td>
+													<td class="methodItemDesc">
+												    Name of the component that produced the log entry
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/jQuery.sap.log.Logger.html">jQuery.sap.log.Logger</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														The log instance
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static deprecated'>
+										<a name=".getLog"> </a>
+										<div class="itemTitle icon">
+											jQuery.sap.log.getLog<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Retrieves the currently recorded log entries.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+											<dl class="detailList deprecation">
+												<dt class="heading">Deprecated:</dt>
+												<dt>
+													Since 1.1.2. To avoid confusion with getLogger, this method has been renamed to <a href="../symbols/jQuery.sap.log.html#.getLogEntries">jQuery.sap.log.getLogEntries</a>.
+												</dt>
+											</dl>
+										
+										
+										
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

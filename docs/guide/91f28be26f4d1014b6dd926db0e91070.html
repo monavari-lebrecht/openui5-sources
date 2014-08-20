@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=4752136027681385"/>
+<title>Support for Unique IDs</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f28be26f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Support for Unique IDs</h1>
+<div class="body"><p class="p">Each view and its content usually defines static IDs.
+		You use these IDs to identify and modify the controls within your controller
+		during runtime. If you reuse or nest these views, the IDs are no longer unique.
+		To avoid ambiguity, each view adds its own ID as prefix to all its child
+		controls. This only happens if a static ID is provided. If the ID is created
+		during instantiation of the control, it is unique per default. 
+	 </p>
+<p class="p">If you create further controls during runtime, the
+		controller creates a unique ID by calling the 
+		<samp class="ph codeph">oController.createId("ID")</samp> method.
+		These methods add the necessary prefix to the ID. 
+	 </p>
+<p class="p">If you want to modify the control with the ID &lt;ID&gt;, you can call the
+				<samp class="ph codeph">byId(&lt;ID&gt;)</samp> method on your view to get the correct control
+			directly. You do not have to handle all the prefix stuff on your own.  The
+			following view defines a button with the static ID <samp class="ph codeph">abutton</samp>
+				(<samp class="ph codeph">ButtonView</samp>): </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;core:View viewName="sap.hcm.ButtonView" controllerName="sap.hcm.myController" xmlns="sap.ui.commons" xmlns:core="sap.ui.core"
+           xmlns:html="http://www.w3.org/1999/xhtml"&gt;
+      &lt;Button id="aButton" text="Click me"/&gt;
+&lt;core:View&gt;</pre></div>
+<p class="p">The following view defines a view embedding the same
+		view several times (<samp class="ph codeph">ContainerView</samp>): 
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;core:View viewName="sap.hcm.ContainerView" controllerName="sap.hcm.Address" xmlns="sap.ui.commons" xmlns:core="sap.ui.core"
+           xmlns:html="http://www.w3.org/1999/xhtml"&gt;
+      &lt;core:View id="ButtonView1" viewName="sap.hcm.ButtonView"/&gt;
+      &lt;core:View id="ButtonView2" viewName="sap.hcm.ButtonView"/&gt;
+&lt;core:View&gt;</pre></div>
+<p class="p">The view is created as follows: 
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">...
+   var oView = sap.ui.view({type:sap.ui.core.mvc.ViewType.XML, id:"myContainerView",viewName:"sap.hcm.ContainerView"});
+...</pre></div>
+<p class="p">The container view has the following IDs: 
+	 </p>
+<p class="p">Both child views IDs have the prefix 
+		<samp class="ph codeph">myContainerView--</samp>: 
+	 </p>
+<p class="p"><samp class="ph codeph">
+		  myContainerView--ButtonView1</samp> 
+	 </p>
+<p class="p"><samp class="ph codeph">
+		  myContainerView--ButtonView2</samp> 
+	 </p>
+<p class="p">To get one of the child views, use the following
+		code: 
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">...
+   var oButtonView1 = oView.byId("ButtonView1");
+...</pre></div>
+<p class="p">The button view has the following IDs: 
+	 </p>
+<p class="p"><samp class="ph codeph">
+		  ButtonView1--aButton</samp> 
+	 </p>
+<p class="p"><samp class="ph codeph">
+		  ButtonView2--aButton</samp> 
+	 </p>
+<p class="p">To get the button control, use the following code: 
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">...
+   var oButtonView1 = oView.byId("ButtonView1");
+   oButtonView1.byId("aButton");
+...</pre></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Support for Unique IDs";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

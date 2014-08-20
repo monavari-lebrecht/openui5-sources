@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=4592860324351985"/>
+<title>Using Images in Mobile Applications</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiof86dbe9d7f7d48dea5286003b1322165">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Using Images in Mobile Applications</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">When using images in mobile applications, note the following.</p>
+<div class="section" id="loiof86dbe9d7f7d48dea5286003b1322165__section_N10018_N10011_N10001"><div class="section_title">Supporting Different Pixel Densities</div><div type="Supporting Different Pixel Densities">
+			
+			<p class="p">Some mobile devices, starting with iPhone4 and iPad3, have a display with a very high density
+				of pixels (four pixels where older models would only have one pixel). They are
+				called "retina displays" by Apple to suggest they are as crispand clear as the eye
+				can see. They use four physical pixels to display one logical CSS pixel, so images
+				can be displayed much sharper when given twice as large as usually required because
+				internally the device can use much more pixels to display all details of the image.
+				Browsers on those displays do this automatically when images are scaled down. </p>
+
+			<p class="p">So some devices support higher resolution images while others do not. We therefore recommend
+				that SAPUI5 application developers provide image resources for all relevant
+				densities to provide a very crisp and clear display of images on devices with
+				"retina display". </p>
+
+			<p class="p">The <samp class="ph codeph">sap.m.Image</samp> control automatically chooses the right density, depending on
+				the device on which it is displayed. If an image of a certain density is not
+				available, the image control falls back to a default image, which should be provided
+				as well.</p>
+
+			<div class="note note" id="loiof86dbe9d7f7d48dea5286003b1322165__note_N10030_N10018_N10011_N10001"><span class="notetitle">Note</span> 
+				<p class="p">The image control is also used implicitly by other mobile controls, for
+					example</p>
+
+				<ul class="ul" id="loiof86dbe9d7f7d48dea5286003b1322165__ul_dl1_z1x_2j"><li class="li">Button </li>
+<li class="li">Segmented Button </li>
+<li class="li">Standard List Item </li>
+</ul>
+
+			</div>
+
+			<div class="note caution" id="loiof86dbe9d7f7d48dea5286003b1322165__note_N1004A_N10018_N10011_N10001"><span class="cautiontitle">Caution</span> 
+				<p class="p">If you do not have higher resolution images you should set the <samp class="ph codeph">densityAware</samp>
+					property to false to avoid unnecessary roundtrips. </p>
+
+			</div>
+
+		</div></div>
+<div class="section" id="loiof86dbe9d7f7d48dea5286003b1322165__section_N10057_N10011_N10001"><div class="section_title">Example</div><div type="Example">
+			
+			<p class="p">Assume the following controls are displayed on a device with high-density screen
+					(<samp class="ph codeph">window.devicePixelRatio</samp> is 2): </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">new sap.m.Image({ 
+	    densityAware: false, // tell the image control that there are no different optimized image variants
+	    src : "first.png"   // therefore Image control will directly load first.png 
+})
+
+new sap.m.Image({ 
+    	src : "second.png"    // Image control will first look for second@2.png, then fall back to second.png
+})</pre></div>
+
+			<p class="p">The first image control has been told that there are no image files for the different
+				densities, so it will directly load "first.png". This image looks as good as other
+				images on retina displays. </p>
+
+			<p class="p">The second image control will first attempt to load second@2.png which should be twice as
+				large as the normal image and would be scaled down for display, so it looks
+				absolutely crisp on retina displays. If this file does not exist, it will fall back
+				to "second.png", but this fallback will cause an additional server request. </p>
+
+		</div></div>
+<div class="section" id="loiof86dbe9d7f7d48dea5286003b1322165__section_N10075_N10011_N10001"><div class="section_title">Naming Conventions</div><div type="Naming Conventions">
+			
+			<p class="p">Density related images are loaded if you provide an image name with density awareness in
+				following format is provided:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">[imageName]@[densityValue].[extension]</pre></div>
+
+			<p class="p">Currently, we support the densities 1.5 and 2. The follwing example shows a set of images with
+				different densities: </p>
+
+			<ul class="ul" id="loiof86dbe9d7f7d48dea5286003b1322165__ul_ul1_z1x_2j"><li class="li">detail.png (default) </li>
+<li class="li">detail@1.5.png </li>
+<li class="li">detail@2.png </li>
+</ul>
+
+			<div class="note note" id="loiof86dbe9d7f7d48dea5286003b1322165__note_N1009D_N10077_N10011_N10001"><span class="notetitle">Note</span> detail@0.75.png (not supported any more, will use the standard image for such low
+				density device)</div>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Using Images in Mobile Applications";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

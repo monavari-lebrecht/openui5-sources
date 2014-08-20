@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="SAPUI5 automatically detects test cases for controls by means of the DiscoveryServlet."/>
+<meta name="description" content="SAPUI5 automatically detects test cases for controls by means of the DiscoveryServlet."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=6096365307453552"/>
+<title>Using the SAPUI5 DiscoveryServlet to Automatically Find Test Cases</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio8bab32b115b84824886ad72772ad6083">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Using the SAPUI5 DiscoveryServlet to Automatically Find Test Cases</h1>
+<div class="body conbody"><p class="shortdesc">SAPUI5 automatically detects test cases for controls by means of the
+			<samp class="ph codeph">DiscoveryServlet</samp>. </p>
+<p class="p">To use this service, the application must configure the servlet in its web.xml as follows: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+&lt;!-- ============================================================= --&gt;
+
+&lt;!-- SAPUI5 discovery servlet used to find available UI test cases --&gt;
+
+&lt;!-- ============================================================= --&gt;
+
+&lt;servlet&gt;
+	&lt;display-name&gt;DiscoveryServlet&lt;/display-name&gt;
+	&lt;servlet-name&gt;DiscoveryServlet&lt;/servlet-name&gt;
+	&lt;servlet-class&gt;com.sap.ui5.discovery.DiscoveryServlet&lt;/servlet-class&gt;
+	&lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+&lt;/servlet&gt;
+
+
+&lt;servlet-mapping&gt;
+	&lt;servlet-name&gt;DiscoveryServlet&lt;/servlet-name&gt;
+	&lt;url-pattern&gt;/discovery/*&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;</pre></div>
+<p class="p">The servlet discovers all HTML files located inside the
+				<span class="ph filepath">test-resources/&lt;ui-library-name&gt;</span> folder of the web
+			application and all resources inside the modules (JAR files) where the location is
+				<span class="ph filepath">META-INF/test-resources/&lt;ui-library-name&gt;</span>. </p>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Using the SAPUI5 DiscoveryServlet to Automatically Find Test Cases";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

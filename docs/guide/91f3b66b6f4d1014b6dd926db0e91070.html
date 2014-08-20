@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=1818777799840654"/>
+<title>Browser Security</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f3b66b6f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Browser Security</h1>
+<div class="body"><p class="p">A browser is, by design, an untrusted client: A server cannot rely on any information sent from a
+			browser, as a malicious user can use a JavaScript debugger to tamper with the client
+			code, or a proxy server like fiddler to modify request data. Input validation on the
+			client is just for convenience purposes as the server always has to validate the data
+			again that is received from the client.</p>
+<p class="p">Browsers also offer possible attack vectors, such as Cross-Site-Scripting (XSS). The application
+			has to take care of these. </p>
+<div class="section" id="loio91f3b66b6f4d1014b6dd926db0e91070__section_6C7CB6E84E7E42DB821D50A02BEFF849"><div class="section_title">Cross-Site Scripting</div><div type="Cross-Site Scripting"> 
+		 
+		<p class="p">Cross-Site-Scripting has become the most prominent security issue of web applications within
+				the last years and also the most dangerous one, as it allows several ways of
+				exploitation. Once malicious code is running within your browser, it can be used to
+				steal your session cookies, to trigger requests within the current session, or even
+				to exploit a known browser vulnerability to do native code execution. </p>
+ 
+		<p class="p">For SAPUI5 applications, XSS vulnerabilities can
+		  exist on different levels: 
+		</p>
+ 
+		<ul class="ul"><li class="li"> 
+			 <p class="p">Within the HTML page or custom data transports
+				sent to the browser from the server 
+			 </p>
+ 
+		  </li>
+<li class="li"> 
+			 <p class="p">Within the JavaScript code of the application, which is processing server responses </p>
+ 
+		  </li>
+<li class="li"> 
+			 <p class="p">Within the HTML renderers of SAPUI5 controls 
+			 </p>
+ 
+		  </li>
+</ul>
+ 
+		<p class="p">SAPUI5 can only prevent cross-site scripting in the processing and rendering of controls. For
+				that purpose, input validation exists for all typed element properties and output
+				encoding is done in the renderer class of controls. However, there are exceptions
+				for controls which are especially built to include arbitrary HTML, for example,
+					<samp class="ph codeph">sap.ui.core.HTML</samp>.</p>
+ 
+		<p class="p">The application is responsible for proper output encoding of all content embedded in the HTML
+				page itself, as well as for encoding JSON or XML data sent to the client and secure
+				processing of this data. The application also has to take care of security of custom
+				controls provided by the application.</p>
+
+			<p class="p">For more information, see <a class="xref" href="91f0bd316f4d1014b6dd926db0e91070.html">Cross-Site Scripting</a>.</p>
+ 
+	 </div></div>
+<div class="section"><div class="section_title">Clickjacking</div><div type="Clickjacking">
+			
+			<p class="p">Clickjacking, or UI redressing, tricks the user into triggering actions within an application
+				by redirecting clicks. This is done, for example, by using an invisible Iframe which
+				is positioned above a fake UI. When the user clicks on something on the fake UI, the
+				content of the invisible IFrame handles the click.</p>
+
+			<p class="p">Currently, SAPUI5 does not provide a means to prevent clickjacking. It is planned to provide a
+				solution for all SAP web framework, which will then also be implemented in SAPUI5.
+				However, SAPUI5 will not be able to enable a generic clickjacking prevention for all
+				applications using SAPUI5. The applications need to clarify whether embedded
+				scenarios, for example portal, are required and add a clickjacking protection for
+				the respective scenario.</p>
+
+			<p class="p">We recommend the following:</p>
+
+			<ul class="ul" id="loio91f3b66b6f4d1014b6dd926db0e91070__ul_q2l_y1b_lm"><li class="li">If the SAPUI5 application does <strong class="ph b">not</strong> support an embedded scenario, such as
+					a portal, framebusting can be used to prevent clickjacking.</li>
+<li class="li">If the SAPUI5 application supports an embedded scenario, the respective
+					application should wait for the generic framework solution.</li>
+</ul>
+
+		</div></div>
+<div class="section" id="loio91f3b66b6f4d1014b6dd926db0e91070__section_94EDDC27FE5D45A29B1B7DC18C4E2F48"><div class="section_title">HTML5</div><div type="HTML5"> 
+		 
+		<p class="p">HTML5 offers a lot of new functionality, which also
+		  brings a lot of potential new security issues. This just an overview of some of
+		  the new features and possible security issues when they are used. 
+		</p>
+ 
+	 </div></div>
+<div class="section" id="loio91f3b66b6f4d1014b6dd926db0e91070__section_28FDB6AF8A8446FA9B40EFC0DEED90D8"><div class="section_title">Local Storage</div><div type="Local Storage"> 
+		 
+		<p class="p">All browsers are now offering a local storage API.
+		  This API can be used to store a limited amount of data on the browser. Access
+		  to this data is limited to JavaScript code running from the same domain as it
+		  has been stored. SAPUI5 offers helper functions to access the local storage on
+		  different browsers. 
+		</p>
+ 
+		<p class="p">The local storage of browsers is not a secure
+		  storage, so while it can be used for static data, like enumerations,
+		  applications must not store any user or application data within the local
+		  storage. 
+		</p>
+ 
+		<p class="p">SAPUI5 is using the local storage of the browser
+		  for the history-capability of dropdown boxes and combo boxes. 
+		</p>
+ 
+	 </div></div>
+<div class="section" id="loio91f3b66b6f4d1014b6dd926db0e91070__section_E81EA53C91814771BF17EDD4352DE716"><div class="section_title">WEBGL</div><div type="WEBGL"> 
+		 
+		<p class="p">While more and more browsers are supporting WEBGL
+		  by default, WEBGL allows accessing the graphics API of the computer on a very
+		  low level, which may also lead to low level exploits. This is the main reason
+		  Internet Explorer has no support for WebGL at all, Microsoft recently stated,
+		  that they are not going to support WebGL as they think it can not be
+		  implemented in a secure way. 
+		</p>
+ 
+		<p class="p">SAPUI5 is currently not using WEBGL. 
+		</p>
+ 
+	 </div></div>
+<div class="section" id="loio91f3b66b6f4d1014b6dd926db0e91070__section_30E13FB57F6B404BA1469FFD6802AA3F"><div class="section_title">WebSockets</div><div type="WebSockets"> 
+		 
+		<p class="p">While WebSockets offer great new possibilities for
+		  the client/server communication of web applications, there have been many
+		  security issues rising while the first implementations were done by the browser
+		  vendors. Standardization of WebSockets has reached a stable state with RFC 6455
+		  and is now implemented beginning with Chrome 16, Firefox 11 and Internet
+		  Explorer 10. Even if the browser implementations themselfes prove to be secure,
+		  using WebSockets may require additional security measures on the client. 
+		</p>
+ 
+		<p class="p">SAPUI5 is currently not using WebSockets. 
+		</p>
+ 
+	 </div></div>
+<div class="section" id="loio91f3b66b6f4d1014b6dd926db0e91070__section_73E16A2754484DA1A0D39140EE760419"><div class="section_title">Postmessage/Onmessage</div><div type="Postmessage/Onmessage"> 
+		 
+		<p class="p">This is another great feature in the HTML5 area,
+		  which can lead to massive security issues when not used correctly. postMessage
+		  allows inter-window-communication between windows from different domains. So
+		  basically this opens a hole in the same origin policy currently implemented in
+		  the browser. As soon you are subscribing to the onMessage event, you can
+		  receive messages from any other browser window, the application is responsible
+		  to check the originating domain and only to process messages which have been
+		  sent by trusted domains. 
+		</p>
+ 
+		<p class="p">SAPUI5 is utilizing postMessage for its debugging
+		  and tracing functionality. 
+		</p>
+ 
+	 </div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Browser Security";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=7166273569977581"/>
+<title>Component Metadata</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio0187ea5e2eff4166b0453b9dcc8fc64f">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Component Metadata</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">The <samp class="ph codeph">Component</samp> class extends the <samp class="ph codeph">ManagedObject</samp> class and
+			provides specific metadata for components. The <samp class="ph codeph">UIComponent</samp> class
+			provides additional metadata for the configuration of user interfaces or the navigation
+			between views.</p>
+<p class="p">The metadata defined in <samp class="ph codeph">component.js</samp> is common for faceless components
+			and UI components. The following parameters are available:</p>
+<ul class="ul" id="loio0187ea5e2eff4166b0453b9dcc8fc64f__ul_njn_3gt_kn"><li class="li">
+				<p class="p"><samp class="ph codeph">abstract</samp>: Specifies if your component class is an abstract class that serves
+					as a base for other components</p>
+
+			</li>
+<li class="li">
+				<p class="p"><samp class="ph codeph">version</samp>: Version of your component; this parameter belongs to the
+					design-time metadata and is currently not used; it may be used in the future in
+					the design-time repository</p>
+
+			</li>
+<li class="li">
+				<p class="p"><samp class="ph codeph">includes</samp>: Array of strings containing the paths to CSS and JavaScript
+					resources for your component; will be added to the header of the HTML page and
+					loaded by the browser. The resources will be resolved relative to the location
+					of <samp class="ph codeph">Component.js</samp>.</p>
+
+			</li>
+<li class="li">
+				<p class="p"><samp class="ph codeph">dependencies</samp>: Used to specify all external dependencies, such as libraries
+					or components. Like the includes for resources that are added to the
+					application’s HTML, the dependencies are loaded by SAPUI5 core before the
+					component is initialized. Everything that is referenced here can be used in your
+					component code right from the start. Specify here external dependences such as
+					libraries or components, that will be loaded by SAPUI5 core in the
+					initialization phase of your Component and can be used after it.</p>
+
+				<ul class="ul" id="loio0187ea5e2eff4166b0453b9dcc8fc64f__ul_xr1_r4t_kn"><li class="li">
+						<p class="p"><samp class="ph codeph">libs</samp>: Path to the libraries that should be loaded by SAPUI5 core to be
+							used in your component</p>
+
+					</li>
+<li class="li">
+						<p class="p"><samp class="ph codeph">components</samp>: Full path to the components that should be loaded by SAPUI5
+							core to be used in your component </p>
+
+					</li>
+<li class="li">
+						<p class="p"><samp class="ph codeph">ui5version</samp>: Minimum version of SAP UI5 that the component requires; it
+							helps to be ensure that the features of SAPUI5 runtime used in this
+							component are available. As SAPUI5 currently does not enforce the use of
+							the correct version, it is only used for information purposes.</p>
+
+					</li>
+</ul>
+
+			</li>
+<li class="li">
+				<p class="p"><samp class="ph codeph">properties</samp>: Defined for components in the same way as for a control or
+					view</p>
+
+			</li>
+<li class="li">
+				<p class="p"><samp class="ph codeph">library</samp>: Specify the library the component belongs to</p>
+
+			</li>
+<li class="li">
+				<p class="p"><samp class="ph codeph">config</samp>: Static configuration; specify the name-value pairs that you need in
+					the component</p>
+
+			</li>
+<li class="li">
+				<p class="p"><samp class="ph codeph">customizing</samp>: Customizing for components and views, see <a class="xref" href="a264a9abf98d4caabbf9b027bc1005d8.html">Extending SAPUI5 Applications</a></p>
+
+				<ul class="ul" id="loio0187ea5e2eff4166b0453b9dcc8fc64f__ul_nsj_wpt_kn"><li class="li">
+						<p class="p"><samp class="ph codeph">sap.ui.viewExtensions</samp>: Used for providing custom view content in a
+							specified extension point in the standard application</p>
+
+					</li>
+<li class="li">
+						<p class="p"><samp class="ph codeph">sap.ui.viewModifications</samp>: Used for overriding control properties in the
+							standard application</p>
+
+					</li>
+<li class="li">
+						<p class="p"><samp class="ph codeph">sap.ui.viewReplacements</samp>: Used for replacing a standard view with a custom
+							view</p>
+
+					</li>
+<li class="li">
+						<p class="p"><samp class="ph codeph">sap.ui.controllerExtensions</samp>: Used for replacing a standard controller with
+							a custom controller</p>
+
+					</li>
+</ul>
+
+			</li>
+</ul>
+<p class="p">Example for metadata in <samp class="ph codeph">component.js</samp>:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.core.Component.extend("some.sample.Component", {
+    
+   metadata : {
+        stereotype : "component", - describes what sap ui5 object it is, for example: element, control, component, in your case it is (what a surprise...) - "component"
+        "abstract": true,  - specifies if your Component class is an abstract one that serves as a base for your other components 
+        version : "1.0",  the version of your Component
+        includes : [],  // css, javascript files that should be used in the component
+        dependencies : { // external dependencies
+            libs : [], // the libraries that you component will be using
+            components : [], // the components that your component will use
+            ui5version : "" // the version of SAP UI5 that your component requires
+                },
+                properties: {
+                    config : "any"
+            },
+                library: "sap.ui.core" // what library belongs your component to 
+        config: { // static configuration
+                        "sap.samples.config1": {
+                             "Key1-1": "Value1-1",
+                             "Key1-2": "value1-2"
+                        },            
+                       "sap.samples.config2": {
+                            "Key3-1": "Value3-1",
+                            "Key3-2": "Value3-2"
+                      }
+                }, 
+        customizing: { // - serves for SAP UI5 Extentibility concept
+            "sap.ui.viewReplacements": {
+                "sap.xx.org.Main": {
+                viewName: "sap.xx.new.Main",
+                type: "XML"
+                }
+            },
+            "sap.ui.controllerReplacements": {
+                "sap.xx.org.Main": "sap.xx.new.Main"
+            },
+            "sap.ui.viewExtensions": {
+                "sap.xx.new.Main": { 
+                "extensionX": {
+                name: "sap.xx.new.Fragment1",
+                type: "sap.ui.core.XMLFragment"
+                },
+                "extensionY": {
+                    ...
+                }
+                 }
+               },
+                "sap.ui.viewModification": {
+                "sap.xx.new.Main": {
+                    "myControlId": {
+                        text: "{i18n_custom&gt;mytext}"
+                    }
+                }
+            }   
+        }
+    }
+});
+</pre></div>
+<p class="p">In addition to the common metadata for components, the <samp class="ph codeph">UIComponent</samp> class
+			provides the following metadata for UI comonents:</p>
+<ul class="ul" id="loio0187ea5e2eff4166b0453b9dcc8fc64f__ul_yrf_xqt_kn"><li class="li">
+				<p class="p"><samp class="ph codeph">rootView</samp>: Can be the view name as string or the view configuration
+					object</p>
+
+			</li>
+<li class="li">
+				<p class="p"><samp class="ph codeph">publicMethods</samp>: Definition of public methods for your component</p>
+
+			</li>
+<li class="li">
+				<p class="p"><samp class="ph codeph">aggregations</samp>: Defines aggregations for your component</p>
+
+			</li>
+<li class="li">
+				<p class="p"><samp class="ph codeph">routing</samp>: Provides the default values for all views</p>
+
+				<p class="p"><samp class="ph codeph">config</samp>: Default values for routing that are applied, if no setting is
+					specified by a route</p>
+
+				<ul class="ul" id="loio0187ea5e2eff4166b0453b9dcc8fc64f__ul_ef5_zqt_kn"><li class="li">
+						<p class="p"><samp class="ph codeph">viewType</samp>: View type of the view that is created, for example XML, JS or
+							HTML</p>
+
+					</li>
+<li class="li">
+						<p class="p"><samp class="ph codeph">viewPath</samp>: Prefix that is preceding the view</p>
+
+					</li>
+<li class="li">
+						<p class="p"><samp class="ph codeph">targetParent</samp>: ID of the view in which the <samp class="ph codeph">targetControl</samp>
+							is searched</p>
+
+					</li>
+<li class="li">
+						<p class="p"><samp class="ph codeph">targetControl</samp>: ID of the control that contains the views</p>
+
+					</li>
+<li class="li">
+						<p class="p"><samp class="ph codeph">targetAggregation</samp>: Name of the aggregation of the
+								<samp class="ph codeph">targetControl</samp> that contains views</p>
+
+					</li>
+<li class="li">
+						<p class="p"><samp class="ph codeph">clearTarget</samp>: Boolean;  if set to <samp class="ph codeph">true</samp>, the aggregation
+							should be cleared before adding the View to it</p>
+
+					</li>
+</ul>
+
+				<p class="p"><samp class="ph codeph">routes</samp>: Contains the configuration objects</p>
+
+				<ul class="ul" id="loio0187ea5e2eff4166b0453b9dcc8fc64f__ul_o1y_pst_kn"><li class="li">
+						<p class="p"><samp class="ph codeph">name</samp>: Mandatory parameter used for listening or navigating to the
+							route</p>
+
+					</li>
+<li class="li">
+						<p class="p"><samp class="ph codeph">pattern</samp>: String that is matched against the hash. The {} means this
+							segment of the URL is passed to a handler with the value it contains</p>
+
+					</li>
+<li class="li">
+						<p class="p"><samp class="ph codeph">view</samp>: Name of the view that is created</p>
+
+					</li>
+</ul>
+
+			</li>
+</ul>
+<p class="p">Example for UI component metadata:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.core.UIComponent.extend("some.sample.UIComponent", {
+    
+    metadata : {
+        rootView : null, // the rootView to open (view name as string or view configuration object)
+    publicMethods: [ "render" ],
+    aggregations: {
+        "rootControl": { 
+                        type: "sap.ui.core.Control", multiple: false, visibility: "hidden"
+                }
+    },
+    routing: {  
+        config: { // default values for routing
+            viewType : "XML",
+            viewPath: "NavigationWithoutMasterDetailPattern.view",
+            targetParent: "myViewId",
+            targetControl: "app",
+            targetAggregation: "pages",
+            clearTarget: false
+        },
+            
+        routes: [ // contains routing configuration objects
+            {
+            name : "myRouteName1",
+            pattern : "FirstView/{from}",
+            view : "myViewId"
+            },
+            ]
+            
+        },
+        config: {
+            .....some configuration
+        },
+        customizing: {
+                      
+            .....some configuration        
+        }
+    }
+});</pre></div>
+<div class="section"><div class="section_title">Properties Section in Component Metadata</div><div type="Properties Section in Component Metadata">
+			
+			<p class="p">You can add a properties section to the metadata for all properties that can adopt
+				different values during runtime. The getters and setters for these properties are
+				generated automatically, but you can overwrite them if you require additional
+				functionality. The following example contains two properties at the end of the
+				metadata section.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.core.UIComponent.extend("samples.components.shell.Component", {
+	metadata : {
+		"abstract": true,
+		version : "1.0",
+		includes : [ "css/shell.css" ],  
+
+[… omitting some lines to make the example shorter]
+
+		initOnBeforeRender: true,
+		properties : {
+			appTitle: {	name:"appTitle", type:"string", defaultValue:"Default Value that will be replaced with something meaningful through the setter for this property" },
+someOtherProp: {	name:"myProperty", type:"string", defaultValue:"Some text" }
+		},
+	}
+});
+</pre></div>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Component Metadata";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

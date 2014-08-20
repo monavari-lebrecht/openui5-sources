@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=24849782913900198"/>
+<title>Running SAPUI5 Mobile Apps in Hybrid Web Containers</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio293eb945f0e945aaa776812481b4c533">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Running SAPUI5 Mobile Apps in Hybrid Web Containers</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">SAPUI5 provides the following two options for building mobile apps:</p>
+<ul class="ul" id="loio293eb945f0e945aaa776812481b4c533__ul_e4s_qdd_yl"><li class="li">
+				<p class="p">Building the app as a web application loaded from a URL</p>
+
+			</li>
+<li class="li">
+				<p class="p">Building the app as an hybrid app consisting of a native app wrapper, for example
+					PhoneGap, and an HTML viewer to display the SAPUI5 content on the user
+					interface.</p>
+
+			</li>
+</ul>
+<p class="p">Hybrid apps have the advantage that you can publish them in app stores. Also, by embedding the
+			application code in hybrid apps and the SAPUI5 library files in the hybrid container,
+			the user needs to install the files only once and does <strong class="ph b">not</strong> need to download them
+			every time he starts the application. But then the library size becomes important,
+			because every user has to install the files, whereas in web applications the library is
+			deployed on a server and the user only needs to download the required parts of the
+			library at runtime.</p>
+<p class="p">To include the SAPUI5 resources you need in your hybrid app, SAPUI5 mobile provides the
+			following static mobile runtime packages: <samp class="ph codeph">sapui5-mobile-opt-static.zip</samp>
+			or <samp class="ph codeph">sapui5-mobile-static.zip</samp>.</p>
+<div class="note caution"><span class="cautiontitle">Caution</span> 
+			<p class="p">The packages are <span class="ph emphasis emphasis">not</span> contained in the SAPUI5 runtime deployment. The
+				packages are contained, for example, in the SCN download version of SAPUI5 and in
+				the Open Source version OpenUI5 (file name in the OpenUI5 release:
+					<samp class="ph codeph">openui5-runtume-mobile*.zip</samp>)</p>
+
+		</div>
+<p class="p">The library size of these packages is rather small because the content that is most likely not
+			needed has been removed, for example test pages. A package contains the debug version of
+			all JavaScript files and the optimized and minimized version. Thus, you can use the
+			package for productive use as well as for debugging purposes. To use this package in an
+			app wrapper, such as PhoneGap, unzip the package in the respective resource location of
+			the app development project. The app wrapper build then includes the files and makes
+			them available at runtime.</p>
+<p class="p">To ensure that the file is small, it only contains the control libraries that are most likely
+			used and not all control libraries. Depending on the hybrid app it may be necessary to
+			add libraries by copying them from the respective folder of the SAPUI5 runtime, or to
+			delete libraries to reduce the package size and, thus, also reduce the installation size
+			for the user.</p>
+<p class="p">The SAPUI5 version contains the following control libraries:</p>
+<ul class="ul" id="loio293eb945f0e945aaa776812481b4c533__ul_awl_zjh_gn"><li class="li">
+				<p class="p"><samp class="ph codeph">sap.ui.core</samp></p>
+
+			</li>
+<li class="li">
+				<p class="p"><samp class="ph codeph">sap.ui.layout</samp></p>
+
+			</li>
+<li class="li">
+				<p class="p"><samp class="ph codeph">sap.ui.unified</samp></p>
+
+			</li>
+<li class="li">
+				<p class="p"><samp class="ph codeph">sap.m</samp></p>
+
+			</li>
+<li class="li">
+				<p class="p"><samp class="ph codeph">sap.me</samp></p>
+
+			</li>
+<li class="li">
+				<p class="p"><samp class="ph codeph">sap.makit</samp></p>
+
+			</li>
+<li class="li">
+				<p class="p"><samp class="ph codeph">sap.ca.ui</samp></p>
+
+			</li>
+<li class="li">
+				<p class="p"><samp class="ph codeph">sap.ca.scfld</samp></p>
+
+			</li>
+<li class="li">
+				<p class="p"><samp class="ph codeph">sap.viz</samp></p>
+
+			</li>
+</ul>
+<p class="p">The OpenUI5 version contain the following control libraries:</p>
+<ul class="ul" id="loio293eb945f0e945aaa776812481b4c533__ul_tz5_vlh_gn"><li class="li">
+				<p class="p"><samp class="ph codeph">sap.m</samp></p>
+
+			</li>
+<li class="li">
+				<p class="p"><samp class="ph codeph">sap.ui.core</samp></p>
+
+			</li>
+<li class="li">
+				<p class="p"><samp class="ph codeph">sap.ui.layout</samp></p>
+
+			</li>
+<li class="li">
+				<p class="p"><samp class="ph codeph">sap.ui.suite</samp></p>
+
+			</li>
+<li class="li">
+				<p class="p"><samp class="ph codeph">sap.ui.unified</samp></p>
+
+			</li>
+</ul>
+<div class="section"><div class="section_title">Optimization of the Package Size</div><div type="Optimization of the Package Size">
+			
+			<p class="p">Although the static SAPUI5 package is small enough to be included in hybrid apps, you can
+				reduce the size further and optimize the content for a specific application by
+				deleting additional files. The following list gives some examples:</p>
+
+			<ul class="ul" id="loio293eb945f0e945aaa776812481b4c533__ul_etb_myv_xl"><li class="li">
+					<p class="p">You can delete one of the following files from the <samp class="ph codeph">/resources</samp> folder
+						depending on your setup: <samp class="ph codeph">sap-ui-core-nojQuery.js</samp> if you
+						reference SAPUI5 normally or <samp class="ph codeph">sap-ui-core.js</samp> if you
+						reference the <samp class="ph codeph">nojQuery</samp> version and reference the
+							<samp class="ph codeph">jQuery</samp> version separately, for example if you run in a
+						Sybase hybrid container.</p>
+
+				</li>
+<li class="li">
+					<p class="p">You can delete all library folders if the respective control library is not needed. If you
+						do not use charts, you can delete the complete <samp class="ph codeph">makit</samp> and
+							<samp class="ph codeph">viz</samp> folder in <samp class="ph codeph">/resources/sap</samp>. And in
+						the OpenUI5 version you can, for example, delete the <samp class="ph codeph">suite</samp>
+						and the <samp class="ph codeph">unified</samp> folder if you do not need them.</p>
+
+				</li>
+<li class="li">
+					<p class="p">If you use the <samp class="ph codeph">sap-ui-core.js</samp> file for bootstrap, you can
+						delete the <samp class="ph codeph">jquery</samp> and <samp class="ph codeph">jqueryui</samp> folders in
+							<samp class="ph codeph">/resources/sap/ui/thirdparty</samp>. These files may be needed
+						when you use the <samp class="ph codeph">sap-ui-core-nojQuery.js</samp> script, but if you
+						have another copy of <samp class="ph codeph">jQuery</samp> available you can still delete
+						the folder.</p>
+
+				</li>
+<li class="li">
+					<p class="p">Depending on the theme you use, you can delete the <samp class="ph codeph">base</samp> and
+						either the <samp class="ph codeph">sap_bluecrystal</samp> or the <samp class="ph codeph">sap_mvi</samp>
+						folders in each of the <samp class="ph codeph">/resources/sap/* ... */themes</samp>
+						folders.</p>
+
+				</li>
+</ul>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p">For all JavaScript files, an optimized version and a debug (dbg) version  exists. If you
+					delete the files, make sure that you always delete both versions. If you can do
+					without easy debugging and want to achieve a minimum installation size instead,
+					you can delete all <samp class="ph codeph">*-dbg.js</samp> files.</p>
+
+			</div>
+
+			<p class="p">You can delete further files, but the size reduction is limited and to find out the files that
+				are not required gets increasingly difficult.</p>
+
+			<p class="p">You can also <strong class="ph b">add</strong> additional control libraries by copying the respective folder from the
+					<samp class="ph codeph">sapui5-static.zip</samp> or <samp class="ph codeph">openui5-runtime-*.zip</samp>
+				file. The control libraries are identical and can be used interchangeably provided
+				that they have the exactly same version.</p>
+
+		</div></div>
+<div class="section" id="loio293eb945f0e945aaa776812481b4c533__section_N10018_N10011_N10001"><div class="section_title">Device Ready Event</div><div type="Device Ready Event">
+			
+			<p class="p">The hybrid web container needs some time for initialization. During this time, the
+				sending of AJAX requests is blocked, meaning that JavaScript code stops once an AJAX
+				request is sent and the code execution stops as well. This leads to a UI freeze
+				effect.</p>
+
+			<p class="p">The oData model in SAPUI5 uses AJAX requests internally and the oData model initialization
+				must therefore be done after the hybrid container is ready to avoid a user interface
+				freeze. After initialization, the hybrid web containers fires an event, which is
+				called <samp class="ph codeph">deviceready</samp> in PhoneGap. To fix this issue, move the code
+				where the oData model is created and set to the core object or any other controls'
+				model property to the deviceready event listener.</p>
+
+			<p class="p">Example:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;script&gt;
+&lt;!-- put the following code in the beginning of the application code --&gt;
+function appReady(){
+    sap.ui.getCore().setModel(new sap.ui.model.odata.ODataModel(&lt;ODATA_URL&gt;, false));
+}
+&lt;!-- bind to the deviceready event --&gt;
+document.addEventListener("deviceready", appReady, false);
+&lt;/script&gt;</pre></div>
+
+		</div></div>
+<div class="section" id="loio293eb945f0e945aaa776812481b4c533__section_N1003A_N10011_N10001"><div class="section_title">Cross Domain Restrictions</div><div type="Cross Domain Restrictions">
+			
+			<p class="p">If you load data from an external server or service using AJAX, the external domain has to be
+				configured inside the hybrid web container to make the AJAX request go through the
+				cross domain restriction. The following findings result from an integration of the
+				SAPUI5 demo applications into PhoneGap:</p>
+
+			<ul class="ul" id="loio293eb945f0e945aaa776812481b4c533__ul_fpg_41x_2j"><li class="li">
+					<p class="p">Android</p>
+
+					<p class="p">If the AJAX code runs inside the webview in Android, no cross domain restriction exists.
+						This means that you can load data using AJAX from everywhere. The PhoneGap
+						documentation, however, still says that the domain needs to be configured in
+						one XML file.</p>
+
+				</li>
+<li class="li">
+					<p class="p">iOS</p>
+
+					<p class="p">The restriction in webview in iOS still exists and you need to add the domain that is
+						visited using AJAX to a white list file to bypass the restriction. For
+						detailed information about the white list file, see the PhoneGap
+						documentation on the PhoneGap website.</p>
+
+				</li>
+</ul>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Running SAPUI5 Mobile Apps in Hybrid Web Containers";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=1551443328826415"/>
+<title>Step 3: Navigation and Routing</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio688f36bd758e4ce2b4e682eef4dc794e">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Step 3: Navigation and Routing</h1>
+<div class="body conbody"><p class="shortdesc"/>
+<p class="p">A new Routing mechanism was introduced to UI5 in release 1.16. For in-app navigation,
+			this supersedes previous techniques such as using the
+				<samp class="ph codeph">sap.ui.core.EventBus</samp> or sharing navigation-container specific
+			controller code amongst aggregated pages. </p>
+<p class="p">While these previous techniques work well for intra-application navigation, they don't cater
+			for the requirements for bookmarking and resuming application User Interface (UI)
+			state.</p>
+<div class="section"><div class="section_title">Navigation</div><div type="Navigation"><p dir="ltr" class="p">Applications exist independently, and navigation
+				within those applications usually starts at the root control, often a container such
+				as an <samp class="ph codeph">sap.m.App</samp> (or <samp class="ph codeph">sap.m.NavContainer</samp>) or an
+					<samp class="ph codeph">sap.m.SplitApp</samp> (or <samp class="ph codeph">sap.m.SplitContainer</samp>). If
+				you want to only be able to jump into your application at the starting point, then
+				sharing navigation-container code is a technique that will work. However, it will
+				not give you the ability to bookmark a certain position within the application, and
+				it will not support resuming application flow from that bookmarked position.</p>
+<p dir="ltr" class="p">Consider our app. Here we see the UI state showing the details for a
+				particular product (Pink Lemonade), and specifically the supplier's address details.
+					</p>
+<div class="fig fignone"><div class="figcontainer"><img class="image" id="loio688f36bd758e4ce2b4e682eef4dc794e__image_skn_pns_4n" src="7ec77752c2c34bcf99cd9063f4858de1.image"/></div></div>
+<p dir="ltr" class="p">Without routing,
+				navigation to this UI state would require the user to find the product in the master
+				list, select it, and then ensure that the supplier's address was selected in the
+				detail view. Routing gives the application programmer the ability to support
+				navigation directly to this UI state. </p>
+<p dir="ltr" class="p">With routing, and appropriate
+				application logic, the UI state in the screenshot could be directly navigated to
+				from this
+				URL:</p>
+<samp class="ph codeph">http://&lt;host&gt;:&lt;port&gt;/path/to/app/index.html#/Products(6)/supplier</samp></div></div>
+<div class="section"><div class="section_title">Routing</div><div type="Routing">
+			
+			<p class="p">The navigation described above is achieved through use of the Routing mechanisms in UI5. These
+				are split between core (the classes in<a class="xref" href="../../docs/api/symbols/sap.ui.core.routing.html"> sap.ui.core.routing</a>) and
+					<samp class="ph codeph">sap.m</samp> (the <a class="xref" href="../../docs/api/symbols/sap.m.routing.RouteMatchedHandler.html"> sap.m.RouteMatchedHandler</a> class).</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Setup</div><div type="Setup"><p dir="ltr" class="p">In our app, we define and set up routing in the
+				component. Let's examine the relevant sections of <span class="ph filepath">Component.js</span>
+				now.</p>
+<div class="sectiondiv"><span class="ph emphasis emphasis">Loading of Custom Router</span><p dir="ltr" class="p">We use a custom Router
+						<samp class="ph codeph">sap.ui.demo.tdg.MyRouter</samp> so in our component we make sure
+					the module is loaded and
+				available:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>jQuery.sap.require("sap.ui.demo.tdg.MyRouter");
+</pre></div>
+</div><div class="sectiondiv"><span class="ph emphasis emphasis">Routing Configuration</span><p dir="ltr" class="p">In our component's metadata, we
+					define the routing configuration. This configuration is used for initializing
+					the
+					router.</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+		routing : {
+			config : {
+				routerClass : sap.ui.demo.tdg.MyRouter,
+				viewType : "XML",
+				viewPath : "sap.ui.demo.tdg.view",
+				targetAggregation : "detailPages",
+				clearTarget : false
+			},
+			routes : [
+				{
+					pattern : "",
+					name : "main",
+					view : "Master",
+					targetAggregation : "masterPages",
+					targetControl : "idAppControl",
+					subroutes : [
+						{
+							pattern : "{product}/:tab:",
+							name : "product",
+							view : "Detail"
+						}
+					]
+				},
+				{
+					name : "catchallMaster",
+					view : "Master",
+					targetAggregation : "masterPages",
+					targetControl : "idAppControl",
+					subroutes : [
+						{
+							pattern : ":all*:",
+							name : "catchallDetail",
+							view : "NotFound"
+						}
+					]
+				}
+			]
+		}
+</pre></div>
+<p dir="ltr" class="p">With the config section, we define some default values:</p>
+<ul class="ul" id="loio688f36bd758e4ce2b4e682eef4dc794e__ul_owz_2f2_4n"><li dir="ltr" class="li">we have a custom router class
+							(<samp class="ph codeph">sap.ui.demo.tdg.MyRouter</samp>)</li>
+<li dir="ltr" class="li">the views are XML</li>
+<li dir="ltr" class="li">the absolute path to our view definitions is
+							<samp class="ph codeph">sap.ui.demo.tdg.view</samp></li>
+<li dir="ltr" class="li">unless stated otherwise, when the router instantiates a view, it
+						should place it in the detail part of our <samp class="ph codeph">sap.m.SplitApp</samp>
+						control (via the <samp class="ph codeph">detailPages</samp> aggregation)</li>
+<li dir="ltr" class="li">we don't want the target aggregation
+						(<samp class="ph codeph">detailPages</samp>) to be cleared before views are added, so we
+						specify false for the <samp class="ph codeph">clearTarget</samp> parameter</li>
+</ul>
+<p dir="ltr" class="p">The routes section is an array of routing configuration objects
+					representing routes that we want to handle. Each configuration object has a
+					single mandatory parameter name. All other parameters are optional.</p>
+<p dir="ltr" class="p">We have a "main" route that causes the Master view to be placed in the
+						<samp class="ph codeph">masterPages</samp> aggregation of the
+						<samp class="ph codeph">sap.m.SplitApp</samp>, which is available via its id
+					'idAppControl'. There is also a subroute defined, in particular:</p>
+<ul class="ul" id="loio688f36bd758e4ce2b4e682eef4dc794e__ul_iyz_2f2_4n"><li dir="ltr" class="li">the Detail view (route name 'product') which causes the Detail
+						view to be instantiated and placed into the detailPages aggregation of the
+							<samp class="ph codeph">sap.m.SplitApp</samp>. There are two segments that we're
+						expecting in the URL pattern for this route:<ul class="ul" id="loio688f36bd758e4ce2b4e682eef4dc794e__ul_fzz_2f2_4n"><li dir="ltr" class="li">the product context, via the section {product} - in our
+								example above, this would be "Products(6)"</li>
+<li dir="ltr" class="li">the optional information tab, via the section
+									<samp class="ph codeph">:tab:</samp> , which will determine which
+									<samp class="ph codeph">sap.m.IconTabFilter</samp> will be pre-selected - in
+								our example above, this would be the "supplier" tab</li>
+</ul>
+</li>
+</ul>
+<p dir="ltr" class="p">We also have a 'catchall' route and subroute pair which is defined
+					so that a sensible message (in this case the details in the NotFound view) can
+					be shown to the user if they try to navigate, via a URL, to a resource that is
+					not valid as far as the app is concerned.</p>
+<p dir="ltr" class="p">Please refer to the
+					navigation and routing documentation for a full explanation.</p>
+</div><div class="sectiondiv"><span class="ph emphasis emphasis">Router Initialization</span><p dir="ltr" class="p">The router is initialized by the
+					component in the init
+					function:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+init : function() {
+    ...
+    this.getRouter().initialize();
+
+
+</pre></div>
+<p class="p">The
+					initialize method will start the routing – it will parse the initial hash,
+					create the needed views, start listening to hash changes and trigger the router
+					events.</p>
+<p dir="ltr" class="p">The router is retrieved by a call of
+						<samp class="ph codeph">getRouter</samp> on the component.</p>
+</div><div class="sectiondiv"><span class="ph emphasis emphasis">Custom Routing</span><p class="p">Our custom routing is performed in a module
+						<samp class="ph codeph">sap.ui.demo.tdg.MyRouter</samp>, which is an extended standard
+					router. It's defined in a <span class="ph filepath">MyRouter.js </span>file in the
+					application's root folder.</p>
+<p class="p">This is what MyRouter.js
+				contains:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+jQuery.sap.require("sap.m.routing.RouteMatchedHandler");
+jQuery.sap.require("sap.ui.core.routing.Router");
+jQuery.sap.declare("sap.ui.demo.tdg.MyRouter");
+
+sap.ui.core.routing.Router.extend("sap.ui.demo.tdg.MyRouter", {
+
+	constructor : function() {
+		sap.ui.core.routing.Router.apply(this, arguments);
+		this._oRouteMatchedHandler = new sap.m.routing.RouteMatchedHandler(this);
+	},
+
+	myNavBack : function(sRoute, mData) {
+		var oHistory = sap.ui.core.routing.History.getInstance();
+		var sPreviousHash = oHistory.getPreviousHash();
+
+		// The history contains a previous entry
+		if (sPreviousHash !== undefined) {
+			window.history.go(-1);
+		} else {
+			var bReplace = true; // otherwise we go backwards with a forward history
+			this.navTo(sRoute, mData, bReplace);
+		}
+	},
+
+	/**
+	 * @public Changes the view without changing the hash
+	 *
+	 * @param oOptions {object} must have the following properties
+	 * &lt;ul&gt;
+	 * 	&lt;li&gt; currentView : the view you start the navigation from.&lt;/li&gt;
+	 * 	&lt;li&gt; targetViewName : the fully qualified name of the view you want to navigate to.&lt;/li&gt;
+	 * 	&lt;li&gt; targetViewType : the viewtype eg: XML&lt;/li&gt;
+	 * 	&lt;li&gt; isMaster : default is false, true if the view should be put in the master&lt;/li&gt;
+	 * 	&lt;li&gt; transition : default is "show", the navigation transition&lt;/li&gt;
+	 * 	&lt;li&gt; data : the data passed to the navContainers livecycle events&lt;/li&gt;
+	 * &lt;/ul&gt;
+	 */
+	myNavToWithoutHash : function (oOptions) {
+		var oSplitApp = this._findSplitApp(oOptions.currentView);
+
+		// Load view, add it to the page aggregation, and navigate to it
+		var oView = this.getView(oOptions.targetViewName, oOptions.targetViewType);
+		oSplitApp.addPage(oView, oOptions.isMaster);
+		oSplitApp.to(oView.getId(), oOptions.transition || "show", oOptions.data);
+	},
+
+	backWithoutHash : function (oCurrentView, bIsMaster) {
+		var sBackMethod = bIsMaster ? "backMaster" : "backDetail";
+		this._findSplitApp(oCurrentView)[sBackMethod]();
+	},
+	
+	destroy : function() {
+		sap.ui.core.routing.Router.prototype.destroy.apply(this, arguments);
+		this._oRouteMatchedHandler.destroy();
+	},
+
+	_findSplitApp : function(oControl) {
+		sAncestorControlName = "idAppControl";
+
+		if (oControl instanceof sap.ui.core.mvc.View &amp;&amp; oControl.byId(sAncestorControlName)) {
+			return oControl.byId(sAncestorControlName);
+		}
+
+		return oControl.getParent() ? this._findSplitApp(oControl.getParent(), sAncestorControlName) : null;
+	}
+
+});
+
+</pre></div>
+</div></div></div>
+<div class="section"><div class="section_title">Use</div><div type="Use"><p class="p">Once the routing has been configured and initialized, it can be
+				used, in the controllers, to marshal the appropriate data and UI components,
+				according to the URL pattern that is matched. This is done by attaching a function
+				to the router's <samp class="ph codeph">routeMatched</samp> event. Here are two examples from the
+				Master and Detail views.</p>
+<p class="p">Easy access of the router and the component’s
+				eventbus. Getting the eventbus and the router is needed in most of the controllers.
+				So adding a custom controller for reuse purposes makes sense. Here is how it looks
+				like:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+jQuery.sap.declare("sap.ui.demo.tdg.util.Controller");
+
+sap.ui.core.mvc.Controller.extend("sap.ui.demo.tdg.util.Controller", {
+	getEventBus : function () {
+		var sComponentId = sap.ui.core.Component.getOwnerIdFor(this.getView());
+		return sap.ui.component(sComponentId).getEventBus();
+	},
+
+	getRouter : function () {
+		return sap.ui.core.UIComponent.getRouterFor(this);
+	}
+});</pre></div>
+<p class="p">Earlier
+				we saw how the router was retrieved by calling <samp class="ph codeph">getRouter</samp> on the
+				component. We can also access the router with a static call to
+					<samp class="ph codeph">sap.ui.core.UIComponent.getRouterFor</samp>.</p>
+<div class="sectiondiv"><span class="ph emphasis emphasis">Route
+					Match in Master</span><p class="p">Attaching to events of the router should normally
+					be set up in the controller's initialization event
+					<samp class="ph codeph">onInit</samp>.</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+onInit: function() {
+    //on phones, we will not have to select anything in the list so we don't need to attach to events
+		
+    if (sap.ui.Device.system.phone) {
+			return;
+	}
+    this.getRouter().attachRoutePatternMatched(this.onRouteMatched, this);
+
+…
+},
+
+onRouteMatched : function(oEvent) {		
+	var sName = oEvent.getParameter("name");
+
+		if (sName !== "main") {
+			return;
+		}
+
+		//Load the detail view in desktop
+		this.getRouter().myNavToWithoutHash({ 
+			currentView : this.getView(),
+			targetViewName : "sap.ui.demo.tdg.view.Detail",
+			targetViewType : "XML"
+		});
+
+		//Wait for the list to be loaded once
+		this.waitForInitialListLoading(function () {
+
+			//On the empty hash select the first item
+			this.selectFirstItem();
+
+		});
+
+	},
+					...
+
+},
+</pre></div>
+<p class="p">In
+					the handler we check to see what the name of the matched route is and act
+					appropriately. In this case, we are only looking for the main
+				route.</p>
+</div><div class="sectiondiv"><span class="ph emphasis emphasis">Route Match in Detail
+					controller</span><p class="p">Similar to the routing use in the Master controller, we
+					also want to react in the
+					Detail:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+	onInit : function() {
+		this.oInitialLoadFinishedDeferred = jQuery.Deferred();
+
+		if(sap.ui.Device.system.phone) {
+			//don't wait for the master on a phone
+			this.oInitialLoadFinishedDeferred.resolve();
+		} else {
+			this.getView().setBusy(true);
+			this.getEventBus().subscribe("Master", "InitialLoadFinished", this.onMasterLoaded, this);
+		}
+
+		this.getRouter().attachRoutePatternMatched(this.onRouteMatched, this);
+
+	},	onRouteMatched : function(oEvent) {
+		var oParameters = oEvent.getParameters();
+
+		jQuery.when(this.oInitialLoadFinishedDeferred).then(jQuery.proxy(function () {
+			var oView = this.getView();
+
+			// when detail navigation occurs, update the binding context
+			if (oParameters.name !== "product") { 
+				return;
+			}
+
+			var sProductPath = "/" + oParameters.arguments.product;
+			this.bindView(sProductPath);
+
+			var oIconTabBar = oView.byId("idIconTabBar");
+			oIconTabBar.getItems().forEach(function(oItem) {
+				oItem.bindElement(sap.ui.demo.tdg.util.Formatter.uppercaseFirstChar(oItem.getKey()));
+			});
+
+			// Which tab?
+			var sTabKey = oParameters.arguments.tab || "supplier";
+			this.getEventBus().publish("Detail", "TabChanged", { sTabKey : sTabKey });
+
+			if (oIconTabBar.getSelectedKey() !== sTabKey) {
+				oIconTabBar.setSelectedKey(sTabKey);
+			}
+		}, this));
+
+	},
+	bindView : function (sProductPath) {
+		var oView = this.getView();
+		oView.bindElement(sProductPath);
+
+		//Check if the data is already on the client
+		if(!oView.getModel().getData(sProductPath)) {
+
+			// Check that the product specified actually was found.
+			oView.getElementBinding().attachEventOnce("dataReceived", jQuery.proxy(function() {
+				var oData = oView.getModel().getData(sProductPath);
+				if (!oData) {
+					this.showEmptyView();
+					this.fireDetailNotFound();
+				} else {
+					this.fireDetailChanged(sProductPath);
+				}
+			}, this));
+
+		} else {
+			this.fireDetailChanged(sProductPath);
+		}
+
+	},
+	},
+</pre></div>
+<p class="p">Here,
+					on a product route match, we set the Detail view's binding context to the
+					specific product context that was selected in the URL ("Products(6)"). </p>
+<p class="p">We
+					should also deal with the situation where the Product with the ID specified does
+					not exist, by telling the user the Product wasn't found. How do we do this?
+					Rather than just present empty bindings, we check whether the model has already
+					loaded the data (maybe the user already has viewed this detail). If we don’t
+					find data locally, a request will be send by the binding. We can set a handler
+					to be fired on a <samp class="ph codeph">dataReceived</samp> event relating to the element
+					binding. On that event, we can then check the actual data in the model to make
+					sure it's been possible to retrieve it. If not, we can navigate the user to a
+					'not found' display. We also tell the master that the notFound view was shown
+					and the tab was selected. So we can clear the selection if there was no entry
+					found. Also we want to write the correct tab in the url. Since the master is
+					doing this, we have to inform it.</p>
+<p class="p">We also ensure that the binding of the
+						<samp class="ph codeph">sap.m.IconTabFilters</samp> are set correctly. Finally, we make
+					sure that the pre-selected tab in the <samp class="ph codeph">sap.m.IconTabBar</samp> is the
+					one that was specified in the URL (the optional last part of the pattern,
+					denoted by <samp class="ph codeph">:tab:</samp>), defaulting to the supplier tab if none was
+					specified.</p>
+</div></div></div>
+<div class="section"><div class="section_title">Progress Check</div><div type="Progress Check">
+			
+			<p class="p">We've added <span class="ph filepath">MyRouter.js</span>, so our app folder content looks like this:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+tdg/
+  |
+  +-- Component.js
+  +-- index.html
+  +-- MyRouter.js
+</pre></div>
+
+			<p class="p">But we're still getting the Blue Crystal style empty screen:</p>
+
+			<div class="fig fignone"><div class="figcontainer"><img class="image" id="loio688f36bd758e4ce2b4e682eef4dc794e__image_lvt_33f_pn" src="f4df91930eb3497a860a03da34318127.image"/></div></div>
+
+			<p class="p">This time, however, we see a slightly different error in the console:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">Uncaught Error: resource sap/ui/demo/tdg/view/App.view.xml could not be loaded from
+        ./view/App.view.xml. Check for 'file not found' or parse errors.</pre></div>
+
+			<p class="p">Of course, we've specified that the <dfn class="term">rootView</dfn> for this component should be
+					<samp class="ph codeph">sap.ui.demo.tdg.view.App</samp>, and we've said that all resources in
+				the <samp class="ph codeph">sap.ui.demo.tdg</samp> namespace are in this same folder, so we can
+				see that as we don't have a view subfolder, or anything in it, there's going to be a
+				problem.</p>
+
+			<p class="p">Note however, that you also may encounter this message when you do have the view XML
+				that your app expects; if you do, check that the XML is well formed and expresses
+				the controls and their properties and aggregations correctly - otherwise, you may
+				get this error because it was not possible to parse.</p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="3d18f20bd2294228acb6910d8e8a5fb5.html" title="Navigation in SAPUI5 enables you to pass data from the hash to any view, and to adjust a current hash so that you can use it as a bookmarkable URL. Depending on the hash, you can also generate views automatically.">Navigation</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Step 3: Navigation and Routing";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

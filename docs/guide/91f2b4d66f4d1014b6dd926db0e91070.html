@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=5413308100291975"/>
+<title>Resource Handling</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f2b4d66f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Resource Handling</h1>
+<div class="body conbody"><p class="p">The resource handling of SAPUI5 is separated in two parts - a
+		client-side and a server-side resource handling. Both are not dependent on each
+		other. Furthermore they are complementary. 
+	 </p>
+<p class="p">The server-side mechanism is not required. This is an optional component which improves the
+			client-server interaction (server-side locale fallback instead of client-side with
+			multiple requests) and especially is used for the Eclipse IDE development to support
+			modularized development of SAPUI5 application and libraries. </p>
+<div class="section" id="loio91f2b4d66f4d1014b6dd926db0e91070__section_866E1131207A4BD98456A7C2E53F12D3"><div class="section_title">Client-side Resource Handling</div><div type="Client-side Resource Handling"> 
+		 
+		<p class="p">On the client-side SAPUI5 provides the following mechanism for
+		  resources: 
+		</p>
+ 
+		<ul class="ul"><li class="li"> 
+			 <p class="p">Modularization Concept (!Require/Declare for JavaScript files) </p>
+ 
+		  </li>
+<li class="li"> 
+			 <p class="p">Localization Concept (Resource Bundles) </p>
+ 
+		  </li>
+</ul>
+ 
+		<p class="p">Both concepts are loading additional resources from a server where
+		  this server might be any kind of web server (simple, Java, ABAP, ...). It does
+		  not depend on any server side technology. 
+		</p>
+ 
+	 </div></div>
+<div class="section" id="loio91f2b4d66f4d1014b6dd926db0e91070__section_6913A7D3F65341FBA039B6231078E45C"><div class="section_title">Server-side Resource Handling</div><div type="Server-side Resource Handling"> 
+		 
+		<p class="p">For the Java server and also the integration into the Eclipse IDE
+		  SAPUI5 provides a resource handler. This resource handler is aligned with the
+		  concept of the JavaServer Faces - Resource Handler: 
+		</p>
+ 
+		<ul class="ul"><li class="li"> 
+			 <p class="p">The default implementation must support packaging resources in the web application root under
+						the path <samp class="ph codeph">resources/&lt;resourceIdentifier&gt;</samp> relative to the
+						web app root. </p>
+ 
+		  </li>
+<li class="li"> 
+			 <p class="p">Resources packaged in the classpath must reside under the JAR entry name
+							<samp class="ph codeph">META-INF/resources/&lt;resourceIdentifier&gt;</samp>
+					</p>
+ 
+		  </li>
+</ul>
+ 
+		<p class="p">The SAPUI5 resource handler extends this concept to support standard
+		  and test-relevant resources. Therefore we package our resources into the
+		  following paths: 
+		</p>
+ 
+		<ul class="ul"><li class="li"> 
+			 <p class="p"><samp class="ph codeph"> resources/**</samp> 
+			 </p>
+ 
+			 <p class="p">Resources are all kind of JavaScript, CSS, Mimes, Resource Bundles, which are relevant for
+						the runtime. </p>
+ 
+		  </li>
+<li class="li"> 
+			 <p class="p"> 
+				<samp class="ph codeph">test-resources/**</samp> 
+			 </p>
+ 
+			 <p class="p">Test resources are resources which are samples and only relevant for testing purposes e.g.
+						the content of the SAPUI5 test suite. </p>
+ 
+		  </li>
+</ul>
+ 
+		<p class="p">Other additional features of the resource handler are: 
+		</p>
+ 
+		<ul class="ul"><li class="li"> 
+			 <p class="p">Theme fallback: 
+			 </p>
+ 
+			 <p class="p">If resources are not available for the current theme it automatically checks the base theme
+						for such resources and returns this resource instead without returning a
+						404. </p>
+ 
+		  </li>
+<li class="li"> 
+			 <p class="p">Resource bundle fallback: 
+			 </p>
+ 
+			 <p class="p">Similar to the client-side mechanism for loading resource bundles but it negotiates the
+						request on the server and returns the best found resource bundle instead
+						without 404, e.g.: </p>
+ 
+			 <p class="p"><samp class="ph codeph">messagebundle_en_US.properties &gt; messagebundle_en.properties &gt;
+							messagebundle.properties</samp>
+					</p>
+ 
+		  </li>
+</ul>
+ 
+	 </div></div>
+<div class="section" id="loio91f2b4d66f4d1014b6dd926db0e91070__section_A11484375D5A4FBBA47056785D2ECE32"><div class="section_title">Resource Servlet</div><div type="Resource Servlet"> 
+		 
+		<p class="p">For Java Servlet containers SAPUI5 provides a 
+		  <samp class="ph codeph">ResourceServlet</samp> which manages the access to SAPUI5
+		  resources within the web application and the various UI libraries in the
+		  classpath. The following snippet shows how to enable the resource servlet for
+		  SAPUI5: 
+		</p>
+ 
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">#!text/xml
+
+  &lt;!-- ============================================================ --&gt;
+  &lt;!-- SAPUI5 resource servlet used to handle application resources --&gt;
+  &lt;!-- ============================================================ --&gt;
+   
+
+  &lt;servlet&gt;
+
+    &lt;display-name&gt;ResourceServlet&lt;/display-name&gt;
+
+    &lt;servlet-name&gt;ResourceServlet&lt;/servlet-name&gt;
+
+    &lt;servlet-class&gt;com.sap.ui5.resource.ResourceServlet&lt;/servlet-class&gt;
+
+  &lt;/servlet&gt;
+
+  &lt;servlet-mapping&gt;
+
+    &lt;servlet-name&gt;ResourceServlet&lt;/servlet-name&gt;
+
+    &lt;url-pattern&gt;/resources/*&lt;/url-pattern&gt;
+
+  &lt;/servlet-mapping&gt;
+
+  &lt;servlet-mapping&gt;
+
+    &lt;servlet-name&gt;ResourceServlet&lt;/servlet-name&gt;
+
+    &lt;url-pattern&gt;/test-resources/*&lt;/url-pattern&gt;
+
+  &lt;/servlet-mapping&gt;</pre></div>
+ 
+		<p class="p">Before you can use it you need to make sure that the ResourceServlet
+		  is available in the classpath as JAR file. 
+		</p>
+ 
+	 </div></div>
+<div class="section" id="loio91f2b4d66f4d1014b6dd926db0e91070__section_2478D35EAEE94B4A990BA8F6D7C02F98"><div class="section_title">Configuration</div><div type="Configuration"> 
+		 
+		<p class="p">The resource handler is configured via context parameter which are defined in the
+					<samp class="ph codeph">web.xml</samp>. The following table gives an overview about
+				configuration parameters: </p>
+ 
+		<table summary="" border="1" class="simpletable"><tr class="sthead"><th valign="bottom" align="left" id="d844293e146" class="stentry">Key</th>
+<th valign="bottom" align="left" id="d844293e148" class="stentry">Description</th>
+</tr>
+<tr class="strow"><td valign="top" headers="d844293e146" class="stentry">com.sap.ui5.resource.USE_CACHE 
+			 </td>
+<td valign="top" headers="d844293e148" class="stentry">flag to enable resource cache or not (default:
+				"true") 
+			 </td>
+</tr>
+<tr class="strow"><td valign="top" headers="d844293e146" class="stentry">com.sap.ui5.resource.MAX_AGE 
+			 </td>
+<td valign="top" headers="d844293e148" class="stentry">max age of resources in millis (default:
+				"604800000" - 1 week) 
+			 </td>
+</tr>
+<tr class="strow"><td valign="top" headers="d844293e146" class="stentry">com.sap.ui5.resource.ACCEPTED_ORIGINS 
+			 </td>
+<td valign="top" headers="d844293e148" class="stentry">list of accepted origins, e.g. * or
+				*sap.corp,vesapui5.dhcp.wdf.sap.corp (default: empty) 
+			 </td>
+</tr>
+<tr class="strow"><td valign="top" headers="d844293e146" class="stentry">com.sap.ui5.resource.DEV_MODE 
+			 </td>
+<td valign="top" headers="d844293e148" class="stentry">flag to enable the development mode (default:
+				"false") 
+			 </td>
+</tr>
+<tr class="strow"><td valign="top" headers="d844293e146" class="stentry">com.sap.ui5.resource.TEMPLATE_PATH 
+			 </td>
+<td valign="top" headers="d844293e148" class="stentry">template for the resource listing (default:
+				"/templates/listing.html") 
+			 </td>
+</tr>
+<tr class="strow"><td valign="top" headers="d844293e146" class="stentry">com.sap.ui5.resource.VERBOSE 
+			 </td>
+<td valign="top" headers="d844293e148" class="stentry">verbosity of the resource handler (default:
+				"false") 
+			 </td>
+</tr>
+<tr class="strow"><td valign="top" headers="d844293e146" class="stentry">com.sap.ui5.resource.REMOTE_LOCATION 
+			 </td>
+<td valign="top" headers="d844293e148" class="stentry">location which is used to proxy requests to for
+				resources not being located locally (default: empty) 
+			 </td>
+</tr>
+<tr class="strow"><td valign="top" headers="d844293e146" class="stentry">com.sap.ui5.resource.PREFER_REMOTE_LOCATION</td>
+<td valign="top" headers="d844293e148" class="stentry">flag to prefer resolving the resource from the remote location before
+						fallback to the classpath (default: false)</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d844293e146" class="stentry">com.sap.ui5.resource.USE_SERVER_CACHE</td>
+<td valign="top" headers="d844293e148" class="stentry">flag to enable caching of any resources in resource servlet (default:
+						"true" in devmode: "false")</td>
+</tr>
+</table>
+ 
+		<p class="p">Configuration parameters are added as context parameters to the
+		  web.xml. 
+		</p>
+ 
+	 </div></div>
+<div class="section" id="loio91f2b4d66f4d1014b6dd926db0e91070__section_4A80AABC6E614DBBB70B11702BE2FBBE"><div class="section_title">Development Mode</div><div type="Development Mode"> 
+		 
+		<p class="p">When starting to develop SAPUI5 controls and modules being located
+		  inside the servlet paths 
+		  <em class="ph i">resources/</em> or 
+		  <em class="ph i">test-resources/</em> it makes simplifies this development process by
+		  disabling the caching of such resources as well as enabling the resource
+		  browsing. To activate the development mode you need to add the following
+		  context parameter. 
+		</p>
+ 
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">#!text/xml
+
+  &lt;!-- BEGIN: DEV MODE --&gt;
+  &lt;context-param&gt;
+    &lt;param-name&gt;com.sap.ui5.resource.DEV_MODE&lt;/param-name&gt;
+    &lt;param-value&gt;true&lt;/param-value&gt;
+  &lt;/context-param&gt;
+  &lt;!-- END: DEV MODE --&gt;</pre></div>
+ 
+	 </div></div>
+<div class="section" id="loio91f2b4d66f4d1014b6dd926db0e91070__section_C8A8BF692B1C4DBE88D647F79CFD9F4F"><div class="section_title">Resource Browsing</div><div type="Resource Browsing"> 
+		 
+		<p class="p">In case of having the development mode turned on you can browse
+		  resources via the resource browser: 
+		</p>
+ 
+		<ul class="ul"><li class="li"><samp class="ph codeph">%SERVER_URL%!/resources/ </samp></li>
+<li class="li"><samp class="ph codeph">%SERVER_URL%/test-resources/</samp></li>
+</ul>
+ 
+	 </div></div>
+<div class="section" id="loio91f2b4d66f4d1014b6dd926db0e91070__section_476438027C05487BBD11549BFA9580DC"><div class="section_title">Tunneling a Remote Location</div><div type="Tunneling a Remote Location"> 
+		 
+		<p class="p">The 
+		  <samp class="ph codeph">ResourceServlet</samp> offers the opportunity to tunnel/proxy
+		  requests to another server providing SAPUI5 resources. This is the alternative
+		  instead for referring to SAPUI5 from remote location inside the bootstrap
+		  script tag to avoid cross domain issues. To activate this remote location
+		  tunneling/proxying you need to add the following context parameter to the
+		  web.xml of your application: 
+		</p>
+ 
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">#!text/xml
+  &lt;context-param&gt;
+    &lt;param-name&gt;com.sap.ui5.resource.REMOTE_LOCATION&lt;/param-name&gt;
+    &lt;param-value&gt;http://%server%:%port%/sapui5&lt;/param-value&gt;
+  &lt;/context-param&gt;</pre></div>
+ 
+		<p class="p">This will dispatch requests from 
+		  <samp class="ph codeph">resources/sap/ui/commons/Button.js</samp> to 
+		  <samp class="ph codeph">http://%server%:%port%/sapui5/resources/sap/ui/commons/Button.js</samp>.
+		  
+		</p>
+ 
+		<p class="p">If you are located behind a proxy and the remote location is outside
+		  your local network you can configure the proxy settings via the standard Java
+		  Networking and Proxy configurations by setting the system properties (for
+		  HTTP): 
+		  <samp class="ph codeph">http.proxyHost</samp>, 
+		  <samp class="ph codeph">http.proxyPort</samp>, 
+		  <samp class="ph codeph">http.nonProxyHosts</samp>, or (for HTTPS) 
+		  <samp class="ph codeph">https.proxyHost</samp>, 
+		  <samp class="ph codeph">https.proxyPort</samp>, 
+		  <samp class="ph codeph">https.nonProxyHosts</samp> of your Java runtime environment. 
+		</p>
+ 
+		<p class="p">In general for the resources returned from the proxy the 
+		  <samp class="ph codeph">ResourceServlet</samp> is enabling caching. It by default
+		  uses the configured 
+		  <samp class="ph codeph">com.sap.ui5.resource.MAX_AGE</samp> to avoid to much load on
+		  the 
+		  <samp class="ph codeph">ResourceServlet</samp>. 
+		</p>
+
+			<p class="p"><strong class="ph b">Verify that a Resource was Retrieved from Remote Location</strong></p>
+
+			<p class="p">When in development mode it is possible to verify that a resource was retrieved from
+				the desired remote location by checking the response header of the respective
+				request. In this case the response header has an entry <em class="ph i">x-sap-ResourceUrl = remote
+					resource URL</em>, for example:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">x-sap-ResourceUrl = http://%server%:%port%/sap/public/bc/ui5_ui5/resources/sap-ui-core.js</pre></div>
+ 
+	 </div></div>
+<div class="section" id="loio91f2b4d66f4d1014b6dd926db0e91070__section_265C4412784443DE8C2F6C3326954707"><div class="section_title">Resource Packaging</div><div type="Resource Packaging"> 
+		 
+		<p class="p">This section describes the resource packaing for web applications and
+		  Java modules which could be any kind of a JAR file (SAPUI5 UI library, ...)
+		  available in the classpath of the web application. 
+		</p>
+ 
+		<ul class="ul"><li class="li">
+					<p class="p">For a web application this means you have to store the resources in the
+						following way: </p>
+
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">WebContent/
+  resources/
+    **/**
+  test-resources/
+    **/**</pre></div>
+
+				</li>
+<li class="li"> 
+			 <p class="p">For the SAPUI5 UI libraries we store the resources in the
+				following way: 
+			 </p>
+ 
+			 <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">META-INF/
+  resources/
+    **/**
+  test-resources/
+    **/**</pre></div>
+ 
+			 <p class="p">For custom JAR files you need to apply to this on your own. 
+			 </p>
+ 
+		  </li>
+</ul>
+ 
+	 </div></div>
+<div class="section" id="loio91f2b4d66f4d1014b6dd926db0e91070__section_EF657968B41745BCB39F62BB49AC7AFA"><div class="section_title">OSGi Servlet Container</div><div type="OSGi Servlet Container"> 
+		 
+		<p class="p">When running SAPUI5 as an OSGi Web Bundle and referencing the UI
+		  libraries as OSGi bundles you may need to know about a technical detail how
+		  SAPUI5 OSGi bundles are determined: 
+		</p>
+ 
+		<ul class="ul"><li class="li"> 
+			 <p class="p">In the OSGi servlet container we extend the 
+				<samp class="ph codeph">ResourceServlet</samp> by using an OSGi fragment which is
+				responsible to add the OSGi flavor for the determination of UI libaries. Now
+				the 
+				<samp class="ph codeph">ResourceServlet</samp> is aware about the OSGi bundles
+				and can search within the OSGi Servlet Container for UI libraries. 
+			 </p>
+ 
+		  </li>
+<li class="li">
+					<p class="p">The <samp class="ph codeph">MANIFEST.MF</samp> of UI library JAR files contains a special
+						entry which is used for the determination: </p>
+
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">x-sap-ui5-ContentTypes: UILibrary
+</pre></div>
+
+					<p class="p"> This is used by the <samp class="ph codeph">OSGiResourceServlet</samp> to determine the
+						relevant UI libraries. </p>
+
+				</li>
+</ul>
+ 
+	 </div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Resource Handling";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

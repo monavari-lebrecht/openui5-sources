@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=18927833929371896"/>
+<title>Control CSS</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio49df9da72ae0405fb37f91ca486c1fe2">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Control CSS</h1>
+<div class="body conbody"><p class="shortdesc"/>
+<p class="p"> To avoid collisions, all CSS classes written to the HTML must start with "sap" if developed
+			inside SAP, and with "sapUi" or "sapM" if developed within the SAPUI5 development teams.
+			Outside the respective groups these prefixes should not be used. </p>
+<p class="p">For CSS classes for a specific control, add the control name or an abbreviation of the control
+			name to the above mentioned prefix. For controls outside the <samp class="ph codeph">commons</samp>
+			library you may also add the library name between the prefix and the control name,
+			especially if developed outside the core UI5 development teams. </p>
+<p class="p">The HTML root element of controls should contain the CSS class name, and all inner HTML
+			elements requiring a class name should use this class name and add a suffix. </p>
+<p class="p">All CSS selectors written by SAPUI5 control developers must refer to at least one CSS class.
+			Pure HTML elements should not be styled to avoid affecting non-owned HTML. </p>
+<p class="p">Inline CSS should only be used for control instance specific style, such as the button width. </p>
+<div class="section" id="loio49df9da72ae0405fb37f91ca486c1fe2__section_N1002C_N10011_N10001"><div class="section_title">Styling Contexts</div><div type="Styling Contexts">
+			
+			<p class="p">If the visuals of controls are different depending on the context or container in which they
+				are used we recommend to use CSS cascades: </p>
+
+			<ul class="ul" id="loio49df9da72ae0405fb37f91ca486c1fe2__ul_l5p_m2h_z3"><li class="li">The area or container writes a marker CSS class to the HTML and documents this
+					CSS class in its JSDoc. The documentation should mention the purpose and
+					contract or meaning of this class, for example, that it modifys the appearance
+					of children in a way that better fits table cells, toolbars, or headers. </li>
+<li class="li">The CSS class may have no CSS styles attached. It is a pure marker. This is
+					because such styles would also need to stay stable and might cause trouble for
+					other containers where these styles are not desired. </li>
+<li class="li">The naming convention for these classes is as follows: Suffix <samp class="ph codeph">-CTX</samp>, for
+					example, <samp class="ph codeph">sapUiTable-CTX</samp> or <samp class="ph codeph">sapMList-CTX</samp> or
+						<samp class="ph codeph">sapUiBorderless-CTX</samp>. This makes them easily discernible
+					from "normal" CSS class names. </li>
+<li class="li">Controls that are used to modify their appearance in such an area shall have CSS where this
+					marker class is used in a cascade and provides the suitable style, for example,
+						<samp class="ph codeph">.sapUiTable-CTX .myCompanyInputField { border: none; }</samp>. </li>
+</ul>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Control CSS";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

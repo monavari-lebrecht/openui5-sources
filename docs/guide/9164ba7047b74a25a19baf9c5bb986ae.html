@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="sap.m.ListBase provides growing-related properties, which can be used for tables and lists."/>
+<meta name="description" content="sap.m.ListBase provides growing-related properties, which can be used for tables and lists."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=5555133896701899"/>
+<title>Growing</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio9164ba7047b74a25a19baf9c5bb986ae">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Growing</h1>
+<div class="body conbody"><p class="shortdesc"><samp class="ph codeph">sap.m.ListBase</samp> provides growing-related properties, which can be used
+		for tables and lists.</p>
+<p class="p"> A growing list has a loading mechanism that requests data from the model in a lazy way. This
+			enables the app to only data from the server as and when necessary.</p>
+<div class="note note"><span class="notetitle">Note</span> Before release 1.16, the <samp class="ph codeph">sap.m.GrowingList</samp> control existed, as an
+			extension of the <samp class="ph codeph">sap.m.List</samp> control. This is deprecated, use the
+			properties as described here.</div>
+<p class="p">The growing-related properties of <samp class="ph codeph">sap.m.ListBase</samp> are:</p>
+<ul class="ul" id="loio9164ba7047b74a25a19baf9c5bb986ae__ul_gl4_fc2_mn"><li class="li"><samp class="ph codeph">growing</samp>: a boolean to set the growing feature on or off</li>
+<li class="li"><samp class="ph codeph">growingScrollToLoad</samp>: if you want to allow more data to be fetched based on
+				the user scrolling down to the end of the current items, set this boolean property
+				to true; otherwise a trigger button must be used</li>
+<li class="li"><samp class="ph codeph">growingThreshold</samp>: this is the number of items that are requested each time
+				from the model</li>
+<li class="li"><samp class="ph codeph">growingTriggerText</samp>: the text on a trigger button used to cause a request for
+				more data</li>
+</ul>
+<p class="p">To enable data for a table to be fetched on demand like this, you just need to set the
+			values for these properties appropriately on your table control. For example, adding the
+			highlighted lines as shown:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+var oTable = new sap.m.Table("salesarea", {
+    inset: false,
+    growing: true,              // set growing mode on
+    growingThreshold: 5,        // 5 items at a time
+    footerText: "Use the 'Toggle Mode' button to change the selection mode",
+...</pre></div>
+<p class="p">will cause five items to be displayed in the table initially, with a
+				<span class="ph uicontrol">More</span> button (this is the default text if you don't set it
+			with the <samp class="ph codeph">growingTriggerText </samp>property):</p>
+<p class="p"><img class="image" id="loio9164ba7047b74a25a19baf9c5bb986ae__image_r3v_wc2_mn" src="3aaf7e939fea4b4093d11016863e3878.image"/></p>
+<div class="section"><div class="section_title">Demo App</div><div type="Demo App"><a class="xref" href="https://sapui5.hana.ondemand.com/sdk/explored.html#/sample/sap.m.sample.ListGrowing/preview">Explored - Growing List Sample
+			</a></div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Growing";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

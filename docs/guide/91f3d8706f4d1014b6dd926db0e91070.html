@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=9008198901393234"/>
+<title>Security Information for SAPUI5</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f3d8706f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Security Information for SAPUI5</h1>
+<div class="body conbody"><p class="p">The following section provide information about security aspects of SAPUI5. The
+            information is intended for SAPUI5 application and control developers as well as to
+            system administrators running applications based on SAPUI5.</p>
+<p class="p">SAPUI5 is a client-side JavaScript library, so while the library itself is designed and
+            tested to be secure, it cannot ensure the application to be secure. Unlike WebDynpro,
+            where the application is built against an abstract programming model and the framework
+            handles the HTML rendering, JavaScript code and communication with the browser, in
+            SAPUI5 the application controls the HTML output, it provides own JavaScript code which
+            is executed on the client and it handles client/server communication.</p>
+<p class="p">While this brings a lot of freedom and possibilities for the application, it comes with a
+            lot of responsibility with regards to security. Application developers need to
+            understand the security threats and actively prohibit exploitation. Also, the correct
+            configuration of the HTTP server, which is used, is important.</p>
+<p class="p">This also means common security mechanisms, which are taken for granted, like user
+            authentication, session handling, authorization handling, or encryption are not part of
+            SAPUI5 and need to be handled by the server-side framework and/or custom code of the
+            application.</p>
+<div class="section"><div class="section_title">Further Reading</div><div type="Further Reading">
+            
+            <p class="p">SAPUI5 is not bound to any server implementation or server-side programming language
+                and can, thus, be used with SAP NetWeaver ABAP, Java, HANA XS Engine, or any
+                standard web server. Therefore, the corresponding Security Guides also apply to
+                SAPUI5.</p>
+
+            <div class="note note"><span class="notetitle">Note</span> We highly recomment that you implement SAP note 1582870 for ABAP XSS escaping
+                support.</div>
+
+            <p class="p">For more information about specific topics, see the Quick Links as shown in the table
+                below.</p>
+
+            <table summary="" id="loio91f3d8706f4d1014b6dd926db0e91070__simpletable_e3t_chy_mm" border="1" class="simpletable"><tr class="sthead"><th valign="bottom" align="left" id="d954611e36" class="stentry">Content</th>
+<th valign="bottom" align="left" id="d954611e38" class="stentry">Quick Link on the SAP Service Marketplace or SDN</th>
+</tr>
+<tr class="strow"><td valign="top" headers="d954611e36" class="stentry">Security</td>
+<td valign="top" headers="d954611e38" class="stentry">http://sdn.sap.com/irj/sdn/security </td>
+</tr>
+<tr class="strow"><td valign="top" headers="d954611e36" class="stentry">Security Guides</td>
+<td valign="top" headers="d954611e38" class="stentry">http://service.sap.com/securityguide </td>
+</tr>
+<tr class="strow"><td valign="top" headers="d954611e36" class="stentry">Related SAP Notes</td>
+<td valign="top" headers="d954611e38" class="stentry">http://service.sap.com/notes </td>
+</tr>
+<tr class="strow"><td valign="top" headers="d954611e36" class="stentry"> </td>
+<td valign="top" headers="d954611e38" class="stentry">http://service.sap.com/securitynotes </td>
+</tr>
+<tr class="strow"><td valign="top" headers="d954611e36" class="stentry">Released platforms</td>
+<td valign="top" headers="d954611e38" class="stentry">http://service.sap.com/pam </td>
+</tr>
+<tr class="strow"><td valign="top" headers="d954611e36" class="stentry">Network security</td>
+<td valign="top" headers="d954611e38" class="stentry">http://service.sap.com/securityguide </td>
+</tr>
+<tr class="strow"><td valign="top" headers="d954611e36" class="stentry">SAP Solution Manager</td>
+<td valign="top" headers="d954611e38" class="stentry">http://service.sap.com/solutionmanager </td>
+</tr>
+<tr class="strow"><td valign="top" headers="d954611e36" class="stentry">SAP NetWeaver</td>
+<td valign="top" headers="d954611e38" class="stentry">http://sdn.sap.com/irj/sdn/netweaver </td>
+</tr>
+</table>
+
+        </div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Security Information for SAPUI5";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

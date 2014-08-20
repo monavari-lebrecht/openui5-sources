@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=7547757664687417"/>
+<title>View Cloning</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loioa575619e25c2487f904bae71764e2350">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">View Cloning</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">Another important aspect of SAPUI5 views is their cloning behavior. As you might know, SAPUI5
+			aggregation bindings can use template control to create a series of similar controls
+			based on a collection of data, for example, items in a <samp class="ph codeph">RowRepeater</samp> for
+			each entry in a model array. The data binding uses a
+				<samp class="ph codeph">ManagedObject.clone</samp> operation to create multiple controls out of a
+			single template. For normal controls, the clone operation is based on the control
+			settings that are decribed by SAPUI5 metadata: properties, aggregations, associations,
+			event handlers and so on. The clone operation collects all these settings and creates a
+			new instance out of it. </p>
+<p class="p">For views there is a conflict between this basic, generic approach and the way how views
+			usually define their content: via hooks (JSView) or via persisted XML or JSON files.
+			Furthermore, it is allowed and documented best practice to modify the view in the onInit
+			hook of its controller. To avoid conflicts between the generic cloning and the MVC
+			concepts, views implement a slightly modified clone operation: only a subset of the view
+			settings are cloned, the remainder is re-created by calling the hook (JSView) or
+			applying the external view description (XML or JSON file), depending on the view type. </p>
+<p class="p">Cloned in a generic way are the following settings: </p>
+<ul class="ul" id="loioa575619e25c2487f904bae71764e2350__ul_dst_b2q_1j"><li class="li">any models that have been set (<samp class="ph codeph">setModel()</samp>) </li>
+<li class="li">registered control event listeners (<samp class="ph codeph">attachSomeEvent</samp>)</li>
+<li class="li">registered browser event listeners (<samp class="ph codeph">attachBrowserEvent</samp>)</li>
+<li class="li">bindings (<samp class="ph codeph">bindProperty</samp>, <samp class="ph codeph">bindAggregation</samp>)</li>
+</ul>
+<p class="p">Not cloned, but recreated are all aggregations, namely the content. </p>
+<p class="p">In scenarios where the above clone approach still leads to undesirable behavior, factory
+			functions can be used for the aggregation binding instead.</p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="91f057786f4d1014b6dd926db0e91070.html">Aggregation Binding</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="View Cloning";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="You can either upload a SAPUI5 application to or download a SAPUI5 application from the SAPUI5 repository by using an interactive ABAP report."/>
+<meta name="description" content="You can either upload a SAPUI5 application to or download a SAPUI5 application from the SAPUI5 repository by using an interactive ABAP report."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=27726044272812944"/>
+<title>Using an Interactive ABAP Report to Synchronize</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loioa560bd6ed4654fd1b338df065d331872">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Using an Interactive ABAP Report to Synchronize</h1>
+<div class="body taskbody"><p class="shortdesc">You can either upload a SAPUI5 application to or download a SAPUI5 application from the
+		SAPUI5 repository by using an interactive ABAP report.</p>
+<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div></div>
+<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div><p class="p"><span class="ph emphasis emphasis">Uploading or Downloading a single SAPUI5
+					Application</span></p>
+<p class="p"><span class="ph emphasis emphasis">Prerequisites</span></p>
+<p class="p">You have
+				installed SAP NetWeaver UI Add-On Version 1.0 or SAP NetWeaver 7.40 including the UI
+				Add-On.</p>
+<ul class="ul" id="loioa560bd6ed4654fd1b338df065d331872__ul_rtn_rzf_5l"><li class="li">To upload or download a single SAPUI5 application, use
+						<samp class="ph codeph">/UI5/UI5_REPOSITORY_LOAD</samp>. When running the report, enter
+					the name of the SAPUI5 application in the respective input field on the
+							screen.<p class="p"><img class="image" id="loioa560bd6ed4654fd1b338df065d331872__image_fcm_4l3_xl" src="0b4e2a00107b4665b74a384f4e770539.image" alt="UI5_REPOSITORY_LOAD" title="UI5_REPOSITORY_LOAD"/></p>
+<p class="p">Compared to the ABAP team repository provider it does not
+						offer a built-in code merge. Here, a separate source code repository like
+						git or Subversion (SVN) may be used. The report is shipped via SAP note
+							<a href="http://help.sap.com/disclaimer?site=https://service.sap.com/sap/support/notes/1793771">1793771 <img src="images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a>
+						<em class="ph i">Up/Download SAPUI5 Application into/from UI5 Repository</em> and as part
+						of NetWeaver UI Add-On SP03 delivery.</p>
+</li>
+</ul>
+<p class="p"><span class="ph emphasis emphasis">Uploading one or more SAPUI5 Applications from an
+				Archive</span></p>
+<p class="p"><span class="ph emphasis emphasis">Prerequisites</span></p>
+<p class="p">You have installed
+				User Interface Add-On Version 1.0 SP06 or SAP NetWeaver 7.40 SP05.</p>
+<ul class="ul" id="loioa560bd6ed4654fd1b338df065d331872__ul_xqd_5zf_5l"><li class="li">To upload a SAPUI5 application from a zip or war archive, use
+						<samp class="ph codeph">/UI5/UI5_REPOSITORY_LOAD_HTTP</samp>.</li>
+<li class="li">To upload several SAPUI5 applications from a zip or war archive at once, use
+						<samp class="ph codeph">/UI5/UI5_REPOSITORY_LOAD_HTTPN</samp>.</li>
+</ul>
+<p class="p">To execute the report, you need to provide several parameters, as displayed in
+				the following screenshot.</p>
+<img class="image" id="loioa560bd6ed4654fd1b338df065d331872__image_cmg_xw1_xl" src="69dec6a550af404a941496b89f553070.image" alt="REPOSITORY_LOAD_HTTP*" title="REPOSITORY_LOAD_HTTP*"/><p class="p">You can either enter the parameters in the displayed input fields or you
+				provide them in an optional file <span class="keyword parmname">.Ui5RepositoryUploadParameters</span>
+				located in the archive. Each line represents a parameter. The format is
+				&lt;parameter name&gt; = &lt;parameter value&gt;.</p>
+<p class="p">The report can be run in
+				several modes:</p>
+<ul class="ul" id="loioa560bd6ed4654fd1b338df065d331872__ul_bbl_ry1_xl"><li class="li"><span class="ph emphasis emphasis">Delta Mode</span>: Mark this checkbox in case you only want to
+					upload those files, that are new or that have been modified.</li>
+<li class="li"><span class="ph emphasis emphasis">Test Mode</span>: Mark this checkbox in case you want to see a log
+					file displaying what the report is doing.</li>
+</ul>
+<p class="p">Additionally, both reports and the function module
+					<samp class="ph codeph">/UI5/UI5_REPOSITORY_LOAD_HTTP</samp> have the following
+				features:</p>
+<ul class="ul" id="loioa560bd6ed4654fd1b338df065d331872__ul_oxd_1cb_xl"><li class="li">They can automatically convert text files from unix format to windows-like
+					format.</li>
+<li class="li">You can schedule them on the SAP Web Application Server.</li>
+<li class="li">The possibility to automate Maven builds as a remote-enabled function module is
+					available.</li>
+</ul>
+<p class="p">For more information, see the report documentation as well as the documentation
+				of the function module <samp class="ph codeph">/UI5/UI5_REPOSITORY_LOAD_HTTP</samp> in the system
+				and SAP note <a href="http://help.sap.com/disclaimer?site=https://service.sap.com/sap/support/notes/1893133">1893133 <img src="images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a>.</p>
+</div></div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Using an Interactive ABAP Report to Synchronize";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

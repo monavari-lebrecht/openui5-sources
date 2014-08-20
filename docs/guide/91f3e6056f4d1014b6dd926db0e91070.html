@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=959300792642509"/>
+<title>Transport Security</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f3e6056f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Transport Security</h1>
+<div class="body"><p class="p">Security on the client and server side is not sufficient if the data transport between client and
+			server can be read, intercepted, or even modified by an attacker. Per default, HTTP
+			communication is stateless and unencrypted and this makes it necessary to configure it
+			in a way that it is using encrypted connections and to add session handling on top using
+			either cookies or URL rewriting. </p>
+<div class="section" id="loio91f3e6056f4d1014b6dd926db0e91070__section_745F982F3B5047529CC3C89AA359B4AF"><div class="section_title">Encryption</div><div type="Encryption"> 
+		 
+		<p class="p">Sending the HTTP protocol over a SSL secured
+		  connection is not only standardized, but also required for SAP applications. 
+		</p>
+ 
+		<p class="p">SAPUI5 fully supports the use of HTTPS, but there
+		  are some restrictions regarding the CDN version of SAPUI5 when HTTPS is used.
+		  It is recommended to enable or at least to test SSL connections in an early
+		  stage of application development, as usually switching to HTTPS causes some
+		  issues. First of all, when the application is started using HTTPS, the SAPUI5
+		  library also has to be loaded from an HTTPS server. Second, Internet Explorer 8
+		  and 9 have some additional restrictions regarding cross origin requests with
+		  HTTPS, which are related to the security zone concept. 
+		</p>
+ 
+	 </div></div>
+<div class="section" id="loio91f3e6056f4d1014b6dd926db0e91070__section_EA424BD729FC44DABF009B60BBF59361"><div class="section_title">Session Security</div><div type="Session Security"> 
+		 
+		<p class="p">Even if the data transport is secured using SSL,
+		  there are possibilities to hijack such a secure connection and sending
+		  malicious requests from the client. Cross-site request forgery and session
+		  fixation are two of the prominent examples of this class of attacks. 
+		</p>
+ 
+		<p class="p">SAPUI5 does only provide XSRF prevention for the
+		  data, which is sent to the server by SAPUI5. Currently this only happens in the
+		  OData Model, where a XSRF token is read from the server and used for subsequent
+		  write requests. 
+		</p>
+ 
+		<p class="p">Application is responsible for using XSRF header or
+		  other mechanisms to prevent XSRF for all other server communication triggered
+		  by the application. 
+		</p>
+ 
+	 </div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Transport Security";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

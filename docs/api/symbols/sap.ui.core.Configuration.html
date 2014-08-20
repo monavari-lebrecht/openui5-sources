@@ -1,0 +1,1352 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.core.Configuration</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class sap.ui.core.Configuration
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.ui.base.Object" href="../symbols/sap.ui.base.Object.html">Object</a></div>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>Collects and stores the configuration of the current environment.
+</p><p>
+The Configuration is initialized once when the <a href="../symbols/sap.ui.core.Core.html">sap.ui.core.Core</a> is created.
+There are different ways to set the environment configuration (in ascending priority):
+<ol>
+<li>System defined defaults
+<li>Server wide defaults, read from /sap-ui-config.json
+<li>Properties of the global configuration object window["sap-ui-config"]
+<li>A configuration string in the data-sap-ui-config attribute of the bootstrap tag
+<li>Individual data-sap-ui-xyz attributes of the bootstrap tag
+<li>Using URL parameters
+<li>Setters in this Configuration object (only for some parameters)
+</ol>
+</p><p>
+That is, attributes of the DOM reference override the system defaults, URL parameters
+override the DOM attributes (where empty URL parameters set the parameter back to its
+system default). Calling setters at runtime will override any previous settings
+calculated during object creation.
+</p><p>
+The naming convention for parameters is:
+<ul>
+<li>in the URL : sap-ui-<i>PARAMETER-NAME</i>="value"
+<li>in the DOM : data-sap-ui-<i>PARAMETER-NAME</i>="value"
+</ul>
+where <i>PARAMETER-NAME</i> is the name of the parameter in lower case.
+</p><p>
+Values of boolean parameters are case insensitive where "true" and "x" are interpreted as true.</p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+						
+						
+							<div class="summary section">
+								<div class="sectionTitle">Namespaces &amp; Classes</div>
+								<div class="sectionItems">
+								
+									<div class="sectionItem itemName static">
+										<b class="icon" title="Encapsulates configuration settings that are related to data formatting/parsing."><a href="../symbols/sap.ui.core.Configuration.FormatSettings.html">FormatSettings</a></b>
+										<span class='description'>Encapsulates configuration settings that are related to data formatting/parsing.</span>
+									</div>
+								
+								</div>
+							</div>
+						
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="Creates a new Configuration object.">new <a href="../symbols/sap.ui.core.Configuration.html#constructor">sap.ui.core.Configuration</a></b>
+										<span class='signature'>()</span>
+										<span class='description'>Creates a new Configuration object.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns whether the accessibility mode is used or not"><a href="../symbols/sap.ui.core.Configuration.html#getAccessibility">getAccessibility</a></b><span class='signature'>()</span>
+									<span class='description'>Returns whether the accessibility mode is used or not</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns whether the animations are globally used"><a href="../symbols/sap.ui.core.Configuration.html#getAnimation">getAnimation</a></b><span class='signature'>()</span>
+									<span class='description'>Returns whether the animations are globally used</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Base URLs to AppCacheBuster Etag-Index files"><a href="../symbols/sap.ui.core.Configuration.html#getAppCacheBuster">getAppCacheBuster</a></b><span class='signature'>()</span>
+									<span class='description'>Base URLs to AppCacheBuster Etag-Index files</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="The loading mode (sync|async|batch) of the AppCacheBuster (sync is default)"><a href="../symbols/sap.ui.core.Configuration.html#getAppCacheBusterMode">getAppCacheBusterMode</a></b><span class='signature'>()</span>
+									<span class='description'>The loading mode (sync|async|batch) of the AppCacheBuster (sync is default)</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the used compatibility version for the given feature."><a href="../symbols/sap.ui.core.Configuration.html#getCompatibilityVersion">getCompatibilityVersion</a></b><span class='signature'>(<span title="(string) the key of desired feature">sFeature</span>)</span>
+									<span class='description'>Returns the used compatibility version for the given feature.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns whether the page runs in debug mode"><a href="../symbols/sap.ui.core.Configuration.html#getDebug">getDebug</a></b><span class='signature'>()</span>
+									<span class='description'>Returns whether the page runs in debug mode</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Return whether the design mode is active or not."><a href="../symbols/sap.ui.core.Configuration.html#getDesignMode">getDesignMode</a></b><span class='signature'>()</span>
+									<span class='description'>Return whether the design mode is active or not.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the format locale string with language and region code."><a href="../symbols/sap.ui.core.Configuration.html#getFormatLocale">getFormatLocale</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the format locale string with language and region code.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns a configuration object that bundles the format settings of UI5."><a href="../symbols/sap.ui.core.Configuration.html#getFormatSettings">getFormatSettings</a></b><span class='signature'>()</span>
+									<span class='description'>Returns a configuration object that bundles the format settings of UI5.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns whether the UI5 control inspector is displayed Has only an effect when the sap-ui-debug module has been loaded"><a href="../symbols/sap.ui.core.Configuration.html#getInspect">getInspect</a></b><span class='signature'>()</span>
+									<span class='description'>Returns whether the UI5 control inspector is displayed Has only an effect when the sap-ui-debug module has been loaded</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the language string with language and country code"><a href="../symbols/sap.ui.core.Configuration.html#getLanguage">getLanguage</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the language string with language and country code</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the active locale for the current session."><a href="../symbols/sap.ui.core.Configuration.html#getLocale">getLocale</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the active locale for the current session.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns whether there should be an exception on any duplicate element IDs"><a href="../symbols/sap.ui.core.Configuration.html#getNoDuplicateIds">getNoDuplicateIds</a></b><span class='signature'>()</span>
+									<span class='description'>Returns whether there should be an exception on any duplicate element IDs</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns whether the text origin information is collected"><a href="../symbols/sap.ui.core.Configuration.html#getOriginInfo">getOriginInfo</a></b><span class='signature'>()</span>
+									<span class='description'>Returns whether the text origin information is collected</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="The name of the root component to start or empty"><a href="../symbols/sap.ui.core.Configuration.html#getRootComponent">getRootComponent</a></b><span class='signature'>()</span>
+									<span class='description'>The name of the root component to start or empty</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns whether the page uses the RTL text direction."><a href="../symbols/sap.ui.core.Configuration.html#getRTL">getRTL</a></b><span class='signature'>()</span>
+									<span class='description'>Returns whether the page uses the RTL text direction.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Return whether the activation of the controller code is suppressed"><a href="../symbols/sap.ui.core.Configuration.html#getSuppressDeactivationOfControllerCode">getSuppressDeactivationOfControllerCode</a></b><span class='signature'>()</span>
+									<span class='description'>Return whether the activation of the controller code is suppressed</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the theme name"><a href="../symbols/sap.ui.core.Configuration.html#getTheme">getTheme</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the theme name</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Prefix to be used for automatically generated control IDs."><a href="../symbols/sap.ui.core.Configuration.html#getUIDPrefix">getUIDPrefix</a></b><span class='signature'>()</span>
+									<span class='description'>Prefix to be used for automatically generated control IDs.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the version of the framework."><a href="../symbols/sap.ui.core.Configuration.html#getVersion">getVersion</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the version of the framework.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="WEINRE session ID"><a href="../symbols/sap.ui.core.Configuration.html#getWeinreId">getWeinreId</a></b><span class='signature'>()</span>
+									<span class='description'>WEINRE session ID</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="WEINRE server URL"><a href="../symbols/sap.ui.core.Configuration.html#getWeinreServer">getWeinreServer</a></b><span class='signature'>()</span>
+									<span class='description'>WEINRE server URL</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Sets a new language tag to be used from now on for language/region dependent functionality (e.g."><a href="../symbols/sap.ui.core.Configuration.html#setLanguage">setLanguage</a></b><span class='signature'>(<span title="(string) the new language as a BCP47 compliant language tag; case doesn't matter and underscores can be used instead of a dashes to separate components (compatibility with Java Locale Ids)">sLanguage</span>)</span>
+									<span class='description'>Sets a new language tag to be used from now on for language/region dependent functionality (e.g.</span>
+								</div>
+							
+								<div class="sectionItem classMethod deprecated">
+									<b class="icon" title="The name of the application to start or empty"><a href="../symbols/sap.ui.core.Configuration.html#getApplication">getApplication</a></b><span class='signature'>()</span>
+									<span class='description'>The name of the application to start or empty</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.Object.html">sap.ui.base.Object</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.Object.html#destroy">destroy</a>, <a href="../symbols/sap.ui.base.Object.html#getInterface">getInterface</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.ui.core.Configuration</b>()
+										</div>
+										
+										<div class="full-description">
+											Creates a new Configuration object.
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod'>
+										<a name="getAccessibility"> </a>
+										<div class="itemTitle icon">
+											getAccessibility<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Returns whether the accessibility mode is used or not
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														whether the accessibility mode is used or not
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getAnimation"> </a>
+										<div class="itemTitle icon">
+											getAnimation<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Returns whether the animations are globally used
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														whether the animations are globally used
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getAppCacheBuster"> </a>
+										<div class="itemTitle icon">
+											getAppCacheBuster<span class="signature">()</span>
+											<span class="light" title="returns string[]">: string[]</span>
+										</div>
+										<div class="full-description">
+											Base URLs to AppCacheBuster Etag-Index files
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														array of base URLs
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getAppCacheBusterMode"> </a>
+										<div class="itemTitle icon">
+											getAppCacheBusterMode<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											The loading mode (sync|async|batch) of the AppCacheBuster (sync is default)
+											
+											
+												<p class="tagExperimental"><span class="title">Experimental API:</span><span class="desc">Since 1.12.5</span></p> 
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														sync | async
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getCompatibilityVersion"> </a>
+										<div class="itemTitle icon">
+											getCompatibilityVersion<span class="signature">(<span title="(string) the key of desired feature">sFeature</span>)</span>
+											<span class="light" title="returns jQuery.sap.Version">: <a href="../symbols/jQuery.sap.Version.html">jQuery.sap.Version</a></span>
+										</div>
+										<div class="full-description">
+											Returns the used compatibility version for the given feature.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sFeature</b>
+													</td>
+													<td class="methodItemDesc">
+												    the key of desired feature
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/jQuery.sap.Version.html">jQuery.sap.Version</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the used compatibility version
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getDebug"> </a>
+										<div class="itemTitle icon">
+											getDebug<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Returns whether the page runs in debug mode
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														whether the page runs in debug mode
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getDesignMode"> </a>
+										<div class="itemTitle icon">
+											getDesignMode<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Return whether the design mode is active or not.
+											
+											
+												<p class="tagExperimental"><span class="title">Experimental API:</span><span class="desc">Since 1.13.2</span></p> 
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.13.2</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														whether the design mode is active or not.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getFormatLocale"> </a>
+										<div class="itemTitle icon">
+											getFormatLocale<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Returns the format locale string with language and region code. Falls back to 
+language configuration, in case it has not been explicitly defined.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the format locale string with language and country code
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getFormatSettings"> </a>
+										<div class="itemTitle icon">
+											getFormatSettings<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.Configuration.FormatSettings">: <a href="../symbols/sap.ui.core.Configuration.FormatSettings.html">sap.ui.core.Configuration.FormatSettings</a></span>
+										</div>
+										<div class="full-description">
+											Returns a configuration object that bundles the format settings of UI5.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Configuration.FormatSettings.html">sap.ui.core.Configuration.FormatSettings</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														A FormatSettings object.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getInspect"> </a>
+										<div class="itemTitle icon">
+											getInspect<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Returns whether the UI5 control inspector is displayed
+Has only an effect when the sap-ui-debug module has been loaded
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														whether the UI5 control inspector is displayed
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getLanguage"> </a>
+										<div class="itemTitle icon">
+											getLanguage<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Returns the language string with language and country code
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the language string with language and country code
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getLocale"> </a>
+										<div class="itemTitle icon">
+											getLocale<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.Locale">: <a href="../symbols/sap.ui.core.Locale.html">sap.ui.core.Locale</a></span>
+										</div>
+										<div class="full-description">
+											Returns the active locale for the current session. 
+The locale is derived from the <a href="#getLanguage">language</a> property.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Locale.html">sap.ui.core.Locale</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the locale
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getNoDuplicateIds"> </a>
+										<div class="itemTitle icon">
+											getNoDuplicateIds<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Returns whether there should be an exception on any duplicate element IDs
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														whether there should be an exception on any duplicate element IDs
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getOriginInfo"> </a>
+										<div class="itemTitle icon">
+											getOriginInfo<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Returns whether the text origin information is collected
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														whether the text info is collected
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getRootComponent"> </a>
+										<div class="itemTitle icon">
+											getRootComponent<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											The name of the root component to start or empty
+											
+											
+												<p class="tagExperimental"><span class="title">Experimental API:</span><span class="desc">Since 1.15.1</span></p> 
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														name of the root component
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getRTL"> </a>
+										<div class="itemTitle icon">
+											getRTL<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Returns whether the page uses the RTL text direction.
+</p><p>
+If no mode has been explicitly set (neither true nor false),
+the mode is derived from the current language setting.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														whether the page uses the RTL text direction
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getSuppressDeactivationOfControllerCode"> </a>
+										<div class="itemTitle icon">
+											getSuppressDeactivationOfControllerCode<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Return whether the activation of the controller code is suppressed
+											
+											
+												<p class="tagExperimental"><span class="title">Experimental API:</span><span class="desc">Since 1.13.2</span></p> 
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.13.2</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														whether the activation of the controller code is suppressed or not
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getTheme"> </a>
+										<div class="itemTitle icon">
+											getTheme<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Returns the theme name
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the theme name
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getUIDPrefix"> </a>
+										<div class="itemTitle icon">
+											getUIDPrefix<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Prefix to be used for automatically generated control IDs.
+Default is a double underscore "__".
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the prefix to be used
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getVersion"> </a>
+										<div class="itemTitle icon">
+											getVersion<span class="signature">()</span>
+											<span class="light" title="returns jQuery.sap.Version">: <a href="../symbols/jQuery.sap.Version.html">jQuery.sap.Version</a></span>
+										</div>
+										<div class="full-description">
+											Returns the version of the framework.
+</p><p>
+Similar to <code>sap.ui.version</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/jQuery.sap.Version.html">jQuery.sap.Version</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the version
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getWeinreId"> </a>
+										<div class="itemTitle icon">
+											getWeinreId<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											WEINRE session ID
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the ID to use for the WEINRE server
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getWeinreServer"> </a>
+										<div class="itemTitle icon">
+											getWeinreServer<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											WEINRE server URL
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the base URL of the WEINRE server
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setLanguage"> </a>
+										<div class="itemTitle icon">
+											setLanguage<span class="signature">(<span title="(string) the new language as a BCP47 compliant language tag; case doesn't matter and underscores can be used instead of a dashes to separate components (compatibility with Java Locale Ids)">sLanguage</span>)</span>
+											<span class="light" title="returns sap.ui.core.Configuration">: <a href="../symbols/sap.ui.core.Configuration.html">sap.ui.core.Configuration</a></span>
+										</div>
+										<div class="full-description">
+											Sets a new language tag to be used from now on for language/region dependent 
+functionality (e.g. formatting, data types, translated texts, ...). 
+</p><p>
+When the language has changed, the Core will fire its 
+<a href="../symbols/sap.ui.core.Core.html#event:localizationChanged">localizationChanged</a> event.
+</p><p>
+The framework <strong>does not</strong> guarantee that already created, language 
+dependent objects will be updated by this call. It therefore remains best practice 
+for applications to switch the language early, e.g. before any language dependent 
+objects are created. Applications that need to support more dynamic changes of 
+the language should listen to the <code>localizationChanged</code> event and adapt 
+all language dependent objects that they use (e.g. by rebuilding their UI).
+</p><p>
+Currently, the framework notifies the following objects about a change of the
+localization settings before it fires the <code>localizationChanged</code> event:
+</p><p>
+<ul>
+<li>date and number data types that are used in property bindings or composite 
+    bindings in existing Elements, Controls, UIAreas or Components</li>
+<li>ResourceModels currently assigned to the Core, an UIArea, Component, 
+    Element or Control</li>
+<li>Elements or Controls that implement the <code>onLocalizationChanged</code> hook. 
+</ul>
+</p><p>
+It furthermore derives the RTL mode from the new language, if no explicit RTL
+mode has been set. If the RTL mode changes, the following additional actions will be taken:
+</p><p>
+<ul>
+<li>the URLs of already loaded library theme files will be changed</li>
+<li>the <code>dir</code> attribute of the page will be changed to reflect the new mode.</li> 
+<li>all UIAreas will be invalidated (which results in a rendering of the whole UI5 UI)</li> 
+</ul>
+											
+											
+												<p class="tagExperimental"><span class="title">Experimental API:</span><span class="desc">Since 1.11.1 - See method documentation for restrictions.</span></p> 
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sLanguage</b>
+													</td>
+													<td class="methodItemDesc">
+												    the new language as a BCP47 compliant language tag; case doesn't matter
+  and underscores can be used instead of a dashes to separate components (compatibility with Java Locale Ids)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Configuration.html">sap.ui.core.Configuration</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod deprecated'>
+										<a name="getApplication"> </a>
+										<div class="itemTitle icon">
+											getApplication<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											The name of the application to start or empty
+											
+											
+												<p class="tagExperimental"><span class="title">Experimental API:</span><span class="desc">Since 1.13.2</span></p> 
+											
+											
+										
+											
+										</div>
+										
+										
+										
+											<dl class="detailList deprecation">
+												<dt class="heading">Deprecated:</dt>
+												<dt>
+													Since 1.15.1. Please use the rootComponent configuration option <a href="../symbols/sap.ui.core.Configuration.html#getRootComponent">sap.ui.core.Configuration#getRootComponent</a>.
+												</dt>
+											</dl>
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														name of the application
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

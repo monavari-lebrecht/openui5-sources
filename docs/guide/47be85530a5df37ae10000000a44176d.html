@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="LOIO.FOLDER.IWB_FOLDER_ID" content="1234AC50C238B656E10000000A445394"/>
+<meta name="LOIO.FOLDER.IWB_TECH_NAME" content="HELPX.UI_EXT"/>
+<meta name="LOIO.FOLDER.IWB_FOLDER_GROUP" content="SAPXH"/>
+<meta name="LOIO.FOLDER.IWB_SHH_KEY" content=""/>
+<meta name="LOIO.FOLDER.IWB_TRANSLATION_MEMORY" content=""/>
+<meta name="LOIO.FOLDER.TERM_DOMAIN" content="FF"/>
+<meta name="LOIO.IWB_TYPE" content="ICG"/>
+<meta name="LOIO.IWB_SHH_KEY" content=""/>
+<meta name="LOIO.KW_CONVREF.CLASS" content=""/>
+<meta name="LOIO.KW_CONVREF.OBJID" content=""/>
+<meta name="PHIO.IWB_INDUSTRY" content="SHL"/>
+<meta name="PHIO.RELEASE" content="1.0_2014Q3"/>
+<meta name="PHIO.CREATED_AT" content="20140605161049"/>
+<meta name="PHIO.LAST_CHANGED_AT" content="20140605161049"/>
+<meta name="PHIO.IWB_LEVEL" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=1353536519290539"/>
+<title>Consuming APF</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio47be85530a5df37ae10000000a44176d">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Consuming APF</h1>
+<div class="body"><div class="section"><div class="section_title">Use</div><div type="Use"><p class="p">The following code snippet is an example of how to consume APF in a UI5 based application:</p>
+ <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+jQuery.sap.declare("myApp.Component");
+sap.ui.getCore().loadLibrary("sap.apf");
+jQuery.sap.require("sap.apf.Component");
+
+sap.apf.Component.extend("myApp.Component", {
+        metadata : {
+            name : "Component",
+            version : "1.3.0"
+        },
+        /**
+        * Initialize the application
+        *
+        * @returns {sap.ui.core.Control} the content
+        */
+        init : function() {
+            // Call APF Component init
+            sap.apf.Component.prototype.init.apply(this, arguments);
+        },
+        /**
+        * Creates the application layout and returns the outer layout of APF 
+        *
+        * @returns
+        */ 
+        createContent : function() {
+            // Get module path of application
+            var modPath = jQuery.sap.getModulePath('myApp');
+
+            // Prepare path to application configuration file
+            var configFilePath = modPath + "/config/myApplicationConfiguration.json";
+
+            // Get APF object
+            this.oApfApi = this.getApi();
+
+            // Load application configuration file using APF API
+            this.oApfApi.loadApplicationConfig(configFilePath);
+
+            // Get application layout from APF
+            var layoutView = this.oApfApi.createApplicationLayout();
+
+            /*  Optional application logic */
+
+            // Create and add facet filter
+            this.oApfApi.addFacetFilter( <var class="keyword varname">&lt;Facet Filter&gt;</var> );
+
+            // Create and add content to footer
+            this.oApfApi.addMasterFooterContent( <var class="keyword varname">&lt;sap.ui.view&gt;</var> );
+
+            /*  Any other application logic */
+
+            return layoutView;
+        }
+        destroy : function() {
+
+            // Destroy application instances
+
+            // Call destroy on APF Component
+            sap.apf.Component.prototype.destroy.apply(this, arguments);
+        }
+    });
+        </pre></div>
+ <p class="p">Replace <span class="ph uicontrol">myApp</span> with the application-specific namespace.</p>
+ <p class="p">Method <span class="ph sap-technical-name sap-technical-name">this.getApi()</span> provides a reference to the APF instance.</p>
+ <p class="p">Within method <span class="ph sap-technical-name sap-technical-name">createContent()</span> in the application code, you can specify the following:</p>
+ <ul class="ul"><li class="li"><p class="p">Facet filter</p>
+<p class="p">The facet filter holds the filters that are relevant for the application. It also provides selection capabilities.</p>
+ <p class="p">The UI control used for the facet filter is <span class="ph sap-technical-name sap-technical-name">sap.m.FacetFilter</span> from the SAPUI5 Mobile library. The facet filter is injected into APF UI using method <span class="ph sap-technical-name sap-technical-name">addFacetFilter(facetFilterControl)</span>.</p>
+ </li>
+<li class="li"><p class="p">Footer content</p>
+<p class="p">APF UI exposes a method <span class="ph sap-technical-name sap-technical-name">addMasterFooterContent(oControl)</span>
+                        which can be used to add a button to the footer of the master page. The
+                        footer is organized in such a way that the first button is available
+                        directly in the footer, while subsequent buttons are consolidated into a
+                        menu. The click event handling on these buttons has to be handled by the
+                        application.</p>
+ </li>
+<li class="li"><p class="p">Initial context</p>
+<p class="p">The application can use method <span class="ph sap-technical-name sap-technical-name">setContext(oFilter)</span> to
+                        set the initial context as a start filter for the application.</p>
+
+                    <p class="p">When you make selections in the facet filter or footer, the selection changes
+                        have to be handled and the context has to be set accordingly.
+                            <span class="ph sap-technical-name sap-technical-name">setContext</span> then overwrites the
+                        previously set context.</p>
+ </li>
+</ul>
+ </div></div>
+</div>
+<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="958ead51e2e94ab8bcdc90fb7e9d53d0.html" title="Components are independent and reusable parts used in SAPUI5 applications. An application can use components from different locations from where the application is running. Thus, components can be developed by different development teams and be used in different projects. Components also support the encapsulation of closely related parts of an application into a particular component. This makes the structure of an application and its code easier to understand and to maintain.">SAPUI5 Components</a></div>
+<div><a class="link" href="170638b7a2b4424e8580fb473af6a3cd.html">Step 2: Component</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Consuming APF";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

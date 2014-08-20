@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=2196489912477565"/>
+<title>Instantiating Fragments in Declarative Views</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio234320f8d8ee45b39c60893116d60351">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Instantiating Fragments in Declarative Views</h1>
+<div class="body taskbody"><p class="shortdesc"/>
+<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">In XML views, fragments are used like regular controls, or more precisely, like
+				views. </p>
+
+			<p class="p">The following code example shows an XML view that includes all three types of
+				fragments, that is an XML fragment, a JS fragment and an HTML fragment. Each type is
+				instantiated once without a given ID and once with a given ID. These fragment
+				references basically work like import statements including the fragment content
+				controls.  </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!xml</samp>
+&lt;mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:commons="sap.ui.commons" controllerName="testdata.fragments.XMLViewController" &gt;
+    
+    &lt;commons:HorizontalDivider /&gt;
+    
+    &lt;core:Fragment               fragmentName="my.useful.SimpleUiPart" type="XML" /&gt;
+    &lt;core:Fragment id="xmlInXml" fragmentName="my.useful.SimpleUiPart" type="XML" /&gt;
+    
+    &lt;commons:HorizontalDivider /&gt;
+    
+    &lt;core:Fragment              fragmentName="my.useful.UiPartX" type="JS" /&gt;
+    &lt;core:Fragment id="jsInXml" fragmentName="my.useful.UiPartX" type="JS" /&gt;
+    
+    &lt;commons:HorizontalDivider /&gt;
+    
+    &lt;core:Fragment                fragmentName="my.useful.UiPartZ" type="HTML" /&gt;
+    &lt;core:Fragment id="htmlInXml" fragmentName="my.useful.UiPartZ" type="HTML" /&gt;
+
+        
+&lt;/mvc:View&gt;</pre></div>
+
+		</div></div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="5da591c5a5a54740948acfe56b22fbc3.html" title="You can use a unique ID for a fragment that will be used as prefix for all controls in a fragment instance.">Unique IDs</a></div>
+<div><a class="link" href="c24ea6d4d2a34792a7ea241128ad8550.html">Using Other Objects Instead of Controllers</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Instantiating Fragments in Declarative Views";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

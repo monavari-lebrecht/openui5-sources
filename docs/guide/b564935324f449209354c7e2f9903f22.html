@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="You include style sheets like plain HTML. You can add further CSS classes to SAPUI5 controls by using the class attribute."/>
+<meta name="description" content="You include style sheets like plain HTML. You can add further CSS classes to SAPUI5 controls by using the class attribute."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=9778590007378157"/>
+<title>Using CSS Style Sheets in XML Views</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiob564935324f449209354c7e2f9903f22">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Using CSS Style Sheets in XML Views</h1>
+<div class="body taskbody"><p class="shortdesc">You include style sheets like plain HTML. You can add further CSS classes to SAPUI5
+		controls by using the <samp class="ph codeph">class</samp> attribute.</p>
+<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p"> The effect is the same as calling <samp class="ph codeph">myButton.addStyleClass(...)</samp>. </p>
+
+			<div class="note tip" id="loiob564935324f449209354c7e2f9903f22__note_N10025_N10011_N10001"><span class="tiptitle">Tip</span> We recommend to carefully choose the
+				elements that you style as the CSS always affects the whole page and is <strong class="ph b">not</strong>
+				restricted to the view. </div>
+
+		</div><div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><div class="li step p"><span class="ph cmd">To add a style sheet, add the style definition. </span> To add a style class and define a button that uses it, add the following
+					coding:
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;core:View controllerName="sap.hcm.Address" xmlns="sap.ui.commons" xmlns:core="sap.ui.core"
+           xmlns:html="http://www.w3.org/1999/xhtml"&gt;
+   &lt;html:style&gt;
+      .mySuperRedButton {
+         color: red;
+      }
+   &lt;/html:style&gt;
+   &lt;Panel&gt;
+      &lt;Button class="mySuperRedButton" text="Press Me"/&gt;
+   &lt;/Panel&gt;
+&lt;core:View&gt;</pre></div>
+</div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Using CSS Style Sheets in XML Views";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

@@ -1,0 +1,661 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - jQuery.sap.history</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static deprecated">
+					
+					Class jQuery.sap.history
+					</h1>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>Enables the back and forward buttons in browser to navigate back or forth through the browser history stack.<br/><br/>
+</p><p>
+It also supports adding virtual history which used only to mark some intermediate state in order to navigate back to the previous state. 
+And this state will be skipped from the browser history stack immediately after a new history state is added to the history stack after this state <br/><br/>
+</p><p>
+By providing the hash saved from the return value of calling jQuery.sap.history.addHistory, jQuery.sap.history.backToHash will navigate back directly to the
+history state with the same hash. <br/><br/>
+</p><p>
+Please use jQuery.sap.history.back() to go one step back in the history stack instead of using window.history.back(), because it handles the empty history stack
+situation and will call the defaultHandler for this case. <br/><br/>
+</p><p>
+</p><p>
+Example for the usage of history handling:
+<pre>
+	//Initialization
+	jQuery.sap.history({
+		routes: [], //please refer to the jQuery.sap.history function comment for the format. 
+		defaultHandler: function(){
+			//code here
+		}
+	});
+  
+	//add history
+	var hash = jQuery.sap.history.addHistory("IDENTIFIER", jsonData);
+  
+	//add virtual history
+	jQuery.sap.history.addVirtualHistory();
+  
+	//back to hash
+	jQuery.sap.history.backToHash(hash);
+  
+	//back one step along the history stack
+	jQuery.sap.history.back();
+</pre></p>
+						
+							<p class="tagDeprecated"><span class="title">Deprecated API:</span><span class="desc">since 1.19.1. Please use {@link sap.ui.core.routing.Route} instead.</span></p> 
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+						
+						
+							<div class="summary section">
+								<div class="sectionTitle">Namespaces &amp; Classes</div>
+								<div class="sectionItems">
+								
+									<div class="sectionItem itemName namespace static deprecated">
+										<b class="icon" title=""><a href="../symbols/jQuery.sap.history.NavType.html">NavType</a></b>
+										<span class='description'></span>
+									</div>
+								
+								</div>
+							</div>
+						
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static deprecated">
+									<div class="itemName">
+										<b class="icon" title="jQuery.sap.history is deprecated.">new <a href="../symbols/jQuery.sap.history.html#constructor">jQuery.sap.history</a></b>
+										<span class='signature'>(<span title="(object) The map that contains data in format:  { routes: [{ path: string //identifier for one kind of hash handler: function //function what will be called when the changed hash is matched against the path.">mSettings</span>)</span>
+										<span class='description'>jQuery.sap.history is deprecated.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+						
+						
+						
+						
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="This function adds a history record."><a href="../symbols/jQuery.sap.history.html#addHistory">addHistory</a></b><span class='signature'>(<span title="(string) The identifier defined in the routes which will be matched in order to call the corresponding handler">sIdf</span>, <span title="(object) The object passed to the corresponding handler when the identifier is matched with the url hash">oStateData</span>, <span title="(boolean) Default value is set to true.">bBookmarkable</span>, <span title="(boolean) This states if the history is a virtual history that should be skipped when going forward or backward in the history stack.">bVirtual</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>This function adds a history record.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Adds a route to the history handling."><a href="../symbols/jQuery.sap.history.html#addRoute">addRoute</a></b><span class='signature'>(<span title="(string) The identifier that is matched with the hash in the url in order to call the corresponding handler.">sIdf</span>, <span title="(function) The function that will be called when the identifier is matched with the hash.">fn</span>, <span title="(object) If oThis is provided, the fn function's this keyword will be bound to this object.">oThis</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Adds a route to the history handling.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="This function adds a virtual history record based on the current hash."><a href="../symbols/jQuery.sap.history.html#addVirtualHistory">addVirtualHistory</a></b><span class='signature'>()</span>
+									<span class='description'>This function adds a virtual history record based on the current hash.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="This function navigates back through the history stack."><a href="../symbols/jQuery.sap.history.html#back">back</a></b><span class='signature'>(<span title="(int) how many steps you want to go back, by default the value is 1.">iSteps</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>This function navigates back through the history stack.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="This function will navigate back to the recent history state which has the sPath identifier."><a href="../symbols/jQuery.sap.history.html#backThroughPath">backThroughPath</a></b><span class='signature'>(<span title="(string) The route identifier to which the history navigates back.">sPath</span>)</span>
+									<span class='description'>This function will navigate back to the recent history state which has the sPath identifier.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="This function calculate the number of back steps to the specific sHash passed as parameter, and then go back to the history state with this hash."><a href="../symbols/jQuery.sap.history.html#backToHash">backToHash</a></b><span class='signature'>(<span title="(string) The hash string needs to be navigated.">sHash</span>)</span>
+									<span class='description'>This function calculate the number of back steps to the specific sHash passed as parameter, and then go back to the history state with this hash.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Set the default handler which will be called when there's an empty hash in the url."><a href="../symbols/jQuery.sap.history.html#setDefaultHandler">setDefaultHandler</a></b><span class='signature'>(<span title="(function) The function that will be set as the default handler">fn</span>)</span>
+									<span class='description'>Set the default handler which will be called when there's an empty hash in the url.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static deprecated">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>jQuery.sap.history</b>(<span title="(object) The map that contains data in format:  { routes: [{ path: string //identifier for one kind of hash handler: function //function what will be called when the changed hash is matched against the path.">mSettings</span>)
+										</div>
+										
+										<div class="full-description">
+											jQuery.sap.history is deprecated. Please use <a href="../symbols/sap.ui.core.routing.Route.html">sap.ui.core.routing.Route</a> instead.
+</p><p>
+Initialize the history handling and set the routes and default handler.
+This should be only called once with the mSettings set in the right format. If the mSettings is not an object,
+you have another chance to call this function again to initialize the history handling. But once the mSettings
+is set with an object, you can only call the addRoute and setDefaultHandler to set the data.
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mSettings</b>
+													</td>
+													<td class="methodItemDesc">
+												    The map that contains data in format:
+<pre>
+{
+	routes: [{
+		path: string //identifier for one kind of hash
+		handler: function	//function what will be called when the changed hash is matched against the path.
+							//first parameter: the json data passed in when calling the addHistory
+							//second parameter: the type of the navigation <a href="../symbols/jQuery.sap.history.NavType.html">jQuery.sap.history.NavType</a>
+		}],
+		defaultHandler: function	//this function will be called when empty hash is matched
+									//first parameter: the type of the navigation <a href="../symbols/jQuery.sap.history.NavType.html">jQuery.sap.history.NavType</a>
+}
+</pre>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+											<dl class="detailList deprecation">
+											<dt class="heading deprecation">Deprecated:</dt>
+											<dt>
+												since 1.19.1. Please use <a href="../symbols/sap.ui.core.routing.Route.html">sap.ui.core.routing.Route</a> instead.
+											</dt>
+											</dl>
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod'>
+										<a name="addHistory"> </a>
+										<div class="itemTitle icon">
+											addHistory<span class="signature">(<span title="(string) The identifier defined in the routes which will be matched in order to call the corresponding handler">sIdf</span>, <span title="(object) The object passed to the corresponding handler when the identifier is matched with the url hash">oStateData</span>, <span title="(boolean) Default value is set to true.">bBookmarkable</span>, <span title="(boolean) This states if the history is a virtual history that should be skipped when going forward or backward in the history stack.">bVirtual</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											This function adds a history record. It will not trigger the related handler of the routes, the changes have to be done by the
+developer. Normally, a history record should be added when changes are done already.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sIdf</b>
+													</td>
+													<td class="methodItemDesc">
+												    The identifier defined in the routes which will be matched in order to call the corresponding handler
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oStateData</b>
+													</td>
+													<td class="methodItemDesc">
+												    The object passed to the corresponding handler when the identifier is matched with the url hash
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bBookmarkable</b>
+													</td>
+													<td class="methodItemDesc">
+												    Default value is set to true. If this is set to false, the default handler will be called when this identifier and data are matched
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bVirtual</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    This states if the history is a virtual history that should be skipped when going forward or backward in the history stack.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														sHash The complete hash string which contains the identifier, stringified data, optional uid, and bookmarkable digit. This hash can be passed into 
+    the backToHash function when navigating back to this state is intended.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addRoute"> </a>
+										<div class="itemTitle icon">
+											addRoute<span class="signature">(<span title="(string) The identifier that is matched with the hash in the url in order to call the corresponding handler.">sIdf</span>, <span title="(function) The function that will be called when the identifier is matched with the hash.">fn</span>, <span title="(object) If oThis is provided, the fn function's this keyword will be bound to this object.">oThis</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns object">: object</span>
+										</div>
+										<div class="full-description">
+											Adds a route to the history handling.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sIdf</b>
+													</td>
+													<td class="methodItemDesc">
+												    The identifier that is matched with the hash in the url in order to call the corresponding handler.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fn</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function that will be called when the identifier is matched with the hash.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oThis</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    If oThis is provided, the fn function's this keyword will be bound to this object.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{object}</span> 
+													</td>
+													<td class="methodItemDesc">
+														It returns the this object to enable chaining.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addVirtualHistory"> </a>
+										<div class="itemTitle icon">
+											addVirtualHistory<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											This function adds a virtual history record based on the current hash. A virtual record is only for marking the current state of the application, 
+and when the back button clicked it will return to the previous state. It is used when the marked state shouldn't be seen by the user when user click
+the back or forward button of the browser. For example, when showing a context menu a virtual history record should be added and this record will be skipped
+when user navigates back and it will return directly to the previous history record. If you avoid adding the virtual history record, it will return to one
+history record before the one your virtual record is based on. That's why virtual record is necessary.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="back"> </a>
+										<div class="itemTitle icon">
+											back<span class="signature">(<span title="(int) how many steps you want to go back, by default the value is 1.">iSteps</span><i class="help" title="Optional parameter">?</i>)</span>
+											
+										</div>
+										<div class="full-description">
+											This function navigates back through the history stack. The number of steps is set by the parameter iSteps. It also handles the situation when it's called while there's nothing in the history stack.
+Normally this happens when the application is restored from the bookmark. If there's nothing in the history stack, the default handler will be called with NavType jQuery.sap.history.NavType.Back.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iSteps</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    how many steps you want to go back, by default the value is 1.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="backThroughPath"> </a>
+										<div class="itemTitle icon">
+											backThroughPath<span class="signature">(<span title="(string) The route identifier to which the history navigates back.">sPath</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											This function will navigate back to the recent history state which has the sPath identifier. It is usually used to navigate back along one
+specific route and jump over the intermediate history state if there are any.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sPath</b>
+													</td>
+													<td class="methodItemDesc">
+												    The route identifier to which the history navigates back.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="backToHash"> </a>
+										<div class="itemTitle icon">
+											backToHash<span class="signature">(<span title="(string) The hash string needs to be navigated.">sHash</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											This function calculate the number of back steps to the specific sHash passed as parameter,
+and then go back to the history state with this hash.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sHash</b>
+													</td>
+													<td class="methodItemDesc">
+												    The hash string needs to be navigated. This is normally returned when you call the addhistory method.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setDefaultHandler"> </a>
+										<div class="itemTitle icon">
+											setDefaultHandler<span class="signature">(<span title="(function) The function that will be set as the default handler">fn</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Set the default handler which will be called when there's an empty hash in the url.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fn</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function that will be set as the default handler
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

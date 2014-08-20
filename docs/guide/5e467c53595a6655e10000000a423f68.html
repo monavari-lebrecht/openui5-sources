@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="LOIO.FOLDER.IWB_FOLDER_ID" content="1234AC50C238B656E10000000A445394"/>
+<meta name="LOIO.FOLDER.IWB_TECH_NAME" content="HELPX.UI_EXT"/>
+<meta name="LOIO.FOLDER.IWB_FOLDER_GROUP" content="SAPXH"/>
+<meta name="LOIO.FOLDER.IWB_SHH_KEY" content=""/>
+<meta name="LOIO.FOLDER.IWB_TRANSLATION_MEMORY" content=""/>
+<meta name="LOIO.FOLDER.TERM_DOMAIN" content="FF"/>
+<meta name="LOIO.IWB_TYPE" content="ICG"/>
+<meta name="LOIO.IWB_SHH_KEY" content=""/>
+<meta name="LOIO.KW_CONVREF.CLASS" content=""/>
+<meta name="LOIO.KW_CONVREF.OBJID" content=""/>
+<meta name="PHIO.IWB_INDUSTRY" content="SHL"/>
+<meta name="PHIO.RELEASE" content="1.0_2014Q2"/>
+<meta name="PHIO.CREATED_AT" content="20140522102818"/>
+<meta name="PHIO.LAST_CHANGED_AT" content="20140522102818"/>
+<meta name="PHIO.IWB_LEVEL" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=8102340007104943"/>
+<title>The Binding Object</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio5e467c53595a6655e10000000a423f68">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">The Binding Object</h1>
+<div class="body"><p class="p">The <span class="ph sap-technical-name sap-technical-name">binding</span> object defines the relation between the requested data and one or more representations. It also defines the mapping of selections made on the UI to OData filter expressions. The <span class="ph sap-technical-name sap-technical-name">binding</span> object has the following format:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+{
+  "type" : "binding",    //optional
+  "id" : <var class="keyword varname">&lt;id::string&gt;</var>
+  "requiredFilters" : [ <var class="keyword varname">&lt;property name&gt;</var>* ]
+  "representations" : [ <var class="keyword varname">&lt;representation ID&gt;</var>* ],
+}</pre></div>
+<p class="p">The attributes used in the <span class="ph sap-technical-name sap-technical-name">binding</span> object denote the following:</p>
+
+<div class="tablenoborder"><table summary="" class="table" frame="border" border="1" rules="all"><thead class="thead" align="left"><tr class="row"><th class="entry" valign="top" id="d455495e62"><p class="p">Attribute</p>
+ </th>
+<th class="entry" valign="top" id="d455495e66"><p class="p">Description</p>
+ </th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry" valign="top" headers="d455495e62 d455495e66 "><p class="p"><span class="ph sap-technical-name sap-technical-name">id</span></p>
+ </td>
+<td class="entry" valign="top" headers="d455495e62 d455495e66 "><p class="p">Unique ID of type string</p>
+ </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d455495e62 d455495e66 "><p class="p"><span class="ph sap-technical-name sap-technical-name">requiredFilters</span></p>
+ </td>
+<td class="entry" valign="top" headers="d455495e62 d455495e66 "><p class="p">Contract between binding and request; specify the target properties for converting selected data into filter expressions</p>
+ </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d455495e62 d455495e66 "><p class="p"><span class="ph sap-technical-name sap-technical-name">representations</span></p>
+ </td>
+<td class="entry" valign="top" headers="d455495e62 d455495e66 "><p class="p">Defined in the <span class="ph sap-technical-name sap-technical-name">representation</span> objects</p>
+ </td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section"><div class="section_title">Default Representation</div><div type="Default Representation"> <p class="p">The <span class="ph sap-technical-name sap-technical-name">binding</span> object contains an array of the attribute <span class="ph sap-technical-name sap-technical-name">representations</span>. In this array, the first <span class="ph sap-technical-name sap-technical-name">representation</span> object (position zero) serves as the default representation, which is displayed in the analysis step gallery.</p>
+ </div></div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="The Binding Object";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

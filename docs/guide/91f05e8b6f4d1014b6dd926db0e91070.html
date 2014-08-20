@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=003491074425942098"/>
+<title>Element Binding</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f05e8b6f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Element Binding</h1>
+<div class="body"><p class="p">Binding an element allows to set the binding context
+		of the element to the object referenced by the given binding path. Thus, all
+		relative bindings within the control and all of its children are resolved
+		relative to this object. For server-side models, the element binding triggers
+		the request to the server to load the referenced object in case it is not yet
+		available on the client.
+	 </p>
+<p class="p">Element bindings can also be defined relatively. In
+		case of relative element bindings, the binding context is updated when the
+		parent binding context is changed.
+	 </p>
+<p class="p">To define an element binding, use the 
+		<samp class="ph codeph">bindElement</samp> method on a
+		control: 
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">oControl.bindElement("/company");
+oControl.bindProperty("value", "name");</pre></div>
+<p class="p">Element binding is especially interesting for
+		containers or layouts containing many controls that are all visualizing
+		properties of the same model object.
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oMatrixLayout = new sap.ui.commons.layout.MatrixLayout();
+oMatrixLayout.bindElement("/company");
+oMatrixLayout.createRow(
+	new sap.ui.commons.Label({text: "Name:"}),
+	new sap.ui.commons.TextField({value: "{name}"})
+);
+
+oMatrixLayout.createRow(
+	new sap.ui.commons.Label({text: "Revenue:"}),
+	new sap.ui.commons.TextField({value: "{revenue}"})
+);
+oMatrixLayout.createRow(
+	new sap.ui.commons.Label({text: "Employees:"}),
+	new sap.ui.commons.TextField({value: "{employees}"})
+);</pre></div>
+<div class="section" id="loio91f05e8b6f4d1014b6dd926db0e91070__section_96C8BDB746E149CD964641F456C7FF93"><div class="section_title">Setting a New Context for the Binding (Master Detail)</div><div type="Setting a New Context for the Binding (Master Detail)"> 
+		 
+		<p class="p">You create a new binding context for an element
+		  that is used to resolve bound properties or aggregations relative to the given
+		  path. You can use this method if the existing binding path changes or has not
+		  been provided before, for example in master detail scenarios.
+		</p>
+ 
+		<p class="p">Below is a simple example: 
+		</p>
+ 
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var data = {clients:[{firstName:"Donald", lastName:"Duck"}]};
+...// create and set model here
+var oLabel = new sap.ui.commons.Label("myLabel");
+oLabel.bindProperty("text", "firstName");
+oLabel.bindElement("/clients/0");</pre></div>
+ 
+		<p class="p">The 
+		  <samp class="ph codeph">bindProperty</samp> method
+		  binds the text value of the label to the 
+		  <samp class="ph codeph">firstName</samp> property in
+		  the model. As the path to this property in the model is not set, this will not
+		  resolve. To resolve the binding, you use the 
+		  <samp class="ph codeph">bindElement</samp> method
+		  which creates a new context from the specified relative path.
+		</p>
+ 
+		<p class="p">To remove the current binding context, call the 
+		  <samp class="ph codeph">unbindElement</samp> method
+		  on the label. By this, all bindings now resolve relative to the parent context
+		  again.
+		</p>
+
+			<p class="p">
+				
+			</p>
+ 
+		<p class="p">You can also use the 
+		  <samp class="ph codeph">bindElement</samp> method in
+		  conjunction with aggregation binding: 
+		</p>
+ 
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var data = {clients:[
+                      {firstName:"Donald", lastName:"Duck"},
+                         items: [ {name: "iPhone"}, {name:"iPad"} ]
+                      }
+           ]};
+...// create and set model here
+var oLB = new sap.ui.commons.ListBox("myLb", {height:"100px"});
+var oItemTemplate = new sap.ui.core.ListItem();	                          
+oItemTemplate.bindProperty("text", "name");
+oLB.bindAggregation("items", "items", oItemTemplate);
+oLB.bindElement("/clients/0");</pre></div>
+ 
+		<p class="p">In this example, the 
+		  <samp class="ph codeph">ListBox</samp> is used to display the detailed data (items
+		  data) for a specified client. Another control can now be used to show the
+		  master data (client data) in the same way as in the first example with the
+		  label. 
+		</p>
+ 
+		<p class="p">This example only works if the additional detailed
+		  data in the model which should be displayed in the 
+		  <samp class="ph codeph">ListBox</samp> (items in the example) is nested in the
+		  corresponding parent data (the client in the example). As you can see in the
+		  model, the items are contained in the client data.
+		</p>
+
+			<p class="p">
+				
+			</p>
+ 
+		<p class="p">You can also use a filtering function, for example
+		  in a table, to display detailed data for selected master data. In this case,
+		  nested data is not necessary in the model. 
+		</p>
+ 
+	 </div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Element Binding";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

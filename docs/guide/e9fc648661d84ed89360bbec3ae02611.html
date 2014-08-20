@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="SAPUI5 offers three different means of setting a theme."/>
+<meta name="description" content="SAPUI5 offers three different means of setting a theme."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=9825397870365787"/>
+<title>Setting Themes</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loioe9fc648661d84ed89360bbec3ae02611">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Setting Themes</h1>
+<div class="body conbody"><p class="shortdesc">SAPUI5 offers three different means of setting a theme.</p>
+<p class="p">For end-users, applications can offer arbitrary ways of selecting or switching themes, based on
+			the technical theme switching functionality offered by SAPUI5.</p>
+<p class="p">To define a theme and to switch it inside an application, you have different options.</p>
+<ul class="ul" id="loioe9fc648661d84ed89360bbec3ae02611__ul_fdq_ynp_24"><li class="li">The initial theme can be hardcoded in the application (in the HTML script tag loading SAPUI5)
+				or in a JS configuration object defined before SAPUI5 is loaded. This setting has
+				the lowest priority.</li>
+<li class="li">A URL parameter (for example: <samp class="ph codeph">html?sap-ui-theme=sap_bluecrystal</samp>) can be used
+				when starting a SAPUI5 application to set or override the initial theme.</li>
+<li class="li">A JavaScript API (<samp class="ph codeph">sap.ui.getCore().applyTheme("sap_bluecrystal")</samp>) can be
+				used to switch themes on the fly. The application state is not lost, there is no
+				server roundtrip (except for loading the CSS, if not cached), only the stylesheets
+				are exchanged.</li>
+</ul>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Setting Themes";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

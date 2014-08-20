@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="This guide tells you what you need to know to build non-trivial enterprise scale applications (apps) with UI5."/>
+<meta name="description" content="This guide tells you what you need to know to build non-trivial enterprise scale applications (apps) with UI5."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=6100814496535256"/>
+<title>Application Best Practices</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio5ca68e6e62e6464a8103297fbc19cd9c">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Application Best Practices</h1>
+<div class="body conbody"><p class="shortdesc">This guide tells you what you need to know to build non-trivial enterprise scale
+		applications (apps) with UI5.</p>
+<p class="p">UI5 is not a restrictive UI framework but more a collection of UI controls together with
+			loosely coupled infrastructure components like basic MVC support, data binding,
+			localization and others. This approach offers great flexibilty but also requires more
+			care in application development and will most likely yield in heterogenous application
+			structures.</p>
+<p class="p">This document describes best practices on how to structure application projects along the
+			most typical scenarios with a clean and consistent structure. Technically, the whole
+			application could also just be coded into one single HTML file - and the simple "Hello
+			World" applications are built exactly like this to make basic functionality easy to
+			understand. But when creating reasonably complex applications a clean architecture is
+			key for efficient development and maintainability. There are many degrees of freedom
+			where this documentation decides for one of the possible options. E.g. when it comes to
+			the file structure or the granularity of views or even the usage of the MVC concept at
+			all. This does not mean that other options are wrong. In fact, other options may suit
+			specific applications even better and some decisions also depend on project experience,
+			team setup or plain taste. Nevertheless, this document should provide valuable
+			suggestions for a good application structure, it's just important to know that this is
+			not the only possible or correct way to build UI5 applications.</p>
+<p class="p">This document contains sections that refer to concepts or controls which are only
+			available in the sap.m library of UI5, but most suggestions are the same or very similar
+			for desktop applications. Indeed, the controls in the <samp class="ph codeph">sap.m</samp> library are
+			not just for "mobile", but for all platforms. They are designed to work responsively
+			depending on the device on which they're running.</p>
+<p class="p">In Part 1 of this document, "Preparing", we start with a high level overview of what aspects of
+			UI5 development will be covered. We then describe the key features of an app, and why
+			they're important. Along the way, references will be made to existing documentation
+			where you can find out more information about a particular area.</p>
+<p class="p">We'll look at design patterns, which are in common use across the web, but particularly
+			in the SAP Fiori app suites. We'll also set the scene for the app that we'll build in
+			this guide, by describing the business scenario.</p>
+<p class="p">Finally, we'll discuss various conventions that are used throughout this document, and in
+			particular, in the code examples. There are technical conventions such as the naming of
+			variables, style conventions such as how a control definition will be laid out in XML,
+			and conventions in terminology such as how we refer to the main control (often an
+				<samp class="ph codeph">sap.m.SplitApp</samp> or similar control) in a root view.</p>
+<p class="p">In Part 2 "Building", we will start from scratch, and in a series of discrete steps, we
+			will build the app that we described in the business scenario in Part 1. Each step
+			covers a different aspect of app design and realisation. For example, there are sections
+			on the UI5 bootstrap, the device model, routing, MVC and more. At the end of each
+			section, we'll consider how far we've got in building the app, and show what the app
+			looks like so far, so you know how far you should be if you're coding along
+			yourself.</p>
+<p class="p">This part of the guide is designed to be followed step by step, but is also written in
+			such a way that you can also jump straight to a specific section and use it as reference
+			when you're building your own apps in UI5. If you follow Part 2 step by step, you will
+			end up with a fully functioning app that you can use as a starting point for other
+			work.</p>
+<p class="p">To give you an idea of where this document will take us, this is what the app will look
+			like at the end of Part 2:</p>
+<div class="fig fignone" id="loio5ca68e6e62e6464a8103297fbc19cd9c__fig_c3s_p52_pn"><div class="figcontainer"><img class="image" id="loio5ca68e6e62e6464a8103297fbc19cd9c__image_bwh_qgr_4n" src="5a47e13f7051418ea277275a2caf79c0.image"/></div></div>
+<div class="note note"><span class="notetitle">Note</span> You can run  the application here: <a class="xref" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/tdg/index.html?responderOn=true">TDG Demo App</a>.</div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="f377376842914da7a6716192ecffc9d0.html" title="Understanding aspects of an enterprise scale application.">Preparing</a></div>
+<div><a class="link" href="b4d66ebee72645c1a3501a769e935541.html" title="We'll take a step-by-step approach and build up the app over a series of small progressions. We'll start out at nothing, and end up with a fully functioning app.">Building</a></div>
+<div><a class="link" href="87a7bd255d944fafbc1fdfedb7c24929.html">Summary</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Application Best Practices";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

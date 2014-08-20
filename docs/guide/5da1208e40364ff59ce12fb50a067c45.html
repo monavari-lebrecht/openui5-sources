@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="To integrate a new view, you can either add it to index.html or nest it into another view."/>
+<meta name="description" content="To integrate a new view, you can either add it to index.html or nest it into another view."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=11667935201689739"/>
+<title>Integrate a New View</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio5da1208e40364ff59ce12fb50a067c45">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Integrate a New View</h1>
+<div class="body taskbody"><p class="shortdesc">To integrate a new view, you can either add it to index.html or nest it into another
+		view.</p>
+<div class="section prereq p" id="loio5da1208e40364ff59ce12fb50a067c45__prereq_N10015_N10012_N10001"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<p class="p">If you create a new view for an existing SAPUI5 application project, the view needs to be
+				manually called.</p>
+
+			
+		</div>
+<div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><div class="li step p" id="loio5da1208e40364ff59ce12fb50a067c45__step_N10022_N1001E_N10012_N10001"><span class="ph cmd"> To call a view, choose from the following options:</span><ul class="ul choices" id="loio5da1208e40364ff59ce12fb50a067c45__choices_a31_bky_1k"><li class="li choice">Directly embed the new view in the index.html page</li>
+<li class="li choice">
+						<p class="p">All Views can be nested independent of the view type. Each view type
+							behaves like any SAPUI5 control. The <samp class="ph codeph">viewName</samp> property
+							defines, which views are embedded. To nest a view, proceed according to
+							the given examples: </p>
+
+					</li>
+</ul>
+ For XML view type:
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;core:View controllerName="sap.hcm.Address" xmlns="sap.ui.commons" xmlns:core="sap.ui.core"
+           xmlns:html="http://www.w3.org/1999/xhtml"&gt;
+   &lt;Panel&gt;
+      &lt;core:JSView id="myJSView" viewName="sap.hcm.Bankaccount" /&gt;
+   &lt;/Panel&gt;
+&lt;core:View&gt;</pre></div>
+
+				 
+					<p class="p">For HTML views, the nested view looks as follows:</p>
+
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;template data-controller-name= "example.mvc.test" &gt;
+
+  &lt;div data-sap-ui-type= "sap.ui.core.mvc.HTMLView" id= "MyHTMLView" data-view-name= "example.mvc.test2" &gt;&lt;/div&gt;
+  &lt;div data-sap-ui-type= "sap.ui.core.mvc.JSView" id= "MyJSView" data-view-name= "example.mvc.test2" &gt;&lt;/div&gt;
+  &lt;div data-sap-ui-type= "sap.ui.core.mvc.JSONView" id= "MyJSONView" data-view-name= "example.mvc.test2" &gt;&lt;/div&gt;
+  &lt;div data-sap-ui-type= "sap.ui.core.mvc.XMLView" id= "MyXMLView" data-view-name= "example.mvc.test2" &gt;&lt;/div&gt;
+
+&lt;/template&gt;</pre></div>
+
+				</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Integrate a New View";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

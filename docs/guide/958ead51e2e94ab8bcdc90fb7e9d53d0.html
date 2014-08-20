@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="Components are independent and reusable parts used in SAPUI5 applications. An application can use components from different locations from where the application is running. Thus, components can be developed by different development teams and be used in different projects. Components also support the encapsulation of closely related parts of an application into a particular component. This makes the structure of an application and its code easier to understand and to maintain."/>
+<meta name="description" content="Components are independent and reusable parts used in SAPUI5 applications. An application can use components from different locations from where the application is running. Thus, components can be developed by different development teams and be used in different projects. Components also support the encapsulation of closely related parts of an application into a particular component. This makes the structure of an application and its code easier to understand and to maintain."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=4142266575115886"/>
+<title>SAPUI5 Components</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio958ead51e2e94ab8bcdc90fb7e9d53d0">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">SAPUI5 Components</h1>
+<div class="body"><p class="shortdesc">Components are independent and reusable parts used in SAPUI5 applications. An
+		application can use components from different locations from where the application is
+		running. Thus, components can be developed by different development teams and be used in
+		different projects. Components also support the encapsulation of closely related parts of an
+		application into a particular component. This makes the structure of an application and its
+		code easier to understand and to maintain.</p>
+<div class="p">
+			<div class="note note" id="loio958ead51e2e94ab8bcdc90fb7e9d53d0__note_N1001B_N10018_N10011_N10001"><span class="notetitle">Note</span> Constraints due to cross-origin issues also apply to components.</div>
+
+		</div>
+<p class="p"/>
+<p class="p">SAPUI5 provides the following two types of components:</p>
+<ul class="ul" id="loio958ead51e2e94ab8bcdc90fb7e9d53d0__ul_dt4_hyw_4k"><li class="li">
+				<p class="p">Faceless components (class: <samp class="ph codeph">sap.ui.core.Component</samp>)</p>
+
+				<p class="p">Faceless components do <strong class="ph b">not</strong> have a user interface and are used, for example, for a
+					service that delivers data from a back-end system.</p>
+
+			</li>
+<li class="li">
+				<p class="p">UI components (class: <samp class="ph codeph">sap.ui.core.UIComponent</samp>)</p>
+
+				<p class="p">UI components extend components and add rendering functionality to the component.
+					They represent a screen area or element on the user interface, for example, a
+					button or a shell, along with the respective settings and metadata.</p>
+
+			</li>
+</ul>
+<p class="p">The <samp class="ph codeph">sap.ui.core.Component</samp> class is the base class for UI and faceless
+			components and provides the metadata for both types of components. To extend the
+			functionality, components can inherit from their base class or from another
+			component.</p>
+<p class="p">The <samp class="ph codeph">name</samp> parameter that gets passed into the component constructor
+			represents the package name under which your component can be found. The <samp class="ph codeph">module
+				name</samp>' of the component is package name + <samp class="ph codeph">.Component</samp>. You
+			specify the module name in <samp class="ph codeph">jQuery.sap.declare</samp> and in the
+				<samp class="ph codeph">extend</samp> methods of the <samp class="ph codeph">Component.js</samp>.</p>
+<div class="section" id="loio958ead51e2e94ab8bcdc90fb7e9d53d0__section_N10059_N10011_N10001"><div class="section_title">Structure of a Component</div><div type="Structure of a Component"><p class="p">A component
+				is a folder. The folder name defines the component name and contains all optional
+				and required resources that are used in the component except for the required SAPUI5
+				libraries and child components. Optional resources are, for example, the CSS and
+				internationalization files, views, and images. The following files are mandatory for
+				components:</p>
+<ul class="ul" id="loio958ead51e2e94ab8bcdc90fb7e9d53d0__ul_fh2_1ky_4k"><li class="li">
+					<p class="p"><samp class="ph codeph">component.js</samp></p>
+
+					<p class="p">This is the component controller and provides the runtime metadata
+						(properties, aggregation, events) and the component methods. The
+							<samp class="ph codeph">name</samp> parameter that is passed to the component
+						constructor represents the package name under which you can find the
+						component.</p>
+
+				</li>
+<li class="li">
+					<p class="p"><samp class="ph codeph">component.json</samp></p>
+
+					<p class="p">This is the component descriptor and contains the design-time metadata. The file is not
+						loaded during runtime. The file is currently not used, but may be used in
+						the future for design-time tools.</p>
+
+				</li>
+</ul>
+<div class="note note" id="loio958ead51e2e94ab8bcdc90fb7e9d53d0__note_N10076_N10011_N10001"><span class="notetitle">Note</span> All paths within a component are relative
+				paths to the <samp class="ph codeph">component.js</samp> file and <strong class="ph b">not</strong> to the
+					<samp class="ph codeph">index.html</samp> file.</div>
+<p class="p">The following figure gives an example
+				of a component folder structure.</p>
+<img class="image" id="loio958ead51e2e94ab8bcdc90fb7e9d53d0__image_xqf_bmy_4k" src="1effb7160fdf472893409bfd2cabe24e.image" alt="Using Components - Component Tree" title="Using Components - Component Tree"/><p class="p">The <samp class="ph codeph">ComponentContainer</samp> control wraps a UI component. You use
+				the control in the SAPUI5 control tree in the same way as any other
+			control.</p>
+</div></div>
+<div class="section"><div class="section_title">Differentiation to Other Concepts in SAPUI5</div><div type="Differentiation to Other Concepts in SAPUI5">
+			
+			<p class="p">The following list explains how other concepts used in SAPUI5 are distinguished from
+				the SAPUI5 components concept:</p>
+
+			<ul class="ul" id="loio958ead51e2e94ab8bcdc90fb7e9d53d0__ul_xc4_nfl_kn"><li class="li">
+					<p class="p">Composite controls</p>
+
+					<p class="p">Both concepts provide a set of controls behind a single interface. Composite
+						controls are intended for reuse within control development and allow to
+						include existing controls in a complex control wheras components are
+						intended for reuse in application development.</p>
+
+				</li>
+<li class="li">
+					<p class="p">UI library</p>
+
+					<p class="p">The UI library is the deployable unit around controls: Controls are never deployed
+						standalone, but as part of a control library. Components, however, are
+						self-contained and should <span class="ph emphasis emphasis">not</span> be used to deploy
+						controls.</p>
+
+				</li>
+<li class="li">
+					<p class="p">Notepad control</p>
+
+					<p class="p">A notepad control is another way to define a control. Notepad controls have all the
+						characteristics of a control.</p>
+
+				</li>
+<li class="li">
+					<p class="p">MVC</p>
+
+					<p class="p">The MVC concept allows to define views and controllers and, thus, to structure and reuse
+						parts within an application. As MVC can only be deployed separately and has
+						no means to define dependent styles or scripts that are loaded together with
+						a view, this concept is of limited use across different applications.</p>
+
+				</li>
+<li class="li"><p class="p">Application</p>
+Applications have a single start URL and contain everything belonging to
+					the application in a deployable unit. However, it is <span class="ph emphasis emphasis">not</span>
+					possible to embed an application into another application as the knowledge about
+					the required libraries, scripts and additional stylesheets is contained in the
+					index.html.</li>
+</ul>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="301b05f212334a66b1a2bc5411a6c030.html" title="Describes how to create a component for SAPUI5 from scratch">Creating a New SAPUI5 Component</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="SAPUI5 Components";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=5459983941071108"/>
+<title>Important FlexBox Layout Concepts</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio0ec1d91487aa43058914ba80ccefbc9b">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Important FlexBox Layout Concepts</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">The following sections contain information about important concepts for FlexBox
+			layouts.</p>
+<div class="section" id="loio0ec1d91487aa43058914ba80ccefbc9b__section_N10018_N10011_N10001"><div class="section_title">Main Axis and Cross Axis</div><div type="Main Axis and Cross Axis">
+			
+			<p class="p">A FlexBox layout has a direction in which child elements are laid out. The default
+				direction is <strong class="ph b">Row</strong> and rows are laid out horizontally in reading direction.
+				This defines the <strong class="ph b">main axis</strong>. The <strong class="ph b">cross axis</strong> in this case is
+				vertical.</p>
+
+			<p class="p">You can change the layout direction property to <strong class="ph b">Column</strong>, which results in a
+				vertical main axis and a horizontal cross axis. This is important for the align
+				properties.</p>
+
+			<div class="note note" id="loio0ec1d91487aa43058914ba80ccefbc9b__note_N10038_N10018_N10011_N10001"><span class="notetitle">Note</span> 
+				<p class="p">If browsers support vertical text flows, the direction of a row can also be
+					vertical. For now this is not an issue and can be ignored.</p>
+
+			</div>
+
+			<p class="p">In addition to Row and Column, the flex direction can be set to <strong class="ph b">RowReverse</strong> and
+					<strong class="ph b">ColumnReverse</strong> which will reverse the layout direction.</p>
+
+		</div></div>
+<div class="section" id="loio0ec1d91487aa43058914ba80ccefbc9b__section_N1004D_N10011_N10001"><div class="section_title">Two-Dimensional Alignment</div><div type="Two-Dimensional Alignment">
+			
+			<p class="p">You can determine where the flex items are aligned in a FlexBox layout. For the
+				alignment you use the following two properties: <strong class="ph b">justifyContent</strong> and
+					<strong class="ph b">alignItems</strong>. The <samp class="ph codeph">justifyContent</samp> property sets the
+				alignment along the main axis while <samp class="ph codeph">alignItems</samp> acts on the cross
+				axis.</p>
+
+			<p class="p">Both properties accept the values <strong class="ph b">Start</strong>, <strong class="ph b">Center</strong> and <strong class="ph b">End</strong>. This
+				results in nine possible combinations, for example</p>
+
+			<ul class="ul" id="loio0ec1d91487aa43058914ba80ccefbc9b__ul_kvl_b24_gj"><li class="li"><em class="ph i">justifyContent = End</em> and <em class="ph i">alignItems: Start</em> places the items in the
+					upper right corner of a horizonzal FlexBox</li>
+<li class="li">If you set the direction property to <em class="ph i">Column</em>, the main axis would be
+					vertical. Combined with <em class="ph i">justifyContent = End</em> and <em class="ph i">alignItems:
+					Start</em>, the items are placed in the lower left corner.</li>
+<li class="li">By reversing the main axis with <em class="ph i">direction = ColumnReverse</em> the layout
+					starts from the bottom. In this case, <em class="ph i">justifyContent = End</em> refers to the
+					top of the FlexBox.</li>
+<li class="li"><em class="ph i">justifyContent</em> has the additional value <em class="ph i">SpaceBetween</em>. This setting places the
+					first and the last item at the extremes of the main axis. Any other items will
+					be distributed evenly between these two.</li>
+</ul>
+
+			<p class="p">For <em class="ph i">alignItems</em> two additional values exist: <em class="ph i">Baseline</em> and
+				<em class="ph i">Stretch</em>. <em class="ph i">Baseline</em> takes the first line of text of each flex item and
+				aligns their baselines. This can be useful if different font sizes are used.
+					<em class="ph i">Stretch</em> makes the flex items take up the whole space along the cross axis
+				of the FlexBox. This is useful if all items should have the same size regardless of
+				the amount of content.</p>
+
+		</div></div>
+<div class="section" id="loio0ec1d91487aa43058914ba80ccefbc9b__section_N100C9_N10011_N10001"><div class="section_title">Flexibility</div><div type="Flexibility">
+			
+			<p class="p">You can let the browser handle the distribution of elements. This ensures that they
+				always fill the available space along the main axis. To do this, set a flexibility
+				factor on the flex items.</p>
+
+			<p class="p">The property to control the flexibility is called <samp class="ph codeph">growFactor</samp>. It is
+				set on a flex item object by means of <samp class="ph codeph">FlexItemData</samp> on the
+					<samp class="ph codeph">layoutData</samp> aggregation. The flex layout algorithm determines
+				the "natural" width of the flex items. If there is space left, this space is
+				distributed among the flex items according to their relative
+					<samp class="ph codeph">growFactor</samp>. If, for example, a horizonzal flex container is
+				300px wide and contains two elements of 100px each, 100px would remain. If the
+					<samp class="ph codeph">growFactor</samp> for both flex items is set to 1, both get 50px
+				extra, thus making them 150px wide. If the <samp class="ph codeph">growFactor</samp>  is set to 3
+				for one item and to 1 for the other item, the first item gets additional 75px (¾ of
+				100px) of the remaining space and the second item 25px (¼ of 100px). If the
+					<samp class="ph codeph">growFactor</samp> is set to its default value of 0, the item is
+				inflexible and both items would keep their width of 100px.</p>
+
+			<div class="note note" id="loio0ec1d91487aa43058914ba80ccefbc9b__note_N100F6_N100CA_N10011_N10001"><span class="notetitle">Note</span> 
+				<p class="p">The the flex algorithm distributes the <strong class="ph b">remaining</strong> space, and <strong class="ph b">not</strong> the
+					whole space in the FlexBox. Therefore, the resulting widths of the items are not
+					necessarily proportional to the <samp class="ph codeph">growFactor</samp>.</p>
+
+			</div>
+
+			<p class="p">To achieve a proportional width according to the <samp class="ph codeph">growFactor</samp>, set the
+				width of all items to 0 via CSS. The sum of the "natural" widths of all items is
+				then also 0. The remaining space, however, now equals the full space of the
+					<samp class="ph codeph">FlexBox</samp>. This space is then distributed based on the
+					<samp class="ph codeph">growFactor</samp>. For the example above with
+					<samp class="ph codeph">growFactor</samp> set to 3 and 1, setting the the width of the flex
+				items to 0 via CSS results in a width of 225px (¾ of 300px) for the first item and
+				75px (¼ of 300px) for the second item. </p>
+
+			<div class="note caution" id="loio0ec1d91487aa43058914ba80ccefbc9b__note_N1011F_N100CA_N10011_N10001"><span class="cautiontitle">Caution</span> Once you set a <samp class="ph codeph">growFactor</samp> for any item, the flex
+				layout algorithm ignores the <samp class="ph codeph">justifyContent</samp> property of the FlexBox
+				because the items take up all available space anyway. There would be no difference
+				between the different values.</div>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Important FlexBox Layout Concepts";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

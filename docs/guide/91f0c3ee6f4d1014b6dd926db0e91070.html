@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=7304410795137086"/>
+<title>Custom Data - Attaching Data Objects to Controls</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f0c3ee6f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Custom Data - Attaching Data Objects to Controls</h1>
+<div class="body"><p class="p">To attach data to SAPUI5 controls, use the <samp class="ph codeph">data()</samp> method, which is contained in
+				<samp class="ph codeph">sap.ui.core.Element</samp>. You can use this method to set and get data.
+			The API is equivalent to <samp class="ph codeph">jQuery.data()</samp>. </p>
+<p class="p">The following additional options exist for attaching data to SAPUI5 controls:</p>
+<ul class="ul"><li class="li">Attaching data declaratively in XML views and JSON views, see <a class="xref" href="91f130196f4d1014b6dd926db0e91070.html">Declarative Support</a></li>
+<li class="li">Using data binding, see <a class="xref" href="91f0ca956f4d1014b6dd926db0e91070.html">Models and Data Binding</a></li>
+<li class="li">For strings only: Writing data to the HTML DOM as "data-*" attribute, see <a class="xref" href="1ef9fefa2a574735957dcf52502ab8d0.html">Writing Data to the HTML DOM as DATA-* Attribute</a></li>
+</ul>
+<div class="section" id="loio91f0c3ee6f4d1014b6dd926db0e91070__section_BAD4FC9765174E0EB7264A423F7C4ED6"><div class="section_title">Setting and Retrieving Data</div><div type="Setting and Retrieving Data"> 
+		 
+		<p class="p">To set and retrieve data, use the following code: 
+		</p>
+ 
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">myButton.data("myData", "Hello");  // attach some data to the Button
+
+alert(myButton.data("myData"));     // alerts "Hello"
+
+var dataObject = myButton.data();  // a JS object containing ALL data
+alert(dataObject.myData);          // alerts "Hello"</pre></div>
+ 
+	 </div></div>
+<div class="section" id="loio91f0c3ee6f4d1014b6dd926db0e91070__section_798A4B993F764A04BAB08DEAACC5DFA9"><div class="section_title">Binding Data: Use in a List Binding</div><div type="Binding Data: Use in a List Binding"> 
+		
+		
+		<p class="p">For list bindings, use the following code: 
+		</p>
+ 
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">// create a JSONModel, fill in the data and bind the ListBox to this model
+
+var oModel = new sap.ui.model.json.JSONModel();
+oModel.setData(aData);                                      // aData is a data array consisting of elements like {question:"Some question?",answer:"Some answer!"}
+var ctrl = new sap.ui.commons.ListBox({select:giveAnswer}); // method giveAnswer() retrieves the custom data from the selected ListItem
+ctrl.setModel(oModel);
+
+// create an item template and bind the question data to the "text" property
+
+var oItemTemplate = new sap.ui.core.ListItem();
+oItemTemplate.bindProperty("text", "question");
+
+
+// create a CustomData template, set its key to "answer" and bind its value to the answer data
+
+var oDataTemplate = new sap.ui.core.CustomData({key:"answer"});
+oDataTemplate.bindProperty("value", "answer");
+
+
+// add the CustomData template to the item template
+
+oItemTemplate.addCustomData(oDataTemplate);
+
+
+// bind the items to the "questions" (which is the name of the data array)
+
+ctrl.bindAggregation("items", "questions", oItemTemplate);</pre></div>
+ 
+		<p class="p">You can find a productive example in the SAPUI5
+		  test suite by searching for 
+		  <samp class="ph codeph">CustomData</samp> in 
+		  <samp class="ph codeph">sap.ui.core</samp>.
+		</p>
+ 
+	 </div></div>
+<div class="section" id="loio91f0c3ee6f4d1014b6dd926db0e91070__section_CC5E82C4375146D9A40D05057ADFDB04"><div class="section_title">Use in XML Views</div><div type="Use in XML Views"> 
+		 
+		<p class="p">In XML views, <samp class="ph codeph">CustomData</samp> objects can be written as normal aggregated objects.
+				However, to reduce the amount of code and improve the readability, a shortcut
+				notation has been introduced: You can directly write the data attributes into the
+				control tags. Simply use the following namespace for the rspective attributes:</p>
+
+			<p class="p"><samp class="ph codeph">myNamespace="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1</samp>.</p>
+ 
+		<p class="p">The difference between this more formal namespace and the existing MVC namespaces is
+				intentional.</p>
+
+		<div class="note Example" id="loio91f0c3ee6f4d1014b6dd926db0e91070__note_N1007F_N10067_N10013_N10001"><span class="Exampletitle"/> <strong class="ph b">Use without Data
+					Binding</strong>
+				<p class="p">The following example shows how you attach the string "just great" to a button:
+					</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.ui.commons" controllerName="my.own.controller" 
+           xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"&gt;
+     &lt;Button id="myBtn" text="Click to show stored coordinates data" app:mySuperExtraData="just great" press="alertCoordinates"&gt;&lt;/Button&gt;
+&lt;/mvc:View&gt;</pre></div>
+<p class="p">The
+					string is returned at runtime by calling
+						<samp class="ph codeph">button.data("mySuperExtraData")</samp>.</p>
+
+			</div>
+
+		<div class="note Example" id="loio91f0c3ee6f4d1014b6dd926db0e91070__note_N1009A_N10067_N10013_N10001"><span class="Exampletitle"/> <strong class="ph b">Use with Data
+					Binding</strong>
+				<p class="p">You can use data binding with the following notation:
+				</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.ui.commons" controllerName="my.own.controller" 
+           xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"&gt;
+     &lt;Button id="myBtn" text="Click to show stored coordinates data" app:coords="{data}" press="alertCoordinates"&gt;&lt;/Button&gt;
+&lt;/mvc:View&gt;</pre></div>
+
+			</div>
+ 
+	 </div></div>
+<div class="section" id="loio91f0c3ee6f4d1014b6dd926db0e91070__section_A34A9FCBC8DA4E8CB559743B7B48CDCE"><div class="section_title">Use in JSON Views</div><div type="Use in JSON Views"> 
+		 
+		<p class="p">To add custom data to an element in a JSON view, add the following code to the element
+				properties (examples with data binding): </p>
+ 
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">customData: {
+  Type:"sap.ui.core.CustomData",
+    key:"coords",
+    value:"{data}" // bind custom data
+  }</pre></div>
+ 
+		<p class="p">To add multiple data elements, use an array:
+		</p>
+ 
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">customData: [{
+  Type:"sap.ui.core.CustomData",
+    key:"coords",
+    value:"{data}" // bind custom data
+  },
+  {
+  Type:"sap.ui.core.CustomData",
+    key:"coords",
+    value:"{data}" // bind custom data
+  }]</pre></div>
+ 
+		<p class="p">In context, this looks as follows:
+		</p>
+ 
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">        var json = 
+            { 
+                Type: "sap.ui.core.JSONView",
+                controllerName:"my.own.controller",
+                content: [{
+                    Type:"sap.ui.commons.Panel",
+                    content:[{
+                        Type:"sap.ui.commons.Button",
+                        text:"{actionName}",
+                        press: "doSomething",
+                        customData: {
+                            Type:"sap.ui.core.CustomData",
+                            key:"coords",
+                            value:"{data}" // bind custom data
+                        }
+                    }]
+                }]
+            };</pre></div>
+ 
+	 </div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Custom Data - Attaching Data Objects to Controls";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

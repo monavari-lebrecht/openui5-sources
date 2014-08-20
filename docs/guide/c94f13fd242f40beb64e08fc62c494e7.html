@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=05093362553010239"/>
+<title>Sharing the SAPUI5 Application Project with the SAPUI5 Repository</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loioc94f13fd242f40beb64e08fc62c494e7">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Sharing the SAPUI5 Application Project with the SAPUI5 Repository</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">You want to upload a new SAPUI5 application into a new BSP application on the ABAP
+			server. </p>
+<p class="p">Before the upload, make sure that </p>
+<ul class="ul" id="loioc94f13fd242f40beb64e08fc62c494e7__ul_ulm_tx2_bj"><li class="li">
+				<p class="p">You have created a SAPUI5 application using SAPUI5 application development tools.</p>
+
+			</li>
+<li class="li">
+				<p class="p">Optional: You have tested the SAPUI5 application locally in Eclipse.</p>
+
+			</li>
+<li class="li">
+				<p class="p">The ABAP system you are using is available in your SAP GUI Logon group. We
+					recommend that you enable Single Sign-on.</p>
+
+			</li>
+</ul>
+<p class="p">To share the SAPUI5 application project with the SAPUI5 repository, proceed as follows:</p>
+<ol class="ol" id="loioc94f13fd242f40beb64e08fc62c494e7__ol_omm_tx2_bj"><li class="li">
+				<p class="p">In Eclipse, go to the <span class="ph uicontrol">Project Explorer</span> view and select the
+					required SAPUI5 application project. </p>
+
+			</li>
+<li class="li"><p class="p">In the context menu of the selected SAPUI5 application project, choose <span class="ph menucascade"><img src="images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Team</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Share Project…</span> <img src="images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. </p>
+<img class="image" id="loioc94f13fd242f40beb64e08fc62c494e7__image_ecy_1s2_3j" src="1c900cecfc48435ba9daf9b88d098b2a.image" alt="SAPUI5 Synchronizing Share Context" title="SAPUI5 Synchronizing Share Context"/></li>
+<li class="li"><p class="p">Select <span class="ph uicontrol">SAPUI5 ABAP Repository</span> as the repository type.</p>
+<img class="image" id="loioc94f13fd242f40beb64e08fc62c494e7__image_gss_ds2_3j" src="12b57965647249ae8a1d7624caca825f.image" alt="SAPUI5 Synchronizing Share Project" title="SAPUI5 Synchronizing Share Project"/>
+			</li>
+<li class="li"><p class="p">Choose <span class="ph uicontrol">Next</span>. Configure the connection to the ABAP system by using
+					the <span class="ph uicontrol">Browse…</span> button. You can only select system
+					connections that are configured in the SAP GUI Launchpad.</p>
+<img class="image" id="loioc94f13fd242f40beb64e08fc62c494e7__image_pyl_fs2_3j" src="8380e188d4424f6b98d59b76093a8621.image" alt="SAPUI5 Synchronizing Connection" title="SAPUI5 Synchronizing Connection"/></li>
+<li class="li"><p class="p">Choose <span class="ph uicontrol">Next</span>. Provide the required information for client, user,
+					password, and language.</p>
+<div class="note note" id="loioc94f13fd242f40beb64e08fc62c494e7__note_N1012E_N10125_N100D8_N10011_N10001"><span class="notetitle">Note</span> Choosing the correct logon language is
+					important. When creating a new repository this will become the original language
+					of the repository. For submitting files to the repository you have to be logged
+					on in the original language, otherwise an error will occur.</div>
+
+				<img class="image" id="loioc94f13fd242f40beb64e08fc62c494e7__image_d4k_3s2_3j" src="410a0eb9e1b84cc1b6dbb39aee931b57.image" alt="SAPUI5 Synchronizing Logon" title="SAPUI5 Synchronizing Logon"/></li>
+<li class="li">
+				<p class="p">Choose <span class="ph uicontrol">Next</span>. The SAPUI5 application project can either be
+					shared with an existing or with a newly created BSP application.</p>
+
+				<ol class="ol" type="a" id="loioc94f13fd242f40beb64e08fc62c494e7__ol_cdn_fng_lj"><li class="li">
+						<p class="p">Select <span class="ph uicontrol">Create a New BSP Application</span> and enter
+							name, description, and package (manually or via the
+								<span class="ph uicontrol">Browse…</span> button).</p>
+
+						<p class="p"><img class="image" id="loioc94f13fd242f40beb64e08fc62c494e7__image_b1v_ks2_3j" src="ee73ee731b414ec188bb684da8ce81dd.image" alt="SAPUI5 Synchronizing BSP Rep Create" title="SAPUI5 Synchronizing BSP Rep Create"/></p>
+
+						<p class="p"><img class="image" id="loioc94f13fd242f40beb64e08fc62c494e7__image_a3m_jng_lj" src="667c2bd3aa8244669a2533c7b081a2ae.image" alt="SAPUI5 Synchronizing BSSP Rep Package" title="SAPUI5 Synchronizing BSSP Rep Package"/></p>
+
+					</li>
+<li class="li">
+						<p class="p">Alternatively, if the BSP application has been created manually, or if
+							you want to download an existing one, choose <span class="ph uicontrol">Select a BSP
+								Application</span> and select an existing BDSP application
+							artifact for SAPUI5 from the list.</p>
+
+						<p class="p"><img class="image" id="loioc94f13fd242f40beb64e08fc62c494e7__image_hxj_rs2_3j" src="d68e0edef862439a9a8d64e21d4226f6.image" alt="SAPUI5 Synchronizing BSP Rep" title="SAPUI5 Synchronizing BSP Rep"/></p>
+
+					</li>
+</ol>
+
+			</li>
+<li class="li">Choose <span class="ph uicontrol">Next</span>. <div class="note note" id="loioc94f13fd242f40beb64e08fc62c494e7__note_N10115_N1010E_N100C6_N10011_N10001"><span class="notetitle">Note</span>  If
+					the new BSP application belongs to a transportable ABAP package, choose/create a
+					transport request before finishing the wizard. Since transport requests are not
+					automatically released, explicitly release them later using transaction SE61.
+						</div>
+<p class="p"><img class="image" id="loioc94f13fd242f40beb64e08fc62c494e7__image_ldn_4s2_3j" src="524feca9ef084bd08f57443fde23b649.image" alt="SAPUI5 Synchronizing BSP Rep Transport" title="SAPUI5 Synchronizing BSP Rep Transport"/></p>
+</li>
+<li class="li">Choose <span class="ph uicontrol">Finish</span>. </li>
+</ol>
+<p class="p">The selected SAPUI5 application project is now connected to the SAPUI5 BSP application
+			artifact of the SAPUI5 Repository. A description containing the ABAP system, client,
+			user, language, and SAPUI5 BSP application name is displayed next to the project name.
+		</p>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Sharing the SAPUI5 Application Project with the SAPUI5 Repository";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

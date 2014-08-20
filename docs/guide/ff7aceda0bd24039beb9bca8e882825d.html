@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=09874337217131557"/>
+<title>Application Cache Buster</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loioff7aceda0bd24039beb9bca8e882825d">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Application Cache Buster</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">The Application Cache Buster (short AppCacheBuster) is similar to the Cache Buster but is
+			used for application resources.</p>
+<p class="p">Applications provide an index file (created on the fly) containing the last modified
+			timestamps of all included files (scripts, properties – files which we load via XHR
+			programmatically). Technically this file is a mapping between the request path (below
+			the context path of the application) and the last modified timestamp. </p>
+<p class="p">The server in general caches all the above resources (not using the 304/not modified
+			mechanism). For the index file we are using the 304/not modified mechanism to avoid to
+			load when it has not been changed. </p>
+<p class="p">On the client-side we initially load this file of the application when enabled via
+			configuration option sap-ui-appcachebuster and use this for the XHR requests. If the
+			request path is contained in the above mentioned index file we simply add the timestamp
+			as leading path segment to this request. If the timestamp doesn’t change the URL is
+			unique and therefore it will be taken from cache. Once the file is modified the URL
+			parameter will be changed and therefore loaded again from the backend. </p>
+<p class="p">The server has to delete the timestamp from this URL to lookup the file properly. For the
+			Java applications SAPUI5 provides a AppCacheBusterFilter and for ABAP the logic is
+			implemented in the ICF handler. Both backend implementations also generate the index
+			file on-the-fly. </p>
+<div class="p">
+			<div class="note note" id="loioff7aceda0bd24039beb9bca8e882825d__note_N1002B_N10028_N10011_N10001"><span class="notetitle">Note</span> The Application Cache Buster does <strong class="ph b">not</strong> work across application borders. If
+				you require resources from another application they are not loaded via this
+				mechanism.</div>
+
+		</div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Application Cache Buster";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=5612678186618936"/>
+<title>sap.ui.model.type.Float</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f30dbf6f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">sap.ui.model.type.Float</h1>
+<div class="body"><p class="p">The 
+		<samp class="ph codeph">Float</samp> type represents a
+		float value. The source value (value given in the model) must be given as a
+		number and is transformed into the type of the bound control property: 
+	 </p>
+<ul class="ul"><li class="li">
+				<samp class="ph codeph">float</samp>: No transformation needed </li>
+<li class="li">
+				<samp class="ph codeph">integer</samp>: Value is rounded using <samp class="ph codeph">Math.floor</samp>
+			</li>
+<li class="li"><samp class="ph codeph">string</samp>: Value is formatted or parsed according to the given output pattern </li>
+</ul>
+<p class="p">Examples how a 
+		<samp class="ph codeph">Float</samp> type can be
+		initialized: 
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">// The source value is given as Javascript number. Output is transformed into the type of the bound control property.
+// If this type is "string" (e.g. the value property of the TextField control) the used default output pattern parameters depend on locale and fixed settings.
+
+var oType = new sap.ui.model.type.Float();
+
+// The source value is given as Javascript number. Output is transformed into the type of the bound control property.
+// If this type is "string" (e.g. the value property of the TextField control) the given output pattern is used (parameters which are not specified are taken from the default pattern)
+
+oType = new sap.ui.model.type.Float({
+  minIntegerDigits: 1, // minimal number of non-fraction digits
+  maxIntegerDigits: 99, // maximal number of non-fraction digits
+  minFractionDigits: 0, // minimal number of fraction digits
+  maxFractionDigits: 99, // maximal number of fraction digits
+  groupingEnabled: true, // enable grouping (show the grouping separators)
+  groupingSeparator: ",", // the used grouping separator
+  decimalSeparator: "." // the used decimal separator
+});</pre></div>
+<p class="p">The 
+		<samp class="ph codeph">Float</samp> type supports the
+		following validation constraints: 
+	 </p>
+<ul class="ul"><li class="li">maximum </li>
+<li class="li">minimum </li>
+</ul>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="sap.ui.model.type.Float";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

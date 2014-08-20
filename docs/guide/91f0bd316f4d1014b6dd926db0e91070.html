@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=9465590259769727"/>
+<title>Cross-Site Scripting</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f0bd316f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Cross-Site Scripting</h1>
+<div class="body"><p class="p">Cross-site scripting (XSS) is a widely known vulnerability most web
+		sites have. This page does not provide general information about cross-site
+		scripting but focuses on what you as an application developer using SAPUI5 can
+		do to avoid these security issues. 
+	 </p>
+<p class="p">To give a short info on XSS: It is about injecting script code into a
+		web page, which is then executed in the context of the page and therefore not
+		only can access any information which currently displayed on the screen but can
+		either access session information contained in cookies, or send new requests to
+		the server within the current session, or even try to exploit browser
+		vulnerabilities to get full access to the machine the browser is running on. 
+	 </p>
+<div class="section" id="loio91f0bd316f4d1014b6dd926db0e91070__section_04390290F9604EFFB4DB3019FA3E9F73"><div class="section_title">Cross-site Scripting in SAPUI5-based Web Applications</div><div type="Cross-site Scripting in SAPUI5-based Web Applications"> 
+		 
+		<p class="p">AJAX frameworks in general are an interesting target for XSS exploits,
+		  as not only the HTML which is initially sent to the browser may contain
+		  vulnerabilities, but also the code which is used to visualize content on the
+		  client side may have bugs which can be exploited to get the JavaScript coding
+		  executed on the client side. In addition to that, once a script has injected an
+		  AJAX application, it will be alive for a long time, as usually navigation will
+		  not reload the whole page which would also clean up any running JavaScript
+		  code, but stays within the same HTML document and uses a delta update mechanism
+		  to show new content. 
+		</p>
+ 
+		<p class="p">It is important to understand that SAPUI5 is not involved in creating the HTML page which is
+				sent to the client, so there is no way SAPUI5 can prevent XSS vulnerabilities which
+				are contained in the HTML page itself. The application which is using the SAPUI5
+				rendering has to take care, according to the documentation of their server-side
+				rendering framework, to properly escape user data, in a way that no JavaScript can
+				be injected. </p>
+ 
+		<p class="p">The SAPUI5 framework will take care of proper escaping for all content which is created and
+				displayed on the screen using the controls provided by SAPUI5. There is no need for
+				the application to HTML-escape user data, but the control API expects all data to be
+				unescaped, so that it can be escaped as needed for the context it will be
+				visualized. </p>
+ 
+	 </div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Cross-Site Scripting";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

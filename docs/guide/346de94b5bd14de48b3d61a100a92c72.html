@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=3759740688792962"/>
+<title>Binding Path Syntax for OData Models</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio346de94b5bd14de48b3d61a100a92c72">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Binding Path Syntax for OData Models</h1>
+<div class="body conbody"><p class="p">You access the data provided by the ODataModel according to the structure of the OData
+			service as defined in the metadata of a service. The syntax of the binding path matches
+			the URL path relative to the service URL used in OData to access specific entries or
+			collections. URL parameters such as filters cannot be added to a binding path. The
+			following samples of bindings within the ODataModel are taken from the well-known
+			Northwind demo service. </p>
+<p class="p">Absolute binding paths: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">/Customers
+/Customers('ALFKI')/Orders</pre></div>
+<p class="p">Relative binding paths within a Customer context: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">CompanyName
+Address
+Orders</pre></div>
+<p class="p">Relative binding paths within an aggregation binding of "/Customer('ALFKI')/Orders: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">OrderID
+ShipName
+ShipAdress
+Employee/LastName
+Order_Details/Discount</pre></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Binding Path Syntax for OData Models";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

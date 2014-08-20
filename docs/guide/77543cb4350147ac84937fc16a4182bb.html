@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="The Migration Tool app allows you to migrate content that you created with SAP Smart Business 1.0 (SP 02) wave 4 KPI modeler to the new SAP Smart Business wave 5 version."/>
+<meta name="description" content="The Migration Tool app allows you to migrate content that you created with SAP Smart Business 1.0 (SP 02) wave 4 KPI modeler to the new SAP Smart Business wave 5 version."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=7930621794360845"/>
+<title>Migration Tool</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio77543cb4350147ac84937fc16a4182bb">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Migration Tool</h1>
+<div class="body conbody"><p class="shortdesc">The <span class="ph pname">Migration Tool</span> app allows you to migrate content that you created
+		with SAP Smart Business 1.0 (SP 02) wave 4 KPI modeler to the new SAP Smart Business wave 5
+		version.</p>
+<p class="p">The tool allows you to select specific data to be migrated to the new modeler. The
+				<span class="ph pname">Migration Tool</span> is not applicable to custom drill-down apps.</p>
+<div class="section"><div class="section_title">Key Features</div><div type="Key Features">
+			
+			<ul class="ul" id="loio77543cb4350147ac84937fc16a4182bb__ul_hpb_nbv_n4"><li class="li">Select the KPIs that you want to migrate.<div class="p">When you migrate a KPI, you also migrate the
+						following associated entities:<ul class="ul" id="loio77543cb4350147ac84937fc16a4182bb__ul_o3l_pbv_n4"><li class="li">Evaluations</li>
+<li class="li">Evaluation values</li>
+<li class="li">Variants (evaluation filters)</li>
+<li class="li">Tags</li>
+<li class="li">Drill-down configurations</li>
+</ul>
+</div>
+<p class="p">The tile visualizations associated with the KPI are not
+						migrated. As a result, you must create and activate new tile visualizations
+						using the <span class="ph pname">Configure KPI Tiles</span> app after you migrate a
+						KPI.</p>
+<p class="p">Before the <span class="ph pname">Migration Tool</span> starts, it displays all
+						the selected KPIs. As there is no entity in the new wave 5 modeler that
+						corresponds to the variant, the migration tool uses the old variant ID, and
+						auto-generates an evaluation ID, which you can edit if required.</p>
+<p class="p">When
+						you choose <span class="ph uicontrol">Migrate</span>, the <span class="ph pname">Migration Tool</span>
+						converts data from the old format into the new format and updates the wave 5
+						database tables with the new data. If there are errors in the migration
+						process around the insertion of any of the entities, the errors are
+						consolidated and shown as an error log in message box. All other changes are
+						also reversed and no migration takes place. You must correct the root cause
+						of the errors and repeat the migration process.</p>
+<p class="p">When migration is
+						complete, you can use the <span class="ph pname">KPI Workspace</span> app to search for the
+						migrated KPIs and their associated entities.</p>
+</li>
+</ul>
+
+		</div></div>
+<div class="section"><div class="section_title">System Landscape Requirements</div><div type="System Landscape Requirements">
+			
+			<p class="p">You must install both the wave 5 version and the wave 4 version of the modeler in the same
+				system before starting the migration process. The <span class="ph pname">Migration Tool</span>
+				assumes that both the old tables and the new tables are available in the same
+				backend system.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Related Apps</div><div type="Related Apps">
+			
+			<ul class="ul" id="loio77543cb4350147ac84937fc16a4182bb__ul_lfs_lcv_n4"><li class="li">Create KPI</li>
+<li class="li">Create Evaluation</li>
+<li class="li">Configure KPI Tiles</li>
+<li class="li">Configure KPI Drill-Down</li>
+<li class="li">Manage KPI Associations</li>
+<li class="li">Manage KPI Authorizations</li>
+<li class="li">KPI Workspace</li>
+</ul>
+
+		</div></div>
+<div class="section"><div class="section_title">Component for Customer Incidents</div><div type="Component for Customer Incidents">
+			
+			<p class="p"><span class="ph sap-technical-name sap-technical-name">CA-GTF-SB-RT</span></p>
+
+		</div></div>
+<div class="section"><div class="section_title">SAP Notes</div><div type="SAP Notes"><a href="http://help.sap.com/disclaimer?site=https://service.sap.com/sap/support/notes/2018360">2018360 <img src="images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></div></div>
+</div>
+<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="2ee2365cbbdc405bad32401fee1a9fbb.html">Create KPI</a></div>
+<div><a class="link" href="4348711baf09464284eaea36751c2628.html">Create Evaluation</a></div>
+<div><a class="link" href="11cd984817f24248b4291899b510f466.html">Manage KPI Authorizations</a></div>
+<div><a class="link" href="cc627d93b81e4fb5ae034f1e3c949c9f.html" title="The Configure KPI Tiles app allows you to create tile visualizations for an active evaluation.">Configure KPI Tiles</a></div>
+<div><a class="link" href="ba3330d57f2f4361bd108adcde23cfdd.html" title="The Configure KPI Drill-Down app allows you to configure the generic drill-down application that you navigate to when you click the KPI or OPI tile in the runtime environment.">Configure KPI Drill-Down</a></div>
+<div><a class="link" href="1288e9cb3d4b432082ae408efac8d7ae.html" title="The Manage Associations app allows you to create associations between KPIs or OPIs. Two types of association are available: supporting or conflicting.">Manage KPI Associations</a></div>
+<div><a class="link" href="cefc748420eb49d2b0e639ca0c86c6c0.html" title="The KPI Workspace app allows you to manage all of your KPIs and OPIs and their evaluations.">KPI Workspace</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Migration Tool";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

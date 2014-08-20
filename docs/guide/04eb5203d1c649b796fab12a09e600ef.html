@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="In addition to the adaptations done automatically by SAPUI5, the application can apply further platform adaptations."/>
+<meta name="description" content="In addition to the adaptations done automatically by SAPUI5, the application can apply further platform adaptations."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=6260532720343434"/>
+<title>Options for Further Adaptation</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio04eb5203d1c649b796fab12a09e600ef">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Options for Further Adaptation</h1>
+<div class="body conbody"><p class="shortdesc">In addition to the adaptations done automatically by SAPUI5, the application can apply
+		further platform adaptations.</p>
+<p class="p"> To facilitate these adaptations, SAPUI5 provides a variety of detection mechanisms. </p>
+<div class="section" id="loio04eb5203d1c649b796fab12a09e600ef__section_N10018_N10011_N10001"><div class="section_title">Mobile versus Desktop and Phone versus Tablet</div><div type="Mobile versus Desktop and Phone versus Tablet"><p class="p">How can an application detect whether it is on a Mobile device?
+				This is not easy to answer: There are now desktop computers supporting touch
+				operation, tablets where keyboards can be attached and even laptops where you can
+				detach the screen which gives you a tablet. So where is the border? There is no
+				clear separation. But depending on your own definition of the border you can detect
+				for example touch capabilities by checking </p>
+<samp class="ph codeph">var isTouchDevice =
+				jQuery.support.touch;</samp><p class="p">Based on this check, SAPUI5 provides also the
+				following flag: </p>
+<samp class="ph codeph">var runningOnDesktop =
+				sap.ui.Device.system.desktop;</samp><p class="p">Similarly, when not running on desktop
+				browsers, one of the following is true:
+				</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var runningOnTablet = sap.ui.Device.system.tablet;
+var runningOnPhone = sap.ui.Device.system.phone;</pre></div>
+<p class="p">On
+				iOS the separation is clear, on Android the border between these classes is assumed
+				to be at 600 pixels virtual screen width. </p>
+<p class="p">For your CSS, the same information
+				is available on the html root tag as one of these three CSS classes:
+				</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+sap-desktop
+sap-tablet
+sap-phone</pre></div>
+<p class="p">So you can provide
+				style for the phone case using CSS cascades as follows:
+				</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">.sap-phone .myControl {
+      font-size: small;
+}</pre></div>
+<p class="p">You
+				might also consider checking the screen size using media queries in CSS or the
+				browser/jQuery APIS in JavaScript.</p>
+</div></div>
+<div class="section" id="loio04eb5203d1c649b796fab12a09e600ef__section_N10078_N10011_N10001"><div class="section_title">iOS vs Android and Version Information (as JavaScript API)</div><div type="iOS vs Android and Version Information (as JavaScript API)">
+			
+			<p class="p">The <samp class="ph codeph">sap.ui.Device.os</samp> object contains information about the operating system: </p>
+
+			<ul class="ul" id="loio04eb5203d1c649b796fab12a09e600ef__ul_vgj_1jc_2j"><li class="li"><span class="keyword parmname">name</span>: Operating system as string (<span class="keyword parmname">ios</span>,
+						<span class="keyword parmname">android</span>, <span class="keyword parmname">winphone</span>, or
+						<span class="keyword parmname">bb</span>) </li>
+<li class="li"><span class="keyword parmname">ios</span>, <span class="keyword parmname">android</span>, <span class="keyword parmname">windows_phone</span>,
+						<span class="keyword parmname">blackberry</span>: Boolean flags for the respective platform </li>
+<li class="li"><span class="keyword parmname">version</span>: the operating system version as float number  </li>
+<li class="li"><span class="keyword parmname">versionStr</span>: the full operating system version as string </li>
+</ul>
+
+		</div></div>
+<div class="section" id="loio04eb5203d1c649b796fab12a09e600ef__section_N100AD_N10011_N10001"><div class="section_title">iOS vs Android vs Windows Phone vs BlackBerry - and Version Information (for CSS styling)</div><div type="iOS vs Android vs Windows Phone vs BlackBerry - and Version Information (for CSS styling)">
+			
+			<p class="p">SAPUI5 also adds platform and browser version information to the root element (the &lt;html&gt;
+				element of the page). There are different three information packages: </p>
+
+			<ul class="ul" id="loio04eb5203d1c649b796fab12a09e600ef__ul_lhj_1jc_2j"><li class="li">The CSS class <samp class="ph codeph">sap-ios</samp>, <samp class="ph codeph">sap-android</samp>,
+						<samp class="ph codeph">sap-winphone</samp>, or <samp class="ph codeph">sap-bb</samp> (for BlackBerry)
+					is added for easy platform-dependent styling. </li>
+<li class="li">The attribute <span class="keyword parmname">data-sap-ui-browser</span> is added, providing more information
+					about browser and version. </li>
+<li class="li">The attribute <span class="keyword parmname">data-sap-ui-os</span> is added, providing more information about
+					operating system and version.</li>
+</ul>
+
+			<p class="p">You can use the CSS class directly in cascades, the other two need attribute selectors which
+				can also be used to match substrings: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+/* make my control red on Apple devices only */
+.sap-ios .myControl {
+   color: red;  
+}
+/* Control should have a blue background whenever Mobile Safari is running... */
+html[data-sap-ui-browser*=msf] .myControl {
+   background-color: blue;  
+}
+
+/* ...but when running on an Apple device with version 5.0 of the operating system, it should rather be green */
+html[data-sap-ui-os="iOS5.0"] .myControl {
+   background-color: green;  
+}</pre></div>
+
+			<p class="p">For more information, see <a class="xref" href="d1b26a248c0a47f6a96849236250dc90.html" title="A platform attribute is added to the HTML tag when running on mobile devices.">Platform
+					Attribute for Mobile</a>. </p>
+
+		</div></div>
+<div class="section" id="loio04eb5203d1c649b796fab12a09e600ef__section_N100DD_N10011_N10001"><div class="section_title">Orientation and Change of Orientation</div><div type="Orientation and Change of Orientation">
+			
+			<p class="p">The <samp class="ph codeph">sap.ui.Device.orientation</samp> object holds orientation information: </p>
+
+			<ul class="ul" id="loio04eb5203d1c649b796fab12a09e600ef__ul_a3j_1jc_2j"><li class="li"><span class="keyword parmname">landscape</span>: Flag indicating whether the current orientation is landscape </li>
+<li class="li"><span class="keyword parmname">portrait</span>: Flag indicating whether the current orientation is portrait </li>
+</ul>
+
+			<p class="p">When the orientation is changed because the user rotates the device, the
+					<samp class="ph codeph">orientationchange</samp> event is fired by the browser, so you can
+				handle this case as well. This event seems to be delayed in some cases, so the
+				Device API also fires its own <samp class="ph codeph">orientationChange</samp> event based on the
+				browser's window resize event (which on mobile devices happens when the orientation
+				is changed): </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.Device.orientation.attachHandler(function(evt) {
+   if (evt.getParameters().landscape) {
+      // do something...
+   }
+});</pre></div>
+
+			<p class="p">In CSS, you can use CSS media queries to check this. </p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Options for Further Adaptation";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

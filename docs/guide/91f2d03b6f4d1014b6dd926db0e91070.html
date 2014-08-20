@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=8462274608727269"/>
+<title>Configuration Options</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f2d03b6f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Configuration Options</h1>
+<div class="body conbody"><p class="p">The following list is an abstract of the available configuration options. For a complete list
+			of all current configuration options, see the documentation of
+				<samp class="ph codeph">sap.ui.core.Configuration</samp> in the API reference.</p>
+<table summary="" border="1" class="simpletable"><tr class="sthead"><th valign="bottom" align="left" id="d864611e17" class="stentry">Option</th>
+<th valign="bottom" align="left" id="d864611e19" class="stentry">Type</th>
+<th valign="bottom" align="left" id="d864611e21" class="stentry">Default Value</th>
+<th valign="bottom" align="left" id="d864611e23" class="stentry">URL</th>
+<th valign="bottom" align="left" id="d864611e25" class="stentry">Modifiable at Runtime</th>
+<th valign="bottom" align="left" id="d864611e27" class="stentry">Description</th>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry"><samp class="ph codeph">accessibility</samp></td>
+<td valign="top" headers="d864611e19" class="stentry"><samp class="ph codeph">boolean</samp></td>
+<td valign="top" headers="d864611e21" class="stentry"><samp class="ph codeph">true</samp></td>
+<td valign="top" headers="d864611e23" class="stentry">Yes</td>
+<td valign="top" headers="d864611e25" class="stentry">No</td>
+<td valign="top" headers="d864611e27" class="stentry"><p class="p">If set to <samp class="ph codeph">true</samp>, the SAPUI5 controls are rendered for or
+					running in accessibility mode.</p>
+</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry"><samp class="ph codeph">animation</samp></td>
+<td valign="top" headers="d864611e19" class="stentry"><samp class="ph codeph">boolean</samp></td>
+<td valign="top" headers="d864611e21" class="stentry"><samp class="ph codeph">true</samp></td>
+<td valign="top" headers="d864611e23" class="stentry">Yes</td>
+<td valign="top" headers="d864611e25" class="stentry">Yes</td>
+<td valign="top" headers="d864611e27" class="stentry"><p class="p">If set to <samp class="ph codeph">true</samp>, animations are generally allowed in SAPUI5 controls.</p>
+</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry"><samp class="ph codeph">areas</samp></td>
+<td valign="top" headers="d864611e19" class="stentry"><samp class="ph codeph">string[] </samp></td>
+<td valign="top" headers="d864611e21" class="stentry"><samp class="ph codeph">null</samp></td>
+<td valign="top" headers="d864611e23" class="stentry">No</td>
+<td valign="top" headers="d864611e25" class="stentry">Yes</td>
+<td valign="top" headers="d864611e27" class="stentry">This configuration parameter defines UI areas that shall be created in advance; use
+						<samp class="ph codeph">sap.ui.getCore().createUIArea</samp> to create new UI areas and
+						<samp class="ph codeph">sap.ui.getCore().getUIArea(id).destroy()</samp> to delete existing
+					UI areas at runtime.</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry"><samp class="ph codeph">debug</samp></td>
+<td valign="top" headers="d864611e19" class="stentry"><samp class="ph codeph">boolean</samp>
+				</td>
+<td valign="top" headers="d864611e21" class="stentry"><samp class="ph codeph">false</samp>
+				</td>
+<td valign="top" headers="d864611e23" class="stentry">Yes</td>
+<td valign="top" headers="d864611e25" class="stentry">No</td>
+<td valign="top" headers="d864611e27" class="stentry"><p class="p">If set to <samp class="ph codeph">true</samp>, the debug sources are loaded; if the
+					bootstrap code is loaded from an optimized source, the bootstrap will be aborted and start anew from a debug source.</p>
+</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry"><samp class="ph codeph">formatLocale</samp></td>
+<td valign="top" headers="d864611e19" class="stentry"><samp class="ph codeph">string</samp></td>
+<td valign="top" headers="d864611e21" class="stentry"><samp class="ph codeph">undefined</samp></td>
+<td valign="top" headers="d864611e23" class="stentry">Yes</td>
+<td valign="top" headers="d864611e25" class="stentry">No</td>
+<td valign="top" headers="d864611e27" class="stentry"><p class="p">This configuration parameter defines the locale used for formatting purposes;
+					the default values for the locale are derived from the language.</p>
+</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry"><samp class="ph codeph">ignoreUrlParams</samp></td>
+<td valign="top" headers="d864611e19" class="stentry"><samp class="ph codeph">boolean</samp></td>
+<td valign="top" headers="d864611e21" class="stentry"><samp class="ph codeph">false</samp>
+				</td>
+<td valign="top" headers="d864611e23" class="stentry">No</td>
+<td valign="top" headers="d864611e25" class="stentry">No</td>
+<td valign="top" headers="d864611e27" class="stentry">Security-relevant parameter that allows applications to disable
+					configuration modifications via URL parameters.</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry"><samp class="ph codeph">inspect</samp></td>
+<td valign="top" headers="d864611e19" class="stentry"><samp class="ph codeph">boolean </samp></td>
+<td valign="top" headers="d864611e21" class="stentry"><samp class="ph codeph">false</samp></td>
+<td valign="top" headers="d864611e23" class="stentry">Yes</td>
+<td valign="top" headers="d864611e25" class="stentry">No</td>
+<td valign="top" headers="d864611e27" class="stentry">
+					<p class="p">If set to <samp class="ph codeph">true</samp>, the <samp class="ph codeph">sap-ui-debug.js</samp> module
+						is included and provides some supportability features </p>
+</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry"><samp class="ph codeph">language</samp></td>
+<td valign="top" headers="d864611e19" class="stentry"><samp class="ph codeph">string</samp></td>
+<td valign="top" headers="d864611e21" class="stentry"><samp class="ph codeph">user language</samp></td>
+<td valign="top" headers="d864611e23" class="stentry">Yes</td>
+<td valign="top" headers="d864611e25" class="stentry">No</td>
+<td valign="top" headers="d864611e27" class="stentry">
+					<p class="p">This configuration parameter defines the language that shall be used for
+						localized texts, formattings, and so on.</p>
+
+					<p class="p">The default value is not static, but determined from the browser or user
+						language in the following order:</p>
+
+					<ol class="ol" id="loio91f2d03b6f4d1014b6dd926db0e91070__ol_pjd_jlm_wk"><li class="li"><samp class="ph codeph">navigator.language</samp></li>
+<li class="li"><samp class="ph codeph">navigator.browserLanguage</samp></li>
+<li class="li"><samp class="ph codeph">navigator.userLanguage</samp></li>
+</ol>
+</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry"><samp class="ph codeph">libs</samp></td>
+<td valign="top" headers="d864611e19" class="stentry"><samp class="ph codeph">string[]</samp></td>
+<td valign="top" headers="d864611e21" class="stentry"><samp class="ph codeph">[ ]</samp></td>
+<td valign="top" headers="d864611e23" class="stentry">No</td>
+<td valign="top" headers="d864611e25" class="stentry">Yes</td>
+<td valign="top" headers="d864611e27" class="stentry">This configuration parameter defines a list of libraries that shall be loaded
+					initially; use the <samp class="ph codeph">loadLibrary()</samp> method to load further
+						libraries.<p class="p">For more information, see: <a class="xref" href="https://sapui5.hana.ondemand.com/sdk/%23docs/api/symbols/sap.ui.core.Core.html#loadLibrary">loadLibrary</a></p>
+</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry"><samp class="ph codeph">logLevel</samp></td>
+<td valign="top" headers="d864611e19" class="stentry">0|1|2|3|4|5|6|NONE|FATAL|ERROR|WARNING|INFO|DEBUG|ALL</td>
+<td valign="top" headers="d864611e21" class="stentry"><samp class="ph codeph">ERROR</samp>
+				</td>
+<td valign="top" headers="d864611e23" class="stentry">Yes</td>
+<td valign="top" headers="d864611e25" class="stentry">Yes</td>
+<td valign="top" headers="d864611e27" class="stentry">This configuration parameter sets the log level to the given value; for
+					minified (productive) sources, the default level is <samp class="ph codeph">ERROR</samp>, for
+					debug sources it is <samp class="ph codeph">DEBUG</samp>. At runtime, you can modify the log
+					level by using the <samp class="ph codeph">jQuery.sap.log.setLevel</samp> method.</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry"><samp class="ph codeph">modules</samp></td>
+<td valign="top" headers="d864611e19" class="stentry"><samp class="ph codeph">string[]</samp></td>
+<td valign="top" headers="d864611e21" class="stentry"><samp class="ph codeph">[ ]</samp></td>
+<td valign="top" headers="d864611e23" class="stentry">No</td>
+<td valign="top" headers="d864611e25" class="stentry">No</td>
+<td valign="top" headers="d864611e27" class="stentry">This configuration parameter defines a list of JavaScript modules that
+					shall be loaded after the code has been initialized.</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry"><samp class="ph codeph">noConflict</samp></td>
+<td valign="top" headers="d864611e19" class="stentry"><samp class="ph codeph">boolean </samp></td>
+<td valign="top" headers="d864611e21" class="stentry"><samp class="ph codeph">false</samp></td>
+<td valign="top" headers="d864611e23" class="stentry">No</td>
+<td valign="top" headers="d864611e25" class="stentry">No</td>
+<td valign="top" headers="d864611e27" class="stentry"><p class="p">If set to <samp class="ph codeph">true</samp>, SAPUI5 forces jQuery into <samp class="ph codeph">noConflict</samp> mode.</p>
+</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry"><samp class="ph codeph">noDuplicateIds</samp></td>
+<td valign="top" headers="d864611e19" class="stentry"><samp class="ph codeph">boolean</samp>
+				</td>
+<td valign="top" headers="d864611e21" class="stentry"><samp class="ph codeph">true</samp>
+				</td>
+<td valign="top" headers="d864611e23" class="stentry">Yes</td>
+<td valign="top" headers="d864611e25" class="stentry">No</td>
+<td valign="top" headers="d864611e27" class="stentry">
+					<p class="p">If set to <samp class="ph codeph">true</samp>, this configuration parameter enforces that
+						the same IDs are <strong class="ph b">not</strong> used for multiple controls; we highly recommend
+						this check as duplicate IDs may cause unforseeable issues and side
+						effects.</p>
+</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry"><samp class="ph codeph">onInit</samp></td>
+<td valign="top" headers="d864611e19" class="stentry"><samp class="ph codeph">code</samp></td>
+<td valign="top" headers="d864611e21" class="stentry"><samp class="ph codeph">undefined</samp>
+				</td>
+<td valign="top" headers="d864611e23" class="stentry">No</td>
+<td valign="top" headers="d864611e25" class="stentry">No</td>
+<td valign="top" headers="d864611e27" class="stentry">This configuration setting defines if code has to be executed after the
+					initialization</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry"><samp class="ph codeph">originInfo</samp></td>
+<td valign="top" headers="d864611e19" class="stentry"><samp class="ph codeph">boolean</samp>
+				</td>
+<td valign="top" headers="d864611e21" class="stentry"><samp class="ph codeph">false</samp></td>
+<td valign="top" headers="d864611e23" class="stentry">Yes</td>
+<td valign="top" headers="d864611e25" class="stentry">No</td>
+<td valign="top" headers="d864611e27" class="stentry"><p class="p">If set to <samp class="ph codeph">true</samp>, additional information for text resources is provided that allows to determine the origin of a translated text on the UI</p>
+</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry"><samp class="ph codeph">preload</samp></td>
+<td valign="top" headers="d864611e19" class="stentry"><samp class="ph codeph">not specified</samp>, <samp class="ph codeph">auto</samp>, <samp class="ph codeph">sync</samp>, or
+						<samp class="ph codeph">async</samp>
+				</td>
+<td valign="top" headers="d864611e21" class="stentry"><samp class="ph codeph">auto</samp>
+				</td>
+<td valign="top" headers="d864611e23" class="stentry">No</td>
+<td valign="top" headers="d864611e25" class="stentry">No</td>
+<td valign="top" headers="d864611e27" class="stentry">
+					<p class="p">Between loading SAPUI5 core runtime and further libraries, the so-called
+						preload files are loaded. They contain all modules of a library. The modules
+						are only loaded, but not executed, thus reducing initialization time. </p>
+
+					<p class="p">The values are used as follows: </p>
+
+					<ul class="ul"><li class="li">When set to <samp class="ph codeph">auto</samp>, SAPUI5 runtime automatically uses
+							<samp class="ph codeph">sync</samp> when running from optimized sources.</li>
+<li class="li">When set to <samp class="ph codeph">sync</samp>, the preload files for the declared
+							libraries are loaded synchronously. </li>
+<li class="li">When set to <samp class="ph codeph">async</samp>, the preload files are loaded
+							asynchronously.</li>
+<li class="li"> For any other value (for example blank), the preload feature is
+							deactivated and modules are loaded on demand.</li>
+</ul>
+</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry"><samp class="ph codeph">resourceRoots</samp></td>
+<td valign="top" headers="d864611e19" class="stentry">object</td>
+<td valign="top" headers="d864611e21" class="stentry">undefined</td>
+<td valign="top" headers="d864611e23" class="stentry">No</td>
+<td valign="top" headers="d864611e25" class="stentry"><samp class="ph codeph">jQuery.sap.registerModulePath(),
+					sap.ui.localResources()</samp></td>
+<td valign="top" headers="d864611e27" class="stentry">
+					<p class="p">Locations of resources (Javascript modules, …). The value can be a map of URL
+						locations keyed by a resource name prefix. All resources whose name starts
+						with such a prefix will be loaded from the corresponding location. The empty
+						string can be used to define a location for all resources. </p>
+
+					<p class="p">For more information, see <a class="xref" href="https://sapui5.hana.ondemand.com/sdk/%23docs/api/symbols/jQuery.sap.html#.registerModulePath">jQuery.sap.registerModulePath()</a></p>
+
+				</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry"><samp class="ph codeph">rtl</samp></td>
+<td valign="top" headers="d864611e19" class="stentry">boolean </td>
+<td valign="top" headers="d864611e21" class="stentry"><samp class="ph codeph">false</samp></td>
+<td valign="top" headers="d864611e23" class="stentry">Yes</td>
+<td valign="top" headers="d864611e25" class="stentry">No</td>
+<td valign="top" headers="d864611e27" class="stentry">
+					<p class="p">If set to <samp class="ph codeph">true</samp>, all controls are rendered in right-to-left
+						(RTL) mode; not yet determined automatically.</p>
+
+				</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry"><samp class="ph codeph">theme</samp></td>
+<td valign="top" headers="d864611e19" class="stentry">string</td>
+<td valign="top" headers="d864611e21" class="stentry"><samp class="ph codeph">base</samp></td>
+<td valign="top" headers="d864611e23" class="stentry">Yes</td>
+<td valign="top" headers="d864611e25" class="stentry">Yes</td>
+<td valign="top" headers="d864611e27" class="stentry">
+					<p class="p">This configuration parameter defines the theme that shall be used for the
+						current page; you can change the theme at runtime by calling
+						<samp class="ph codeph">sap.ui.getCore().applyTheme()</samp>.</p>
+
+					<p class="p"><strong class="ph b">Theme Root:</strong></p>
+
+					<p class="p"> When the theme string contains an at-sign (<samp class="ph codeph">@</samp>), anything
+						before the <samp class="ph codeph">@</samp> is assumed to denote the id of the theme while
+						anything after the <samp class="ph codeph">@</samp> is assumed to represent the URL
+						location of the theme. To defend against XSS attacks, only URLs that point
+						into the SAP Theming Repository on the same server as the application are
+						accepted. If the URL is not valid, the theme id is also ignored.</p>
+</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry"><samp class="ph codeph">themeRoots</samp></td>
+<td valign="top" headers="d864611e19" class="stentry">object</td>
+<td valign="top" headers="d864611e21" class="stentry"><samp class="ph codeph">undefined</samp></td>
+<td valign="top" headers="d864611e23" class="stentry"> </td>
+<td valign="top" headers="d864611e25" class="stentry"><samp class="ph codeph">sap.ui.getCore().setThemeRoot()</samp></td>
+<td valign="top" headers="d864611e27" class="stentry">This configuration parameter defines the location of themes.</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry"><samp class="ph codeph">trace</samp></td>
+<td valign="top" headers="d864611e19" class="stentry">boolean </td>
+<td valign="top" headers="d864611e21" class="stentry"><samp class="ph codeph">false</samp>
+				</td>
+<td valign="top" headers="d864611e23" class="stentry">No</td>
+<td valign="top" headers="d864611e25" class="stentry">No</td>
+<td valign="top" headers="d864611e27" class="stentry">If set to <samp class="ph codeph">true</samp>, this configuration parameter activates an
+					overlay div that contains a trace.</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry"><samp class="ph codeph">uidPrefix</samp></td>
+<td valign="top" headers="d864611e19" class="stentry">string </td>
+<td valign="top" headers="d864611e21" class="stentry">'--'</td>
+<td valign="top" headers="d864611e23" class="stentry">No</td>
+<td valign="top" headers="d864611e25" class="stentry">No</td>
+<td valign="top" headers="d864611e27" class="stentry">Prefix to be used for automatically generated control IDs; must be choosen
+					carefully to avoid conflicts with IDs defined by the application or DOM
+					IDs.</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry"><samp class="ph codeph">weinreId</samp></td>
+<td valign="top" headers="d864611e19" class="stentry">string</td>
+<td valign="top" headers="d864611e21" class="stentry"> </td>
+<td valign="top" headers="d864611e23" class="stentry">Yes</td>
+<td valign="top" headers="d864611e25" class="stentry">No</td>
+<td valign="top" headers="d864611e27" class="stentry"> </td>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry"><samp class="ph codeph">weinreServer</samp></td>
+<td valign="top" headers="d864611e19" class="stentry">string</td>
+<td valign="top" headers="d864611e21" class="stentry"> </td>
+<td valign="top" headers="d864611e23" class="stentry">No</td>
+<td valign="top" headers="d864611e25" class="stentry">No</td>
+<td valign="top" headers="d864611e27" class="stentry">URL to a WEINRE server to be used for debugging purposes; if set, SAPUI5
+					automatically includes the WEINRE target modules.</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry"><samp class="ph codeph">xx-bindingSyntax</samp></td>
+<td valign="top" headers="d864611e19" class="stentry">string</td>
+<td valign="top" headers="d864611e21" class="stentry">'simple'</td>
+<td valign="top" headers="d864611e23" class="stentry">No</td>
+<td valign="top" headers="d864611e25" class="stentry">No</td>
+<td valign="top" headers="d864611e27" class="stentry">
+					<div class="note note"><span class="notetitle">Note</span> This is an experimental feature, and may be modified or removed in future
+						versions. </div>
+
+					<p class="p"> Whether to use the simple binding syntax or the complex one. Only affects
+						bindings that are defined as strings (e.g. in the constructor of a control
+						or when specifying a binding in a declarative view, like XMLView or
+						HTMLView. </p>
+
+					<p class="p"> See the <a class="xref" href="a2fe8e763014477e87990ff50657a0d0.html">Calculated Fields for Data Binding</a> for details.
+					</p>
+
+				</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry"><samp class="ph codeph">xx-fakeOS</samp></td>
+<td valign="top" headers="d864611e19" class="stentry">string</td>
+<td valign="top" headers="d864611e21" class="stentry"><samp class="ph codeph">undefined</samp>
+				</td>
+<td valign="top" headers="d864611e23" class="stentry">Yes</td>
+<td valign="top" headers="d864611e25" class="stentry">No</td>
+<td valign="top" headers="d864611e27" class="stentry">
+					<div class="note note"><span class="notetitle">Note</span> This is an experimental feature, and may be modified or removed in future
+						versions. </div>
+
+					<p class="p">You use this configuration parameter to simulate iOS, Android and BlackBerry
+						on desktop PCs for easier development of mobile apps and controls. The
+						following values are supported:</p>
+
+					<ul class="ul"><li class="li"><samp class="ph codeph">ios</samp></li>
+<li class="li"><samp class="ph codeph">android</samp></li>
+<li class="li"><samp class="ph codeph">blackberry</samp></li>
+</ul>
+
+					<p class="p">The parameter modifies the user-agent and runtime and theming act as the
+						selected mobile platform. This includes Browser detection mechanisms such as
+						<samp class="ph codeph">jQuery.browser</samp>. </p>
+
+					<div class="note note" id="loio91f2d03b6f4d1014b6dd926db0e91070__note_N10341_N10321_N1030E_N1001C_N10013_N10001"><span class="notetitle">Note</span> This configuration
+						parameter only works on desktop WebKit browsers, such as Chrome and Safari.
+						On other browsers and on mobile devices the configuration parameter has no
+						effect.</div>
+</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry"><samp class="ph codeph">xx-loadAllMode</samp></td>
+<td valign="top" headers="d864611e19" class="stentry">boolean</td>
+<td valign="top" headers="d864611e21" class="stentry"><samp class="ph codeph">false</samp>
+				</td>
+<td valign="top" headers="d864611e23" class="stentry">No</td>
+<td valign="top" headers="d864611e25" class="stentry">No</td>
+<td valign="top" headers="d864611e27" class="stentry">
+					<div class="note note"><span class="notetitle">Note</span> This is an experimental feature, and may be modified or removed in future
+						versions. </div>
+
+					<p class="p">This configuration parameter is used internally by SAPUI5 runtime. To
+						activate it, load <samp class="ph codeph">sap-ui-core-all.js</samp> instead of
+						<samp class="ph codeph">sap.ui.core.js</samp>.</p>
+</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry">xx-preloadLibCss</td>
+<td valign="top" headers="d864611e19" class="stentry">string[]</td>
+<td valign="top" headers="d864611e21" class="stentry">[]</td>
+<td valign="top" headers="d864611e23" class="stentry">Yes</td>
+<td valign="top" headers="d864611e25" class="stentry">No</td>
+<td valign="top" headers="d864611e27" class="stentry">
+					<div class="note note"><span class="notetitle">Note</span> This is an experimental feature, and may be modified or removed in future
+						versions. </div>
+
+					<p class="p"> Specifies a list of UI libraries (same syntax as for the libs property) for
+						which the UI5 core does <strong class="ph b">not</strong> include the library.css stylesheet in the
+						head of the page. If the list starts with an exclamation mark ( ! ), no
+						stylesheet is loaded at all for the specified libs (it is assumed that the
+						application takes care of loading CSS, e.g. a manually merged, single CSS
+						file). Otherwise, the Core instructs the backend to create a merged CSS for
+						the specified libs. In both cases, if the first libraries name is an
+						asterisk ( *  ), it will be expanded to the list of already configured
+						libraries.</p>
+
+					<div class="note note"><span class="notetitle">Note</span> 
+						<p class="p"> The merge feature is currently only available for Java and only for apps
+							that include the additional backend component resource-ext  . Without
+							the merge, applications can include their own merged CSS file and
+							suppress the loading of the standard library.css</p>
+
+					</div>
+
+				</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry"><samp class="ph codeph">xx-supportedLanguages</samp></td>
+<td valign="top" headers="d864611e19" class="stentry">string[]</td>
+<td valign="top" headers="d864611e21" class="stentry">[]</td>
+<td valign="top" headers="d864611e23" class="stentry">Yes</td>
+<td valign="top" headers="d864611e25" class="stentry">No</td>
+<td valign="top" headers="d864611e27" class="stentry">
+					<div class="note note"><span class="notetitle">Note</span> This is an experimental feature, and may be modified or removed in future
+						versions. </div>
+
+					<p class="p"> With this option the client can be instructed to limit its backend requests
+						for translatable texts to the configured set of languages. An empty value or
+						the value <samp class="ph codeph">*</samp> allows any language, the value
+							<samp class="ph codeph">default</samp>  limits the requests to the set of languages
+						that are delivered with SAPUI5. </p>
+
+				</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d864611e17" class="stentry"><samp class="ph codeph">xx-test-mobile</samp></td>
+<td valign="top" headers="d864611e19" class="stentry">boolean</td>
+<td valign="top" headers="d864611e21" class="stentry"><samp class="ph codeph">false</samp>
+				</td>
+<td valign="top" headers="d864611e23" class="stentry">Yes</td>
+<td valign="top" headers="d864611e25" class="stentry">No</td>
+<td valign="top" headers="d864611e27" class="stentry">
+					<div class="note note" id="loio91f2d03b6f4d1014b6dd926db0e91070__note_N10304_N10301_N102EE_N1001C_N10013_N10001"><span class="notetitle">Note</span> This is an
+						experimental feature, and may be modified or removed in future versions. </div>
+
+					<p class="p">This configuration parameter activates support for mobile device-specific
+						events, such as touch events. This enables you to test standard SAPUI5
+						controls on mobile devices.</p>
+</td>
+</tr>
+</table>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Configuration Options";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

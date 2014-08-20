@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=6446898437310095"/>
+<title>Enabling Declarative Support</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f17d636f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Enabling Declarative Support</h1>
+<div class="body"><p class="p">To use declarative support you need to enable the
+		declarative support in your HTML document by adding an attribute to the SAPUI5
+		bootstrap script tag. This is done as follows:
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">data-sap-ui-modules="sap.ui.core.plugin.DeclarativeSupport"</pre></div>
+<p class="p">SAPUI5 then requires (loads) the plugin 
+		<samp class="ph codeph">sap.ui.core.plugin.DeclarativeSupport</samp>.
+		When started, the plugin parses and enhances special HTML tags in the HTML
+		document. The complete bootstrap script tag for SAPUI5 (based on a CDN version)
+		looks as follows: 
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;script id="sap-ui-bootstrap"
+  type="text/javascript"
+  src="resources/sap-ui-core.js"
+  data-sap-ui-theme="sap_platinum"
+  data-sap-ui-libs="sap.ui.commons"
+  data-sap-ui-modules="sap.ui.core.plugin.DeclarativeSupport"
+  &gt;
+&lt;/script&gt;</pre></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Enabling Declarative Support";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

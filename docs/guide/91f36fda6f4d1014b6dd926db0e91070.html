@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=49227038334518414"/>
+<title>Translation Guide for SAPUI5 Application Developers</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f36fda6f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Translation Guide for SAPUI5 Application Developers</h1>
+<div class="body"><p class="p">Texts in SAPUI5 applications can be translated in an ABAP system. It is a requirement that the
+			name of the file containing the text elements ends with '.properties' and a special key
+			in the format <samp class="ph codeph"># SAPUI5 TRANSLATION-KEY &lt;GUID with 32 characters</samp> must
+			be provided in the first line. In addition, every text element needs a classification
+			such as the text type. </p>
+<p class="p">Before you translate texts, make sure that you are using the SAPUI5 repository to store your UI5
+			application artifacts, see <a class="xref" href="91f346786f4d1014b6dd926db0e91070.html">Synchronizing with the SAPUI5 Repository</a>. </p>
+<div class="section" id="loio91f36fda6f4d1014b6dd926db0e91070__section_0E0442E2F4D64155ACACF8573A9ECCF5"><div class="section_title">Functional Overview</div><div type="Functional Overview"> 
+		 
+		<ul class="ul"><li class="li"> 
+			 <p class="p">The purpose of the text API in the SAPUI5 repository is to enable
+				an ABAP translation process for text elements of SAPUI5 applications developed
+				in Eclipse that are stored in the SAPUI5 repository. 
+			 </p>
+ 
+		  </li>
+<li class="li"> 
+			 <p class="p">The text elements are included in a property file (here denoted as a
+						'&lt;name&gt;.properties' file, where '&lt;name&gt;' stands for an
+						identifier). </p>
+ 
+		  </li>
+<li class="li"> 
+			 <p class="p">The text elements stored in '&lt;name&gt;.properties' files are transferred to an ABAP
+						server. </p>
+ 
+		  </li>
+<li class="li"> 
+			 <p class="p">In addition, these table entries are written to a transport
+				request. 
+			 </p>
+ 
+		  </li>
+<li class="li"> 
+			 <p class="p">These texts can then be translated in the usual way. 
+			 </p>
+ 
+		  </li>
+<li class="li"> 
+			 <p class="p">The master language of the SAPUI5 repository is taken as the
+				master language for the submitted text elements. 
+			 </p>
+ 
+		  </li>
+<li class="li"> 
+			 <p class="p">The translated texts can then be accessed during runtime. 
+			 </p>
+ 
+		  </li>
+</ul>
+ 
+	 </div></div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Translation Guide for SAPUI5 Application Developers";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

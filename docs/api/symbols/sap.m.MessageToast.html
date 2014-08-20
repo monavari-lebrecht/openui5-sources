@@ -1,0 +1,357 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.m.MessageToast</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Static Class sap.m.MessageToast
+					</h1>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>A message toast notification offers simple feedback about an operation in a pop-up.
+Toasts automatically disappear after a timeout and will never receive focus in order
+to be unobtrusive as possible.
+Toasts appears close the bottom of the screen, centered horizontally, but you can change
+this position which is not dependent on the default values of the position settings.
+The default position applies as long as the application does not do any position setting.
+Position settings are "my", "at", "of" and "offset".
+</p><p>
+Beware that only one message toast can be shown at a time in the same place.
+If you want to have multiple message toasts visible at the same time, you need to position
+the message toasts in different places.
+This positioning needs to be handled in the application logic.
+</p><p>
+Message toast example:
+</p><p>
+<pre>
+sap.m.MessageToast.show("This message should appear in the message toast", {
+    duration: 3000,                  // default
+    width: "15em",                   // default
+    my: "center bottom",             // default
+    at: "center bottom",             // default
+    of: window,                      // default
+    offset: "0 0",                   // default
+    collision: "fit fit"             // default
+    onClose: null,                   // default
+    autoClose: true,                 // default
+    animationTimingFunction: "ease", // default
+    animationDuration: 1000,         // default
+    closeOnBrowserNavigation: true   // default
+});
+</pre></p>
+						
+						
+						
+						
+						
+						
+							<br />
+							<i>Since: </i>1.9.2.
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+		
+
+
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Creates and displays a simple message toast notification message with the given text, and optionally other options."><a href="../symbols/sap.m.MessageToast.html#.show">sap.m.MessageToast.show</a></b><span class='signature'>(<span title="(string) The message to be displayed.">sMessage</span>, <span title="(object) Optionally other options.">mOptions</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Creates and displays a simple message toast notification message with the given text, and optionally other options.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+					
+		
+		
+
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".show"> </a>
+										<div class="itemTitle icon">
+											sap.m.MessageToast.show<span class="signature">(<span title="(string) The message to be displayed.">sMessage</span>, <span title="(object) Optionally other options.">mOptions</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns void">: void</span>
+										</div>
+										<div class="full-description">
+											Creates and displays a simple message toast notification message with the given text, and optionally other options.
+</p><p>
+The only mandatory parameter is <code>sMessage</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sMessage</b>
+													</td>
+													<td class="methodItemDesc">
+												    The message to be displayed.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mOptions</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Optionally other options.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mOptions.duration</b><i class="help" title="Optional parameter">?, Default: 3000</i>
+													</td>
+													<td class="methodItemDesc">
+												    Time in milliseconds before the close animation starts. Needs to be a finite positive nonzero integer.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mOptions.width</b><i class="help" title="Optional parameter">?, Default: '15em'</i>
+													</td>
+													<td class="methodItemDesc">
+												    The width of the message toast, this value can be provided in %, em, px and all possible CSS measures.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Popup.Dock.html">sap.ui.core.Popup.Dock</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mOptions.my</b><i class="help" title="Optional parameter">?, Default: 'center bottom'</i>
+													</td>
+													<td class="methodItemDesc">
+												    Specifies which point of the message toast should be aligned.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Popup.Dock.html">sap.ui.core.Popup.Dock</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mOptions.at</b><i class="help" title="Optional parameter">?, Default: 'center bottom'</i>
+													</td>
+													<td class="methodItemDesc">
+												    Specifies the point of the reference element to which the message toast should be aligned.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>|Element|<a href="../symbols/jQuery.html">jQuery</a>|Window|undefined}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mOptions.of</b><i class="help" title="Optional parameter">?, Default: window</i>
+													</td>
+													<td class="methodItemDesc">
+												    Specifies the reference element to which the message toast should be aligned, by default it is aligned to the browser visual viewport.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mOptions.offset</b><i class="help" title="Optional parameter">?, Default: '0 0'</i>
+													</td>
+													<td class="methodItemDesc">
+												    The offset relative to the docking point, specified as a string with space-separated pixel values (e.g. "0 10" to move the message toast 10 pixels to the right).
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mOptions.collision</b><i class="help" title="Optional parameter">?, Default: 'fit fit'</i>
+													</td>
+													<td class="methodItemDesc">
+												    Specifies how the position of the message toast should be adjusted in case it overflows the screen in some direction. Possible values “fit”, “flip”, “none”, or a pair for horizontal and vertical e.g. "fit flip”, "fit none".
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mOptions.onClose</b><i class="help" title="Optional parameter">?, Default: null</i>
+													</td>
+													<td class="methodItemDesc">
+												    Function to be called when the message toast closes.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mOptions.autoClose</b><i class="help" title="Optional parameter">?, Default: true</i>
+													</td>
+													<td class="methodItemDesc">
+												    Specify whether the message toast should close as soon as the end user touches the screen.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mOptions.animationTimingFunction</b><i class="help" title="Optional parameter">?, Default: 'ease'</i>
+													</td>
+													<td class="methodItemDesc">
+												    Describes how the close animation will progress. Possible values "ease", "linear", "ease-in", "ease-out", "ease-in-out". This feature is not supported in android and ie9 browsers.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mOptions.animationDuration</b><i class="help" title="Optional parameter">?, Default: 1000</i>
+													</td>
+													<td class="methodItemDesc">
+												    Time in milliseconds that the close animation takes to complete. Needs to be a finite positive integer. For not animation set to 0. This feature is not supported in android and ie9 browsers.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mOptions.closeOnBrowserNavigation</b><i class="help" title="Optional parameter">?, Default: true</i>
+													</td>
+													<td class="methodItemDesc">
+												    Whether the message toast closes on browser navigation.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

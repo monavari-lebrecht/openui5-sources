@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=07968135169850044"/>
+<title>CSS Classes for Theme Parameters</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loioea08f53503da42c19afd342f4b0c9ec7">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">CSS Classes for Theme Parameters</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">The CSS of custom HTML or on-the-fly controls used by applications is not connected to the
+			SAPUI5 theme parameters. So using the Theme Designer to adapt colors does not modify the
+			colors of these parts. For this, SAPUI5 provides a set of important adjustable colors
+			behind the generic predefined CSS rules that enable custom content to use the respective
+			CSS classes to get the correct colors.</p>
+<p class="p">The CSS classes that are used in custom HTML content and in notepad controls are predefined and
+			are supplied with color values by LESS CSS parameters of the current theme. The names of
+			the CSS classes are generic and deduced from the respective theme parameter name.</p>
+<div class="example"><h2 class="exampletitle">Example</h2>
+			<p class="p">The most straightforward example is the theme parameter <samp class="ph codeph">@sapUiText</samp>. The theme
+				parameter is mainly used for text colors, so the custom CSS rule sets the
+					<samp class="ph codeph">color</samp> property. To generically derive from CSS parameters while
+				not creating too long or conflict-prone names, every parameter
+					<samp class="ph codeph">sapUiXY</samp> can be offered as CSS class
+				<samp class="ph codeph">sapThemeXY</samp>. This suggests it is a theme color, and
+					<samp class="ph codeph">sapTheme</samp> is a new reserved prefix for CSS classes.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">.sapThemeText {
+   color: @sapUiText;
+}</pre></div>
+
+			<p class="p">This solution is not sufficient if the same color is used for borders. In this case, the color
+				is defined for each CSS color parameter once as text color, once as background
+				color, once as border-color, and so on. The styled CSS property name is part of the
+				CSS class name, as a suffix: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">.sapThemeText-asColor {
+   color: @sapUiText;
+}
+.sapThemeText-asBackgroundColor {
+   background-color: @sapUiText;
+}
+.sapThemeText-asBorderColor {
+   border-color: @sapUiText;
+}</pre></div>
+
+			<p class="p">Nevertheless, if there is an obvious default CSS property such as the (text) color for
+					<samp class="ph codeph">@sapUiText</samp> or the background color for
+					<samp class="ph codeph">@sapUiPageBG</samp>, this one is available without suffix. </p>
+
+		</div>
+<p class="p">If an application is using SAPUI5, so a theme is loaded into the page, any custom content like
+			plain HTML, HTML inside HTML controls or HTML/XML views, as well as HTML rendered by
+			notepad controls can take part in theming when the respective generic CSS classes are
+			added. When custom HTML should have the font color defined in the current theme, the
+			application writes:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;span class="sapThemeText"&gt;some custom text in custom HTML&lt;/span&gt;</pre></div>
+<p class="p">Whenever the theme is switched or the Theme Designer is used to modify the standard text color,
+			this span automatically gets the new text color. The same is valid when a notepad
+			control is created. Just make sure the control writes the respective CSS class, for
+			example by calling <samp class="ph codeph">oRm.addClass("sapThemeText");</samp>): </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">// the part creating the HTML:
+renderer : function(oRm, oControl) { 
+    oRm.write("&lt;div"); 
+    oRm.writeControlData(oControl); 
+    oRm.addStyle("width", oControl.getSize());  
+    oRm.addStyle("height", oControl.getSize());
+    oRm.writeStyles();
+    oRm.addClass("mySquare");       
+    oRm.addClass("sapThemeText");  // here the CSS class is added which makes the text color depend on the current theme
+    oRm.writeClasses();             
+    oRm.write("&gt;");
+    oRm.writeEscaped(oControl.getText()); 
+    oRm.write("&lt;/div&gt;");
+},
+</pre></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="91a4946b0dcf4356aaaedc4e502864f4.html">List of Supported CSS Classes</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="CSS Classes for Theme Parameters";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

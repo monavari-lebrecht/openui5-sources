@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=45847939493366785"/>
+<title>Implementing an OData Model</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f11c116f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Implementing an OData Model</h1>
+<div class="body taskbody"><div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div><p class="p">The OData model enables binding of controls to data from OData services. The OData model is a
+				server-side model: the dataset is only available on the server and the client only
+				knows the currently visible rows and fields. Sorting and filtering is done on the
+				server. The client has to send a request to the server to accomplish these tasks.
+				The OData model currently supports OData version 2.0. </p>
+
+			<div class="note note" id="loio91f11c116f4d1014b6dd926db0e91070__note_N10020_N10013_N10001"><span class="notetitle">Note</span> Be aware of the Same-Origin-Policy security concept
+				which prevents access to backends on different domains or sites.</div>
+
+		</div><div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loio91f11c116f4d1014b6dd926db0e91070__steps_ejn_4zs_5k"><li class="li step stepexpand"><span class="ph cmd">To create an OData model instance: </span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oModel = new sap.ui.model.odata.ODataModel("http://services.odata.org/Northwind/Northwind.svc/");</pre></div>
+
+					<p class="p">Requests to the service to fetch data are made automatically according to the
+						data bindings defined in the controls. </p>
+
+					<p class="p">The service URL is the first parameter of the constructor. One OData model
+						instance can only cover one OData service. If you need access to multiple
+						services, you have to create multiple instances of the OData model. </p>
+
+				</li>
+<li class="li step stepexpand"><span class="ph cmd">To add additional parameters: </span> 
+					<p class="p">When using OData services, you can use URL parameters for configuration.
+						SAPUI5 sets most of the required URL parameters automatically according to
+						the data binding. Two options for adding custom parameters to the request
+						exist: URL parameters can be appended to the service URL and a map of
+						parameters can be passed when using <samp class="ph codeph">bindElement</samp> or
+							<samp class="ph codeph">bindAggregation</samp>. </p>
+
+					<p class="p">Additional parameters, which are added to the OData service URL, are included
+						in every request sent to the OData server. This is useful for authentication
+						tokens or general configuration options. </p>
+
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oModel = new sap.ui.model.odata.ODataModel("http://myserver/MyService.svc/?custom1=value1&amp;custom2=value2");</pre></div>
+
+				</li>
+<li class="li step stepexpand"><span class="ph cmd">For other parameters it makes no sense to include them in every request. These
+					parameters should only be added to specific aggregation or element bindings, for
+					example, <samp class="ph codeph">$expand</samp> or <samp class="ph codeph">$select</samp>. For this, the
+					binding methods can pass a map of parameters, which is then included in all
+					requests for this specific binding. Currently, the ODataModel only supports
+						<samp class="ph codeph">$expand</samp> and <samp class="ph codeph">$select</samp>.</span><ul class="ul choices" id="loio91f11c116f4d1014b6dd926db0e91070__choices_ijb_v1t_5k"><li class="li choice">
+						<p class="p">To use the <samp class="ph codeph">$expand</samp> parameter see the following snippet
+							below: </p>
+
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">oControl.bindElement("/Category(1)", {expand: "Products"}); 
+
+oTable.bindRows({
+    path: "/Products",
+    parameters: {expand: "Category"}
+}); </pre></div>
+
+						<p class="p">In the first example all products of <samp class="ph codeph">Category(1)</samp> are
+							embedded inline in the server response and loaded in one request. In the
+							second example the Category for all Products is embedded inline the
+							response for each product.</p>
+
+					</li>
+<li class="li choice">
+						<p class="p">The <samp class="ph codeph">$select</samp> parameter returns only the specified
+							properties of requested entries. </p>
+
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">oControl.bindElement("/Category(1)", {expand: "Products", select: "Name,ID,Products"}); 
+
+oTable.bindRows({
+    path: "/Products",
+    parameters: {select: "Name,Category"}
+});</pre></div>
+
+						<p class="p">In the first example the properties Name and ID
+								<samp class="ph codeph">ofCategory(1)</samp> and all properties of the embedded
+							products are returned. In the second example the properties Name and
+							Category are included for each product. The <samp class="ph codeph">Category</samp>
+							property will contain a link to the related Category entry.</p>
+
+					</li>
+</ul>
+</li>
+<li class="li step stepexpand"><span class="ph cmd">To add custom query options:</span> 
+					<p class="p">You can add custom query options by placing them as a query string in the
+						URL. The name of a query string does <strong class="ph b">not</strong> begin with a $
+						character:</p>
+
+					<p class="p">http://services.odata.org/OData/OData.svc/Products?x=y</p>
+
+					<p class="p">You can also use custom query options as input parameters for service
+						operations. You can specify the custom parameters during aggregation binding
+						as follows:</p>
+
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">oTable.bindRows({path: "/Products", parameters: { custom: { param1: "value1", param2: "value2" } }, template: rowTemplate });</pre></div>
+
+					<p class="p">For <samp class="ph codeph">bindElement</samp>, you can specify custom parameters as
+						follows:</p>
+
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">oTextField.bindElement("/GetProducts", { custom: { "price" : "500" } });</pre></div>
+
+				</li>
+<li class="li step stepexpand"><span class="ph cmd">To create virtual entries:</span> 
+					<p class="p">You can create empty objects for a specified collection name. The application
+						can bind against these objects. By calling the
+							<samp class="ph codeph">submitChanges</samp> function, you can determine the point in
+						time when these objects are persisted in the backend. The application has to
+						trigger this explicitly. Before the objects are persisted in the backend,
+						all created virtual entries are stored in a request queue and can still be
+						removed. The application can choose which properties are included in the
+						created object and may pass own default values for these properties.
+						Otherwise, the property values remain empty.</p>
+
+					<p class="p">Make sure that the collection and properties exist on the OData service and
+						are defined in the metadata document as well. Here is an example:</p>
+
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"> // create an entry of the Products collection with the specified properties and values
+ var oContext = oModel.createEntry("Products",{ID:99,Name:"Product",Description:"new Product",ReleaseDate:new Date(),Price:"10.1",Rating:1});
+ // use the returned context for binding against this entry
+ oLayout.setBindingContext(oContext);
+ oSimpleListBox.addItem(new sap.ui.core.ListItem({text: "Added entry: " + oContext.getPath()}));
+ // to delete a created entry from the request queue without persisting it provide the created context to the deleteCreatedEntry function
+ oModel.deleteCreatedEntry(oContext);</pre></div>
+
+					<p class="p">The <samp class="ph codeph">createEntry</samp> function returns a context object which can
+						be used to bind against the newly created entry. See the following example
+						for how to write the entries in the request queue to the backend:</p>
+
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"> // provide optional success and error functions which are called for each request in the queue
+ oModel.submitChanges(fnSuccess, fnError); </pre></div>
+
+				</li>
+</ol>
+<div class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div>
+			<p class="p">The default binding mode of the OData model is one-way, but as experimental write
+				support is implemented, two-way binding can be enabled. For more information, see
+					<a class="xref" href="91f2a6ac6f4d1014b6dd926db0e91070.html">OData Write
+				Suport</a>.</p>
+
+			<p class="p"><span class="ph emphasis emphasis">API Reference:</span>
+				<a class="xref" href="../../docs/api/symbols/sap.ui.model.odata.ODataModel.html">sap.ui.model.odata.ODataModel</a></p>
+
+		</div></div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Implementing an OData Model";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

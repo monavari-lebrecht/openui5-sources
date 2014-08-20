@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="Understanding aspects of an enterprise scale application."/>
+<meta name="description" content="Understanding aspects of an enterprise scale application."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=3305891280063381"/>
+<title>Preparing</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiof377376842914da7a6716192ecffc9d0">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Preparing</h1>
+<div class="body conbody"><p class="shortdesc">Understanding aspects of an enterprise scale application.</p>
+<p class="p">This part of the guide describes the aspects of an enterprise scale app written in UI5. Each
+			aspect is described here in terms of functionality — what an aspect brings to an app,
+			and why it's important. If you're looking for in-depth code examples, you'll find that
+			in Part 2 "Building".</p>
+<div class="section"><div class="section_title">Approach</div><div type="Approach">
+			
+			<p class="p">With a toolkit as comprehensive as UI5, it is natural to find there are many ways to
+				achieve a particular goal. Whether that is at a small scale, such as how to process
+				a list of items in JavaScript, or at a large scale, such as how to declaratively
+				define a User Interface (UI), you will see that UI5 offers choice. In the latter
+				example, you can declaratively define a UI in JSON, XML or HTML. Which one should
+				you choose?</p>
+
+			<p class="p">Different circumstances such as developer skillset, preference, tools and standards
+				may favor one way over another, and may influence your choice. The choice may be on
+				an app-by-app basis; more likely, within the enterprise context, the choice will be
+				influenced by standards and the desire to be consistent. This guide, in particular
+				in Part 2 "Building", has been deliberately written to forgo the pros-and-cons
+				approach, and to focus on being specific. Nevertheless, you'll find references to
+				other existing material that does cover the different possibilities of a given
+				aspect. Continuing with the view definition example, the options are covered in
+				great detail in the MVC section of the SDK.</p>
+
+			<p class="p">The benefits of this prescriptive-with-reference approach is that we can focus on each task in
+				hand, and get to a best practice solution quickly, while not losing the
+				overview.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Definition of an App</div><div type="Definition of an App"><div class="sectiondiv"><span class="ph emphasis emphasis">Independent</span><p class="p">An app,
+					by definition, is independent. But there's more to it than that. First, let's
+					examine what independent means, in this sense. If an app is independent, it is
+					standalone, can be found, discovered or simply initiated (say, from a bookmark
+					or icon) and can be used without necessarily having to be contained within a
+					larger framework. </p>
+<p class="p">With our UI5 apps being written in JavaScript (yes, and
+					there are declarative parts too that don't have to be in JavaScript), we need to
+					have at least a small structure that is native to the runtime context's
+					features, a structure that is bookmarkable and that can facilitate the loading
+					of the UI5 runtime and the app itself. That structure, at the bare minimum, is
+					an HTML page. </p>
+<p class="p">While that HTML page serves as a delivery mechanism for the
+					UI5 app, it should not do much more than that. As well as being independently
+					discoverable and startable, the app itself - the UI5 parts from which it is
+					constructed, should also be independent of the HTML page. That is to say, we
+					should ideally be able to take the app, and the functionality it offers, and
+					embed it into another structure, and have it live and run there just as happily.
+					</p>
+<p class="p">For those of you acquainted with the standard delivery mechanism for the
+					SAP Fiori suite of apps, this is something that may be familiar - the Launchpad,
+					which is the HTML-based user-facing part of the Unified Shell
+					infrastructure.</p>
+<p class="p">Whether you intend your app to run within such a framework
+					or not, designing it with this feature in mind has benefits not only relating to
+					independence and runtime frameworks, but also relating to construction across
+					different development teams. An app, or part of an app, developed as an
+					independent unit, lends itself more to being constructed and delivered by
+					separate teams working on a greater whole (say, a suite of related
+					functions).</p>
+<div class="p">So what does that mean for us as an app developer with UI5? It
+					means that we should build our apps using the Component concept. Being a
+					component means that the app can be delivered and run within a simple,
+					standalone HTML page, or within the wider context of a Launchpad. If you
+					construct your component correctly, this will be possible. It also means that we
+					should reduce the content of the standalone HTML page to the bare essentials<ul class="ul" id="loiof377376842914da7a6716192ecffc9d0__ul_mq1_gxl_mn"><li class="li">meta tags in the document header to give the browser the best hints at
+							rendering our app correctly</li>
+<li class="li">a script tag, known as the UI5 bootstrap, which loads the UI5 runtime
+							core</li>
+<li class="li">an appropriately marked up HTML body into which the UI5 controls can be
+							places</li>
+<li class="li">minimal UI5 logic executed when the runtime has been loaded; this logic
+							is to create an <samp class="ph codeph">sap.m.ComponentContainer</samp> and point to
+							our app component which will be then automatically retrieved and
+							loaded</li>
+</ul>
+</div>
+<p class="p">UI5 apps are configurable in the bootstrap; however best practice
+					states that bootstrap configuration (attributes that start with the prefix
+						<samp class="ph codeph">data-sap-ui</samp>) should be kept to a minimum. As an example,
+					you should specify the theme, and tell the runtime where it should expect to
+					find the resources (your component file, your views and controllers, and so on),
+					based on the names you've used within your app. There are a number of ways that
+					you can tell the module loading mechanism where to find things; the best way is
+					to use the <samp class="ph codeph">data-sap-ui-resourceroots</samp> parameter.</p>
+<p class="p">What
+					should you call this standalone HTML page? You can of course use any name you
+					want, however, exercise restraint. Common names are <samp class="ph codeph">index.html</samp>
+					or <samp class="ph codeph">main.html</samp>. These names are perfectly fine; you may or may
+					not want your web server to automatically serve up a default HTML page if the
+					containing folder is requested. To highlight the fact that the HTML file is
+					mainly a delivery mechanism for your app for when it's being initiated in a
+					standalone fashion (as opposed to within the wider context of a Launchpad),
+					another common name is
+					<samp class="ph codeph">localIndex.html</samp>.</p>
+</div><div class="sectiondiv"><span class="ph emphasis emphasis">Addressable</span><p class="p">That
+					an app should be "addressable" is closely related to some of the aspects of the
+					"independent" feature. One of the underlying design goals of a non-trivial
+					application should be the possibility of 'deep linking' to certain application
+					states. What this means is a user should be able to bookmark places in an app,
+					and be able to resume where they left off.</p>
+<p class="p">This doesn't necessarily mean
+					that intermediate application state should be preserved at all times. Rather,
+					for example, it means that I should be able to send my colleague a bookmarked
+					URL that points to the detail page for a specific product in a Product Info app,
+					and for my colleague to be taken directly to that same place on retrieval of
+					that URL (authorizations permitting, of course).</p>
+<p class="p">We don't expect to have
+					to start at the top level of a website and descend through the links to the
+					specific page each time we want information from that page - we just navigate
+					directly to where we need to go. With an HTML5 app we can and should offer the
+					same experience where possible.
+					</p>
+</div><div class="sectiondiv"><span class="ph emphasis emphasis">UI-Focused</span><p class="p">A fully featured
+					app consists of backend and frontend logic. Data services and a user interface.
+					The backend should be developed and maintained separately from the frontend, and
+					there should be a clear separation of concerns. Beyond this basic separation,
+					the individual user interface (UI) parts of an app can and should be developed
+					separately too. UI5 supports the Model View Controller (MVC) concept, and you
+					are encouraged to use MVC to keep the data model handling, the UI design and the
+					application logic separate. Furthermore, encapsulate your real and test data
+					services within Models, and this will help you focus on the UI. </p>
+<p class="p">In order
+					to build the frontend separately and effectively, a developer needs test data.
+					There are many ways of facilitating this, and we'll cover some of them in Part 2
+					"Building". </p>
+<p class="p">The connection between the backend and frontend is made in
+					the app's core, which in our case is the
+					Component.</p>
+</div><div class="sectiondiv"><span class="ph emphasis emphasis">Responsive</span><p class="p">Rather
+					than focus on "mobile", we actually want to build our app so that it makes the
+					best use of available screen real-estate regardless of device. In other words,
+					we want it to be responsive, adjusting to smartphone, tablet and desktop-sized
+					screens. The <samp class="ph codeph">sap.m</samp> library within the UI5 toolkit is designed
+					from the ground up for this very requirement. There are controls from other
+					libraries that we'll use for our app, particularly from the
+						<samp class="ph codeph">sap.ui.layout</samp> library and a few from the core (such as the
+					Item) and of course our use of Model View Controller (MVC) will see us working
+					with controls from the <samp class="ph codeph">sap.ui.core.mvc</samp> library too.</p>
+<div class="p">In
+					the main, we'll use the sap.m controls. But there's more to it that that.
+					Different devices have different capabilities (for example touch) and navigation
+					and selection events need to be offered and handled slightly differently. So we
+					need to make sure navigation back buttons appear appropriately (or not), and to
+					make sure that the items in a list are properly selectable according to the
+					device on which they're being presented. For this, we create a so-called "Device
+					Model". This is a client data model (the sap.ui.model.json.JSONModel is ideal
+					for this) that is created when the application is initialized, and the
+					properties within are usually one of two types:<ul class="ul" id="loiof377376842914da7a6716192ecffc9d0__ul_nwk_5yl_mn"><li class="li">boolean: these relate to whether the device has touch capabilities, for
+							example </li>
+<li class="li">single-value: these relate to list and list item settings such as the
+								<samp class="ph codeph">sap.m.ListMode</samp> and
+							<samp class="ph codeph">sap.m.ListType</samp></li>
+</ul>
+</div>
+<p class="p">The properties are especially useful in declarative views, where no
+					condition logic is allowed. In effect, the condition logic ("is this device
+					touch-capable?") is being done once, up
+					front.</p>
+</div><div class="sectiondiv"><span class="ph emphasis emphasis">Accessible</span><p class="p">Accessibility is an important factor in app design.
+					UI5 apps are no exception. There are a few aspects that one should consider when
+					developing a UI5 app. The first is keyboard support; that is built in with the
+					sap.m controls, so if you make use of the sap.m controls you are getting
+					keyboard handling support for free.</p>
+<p class="p">Finally, you need to remember that if
+					you decide to use native HTML to enhance certain parts of your app, you must
+					take care that these parts also exhibit keyboard and visual support for
+					accessibility.</p>
+</div><div class="sectiondiv"><span class="ph emphasis emphasis">Translateable</span><p class="p">Some
+					apps are built with a specific, geographically restricted audience in mind. In
+					those cases, texts that become part of the UI, such as label content, the text
+					on buttons, headings, messages and so on, could be hard-coded - baked into the
+					UI definition itself. But in many circumstances the audience for any given app
+					is geographically diverse, and so it follows that localization is necessary,
+					sometimes with different languages within the same country or region. This
+					localization requirement is driven either implicitly by a user's locale
+					settings, or explicitly via parameters. With localization, right-to-left (RTL)
+					languages should also be supported, and sap.m controls support RTL.</p>
+<p class="p">In
+					these cases, it makes sense to manage the static texts of an app separately, in
+					a way that they can be substituted with versions in different locales. Because
+					of the localization mechanism available with UI5, this is simple to do. In fact
+					it's so simple that even development of those single-geography apps, where the
+					texts would otherwise be hard-coded, should consider using the same
+					mechanism.</p>
+<p class="p">The static texts need to be managed in a way that they can be
+					contextualized and translated, often by specialist teams, independent of the app
+					development process, and without affecting or requiring modification to the apps
+					core logic.</p>
+</div><div class="sectiondiv"><span class="ph emphasis emphasis">Maintainable</span><p class="p">All
+					but the simplest of apps become complex very quickly. They have lots of moving
+					parts, which serve different purposes. Some parts are related to the management
+					of the connection to, and usage of, the backend data and services. Others are
+					related to the application logic, while others still relate to determining how
+					the UI appears to the user.</p>
+<p class="p">Larger apps have these challenges and more;
+					they may consist of multiple collections of these moving parts, and these
+					collections, and parts within, may have to be developed and maintained by
+					separate teams.</p>
+<p class="p">In these contexts UI5 has a couple of features to help
+					make your app maintainable. Firstly, it supports the Model-View-Controller (MVC)
+					concept, which supports the discrete concerns of data handling, presentation,
+					and logic. This means not only that you can keep a clean separation between
+					them, but also more easily allow different people, or groups of people to
+					develop together. Secondly it has the concept of a Component, which is an
+					application unit that can be developed independently and then used (and re-used)
+					to supply app functionality as a whole or in parts.</p>
+<p class="p">Finally both these
+					features allow for a more focused maintenance; for example, it should be
+					possible to modify the way a part of an application looks without worrying about
+					adversely affecting the business logic.</p>
+</div></div></div>
+<div class="section"><div class="section_title">Design Patterns</div><div type="Design Patterns">
+			
+			<p class="p">With HTML5 as a technology basis, apps can naturally take on many different designs.
+				For enterprise scale apps, an aspect of app design that is as important as the way
+				the app looks is the way the app looks in relation to other apps. In other words,
+				design consistency. Beyond being functional and fit for purpose, apps should be as
+				easy and obvious to use as possible. With this in mind, it is clear that if a suite
+				of apps follows a few strong design patterns then the overall user experience is
+				better for it.</p>
+
+			<p class="p">To this end, there are a small number of design patterns that will be presented here;
+				each of them is supported by the <samp class="ph codeph">sap.m</samp> controls. Furthermore, these
+				design patterns form the basis of the SAP Fiori designs, so by following a design
+				pattern approach described here, the app that you build will have a consistent feel
+				with existing Fiori apps.</p>
+
+			<p class="p"><img class="image" id="loiof377376842914da7a6716192ecffc9d0__image_qgg_lrs_mn" src="faf980f64034409a81b6a49db570b884.image"/></p>
+
+			<p class="p"><strong class="ph b">Master-Detail</strong></p>
+
+			<p class="p">Arguably the most common design pattern, the Master-Detail (MD) design pattern is
+				used to represent two levels of data hierarchy. Typically this will be a list of
+				items, shown in the master, and innformation for a selected item shown in the
+				detail. This pattern is directly supported by the <samp class="ph codeph">sap.m.SplitApp</samp>
+				control, which itself inherits from the <samp class="ph codeph">sap.m.SplitContainer</samp>
+				control.</p>
+
+			<p class="p"><strong class="ph b">Master-Master-Detail</strong></p>
+
+			<p class="p">This Master-Master-Detail (MMD) pattern is a variation on Master-Detail and is designed to
+				allow an extra level of drill down through a three level data hierarchy. The
+				Shopping Cart demo app in the UI5 SDK shows an example of this pattern in action:
+				the user first chooses a product category in the "Master1" list, then selects a
+				product from the "Master2" list, for which information is then displayed in the
+				detail.</p>
+
+			<p class="p"><strong class="ph b">Full Screen</strong></p>
+
+			<p class="p">Typically used in analytical applications and visualizations, this Full Screen (FS)
+				pattern is hopefully self-explanatory.</p>
+
+			<p class="p"><strong class="ph b">Multi Flow</strong></p>
+
+			<p class="p">This pattern is used when the app functionality is too complex for a single pattern.
+				It consists of the Full Screen and Master-Detail patterns, so is not a departure
+				from what we've seen already; rather a combination of known (and therefore expected)
+				UI presentations.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Business Scenario</div><div type="Business Scenario"><p class="p">We are almost ready to start building our app. First,
+				though, let's have a look what it's going to do. While deliberately straightforward,
+				it uses many design aspects and features described in this guide. It is a simple
+				front-end to the classic orthwind product backend service. It will allow us to list
+				and view details on products, and also to add new products.</p>
+<p class="p"><strong class="ph b">The Northwind
+					Service</strong></p>
+<p class="p">The Northwind product backend service is an OData service with
+				a simple set of entities and relations between them. In fact, there are different
+				versions of the service, but in general, all have the common denominator set of
+				Product, Category and Supplier entity and entitysets. Each of these are related, as
+				follows: </p>
+
+			<div class="fig fignone" id="loiof377376842914da7a6716192ecffc9d0__fig_twz_dw2_pn"><div class="figcontainer"><img class="image" id="loiof377376842914da7a6716192ecffc9d0__image_ihg_fqz_4n" src="dd4447edfdba4108bf55f9bd5f27c0b5.image"/></div></div>
+<p class="p">The Product entity has an association to the Supplier
+				entity and also an association to the Category entity where the associations are *
+				to 0..1. Practically speaking, a Product may have a Supplier and a Category, and all
+				the pre-existing Products do. </p>
+<p class="p">The version of the Northwind service we'll be
+				using (V2) is read-write, which means our app can perform OData operations other
+				than just READ and QUERY. To allow this, there is session information embedded in
+				the URL. Here's the URL to the service as specified in the app's configuration:
+					</p>
+<p class="p"><samp class="ph codeph">http://services.odata.org/V2/(S(sapuidemotdg))/OData/OData.svc/</samp>
+			</p>
+<p class="p">You can see that it's version V2, and that there's a session ID "sapuidemotdg"
+				which we've picked. You can pick whatever you like for your own session.
+					</p>
+<p class="p"><strong class="ph b">Functionality</strong></p>
+<p class="p">The app's functionality is simple. It presents
+				a list of existing products, and displays detailed information when one is selected.
+				The detailed information is comprised of basic Product data, supplier information
+				and category information. Navigation is such that you can go to the details for a
+				specific Product (given the Product's key) directly, via a URL. </p>
+<p class="p">You can also
+				bring up an entry form to add a new Product, which will then appear in the existing
+				product list (and is saved in the backend). When creating the Product, there is the
+				chance to specify to which Supplier and Category the new Product should be related.
+				Note that the new Product form has little to no input validation, as that is not the
+				point of the exercise here. </p>
+</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Preparing";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

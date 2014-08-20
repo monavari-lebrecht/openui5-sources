@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=9334051921305916"/>
+<title>Methods and Events for Navigation</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio516e477e7e0b4e188b19a406e7528c1e">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Methods and Events for Navigation</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">You use the <samp class="ph codeph">navTo(routeName, data)</samp> method to navigate to the given route and
+			to fill the hash with data. Data is also provided to the listener callbacks of
+			controllers that listen to this route. </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.controller("MyApp.View2", {
+
+  anyEvent: function() {
+        sap.ui.core.routing.Router.getRouter("appRouter").navTo("View2",{ from: "View 1"});
+    }
+});</pre></div>
+<div class="note note"><span class="notetitle">Note</span> 
+			<p class="p">The hash in this example will not change to <samp class="ph codeph">product/5</samp> because
+					<samp class="ph codeph">view1</samp> matches the name of the route defined in the example
+				configuration.</p>
+
+		</div>
+<p class="p">The <samp class="ph codeph">productId</samp> property of the data object has to match the placeholder
+			in the pattern of the route. The listeners to the hash are informed because the hash is
+			changed.</p>
+<p class="p">SAPUI5 provides the following events for navigation: <samp class="ph codeph">routematched</samp> and
+				<samp class="ph codeph">viewcreated</samp>.</p>
+<p class="p">The route matched event is fired every time a changed hash matches a route. If you only
+			want to react to specific routes, check if the name parameter matches the route you want
+			to listen to. The event has the following parameters:</p>
+<ul class="ul" id="loio516e477e7e0b4e188b19a406e7528c1e__ul_lc2_cbj_ql"><li class="li"><samp class="ph codeph">name</samp> - name of the route that has matched</li>
+<li class="li"><samp class="ph codeph">arguments</samp> - object of arguments that are part of the route</li>
+<li class="li"><samp class="ph codeph">targetControl</samp> - control instance, in which the view was inserted
+				(only if <samp class="ph codeph">targetControl</samp> is provided)</li>
+<li class="li"><samp class="ph codeph">view</samp> - instance of the view</li>
+</ul>
+<p class="p">Example:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.controller("MyApp.View1", {
+
+    onInit: function() {
+        var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+
+        oRouter.attachRouteMatched(function(oEvent) {
+            if (oEvent.getParameter("name") === "view1") {
+
+            this._selectItemWithId(oEvent.getParameter("arguments").id);
+
+        }, this);
+       },
+
+    _selectItemWithId : function(id) {
+        //implementation
+       }
+</pre></div>
+<p class="p">The <samp class="ph codeph">viewcreated</samp> event is fired every time a new view has been created by
+			the navigation system. The event has the following parameters:</p>
+<ul class="ul" id="loio516e477e7e0b4e188b19a406e7528c1e__ul_k3c_rbj_ql"><li class="li"><samp class="ph codeph">view</samp> - view instance</li>
+<li class="li"><samp class="ph codeph">viewName</samp> - name of the view</li>
+<li class="li"><samp class="ph codeph">type</samp> - view type</li>
+</ul>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Methods and Events for Navigation";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

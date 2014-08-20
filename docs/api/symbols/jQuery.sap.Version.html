@@ -1,0 +1,587 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - jQuery.sap.Version</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class jQuery.sap.Version
+					</h1>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>Represents a version consisting of major, minor, patch version and suffix, e.g. '1.2.7-SNAPSHOT'.</p>
+						
+						
+						
+						
+						
+						
+							<br />
+							<i>Since: </i>1.15.0.
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="Returns a Version instance created from the given parameters.">new <a href="../symbols/jQuery.sap.Version.html#constructor">jQuery.sap.Version</a></b>
+										<span class='signature'>(<span title="(int|string|any[]|jQuery.sap.Version) the major part of the version (int) or any of the single parameter variants explained above.">vMajor</span>, <span title="(int) the minor part of the version number">iMinor</span>, <span title="(int) the patch part of the version number">iPatch</span>, <span title="(string) the suffix part of the version number">sSuffix</span>)</span>
+										<span class='description'>Returns a Version instance created from the given parameters.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Compares this version with a given one."><a href="../symbols/jQuery.sap.Version.html#compareTo">compareTo</a></b><span class='signature'>()</span>
+									<span class='description'>Compares this version with a given one.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the major version part of this version."><a href="../symbols/jQuery.sap.Version.html#getMajor">getMajor</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the major version part of this version.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the minor version part of this version."><a href="../symbols/jQuery.sap.Version.html#getMinor">getMinor</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the minor version part of this version.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the patch (or micro) version part of this version."><a href="../symbols/jQuery.sap.Version.html#getPatch">getPatch</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the patch (or micro) version part of this version.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the version suffix of this version."><a href="../symbols/jQuery.sap.Version.html#getSuffix">getSuffix</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the version suffix of this version.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Checks whether this version is in the range of the given versions (start included, end excluded)."><a href="../symbols/jQuery.sap.Version.html#inRange">inRange</a></b><span class='signature'>()</span>
+									<span class='description'>Checks whether this version is in the range of the given versions (start included, end excluded).</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns a string representation of this version."><a href="../symbols/jQuery.sap.Version.html#toString">toString</a></b><span class='signature'>()</span>
+									<span class='description'>Returns a string representation of this version.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>jQuery.sap.Version</b>(<span title="(int|string|any[]|jQuery.sap.Version) the major part of the version (int) or any of the single parameter variants explained above.">vMajor</span>, <span title="(int) the minor part of the version number">iMinor</span>, <span title="(int) the patch part of the version number">iPatch</span>, <span title="(string) the suffix part of the version number">sSuffix</span>)
+										</div>
+										
+										<div class="full-description">
+											Returns a Version instance created from the given parameters.
+</p><p>
+This function can either be called as a constructor (using <code>new</code>) or as a normal function.
+It always returns an immutable Version instance.
+</p><p>
+The parts of the version number (major, minor, patch, suffix) can be provided in several ways:
+<ul>
+<li>Version("1.2.3-SNAPSHOT") - as a dot-separated string. Any non-numerical char or a dot followed by a non-numerical char starts the suffix portion. 
+Any missing major, minor or patch versions will be set to 0.</li>
+<li>Version(1,2,3,"-SNAPSHOT") - as individual parameters. Major, minor and patch must be integer numbers or empty, suffix must be a string not starting with digits.</li>
+<li>Version([1,2,3,"-SNAPSHOT"]) - as an array with the individual parts. The same type restrictions apply as before.</li>
+<li>Version(otherVersion) - as a Version instance (cast operation). Returns the given instance instead of creating a new one.</li> 
+</ul>
+</p><p>
+To keep the code size small, this implementation mainly validates the single string variant. 
+All other variants are only validated to some degree. It is the responsibility of the caller to 
+provide proper parts.
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int|string|any[]|<a href="../symbols/jQuery.sap.Version.html">jQuery.sap.Version</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vMajor</b>
+													</td>
+													<td class="methodItemDesc">
+												    the major part of the version (int) or any of the single parameter variants explained above.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iMinor</b>
+													</td>
+													<td class="methodItemDesc">
+												    the minor part of the version number
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iPatch</b>
+													</td>
+													<td class="methodItemDesc">
+												    the patch part of the version number
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sSuffix</b>
+													</td>
+													<td class="methodItemDesc">
+												    the suffix part of the version number
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+											<dl class="detailList">
+											<dt class="heading">Returns:</dt>
+											
+													<dd><span class="light">{<a href="../symbols/jQuery.sap.Version.html">jQuery.sap.Version</a>}</span> the version object as determined from the parameters</dd>
+											
+											</dl>
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod'>
+										<a name="compareTo"> </a>
+										<div class="itemTitle icon">
+											compareTo<span class="signature">()</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Compares this version with a given one.
+</p><p>
+The version with which this version should be compared can be given as
+<code>jQuery.sap.Version</code> instance, as a string (e.g. <code>v.compareto("1.4.5")</code>)
+or major, minor, patch and suffix cab be given as separate parameters (e.g. <code>v.compareTo(1, 4, 5)</code>)
+or in an array (e.g. <code>v.compareTo([1, 4, 5])</code>).
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.15.0</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														0, if the given version is equal to this version, a negative value if the given version is greater and a positive value otherwise
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getMajor"> </a>
+										<div class="itemTitle icon">
+											getMajor<span class="signature">()</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Returns the major version part of this version.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.15.0</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the major version part of this version
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getMinor"> </a>
+										<div class="itemTitle icon">
+											getMinor<span class="signature">()</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Returns the minor version part of this version.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.15.0</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the minor version part of this version
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getPatch"> </a>
+										<div class="itemTitle icon">
+											getPatch<span class="signature">()</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Returns the patch (or micro) version part of this version.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.15.0</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the patch version part of this version
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getSuffix"> </a>
+										<div class="itemTitle icon">
+											getSuffix<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Returns the version suffix of this version.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.15.0</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the version suffix of this version
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="inRange"> </a>
+										<div class="itemTitle icon">
+											inRange<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Checks whether this version is in the range of the given versions (start included, end excluded).
+</p><p>
+The boundaries against which this version should be checked can be given as
+<code>jQuery.sap.Version</code> instances (e.g. <code>v.inRange(v1, v2)</code>), as strings (e.g. <code>v.inRange("1.4", "2.7")</code>)
+or as arrays (e.g. <code>v.inRange([1,4], [2,7])</code>).
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.15.0</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>true</code> if this version is greater or equal to <code>vMin</code> and smaller than <code>vMax</code>, <code>false</code> otherwise.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="toString"> </a>
+										<div class="itemTitle icon">
+											toString<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Returns a string representation of this version.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.15.0</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														a string representation of this version.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

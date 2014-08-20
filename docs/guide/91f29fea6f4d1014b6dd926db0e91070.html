@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=5522824031423281"/>
+<title>Object Metadata and Implementation</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f29fea6f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Object Metadata and Implementation</h1>
+<div class="body"><p class="p">For extending plain objects that are not elements or controls, only the following metadata is
+			available:</p>
+<ul class="ul"><li class="li"> 
+		  <p class="p"><samp class="ph codeph">interfaces</samp>: String array that denotes the implemented interfaces
+					(optional)</p>
+ 
+		</li>
+<li class="li"> 
+		  <p class="p"><samp class="ph codeph">publicMethods</samp>: List of methods that should be part of the public API
+					(optional)</p>
+ 
+		</li>
+<li class="li"> 
+		  <p class="p"><samp class="ph codeph">abstract</samp>: Flag to mark the type as abstract (optional)</p>
+ 
+		</li>
+<li class="li"> 
+		  <p class="p"><samp class="ph codeph">final</samp>": Flag to mark the type as final (optional)</p>
+ 
+		</li>
+</ul>
+<div class="note note"><span class="notetitle">Note</span> 
+			<p class="p">This metadata can also be used to extend controls.</p>
+
+		</div>
+<p class="p">Regarding the implementation, all methods given outside the metadata are attached to the new
+			type. The method name <samp class="ph codeph">constructor</samp> is reserved for the constructor
+			function of the new class. Although it is possible from a technical point of view, we
+			recommend <span class="ph emphasis emphasis">not</span> to define a constructor for new elements and
+			controls. Your control may otherwise break in some scenarios, such as in combination
+			with list bindings, or may no longer be compatible in later versions of SAPUI5 when the
+			constructor signature is extended.</p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Object Metadata and Implementation";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

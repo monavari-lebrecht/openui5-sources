@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=1812939447992038"/>
+<title>sap.ui.model.type.String</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f31c206f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">sap.ui.model.type.String</h1>
+<div class="body"><p class="p">The 
+		<samp class="ph codeph">String</samp> type represents a
+		string. The source value (value given in the model) must be given as a number
+		and is transformed into the type of the bound control property: 
+	 </p>
+<ul class="ul"><li class="li">
+				<samp class="ph codeph">string</samp>: No transformation needed </li>
+<li class="li">
+				<samp class="ph codeph">integer</samp>/<samp class="ph codeph">float</samp>: String is parsed accordingly </li>
+<li class="li"><samp class="ph codeph">boolean</samp>: "true" or "X" are interpreted as true, false, and " " as false </li>
+</ul>
+<p class="p">The 
+		<samp class="ph codeph">string</samp> type does not
+		have any format options. 
+	 </p>
+<p class="p">Example how a 
+		<samp class="ph codeph">String</samp> type can be
+		initialized: 
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">// The source value is given as string. The length of the string must not greater than 5.
+var oType = new sap.ui.model.type.String(null, {maxLength: 5});</pre></div>
+<p class="p">The 
+		<samp class="ph codeph">String</samp> type supports the
+		following validation constraints: 
+	 </p>
+<ul class="ul"><li class="li"><samp class="ph codeph">maxLength</samp> (expects an integer number) </li>
+<li class="li"><samp class="ph codeph">minLength</samp> (expects an integer number) </li>
+<li class="li"><samp class="ph codeph">startsWith</samp> (expects a string) </li>
+<li class="li"><samp class="ph codeph">startsWithIgnoreCase</samp> (expects a string) </li>
+<li class="li"><samp class="ph codeph">endsWith</samp> (expects a string) </li>
+<li class="li"><samp class="ph codeph">endsWithIgnoreCase</samp> (expects a string) </li>
+<li class="li"><samp class="ph codeph">contains</samp> (expects a string) </li>
+<li class="li"><samp class="ph codeph">equals</samp> (expects a string) </li>
+<li class="li"><samp class="ph codeph">search</samp> (expects a regular expression) </li>
+</ul>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="sap.ui.model.type.String";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

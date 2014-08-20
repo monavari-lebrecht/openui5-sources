@@ -1,0 +1,1344 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+  
+
+  
+
+
+  
+
+  <head>
+    <title>
+      Documentation/ReleaseNotes/ReleaseNotes-1.16 – SAPUI5 Wiki (TIP CORE User Interface)
+    </title>
+        
+        
+        
+        
+        
+        
+        
+      
+    
+    
+    
+    
+    <script src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+    <link rel="stylesheet" type="text/css" href="../css/relnotes.css" />
+  </head>
+  <body>
+    
+    
+    
+    <div id="content" class="wiki">
+      
+      <div class="wikipage searchable">
+        
+          <p>
+</p><p>
+</p>
+<h1 id="ReleaseNotesfor1.16">Release Notes for 1.16</h1>
+<p>
+This page contains the release notes for the patches of the 1.16 release.
+</p>
+<h2 id="Version1.16.9January2014">Version 1.16.9 (January 2014)</h2>
+<p>
+A patch for the rel-1.16 code line. It contains the following fixes for the UI5 Core and Controls:
+</p>
+<p>
+<strong>Core</strong><br />
+</p>
+<ul><li>[FIX] sap.ui.core ODataModel ETag-errors
+</li></ul><p>
+<strong>Desktop</strong><br />
+</p>
+<ul><li>[FIX] Missing indexOf aggregation method decorators added 
+</li><li>[FIX] NotificationBar: Fixed issue with ItemNavigation 
+</li><li>[FIX] DataSet: Fixed selectionChanged event 
+</li></ul><p>
+<strong>Mobile</strong><br />
+</p>
+<ul><li>[FIX] TextArea: Fixed issue with not working width property 
+</li></ul><h2 id="Version1.16.8January2014">Version 1.16.8 (January 2014)</h2>
+<p>
+A patch for the rel-1.16 code line. It contains the following fixes for the UI5 Core and Controls:
+</p>
+<p>
+<strong>Core</strong><br />
+</p>
+<ul><li>[FEATURE] Minimal browser UI in iOS7 on phones
+</li><li>[FIX] ClientTreeBinding: Allow filtering 0 
+</li><li>[FIX] Device: don't crash on platforms other than Linux / Win / Mac
+</li><li>[FIX] Internet Explorer 10 FlexBox test: Stick to just -ms prefix
+</li><li>[FIX] ScrollContainer fix Right-to-Left issues with iScroll 
+</li><li>[FIX] ScrollContainer: fix initial scroll position in Right-to-Left mode 
+</li></ul><p>
+<strong>Desktop</strong><br />
+</p>
+<ul><li>[FEATURE] ToolPopup: Provide Open- and Close-Duration 
+</li><li>[FIX] Accordion: Drag and Drop Refactoring
+</li><li>[FIX] CollectionInspector: Support Data Binding for collection title 
+</li><li>[FIX] ComboBox remove ListBox event listener by destroy 
+</li><li>[FIX] Menu: Fix menu positioning 
+</li><li>[FIX] RatingIndicator: AverageValue as fallback 
+</li><li>[FIX] Corrected scrollbar positioning in ListBox for Internet Explorer 11
+</li><li>[FIX] FormattedTextView allow ids in divs and spans 
+</li><li>[FIX] Internet Explorer 10 rounding error leads to error on mousemove 
+</li><li>[FIX] ImageMap: Accessibility Description 
+</li><li>[FIX] NotificationBar: Enable Read-Only Messages 
+</li><li>[FIX] Table: Allow method chaining in addColumn and insertColumn 
+</li><li>[FIX] Table: Correct colors for table in inverted poopup 
+</li><li>[FIX] Table: Show ghost column header always on top of table 
+</li><li>[FIX] Table: Update visible columns after API column width change 
+</li><li>[FIX] ToolPopup: Added missing 'Opened' Event 
+</li><li>[FIX] ExactBrowser: Fix list resizing via drag&amp;drop 
+</li><li>[FIX] Dialog: Fix Initial Focus Internet Explorer 11 
+</li><li>[FIX] Paginator: event fix 
+</li><li>[FIX] Scrollbar: Chrome with 90% Zooming factor
+</li></ul><p>
+<strong>Mobile</strong><br />
+</p>
+<ul><li>[FIX] DateTimeInput should not show dialog on focus. 
+</li><li>[FIX] Fix demo apps: "Explored" App: mark images as not-density-aware, remove CSS reference to missing file from splitapp app
+</li><li>[FIX] Screen flashs when focus to TextArea on iOS7 issue is fixed 
+</li><li>[FIX] SplitApp demo app: remove wrong stylesheet reference
+</li><li>[FIX] Text wrapping without space issue is fixed.
+</li><li>[FIX] Dialog / Popover: when escape key event is handled by inner control inside, <a class="missing wiki">Dialog/Popover?</a> should simply ignore. 
+</li><li>[FIX] Dialog: fix the javascript error when content resize listener is called while dialog is being opened. 
+</li><li>[FIX] Dialog: opacity is used instead of visibility in order to make dialog with input in NEXUS 7 open the keyboard successfully. 
+</li><li>[FIX] FacetFilter: allCount property of facetfilterlist should be updated in dialog.
+</li><li>[FIX] Image: error event listener isn't called when a non-existing url is set within the error event listener 
+</li><li>[FIX] Input: Text running under ValueHelp icon in Internet Explorer 9 
+</li><li>[FIX] Input: wrong scrolling after edit 
+</li><li>[FIX] Popover: ALT+F4 should also closes the popover. 
+</li><li>[FIX] Popover: Popover blinks during the open process.
+</li><li>[FIX] Popover: size calculation may be wrong when placement is left. 
+</li><li>[FIX] SplitContainer: Keyboard action on the master button doesn't open the master area. 
+</li><li>[FIX] TablePersoDialog: use static persistence id for table cols 
+</li><li>[FIX] TileContainer: fixed issue with transition in Firefox 
+</li><li>[FIX] ViewSettingsDialog: ESC key cancels dialog
+</li><li>[FIX] IconTabBar: show hand cursor for scroll arrows. 
+</li><li>[FIX] sap.m: only load ios7.js if required
+</li></ul><p>
+<strong>Others</strong><br />
+</p>
+<ul><li>[FIX] Delay initial navigation until rendering has finished. 
+</li><li>[FIX] Modified button test alignment for Internet Explorer 10 &amp; Internet Explorer 11
+</li></ul><h2 id="Version1.16.7December2013">Version 1.16.7 (December 2013)</h2>
+<p>
+A patch for the rel-1.16 code line. It contains the following fixes for the UI5 Core and Controls:
+</p>
+<p>
+<strong>Core</strong><br />
+</p>
+<ul><li>[FIX] NotificationBar: Colors for Notifier Counters for HCB 
+</li><li>[FIX] ODataModel: Two Way remove unnecessary metadata payload 
+</li><li>[FIX] sap.m.Popover: autoclose doesn't work when popover is opened by a svg element in IE9. 
+</li><li>[FIX] sap.ui.core.Popup: fix one of the usage of jQuery.contains in which the first parameter is not with type DOMNode but string.
+</li><li>[FIX] sap.ui.core.RenderManager: writeIcon function should write the icon content as content in span not in data-sap-ui-icon-content attribute in IE8.
+</li><li>[FIX] history parses initial hash 
+</li></ul><p>
+<strong>Desktop</strong><br />
+</p>
+<ul><li>[FIX] Binding of ThingAction tooltips does not work properly 
+</li><li>[FIX] Carousel: Controls within carousel not working when touch enabled 
+</li><li>[FIX] Carousel: Stop overwriting children CSS styles 
+</li><li>[FIX] DropdownBox do not open on mobile device 
+</li><li>[FIX] FacetFilter: "all" entry not selected by default 
+</li><li>[FIX] InPlaceEdit RichTooltip not displayed
+</li><li>[FIX] NotificationBar: Colors for Notifier Counters for HCB 
+</li><li>[FIX] Table: Position ghost column header correctly 
+</li></ul><p>
+<strong>Mobile</strong><br />
+</p>
+<ul><li>[FIX] Link ellipsis does not work in IE9 when used in Table.
+</li><li>[FIX] NavContainer: when page is re-added, just ignore the call 
+</li><li>[FIX] sap.m.Dialog: add width css to root node when contentWidth is set to prevent other node from stretching dialog. 
+</li><li>[FIX] sap.m.GroupHeaderListItem: set 100% width on content to prevent overflow in iOS 
+</li><li>[FIX] sap.m.IconTabBar: border radius in native browser of S4 device
+</li><li>[FIX] sap.m.ObjectHeader: space aquired for non visible aggregation 
+</li><li>[FIX] sap.m.Popover: fix the issue that popover is stretched to maximum width in IE9 and register the content resize listener in onAfterRendering. 
+</li><li>[FIX] sap.m.Popover: popover is closed when openby control is rerendered. 
+</li><li>[FIX] sap.m.SearchField: layout issues in IE9 
+</li><li>[FIX] sap.m.ios7 - fires the barHeight now
+</li><li>[FIX] sap.m.ios7 - getting rid of the fixed position in the page
+</li><li>[FIX] sap.m.ios7 - input blurs on orientationchange
+</li><li>[FIX] sap.m.ios7 - fixing the ipad issues
+</li><li>[FIX] sap.m.ios7 - added require in shared.js
+</li></ul><p>
+<strong>UI5 Tools</strong><br />
+</p>
+<ul><li>[FIX] Team Provider can't download files which have no content 
+</li><li>[FIX] Fix problem in ABAP Team Provider with Java7. Error "Comparison method violates its general contract!" occured during synchronization
+</li></ul><p>
+<strong>Others</strong><br />
+</p>
+<ul><li>[FIX] ResponsiveLayout Label alignment in phone size on IE9 
+</li></ul><h2 id="Version1.16.6November2013">Version 1.16.6 (November 2013)</h2>
+<p>
+A patch for the rel-1.16 code line. It contains the following fixes for the UI5 Core and Controls:
+</p>
+<p>
+<strong>Core</strong><br />
+</p>
+<ul><li>[FEATURE] sap.ui.core.Icon/IconPool: add suppressMirroring parameter to addIcon method to provide the configuration for custom icon font.
+</li><li>[FIX] Cancel pending request if context is changed 
+</li><li>[FIX] ClientListBinding: Fix regression when filter with empty path is applied 
+</li><li>[FIX] Core: Focus Handling: Fix determination of focused control 
+</li><li>[FIX] IOS7 - landscape mode stops hiding the header/footer 
+</li><li>[FIX] ResourceBundles: Improve JSDoc for getText 
+</li><li>[FIX] Scrollbar: additional fix for Chrome 31
+</li><li>[FIX] sap.ui.core.IconPool: put the old param "skipMirroring" back in order to keep compatibility.
+</li></ul><p>
+<strong>Desktop</strong><br />
+</p>
+<ul><li>[FIX] DataSetSimpleView: Fix JS error when scrollarea is not available
+</li><li>[FIX] FileUploader: addStyleClass does not work 
+</li><li>[FIX] FileUploader: allow to upload files with same name 
+</li><li>[FIX] Open/close DropdownBox when clicking on it
+</li><li>[FIX] commons/Dialog: Closed Event Fired Too Early
+</li><li>[FIX] commons/RatingIndicator: Enable external theming URLs 
+</li></ul><p>
+<strong>Mobile</strong><br />
+</p>
+<ul><li>[FEATURE] Different Switch design (blue/white no-text) for TablePersoDialog
+</li><li>[FEATURE] rememberSelections property is added into ListBase.
+</li><li>[FIX] GrowingList lost focus on live search 
+</li><li>[FIX] IOS7 - landscape mode stops hiding the header/footer 
+</li><li>[FIX] List fires updateFinished event after rendering phase is finished 
+</li><li>[FIX] Minor wording fixes but significant as they're on the "Demo Applications" homepage
+</li><li>[FIX] TablePersoDialog - make dialog fullscreen on phone
+</li><li>[FIX] Toolbar force popover to max screen width issue is fixed 
+</li><li>[FIX] sap.m. RadioButton/Checkbox enable/disable forwarding 
+</li><li>[FIX] sap.m.Input blur focus when resizing on iOS7  
+</li><li>[FIX] sap.m.ResponsivePopover: Adding renderer to this control although it renders nothing. 
+</li><li>[FIX] sap.m.routing.RouteMatchedHandler passing data to NavContainer 
+</li><li>[FIX] sap.m.IconTabBar: change of background color
+</li><li>[FIX] sap.m.Label: Corrected alignment when label is set to required 
+</li><li>[FIX] sap.me.CalendarLegend: Prevent colon after legend labels
+</li><li>[FIX] Form with ResponsiveLayout Label alignment on phone size 
+</li></ul><p>
+<strong>Charts</strong><br />
+</p>
+<ul><li>[FIX] Bubble Chart: Add minMarkerSize property
+</li></ul><p>
+<strong>Inbox</strong><br />
+</p>
+<ul><li>[FIX] Inbox: Search including special characters 
+</li><li>[FIX] Inbox: Focus lost on Opening Task Execution UI. 
+</li><li>[FIX] Inbox: Issue when searching with blank characters 
+</li><li>[FIX] Inbox: cannot access inbox without BPEM end user role 
+</li></ul><h2 id="Version1.16.5November2013">Version 1.16.5 (November 2013)</h2>
+<p>
+A patch for the rel-1.16 code line. It contains the following fixes for the UI5 Core and Controls:
+</p>
+<p>
+<strong>Core</strong><br />
+</p>
+<ul><li>[FEATURE] Automatic generation of .theming files
+</li><li>[FEATURE] i18n: enabled enhance support on ResourceBundle
+</li><li>[FIX] Added missing JSDoc in SapPcpWebSocket
+</li><li>[FIX] AppCacheBuster: fixed the resource detection of the filter
+</li><li>[FIX] Avoid Component preload when Component has been loaded already 
+</li><li>[FIX] Fix URL Rewriting for Empty URLs
+</li><li>[FIX] Generally assume URI syntax for component includes of type '.js'
+</li><li>[FIX] GrowingList does not grow after switching growing property.
+</li><li>[FIX] ODataModel: fix duplicate refresh token calls in batch mode 
+</li><li>[FIX] ResourceHandler: fixed the stream closing issue
+</li><li>[FIX] ResourceServlet: improved/secured the CORS handling
+</li><li>[FIX] Router: Destroy if component init fails 
+</li><li>[FIX] allow setting csrf token header if token handling is diasbled 
+</li><li>[FIX] fix detection of Nexus 7 as tablet 
+</li><li>[FIX] sap.m.Dialog|Popup.js: make the registration of resize event earlier from after opened handler to open method. 
+</li><li>[FIX] sap.ui.Device: filtering the resize event with comparison to the last window size. 
+</li><li>[FIX] sap.ui.core.Icon: the cursor of icon in firefox is by default set to text. This must be changed to default cursor. 
+</li></ul><p>
+<strong>Desktop</strong><br />
+</p>
+<ul><li>[FEATURE] Form disable arrow-key navigation for mobile forms
+</li><li>[FIX] Carousel: Not working correctly in RTL mode
+</li><li>[FIX] Carousel: Text not wrapping in carousel items 
+</li><li>[FIX] Commons/AutoComplete: Exception when suggestions closed via ESC 
+</li><li>[FIX] Focus on control set to correct DOM-element 
+</li><li>[FIX] Form wrong label alignment in RTL mode 
+</li><li>[FIX] InPlaceEdit undo function active if read only 
+</li><li>[FIX] RadioButton: Get value after validation 
+</li><li>[FIX] ResponsiveFlowLayout: Calculation of Percental Values of Width and Min-Width 
+</li><li>[FIX] SimpleForm always visible even container invisible
+</li><li>[FIX] SimpleForm can not be cloned 
+</li><li>[FIX] ToolPopup: Added CSS-Class to DIV Within Arrow 
+</li><li>[FIX] ToolPopup: Prevent Arrow From Covering Opener 
+</li><li>[FIX] Tree: Styling issue when scrollbar is enabled 
+</li><li>[FIX] Tree: Styling issue when scrollbar is enabled (2) 
+</li><li>[FIX] UX3/Shell: Fix color of selected navigation item in <a class="missing wiki">Crystal/Light?</a> Design with SlimNavigation 
+</li><li>[FIX] commons/Dialog: Initial Focus for IE9 
+</li><li>[FIX] commons/Dialog: Modal Dialogs Musn't Leave the Window While Drag&amp;Drop 
+</li><li>[FIX]CollectionInspector write item text escaped 
+</li></ul><p>
+<strong>Mobile</strong><br />
+</p>
+<ul><li>[FEATURE] Form disable arrow-key navigation for mobile forms
+</li><li>[FIX] GrowingList does not grow after switching growing property.
+</li><li>[FIX] Navigation button is missing in Growing List 
+</li><li>[FIX] ObjectListItem: Correct issue where space was being reserved for ObjectAttributes that are not visible.
+</li><li>[FIX] now getDateValue reflects the last entered value in DateTimeInput 
+</li><li>[FIX] removing the z-index 1 from the .sapMBarLeft class 
+</li><li>[FIX] sap.m.Bar - flip animation does reposition the content correctly
+</li><li>[FIX] sap.m.Bar removing another z-index + changed positioning
+</li><li>[FIX] sap.m.Dialog: MVI theme fix of getAggregation of undefined. 
+</li><li>[FIX] sap.m.Dialog|Popup.js: make the registration of resize event earlier from after opened handler to open method. 
+</li><li>[FIX] sap.m.IconTabBar: toggleClass only if needed 
+</li><li>[FIX] sap.m.Input: Fix the CSS style of input in input suggestion dialog when runs on phone 
+</li><li>[FIX] sap.m.ObjectHeader: ProgressIndicator aligned to the left in ObjectHeader 
+</li><li>[FIX] sap.m.ObjectNumber: RTL behaviour fix 
+</li><li>[FIX] sap.m.ObjectStatus: RTL behavior fixed 
+</li><li>[FIX] sap.m.Page show NavButton as first item in MVI 
+</li><li>[FIX] sap.m.Popover: Popover can also be opened by an already rendered sap.ui.core.Element, not only sap.ui.core.Control.
+</li><li>[FIX] sap.m.Popover: replace width:100% with display: block on popover's conent scroll div because of chrome browser bug with scrollbar in RTL mode. 
+</li><li>[FIX] sap.m.ProgressIndicator: calculation of animation time 
+</li><li>[FIX] sap.m.SearchField: click area, default placeholder 
+</li><li>[FIX] sap.m.SplitContainer: fix the getter of defaultTransitionNameMaster|Detail
+</li><li>[FIX] sap.m.SplitContainer: reset the master open flag when splitcontainer is rerendered when master is open. 
+</li><li>[FIX] sap.m.TextArea: only vertical resize 
+</li><li>[FIX] sap.ui.Device: filtering the resize event with comparison to the last window size. 
+</li><li>[FIX]: sap.m.ObjectHeader: implement ontouchstart method to set variable _sapui_handledByControl. 
+</li><li>[Fix] adding the z-index to the bar again
+</li><li>[Fix] sap.m.Bar - mid content gets placed correctly 
+</li></ul><p>
+<strong>Others</strong><br />
+</p>
+<ul><li>[FIX] InPlaceEdit: wrong Background on undo 
+</li><li>[FIX] Select: Filter and Grouping (popup stretches) 
+</li><li>[FIX] Table: Blue Crystal style for single selection 
+</li><li>[FIX] sap.m.BusyIndicator: hidden animation on desktop 
+</li><li>[FIX] sap.m.FeedListItem: word wrap for very long words 
+</li><li>[FIX] sap.m.IconTabBar: fixed padding if <a class="missing wiki">List/Table?</a> inside content
+</li><li>[FIX] sap.m.IconTabBar: paddings of content adapted 
+</li></ul><h2 id="Version1.16.4October2013">Version 1.16.4 (October 2013)</h2>
+<p>
+A patch for the rel-1.16 code line. It contains the following fixes for the UI5 Core and Controls:
+</p>
+<p>
+<strong>Core</strong><br />
+</p>
+<ul><li>[FEATURE] Support SAP pseudo languages ZH/ZF/1Q/2Q; short time format 
+</li><li>[FIX] Commons: Avoid rerendering on tooltip changes for textfield variants 
+</li><li>[FIX] Component: corrected the order of deps and lib includes 
+</li><li>[FIX] RenderManager: Restore focus after forced repaint
+</li><li>[FIX] ResourceHandler: remote location now works without cache 
+</li><li>[FIX] ToolPopup: Position of Arrow when ToolPopup is on the Left Side 
+</li><li>[FIX] UX3/NavigationBar overflow menu: Repaint Bug in IE 8
+</li><li>[FIX] sap.ui.core.Popup.js: when popup B is opened within popup A, popup A gets a bigger z-index on real mobile device. 
+</li></ul><p>
+<strong>Desktop</strong><br />
+</p>
+<ul><li>[FIX] Accessibility: missing role heading and aria-level for ThingGroup 
+</li><li>[FIX] Commons/AbsoluteLayout: Support for Tooltips 
+</li><li>[FIX] Commons: Avoid rerendering on tooltip changes for textfield variants 
+</li><li>[FIX] Grid, ResponsiveGridLayout flickering if visible switched
+</li><li>[FIX] Grid: content as Default aggregation
+</li><li>[FIX] ResponsiveFlowLayout: Flickering of the Layout 
+</li><li>[FIX] ResponsiveGridLayout use breakpoints if only one container
+</li><li>[FIX] ResponsiveGridLayout with invisible FormContainers 
+</li><li>[FIX] ResponsiveLayout - wrong order of Elements 
+</li><li>[FIX] ToolPopup: Position of Arrow when ToolPopup is on the Left Side 
+</li><li>[FIX] Toolbar: overflow icon if all buttons are invisible
+</li><li>[FIX] TreeTable: Fix tab chain for tree grid with fixed columns 
+</li><li>[FIX] UX3/NavigationBar overflow menu: Repaint Bug in IE 8
+</li><li>[FIX] UX3/Shell: Fix adaptation of sizes of all open overlays 
+</li><li>[FIX] commons/Dialog: Shift-Tab With Buttons 
+</li><li>[FIX] sap.ui.commons.FileUploader - fixed registration of change event
+</li><li>[FIX] commons/Dialog: Delay When <a class="missing wiki">FocusIn?</a>
+</li></ul><p>
+<strong>Mobile</strong><br />
+</p>
+<ul><li>[FEATURE] New Tests+QUnits for PersoDialog
+</li><li>[FEATURE] TablePerso: Dialog props for width
+</li><li>[FEATURE] TablePersoController QUnits
+</li><li>[FEATURE] sap.m.Link: add "wrapping" property to allow line wrapping 
+</li><li>[FIX] MVI Selection indicator bug is fixed for List.
+</li><li>[FIX] Multi-line space issue is fixed for sap.m.Text control
+</li><li>[FIX] NavContainer: handle rerendering of children during transitions 
+</li><li>[FIX] Single Selection problem of List is fixed
+</li><li>[FIX] TablePerso ResetAll
+</li><li>[FIX] TablePerso design fixes
+</li><li>[FIX] TablePerso: flatten store/restore of initialstate
+</li><li>[FIX] Wrong date format in chinese version of ALR 
+</li><li>[FIX] explored compatVersion &amp; form label align
+</li><li>[FIX] sap.m Table Personalization Dialog layout in IE9 
+</li><li>[FIX] sap.m.ActionSheet: control isn't positioned at the right position when there's other dom node without position: absolute in static UI area. 
+</li><li>[FIX] sap.m.Button: suppress firing the press event when only keyup event and no keydown event caught. 
+</li><li>[FIX] sap.m.Dialog: get disabled button style back when button is added to dialog's begin or endButton aggregation.
+</li><li>[FIX] sap.m.Dialog: open and close animation flickers on Android 4.0.x device inside the native browser.
+</li><li>[FIX] sap.m.Dialog: reposition when content size changes is done with a 0 timeout to prevent flickering of UI
+</li><li>[FIX] sap.m.FacetFilter: Internal dialog control is not destroyed. 
+</li><li>[FIX] sap.m.FacetFilter: fix for sequencing.
+</li><li>[FIX] sap.m.FacetFilter: manual search doesn't work for items list in dialog
+</li><li>[FIX] sap.m.IconTabBar: fix for _scrollIntoView()
+</li><li>[FIX] sap.m.IconTabBar: fix for css 
+</li><li>[FIX] sap.m.IconTabBar: fix for css 
+</li><li>[FIX] sap.m.Input change event on ENTER in IE10
+</li><li>[FIX] sap.m.NavContainer - page queueing
+</li><li>[FIX] sap.m.Page: no scrolling in IE9 compatibility mode 
+</li><li>[FIX] sap.m.Popover: openState is wrong when popover is open and closed rapidly within a very short time period. 
+</li><li>[FIX] sap.m.SplitContainer: restore the status of master area when SplitContainer is rendered while master is open. 
+</li><li>[FIX] sap.m.ViewSettingsDialog added filterCount property
+</li><li>[FIX] updateFinished event of List is aligned to work with oDataBinding
+</li><li>[FIX]: sap.m.FacetFilter: fixing qunit tests.
+</li><li>[FIX] sap.m.Bar - Content aggregations listen to resize now 
+</li><li>[FIX] sap.m.routing.RouteMatchedHandler - preserve a page
+</li><li>[FIX] ScrollEnablement: Scroll Input into View on Android on focusin
+</li></ul><p>
+<strong>Others</strong><br />
+</p>
+<ul><li>[FIX] Unified/Shell: Absolute instead of fixed header positioning to workaround iOS problems 
+</li><li>[FIX] sap.m.Dialog, Popover: content alignment in IE9 
+</li><li>[FIX] sap.m.IconTabBar: changed border-color of content.
+</li></ul><h2 id="Version1.16.3October2013">Version 1.16.3 (October 2013)</h2>
+<p>
+A patch for the rel-1.16 code line. It contains the following fixes for the UI5 Core and Controls:
+</p>
+<p>
+<strong>Core</strong><br />
+</p>
+<ul><li>[FEATURE] Bindings: new reson param for change events
+</li><li>[FEATURE] Customizing: allow default content for ExtensionPoints
+</li><li>[FEATURE] Generator: generate control templates for XML views
+</li><li>[FEATURE] ODataModel: enable/disable automatic refresh after change
+</li><li>[FEATURE] Support for declarative element binding
+</li><li>[FIX] ArrayDiff: Fixed wrong calculation of diff and optimized performance
+</li><li>[FIX] Avoid assertion failures for applySettings() with default model
+</li><li>[FIX] ContextBinding refresh does not update PropertyBindings
+</li><li>[FIX] Device API: Fix Media Queries on iPad
+</li><li>[FIX] Fix Popup close on ESC-key when Callout is used 
+</li><li>[FIX] Fixed missing focus outline in new Chrome 30.
+</li><li>[FIX] IconPool: fix RTL in IE8
+</li><li>[FIX] IconPool: make IconFonts work in IE9 (URL with Params)
+</li><li>[FIX] Icons breaking due to display:block in IE9
+</li><li>[FIX] ListBinding: Store application filters correct 
+</li><li>[FIX] ManagedObjectMetadata: Correct name for remove all mutator 
+</li><li>[FIX] ODataListBinding: Store sorters after sort was called 
+</li><li>[FIX] ODataModel: fix correct data removal from model 
+</li><li>[FIX] ODataModel: submitBatch returns now request handle correctly 
+</li><li>[FIX] ODataModel: submitChange doesn't return abort abject correctly 
+</li><li>[FIX] ResourceHandler: fix the NPE when no props or MANIFEST was found
+</li><li>[FIX] Route patterns that are undefined now do not match anymore
+</li><li>[FIX] SupportTool-ControlTree: fixed associations (e.g. inside components) 
+</li><li>[FIX] make jQuery.sap.setIcons public
+</li><li>[FIX] sap.m.routing.RouteMatchedHandler works on phone now
+</li></ul><p>
+<strong>Desktop</strong><br />
+</p>
+<ul><li>[FEATURE] ResponsiveGridLayout Adopt new design requirements
+</li><li>[FEATURE] SimpleForm add Title property
+</li><li>[FEATURE] SimpleForm add new ResponsiveGridLayout properties
+</li><li>[FEATURE] ThingInspector: Horizontal Header
+</li><li>[FIX] ComboBox/DropdownBox fix update of item Text 
+</li><li>[FIX] ComboBox: restore focus on rerendering 
+</li><li>[FIX] Commons/MenuButton: Remove unnecessary close call 
+</li><li>[FIX] DatePicker on mobile device do not change value 
+</li><li>[FIX] DropdownBox wrong item set in onAfterRendering 
+</li><li>[FIX] Form: fix padding when used directly in Object page 
+</li><li>[FIX] Grid: default Indent on the whole Grid without layout data
+</li><li>[FIX] RowRepeater: Fixed empty RowRepeater issue 
+</li><li>[FIX] SimpleForm insert new field before first label fails 
+</li><li>[FIX] Table: Fixed column mode not working in IE 
+</li><li>[FIX] Table: Scrollbar not displayed in IE
+</li><li>[FIX] TextArea with MaxLength DEL key do not work in Firefox 
+</li><li>[FIX] ToolPopup: Forward Closing to Shell
+</li><li>[FIX] UX3/NavigationBar Overflow Menu shows disabled items in grey 
+</li><li>[FIX] allow user-drag on desktop and fix mobile support popup
+</li><li>[FIX] m.Form/Panel: no padding on Phone 
+</li><li>[FIX] sap.ui.commons Button: fixed iconSelected
+</li><li>[FIX] ux3.Shell: Closing of Opened ToolPopups
+</li><li>[Fix] MatrixLayout colspan wrong in IE10 
+</li></ul><p>
+<strong>Mobile</strong><br />
+</p>
+<ul><li>[FEATURE] adaptTitleSize property is added into StandardListItem
+</li><li>[FEATURE] sap.m.Input: suggestionItemSelected event will be fired when suggestionItem is selected in the suggestion popup
+</li><li>[FEATURE] sap.m.Shell: change header threshold to almost never show it
+</li><li>[FEATURE] sap.m.routing.RouteMatchedHandler - added this class
+</li><li>[FEATURE] updateStarted &amp; updateFinished events are added into ListBase
+</li><li>[FIX] Input: fix display of ValueHelp icon in IE9 
+</li><li>[FIX] NavContainer: call after-transition callback when rerendering interrupts the animation
+</li><li>[FIX] RouteMatchedHandler : fix reading transitions from route config
+</li><li>[FIX] Select: Error on destroy of sap.m.Select control 
+</li><li>[FIX] SimpleForm: adjusted vertical alignments 
+</li><li>[FIX] TablePersoController: don't crash when a column is not found 
+</li><li>[FIX] allow user-drag on desktop and fix mobile support popup
+</li><li>[FIX] sap.m.Explored: fix intro for Firefox
+</li><li>[FIX] sap.m.FacetFilter: Allow enable/disable of live search.
+</li><li>[FIX] sap.m.FacetFilter: Clear items search field when nav back to facet list.
+</li><li>[FIX] sap.m.FacetFilter: FacetFilterList should maintain selection
+</li><li>[FIX] sap.m.FacetFilter: Selected items event not fired when items filtered out in dialog.
+</li><li>[FIX] sap.m.FacetFilter: selection from dialog not maintained in popover
+</li><li>[FIX] sap.m.FacetFilterList: Select All checkbox not set correctly. 
+</li><li>[FIX] sap.m.IconTabBar: fix for arrow position calculation 
+</li><li>[FIX] sap.m.Input no value set when 2-way-binding
+</li><li>[FIX] sap.m.ObjectHeader: Fixing padding issue.
+</li><li>[FIX] sap.m.ObjectHeader: fix for allowing ProgressIndicator as one of the statuses.
+</li><li>[FIX] sap.m.ObjectHeader: titlePress event on ObjectHeader not working 
+</li><li>[FIX] sap.m.Popover: autoclose doesn't work anymore when popover is rerendered while open.
+</li><li>[FIX] sap.m.Popover|Dialog: javascript error when control is destroyed before close.
+</li><li>[FIX] sap.m.Shell: correct header background when custom background image is configured in theme
+</li><li>[FIX] sap.m.URLHelper now encodes new lines correctly 
+</li><li>[FIX] sap.m.routing.RouteMatchedHandler works on phone now
+</li><li>[FIX] sap.m: Fix header colors
+</li><li>[Fix] sap.m.FacetFilter: Change localization of all selection text.
+</li><li>[Fix] sap.m.List fireSelectionChange does not fire for null item
+</li><li>[Fix] sap.m.ListBase - setMode was failing if sMode was undefined
+</li><li>[Fix] sap.m.RouteMatchedHandler - Dual Master scenario
+</li><li>[Fix] sap.m.RouteMatchedHandler - queue gets emptied again
+</li></ul><p>
+<strong>Inbox</strong><br />
+</p>
+<ul><li>[FIX] ListBinding: Store application filters correct 
+</li></ul><p>
+<strong>Others</strong><br />
+</p>
+<ul><li>[FEATURE] Added Semantic color and text color to sapThemeParameters
+</li><li>[FEATURE] Unified/ShellOverlay: Introduce ShellOverlay control and deprecate Shell curtain
+</li><li>[FIX] Avoid double branding line with UnifiedShell and fix tiny blue corners in popover header buttons 
+</li><li>[FIX] Commons/Menu: No special top style for Menu in Blue Crystal Theme 
+</li><li>[FIX] Input: hover and active state for ValueHelp button
+</li><li>[FIX] UX3/Shell: Smaller issues in Blue Crystal Theme fixed 
+</li><li>[FIX] remove last unused OpenSans font
+</li><li>[FIX] sap.m.FacetFilter: Change color of icons.
+</li><li>[FIX] sap.m.Popover: Popover in IE9 extends the width to the browser border when two buttons are added to the footer.
+</li><li>[FIX] sap.m.SearchField: focus outline in a bar is partially visible 
+</li><li>[FIX]: sap.m.ObjectHeader: fixing css for reset icon in summary bar.
+</li></ul><h2 id="Version1.16.2September2013">Version 1.16.2 (September 2013)</h2>
+<p>
+A patch for the rel-1.16 code line. It contains the following fixes for the UI5 Core and Controls:
+</p>
+<p>
+<strong>Core</strong><br />
+</p>
+<ul><li>[FEATURE] Component: Automatic activation/deactivation of customizing
+</li></ul><blockquote>
+<blockquote>
+<p>
+The first instance of the component activates the customizing if a
+customizing configuration is available in the metadata. If the last
+instance of a component is destroyed the customizing will be
+deactivated.
+</p>
+</blockquote>
+</blockquote>
+<ul><li>[FEATURE] Router fires routePatternMatched event now
+<ul><li> now an app can determine the actual route being hit
+</li></ul></li><li>[FEATURE] sap.m.Dialog: padding in content area is removed for 1.16 compatible applications by default.
+<ul><li> adding class sapUiPopupWithPadding to popups to enable additional padding in content area.
+</li><li> ResponsivePopover now forwards the style change functions to inner popup instance to enable setting the additional padding.
+</li></ul></li><li>[FEATURE] sap.ui.UX3 DataSet: Enabled MultiSelect
+</li></ul><blockquote>
+<blockquote>
+<p>
+Enabled Multi Selection in Dataset [INTERNAL] and fixed a minor bug in
+Selection Model
+</p>
+</blockquote>
+</blockquote>
+<ul><li>[FEATURE] sap.ui.core.IconPool: IconPool is updated with icon version 2.3 and two new icons are added: multi-select and exit-full-screen.
+</li><li>[FIX] Customizing: actually ignore property modifications for properties other than "visible"
+</li><li>[FIX] Device API now recognizes android stock browser
+</li></ul><blockquote>
+<blockquote>
+<p>
+The android browser has no special name in its user-agent, it is now recognized when the browser is running on Android, is based on Webkit and does not call itself "Chrome".
+</p>
+</blockquote>
+</blockquote>
+<ul><li>[FIX] ODataModel: Add function import metadata support 
+</li><li>[FIX] Router - getUrl works with undefined
+<ul><li> when a route had optional parameters it did throw an error
+</li><li> added a testpage for rouepatterns
+</li></ul></li><li>[FIX] Routing: Allow subroutes to be defined as object
+<ul><li> property key will be set as name
+</li><li> array is still compatible
+</li></ul></li><li>[FIX] XMLTemplateProcessor check for existence of sap.ui.core.Component.activateCustomizing before using it
+</li><li>[FIX] XMLView: Replace children before onAfterRendering 
+</li></ul><blockquote>
+<blockquote>
+<p>
+When an XMLView is rerendered, it does only render its child controls in
+an hidden area and inserts them in the existing HTML structure. By
+default the onAfterRendering (which does this inserting) is executed
+after the onAfterRendering of the children. This was causing issues with
+chart controls and the RichTextEditor, so it was changed that the
+inserting now takes place before calling onAfterRendering of the child
+controls.
+</p>
+</blockquote>
+</blockquote>
+<ul><li>[FIX] bindElement refreshes all bindings of the Model 
+<ul><li> Refresh only the bindings that are affected by the new context
+</li></ul></li><li>[FIX] disallow disabling customizing via URL parameter
+</li><li>[FIX] fixing IE 8 in History.js
+</li><li>[FIX] jQuery.sap.xml fix serialize XML for IE9 
+</li><li>[FIX] jQuery.sap.xml fix serialize for IE 
+</li><li>[FIX] removed context from router config
+<ul><li>merging model with routing is not the way to go
+</li></ul></li><li>[FIX] sap.ui.core.IconPool: fix the calculation of absolute font path in IE9
+<ul><li> the relative path needs to be converted into absolute path when icon is used inside iframe in IE9
+</li><li> URI.js is used to correctly convert url to absolute url based on current window.location.href
+</li></ul></li><li>[FIX] sap.ui.core.routing Allow inheritance of targetControl
+<ul><li> Routes don't have to specify a pattern anymore
+</li><li> if you set the targetControl to undefined in a subroute you get the targetControl of the parent
+</li></ul></li><li>[Feature] Routes can get the url for a context path
+<ul><li>new context property in route config
+</li><li>getUrl now has variable param instead of object
+</li></ul></li><li>[Fix] routing + splitcontainer
+<ul><li> history now determines backwards direction correctly
+</li><li> Route passes its config to the matched event
+</li><li> SplitContainer is also able to insert previous pages
+</li></ul></li></ul><p>
+<strong>Desktop</strong><br />
+</p>
+<ul><li>[FEATURE] sap.ui.UX3 DataSet: Enabled MultiSelect
+</li></ul><blockquote>
+<blockquote>
+<p>
+Enabled Multi Selection in Dataset [INTERNAL] and fixed a minor bug in Selection Model
+</p>
+</blockquote>
+</blockquote>
+<ul><li>[FIX] FileUploader Keyboard Navigation for Internet Explorer 9 
+</li><li>[FIX] Form line-height and label alignment for editable mobile controls 
+</li></ul><blockquote>
+<blockquote>
+<p>
+removed general line-height for editable mobile forms but adjust alignment of labels using paddings.
+</p>
+</blockquote>
+</blockquote>
+<ul><li>[FIX] Grid: layout Grid on native Android browser
+</li></ul><blockquote>
+<blockquote>
+<p>
+Grid layout supports native Android browser
+</p>
+</blockquote>
+</blockquote>
+<ul><li>[FIX] GridLayout fix for IE10 
+</li></ul><blockquote>
+<blockquote>
+<p>
+On IE10 the cells sometimes have the wrong size.
+</p>
+</blockquote>
+</blockquote>
+<ul><li>[FIX] InPlaceEdit on iPad 
+</li><li>[FIX] Label alignment of icon in RTL mode 
+</li><li>[FIX] Label alignment of icon in RTL mode 
+</li><li>[FIX] Link: the Link handles the enter by itself 
+</li><li>[FIX] MatrixLayout render tooltips 
+</li><li>[FIX] ToolPopup: Merged Fixes for Intelligent Arrow 
+<ul><li> when the ToolPopup switched its position or changed it due to any occured collision the arrow needs to be repositioned correclty. Now the arrow width/height is taken in account as well to calculate the ToolPopup's width/height properly.
+</li></ul></li><li>[FIX] Toolbar: fix issue where overflow popup items would be duplicated when rerendering happens while popup is open 
+</li><li>[FIX] sap.ui.commons Button: Fixed Lite Button disabled state 
+</li></ul><blockquote>
+<blockquote>
+<p>
+This fix forces the lite button to use the default icon when
+the button is set to disabled, instead of using the icon depending
+on the state it was in when disabled was set.
+</p>
+</blockquote>
+</blockquote>
+<p>
+<strong>Mobile</strong><br />
+</p>
+<ul><li>[FEATURE] Add numberState valueState property in Object Header
+</li><li>[FEATURE] Explored documentation updates
+<ul><li> TablePersoDialog / TablePersoController
+</li><li> TableSelectDialog
+</li><li> Icon (different sizes, colors, press)
+</li><li> Text (maxLines)
+</li><li> Table (mergeDuplicates)
+</li></ul></li><li>[FEATURE] Extended Explored docu
+<ul><li> "Panel": extra toolbars
+</li><li> "Input - Assisted": new, with suggestion and valuehelp
+</li><li> "Input": is now "Input - Simple"
+</li><li> "Icon": new, various simple examples
+</li><li> "SelectDialog": new
+</li><li> more mock data for eventual consistency
+</li><li> cleaned up whitespace; minor adjustments
+</li></ul></li><li>[FEATURE] ListBase: new growing events and methods are added.
+<ul><li> growingStarted and growingFinished events are added
+</li><li> getGrowingInfo method is added
+</li><li> <a class="ext-link" href="../../../docs/api/symbols/sap.m.!ListBase.html"><span class="icon"> </span>http://veui5infra.dhcp.wdf.sap.corp:8080/demokit/#docs/api/symbols/sap.m.!ListBase.html</a>
+</li></ul></li><li>[FEATURE] Loosen / modify interface for PersoProvider
+<ul><li> type for persoService aggr sap.m.TablePersoProvider &rarr; Object
+</li><li> get/set/del methods now have 'PersData' suffix
+</li><li> added docu in abstract that a promise should be returned
+</li></ul></li><li>[FEATURE] sap.m.DateTimeInput: Keyboard Handling Improvements
+</li><li>[FEATURE] sap.m.Dialog: padding in content area is removed for 1.16 compatible applications by default.
+<ul><li> adding class sapUiPopupWithPadding to popups to enable additional padding in content area.
+</li><li> ResponsivePopover now forwards the style change functions to inner popup instance to enable setting the additional padding.
+</li></ul></li><li>[FEATURE] sap.m.FacetFilter: add single select property for FacetFilterList
+</li><li>[FEATURE] sap.m.ObjectListItme,sap.m.FeedListITem: Added RTL Support
+</li><li>[FEATURE] sap.m.Shell design changes
+</li><li>[FEATURE] sap.m.TileContainer, StandardTile: Added Keyboard Navigation
+</li><li>[FEATURE] sap.ui.core.IconPool: IconPool is updated with icon version 2.3 and two new icons are added: multi-select and exit-full-screen.
+</li><li>[FIX] IconTabBar: don't break when oSelectedItem is null 
+</li><li>[FIX] NavContainer: don't break when no page is added, don't rerender when same page is added repeatedly as first page 
+</li><li>[FIX] ObjectHeader title arrow position bug fix 
+</li><li>[FIX] ObjectHeader title css font issue 
+</li><li>[FIX] Page:page without header leads to wrong calculations of the scroll 
+<ul><li> Add qUnit-tests
+</li></ul></li><li>[FIX] SplitContainer now always render its nav containers
+<ul><li> since the NavContainer does not throw an error if it is rendered without pages any longer, the SplitContainer should not be responsible to decide when to render.
+</li></ul></li><li>[FIX] sap.m.Bar: content is sometimes invisible
+<ul><li> check visibility of bar, if it's not visible, don't update position
+</li></ul></li><li>[FIX] sap.m.Dialog with a SearchField is too wide 
+<ul><li> Correction for an error in release 1.16 when a Dialog with a SearchField is 100% wide on the screen.
+</li></ul></li><li>[FIX] sap.m.Dialog|Popover: fix the javascript error message when no content is given.
+<ul><li> calling getContent instead of getAggregation("content") because getContent always returns an array not null.
+</li></ul></li><li>[FIX] sap.m.Dialog|Popover: remove instance from instance manager when dialog or popover is destroyed.
+<ul><li> also fix a css issue of dialog in firefox
+</li></ul></li><li>[FIX] sap.m.FeedListItem: timestamp starting with a number fixed 
+<ul><li> There was a problem with the display of timestamps starting with a number such as 1.12.2013. This lead to an unreadable display of the timestamp.
+</li></ul></li><li>[FIX] sap.m.Popover|Dialog: listen to resize event from sap.ui.Device instead of the native resize event.
+<ul><li> native resize event is fired when user types the on screen keyboard on real device which leads to unwanted reposition.
+</li></ul></li><li>[FIX] sap.m: incorrect vertical alignment of labels in a form 
+<ul><li> fix: text and labels should be baseline aligned in a read only form
+</li><li> fix: sap.m.SearchField: refresh button unexpectedly appears even if showRefreshButton is set to false (internal)
+</li></ul></li><li>[Fix] sap.m.Tilecontainer suppress master swipe 
+</li><li>[Fix] routing + splitcontailer
+<ul><li> history now determines backwards direction correctly
+</li><li> Route passes its config to the matched event
+</li><li> SplitContainer is also able to insert previous pages
+</li></ul></li></ul><p>
+<strong>Charts</strong><br />
+</p>
+<ul><li>[FIX] Exclude sap.viz.javafx.patch.js from load all file 
+</li></ul><blockquote>
+<blockquote>
+<p>
+Switched to version 2.0 of the packaging excludes as version 2.0
+supports files with dots in their names.
+</p>
+</blockquote>
+</blockquote>
+<p>
+<strong>Tools</strong><br />
+</p>
+<ul><li>[FIX] CacheBuster for Applications on SAP Web AS ABAP: SAP Note 1923300 "SAPUI5 Cache Buster for Applications: Outdated text on UI" 
+</li></ul><p>
+<strong>Others</strong><br />
+</p>
+<ul><li>[FEATURE] Blue Crystal: new footer colors on desktop
+</li><li>[FEATURE] sap.m.Input sap.m.TextArea new design for Fiori 2
+</li><li>[FIX] <a class="missing wiki">Commons/Tree?</a>: <a class="missing wiki">Collapse/Expand?</a> icons in Gold Reflection and Blue Crystal Theme 
+</li><li>[FIX] Inline comment causes issue in theme engine parser
+</li><li>[FIX] <a class="missing wiki">Unified/Shell?</a>: HCB Theme for Shell control
+</li><li>[FIX] databinding: epm products example
+</li></ul><h2 id="Version1.16.1September2013">Version 1.16.1 (September 2013)</h2>
+<p>
+A patch for the rel-1.16 code line. It contains the following fixes for the UI5 Core and Controls:
+</p>
+<p>
+<strong>Core</strong><br />
+</p>
+<ul><li>[FEATURE] Controller Extensibility
+</li><li>[FEATURE] I18N: support to enhance ResourceModels with custom props.
+</li><li>[FEATURE] NavContainer: add insertPreviousPage method
+<ul><li> used to populate the history stack when deep-linking is used
+</li></ul></li><li>[FEATURE] UIComponent: added support for routing configuration
+</li><li>[FEATURE] sap.m.DateTimeInput: Added Keyboard Navigation
+</li><li>[FEATURE] sap.ui.core.routing.History class for navigation direction
+</li><li>[FIX] Menu: Made Menu Usable in Popup 
+<ul><li> if the menu was used in a popup - especially within the ToolBar overflow it wasn't usable. Therefore the menu registers itself to the root-popup as additional focusable area
+</li><li> even if the menu closes via its autoclose mechanism this close event is bubbled to the corresponding popup
+</li><li> created a new test page to demonstrate this rare scenario
+</li></ul></li><li>[FIX] ODataModel: add global URL Params to batch request
+</li><li>[FIX] ODataModel: use withCredentials option only for async requests. 
+</li><li>[FIX] Routing: Only remove aggregation - no destroy
+</li><li>[FIX] fixed view name recognition in ViewSerializer
+</li><li>[FIX] sap.ui.core.routing.HashChanger replaceHashChanger fixed
+<ul><li>does not throw an error if you did never call getInstance before.
+</li></ul></li></ul><p>
+ 
+</p>
+<p>
+<strong>Desktop</strong><br />
+</p>
+<ul><li>[FEATURE] I18N: Added new resource bundles from B0Y.
+</li><li>[FIX] Menu: Refresh hover item after rerendering 
+</li><li>[FIX] Menu: Made Menu Usable in Popup 
+<ul><li> if the menu was used in a popup - especially within the ToolBar overflow it wasn't usable. Therefore the menu registers itself to the root-popup as additional focusable area
+</li><li> even if the menu closes via its autoclose mechanism this close event is bubbled to the corresponding popup
+</li><li> created a new test page to demonstrate this rare scenario
+</li></ul></li><li>[FIX] Table: Enter action mode not working with jQuery 1.8.1 
+</li><li>[FIX] ToolPopup: Merged Fixes for Intelligent Arrow 
+<ul><li> when the ToolPopup switched its position or changed it due to any occured collision the arrow needs to be repositioned correclty. Now the arrow width/height is taken in account as well to calculate the ToolPopup's width/height properly.
+</li></ul></li><li>[FIX] UX3/NavigationBar: Fix scroll item into view 
+</li><li>[FIX] UX3/Shell: PaneBar Overflow Menu 
+<ul><li>The overflow button in the pane-bar is now shown
+</li></ul></li></ul><p>
+<strong>Mobile</strong><br />
+</p>
+<ul><li>[FEATURE] I18N: Added new resource bundles from B0Y.
+</li><li>[FEATURE] Add numberState valueState property in Object Header
+</li><li>[FEATURE] Adding numberState property in ObjectListItem
+</li><li>[FEATURE] NavContainer: add insertPreviousPage method
+<ul><li> used to populate the history stack when deep-linking is used
+</li></ul></li><li>[FEATURE] Replace ObjectNumber control numberUnit property name with unit
+</li><li>[FEATURE] sap.m.BusyDialog: Added Keyboard Navigation
+</li><li>[FEATURE] sap.m.DateTimeInput: Added Keyboard Navigation
+</li><li>[FEATURE] sap.m.Input: input now support suggestions.
+<ul><li> suggestion can be added by listening to the suggest event which is fired when user types in the input. In the event listener, additional sap.ui.core.Item instance can be added to the suggestionItems aggregation which will be filtered by the filter function.
+</li><li> Input comes by default with a filter function which can be modified by calling setFilterFunction
+</li></ul></li><li>[FEATURE] sap.m.Panel: Added header toolbar and info toolbar, removed header level
+</li><li>[FIX] sap.m.Shell: stop setting parents' heights to 100% when marker is found
+</li><li>[FIX] MAKit bi-direction fix
+</li></ul><p>
+ 
+<strong>Charts</strong><br />
+</p>
+<ul><li>[FIX] Fix manifest id to idStr.
+</li></ul><p>
+<strong>Inbox</strong><br />
+</p>
+<ul><li>[FEATURE] I18N: Added new resource bundles from B0Y.
+</li><li>[FIX] Inbox: ForwardButton disabled for completed tasks 
+<ul><li> standard action buttons are not visible any more for completed tasks
+</li></ul></li></ul><p>
+<strong>Others</strong><br />
+</p>
+<ul><li>[FIX] Remove connection to base framework
+<ul><li> Might cause incompatibility with existing themes
+</li></ul></li></ul><h2 id="Version1.16.0September2013">Version 1.16.0 (September 2013)</h2>
+<p>
+<strong>Core</strong><br />
+</p>
+<ul><li>[FEATURE]  Added Control and View Serializer
+</li><li>[FEATURE] Add routing functionality to UI5
+</li><li>[FEATURE] Component: Harmonized components &amp; application concept
+<ul><li>Components: <br />
+<ul><li>Factory function <tt>sap.ui.component</tt>: analogous to Views and Templates the Component can be retrieved and created by a factory function.
+</li><li>Support to declare the root component in the bootstrap tag
+</li><li>Experimental support to declare the root component node id in the bootstrap tag
+</li><li>Support to declare the root view of a component.
+</li><li>Added new lifecycle hooks: onWindowBeforeUnload, onWindowUnload and onWindowError
+</li><li>Support for width and height as properties on the ComponentContainer
+</li><li>Enabled CustomStyleClass support for ComponentContainer
+</li><li>Analog to views and view data, components now support component data which can be passed along during the initialization of the component.
+</li><li>Controls which are created in the scope of the createContent function of a component will get an information about the owning component. This information can be accessed via static helpers of the component <tt>sap.ui.core.Component.getOwnerIdFor</tt>.
+</li></ul></li></ul></li></ul><ul><li>Application:<br />
+<ul><li> class sap.ui.app.Application is deprectated and merged with sap.ui.core.Component.
+</li></ul></li><li>MockServer: <br />
+<ul><li> class sap.ui.app.MockServer is deprecated
+</li><li> new location of the MockServer is: sap.ui.core.util.MockServer
+</li></ul></li></ul><p>
+   
+</p>
+<ul><li>[FEATURE] Component: extensibility support
+<ul><li> View replacements
+</li><li> View extensions by: Fragment, View
+</li><li> View modifications (property customization) - restricted to "visible"
+</li><li> URL parameter to disable customizing
+</li></ul></li></ul><p>
+   
+</p>
+<ul><li>[FEATURE] Core: Provide central IntervalTimer on the Core
+</li><li>[FEATURE] Core/ResizeHandler: API to register controls (instead of using a dom ref)
+</li><li>[FEATURE] Enable formatMessage to use as formatter/declarative
+</li><li>[FEATURE] Export to XML fixed loosing of ControlTreeSelection and extended the functionality to export to HTML too.
+</li><li>[FEATURE] Filter: Allow multiple AND/OR filters
+</li><li>[FEATURE] Fragments: multi-root XML and JS Fragments
+</li><li>[FEATURE] I18N: added intervalFormats to raw CLDR data
+</li><li>[FEATURE] ODataModel: support of use-batch annotation. No support yet in formatters.
+</li><li>[FEATURE] Parse object type if passed as string
+</li><li>[FEATURE] Templating: inline templates and new stereotype "template", new view type <tt>TemplateView</tt>
+</li><li>[FEATURE] Thirdparty: Migrated to URI.js v1.11.2 + punycode v1.2.3
+</li><li>[FEATURE] WebSocket Support
+</li><li>[FEATURE] added export to XML for support tool
+</li><li>[FEATURE] jQuery.support.hasFlexBoxSupport: Convenience flag
+</li><li>[FEATURE] sap.ui.core.IconPool: IconPool is now using the sap-icons version 2.2
+</li><li>[FIX] Allow grouping to be defined declaratively 
+</li><li>[FIX] Allow whitespace around numbers in CSSColor type 
+</li><li>[FIX] Data should not be removed when calling refresh
+</li><li>[FIX] DataBinding: refresh method of Bindings not working
+</li><li>[FIX] Filter: Fix filter validation
+</li><li>[FIX] Fix error in callFunction method of ODataModel
+</li><li>[FIX] Fix potential memory leak in aggregation handling
+</li><li>[FIX] Grouping: Handle named models
+</li><li>[FIX] Growing List: Destroy items if list changes from normal to grouped 
+</li><li>[FIX] LocalBusyIndicator: Fix possible javascript errors 
+</li><li>[FIX] OData Two-Way Binding suppressing Text Field Change Event
+</li><li>[FIX] ODataModel: create Entry: add correct entity type
+</li><li>[FIX] ODataModel: endless loop in error cases when request fails 
+</li><li>[FIX] ODataModel: fix successHandler when no data was retrieved 
+</li><li>[FIX] ODataModel: fix token handling when using BATCH 
+</li><li>[FIX] ProxyServlet: filter secure flag in set-cookie header
+</li><li>[FIX] ProxyServlet: support to delegate multiple occurences of headers
+</li><li>[FIX] Refresh model after batch with change requests 
+</li><li>[FIX] ResourceHandler: fixed the stream handling when caching
+</li><li>[FIX] Scrollbar: Fix errors when UI5 is in touch simulation mode 
+</li><li>[FIX] ThemeCheck sap.ui.core: fixed custom CSS, added less support
+</li><li>[FIX] Theming: Runtime Resource Path Pattern is wrong
+</li><li>[FIX] Views: only render height and width style when set 
+</li><li>[FIX] XML/HTML serializer: do not write css classes wich start with sapM/sapUi[FIX] Fixed SplitContainer aggregation method mapping
+</li><li>[FIX] XMLModel: fix setProperty function 
+</li><li>[FIX] bindElement: Trigger new request if $expand supplied/changes 
+</li><li>[FIX] fixed fortify scan issue in vkbeautify
+</li><li>[FIX] jQuery.sap.arrayDiff: Fixed diff calculation
+</li><li>[FIX] sap.ui.core.support.plugins.Selector: append to the static uiarea instead of replace the existing content when press ctrl+shift+alt+s
+</li><li>[FIX] ODataModel: submitChanges now deletes all expand properties 
+</li></ul><p>
+<strong>Desktop</strong><br />
+</p>
+<ul><li>[FEATURE] Infotip: New field for TextView and Label
+</li><li>[FEATURE] new ResponsiveGridLayout for Form (based on Grid control)
+<ul><li> apply new Bluecrystal design to all FormLayouts
+</li></ul></li><li>[FEATURE] ux3/NavigationBar Overflow and commons/MenuItem Font Icon
+<ul><li> MenuItem now supports font based icons
+</li><li> NavigationBar overflow now contains an overflow button, which
+</li></ul></li><li>displays a menu containing all navigation items
+<ul><li> Shell demo page has now correctly disabled navigation items
+</li></ul></li></ul><ul><li>[FEATURE]Form: Bluecrystal adoption
+<ul><li>clean up the styling for Form and ResponsiveFlowLayout for bluecrystal.
+</li></ul></li><li>[FEATURE] moved VerticalLayout, HorizontalLayout, ResponsiveFlowLayout and all Form controls, types and so on to the new library <tt>sap.ui.layout</tt>. Moved <tt>Title</tt> to sap.ui.core. The old controls in <tt>sap.ui.commons</tt> still exist, but inherit from the nes ones in <tt>sap.ui.layout</tt>.
+</li><li>[FIX] ActionBar: corrected 'Open Thing' tooltip 
+</li><li>[FIX] Carousel: Better ACC Keyboard handling and ARIA 
+</li><li>[FIX] Carousel: setFirstVisibleIndex not working 
+</li><li>[FIX] Commons/Menu: Fix positioning for jQuery UI 1.9 ff. 
+</li><li>[FIX] Commons/SearchField: Fix rendering of associations ariaLabelledBy and ariaDescribedBy 
+</li><li>[FIX] DataSet: Allow DOM id as scroll area
+</li><li>[FIX] DataSet: Check if scrollArea is in DOM after rerendering 
+</li><li>[FIX] DataSet: Update existing items when template changed 
+</li><li>[FIX] File path not cleared when pressing "Cancel" 
+</li><li>[FIX] FileUploader Keyboard Support in IE 
+</li><li>[FIX] QuickView: navigate event by icon click 
+</li><li>[FIX] Repair ProgressIndicator Contrast for Text 
+</li><li>[FIX] Repair ProgressIndicator Contrast for Text 
+</li><li>[FIX] ResponsiveFlowLayout: Interval function called if destroyed
+</li><li>[FIX] Table: Calculate correct height for non std. height header 
+</li><li>[FIX] Table: Return this in setVisibleRowCountMode 
+</li><li>[FIX] Table: prevent column visibility menu text truncation 
+</li><li>[FIX] ToolPopup: Prevent Fix of Size When Opened at Bottom
+</li><li>[FIX] ToolPopup: Recalc the ToolPopup's Height if Open and Content added
+</li><li>[FIX] TreeTable: Added ARIA code for TreeTable 
+</li><li>[FIX] UX3/ExactList: Avoid vertical scrolling of content area 
+</li><li>[FIX] UX3/NavigationBar: Scrolling when mobile content exists
+</li><li>[FIX] UX3/Shell NavigationBar-Items did not write data into DOM 
+</li><li>[FIX] UX3/Shell: Minor BlueCrystal issues
+</li><li>[FIX] UX3/Shell: Stop facetbar animation on theme change 
+</li><li>[FIX] UX3/ToolPopup: Crashed when not content set 
+</li><li>[FIX] repair disabled FileUploader which gets enabled 
+</li><li>[FIX]ComboBox/DropdownBox wrong item selected if similar text 
+</li><li>[FIX] Label: wrong name for requiredAtBegin property
+</li><li>[NEW] New library <tt>sap.ui.unified</tt>: Controls <tt>sap.ui.unified.Shell</tt> and <tt>sap.ui.unified.SplitContainer</tt> completely re-implemented and not experimetal anymore.
+</li></ul><p>
+ 
+<strong>Mobile</strong><br />
+</p>
+<p>
+<img src="alert.png" style="vertical-align: bottom" alt="/!\" /> <strong>The theme 'SAP Mobile Visual Identity' is outdated. All new controls and control extensions since the 1.12 release do not support it. Also it is not supported for the platforms: iOS7 and Android 4.3. With the 1.20 release it will be removed from sap.m. Use the 'SAP Blue Crystal' theme instead that is supported for all controls and supported platforms.</strong>
+</p>
+<ul><li>[FEATURE] sap.m.Popover: beginButton and endButton created. leftButton and rightButton are deprecated.
+</li><li>[FEATURE] sap.m.FacetFilter: add FacetFilter control
+</li><li>[FEATURE] ActionSelect: added new control
+</li><li>[FEATURE] Added qunit tests for TablePersoDialog.
+</li><li>[FEATURE] Adding ProgressIndicator to status column
+</li><li>[FEATURE] Adding Select object as title for ObjectHeader
+</li><li>[FEATURE] Adding Select object render for ObjectHeader
+</li><li>[FEATURE] Amended Filter and Search Properties
+</li><li>[FEATURE] Initial commit of TablePerso controller and abstract provider.
+</li><li>[FEATURE] ObjectHeader ProgressIndicator will be displayed with 35% width on the right always
+</li><li>[FEATURE] ObjectHeader: Ability to flag object header for special attention.
+</li><li>[FEATURE] ObjectHeader: Add support for Progress Indicator
+</li><li>[FEATURE] ObjectHeader: Add support for Progress Indicator render and testing on testing page for Progress Indicator
+</li><li>[FEATURE] ObjectHeader: Add support for marking the object as a favorite.
+</li><li>[FEATURE] ObjectHeader: Adding statuses aggregation.
+</li><li>[FEATURE] ObjectListItem: Add flag/favorite support.
+</li><li>[FEATURE] Remove Title Selector Control, Add Title Arrow API and implementation for using Popover in Title
+</li><li>[FEATURE] Select: added isOpen() and close() methods
+</li><li>[FEATURE] Select: added new properties "autoAdjustWidth", "type", "icon".
+</li><li>[FEATURE] TablePersoDialog control. Initial commit.
+</li><li>[FEATURE] TablePersoDialog is now a ManagedObject.
+</li><li>[FEATURE] new ResponsiveGridLayout for Form
+</li><li>[FEATURE] sap.m.ActionSheet|Popover|Dialog|SplitContainer: Controls now support Firefox.
+</li><li>[FEATURE] sap.m.Dialog: Added Keyboard Navigation
+</li><li>[FEATURE] sap.m.Input Keyboard Navigation - F4; new icon for valuehelp
+</li><li>[FEATURE] sap.m.InputBase Keyboard Navigation Show old value on Escape
+</li><li>[FEATURE] sap.m.NavContainer builds up a queue
+</li><li>[FEATURE] sap.m.ResponsivePopover: new control added.
+</li><li>[FEATURE] sap.m.SearchField: new parameter of the search event
+</li><li>[FEATURE] sap.m.SelectDialog Multiselect
+</li><li>[FEATURE] sap.m.ViewSettingsDialog
+</li><li>[FEATURE] sap.ui.core.IconPool: IconPool is now using the sap-icons version 2.2
+</li><li>[FEATURE] subHeaderText property is added into sap.m.ListBase
+</li><li>[FEATURE] TableSelectDialog New Table Select Dialog added
+</li><li>[FEATURE] sap.m.Dialog: showHeader, customHeader, horizontalScrolling, verticalScrolling added.
+</li><li>[FIX] sap.m.TileContainer - Firefox enablement
+</li><li>[FIX] Non localized dates in Calendar
+</li><li>[FIX] Explored App: sap.m.ProgressIndicator adapted.
+</li><li>[FIX] FeedListItem: improved design when running on phone
+</li><li>[FIX] Fixed SplitContainer aggregation method mapping
+</li><li>[FIX] Fixed master / detail page aggregation handling of SplitContainer
+</li><li>[FIX] FlexBox control: Reset rendering status on invisible flex items 
+</li><li>[FIX] Growing List: Destroy items if list changes from normal to grouped 
+</li><li>[FIX] Select: not aligned correctly in SimpleForm 
+</li><li>[FIX] delete old redirect files for mvc app
+</li><li>[FIX] demo apps : device model should really be a "OneWay" binding
+</li><li>[FIX] fixes width calculation and applies new fiori style
+</li><li>[FIX] poa : there is no CSS file anymore
+</li><li>[FIX] sap.m.Dialog: dialog now also reacts to content change while it's being opened. 
+</li><li>[FIX] sap.m.IconTabBar: fixed enablePropagator 
+</li><li>[FIX] sap.m.Input: left/right keys in a Form 
+</li><li>[FIX] sap.m.Popover: change the css left style with the right value when Popover placed over the right or bottom border
+</li><li>[FIX] sap.m.Popover: popover isn't positioned right when page is scrolled.
+</li><li>[FIX] sap.m.ProgressIndicator: display value not displayed correct.
+</li><li>[FIX] sap.m.ProgressIndicator: replaced "barColor" with "state"
+</li><li>[FIX] sap.m.RadioButton - focus and keyboard handling
+</li><li>[FIX] sap.m.RatingIndicator outline behaviour &amp; keyboard handling
+</li><li>[FIX] sap.m.SearchField: duplicate search event 
+</li><li>[FIX] sap.m.SearchField: green/yellow outline in Android 4.0x 
+</li></ul><p>
+<strong>Inbox</strong><br />
+</p>
+<ul><li>[FEATURE]: Restrict number of characters to 500 for comments  in Inbox.
+</li><li>[FIX] Inbox: Select row on search user 
+</li><li>[FIX] Inbox: The GO button is cut off. 
+</li><li>[FIX] TCM alignment of Task Category 
+</li></ul><p>
+<strong>Collaboration</strong><br />
+</p>
+<ul><li>[FEATURE] Collaboration SAPUI5 Reusable Feed Component<br />
+The Collaboration SAPUI5 Reusable Feed component allows you to view and contribute to SAP Jam feeds. The reusable feed dialog that is integrated with the SAP Fiori Launchpad.
+</li><li>[FEATURE] Collaboration SAPUI5 Reusable Share Component<br />
+The Collaboration SAPUI5 Reusable Share component allows you to share information about a business object to a SAP Jam group feed. The reusable share dialog is integrated with the SAP Fiori Launchpad.
+</li></ul><p>
+<strong>Others</strong><br />
+</p>
+<ul><li>[FEATURE] Grid layout supports line breaks and variant layout data
+</li><li>[FEATURE] Grid: responsive Grid Layout reacts on container size
+</li><li>[FEATURE] Unified Library: Remove "old" Shell control and related controls
+</li><li>[FEATURE] new color parameters for charts
+</li><li>[FEATURE] unified/UShell: Focus concept, c-Switcher deprecation
+</li><li>[FIX] Form: make background half-transparent 
+</li><li>[FIX] ResponsiveFlowLayout rendering issue fixed
+</li><li>[FIX] ResponsiveFlowLayout: Corrected the Row's IDs 
+</li><li>[FIX] SimpleForm uses commons ResponsiveFlowLayout after move
+</li><li>[FIX] Tab focus outline was hardly visible
+</li><li>[FIX] Table Blue Crystal Fix for Table in Table 
+</li><li>[FIX] Theme Designer: Preview Link
+</li><li>[FIX] ThemeDesigner: New Visual Design
+</li><li>[FIX] ThemeDesigner: Stabilize iframe load, show and hide
+</li><li>[FIX] fix color parameter for sapUiChartGood
+</li><li>[FIX] fix typo in blue crystal global.css (sapMFontHeader5Size)
+</li><li>[FIX] is the .docx the problem?`
+</li><li>[FIX] sap.m.IconTabBar: design adaption.
+</li><li>[FIX] sap.m.Input - Firefox styling
+</li><li>[FIX] sap.m.RadioButton: incorrect display in a MessageBox 
+</li><li>[FIX] sap.m.SegmentedButton - branding color in a popover
+</li><li>[FIX] sap.m.List: issue with 100% width inside of a Popover control 
+</li><li>[FIX] unified/Shell: Focus when backwards tabbing on curtain
+</li><li>[FIX] unified/SplitContainer Media Query &amp; Webkit Transition
+</li><li>[FIX] unified/SplitContainer: No responsiveness
+</li><li>[FIX]Grid - sap.ui.layout: Fixed onLayoutDataChange, defaultSpan and css
+</li></ul><p>
+<strong>Tools:</strong>
+</p>
+<ul><li>[FEATURE] Html pages mas use the tag <tt>&lt;meta http-equiv="Cache-control" content="no-cache" /&gt;</tt> to indicate that these are not to be cached in the browser. This is benficial especially for starting pages like the SAP Fiori launch pad as otherwise the page flow in a logon situation would suffer. The information is taken over in the response header. See SAP note 1937147 - SAPUI5 Application Http Handler: Caching of Start Pages, IE Compatibility Setting.
+</li><li>[FEATURE] The tag <tt>&lt;meta http-equiv="X-UA-Compatible" content="IE=edge" /&gt;</tt> should be used to indicate that the lates rendering engine is to be used for Internet Explorer 8 and above. This information is taken over in the response header when the page is served: This avoids repeated requests and accelerates application loading. See 1937147 - SAPUI5 Application Http Handler: Caching of Start Pages, IE Compatibility Setting.
+</li><li>[FEATURE] The ABAP reports /UI5/UI5_REPOSITORY_LOAD_HTTP and /UI5/UI5_REPOSITORY_LOAD_HTTPN allow the upload of one or more SAPUI5 applications from a zip archive to the SAPUI5 ABAP repository located on a SAP Web Application Server. Access happens via the HTTP protocol. The remote-enabled function module /UI5/UI5_REPOSITORY_LOAD_HTTP allows reuse of the functionality.
+</li><li>[FIX] When creating a new SAPUI5 Application project the applied Java version is no longer tied to Java 6 but taken from the workspace default.
+</li></ul><p>
+<strong>Experimental Features:</strong>
+</p>
+<p>
+<strong>Experimental features</strong> are not part of the officially delivered scope that SAP is going to guarantee for future releases – means experimental Features may be changed by SAP at any time for any reason without notice. The <strong>Experimental features</strong> are <strong>"NOT FOR PRODUCTION USE"</strong>. 
+You may not demonstrate, test, examine, evaluate or otherwise use the Experimental Features in a live operating environment or with data that has not been sufficiently backed up.
+</p>
+<p>
+The purpose of Experimental features is to get feedback at an early point of time allowing customers/partners to influence the future product accordingly. Please use the SCN Developer Center <a class="ext-link" href="http://scn.sap.com/community/developer-center/front-end"><span class="icon"> </span>http://scn.sap.com/community/developer-center/front-end</a> to provide feedback accepting that Intellectual Property rights of the contributions or derivative works shall remain the exclusive property of SAP.
+</p>
+<p>
+For general information about <strong>Experimental features</strong>, please check the <a class="wiki" href="../../guide/91f087396f4d1014b6dd926db0e91070.html">Compatibility Rules</a>, for a detailed list check out the list below:
+</p>
+<ul><li><tt>Mobile Tablet Support:</tt> The controls of the UI libraries sap.ui.core, sap.ui.commons, sap.ui.ux3 and sap.ui.table are only partially optimized or adapted for mobile tablet usage.
+</li><li><tt>OData Write Support:</tt> First experiments for two way binding.
+</li><li><tt>Module sap.ui.core.plugin.LessSupport:</tt> Only for development purposes.
+</li><li><tt>Module sap.ui.core.delegate.ScrollEnablement:</tt> Current status is prototype.
+</li><li><tt>Configuration Parameters</tt> with "-xx-" and the corresponding features: e.g. sap-ui-xx-test-mobile
+</li><li><tt>Weinre Server Configuration:</tt> Might change or removed in future releases
+</li><li><tt>Control sap.ui.table.Table:</tt> Current status for Column Grouping is prototype.
+</li><li><tt>Control sap.ui.core.HTML:</tt> Support of HTML with multiple root nodes
+</li><li><tt>Control sap.uiext.inbox.Inbox,sap.uiext.inbox.SubstitutionRulesManager:</tt> API is not yet finished and might change
+</li><li><tt>Control sap.ui.suite.TaskCircle:</tt> API is not yet finished and might change
+</li><li><tt>Control sap.ui.suite.VerticalProgressIndicator:</tt> API is not yet finished and might change
+</li><li><tt>Control sap.ui.ux3.Shell:</tt> Personalization (functions  <tt>openPersonalizationDialog</tt>, <tt>initializePersonalization</tt>, <tt>sap.ui.ux3.ShellPersonalization</tt>, <tt>sap.ui.ux3.ShellColorPicker</tt>)
+</li><li><tt>Controls / Types sap.ui.ux3.Feed*:</tt> Open discusses might result in API changes and adaptation. Especially the text presentation (e.g. @-references and formatted text) is not yet clear. Also Feed Model topic still open.
+</li><li><tt>Control sap.ui.ux3.Exact:</tt> Open discussions might result in API changes and adaptation. Especially the Result Area is not final.
+</li><li><tt>Control sap.ui.ux3.ExactArea:</tt> Open discussions might result in API changes and adaptation.
+</li><li><tt>Type sap.ui.ux3.ActionBarSocialActions:</tt> Open discussions might result in API changes and adaptation.
+</li><li>Improved performance for touch devices: Mouse events are now fired on their corresponding touch events
+</li><li><tt>Control sap.makit.*:</tt> API is not yet finished and might change
+</li><li>Expert Theme Parameters for <tt>sap.m</tt> and <tt>sap.makit</tt> are not yet finished and might change
+</li><li><tt>Controls sap.viz.*:</tt> API of the new charting library is not yet finished and might change
+</li><li><tt>sap.ui.core.Component, sap.ui.core.ComponentContainer</tt> API is not yet finished and might change
+</li><li>Performance recorder: API is not yet finished and might change
+</li><li><tt>Control sap.ui.unified.ContentSwitcher</tt> has only experimental state and might be reworked or even removed in future.
+</li><li><tt>sap.ui.core.util.MockServer</tt> has only experimental state and might be reworked or even removed in future.
+</li></ul><h2 id="Version1.15.0August2013">Version 1.15.0 (August 2013)</h2>
+<p>
+A patch for the master code line. It contains the following fixes for the UI5 Core and Controls:
+</p>
+<p>
+<strong>Core</strong><br />
+</p>
+<ul><li>[FEATURE] Add the ability to call function import from the OdataModel
+</li><li>[FEATURE] Application: support for model propagation from Core
+</li><li>[FEATURE] Core: add version class jQuery.sap.Version
+</li><li>[FEATURE] Fragments tests and improvements
+</li><li>[FEATURE] Fragments: extend unit tests, minor fixes
+</li><li>[FEATURE] Fragments: methods for retrieving Controls by ID
+</li><li>[FEATURE] Implement Fragments
+</li><li>[FEATURE] MockServer: add the support for basic filtering
+</li><li>[FEATURE] MockServer: add the support for generating the mockdata
+</li><li>[FEATURE] ODataModel enhance create support
+</li><li>[FEATURE] Support Tool Extension (Data-Binding)
+</li><li>[FEATURE] Support declarations of 0..n associations in XMLViews
+</li><li>[FEATURE] Templating: UI5 support for HTML templates (experimental)
+</li><li>[FEATURE] Testsuite in Blue-crystal-like design
+</li><li>[FEATURE] Testsuite: set Blue Crystal as default theme of all libraries
+</li><li>[FEATURE] module loading: enhance the location information for debugging
+</li><li>[FEATURE] remove "not supported" message in Firefox (except if running in mvi)
+</li><li>[FEATURE] sap.m: Firefox support for CustomTile, CheckBox
+</li><li>[FEATURE] sap.ui.core.Icon: RTL support added for all icons.
+</li><li>[BUGFIX] Popup.js: setModal() method do not update classes
+</li><li>[FIX] AppCacheBuster: added infinite cache header for requests
+</li><li>[FIX] CSSMinimizer should not remove whitespace around "+"
+</li><li>[FIX] Callout: Fix multiple closed-event firing 
+</li><li>[FIX] Core, Application, MockServer: several enhancements
+</li><li>[FIX] Core: make sure that the init listeners are called
+</li><li>[FIX] Cursor position in Internet Explorer 9+ 
+</li><li>[FIX] Handle translate3d and rotate3d in CSS mirroring for RTL; fix bug with rgba colors
+</li><li>[FIX] LocalBusyIndicator: Close Popup before destroying LBI
+</li><li>[FIX] LocalBusyIndicator: LBI onAfterRendering handling 
+</li><li>[FIX] LocalBusyIndicator: New Implementation
+</li><li>[FIX] MockServer: fixed the QUnit test to work on IE8
+</li><li>[FIX] MockServer: prevent replace error for simple filtering support
+</li><li>[FIX] MockServer: refactoring &amp; support for dotted namespaces
+</li><li>[FIX] Models: fix setProperty function when path is unresolvable \n 
+</li><li>[FIX] NotificationBar: Text-Color and Timestamp-Color 
+</li><li>[FIX] ODataModel fix getPropertyMetadata which consider navigation properties now. 
+</li><li>[FIX] ODataModel: Avoid JS error when aborting requests
+</li><li>[FIX] Popup.js: a shield layer is added to prevent the delayed mouse events from reaching the underneath dom element.
+</li><li>[FIX] ResourceServlet: fix for experimental caching &amp; mime types
+</li><li>[FIX] ResourceServlet: fixed the experimental server cache
+</li><li>[FIX] Table: No action mode for cells without tabbable element 
+</li><li>[FIX] TreeBinding: fix initial filtering
+</li><li>[FIX] UX3/Shell: PaneBar width declaration
+</li><li>[FIX] XMLView: use correct logging function and give more error information
+</li><li>[FIX] datajs: Edm.String type bug for POST requests in Atom/XML format 
+</li><li>[FIX] sap.ui.core.Popup.js: ShieldLayer isn't hidden when popup is closed twice within 400ms.
+</li><li>[FIX] sap.ui.core.Popup.js: register the autoclose handler for mobile earlier 
+</li><li>[SECURITY][FIX] Utils: usage of latest commons-fileupload library 
+</li></ul><p>
+<strong>Desktop</strong><br />
+</p>
+<ul><li>[FEATURE] Core: add version class jQuery.sap.Version
+</li><li>[FEATURE] Table: Inform in sort event if column was added 
+</li><li>[FEATURE] ToolPopup: MaxWidth Property
+</li><li>[FIX] UX3/Shell: ToolPopup invalidation 
+</li><li>[FIX] Callout: Fix multiple closed-event firing 
+</li><li>[FIX] ComboBox: Avoid "oListBox is not a function" error
+</li><li>[FIX] Commons/ApplicationHeader: Add tooltip to logoff button 
+</li><li>[FIX] Commons/MenuTextFieldItem: Fix positioning of TextField 
+</li><li>[FIX] <a class="missing wiki">Commons/Menubar?</a>: Focus highlighting in HCB theme 
+</li><li>[FIX] DataSet: Fix for pagination feature (removing items which where already loaded) 
+</li><li>[FIX] DataSet: SegmentedButton lost focus when switching views
+</li><li>[FIX] Feeder: getMultilineText 
+</li><li>[FIX] FileUploader: Wrong width when using %-values 
+</li><li>[FIX] Link: fix for IE to suppress onbeforeunload when no href given 
+</li><li>[FIX] NotificationBar: Ellipses for Inplace Message 
+</li><li>[FIX] NotificationBar: Text-Color and Timestamp-Color 
+</li><li>[FIX] ResponsiveFlowLayout: CSS-Class Handling 
+</li><li>[FIX] Slider. Fire change only when value is changed
+</li><li>[FIX] Splitter: Enhance keyboard navigation \n 
+</li><li>[FIX] Splitter: fix height calculation in IE and FF 
+</li><li>[FIX] Splitter: fix special resizehandler 
+</li><li>[FIX] Table: Column menu does not open using keyboard navigation 
+</li><li>[FIX] Table: Header increasing when using multi header feature
+</li><li>[FIX] Table: No action mode for cells without tabbable element 
+</li><li>[FIX] Table: Removed timer which is not needed anymore 
+</li><li>[FIX] Table: added support for filter type during filter creation 
+</li><li>[FIX] Table: avoid rerender warnings when Table is not rendered. 
+</li><li>[FIX] Table: fixed the delegate support for columns 
+</li><li>[FIX] Table: fixed the scrolling behavior of the Table 
+</li><li>[FIX] Table: fixed unbindRows issue leading to JS error 
+</li><li>[FIX] Table: harmonized the column width calculation 
+</li><li>[FIX] Table: prevent issues when Table has no columns 
+</li><li>[FIX] Table: reset of filter value in menu 
+</li><li>[FIX] Table: support for value states of TextField/ComboBox/DatePicker 
+</li><li>[FIX] Table: unbindRows not working 
+</li><li>[FIX] TextArea: avoid memory leak for event handler
+</li><li>[FIX] ThingInspector tabchain does not work in light shell 
+</li><li>[FIX] ThingInspector: ThingGroup tooltips are not rendered 
+</li><li>[FIX] ToolPopup arrow pos., exception after addButton, QUnit Test 
+</li><li>[FIX] ToolPopup: Check of Opener
+</li><li>[FIX] ToolPopup: Make Control More Stable If no Opener Was Set 
+</li><li>[FIX] ToolPopup: Position of Arrow With fit-Collision 
+</li><li>[FIX] Toolbar: Properly handle incoming focus for invisible items 
+</li><li>[FIX] TreeTable: Added visible focus for node icons 
+</li><li>[FIX] TreeTable: Replaced expand/collapse icons for HCB theme 
+</li><li>[FIX] UX3/ExactBrowser: Fix 'cannot call method 
+</li><li>[FIX] UX3/NavigationBar: NavigationItem add missing "data-sap-ui" attribute 
+</li><li>[FIX] UX3/Shell: FacetBar height animation 
+</li><li>[FIX] UX3/Shell: Fix Colors of tools and pane overflow in BlueCrystal theme
+</li><li>[FIX] UX3/Shell: Fixed ToolbarOverflowButton appearance
+</li><li>[FIX] UX3/Shell: Overflow button in BlueCrystal positioned correctly
+</li><li>[FIX] UX3/Shell: PaneBar width declaration
+</li><li>[FIX] UX3/Shell: Panebar width
+</li><li>[FIX] UX3/Shell: Removed destroy call to wrong Aggregation
+</li><li>[FIX] commons.Dialog: Closing Via Autoclose 
+</li><li>[FIX]ComboBox in ItemNavigation Click on F4-Button focus different item
+</li><li>[FIX]ComboBox/DropdownBox: empty value after destroying and recreating 
+</li><li>[FIX]DatePicker empty after rerendering if pattern is set by binding 
+</li><li>[FIX]TextArea with MaxLength: possible to enter spaces before end 
+</li></ul><p>
+<strong>Mobile</strong><br />
+</p>
+<ul><li>[FEATURE] Cart App : device model &amp; refresh
+</li><li>[FEATURE] Enable Navigation Icon Blue Crystal
+</li><li>[FEATURE] IconTabFilter : default aggregation
+</li><li>[FEATURE] List control - Added header level API and activated background design CSS
+</li><li>[FEATURE] ObjectNumber: added 'state'property for ValueState colors
+</li><li>[FEATURE] POA : select for filtering instead of wave 1 popover with list
+</li><li>[FEATURE] Popover: Option for vertical/horizontal scrolling.
+</li><li>[FEATURE] Popover: added autoPositioning.
+</li><li>[FEATURE] Popover: setModal method add a new parameter for CSS classes
+</li><li>[FEATURE] PullToRefresh: new property for visibility
+</li><li>[FEATURE] Replace OpenSans font by Arial or system standard font
+</li><li>[FEATURE] cart app : confirm without flag on dialog
+</li><li>[FEATURE] cart app : mock server, removed img model (only used for MVI)
+</li><li>[FEATURE] cart/explored : device model
+</li><li>[FEATURE] demokit home : + poa app
+</li><li>[FEATURE] explored app : panel update
+</li><li>[FEATURE] explored app : theme check for carousel control
+</li><li>[FEATURE] mobile Shopping Cart demo, new layout for touch devices
+</li><li>[FEATURE] poa app : generated first version
+</li><li>[FEATURE] poa app : lazy tab loading
+</li><li>[FEATURE] poa app : removed confirm flag for dialog
+</li><li>[FEATURE] sap.m.Bar: enableFlexBox property is deprecated
+</li><li>[FEATURE] sap.m.Dialog &amp; sap.m.Popover: initialFocus association added to get foucs after open.
+</li><li>[FEATURE] sap.m.FeedListItem Added responsive phone design and showIcon property
+</li><li>[FEATURE] sap.m.IconTabBar: extended with tabContainer functions
+</li><li>[FEATURE] sap.m.List select all functionality
+</li><li>[FEATURE] sap.m.Panel - New container control
+</li><li>[FEATURE] sap.m.ProgressIndicator: Height is configurable.
+</li><li>[FEATURE] sap.m.RatingIndicator Keyboard Navigation &amp; Performance improvements
+</li><li>[FEATURE] sap.m.SearchField new property showRefreshButton
+</li><li>[FEATURE] sap.m.SelectDialog implementation
+</li><li>[FEATURE] sap.m.Shell: Firefox support
+</li><li>[FEATURE] sap.m.SplitContainer|SplitApp: new mode HideMode added to SplitContainer
+</li><li>[FEATURE] sap.m.input Add value help indicator icon and event
+</li><li>[FEATURE] sap.m: Firefox support for CustomTile, CheckBox
+</li><li>[FEATURE] SplitContainer: Split SplitApp into SplitContainer and SpliApp
+</li><li>[FEATURE] sap.m.label - added colon symbol after label in form
+</li><li>[FIX sap.m.Carousel: fixed old page id in page change event
+</li><li>[FIX] Growing List: hide trigger if no data available
+</li><li>[FIX] Growing list - experimental grouping flag removed
+</li><li>[FIX] IconTabBar: SelectEvents adapted.
+</li><li>[FIX] List: override the hard coded CSS min-width when using the API
+</li><li>[FIX] ListItemBase: Active Feedback timing
+</li><li>[FIX] Mobile: Update binding context in GrowingList
+</li><li>[FIX] Shopping cart demo app doesn't get correct total price on delete 
+</li><li>[FIX] TabContainer: enable the TC to be interrupted by the application
+</li><li>[FIX] Typo in Explored app
+</li><li>[FIX] fix ObjectNumber unit test
+</li><li>[FIX] sap.m.App: BeforeShow and AfterShow aren't fired for the first page at the first show 
+</li><li>[FIX] sap.m.BackgroundHelper: only write opacity if it has been modified
+</li><li>[FIX] sap.m.Bar: label text does not truncate in IE
+</li><li>[FIX] sap.m.BusyIndicator does not rotate 
+</li><li>[FIX] sap.m.Carousel: Removed check for duplicate ids 
+</li><li>[FIX] sap.m.Dialog: Dialog can't be closed properly in IE9
+</li><li>[FIX] sap.m.Dialog: contentWidth is now not applicable to Message type dialog.
+</li><li>[FIX] sap.m.IconTabBar/Filter: fix for CSN. 
+</li><li>[FIX] sap.m.ImageHelper: fixed custom css class update 
+</li><li>[FIX] sap.m.<a class="missing wiki">Label/Text?</a>: don't write text-align if empty
+</li><li>[FIX] sap.m.Popover: Arrow goes out of the popover area when it's near the border
+</li><li>[FIX] sap.m.Popover: Fix the issue where popover is immediately closed after it opens. 
+</li><li>[FIX] sap.m.Popover: popover doesn't fire beforeClose event when closed by autoclose 
+</li><li>[FIX] sap.m.ProgressIndicator: added box-sizing for Firefox.
+</li><li>[FIX] sap.m.SegmentedButton: Fixes width calculation in footer and uses the onload event when an image is used in a button
+</li><li>[FIX] sap.m.SplitContainer: last instance deregisters the resize handler of other instances.
+</li><li>[FIX] sap.m.StandardListItem: add the missing flexbox preferred size in css.
+</li><li>[FIX] sap.m.TileContainer 
+</li><li>[FIX] sap.m.TileContainer Tap &amp; Shake behaviour
+</li><li>[FIX] sap.m.demokit.explored application: error in the Form view 
+</li><li>[FIX] Select: position fixed do not work properly on mobile 
+</li><li>Improved MAKit chart legend and theming, and events will pass original event object as parameter.
+</li><li>Mobile: Experimental flag removed from growing list
+</li><li>Mobile: List control refactoring
+</li><li>Mobile: Text Control maxlines test
+</li><li>Resize parent container to 100% height feature moved from SplitContainer into SplitApp control.
+</li><li>Update sap.makit with fix for regression
+</li></ul><p>
+<strong>Inbox</strong><br />
+</p>
+<ul><li>Task Initiator in Table View.
+</li><li>[FEATURE] Inbox: Enabled Forward Action for "Ready" Task
+</li><li>[FIX] Inbox:Tooltip for OK Button in Substitution and Forward Button 
+</li><li>[FIX] TaskDescription: Task Description in RR View. 
+</li><li>[FIX] TaskInitiator: Task Initiator Value dosen't appear in BPM Inbox. 
+</li><li>[FIX] inbox: Fix for multiple $count calls
+</li><li>[FIX] Inbox: TLT SP05_HE BPM inbox New rule popup location 
+</li></ul><p>
+<strong>Others</strong><br />
+</p>
+<ul><li>[FEATURE] App-Gen , templates enhancements
+</li><li>[FEATURE] Mobile: Master-Detail Template
+</li><li>[FEATURE] Mobile: blueprint/master-detail app fix (AUA fixed)
+</li><li>[FEATURE] Theme Designer: New Visual Design
+</li><li>[FEATURE] Theme Designer: Small corrections in Image Picker
+</li><li>[FEATURE] Blue Crystal: define parameters for font sizes
+</li><li>[FEATURE] Create new library 'sap.ui.layout' that will contain newly developed layout controls, usable for desktop and mobile.
+</li><li>[FEATURE] Theme Designer: Mobile App Preview
+</li><li>[FEATURE] ThemeDesigner: New VisualDeign
+</li><li>[FEATURE] master detail blueprint : + filter
+</li><li>[FEATURE] msg types for master detail template
+</li><li>[FEATURE] sap.ui.layout.Grid: add new Control Grid Layout
+</li><li>[FIX] Form: Always white background in BlueChrystal theme
+</li><li>[FIX] ListBox: make focus outline visible in Gold Reflection and Blue Crystal 
+</li><li>[FIX] RichTextEditor: Allow setValue("") to clear content 
+</li><li>[FIX] Temporary workaround for not-escaped double quotes in library-parameters.json
+</li><li>[FIX] Theme Designer - TestRunner for automatic tests
+</li><li>[FIX] Theme Designer: Bugfixes, Automatic Tests
+</li><li>[FIX] Theme Designer: Fix position of customCss marker class
+</li><li>[FIX] Theme Designer: Navigation and Image Display
+</li><li>[FIX] ThemeDesigner: Set TimeOut higher for selenium tests
+</li><li>[FIX] UX3/ExactList: Fix Colors in BlueCrystal 
+</li><li>[FIX] UX3/Shell: Alignments in BlueCrystal Theme
+</li><li>[FIX] UX3/Shell: Fix SideBar Blue Chrystal Theme
+</li><li>[FIX] UX3/Shell: Fix tool active color in Blue Crystal theme
+</li><li>[FIX] app gen - missing file nav
+</li><li>[FIX] master detail : search field final version
+</li><li>[FIX] mobile Column List Table: layout adjustments
+</li><li>[FIX] sap.ui.layout.Grid MoveForward Fix + Demo Kit Page
+</li><li>[FIX] ComboBox: Adapted ComboBox font
+</li><li>[FIX] DatePicker: Adapted DatePicker font
+</li><li>[FIX] DropdownBox: Adapted DropdownBox font
+</li><li>[FIX] Support Monospace text Design in BlueCrystal
+</li></ul><p>
+<strong>Tools:</strong>
+</p>
+<ul><li>
+</li><li>[FEATURE] Eclipse Quick Fix to navigate from the code to the Demo Kit
+</li></ul>
+        
+        
+      </div>
+    </div>
+    
+  </body>
+</html>

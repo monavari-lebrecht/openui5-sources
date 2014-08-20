@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=5990455419424056"/>
+<title>Creating a Simple Control</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f02ece6f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Creating a Simple Control</h1>
+<div class="body"><p class="p">The following code snippet gives an example how to create a simple control with a
+                <span class="keyword cmdname">name</span> property. The control is used to render the text "Hello
+            &lt;name&gt;": </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.core.Control.extend("my.Hello", {      // call the new Control type "my.Hello" 
+                                              // and let it inherit from sap.ui.core.Control
+    metadata : {                              // the Control API
+        properties : {
+            "name" : "string"                 // setter and getter are created behind the scenes, 
+                                              // including data binding and type validation
+        }
+    },
+
+    renderer : function(oRm, oControl) {      // the part creating the HTML
+        oRm.write("&lt;span&gt;Hello ");
+        oRm.writeEscaped(oControl.getName()); // write the Control property 'name', with XSS protection
+        oRm.write("&lt;/span&gt;");
+    }
+});</pre></div>
+<p class="p">The new control is ready for use now. To instantiate and display the control, use the following
+            code:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">new my.Hello({name:"UI5"}).placeAt("content");</pre></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Creating a Simple Control";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

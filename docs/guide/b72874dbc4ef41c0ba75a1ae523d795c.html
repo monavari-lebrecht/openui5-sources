@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=35319480994684316"/>
+<title>Methods</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiob72874dbc4ef41c0ba75a1ae523d795c">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Methods</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p"><samp class="ph codeph">List</samp> provides the following two swipe methods: </p>
+<ul class="ul" id="loiob72874dbc4ef41c0ba75a1ae523d795c__ul_z52_dzn_2j"><li class="li"><samp class="ph codeph">swipeOut( [callback] )</samp>: After <samp class="ph codeph">swipeContent</samp> is shown, the
+				user can interact with the control, for example tap it. After this interaction, for
+				example on tap event, you can use this method to hide <samp class="ph codeph">swipeContent</samp>
+				from the screen. Per default, swipe for action works on auto hide mode. This means
+				that if a user tries to tap inside the list but outside the
+					<samp class="ph codeph">swipeContent</samp>, then the <samp class="ph codeph">swipeContent</samp> hides
+				automatically. After you call this method, <samp class="ph codeph">swipeContent</samp> hides with
+				animation and if you need to run code after the animation you can simply add a
+				callback function to this method as a first parameter. </li>
+<li class="li"><samp class="ph codeph">getSwipedItem()</samp>: This method returns the currently swiped list item. When no
+				item is swiped, null is returned. The <samp class="ph codeph">swipeContent</samp> events, for
+				example tap, are a good place to use this method to get information for which list
+				item <samp class="ph codeph">swipeContent</samp> is shown. </li>
+</ul>
+<p class="p">The following example shows a delete scenario:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var list3 = new sap.m.List({
+    swipeContent : new sap.m.Button({
+        text : "Delete",
+        type : "Reject",
+        tap : function() {
+            var oSwipedItem = list3.getSwipedItem(); // Get which list item is swiped to delete
+            list3.removeAggregation("items", oSwipedItem); // Remove this aggregation to delete list item from list
+            list3.swipeOut(); // we are done, hide the swipeContent from screen
+        }
+    }),
+    ....</pre></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Methods";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

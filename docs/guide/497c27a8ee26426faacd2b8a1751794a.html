@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="SAPUI5 is an HTML UI library, therefore styling is done using Cascading StyleSheets (CSS). This allows creating an impressive visual experience using a widely known standard technology which is well-accepted on the market."/>
+<meta name="description" content="SAPUI5 is an HTML UI library, therefore styling is done using Cascading StyleSheets (CSS). This allows creating an impressive visual experience using a widely known standard technology which is well-accepted on the market."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=05168560996205007"/>
+<title>Theming</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio497c27a8ee26426faacd2b8a1751794a">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Theming</h1>
+<div class="body conbody"><p class="shortdesc">SAPUI5 is an HTML UI library, therefore styling is done using Cascading StyleSheets
+		(CSS). This allows creating an impressive visual experience using a widely known standard
+		technology which is well-accepted on the market.</p>
+<p class="p"> SAPUI5 supports to create and use different visual designs - called <dfn class="term">themes</dfn> - that
+			can be used alternatively and switched on the fly, thus allowing for the same
+			application to have a very different look, depending on the user's design preference, or
+			on accessibility requirements. Existing themes can serve as a base for new themes and in
+			case of new design trends, it is possible to create a matching theme for all existing
+			applications without modifying the applications. The abstraction level is that high that
+			the theme handling is decoupled from application development and done on a separate
+			layer. The SAPUI5 library takes care of loading the required CSS files and offers ways
+			of switching themes.</p>
+<p class="p">On top of pure CSS, SAPUI5 offers a variety of optional features that add value regarding
+			modularization, modification, compatibility and performance:</p>
+<ul class="ul" id="loio497c27a8ee26426faacd2b8a1751794a__ul_plw_g2t_d4"><li class="li">CSS variables, mix-ins, color calculations and other functions, provided by the Open Source
+				library <span class="ph pname">LESS</span>.</li>
+<li class="li">In particular the CSS variables are used for centrally defined and centrally
+				modifiable colors</li>
+<li class="li">Compilation of one CSS file per control library out of modular per-control CSS
+				files</li>
+<li class="li">Optimization/compression of CSS size</li>
+<li class="li">Clean browser switch and mobile platform detection available (inside CSS code)</li>
+<li class="li">Base theme (as base for an always required style to reduce the amount of CSS
+				required for specific themes)</li>
+<li class="li">Generic Right-to-Left support</li>
+</ul>
+<p class="p">To ensure these functions, SAPUI5 uses the following components: </p>
+<ul class="ul" id="loio497c27a8ee26426faacd2b8a1751794a__ul_pwp_fnt_f4"><li class="li">A CSS generator with several functions: LESS processing (CSS variables substitution
+				etc.), merge of CSS files created for different themes and controls for optimal
+				runtime consumption, as well as compression or right-to-left substitution if
+				required.</li>
+<li class="li">The SAPUI5 runtime takes care of loading the appropriate CSS file for the control
+				libraries used in the application page by adding <samp class="ph codeph">&lt;style&gt;</samp> tags
+				to the document head. There is also an API available for switching themes which
+				replaces the CSS URLs and therefore does not modify the application state.</li>
+</ul>
+<div class="section"><div class="section_title">Options to theme your SAPUI5 application</div><div type="Options to theme your SAPUI5 application">
+			
+			<p class="p">To theme your application you can choose between different options:</p>
+
+			<ul class="ul" id="loio497c27a8ee26426faacd2b8a1751794a__ol_lg1_zmt_mn"><li class="li">You adapt an existing theme by using the <span class="ph pname">UI theme designer</span>, which
+					basically modifies the color scheme, but in a very easy, non-technical manner
+					with instant live preview. Adaptation parameters are limited, but the UI theme
+					designer also allows adding custom CSS, which gives the freedom to adapt
+					basically everything.</li>
+<li class="li">Create a new theme from scratch, writing every piece of CSS which will be loaded
+					later. The only requirement is to have <span class="ph filepath">library.css</span> files
+					within a certain folder structure (which also defines the theme name).</li>
+<li class="li">You adapt an existing theme by adding CSS on application level. This is the
+					easiest option and still sufficient for many use-cases. One can technically
+					adapt and change everything. The adaptation is rather done on top of an existing
+					theme and only available within the specific application.</li>
+</ul>
+
+			<p class="p">All options except the last one result in a new standalone theme which needs to be
+				deployed and referenced by its name in the application and which could be used by
+				any application.</p>
+
+			<p class="p">In all options the CSS developer could choose to limit the styling effort to those
+				controls which are actually used in the application (which of course limits the
+				re-use value of the theme in other applications).</p>
+
+		</div></div>
+<div class="section"><div class="section_title"/>
+			<p class="p"/>
+</div>
+<div class="section"><div class="section_title">What to consider when developing custom HTML or your own controls?</div><div type="What to consider when developing custom HTML or your own controls?">
+			
+			<ul class="ul" id="loio497c27a8ee26426faacd2b8a1751794a__ul_u2z_wzw_qn"><li class="li">
+					<p class="p">To ensure that your SAPUI5 application's theme can be adapted easily, you
+						should follow some recommendations: </p>
+
+					<p class="p">For more information, see <a class="xref" href="89ec37d84a02428fb2462acd3dc283cb.html" title="There are several things you should keep in mind to ensure that an application can actually be themed.">Creating Themable User Interfaces</a></p>
+
+				</li>
+<li class="li">To ensure that your custom content fits to the colors of the SAPUI5 theme used, you can use
+					specific CSS classes.<p class="p">For more information, see <a class="xref" href="ea08f53503da42c19afd342f4b0c9ec7.html">CSS Classes for Theme Parameters</a></p>
+
+				</li>
+</ul>
+
+		</div></div>
+<div class="section"><div class="section_title">More Information</div><div type="More Information">
+			
+			<p class="p">The UI theme designer is delivered on SAP HANA Cloud Platform.</p>
+
+			<p class="p">For more information, see: <a class="xref" href="https://help.hana.ondemand.com/theme_designer/frameset.htm">UI Theme Designer</a></p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="https://help.hana.ondemand.com/theme_designer/frameset.htm?91ebfe2a14204244bd052a03018d6781.html">Basics of Theming</a></div>
+<div><a class="link" href="cb65d9e75bef4f239c26a9f9c294f5a1.html">SAPUI5 Theming Concept: Right-to-left Support</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Theming";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=12295228357345289"/>
+<title>Standard Variant for Bootstrapping</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f1f4536f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Standard Variant for Bootstrapping</h1>
+<div class="body"><p class="p">The standard variant is the most common use case for bootstrapping. In this variant, you
+			include the <samp class="ph codeph">sap-ui-core.js</samp> file in your HTML page. This variant is
+			self-contained, meaning that it already contains jQuery as well as some jQuery plugins.
+			An applications only specifies the <samp class="ph codeph">sap-ui-core.js</samp> file on its page and
+			SAPUI5 runtime does the rest automatically.</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">    &lt;script 
+            id="sap-ui-bootstrap"            
+            src="resources/sap-ui-core.js" 
+            data-sap-ui-libs="sap.ui.commons"
+            data-sap-ui-theme="sap_bluecrystal" &gt;
+    &lt;/script&gt;</pre></div>
+<p class="p">SAPUI5 synchronously loads the libraries specified in the
+				<samp class="ph codeph">data-sap-ui-libs</samp> configuration option. If a libary requires a
+			library that is not specified in the configuration, SAPUI5 loads this library
+			automatically. You use the <samp class="ph codeph">data-sap-ui-theme</samp> configuration option to
+			specifiy the style sheet you want to load for all libraries.</p>
+<p class="p">Subsequent to the bootstrap script tag, an application can call most of the SAPUI5 APIs. The
+			application can access the core APIs, or instantiate, configure, and place controls. The
+			document object model (DOM), however, can only be accessed after the controls have been
+			rendered, that is, only after the document is ready. The application can use the
+				<samp class="ph codeph">attachInitEvent</samp> method to be notified about that event.</p>
+<div class="note note" id="loio91f1f4536f4d1014b6dd926db0e91070__note_N1002A_N10013_N10001"><span class="notetitle">Note</span> In the default configuration, SAPUI5 automatically activates
+			the <samp class="ph codeph">preload=sync</samp> mode when running from optimized sources. For more
+			information, see <a class="xref" href="91f1e3626f4d1014b6dd926db0e91070.html">Preload Variant for
+				Bootstrapping</a>. </div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="91f08de06f4d1014b6dd926db0e91070.html">Configuration of the SAPUI5 Runtime</a></div>
+</div>
+
+<div class="linklist linklist"/>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Standard Variant for Bootstrapping";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

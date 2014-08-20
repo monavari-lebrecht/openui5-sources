@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.base.Poolable</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Interface sap.ui.base.Poolable
+					</h1>
+					
+					
+					
+					
+						<div class="classRelation implementations"><span class="caption">known direct implementations: </span> <a title="sap.ui.base.Event" href="../symbols/sap.ui.base.Event.html">Event</a></div>
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>Contract for objects that can be pooled by ObjectPool</p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+		
+
+
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Called by the object pool when this instance will be actived for a caller."><a href="../symbols/sap.ui.base.Poolable.html#init">init</a></b><span class='signature'>()</span>
+									<span class='description'>Called by the object pool when this instance will be actived for a caller.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Called by the object pool when an instance is returned to the pool."><a href="../symbols/sap.ui.base.Poolable.html#reset">reset</a></b><span class='signature'>()</span>
+									<span class='description'>Called by the object pool when an instance is returned to the pool.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+					
+		
+		
+
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod'>
+										<a name="init"> </a>
+										<div class="itemTitle icon">
+											init<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Called by the object pool when this instance will be actived for a caller.
+The same method will be called after a new instance has been created by an otherwise
+exhausted pool.
+</p><p>
+If the caller provided any arguments to <a href="../symbols/sap.ui.base.ObjectPool.html#borrowObject">sap.ui.base.ObjectPool#borrowObject</a>
+all arguments will be propagated to this method.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="reset"> </a>
+										<div class="itemTitle icon">
+											reset<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Called by the object pool when an instance is returned to the pool.
+While no specific implementation is required, poolable objects in general
+should clean all caller specific state (set to null) in this method to
+avoid memory leaks and to enforce garbage collection of the caller state.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

@@ -1,0 +1,492 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.core.BusyIndicator</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Static Class sap.ui.core.BusyIndicator
+					</h1>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>Provides methods to show or hide a waiting animation covering the whole page and blocking user interaction.</p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+		
+
+
+					
+						
+						
+						
+						
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Registers a handler for the &quot;close&quot; event"><a href="../symbols/sap.ui.core.BusyIndicator.html#.attachClose">sap.ui.core.BusyIndicator.attachClose</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which to call the given function.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Registers a handler for the "close" event</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Registers a handler for the &quot;open&quot; event."><a href="../symbols/sap.ui.core.BusyIndicator.html#.attachOpen">sap.ui.core.BusyIndicator.attachOpen</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which to call the given function.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Registers a handler for the "open" event.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Unregisters a handler for the &quot;close&quot; event"><a href="../symbols/sap.ui.core.BusyIndicator.html#.detachClose">sap.ui.core.BusyIndicator.detachClose</a></b><span class='signature'>(<span title="(function) The callback function to unregister">fnFunction</span>, <span title="(object) Object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Unregisters a handler for the "close" event</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Unregisters a handler for the &quot;open&quot; event"><a href="../symbols/sap.ui.core.BusyIndicator.html#.detachOpen">sap.ui.core.BusyIndicator.detachOpen</a></b><span class='signature'>(<span title="(function) The callback function to unregister">fnFunction</span>, <span title="(object) Object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Unregisters a handler for the "open" event</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Removes the BusyIndicator from the screen"><a href="../symbols/sap.ui.core.BusyIndicator.html#.hide">sap.ui.core.BusyIndicator.hide</a></b><span class='signature'>()</span>
+									<span class='description'>Removes the BusyIndicator from the screen</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Displays the BusyIndicator and starts blocking all user input."><a href="../symbols/sap.ui.core.BusyIndicator.html#.show">sap.ui.core.BusyIndicator.show</a></b><span class='signature'>(<span title="(int) The delay in milliseconds before opening the BusyIndicator.">iDelay</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Displays the BusyIndicator and starts blocking all user input.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+					
+		
+		
+
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".attachClose"> </a>
+										<div class="itemTitle icon">
+											sap.ui.core.BusyIndicator.attachClose<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which to call the given function.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.core.BusyIndicator">: <a href="../symbols/sap.ui.core.BusyIndicator.html">sap.ui.core.BusyIndicator</a></span>
+										</div>
+										<div class="full-description">
+											Registers a handler for the "close" event
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs. This function will be called on the
+           oListener-instance (if present) or in a 'static way'.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Object on which to call the given function.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.BusyIndicator.html">sap.ui.core.BusyIndicator</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".attachOpen"> </a>
+										<div class="itemTitle icon">
+											sap.ui.core.BusyIndicator.attachOpen<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which to call the given function.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.core.BusyIndicator">: <a href="../symbols/sap.ui.core.BusyIndicator.html">sap.ui.core.BusyIndicator</a></span>
+										</div>
+										<div class="full-description">
+											Registers a handler for the "open" event.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs. This function will be called on the
+           oListener-instance (if present) or in a 'static way'.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Object on which to call the given function.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.BusyIndicator.html">sap.ui.core.BusyIndicator</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".detachClose"> </a>
+										<div class="itemTitle icon">
+											sap.ui.core.BusyIndicator.detachClose<span class="signature">(<span title="(function) The callback function to unregister">fnFunction</span>, <span title="(object) Object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.ui.core.BusyIndicator">: <a href="../symbols/sap.ui.core.BusyIndicator.html">sap.ui.core.BusyIndicator</a></span>
+										</div>
+										<div class="full-description">
+											Unregisters a handler for the "close" event
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The callback function to unregister
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.BusyIndicator.html">sap.ui.core.BusyIndicator</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".detachOpen"> </a>
+										<div class="itemTitle icon">
+											sap.ui.core.BusyIndicator.detachOpen<span class="signature">(<span title="(function) The callback function to unregister">fnFunction</span>, <span title="(object) Object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.ui.core.BusyIndicator">: <a href="../symbols/sap.ui.core.BusyIndicator.html">sap.ui.core.BusyIndicator</a></span>
+										</div>
+										<div class="full-description">
+											Unregisters a handler for the "open" event
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The callback function to unregister
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.BusyIndicator.html">sap.ui.core.BusyIndicator</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".hide"> </a>
+										<div class="itemTitle icon">
+											sap.ui.core.BusyIndicator.hide<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Removes the BusyIndicator from the screen
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".show"> </a>
+										<div class="itemTitle icon">
+											sap.ui.core.BusyIndicator.show<span class="signature">(<span title="(int) The delay in milliseconds before opening the BusyIndicator.">iDelay</span><i class="help" title="Optional parameter">?</i>)</span>
+											
+										</div>
+										<div class="full-description">
+											Displays the BusyIndicator and starts blocking all user input.
+This only happens after some delay and if after that delay the BusyIndicator.hide() has not yet been called in the meantime.
+There is a certain default value for the delay, but that one can be overridden.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iDelay</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    The delay in milliseconds before opening the BusyIndicator. It is not opened if hide() is called before end of the delay. If no delay (or no valid delay) is given, the default value is used.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

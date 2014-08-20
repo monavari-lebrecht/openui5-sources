@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="On top of pure CSS, SAPUI5 introduces advanced theming concepts and functions which can be used optionally."/>
+<meta name="description" content="On top of pure CSS, SAPUI5 introduces advanced theming concepts and functions which can be used optionally."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=9989620384070416"/>
+<title>Enhanced Theming Concepts</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio45df6dff504647c686ab9ba72af827f6">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Enhanced Theming Concepts</h1>
+<div class="body conbody"><p class="shortdesc">On top of pure CSS, SAPUI5 introduces advanced theming concepts and functions which can
+		be used optionally.</p>
+<p class="p">This includes the following:</p>
+<div class="section"><div class="section_title">CSS Variables, Functions and More</div><div type="CSS Variables, Functions and More">
+			
+			<p class="p">SAPUI5 uses the popular CSS preprocessor <a class="extlink" href="http://help.sap.com/disclaimer?site=http://lesscss.org/"> LESS<img src="images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>. This tool introduces several features, including
+				CSS variables - a concept which also has been heavily demanded by the CSS community:
+				in any UI5-controlled CSS file, variables can be defined and then be referenced
+				anywhere in the CSS code of the same library. These variables are mainly used for
+				colors. All CSS variables are global. The CSS variable concept contributes to a
+				consistent way in implementing and changing the styles.</p>
+
+			<p class="p">LESS adds more features like color calculations, mix-ins and CSS selector nesting. The color
+				calculations are used in SAPUI5 to derive many different color shades from just a
+				few variables.</p>
+
+			<p class="p">Here is the syntax:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">@sapUiText: #000000; /* define the text color as 'black' */
+
+button {
+   color: @sapUiText; /* buttons will automatically have the current text color, which is '#000000' right now */
+    [...]
+}
+</pre></div>
+
+			<p class="p">The SAPUI5 theme generator then takes care of substituting all references to a CSS variable by
+				the current value of this variable. This happens during the build of the control
+				library.</p>
+
+			<div class="note note"><span class="notetitle">Note</span> In development scenarios this LESS processing may even happen at runtime in the
+				browser to shorten build time for SAPUI5 libraries. This is indicated by a
+					<span class="ph uicontrol">less mode</span> rectangle when a page is launched.</div>
+
+			<p class="p">Additionally, a specific theme can modify the CSS parameter values given by the base theme. So
+				a control can just define its text color to use <samp class="ph codeph">sapUiText</samp> by
+				default which will automatically take care of applying the correct color for every
+				theme or user modification: The theme generation will create one CSS file per theme,
+				and the substitution of the CSS parameter references will always take the
+				theme-dependent value into account. So a visually very different theme can be easily
+				created by just changing a couple of colors.</p>
+
+			<p class="p">While every library and control can introduce their own CSS variables, those defined in
+					<span class="ph filepath">global.css</span> are most important. Optimally, they should be
+				few and simple enough to be understood by many end-users (similar to what the
+				Windows operating system offers to end-users), but still cover enough aspects of the
+				visual appearance to make them sufficient for many customer-required theme
+				modifications. </p>
+
+			
+			<p class="p">Additional benefits of CSS variables are for example:</p>
+
+			<ul class="ul" id="loio45df6dff504647c686ab9ba72af827f6__ul_tlf_bqp_24"><li class="li">They can be used to generically build simple styling tools that allow a limited degree of
+					freedom (=changing the CSS parameter values). The UI theme designer is an
+					example for such a tool.</li>
+<li class="li">They can also be linked to metadata like what group of colors they belong to, to
+					which colors they need to have some visual contrast, etc.</li>
+</ul>
+
+		</div></div>
+<div class="section"><div class="section_title">Compilation of one css file</div><div type="Compilation of one css file">
+			
+			<p class="p">SAPUI5 CSS generation does not only substitute the CSS variable values but also takes care of
+				bringing all CSS files from a control library into one file to be loaded at runtime,
+				this increases the performance. The reasons to not have all styles defined within
+				one file at development time are for example:</p>
+
+			<ul class="ul" id="loio45df6dff504647c686ab9ba72af827f6__ul_kmf_bqp_24"><li class="li">Less collisions and merging when different developers edit the styles of their
+					controls.</li>
+<li class="li">Clear separation between the styles for different controls (this helps greatly
+					with estimating/testing the impact of a CSS modification)</li>
+<li class="li">Keeping the door open for future optimizations regarding runtime performance and
+					data transfer by tailoring CSS files on server-side that only contain the CSS
+					required on the current application page.</li>
+</ul>
+
+		</div></div>
+<div class="section"><div class="section_title">Optimization and compression of css size</div><div type="Optimization and compression of css size">
+			
+			<p class="p">For performance reasons, the SAPUI5 CSS generation can optionally remove all comments and
+				unnecessary whitespace and can collapse verbose declarations into a more compact
+				format.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">"Clean" Browser switch available inside css code</div><div type="&#34;Clean&#34; Browser switch available inside css code">
+			
+			<p class="p">In all SAPUI5 application pages, the HTML root tag of the document gets the additional
+				attribute <samp class="ph codeph">data-sap-ui-browser</samp> where the value is the type and the
+				current browser version. When browser-specific CSS needs to be written, this
+				attribute can be used in CSS selectors.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">html[data-sap-ui-browser="ie8"] button {  /* this rule will only be applied if the current browser is Internet Explorer 8 */
+   margin-top: 0px;
+}
+
+html[data-sap-ui-browser*="ie"] button {  /* this rule will only be applied if the current browser is ANY version of IE */
+   padding-top: 0px;
+}
+</pre></div>
+
+		</div></div>
+<div class="section"><div class="section_title">Base Theme for Always-required Style</div><div type="Base Theme for Always-required Style">
+			
+			<p class="p">While some of the style and layout applied using CSS is clearly depending on the current theme
+				- and customers are likely to modify such style rules - there are other style rules
+				that are required for a control to work properly and unlikely to differ for
+				different themes. Examples are: the overflow behavior, positioning of popup
+				elements, the mouse cursor type, the display mode and others more.</p>
+
+			<p class="p">SAPUI5 promotes and supports keeping those style definitions in the so-called base theme,
+				which serves as a common base for all themes.</p>
+
+			<p class="p">Themes are built upon this base style, defining their specific visual design by applying
+				colors and images, sizes and fonts. SAPUI5 theme generation takes care of combining
+				the base theme with the specific theme for each generated theme CSS file. Because
+				the specific CSS is appended to the base theme, a specific theme can always override
+				styles defined in the base theme. If this step is required often, the respective
+				style declaration probably should not be located in the base theme.</p>
+
+			<p class="p">Any style declarations which are referencing CSS variables (at least those common
+				ones defined in the base theme) can also be done in the base theme, and it is
+				sufficient to do it only there: The CSS generation will apply the correct value for
+				each respective theme. So this split between base theme and specific themes avoids
+				double creation and maintenance of CSS parts which are common for all themes and
+				keeps the CSS files smaller that need to be written for any new theme.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Generic Right-to-Left Support</div><div type="Generic Right-to-Left Support">
+			
+			<p class="p">For certain countries, RTL text mode (right-to-left) needs to be supported. In order to avoid
+				the need to create a completely new set of CSS files for those countries, SAPUI5
+				supports the generic RTL generation. Basically, right and left margins are
+				exchanged, and much, much more (everything is mirrored, including CSS3 rotations
+				etc.).</p>
+
+			<p class="p">Everything else which is not covered by this automatic transformation can be fixed by
+				style rules that are only applied in the RTL case.</p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Enhanced Theming Concepts";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

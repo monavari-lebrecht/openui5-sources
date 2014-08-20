@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="LOIO.FOLDER.IWB_FOLDER_ID" content="1234AC50C238B656E10000000A445394"/>
+<meta name="LOIO.FOLDER.IWB_TECH_NAME" content="HELPX.UI_EXT"/>
+<meta name="LOIO.FOLDER.IWB_FOLDER_GROUP" content="SAPXH"/>
+<meta name="LOIO.FOLDER.IWB_SHH_KEY" content=""/>
+<meta name="LOIO.FOLDER.IWB_TRANSLATION_MEMORY" content=""/>
+<meta name="LOIO.FOLDER.TERM_DOMAIN" content="FF"/>
+<meta name="LOIO.IWB_TYPE" content="ICG"/>
+<meta name="LOIO.IWB_SHH_KEY" content=""/>
+<meta name="LOIO.KW_CONVREF.CLASS" content=""/>
+<meta name="LOIO.KW_CONVREF.OBJID" content=""/>
+<meta name="PHIO.IWB_INDUSTRY" content="SHL"/>
+<meta name="PHIO.RELEASE" content="1.0_2014Q3"/>
+<meta name="PHIO.CREATED_AT" content="20140605161051"/>
+<meta name="PHIO.LAST_CHANGED_AT" content="20140605161051"/>
+<meta name="PHIO.IWB_LEVEL" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=733542565556819"/>
+<title>Predefined Representation Types</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio74db7d53b5c19456e10000000a423f68">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Predefined Representation Types</h1>
+<div class="body"><div class="section"><div class="section_title">Use</div><div type="Use"><p class="p">The UI component of APF provides predefined representation types that can be used to display data.</p>
+ <p class="p">These representation types are predefined in the file <span class="ph sap-technical-name sap-technical-name">sap/apf/core/representationTypes.js</span>. They can be referenced in the analytical content configuration using their IDs.</p>
+ <p class="p">Each representation type has a constructor assigned. The constructor is used as a parameter in the representation type object of the configuration file and points to the implementation of the representation type. The charts shipped with APF are implemented using the VIZ charting library (<span class="ph sap-technical-name sap-technical-name">sap.viz</span>) that is available with SAP UI5.</p>
+ <p class="p">The following table lists the available representation types:</p>
+ 
+<div class="tablenoborder"><table summary="" class="table" frame="border" border="1" rules="all"><thead class="thead" align="left"><tr class="row"><th class="entry" valign="top" id="d521046e61"><p class="p">Chart Name</p>
+ </th>
+<th class="entry" valign="top" id="d521046e65"><p class="p">ID</p>
+ </th>
+<th class="entry" valign="top" id="d521046e69"><p class="p">Constructor</p>
+ </th>
+<th class="entry" valign="top" id="d521046e73"><p class="p">Chart in VIZ Charting Library</p>
+ </th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p">Column chart</p>
+ </td>
+<td class="entry" valign="top" headers="d521046e65 "><p class="p">ColumnChart</p>
+ </td>
+<td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p"><span class="ph sap-technical-name sap-technical-name">sap.apf.ui.representations.columnChart</span></p>
+ </td>
+<td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p"><span class="ph sap-technical-name sap-technical-name">SAP Viz Column (sap.viz.ui5.column)</span></p>
+ </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p">Line chart</p>
+ </td>
+<td class="entry" valign="top" headers="d521046e65 "><p class="p">LineChart</p>
+ </td>
+<td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p"><span class="ph sap-technical-name sap-technical-name">sap.apf.ui.representations.lineChart</span></p>
+ </td>
+<td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p"><span class="ph sap-technical-name sap-technical-name">SAP Viz Line (sap.viz.ui5.Line)</span></p>
+ </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p">Scatter plot</p>
+ </td>
+<td class="entry" valign="top" headers="d521046e65 "><p class="p">ScatterPlotChart</p>
+ </td>
+<td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p"><span class="ph sap-technical-name sap-technical-name">sap.apf.ui.representations.scatterPlotChart</span></p>
+ </td>
+<td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p"><span class="ph sap-technical-name sap-technical-name">SAP Viz Scatter (sap.viz.ui5.Scatter)</span></p>
+ </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p">Pie chart</p>
+ </td>
+<td class="entry" valign="top" headers="d521046e65 "><p class="p">PieChart</p>
+ </td>
+<td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p"><span class="ph sap-technical-name sap-technical-name">sap.apf.ui.representations.pieChart</span></p>
+ </td>
+<td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p"><span class="ph sap-technical-name sap-technical-name">SAP Viz Pie (sap.viz.ui5.Pie)</span></p>
+ </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p">Stacked column chart</p>
+ </td>
+<td class="entry" valign="top" headers="d521046e65 "><p class="p">StackedColumnChart</p>
+ </td>
+<td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p"><span class="ph sap-technical-name sap-technical-name">sap.apf.ui.representations.stackColumnChart</span></p>
+ </td>
+<td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p"><span class="ph sap-technical-name sap-technical-name">SAP Viz StackedColumn (sap.viz.ui5.StackedColumn)</span></p>
+ </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p">Percentage stacked column chart</p>
+ </td>
+<td class="entry" valign="top" headers="d521046e65 "><p class="p">PercentageStackedColumnChart</p>
+ </td>
+<td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p"><span class="ph sap-technical-name sap-technical-name">sap.apf.ui.representations.percentageStackedColumn</span></p>
+ </td>
+<td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p"><span class="ph sap-technical-name sap-technical-name">SAP Viz Percentage Stacked Column (sap.viz.ui5.StackedColumn100)</span></p>
+ </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p">Sorted column chart</p>
+ </td>
+<td class="entry" valign="top" headers="d521046e65 "><p class="p">ColumnChartSorted</p>
+ </td>
+<td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p"><span class="ph sap-technical-name sap-technical-name">sap.apf.ui.representations.columnChart</span></p>
+ </td>
+<td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p"><span class="ph sap-technical-name sap-technical-name">SAP Viz Column (sap.viz.ui5.column)</span></p>
+ </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p">Clustered column chart</p>
+ </td>
+<td class="entry" valign="top" headers="d521046e65 "><p class="p">ColumnChartClustered</p>
+ </td>
+<td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p"><span class="ph sap-technical-name sap-technical-name">sap.apf.ui.representations.columnChart</span></p>
+ </td>
+<td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p"><span class="ph sap-technical-name sap-technical-name">SAP Viz Column (sap.viz.ui5.column)</span></p>
+ </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p">Sorted and clustered column chart</p>
+ </td>
+<td class="entry" valign="top" headers="d521046e65 "><p class="p">ColumnChartClusteredSorted</p>
+ </td>
+<td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p"><span class="ph sap-technical-name sap-technical-name">sap.apf.ui.representations.columnChart</span></p>
+ </td>
+<td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p"><span class="ph sap-technical-name sap-technical-name">SAP Viz StackedColumn (sap.viz.ui5.StackedColumn)</span></p>
+ </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p">Sorted stacked column chart</p>
+ </td>
+<td class="entry" valign="top" headers="d521046e65 "><p class="p">StackedColumnSorted</p>
+ </td>
+<td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p"><span class="ph sap-technical-name sap-technical-name">sap.apf.ui.representations.stackedColumnChart</span></p>
+ </td>
+<td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p"><span class="ph sap-technical-name sap-technical-name">SAP Viz Column (sap.viz.ui5.column)</span></p>
+ </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p">Table representation</p>
+ </td>
+<td class="entry" valign="top" headers="d521046e65 "><p class="p">Table</p>
+ </td>
+<td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p"><span class="ph sap-technical-name sap-technical-name">sap.apf.ui.representations.tableRepresentation</span></p>
+ </td>
+<td class="entry" valign="top" headers="d521046e61 d521046e69 d521046e73 "><p class="p"><span class="ph sap-technical-name sap-technical-name">SAP Ui5 Table (sap.ui.table.Table)</span></p>
+ </td>
+</tr>
+</tbody>
+</table>
+</div>
+  <p class="p">You can use the predefined representation types to define representations in your application.
+                To do so, depending on the chart type you choose, you must define parameters such as
+                the fields used for the x-axis and y-axis, or the field by which a chart is
+                sorted.</p>
+ <p class="p">To overwrite a predefined representation type, you can create a new <span class="ph sap-technical-name sap-technical-name">representation type</span> object with the same ID. When you include the ID in a <span class="ph sap-technical-name sap-technical-name">representation</span> object, the new representation type is used instead of the predefined one.</p>
+ <p class="p">You can also create your own representation types. To do so, create a new <span class="ph sap-technical-name sap-technical-name">representation type</span> object with a new ID for each representation type you want to create.</p>
+ </div></div>
+</div>
+<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="5a467c53595a6655e10000000a423f68.html">Analytical Content Configuration</a></div>
+<div><a class="link" href="6f467c53595a6655e10000000a423f68.html">The Representation Type Object</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Predefined Representation Types";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

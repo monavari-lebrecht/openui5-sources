@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="All functions that are not directly related to the user interface should be handled in the controller to ensure clear separation between UI and data. In this case you add a method to handle the event, which is attached to a button."/>
+<meta name="description" content="All functions that are not directly related to the user interface should be handled in the controller to ensure clear separation between UI and data. In this case you add a method to handle the event, which is attached to a button."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=6778303767285788"/>
+<title>Implement a Method in the Controller</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio10c6b87c3728417f95a428cb7decb64c">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Implement a Method in the Controller</h1>
+<div class="body taskbody"><p class="shortdesc">All functions that are not directly related to the user interface should be handled in
+		the controller to ensure clear separation between UI and data. In this case you add a method
+		to handle the event, which is attached to a button. </p>
+<div class="section prereq p" id="loio10c6b87c3728417f95a428cb7decb64c__prereq_N10015_N10012_N10001"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>You've created a button as described in: <a class="xref" href="07d2bdc3ad0e4c62b14123e6f80dca56.html" title="In your SAPUI5 application project, the first step to build your application is to add a control to your view and implement a method to react on user interaction. In this case you create a button and implement a function to react when the user presses it.">Add a Control to Your View</a></div>
+<div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><div class="li step p" id="loio10c6b87c3728417f95a428cb7decb64c__step_N1001F_N1001C_N10011_N10001"><span class="ph cmd">To handle this event, add the following function to the controller: </span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">doIt : function(oEvent) { alert(oEvent.getSource().getId() + " does it!"); }</pre></div>
+
+				</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Implement a Method in the Controller";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

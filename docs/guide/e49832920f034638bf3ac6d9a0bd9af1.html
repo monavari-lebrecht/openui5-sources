@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=7992563102587249"/>
+<title>Events</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loioe49832920f034638bf3ac6d9a0bd9af1">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Events</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p"><samp class="ph codeph">List</samp> provides a <samp class="ph codeph">swipe</samp> event when a user swipes left to bring
+            in a control on the right hand side of the list item. This event is fired before the
+                <samp class="ph codeph">swipeContent</samp> is shown and contains the following three important
+            parameters: </p>
+<ul class="ul" id="loioe49832920f034638bf3ac6d9a0bd9af1__ul_p4t_yyn_2j"><li class="li"><samp class="ph codeph">listItem</samp> : List item that fired the swipe event </li>
+<li class="li"><samp class="ph codeph">swipeContent</samp>: Specifies the <samp class="ph codeph">swipeContent</samp> control to show on
+                the right hand side of a list item</li>
+<li class="li"><samp class="ph codeph">srcControl</samp>: Specifies the control that fired the swipe event </li>
+</ul>
+<p class="p">This means that you can dynamically change the swipe content according to the respective list
+            item. If a list item, for example, has not yet been approved, the <em class="ph i">Approve</em> button
+            is shown. After approval or if it is already approved, the <em class="ph i">Disapprove</em> button is
+            shown. See the following example: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var list1 = new sap.m.List({
+    swipeContent : new sap.m.Button({
+        text : "Approve",
+        type : "Accept",
+            tap : function() {
+               /* ...approving code goes here... */
+
+               // we are done hide the swipeContent from screen
+               list1.swipeOut();
+            }
+        })
+    }),
+    swipe : function(e) { // register swipe event
+        var oSwipeListItem = e.getParameter("listItem"), // get swiped list item from event
+            oSwipeContent = e.getParameter("swipeContent"); // get swiped content from event
+
+        // Check swiped list item if it is already approved or not
+        if (oSwipeListItem.data("approved")) {
+            // List item is approved, change swipeContent(button) text to Disapprove and type to Reject
+            oSwipeContent.setText("Disapprove").setType("Reject");
+        } else {
+            // List item is not approved, change swipeContent(button) text to Approve and type to Accept
+            oSwipeContent.setText("Approve").setType("Accept");
+        }
+    },
+    ...</pre></div>
+<p class="p">Swipe events can be cancelled. The built-in controls which are working with swipe left events
+            like <samp class="ph codeph">Switch</samp> or <samp class="ph codeph">Slider</samp> cancel a swipe event by default.
+            If you also want to disable swipe events for your custom use case, you can call the
+                <samp class="ph codeph">preventDefault</samp> method of the event object. This is shown in the
+            following example: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">new sap.m.List({
+    swipe : function(e) {
+         // get which control inside the list item fired swipe event
+         var oSrcControl = e.getParameter("srcControl");
+
+         // check if the event is coming from Input
+         if (oSrcControl instanceof sap.m.Input) {
+             e.preventDefault(); // cancel swipe
+         }
+    },
+    ...</pre></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Events";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

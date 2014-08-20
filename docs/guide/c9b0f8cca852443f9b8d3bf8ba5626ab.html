@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=10436816043588237"/>
+<title>Debugging</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loioc9b0f8cca852443f9b8d3bf8ba5626ab">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Debugging</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">The first step in analyzing the issue is debugging. Therefore, you need to know how you
+			can debug in your respective browser. </p>
+<p class="p">The development tools of the current browsers allow you to set JavaScript debugging
+			breakpoints. In most browsers, setting the breakpoint is sufficient, but in Internet
+			Explorer, script debugging needs to be turned on explicitely and the selection of the
+			correct file can be tricky when it is loaded using Ajax requests because the file name
+			is not listed. Once you have stopped the script execution, you can inspect and modify
+			the variables. You can now execute the code step-by-step.</p>
+<div class="note note"><span class="notetitle">Note</span> Chrome has some restrictions with regard to modifying variables.</div>
+<p class="p">We recommend to read the basic tutorials on debugging in the different browsers that are
+			available online. For information on browser debugging for ABAP developers, see <a class="xref" href="1e52fde5444649748809a78fd8a645da.html">Browser Debugging for ABAP
+				Developers</a>.</p>
+<div class="section"><div class="section_title">Remote Debugging on Mobile Devices</div><div type="Remote Debugging on Mobile Devices">
+			
+			<p class="p">If you want to make sure that your application is also running on a mobile devices, you can
+				use a simulator, or, as they all have restrictions, we recommend that you debug your
+				application remotely on the target device. This is the only way you can make a
+				reliable statement about the performance of your application on, for example, an
+				iPad. The process varies depending on whether you debug on an Android device or on
+				an Apple device. For more information, see the respective documentation for remote
+				debugging for Android or Apple devices on the respective vendor's websites.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Tips and Tricks for Debugging</div><div type="Tips and Tricks for Debugging">
+			
+			<p class="p">The following list provides some useful toips and tricks for debugging SAPUI5:</p>
+
+			<ul class="ul" id="loioc9b0f8cca852443f9b8d3bf8ba5626ab__ul_emp_vbg_gl"><li class="li">
+					<p class="p">If you only see minified sources or scrambled code from SAPUI5 sources
+						instead of the real code behind it, activate the <span class="ph uicontrol">Debug
+							Sources</span> option in your  browser. You can enable this option
+						as follows:</p>
+
+					<ul class="ul" id="loioc9b0f8cca852443f9b8d3bf8ba5626ab__ul_mmg_gcg_gl"><li class="li">Add the <samp class="ph codeph">sap-ui-debug=true</samp> parameter to your URL.</li>
+<li class="li">Use the Support Tool to toggle <span class="ph uicontrol">Debug Sources</span> on
+							and off.</li>
+</ul>
+
+				</li>
+<li class="li">
+					<p class="p">List of useful URL parameters:</p>
+
+					<table summary="" id="loioc9b0f8cca852443f9b8d3bf8ba5626ab__simpletable_uzh_rcg_gl" border="1" class="simpletable"><tr class="sthead"><th valign="bottom" align="left" id="d1131103e69" class="stentry">Parameter</th>
+<th valign="bottom" align="left" id="d1131103e71" class="stentry">Description</th>
+</tr>
+<tr class="strow"><td valign="top" headers="d1131103e69" class="stentry"><samp class="ph codeph">sap-ui-debug</samp></td>
+<td valign="top" headers="d1131103e71" class="stentry">Set this parameter to <samp class="ph codeph">true</samp> to activate the
+									<span class="ph uicontrol">Debug Sources</span> option.</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d1131103e69" class="stentry"><samp class="ph codeph">sap-ui-language</samp></td>
+<td valign="top" headers="d1131103e71" class="stentry">Use this parameter to change the language.</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d1131103e69" class="stentry"><samp class="ph codeph">sap-ui-theme</samp></td>
+<td valign="top" headers="d1131103e71" class="stentry">Use this parameter to switch themes, for example
+									<samp class="ph codeph">sap-ui-theme=sap_bluecrystal</samp>or
+									<samp class="ph codeph">sap-ui-theme=sap_bluecrystal</samp>.</td>
+</tr>
+</table>
+
+				</li>
+<li class="li">
+					<p class="p">Debugging with the support tool</p>
+
+					<p class="p">You can use the support tool to get additional information about the SAPUI5
+						application. It provides a tree structure with all existing controls that
+						can be used to edit properties at runtime, view binding information, and set
+						breakpoints on instance level.</p>
+
+					<p class="p">For more information, see [Link aufs Support Tool]</p>
+
+				</li>
+</ul>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Debugging";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

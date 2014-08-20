@@ -1,0 +1,785 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.core.UIComponent</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static abstract">
+					
+					abstract Class sap.ui.core.UIComponent
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.ui.core.Component" href="../symbols/sap.ui.core.Component.html">Component</a></div>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>Base Class for UI Component.</p>
+						
+						
+						
+						
+						
+						
+							<br />
+							<i>Since: </i>1.9.2.
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static abstract">
+									<div class="itemName">
+										<b class="icon" title="Creates and initializes a new UI component with the given sId and settings.">new <a href="../symbols/sap.ui.core.UIComponent.html#constructor">sap.ui.core.UIComponent</a></b>
+										<span class='signature'>(<span title="(string) optional id for the new control; generated automatically if no non-empty id is given Note: this can be omitted, no matter whether mSettings will be given or not!">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) optional map/JSON-object with initial settings for the new component instance">mSettings</span><i class="help" title="Optional parameter">?</i>)</span>
+										<span class='description'>Creates and initializes a new UI component with the given <code>sId</code> and settings.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+						
+						
+						
+						
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="returns an Element by its id in the context of the Component"><a href="../symbols/sap.ui.core.UIComponent.html#byId">byId</a></b><span class='signature'>()</span>
+									<span class='description'>returns an Element by its id in the context of the Component</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="The method to create the Content (UI Control Tree) of the Component."><a href="../symbols/sap.ui.core.UIComponent.html#createContent">createContent</a></b><span class='signature'>()</span>
+									<span class='description'>The method to create the Content (UI Control Tree) of the Component.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="creates an id for an Element prefixed with the component id"><a href="../symbols/sap.ui.core.UIComponent.html#createId">createId</a></b><span class='signature'>()</span>
+									<span class='description'>creates an id for an Element prefixed with the component id</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="A method to be implemented by UIComponents, returning the flag whether to prefix the IDs of controls automatically or not if the controls are created inside the sap.ui.core.UIComponent#createContent function."><a href="../symbols/sap.ui.core.UIComponent.html#getAutoPrefixId">getAutoPrefixId</a></b><span class='signature'>()</span>
+									<span class='description'>A method to be implemented by UIComponents, returning the flag whether to prefix the IDs of controls automatically or not if the controls are created inside the <a href="../symbols/sap.ui.core.UIComponent.html#createContent">sap.ui.core.UIComponent#createContent</a> function.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title=""><a href="../symbols/sap.ui.core.UIComponent.html#getEventingParent">getEventingParent</a></b><span class='signature'>()</span>
+									<span class='description'></span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the reference to the router instance which has been created by the UIComponent once the routes in the routing metadata has been defined."><a href="../symbols/sap.ui.core.UIComponent.html#getRouter">getRouter</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the reference to the router instance which has been created by the UIComponent once the routes in the routing metadata has been defined.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Returns the reference to the router instance."><a href="../symbols/sap.ui.core.UIComponent.html#.getRouterFor">sap.ui.core.UIComponent.getRouterFor</a></b><span class='signature'>(<span title="(sap.ui.core.mvc.View|sap.ui.core.mvc.Controller) a view or controller">either</span>)</span>
+									<span class='description'>Returns the reference to the router instance.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the reference to the UIArea of the container."><a href="../symbols/sap.ui.core.UIComponent.html#getUIArea">getUIArea</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the reference to the UIArea of the container.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Function is called when the rendering of the Component Container is completed."><a href="../symbols/sap.ui.core.UIComponent.html#onAfterRendering">onAfterRendering</a></b><span class='signature'>()</span>
+									<span class='description'>Function is called when the rendering of the Component Container is completed.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Function is called when the rendering of the Component Container is started."><a href="../symbols/sap.ui.core.UIComponent.html#onBeforeRendering">onBeforeRendering</a></b><span class='signature'>()</span>
+									<span class='description'>Function is called when the rendering of the Component Container is started.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Renders the the root control of the UIComponent."><a href="../symbols/sap.ui.core.UIComponent.html#render">render</a></b><span class='signature'>(<span title="(sap.ui.core.RenderManager) a RenderManager instance">oRenderManager</span>)</span>
+									<span class='description'>Renders the the root control of the UIComponent.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Sets the reference to the ComponentContainer - later required for the determination of the UIArea for the UIComponent."><a href="../symbols/sap.ui.core.UIComponent.html#setContainer">setContainer</a></b><span class='signature'>(<span title="(sap.ui.core.ComponentContainer) reference to a ComponentContainer">oContainer</span>)</span>
+									<span class='description'>Sets the reference to the ComponentContainer - later required for the determination of the UIArea for the UIComponent.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Component.html">sap.ui.core.Component</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Component.html#exit">exit</a>, <a href="../symbols/sap.ui.core.Component.html#getComponentData">getComponentData</a>, <a href="../symbols/sap.ui.core.Component.html#getEventBus">getEventBus</a>, <a href="../symbols/sap.ui.core.Component.html#getInterface">getInterface</a>, <a href="../symbols/sap.ui.core.Component.html#init">init</a>, <a href="../symbols/sap.ui.core.Component.html#onConfigChange">onConfigChange</a>, <a href="../symbols/sap.ui.core.Component.html#onError">onError</a>, <a href="../symbols/sap.ui.core.Component.html#onWindowBeforeUnload">onWindowBeforeUnload</a>, <a href="../symbols/sap.ui.core.Component.html#onWindowUnload">onWindowUnload</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.ManagedObject.html">sap.ui.base.ManagedObject</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.ManagedObject.html#addAggregation">addAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#addAssociation">addAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#applySettings">applySettings</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindAggregation">bindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindContext">bindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindObject">bindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindProperty">bindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#clone">clone</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#destroy">destroy</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#destroyAggregation">destroyAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#findAggregatedObjects">findAggregatedObjects</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAggregation">getAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAssociation">getAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBinding">getBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingContext">getBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingInfo">getBindingInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingPath">getBindingPath</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getId">getId</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getModel">getModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getObjectBinding">getObjectBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getOriginInfo">getOriginInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getParent">getParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getProperty">getProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#hasModel">hasModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#indexOfAggregation">indexOfAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#insertAggregation">insertAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#invalidate">invalidate</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isBound">isBound</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isInvalidateSuppressed">isInvalidateSuppressed</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isTreeBinding">isTreeBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAggregation">removeAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAggregation">removeAllAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAssociation">removeAllAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAssociation">removeAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAggregation">setAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAssociation">setAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setBindingContext">setBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setModel">setModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setProperty">setProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#toString">toString</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindAggregation">unbindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindContext">unbindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindObject">unbindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindProperty">unbindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateAggregation">validateAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateProperty">validateProperty</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.EventProvider.html#attachEvent">attachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#attachEventOnce">attachEventOnce</a>, <a href="../symbols/sap.ui.base.EventProvider.html#detachEvent">detachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#fireEvent">fireEvent</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static abstract">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.ui.core.UIComponent</b>(<span title="(string) optional id for the new control; generated automatically if no non-empty id is given Note: this can be omitted, no matter whether mSettings will be given or not!">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) optional map/JSON-object with initial settings for the new component instance">mSettings</span><i class="help" title="Optional parameter">?</i>)
+										</div>
+										
+										<div class="full-description">
+											Creates and initializes a new UI component with the given <code>sId</code> and
+settings.
+</p><p>
+The set of allowed entries in the <code>mSettings</code> object depends on
+the concrete subclass and is described there. See <a href="../symbols/sap.ui.core.Component.html">sap.ui.core.Component</a>
+for a general description of this argument.
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    optional id for the new control; generated automatically if
+           no non-empty id is given Note: this can be omitted, no matter
+           whether <code>mSettings</code> will be given or not!
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mSettings</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    optional map/JSON-object with initial settings for the
+           new component instance
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod'>
+										<a name="byId"> </a>
+										<div class="itemTitle icon">
+											byId<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											returns an Element by its id in the context of the Component
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														
+													</td>
+													<td class="methodItemDesc">
+														Element by its id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="createContent"> </a>
+										<div class="itemTitle icon">
+											createContent<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											The method to create the Content (UI Control Tree) of the Component. 
+This method has to be overwritten in the implementation of the component
+if the root view is not declared in the component metadata.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="createId"> </a>
+										<div class="itemTitle icon">
+											createId<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											creates an id for an Element prefixed with the component id
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														
+													</td>
+													<td class="methodItemDesc">
+														prefixed id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="getAutoPrefixId"> </a>
+										<div class="itemTitle icon protected">
+											getAutoPrefixId<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											A method to be implemented by UIComponents, returning the flag whether to prefix 
+the IDs of controls automatically or not if the controls are created inside
+the <a href="../symbols/sap.ui.core.UIComponent.html#createContent">sap.ui.core.UIComponent#createContent</a> function. By default this 
+feature is not activated. 
+</p><p>
+You can overwrite this function and return true to activate the automatic
+prefixing.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.15.1</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														true, if the controls IDs should be prefixed automatically
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="getEventingParent"> </a>
+										<div class="itemTitle icon protected">
+											getEventingParent<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+											<div class="heading">See:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemDesc">
+														<a href="../symbols/sap.ui.base.EventProvider.html#getEventingParent">sap.ui.base.EventProvider#getEventingParent</a>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getRouter"> </a>
+										<div class="itemTitle icon">
+											getRouter<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.routing.Router">: <a href="../symbols/sap.ui.core.routing.Router.html">sap.ui.core.routing.Router</a></span>
+										</div>
+										<div class="full-description">
+											Returns the reference to the router instance which has been created by
+the UIComponent once the routes in the routing metadata has been defined.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.16.1</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.routing.Router.html">sap.ui.core.routing.Router</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the router instance
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".getRouterFor"> </a>
+										<div class="itemTitle icon">
+											sap.ui.core.UIComponent.getRouterFor<span class="signature">(<span title="(sap.ui.core.mvc.View|sap.ui.core.mvc.Controller) a view or controller">either</span>)</span>
+											<span class="light" title="returns sap.ui.core.routing.Router">: <a href="../symbols/sap.ui.core.routing.Router.html">sap.ui.core.routing.Router</a></span>
+										</div>
+										<div class="full-description">
+											Returns the reference to the router instance. The passed controller or view
+have to be created in the context of a UIComponent to return the router 
+instance. Otherwise this function will return undefined.
+You may define the routerClass property in the config section of the routing to make the Component create your router extension.
+eg: 
+routing: {
+	config: {
+		routerClass : myAppNamespace.MyRouterClass
+		...
+}
+...
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.mvc.View.html">sap.ui.core.mvc.View</a>|<a href="../symbols/sap.ui.core.mvc.Controller.html">sap.ui.core.mvc.Controller</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>either</b>
+													</td>
+													<td class="methodItemDesc">
+												    a view or controller
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.16.1</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.routing.Router.html">sap.ui.core.routing.Router</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the router instance
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getUIArea"> </a>
+										<div class="itemTitle icon">
+											getUIArea<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.UIArea">: sap.ui.core.UIArea</span>
+										</div>
+										<div class="full-description">
+											Returns the reference to the UIArea of the container.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{sap.ui.core.UIArea}</span> 
+													</td>
+													<td class="methodItemDesc">
+														reference to the UIArea of the container
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="onAfterRendering"> </a>
+										<div class="itemTitle icon protected">
+											onAfterRendering<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Function is called when the rendering of the Component Container is completed.
+</p><p>
+Applications must not call this hook method directly, it is called from ComponentContainer.
+</p><p>
+Subclasses of UIComponent override this hook to implement any necessary actions after the rendering.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="onBeforeRendering"> </a>
+										<div class="itemTitle icon protected">
+											onBeforeRendering<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Function is called when the rendering of the Component Container is started.
+</p><p>
+Applications must not call this hook method directly, it is called from ComponentContainer.
+</p><p>
+Subclasses of UIComponent override this hook to implement any necessary actions before the rendering.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="render"> </a>
+										<div class="itemTitle icon">
+											render<span class="signature">(<span title="(sap.ui.core.RenderManager) a RenderManager instance">oRenderManager</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Renders the the root control of the UIComponent.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.RenderManager.html">sap.ui.core.RenderManager</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oRenderManager</b>
+													</td>
+													<td class="methodItemDesc">
+												    a RenderManager instance
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setContainer"> </a>
+										<div class="itemTitle icon">
+											setContainer<span class="signature">(<span title="(sap.ui.core.ComponentContainer) reference to a ComponentContainer">oContainer</span>)</span>
+											<span class="light" title="returns sap.ui.core.UIComponent">: <a href="../symbols/sap.ui.core.UIComponent.html">sap.ui.core.UIComponent</a></span>
+										</div>
+										<div class="full-description">
+											Sets the reference to the ComponentContainer - later required for the 
+determination of the UIArea for the UIComponent.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.ComponentContainer.html">sap.ui.core.ComponentContainer</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oContainer</b>
+													</td>
+													<td class="methodItemDesc">
+												    reference to a ComponentContainer
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.UIComponent.html">sap.ui.core.UIComponent</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														reference to this instance to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

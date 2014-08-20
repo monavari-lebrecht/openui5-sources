@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=7110845488433012"/>
+<title>Step 1: Index</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiof6998380aeb94af6917eff27aa5cc14c">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Step 1: Index</h1>
+<div class="body conbody"><p class="shortdesc"/>
+<p class="p">Because an application would normally live in a folder, and the default file that web
+			servers return when the folder itself is requested is often configured to be
+				<span class="ph filepath">index.html</span>, the name of our app's index HTML file is indeed
+				<span class="ph filepath">index.html</span>. </p>
+<div class="section"><div class="section_title">Minimal Content</div><div type="Minimal Content">
+			
+			<p class="p">The heart of an application is defined in its Component part, which means that we
+				should aim for very minimal content in the index.html file itself. Like this:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!text/html</samp>
+&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+
+    &lt;head&gt;
+        &lt;meta http-equiv="X-UA-Compatible" content="IE=edge" /&gt;
+        &lt;meta charset="UTF-8"&gt;
+        
+        &lt;title&gt;TDG Demo App&lt;/title&gt;
+        
+        &lt;script id="sap-ui-bootstrap"
+        src="/path/to/resources/sap-ui-core.js"
+        data-sap-ui-libs="sap.m"
+        data-sap-ui-theme="sap_bluecrystal"
+        data-sap-ui-xx-bindingSyntax="complex"
+        data-sap-ui-resourceroots='{
+            "sap.ui.demo.tdg": "./"
+        }'&gt;
+        &lt;/script&gt;
+
+        &lt;script&gt;
+            sap.ui.getCore().attachInit(function() {
+                new sap.m.Shell({
+                    app: new sap.ui.core.ComponentContainer({
+                        height : "100%",
+                        name : "sap.ui.demo.tdg"
+                    })
+                }).placeAt("content");
+            });
+        &lt;/script&gt;
+    &lt;/head&gt;
+    
+    &lt;body class="sapUiBody" id="content" /&gt;
+    
+&lt;/html&gt;
+</pre></div>
+
+			<p class="p">We have a header and the standard variant UI5 bootstrap, the application startup, and
+				a particular focus on resources and namespaces.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Header and Bootstrap</div><div type="Header and Bootstrap"><p dir="ltr" class="p">In the header, we have the HTML5 document
+				type declaration, and a couple of meta tags. One that instructs Internet Explorer to
+				use the newest rendering mode; for UI5 mobile this would be in preparation for
+				future IE support, for UI5 desktop this is required to make sure IE does not use a
+				compatibility mode. The other is to declare that the character set used in the app
+				is UTF8 (change this if required to whatever is necessary).</p>
+We also have the UI5
+			bootstrap; in this example we have the so-called "standard variant", pulling in the UI5
+			core from wherever it is normally served. With the bootstrap there are some data
+			parameters. These parameters serve to load the <samp class="ph codeph">sap.m</samp> library, so that
+			we can specify the <samp class="ph codeph">sap.m.Shell</samp> control later on
+				(<samp class="ph codeph">data-sap-ui-libs</samp>), declare the theme to be "Blue Crystal"
+				(<samp class="ph codeph">data-sap-ui-theme</samp>), set up the extended syntax for calculated
+			fields in property bindings (<samp class="ph codeph">data-sap-ui-xx-bindingSyntax</samp>) and,
+			finally, where the resources, or artifacts, can be found
+				(<samp class="ph codeph">data-sap-ui-resourceroots</samp> - see below for more information on
+			this).</div></div>
+<div class="section"><div class="section_title">The Application Startup</div><div type="The Application Startup">
+			
+			<p dir="ltr" class="p">Once the UI5 core has been loaded in the bootstrap, we start the application on the
+				Init event via <samp class="ph codeph">sap.ui.getCore().attachInit</samp>. Starting our app
+				involves instantiating an <samp class="ph codeph">sap.ui.core.ComponentContainer</samp> and
+				placing it inside an sap.m.Shell in the body of our HTML document. Note that we're
+				using the "content" id directly on the HTML <samp class="ph codeph">&lt;body&gt;</samp> element,
+				rather than in a child <samp class="ph codeph">&lt;div&gt; </samp>element. </p>
+
+			<p dir="ltr" class="p">The use of the Shell is to control the width of the app on the desktop. On
+				particularly large monitors, a full-width rendering of an application would be too
+				wide. Placing the app's core inside a Shell container will give you appropriate left
+				and right vertical margins.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Resources and Namespaces</div><div type="Resources and Namespaces">
+			
+			<p dir="ltr" class="p">Your application should live inside a namespace. This sample application's
+				identifier is "tdg", within the "sap.ui.demo" namespace, thus the name
+					<samp class="ph codeph">sap.ui.demo.tdg</samp> is the fully qualified identifier for this
+				application. </p>
+
+			<p dir="ltr" class="p">This name is used in two places in the index file: </p>
+
+			<ul class="ul" id="loiof6998380aeb94af6917eff27aa5cc14c__ul_usx_kwd_4n"><li dir="ltr" class="li">in the bootstrap's <samp class="ph codeph">data-sap-ui-resourceroots</samp> data
+					parameter </li>
+<li dir="ltr" class="li">in the specification of the Component to load into the
+						<samp class="ph codeph">sap.ui.core.ComponentContainer</samp>
+				</li>
+</ul>
+
+			<p dir="ltr" class="p">Pairing a namespace and folder location in the
+					<samp class="ph codeph">data-sap-ui-resourceroots </samp>declares where artifacts with that
+				namespace can be found. In this example we are saying that the artifacts starting
+				"sap.ui.demo.tdg" are to be found in the same folder ("./") as this index file. </p>
+
+			<div class="note note"><span class="notetitle">Note</span> While we're here, notice the way that the namespace and folder location are
+				specified in a JSON structure inside the value of an HTML tag's attribute. You'll
+				come across this syntax again when we see the use of complex binding syntax in
+				declarative (XML) views, where paths, types and formatters are specified for
+				property bindings.</div>
+
+			<p class="p">When the component is specified with the name property of the
+					<samp class="ph codeph">sap.ui.core.ComponentContainer</samp>, it is by means of the
+				"sap.ui.demo.tdg" namespace. By default, the container will look for a component
+				called "Component" in this namespace, which thus translates to
+					<samp class="ph codeph">sap.ui.demo.tdg.Component</samp>. This will be found in the file
+				Component.js in the same folder, because we've specified this same folder as being
+				where resources in the <samp class="ph codeph">sap.ui.demo.tdg</samp> namespace are to be found.
+			</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Further Notes</div><div type="Further Notes">
+			
+			<p class="p">Specific applications may require additional script tags to load external files or
+				some HTML structure within the body or a script tag before loading UI5 to configure
+				the UI5 runtime. This suggestion here does not say such extensions are not allowed.
+			</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Progress Check</div><div type="Progress Check">
+			
+			<p class="p">This is the first step, so we're not expecting much. All we have is the index.html
+				file. </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+tdg/
+  |
+  +-- index.html
+</pre></div>
+
+			<p class="p">But it's the root container for our whole application, so at least we can try to call
+				it up in our browser. This is what we get.</p>
+
+			<div class="fig fignone"><div class="figcontainer"><img class="image" id="loiof6998380aeb94af6917eff27aa5cc14c__image_iwc_vgr_4n" src="f4df91930eb3497a860a03da34318127.image"/></div></div>
+
+			<p class="p">Ok. Not a lot. But not a entirely blank screen - we can see already that the styling
+				is from the Blue Crystal theme. Most importantly, we see the significant error in
+				the developer console:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">Uncaught Error: failed to load 'sap/ui/demo/tdg/Component.js' from ./Component.js: 404 -
+        Not Found</pre></div>
+
+			<p class="p">This is not unexpected. The Component Container has been instantiated and is trying
+				to retrieve the Component ... but failing. In the next step, we'll look at making
+				that Component available.</p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Step 1: Index";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

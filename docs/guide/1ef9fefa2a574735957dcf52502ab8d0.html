@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=7729011738734094"/>
+<title>Writing Data to the HTML DOM as DATA-* Attribute</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio1ef9fefa2a574735957dcf52502ab8d0">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Writing Data to the HTML DOM as DATA-* Attribute</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">The following two use cases show use cases, where it can be useful to write custom data to the
+			HTML DOM:</p>
+<ul class="ul" id="loio1ef9fefa2a574735957dcf52502ab8d0__ul_vwf_ss4_l4"><li class="li">
+				<p class="p">to generate markers in the HTML from data binding which then can then be used for
+					data-dependent styling</p>
+
+			</li>
+<li class="li">
+				<p class="p">to create stable anchors in the HTML which can be used for automated tests</p>
+
+			</li>
+</ul>
+<p class="p">A "data-" prefix is added to the key and the result is then written as an attribute into the
+			root HTML element of the control. The <samp class="ph codeph">CustomData</samp> value is written as an
+			attribute value.</p>
+<p class="p">For this, the key has to be a valid HTML ID and the value has to be a string; otherwise an
+			error is logged.</p>
+<div class="note note" id="loio1ef9fefa2a574735957dcf52502ab8d0__note_N10024_N10011_N10001"><span class="notetitle">Note</span> 
+			<p class="p">HTML attribute names are case-insensitive and browsers may convert the key to
+				lowercase.</p>
+
+			<p class="p">Do not write too much data into the DOM.</p>
+
+		</div>
+<p class="p">In JavaScript, you can set the flag as shown in the following code snippet:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">myButton.data("mydata", "Hello", true); // attach some data to the Button and mark it as
+          "write to HTML"</pre></div>
+<p class="p">To set the <samp class="ph codeph">writeToDom</samp> flag in XML views, the aggregation has to be written in
+			expanded notation:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;Button ... &gt;
+  &lt;customData&gt;
+  &lt;core:CustomData key="mydata" value="Hello" writeToDom="true" /&gt;
+  &lt;/customData&gt;
+&lt;/Button&gt;</pre></div>
+<p class="p">This results in the following HTML:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;button ...  data-myData="Hello"  ... &gt;</pre></div>
+<p class="p">The CSS can now use attribute selectors to check the presence or the value of the custom data
+			attribute:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">button[data-mydata="Hello"] { border: 3px solid red !important; }</pre></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Writing Data to the HTML DOM as DATA-* Attribute";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

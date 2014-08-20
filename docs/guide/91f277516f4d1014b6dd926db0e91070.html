@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="You use the factory method sap.ui.view to instantiate views."/>
+<meta name="description" content="You use the factory method sap.ui.view to instantiate views."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=7051059210077196"/>
+<title>Instantiating Views</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f277516f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Instantiating Views</h1>
+<div class="body taskbody"><p class="shortdesc">You use the factory method <samp class="ph codeph">sap.ui.view</samp> to instantiate views. </p>
+<div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><div class="li step p"><span class="ph cmd">To pass required information for the instantiation, use an object with the following
+					properties: </span><ol type="a" class="ol substeps" id="loio91f277516f4d1014b6dd926db0e91070__substeps_wbn_1rv_sk"><li class="li substep"><span class="ph cmd"><samp class="ph codeph"> type</samp>: The type can be <samp class="ph codeph">JSON</samp>,
+								<samp class="ph codeph">JS</samp>, <samp class="ph codeph">XML</samp> or <samp class="ph codeph">HTML</samp>.
+							All possible types are declared in the enumeration
+								<samp class="ph codeph">sap.ui.core.mvc.ViewType</samp>.</span></li>
+<li class="li substep"><span class="ph cmd"><samp class="ph codeph"> viewName</samp>: View name corresponding to the module
+							concept</span></li>
+<li class="li substep"><span class="ph cmd"><samp class="ph codeph"> viewContent</samp>: Only relevant for XML views and JSON
+							views. Defines the XML or JSON string representation of the view
+							definition. If <samp class="ph codeph">viewName</samp> and
+								<samp class="ph codeph">viewContent</samp> are given, the
+								<samp class="ph codeph">viewName</samp> property is used to load the view
+							definition.</span></li>
+<li class="li substep"><span class="ph cmd"><samp class="ph codeph"> Controller</samp>: Any controller instance; the given
+							controller instance overrides the controller defined in the view
+							definition </span></li>
+<li class="li substep"><span class="ph cmd"><samp class="ph codeph">viewData</samp>: Only used for JS views; this property
+							contains user-specific data that is available during the whole lifecycle
+							of the view and the controller</span></li>
+</ol>
+ 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">...
+   var myController = sap.ui.controller("my.own.controller");
+   var myView = sap.ui.view({ type: sap.ui.core.mvc.ViewType.XML,
+                              viewName: "my.own.view",
+                              controller: myController 
+                            });
+...</pre></div>
+
+				 
+					<p class="p">All regular properties of a view (control) can be passed to the object as
+						usual. </p>
+
+				</div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Instantiating Views";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

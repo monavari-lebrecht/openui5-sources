@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=49459674597851333"/>
+<title>Registering Component Resources</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio9c5a9619f69f4a819f91fc89d9ff56f1">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Registering Component Resources</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">To make the location of the component's resources known to SAPUI5, you can use
+				<samp class="ph codeph">jQuery.sap.registerModulePath</samp> or
+				<samp class="ph codeph">sap.ui.localResources</samp>. The component and all its resources, the
+			components, views, controllers, controls, css files, JavaScript modules, and so on, can
+			be located in different locations (paths and web applications) and not directly under
+			the default application root, for example index.html. By default, SAPUI5 tries to load
+			the resources relative to the location where the <samp class="ph codeph">sap-ui-core.js</samp>
+			bootstrap is located. To include resources from different locations, for example via
+				<samp class="ph codeph">jQuery.sap.require</samp>, the namespace of the modules needs to be mapped
+			to another location.</p>
+<p class="p">The application root is the location of the HTML page. The application root of an application
+			located at
+				<samp class="ph codeph">/uilib-sample/test-resources/sap/ui/mylib/MyTableComponent.html</samp> is,
+			for example, <samp class="ph codeph">/uilib-sample/test-resources/sap/ui/mylib/</samp>. The paths to
+			stylesheet and JavaScript modules are loaded relative to the application root.</p>
+<p class="p">The resources root is the foundation for <samp class="ph codeph">jQuery.sap.require();</samp> and is defined
+			relative to the application in the application's bootstrap:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;SCRIPT SRC="../../../../resources/sap-ui-core.js"&gt; </pre></div>
+<p class="p">The resources root in this example is <samp class="ph codeph">../../../..resources</samp></p>
+<p class="p">The following code loads <samp class="ph codeph">../../../../resources/sap/ui/table/Table.js</samp>, the
+			resources root, name space and prefix:
+				<samp class="ph codeph">jQuery.sap.require("sap.ui.table.Table");</samp>. To get the resources
+			path to the module, use <samp class="ph codeph">jQuery.sap.getModulePath(Namespace)</samp>.</p>
+<p class="p">It is common that your JavaScript modules, for example <samp class="ph codeph">Component.js</samp> are
+			located not directly under the application root but, for example, in the component
+			folder
+				<samp class="ph codeph">/uilib-sample/test-resources/sap/ui/mylib/example/component/Component.js</samp>.
+			In this case, you register your module by using <samp class="ph codeph">sap.ui.localResources</samp>
+			or <samp class="ph codeph">jQuery.sap.registerModulePath</samp>.</p>
+<p class="p">If the namespace matches the path, use <samp class="ph codeph">sap.ui.localResources(sNamespace)</samp>. In
+			the example above, the <samp class="ph codeph">sNamespace</samp> is <samp class="ph codeph">example.component</samp>
+			and the path is <samp class="ph codeph">example/component/</samp>. Components and any other managed
+			resources in SAPUI5, such as views, controllers, controls, JavaScript modules and CSS
+			files, whose resource name starts with <samp class="ph codeph">sNamespace</samp>, are loaded from an
+			equally named subfolder of the application root folder. If the resource name consists of
+			multiple segments separated by a dot, each segment is assumed to represent an individual
+			folder: If resource name is converted to a URL, any dots ('.') are converted to slashes
+			('/').</p>
+<p class="p">The following code snippet shows an example:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">   // Let UI5 know that resources, whose name starts with "com.mycompany.myapp"
+   // should be loaded from the URL location "./com/mycompany/myapp"
+   sap.ui.localResources("com.mycompany.myapp");
+
+   // The following call implicitly will use the mapping done by the previous line
+   // It will load a view from ./com/mycompany/myapp/views/Main.view.xml
+   sap.ui.view({ view : "com.mycompany.myapp.views.Main", type : sap.ui.core.mvc.ViewType.XML});
+
+</pre></div>
+<p class="p">If the application needs a more flexible mapping between resource names and their location, use
+			the following code:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">jQuery.sap.registerModulePath("my.example.component", "example/component/"); </pre></div>
+<p class="p">After the registration, SAPUI5 knows multiple resources locations for different namespaces: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">		RESOURCE ROOT: { 
+			"": "../../../../resources/" 
+			"example.component": "example/component"
+			"my.example.component": "example/component/"
+		}</pre></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Registering Component Resources";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="In your SAPUI5 application project, the first step to build your application is to add a control to your view and implement a method to react on user interaction. In this case you create a button and implement a function to react when the user presses it."/>
+<meta name="description" content="In your SAPUI5 application project, the first step to build your application is to add a control to your view and implement a method to react on user interaction. In this case you create a button and implement a function to react when the user presses it."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=2803305393084541"/>
+<title>Add a Control to Your View</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio07d2bdc3ad0e4c62b14123e6f80dca56">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Add a Control to Your View</h1>
+<div class="body taskbody"><p class="shortdesc">In your SAPUI5 application project, the first step to build your application is to add a
+		control to your view and implement a method to react on user interaction. In this case you
+		create a button and implement a function to react when the user presses it.</p>
+<div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><div class="li step p" id="loio07d2bdc3ad0e4c62b14123e6f80dca56__step_N10018_N10015_N10012_N10001"><span class="ph cmd">To add a control to your view, add the following coding depending on the type of your view: </span><ul class="ul choices" id="loio07d2bdc3ad0e4c62b14123e6f80dca56__choices_k4s_stt_wj"><li class="li choice">
+						<p class="p">In a <span class="ph sap-technical-name sap-technical-name">JS view</span> add the following to the
+								<samp class="ph codeph">createContent</samp> function</p>
+
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var aControls = [];
+       var oButton = new sap.ui.commons.Button({
+         id : this.createId("MyButton"),
+         text : "Hello JS View"
+       });
+       aControls.push(oButton.attachPress(oController.doIt));
+       return aControls;</pre></div>
+
+					</li>
+<li class="li choice">
+						<p class="p">In an HTML view add the following to the <samp class="ph codeph">template</samp>
+							tag:</p>
+
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;div data-sap-ui-type="sap.ui.commons.Button" id="MyButton"
+  data-text="Hello HTML View" data-press="doIt"&gt;
+&lt;/div&gt;   
+  </pre></div>
+
+					</li>
+<li class="li choice">
+						<p class="p">In an XML view add the following coding to the <samp class="ph codeph">core</samp>
+							tag</p>
+
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"> &lt;Button id="MyButton" text="Hello XML View" press="doIt"/&gt;
+</pre></div>
+
+					</li>
+<li class="li choice">
+						<p class="p">In a JSON view add the following to the <samp class="ph codeph">content</samp> function</p>
+
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"> "Type":"sap.ui.commons.Button",
+      "id":"MyButton",
+      "text":"Hello JSON View",
+      "press":"doIt"</pre></div>
+
+					</li>
+</ul>
+<div class="itemgroup stepresult">A button is added to your view with an event that is triggered when the
+					user presses it. </div></div>
+<div class="section postreq" id="loio07d2bdc3ad0e4c62b14123e6f80dca56__postreq_N10074_N10012_N10001"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div>The <span class="keyword apiname">doIt</span> method, which is called in each of these view types, is
+			implemented in the controller: <p class="p"><a class="xref" href="10c6b87c3728417f95a428cb7decb64c.html" title="All functions that are not directly related to the user interface should be handled in the controller to ensure clear separation between UI and data. In this case you add a method to handle the event, which is attached to a button.">Implement a Method in the Controller</a></p>
+</div></div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Add a Control to Your View";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

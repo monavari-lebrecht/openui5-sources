@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=62443107225688"/>
+<title>Use of Localized Texts in Applications</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f385926f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Use of Localized Texts in Applications</h1>
+<div class="body conbody"><p class="p">SAPUI5 provides the following options to use localized texts in applications: </p>
+<ul class="ul"><li class="li">Using the <samp class="ph codeph">jQuery.sap.resources</samp> module </li>
+<li class="li">Using data binding </li>
+</ul>
+<div class="section" id="loio91f385926f4d1014b6dd926db0e91070__section_F5967527CABC49C78F6DCD1FC3182CC0"><div class="section_title">Using jQuery.sap.resources</div><div type="Using jQuery.sap.resources">
+			
+			<p class="p">You can use the JavaScript module <samp class="ph codeph">jQuery.sap.resources</samp> to access
+				localized texts. The module contains APIs to load a resource bundle file from a
+				given URL and for a given locale. </p>
+
+			<p class="p">To make sure that the <samp class="ph codeph">jQuery.sap.resources</samp> module is loaded, you
+				have to require it as follows: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">jQuery.sap.require("jquery.sap.resources");</pre></div>
+
+			<p class="p">You can then use the <samp class="ph codeph">jQuery.sap.resources</samp> function to load the
+				resource bundle from the given URL, that is, the bundle name, and for a given
+				locale. When no locale is specified, a default locale (en) is used. The following
+				code snippet shows the use of the <samp class="ph codeph">jQuery.sap.resources</samp> function to
+				return a <samp class="ph codeph">jQuery.sap.util.ResourceBundle</samp>: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oBundle = jQuery.sap.resources({url : sUrl, locale: sLocale});</pre></div>
+
+			<p class="p">For more information, see <samp class="ph codeph">jQuery.sap.resources</samp> in the API Reference. </p>
+
+			<p class="p">The resource bundle <samp class="ph codeph">jQuery.sap.util.ResourceBundle</samp> provides access
+				to the localized texts that are contained in the resource bundle. You can use the
+					<samp class="ph codeph">getText</samp> method to access the texts in the loaded bundle by
+				means of their key. This is shown in the following code snippet: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var sText = oBundle.getText(sKey);	</pre></div>
+
+		</div></div>
+<div class="section" id="loio91f385926f4d1014b6dd926db0e91070__section_23DD4C90FA3C4AE5BCE18C17122444D4"><div class="section_title">Localization Test Page</div><div type="Localization Test Page">
+			
+			<p class="p">The test suite provides a test page that shows how to use localized texts. This
+				section only provides a short overview how the <samp class="ph codeph">jQuery.sap.resources</samp>
+				module is used there. </p>
+
+			<p class="p">For a localized Web page you need the .html page itself and the .properties files of
+				the required languages, in this example English and German. </p>
+
+			<p class="p">The resource bundle <samp class="ph codeph">i18n.properties</samp> is the English fallback version,
+				which is the default version. </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">welcome=Welcome {0}. Please enter a new contact:
+lastname=Last Name:
+firstname=First Name:
+street=Street:
+zip=ZIP:
+city=City:</pre></div>
+
+			<p class="p">The resource bundle <samp class="ph codeph">i18n_de.properties</samp> contains the texts in German.
+				The following code snippet shows the content of this file: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">welcome=Willkommen {0}. Bitte geben Sie einen neuen Kontakt ein:
+lastname=Nachname:
+firstname=Vorname:
+street=StraÃŸe:
+zip=PLZ:
+city=Ort:</pre></div>
+
+			<p class="p">The localization test page uses these texts to display a welcome message and a form
+				to enter the address of a person. The coding of the test page looks as follows: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">jQuery.sap.require("jquery.sap.resources");
+var sLocale = sap.ui.getCore().getConfiguration().getLanguage();
+var oBundle = jQuery.sap.resources({url : "res/i18n.properties", locale: sLocale});
+var oMatrixLayout = new sap.ui.commons.layout.MatrixLayout();
+oMatrixLayout.setLayoutFixed(false);
+oMatrixLayout.createRow(
+  new sap.ui.commons.TextView({text: oBundle.getText("welcome", ["Administrator"])}) 
+);
+oMatrixLayout.getRows()[0].getCells()[0].setColSpan(2);
+oMatrixLayout.createRow(
+  new sap.ui.commons.Label({text: oBundle.getText("lastname")}), 
+  new sap.ui.commons.TextField()
+);
+oMatrixLayout.createRow(
+  new sap.ui.commons.Label({text: oBundle.getText("firstname")}), 
+  new sap.ui.commons.TextField()
+);
+oMatrixLayout.createRow(
+  new sap.ui.commons.Label({text: oBundle.getText("street")}), 
+);
+oMatrixLayout.createRow(
+  new sap.ui.commons.Label({text: oBundle.getText("zip")}), 
+  new sap.ui.commons.TextField()
+);
+oMatrixLayout.createRow(
+  new sap.ui.commons.Label({text: oBundle.getText("city")}), 
+  new sap.ui.commons.TextField()
+);
+oMatrixLayout.placeAt("userForm");</pre></div>
+
+			<p class="p">With regard to localization, the code above defines the following procedure: </p>
+
+			<ol class="ol"><li class="li">Require the <samp class="ph codeph">jQuery.sap.resources</samp> module</li>
+<li class="li">Determine the language  </li>
+<li class="li">Load the resource bundle </li>
+<li class="li">Access the text using the <samp class="ph codeph">welcome</samp> key and pass the value for the
+					placeholder (<samp class="ph codeph">{0}</samp>) via an array </li>
+<li class="li">Access the text using the <samp class="ph codeph">lastname</samp> key and set it as text for the
+						<samp class="ph codeph">Label</samp></li>
+</ol>
+
+		</div></div>
+<div class="section" id="loio91f385926f4d1014b6dd926db0e91070__section_1E0C902502BA455CA0C98A4365A367B3"><div class="section_title">Data Binding</div><div type="Data Binding">
+			
+			<p class="p">You can also use data binding to access localized texts. The
+					<samp class="ph codeph">ResourceModel</samp> is a wrapper for resource bundles that exposes
+				the localized texts as a model for data binding. You use the
+					<samp class="ph codeph">ResourceModel</samp> to bind texts for control properties to language
+				dependent resource bundle properties. You can instantiate the
+					<samp class="ph codeph">ResourceModel</samp> either with <samp class="ph codeph">bundleName</samp> (name of
+				a resource bundle that equals a SAPUI5 module name within the require/declare
+				concept), or a <samp class="ph codeph">bundleUrl</samp>, which points to a resource bundle. When
+				you use the bundle name, make sure that the file has a <samp class="ph codeph">.properties</samp>
+				suffix. If no <samp class="ph codeph">locale</samp> is defined, the current language is used. </p>
+
+			<div class="note Example" id="loio91f385926f4d1014b6dd926db0e91070__note_N10111_N100E9_N10013_N10001"><span class="Exampletitle"/> 
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oModel = new sap.ui.model.resource.ResourceModel({bundleName:"myBundle",bundleLocale:"en"});
+var oControl = new sap.ui.commons.Button( {
+    id : "myButton",
+    text : "{i18n&gt;MY_BUTTON_TEXT}"
+});
+// attach the resource model with the symbolic name "i18n"
+oControl.setModel(oModel, "i18n");</pre></div>
+
+			</div>
+
+			<div class="note note" id="loio91f385926f4d1014b6dd926db0e91070__note_N1011D_N100E9_N10013_N10001"><span class="notetitle">Note</span> The current data binding implementation does
+				not allow to pass parameters to your texts in the resource bundle. If you have to
+				pass parameters, you must do this on your own. You can, however, access the resource
+				bundle directly from the model instead of loading it:
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">   var myBundle = oModel.getResourceBundle()</pre></div>
+
+			</div>
+
+			<p class="p">After the instance has been created, you have a model containing the resource bundle
+				texts as data. </p>
+
+			<p class="p">For a complete overview of available methods and parameters, see the API Reference: <a class="extlink" href="../../docs/api/symbols/sap.ui.model.resource.ResourceModel.html">ResourceModel<img src="images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Use of Localized Texts in Applications";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

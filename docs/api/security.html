@@ -1,0 +1,525 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - Class Index</title>
+		<link rel=stylesheet href="default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+	
+		<div id="main">
+			<div id="content">
+			
+				<h1 class="classTitle">Index of Security Relevant APIs</h1>
+				<hr/>
+
+				
+					
+					
+						<div class="summary section">
+							<div class="sectionTitle">Taint Source</div>
+							<div class="sectionDescription">APIs that might introduce tainted data into an application, e.g. due to user input or network access</div>
+							<div class="sectionItems">
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.html#.syncGet">jQuery.sap.syncGet</a></span>
+										
+											<span class="security">
+												Returned value is under control of an external resource 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.html#.syncPost">jQuery.sap.syncPost</a></span>
+										
+											<span class="security">
+												Returned value is under control of an external resource 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/sap.ui.commons.TextField.html#setValue">sap.ui.commons.TextField#setValue</a></span>
+										
+											<span class="security">
+												The 'value' property of the TextField control and its subclasses represents unfiltered user input.
+Applications must ensure that the data is either validated / cleansed or that it is not used in a context which is sensible to XSS attacks. 
+											</span>
+										
+									</div>
+								
+							</div>
+						</div>
+					
+				
+					
+					
+				
+					
+					
+						<div class="summary section">
+							<div class="sectionTitle">Taint Sink</div>
+							<div class="sectionDescription">APIs that pose a security risk when they receive tainted data</div>
+							<div class="sectionItems">
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.html#.assert">jQuery.sap.assert</a></span>
+										
+											<span class="security">
+												Could expose secret data in logs 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.html#.globalEval">jQuery.sap.globalEval</a></span>
+										
+											<span class="security">
+												Parameter is evaluated 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.html#.includeScript">jQuery.sap.includeScript</a></span>
+										
+											<span class="security">
+												Parameter is used for future HTTP requests 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.html#.includeStyleSheet">jQuery.sap.includeStyleSheet</a></span>
+										
+											<span class="security">
+												Parameter is used for future HTTP requests 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.log.html#debug">jQuery.sap.log#debug</a></span>
+										
+											<span class="security">
+												Could expose secret data in logs 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.log.html#error">jQuery.sap.log#error</a></span>
+										
+											<span class="security">
+												Could expose secret data in logs 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.log.html#fatal">jQuery.sap.log#fatal</a></span>
+										
+											<span class="security">
+												Could expose secret data in logs 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.log.html#info">jQuery.sap.log#info</a></span>
+										
+											<span class="security">
+												Could expose secret data in logs 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.log.Logger.html#debug">jQuery.sap.log.Logger#debug</a></span>
+										
+											<span class="security">
+												Could expose secret data in logs 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.log.Logger.html#error">jQuery.sap.log.Logger#error</a></span>
+										
+											<span class="security">
+												Could expose secret data in logs 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.log.Logger.html#fatal">jQuery.sap.log.Logger#fatal</a></span>
+										
+											<span class="security">
+												Could expose secret data in logs 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.log.Logger.html#info">jQuery.sap.log.Logger#info</a></span>
+										
+											<span class="security">
+												Could expose secret data in logs 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.log.Logger.html#trace">jQuery.sap.log.Logger#trace</a></span>
+										
+											<span class="security">
+												Could expose secret data in logs 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.log.Logger.html#warning">jQuery.sap.log.Logger#warning</a></span>
+										
+											<span class="security">
+												Could expose secret data in logs 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.log.html#trace">jQuery.sap.log#trace</a></span>
+										
+											<span class="security">
+												Could expose secret data in logs 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.log.html#warning">jQuery.sap.log#warning</a></span>
+										
+											<span class="security">
+												Could expose secret data in logs 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.html#.properties">jQuery.sap.properties</a></span>
+										
+											<span class="security">
+												Parameter is used for future HTTP requests 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.html#.registerModulePath">jQuery.sap.registerModulePath</a></span>
+										
+											<span class="security">
+												Parameter is used for future HTTP requests 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.html#.registerResourcePath">jQuery.sap.registerResourcePath</a></span>
+										
+											<span class="security">
+												Parameter is used for future HTTP requests 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.html#.require">jQuery.sap.require</a></span>
+										
+											<span class="security">
+												Parameter is used for future HTTP requests 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.html#.resources">jQuery.sap.resources</a></span>
+										
+											<span class="security">
+												Parameter is used for future HTTP requests 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.html#.sjax">jQuery.sap.sjax</a></span>
+										
+											<span class="security">
+												Parameter is used for future HTTP requests 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.html#.syncGet">jQuery.sap.syncGet</a></span>
+										
+											<span class="security">
+												Parameter is used for future HTTP requests 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.html#.syncGetJSON">jQuery.sap.syncGetJSON</a></span>
+										
+											<span class="security">
+												Parameter is used for future HTTP requests 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.html#.syncGetText">jQuery.sap.syncGetText</a></span>
+										
+											<span class="security">
+												Parameter is used for future HTTP requests 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.html#.syncPost">jQuery.sap.syncPost</a></span>
+										
+											<span class="security">
+												Parameter is used for future HTTP requests 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/sap.ui.core.HTML.html#setContent">sap.ui.core.HTML#setContent</a></span>
+										
+											<span class="security">
+												The content of the 'content' property is rendered 1:1 to allow the full flexibility of HTML in UI5 applications.
+Applications therefore must ensure, that they don't set malicious content (e.g. derived from user input). UI5 does not provide an HTML validation function.
+jQuery.sap.encodeHTML will encode any HTML relevant character, but this is in nearly all cases not what applications want here. 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/sap.ui.core.RenderManager.html#addClass">sap.ui.core.RenderManager#addClass</a></span>
+										
+											<span class="security">
+												Classes are written to HTML without validation 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/sap.ui.core.RenderManager.html#addStyle">sap.ui.core.RenderManager#addStyle</a></span>
+										
+											<span class="security">
+												Styles are written to HTML without validation 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/sap.ui.core.RenderManager.html#write">sap.ui.core.RenderManager#write</a></span>
+										
+											<span class="security">
+												 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/sap.ui.core.RenderManager.html#writeAttribute">sap.ui.core.RenderManager#writeAttribute</a></span>
+										
+											<span class="security">
+												Attributes are written to HTML without validation 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/sap.ui.core.RenderManager.html#writeAttributeEscaped">sap.ui.core.RenderManager#writeAttributeEscaped</a></span>
+										
+											<span class="security">
+												 
+											</span>
+										
+									</div>
+								
+							</div>
+						</div>
+					
+				
+					
+					
+						<div class="summary section">
+							<div class="sectionTitle">Taint Passthrough</div>
+							<div class="sectionDescription">APIs that might propagate tainted data when they receive it as input</div>
+							<div class="sectionItems">
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.html#.camelCase">jQuery.sap.camelCase</a></span>
+										
+											<span class="security">
+												 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.html#.charToUpperCase">jQuery.sap.charToUpperCase</a></span>
+										
+											<span class="security">
+												 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.html#.escapeRegExp">jQuery.sap.escapeRegExp</a></span>
+										
+											<span class="security">
+												 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.html#.formatMessage">jQuery.sap.formatMessage</a></span>
+										
+											<span class="security">
+												 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.html#.hyphen">jQuery.sap.hyphen</a></span>
+										
+											<span class="security">
+												 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.html#.padLeft">jQuery.sap.padLeft</a></span>
+										
+											<span class="security">
+												 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.html#.padRight">jQuery.sap.padRight</a></span>
+										
+											<span class="security">
+												 
+											</span>
+										
+									</div>
+								
+							</div>
+						</div>
+					
+				
+					
+					
+						<div class="summary section">
+							<div class="sectionTitle">Validation</div>
+							<div class="sectionDescription">APIs that (partially) cleanse tainted data so that it no longer poses a security risk in the further data flow of an application</div>
+							<div class="sectionItems">
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.html#.encodeCSS">jQuery.sap.encodeCSS</a></span>
+										
+											<span class="security">
+												validates the given string for a CSS context 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.html#.encodeHTML">jQuery.sap.encodeHTML</a></span>
+										
+											<span class="security">
+												validates the given string for HTML contexts 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.html#.encodeJS">jQuery.sap.encodeJS</a></span>
+										
+											<span class="security">
+												validates the given string for a JavaScript contexts 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.html#.encodeURL">jQuery.sap.encodeURL</a></span>
+										
+											<span class="security">
+												validates the given string for a URL context 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.html#.encodeURLParameters">jQuery.sap.encodeURLParameters</a></span>
+										
+											<span class="security">
+												validates the given string for a CSS context 
+											</span>
+										
+									</div>
+								
+									<div class="sectionItem itemName">
+										<span class="icon"><a href="symbols/jQuery.sap.html#.encodeXML">jQuery.sap.encodeXML</a></span>
+										
+											<span class="security">
+												validates the given string for XML contexts 
+											</span>
+										
+									</div>
+								
+							</div>
+						</div>
+					
+				
+			</div>
+		</div>
+				
+	</body>
+
+</html>

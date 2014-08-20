@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=32769470629567854"/>
+<title>Server Security</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f3cac16f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Server Security</h1>
+<div class="body"><p class="p">SAPUI5 contains only a small server-side part to support loading of resources by the client
+			framework. The use of the resource handlers is not mandatory, SAPUI5 also offers a
+			static version of the libraries, which can be used with an arbitrary HTTP server.</p>
+<div class="section" id="loio91f3cac16f4d1014b6dd926db0e91070__section_57D82410C1E94F18919EB276AB273998"><div class="section_title">Cross Origin Resource Sharing</div><div type="Cross Origin Resource Sharing"> 
+		 
+		<p class="p">Usually the XMLHttpRequest for security reasons
+		  does only allow accessing resources from the same domain as the originating
+		  document. As their are a lot of web-based services available today, starting
+		  with RSS or Atom feeds, WebServices or OData services, there is a need to be
+		  able to also access data sources from different domains within the browser,
+		  which was adressed with the CORS (Cross Origin Resource Sharing) standard. This
+		  allows the server to set special headers on their responses, which are telling
+		  the XMLHttpRequest object, whether it is allowed to process the requested data
+		  or not. 
+		</p>
+ 
+		<p class="p">This CORS capability also plays an important role
+		  in SAPUI5 based applications. In case the application itself and the data
+		  visualized are coming from different servers, the CORS header has to be
+		  configured correctly on the data providing server, to allow the application
+		  server domain to access the data. 
+		</p>
+ 
+		<p class="p">SAPUI5 is using CORS header on its CDN based
+		  library to be able to load additional scripts, styles, and resources from the
+		  CDN server. 
+		</p>
+ 
+	 </div></div>
+<div class="section" id="loio91f3cac16f4d1014b6dd926db0e91070__section_BFE397D767AB42F08FD2E902C48E3078"><div class="section_title">Resource Handler (Java)</div><div type="Resource Handler (Java)"> 
+		 
+		<p class="p">The resource handler for Java provides some configuration options (context parameters in the
+				web.xml). It is possible to enable CORS, configuring the cache control and
+				activating a development mode. For more information about the configuration options
+				see the topic <em class="ph i">Resource Handling</em> in the user interface add-on developer guide
+				on the Help Portal (<a class="xref" href="http://help.sap.com/nw_uiaddon">http://help.sap.com/nw_uiaddon</a>). </p>
+
+			<p class="p">For productive use of the resource handler, deactivate the development mode and
+				remove the configuration option <samp class="ph codeph">com.sap.ui5.resource.DEV_MODE</samp> in
+				the web.xml.</p>
+ 
+	 </div></div>
+<div class="section" id="loio91f3cac16f4d1014b6dd926db0e91070__section_8C1A05EA55A84944B2F8B6219B8062B7"><div class="section_title">Resource Handler (ABAP)</div><div type="Resource Handler (ABAP)"> 
+		 
+		<p class="p">The resource handler for ABAP is not configurable.
+		  It is used to serve the resources from the mime repository. 
+		</p>
+ 
+	 </div></div>
+<div class="section" id="loio91f3cac16f4d1014b6dd926db0e91070__section_CCA6DE633D81430D86E60200C3B94C04"><div class="section_title">Resource Handler for Application Resources (ABAP, NW 7.x)</div><div type="Resource Handler for Application Resources (ABAP, NW 7.x)"> 
+		 
+		<p class="p">The resource handler for application resources for
+		  ABAP, NW 7.x is not configurable. It is used to serve the resources from the
+		  SAPUI5 repository based on BSP repository. 
+		</p>
+ 
+	 </div></div>
+<div class="section" id="loio91f3cac16f4d1014b6dd926db0e91070__section_04F840F41E4E43F894FEE1F3BECA572B"><div class="section_title">Proxy Servlet (Java)</div><div type="Proxy Servlet (Java)"> 
+		 
+		<p class="p">SAPUI5 provides a 
+		  <samp class="ph codeph">SimpleProxyServlet</samp>.
+		  This proxy servlet can be used on a local server only for local requests to
+		  access data from other domains. This is useful to avoid cross domain issues
+		  when fetching data from another domain for testing purposes. Also for the
+		  SAPUI5 tools this is required since the local testing needs to access data from
+		  the remote ABAP server. Due to security reasons this proxy servlet is limited
+		  to localhost usage only and cannot be used by requests from other domains. 
+		</p>
+ 
+	 </div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Server Security";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

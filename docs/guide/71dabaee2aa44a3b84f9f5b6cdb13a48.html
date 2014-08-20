@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=2845123110091027"/>
+<title>Component Configuration</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio71dabaee2aa44a3b84f9f5b6cdb13a48">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Component Configuration</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">You use the component configuration for the definition of static configuration for components.
+            The configuration is available in the component metadata and you can access the
+            configuration without creating instances of the component. The configuration format is
+            JSON.</p>
+<p class="p">The configuration is defined in the metadata. The following code snippet shows how you define
+            the configuration for components.</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.core.UIComponent.extend("sap.samples.Component", {
+
+    metadata : {
+        version : "1.0",
+        config: {
+            
+            "sap.samples.config1": {
+                
+                "Key1-1": "Value1-1",
+                "Key1-2": "value1-2"
+                
+            },
+            
+            "sap.samples.config2": {
+                
+                "Key3-1": "Value3-1",
+                "Key3-2": "Value3-2"
+                
+            }
+            
+        }
+    }
+});</pre></div>
+<p class="p">To access the configuration without creating an instance of the component, simply require
+			the component as follows:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">jQuery.sap.require("sap.samples.Component");
+var oConfig = sap.samples.Component.getMetadata().getConfig();
+</pre></div>
+<p class="p">A component instance can access its configuration as shown in the following code
+			snippet:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">  [...]
+
+  init: function() {
+    var oConfig = this.getMetadata().getConfig();
+  }
+
+  [...]
+</pre></div>
+<p class="p">When you extend a component and add additional configuration, the configuration is merged
+			with the original component:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.samples.Component.extend("customer.Component", {
+
+    metadata : {
+        version : "1.0",
+        config: {
+            
+            "sap.samples.config1": {
+
+                "Key1-3": "Value1-3"
+
+            },
+            
+            "customer.config1": {
+                
+                "Key1-1": "Value1-1"
+                
+            }
+            
+        }
+    }
+});</pre></div>
+<p class="p">The merged configuration then looks as follows:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oConfig = {
+    "sap.samples.config1": {
+        "Key1-1": "Value1-1",
+        "Key1-2": "value1-2",
+        "Key1-3": "Value1-3"
+    },
+    "sap.samples.config2": {
+        "Key3-1": "Value3-1",
+        "Key3-2": "Value3-2"
+    },
+    "customer.config1": {
+        "Key1-1": "Value1-1"
+    }
+};</pre></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Component Configuration";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

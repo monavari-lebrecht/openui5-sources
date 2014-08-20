@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="Typical mobile applications are often composed of a number of pages/views/screens between which the user can navigate. You now add two of them to your app."/>
+<meta name="description" content="Typical mobile applications are often composed of a number of pages/views/screens between which the user can navigate. You now add two of them to your app."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=351516490933522"/>
+<title>Add Content Pages</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio43d4c8b86c8c42f3a825f2e0c3acbc6c">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Add Content Pages</h1>
+<div class="body taskbody"><p class="shortdesc">Typical mobile applications are often composed of a number of pages/views/screens
+		between which the user can navigate. You now add two of them to your app. </p>
+<div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand" id="loio43d4c8b86c8c42f3a825f2e0c3acbc6c__step_N10018_N10015_N10012_N10001"><span class="ph cmd">One <samp class="ph codeph">sap.m.Page</samp> control is created, its title is set and the content is
+					just one button:</span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"> // create the first page of your application
+var page1 = new sap.m.Page("page1", {
+  title: "Initial Page",
+  content : new sap.m.Button({ 
+    // content is just one Button
+    text : "Go to Page 2",
+    press : function() {
+      app.to("page2"); 
+      // when pressed, it triggers drilldown to page 2
+    }
+  })
+}); </pre></div>
+
+					<p class="p">When the Button is pressed, it triggers a drilldown navigation by calling
+							<samp class="ph codeph">app.to("page2")</samp>, where <kbd class="ph userinput">page2</kbd> is
+						the ID of the second page. You could also give the animation type. The
+						default is a <span class="ph sap-technical-name sap-technical-name">slide</span> animation from
+						right to left.</p>
+
+				 <samp class="ph codeph">sap.m.Page</samp> controls can be used as pages, and the aggregation
+					is called <span class="ph sap-technical-name sap-technical-name">pages</span>, but other controls
+					could be used as well.</li>
+<li class="li step stepexpand" id="loio43d4c8b86c8c42f3a825f2e0c3acbc6c__step_N1004B_N10015_N10012_N10001"><span class="ph cmd">Add the following to the <samp class="ph codeph">&lt;script&gt;</samp> section of the HTML page below the
+					part, where you've initialized the app:</span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"> // create the second page of your application
+var page2 = new sap.m.Page("page2", {
+  title: "Page 2",
+  showNavButton: true, 
+// page 2 should display a back button
+  navButtonPress: function(){ 
+    app.back(); 
+// when tapped, the back button should navigate back up to page 1
+  },
+  icon: "http://www.sap.com/global/ui/images/global/sap-logo.png",
+  content : new sap.m.Text({text:"Hello Mobile World!"})
+}); </pre></div>
+
+				<div class="itemgroup stepresult"><samp class="ph codeph">showNavButton</samp> is set to <samp class="ph codeph">true</samp> to get a Back button
+					displayed. When this button is pressed, the handler calls
+						<samp class="ph codeph">app.back()</samp>. This causes an inverse animation, which leads
+					back to the main page.</div></li>
+<li class="li step stepexpand" id="loio43d4c8b86c8c42f3a825f2e0c3acbc6c__step_N10073_N10015_N10012_N10001"><span class="ph cmd">Add the two pages to the App: </span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">// add both pages to the App
+app.addPage(page1).addPage(page2); 
+</pre></div>
+
+				</li>
+<li class="li step stepexpand"><span class="ph cmd">Finally place the app into the content area you've defined earlier.</span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+  app.placeAt("content"); // place the App into the HTML document</pre></div>
+
+				<div class="itemgroup stepresult">The app is placed into the HTML like a SAPUI5 desktop control. The App
+					takes care to cover the whole screen.</div></li>
+</ol>
+<div class="section postreq" id="loio43d4c8b86c8c42f3a825f2e0c3acbc6c__postreq_N10087_N10012_N10001"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div><a class="xref" href="4d6701b4e4864f4299acd91d22f626ef.html">Run Your First Mobile App</a></div></div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Add Content Pages";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

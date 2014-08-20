@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=7137032282646621"/>
+<title>sap.ui.core.format.NumberFormat</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f2f2866f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">sap.ui.core.format.NumberFormat</h1>
+<div class="body"><p class="p">The 
+		<samp class="ph codeph">NumberFormat</samp> class can
+		be used to parse a string representing a number (float or integer) into a
+		Javascript 
+		<samp class="ph codeph">number</samp> and vice versa (also known as 
+		<samp class="ph codeph">format</samp>). The following format options are possible. For
+		parameters which are not specified default values according to the type are
+		used: 
+	 </p>
+<ul class="ul"><li class="li"><samp class="ph codeph">minIntegerDigits</samp>: minimal number of non-fraction digits </li>
+<li class="li"><samp class="ph codeph">maxIntegerDigits</samp>: maximal number of non-fraction digits </li>
+<li class="li"><samp class="ph codeph">minFractionDigits</samp>: minimal number of fraction digits</li>
+<li class="li"><samp class="ph codeph">maxFractionDigits</samp>: maximal number of fraction digits</li>
+<li class="li"><samp class="ph codeph">groupingEnabled</samp>: enable grouping (show the grouping separators)</li>
+<li class="li"><samp class="ph codeph">groupingSeparator</samp>: used grouping separator</li>
+<li class="li"><samp class="ph codeph">decimalSeparator</samp>: used decimal separator</li>
+</ul>
+<p class="p">Example how the 
+		<samp class="ph codeph">NumberFormat</samp> class can
+		be used: 
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var fValue = 20001000.563; 
+   
+jQuery.sap.require("sap.ui.core.format.NumberFormat");
+var oNumberFormat = sap.ui.core.format.NumberFormat.getFloatInstance({
+  maxFractionDigits: 2,
+  groupingEnabled: true,
+  groupingSeparator: ",",
+  decimalSeparator: "."
+}); //Returns a NumberFormat instance for float
+/*var oNumberFormat = sap.ui.core.format.NumberFormat.getIntegerInstance({
+  maxFractionDigits: 0,
+  groupingEnabled: false
+}); //Returns a NumberFormat instance for integer*/
+
+var oField = new sap.ui.commons.TextField();
+oField.setValue(oNumberFormat.format(fValue)); // Set the formatted value on the text field
+oField.attachChange(function(){
+  //Parse the user input
+  fValue = oNumberFormat.parse(oField.getValue());
+    alert(fValue);
+});</pre></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="sap.ui.core.format.NumberFormat";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

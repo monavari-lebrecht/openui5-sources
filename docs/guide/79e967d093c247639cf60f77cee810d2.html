@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=06326404069813107"/>
+<title>Programmatically Instantiating HTML Fragments</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio79e967d093c247639cf60f77cee810d2">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Programmatically Instantiating HTML Fragments</h1>
+<div class="body taskbody"><p class="shortdesc"/>
+<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">To give an example of a programmatic instantiation of a HTML fragment, you first have
+				to define one. The following code presents an example definition:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;div data-sap-ui-type="sap.m.Button" data-press="doSomething" data-text="Hello World"&gt;&lt;/div&gt;</pre></div>
+
+			<p class="p"> This fragment can be instantiated from a controller as follows:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var myButton = sap.ui.htmlfragment("my.useful.UiPartZ", oController); // this specific fragment again needs a controller </pre></div>
+
+			<p class="p">This instantiation can be done at any place in the code, given that a controller is
+				available and the returned <span class="keyword apiname">button</span> can be used like any
+					<span class="keyword apiname">button</span>.</p>
+
+		</div><div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><div class="li step p"><span class="ph cmd"/><br/></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Programmatically Instantiating HTML Fragments";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

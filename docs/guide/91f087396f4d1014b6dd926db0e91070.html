@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=7423078286229466"/>
+<title>Compatibility Rules</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f087396f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Compatibility Rules</h1>
+<div class="body"><p class="p">SAPUI5 plans to be a so-called 
+		<dfn class="term">Release Independent Component</dfn> (RIC).
+		An important constraint for this is that it must be as simple as possible to
+		upgrade to a newer version. This makes compatibility rules so important. 
+	 </p>
+<p class="p">The following sections explain the meaning of compatibility with regard to the SAPUI5 application
+			and control development. A version flag for the bootstrap indicates to the core to which
+			previous SAPUI5 version the current functionality should be compatible to.</p>
+<div class="section" id="loio91f087396f4d1014b6dd926db0e91070__section_DC50B59D56AC4B52A2DBEFADFA4B0E98"><div class="section_title">Versioning Scheme</div><div type="Versioning Scheme"> 
+		 
+		<p class="p">SAPUI5 uses a 3 digit version identifier, for
+		  example 1.4.3. The digits have the following meaning: 
+		</p>
+ 
+		<ul class="ul"><li class="li">The first digit (1) specifies the major version number. </li>
+<li class="li">The
+			 second digit (4) specifies the minor version number. 
+		  </li>
+<li class="li">The
+			 third digit (3) specifies the patch version number. 
+		  </li>
+</ul>
+ 
+		<p class="p">New releases of SAPUI5 are described by the major
+		  and minor version number. The patch version number is only used to identify
+		  patches within a release. 
+		</p>
+ 
+	 </div></div>
+<div class="section" id="loio91f087396f4d1014b6dd926db0e91070__section_4BED038D0A7E4237BE7AD473862AA281"><div class="section_title">API Evolution</div><div type="API Evolution">
+			
+			<p class="p">If not mentioned differently, in the following paragraphs "API" refers to "public API",
+				meaning functions, classes, namespaces, controls with their declared properties,
+				aggregrations, and so on. The sole definition of the public API is the <em class="ph i">SAPUI5
+					Library - Core &amp; Standard Controls</em> (API Reference Documentation, JSDoc),
+				which is available in the Demo Kit. Features that are <strong class="ph b">not</strong> mentioned in the
+				SAPUI5 library are <strong class="ph b">not</strong> part of the API. </p>
+
+			<p class="p">The following rules apply for introducing new APIs or making incompatible changes to
+				existing APIs: </p>
+
+			<p class="p">A <strong class="ph b">major release</strong>, that is, a release with a new major version can introduce new
+				APIs or make incompatible changes to existing APIs. If this is the case, the
+				incompatibilities are described in the Release Notes. </p>
+
+			<p class="p">A <strong class="ph b">minor release</strong>, that is, a release with a new minor version can introduce new
+				APIs, but does not contain incompatible changes to APIs, which have been introduced
+				in the same major release. </p>
+
+			<p class="p">A <strong class="ph b">patch release</strong>, that is, a release with a new patch version, only contain fixes to the
+				existing implementation, but do not introduce new features or incompatible API
+				changes.</p>
+
+			<div class="note note" id="loio91f087396f4d1014b6dd926db0e91070__note_N1006F_N1003F_N10013_N10001"><span class="notetitle">Note</span> Exceptions to these rules are possible, but only in very urgent cases, such as
+				security issues. The exceptions are documented in the Release Notes. </div>
+
+		</div></div>
+<div class="section" id="loio91f087396f4d1014b6dd926db0e91070__section_N10074_N10013_N10001"><div class="section_title">Compatible Changes</div><div type="Compatible Changes">
+			
+			<p class="p">The following changes to existing APIs are compatible changes: </p>
+
+			<ul class="ul" id="loio91f087396f4d1014b6dd926db0e91070__ul_kkd_s2f_z3"><li class="li">Adding new libraries, controls, classes, properties, functions, namespaces to
+					the API </li>
+<li class="li">Generalizing properties, that is, moving properties up in the inheritance
+					hierarchy </li>
+<li class="li">Changing the logging behavior, that is, adding or removing log output, modifying
+					the content of existing log output; logging is not part of the API </li>
+<li class="li">Adding new values to enumeration types; this means that when dealing with enum
+					properties, always be prepared to accept new values, for example, by
+					implementing a "default" or "otherwise" path when reacing on enum values </li>
+<li class="li">Modifications to the markup or style (HTML, CSS) of controls </li>
+</ul>
+
+		</div></div>
+<div class="section" id="loio91f087396f4d1014b6dd926db0e91070__section_N1009A_N10013_N10001"><div class="section_title">Incompatible Changes</div><div type="Incompatible Changes">
+			
+			<p class="p">The following changes to existing APIs are incompatible and are only implemented in
+				major releases: </p>
+
+			<ul class="ul" id="loio91f087396f4d1014b6dd926db0e91070__ul_okd_s2f_z3"><li class="li">Removing an API (library, namespace, function, property, control, events, and so on) </li>
+<li class="li">Renaming an API (library, namespace, function, property, control, events, and so on) </li>
+<li class="li">Removing support for parameters </li>
+<li class="li">Removing support for configuration entries </li>
+<li class="li">Reducing the visibility of an API; this does not break JavaScript applications,
+					but changes the contract </li>
+<li class="li">Removing or reordering parameters in an API signature </li>
+<li class="li">Reducing the accepted value range, for example, parameter of a function </li>
+<li class="li">Broadening the value range of a return value (or property); exception:
+					Enumerations </li>
+<li class="li">Moving JavaScript artifacts (namespaces, functions, classes) between modules </li>
+<li class="li">Replacing asserts by precondition checks </li>
+<li class="li">Moving properties, etc., down in the inheritance hierarchy </li>
+<li class="li">Changing the name of enum values </li>
+<li class="li">Changing defaults (properties, function parameters) </li>
+<li class="li">Renaming or removing files </li>
+</ul>
+
+			<p class="p">If possible, SAPUI5 marks old artifacts as deprecated and creates new artifacts, if
+				applicable, instead of incompatible changes. A deprecation documentation in the
+				SAPUI5 library and maybe a log entry in the implementation explain why and when an
+				artifact has been deprecated and provide hints how to achieve the same results
+				without deprecated functionality. </p>
+
+			<div class="note caution" id="loio91f087396f4d1014b6dd926db0e91070__note_N100E8_N1009B_N10013_N10001"><span class="cautiontitle">Caution</span> 
+				<p class="p">Some of the new functionality or controls are in an <strong class="ph b">experimental development
+						state</strong> and documented as such. These features are still under development
+					and changes to their API are very likely; inthese cases, even incompatible
+					changes in minor releases may occur. They are included in public releases to
+					collect feedback from early adopters. Consumers of such APIs must understand
+					that their respective code might be broken (repeatedly) when upgrading to new
+					SAPUI5 releases and they must be willing to adapt to such changes. </p>
+
+			</div>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Compatibility Rules";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

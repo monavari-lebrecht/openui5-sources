@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="The following guidelines for message handling are recommended."/>
+<meta name="description" content="The following guidelines for message handling are recommended."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=9004941967788069"/>
+<title>Message Handling</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiof5df293b96dc41699b8b357e9bcf7ed6">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Message Handling</h1>
+<div class="body conbody"><p class="shortdesc">The following guidelines for message handling are recommended. </p>
+<p class="p">We recommend to invest care and energy in good message content: </p>
+<ul class="ul" id="loiof5df293b96dc41699b8b357e9bcf7ed6__ul_pbs_5bx_2j"><li class="li">Provide short and crisp error messages to the user. </li>
+<li class="li">A message should always contain a 'Call for Action'.</li>
+<li class="li">To achieve the above you need to map error messages from a backend system. </li>
+<li class="li">Focus on the most common error situations and improve the messages there. </li>
+<li class="li">For the rest simply state that a 'Backend' or 'Database' error has occurred. The user cannot
+				handle this anyway and no further details are required. If technically feasible,
+				ease the process of receiving support from IT, for example submit the issue and
+				related information to support or at least provide contact information. </li>
+<li class="li">It is a must to detect all problems related to network connectivity and indicate them as
+				such.</li>
+</ul>
+<div class="section" id="loiof5df293b96dc41699b8b357e9bcf7ed6__section_N10035_N10011_N10001"><div class="section_title">Messages Related to a Page</div><div type="Messages Related to a Page">
+			
+			<p class="p">For showing messages to the user that are related to the currrent page you have two
+				options depending on the importance of the message. </p>
+
+			<p class="p">Message Dialog:</p>
+
+			<ul class="ul" id="loiof5df293b96dc41699b8b357e9bcf7ed6__ul_qbj_sbx_2j"><li class="li">A message dialog interrupts the user's workflow by blocking the current page and
+					needs to be closed by the user. </li>
+<li class="li">Use a message dialog if the message is important and must be acknowledged by the
+					user. </li>
+<li class="li">The easiest way of showing a message dialog is to use the
+						<samp class="ph codeph">sap.m.MessageBox</samp>.</li>
+<li class="li">If you want full control of the content you can also use
+						<samp class="ph codeph">sap.m.Dialog</samp> control and set the type to
+						<samp class="ph codeph">sap.m.DialogType.Message</samp>. </li>
+<li class="li">As <samp class="ph codeph">MessageBox</samp> is a static class, a
+						<samp class="ph codeph">jQuery.sap.require("sap.m.MessageBox");</samp> statement must be
+					explicitly executed before the class can be used.</li>
+</ul>
+
+			<p class="p">Example:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">jQuery.sap.require("sap.m.MessageBox");
+sap.m.MessageBox.show(
+    "Data not loaded", 
+    sap.m.MessageBox.Icon.ERROR,
+    "Operation failed",
+    [sap.m.MessageBox.Action.RETRY, sap.m.MessageBox.Action.IGNORE]
+);
+</pre></div>
+
+			<p class="p">Message Toast:</p>
+
+			<ul class="ul" id="loiof5df293b96dc41699b8b357e9bcf7ed6__ul_fcj_sbx_2j"><li class="li">A message toast is an overlay that disappears after some time or if the user
+					taps somewhere else. It does not block the user. </li>
+<li class="li">Use this pattern if the message is less important and the user should not be
+					blocked in his work. </li>
+<li class="li">You can open a message toast easily with the <samp class="ph codeph">sap.m.MessageToast</samp> API. </li>
+</ul>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.m.MessageToast.show("Item deleted");
+</pre></div>
+
+		</div></div>
+<div class="section" id="loiof5df293b96dc41699b8b357e9bcf7ed6__section_N1008E_N10011_N10001"><div class="section_title">Messages Related to Elements of a Page</div><div type="Messages Related to Elements of a Page">
+			
+			<p class="p">For showing messages to the user that are related to a specific element of a page there is no
+				dedicated UI control available in <samp class="ph codeph">sap.m</samp> in this version. We
+				recommend to use the <samp class="ph codeph">sap.ui.core.HTML</samp> control to show these error
+				messages 'somewhere close to the input' or use some kind of overlay. Consider that
+				the user will have the on screen keyboard open which might hide messages. Putting
+				the message above an input field could help. </p>
+
+			<p class="p">You can set the <samp class="ph codeph">ValueState</samp> of the <samp class="ph codeph">sap.m.Input</samp> control to
+				'Error' to indicate that the content is not correct. </p>
+
+		</div></div>
+<div class="section" id="loiof5df293b96dc41699b8b357e9bcf7ed6__section_N100AF_N10011_N10001"><div class="section_title">Multiple Messages</div><div type="Multiple Messages">
+			
+			<p class="p">SAPUI5 Mobile does <strong class="ph b">not</strong> support multiple messages at the same time.  Mobile Designs
+				recommend to be 'more sparse' with messages, that is, only show one message at a
+				time. This can also be achieved by combining and reducing multiple messages.</p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Message Handling";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

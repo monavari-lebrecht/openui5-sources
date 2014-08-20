@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="A controller in SAPUI5 is used to separate view logic from model logic. All methods for controlling the data flow should be implemented in a controller."/>
+<meta name="description" content="A controller in SAPUI5 is used to separate view logic from model logic. All methods for controlling the data flow should be implemented in a controller."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=6296444712324841"/>
+<title>Controllers</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio121b8e6337d147af9819129e428f1f75">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Controllers</h1>
+<div class="body conbody"><p class="shortdesc">A controller in SAPUI5 is used to separate view logic from model logic. All methods for
+		controlling the data flow should be implemented in a controller. </p>
+<div class="section"><div class="section_title">Controller Definition</div><div type="Controller Definition">
+			
+			<p class="p">You define a simple controller without functions as follows: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.controller("sap.hcm.Address", {
+   // controller logic goes here
+});</pre></div>
+
+			<p class="p">The string in quotes specifies the controller name. The controller file is then named
+					<samp class="ph codeph">Address.controller.js</samp>. </p>
+
+			<div class="note note" id="loio121b8e6337d147af9819129e428f1f75__note_N1002C_N10013_N10001"><span class="notetitle">Note</span> The suffix <samp class="ph codeph">.controller.js</samp> is
+				mandatory for controllers. </div>
+
+		</div></div>
+<div class="section" id="loio121b8e6337d147af9819129e428f1f75__section_EF7E041513E34F3FAB23FCF5F5BB1F8B"><div class="section_title">Lifecycle Hooks</div><div type="Lifecycle Hooks">
+			
+			<p class="p">SAPUI5 provides predefined lifecycle hooks for implementation. You can add event
+				handlers or other functions to the controller and the controller can fire events,
+				for which other controllers or entities can register. </p>
+
+			<p class="p">SAPUI5 provides the following lifecycle hooks: </p>
+
+			<ul class="ul" id="loio121b8e6337d147af9819129e428f1f75__ul_n5j_w3v_sk"><li class="li">
+					<p class="p">
+						<samp class="ph codeph">onInit()</samp>: Called when a view is instantiated and its
+						controls (if available) have already been created; used to modify the view
+						before it is displayed to bind event handlers and do other one-time
+						initialization </p>
+
+				</li>
+<li class="li">
+					<p class="p"><samp class="ph codeph">onExit()</samp>: Called when the view is destroyed; used to free
+						resources and finalize activities </p>
+
+				</li>
+<li class="li">
+					<p class="p"><samp class="ph codeph">onAfterRendering()</samp>: Called when the view has been rendered
+						and, therefore, its HTML is part of the document; used to do post-rendering
+						manipulations of the HTML. SAPUI5 controls get this hook after being
+						rendered. </p>
+
+				</li>
+<li class="li">
+					<p class="p"><samp class="ph codeph">onBeforeRendering()</samp>: Invoked before the controller view is
+						re-rendered and <strong class="ph b">not</strong> before the first rendering; use
+							<samp class="ph codeph">onInit()</samp> for invoking the hook before the first
+						rendering </p>
+
+				</li>
+</ul>
+
+			<div class="note note" id="loio121b8e6337d147af9819129e428f1f75__note_N10058_N10018_N10013_N10001"><span class="notetitle">Note</span> For controllers without a view, no lifecycle
+				hooks are called.</div>
+
+			<div class="note Example" id="loio121b8e6337d147af9819129e428f1f75__note_N1005D_N10018_N10013_N10001"><span class="Exampletitle"/> 
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.controller("sap.hcm.Address", {
+   onInit: function() {
+      this.counter = 0;
+   }
+});</pre></div>
+
+			</div>
+
+		</div></div>
+<div class="section" id="loio121b8e6337d147af9819129e428f1f75__section_F8A9D332F0C347529B0C97330B1C9B2F"><div class="section_title">Event Handlers and Other Functions</div><div type="Event Handlers and Other Functions">
+			
+			<p class="p">In addition to lifecycle hooks, a controller can define additional methods that serve
+				as event handlers or additional functionality offered by the controller. </p>
+
+			<div class="note Example" id="loio121b8e6337d147af9819129e428f1f75__note_N10075_N10069_N10013_N10001"><span class="Exampletitle"/> 
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.controller("sap.hcm.Address", {
+   increaseCounter: function() {
+      this.counter++;
+   }
+});</pre></div>
+
+			</div>
+
+		</div></div>
+<div class="section"><div class="section_title">API Reference</div><div type="API Reference">
+			
+			<p class="p"><a class="xref" href="../../docs/api/symbols/sap.ui.core.mvc.Controller.html">sap.ui.core.mvc.Controller</a></p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Controllers";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

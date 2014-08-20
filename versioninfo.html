@@ -1,0 +1,90 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>OpenUI5 Demokit - Version Info</title>
+		<link rel="stylesheet" type="text/css" href="theme/default.css"></link>
+		<style>	
+			.myDS.sapUiUx3DS,
+			.myDS.sapUiUx3DS .sapUiUx3DSSVItem:hover {
+				background-color: transparent;
+			}
+			.myDS.sapUiUx3DS .sapUiLnk,
+			.myDS.sapUiUx3DS .sapUiTv {
+				width: auto !important;
+			}
+		</style>
+		<script id="sap-ui-bootstrap"
+				type="text/javascript"
+				src="resources/sap-ui-core.js"
+				data-sap-ui-theme="sap_bluecrystal"
+				data-sap-ui-libs="sap.ui.ux3, sap.ui.layout, sap.ui.demokit"
+				data-sap-ui-xx-bindingSyntax="complex">
+		</script>
+		<script>
+			jQuery.sap.require("sap.ui.model.json.JSONModel");
+			var oModel = new sap.ui.model.json.JSONModel();
+		
+			sap.ui.demokit._loadAllLibInfo("", "_getLibraryInfo", function(aLibs, oLibInfos){
+				var data = {};
+				for (var i = 0, l = aLibs.length; i< l; i++) {
+					aLibs[i] = oLibInfos[aLibs[i]];
+				}
+				data.libs = aLibs;
+				oModel.setData(data);
+			});
+			
+			var oDataSet = new sap.ui.ux3.DataSet({
+				items : {
+					path : "/libs",
+					template : new sap.ui.ux3.DataSetItem({
+						title : "{library}"
+					})
+				},
+				views : [ new sap.ui.ux3.DataSetSimpleView({
+					floating : false,
+					template : new sap.ui.commons.form.Form({
+						title : new sap.ui.core.Title({text : "{library}"}),
+						width : "100%",
+						layout : new sap.ui.commons.form.GridLayout(),
+						formContainers : [ new sap.ui.commons.form.FormContainer({
+							formElements : [
+								new sap.ui.commons.form.FormElement({
+									label : new sap.ui.commons.Label({text : "Version:", layoutData : new sap.ui.commons.form.GridElementData({hCells : "3"})}),
+									fields : [ new sap.ui.commons.TextView({text : "{version}"})]
+								}),
+								new sap.ui.commons.form.FormElement({
+									label : new sap.ui.commons.Label({text : "Vendor:", layoutData : new sap.ui.commons.form.GridElementData({hCells : "3"})}),
+									fields : [ new sap.ui.commons.TextView({text : "{vendor}"})]
+								}),
+								new sap.ui.commons.form.FormElement({
+									label : new sap.ui.commons.Label({text : "Description:", layoutData : new sap.ui.commons.form.GridElementData({hCells : "3"})}),
+									fields : [ new sap.ui.commons.TextView({text : "{documentation}"})]
+								})
+							]
+						})]
+					})
+				})],
+				showToolbar: false,
+				selectionChanged: function(){
+					oDataSet.setLeadSelection(-1);
+				}
+			});
+			
+			oDataSet.setModel(oModel);
+			oDataSet.addStyleClass("myDS");
+			oDataSet.placeAt("libraries");
+			
+		</script>
+	</head>
+
+	<body class="sapUiDemokitBody sapUiBody" role="application">
+		<h1>Version Info</h1>
+		
+		This Software includes the following library versions:
+		
+		<div id="libraries"></div>
+		
+	</body>
+</html>

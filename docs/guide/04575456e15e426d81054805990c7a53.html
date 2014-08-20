@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=8777808557704088"/>
+<title>Defining Dialogs as Fragments</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio04575456e15e426d81054805990c7a53">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Defining Dialogs as Fragments</h1>
+<div class="body taskbody"><p class="shortdesc"/>
+<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">To use fragments for defining popups, just let the root control of the fragment be a dialog or
+				similar control. </p>
+
+			<p class="p">The following shows an XML fragment dialog example: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!xml</samp>
+&lt;Dialog xmlns="sap.ui.commons" title="XML Fragment Dialog"&gt;
+    &lt;TextView text="{/dialogText}" /&gt;
+    &lt;buttons&gt;
+        &lt;Button text="Close" press="closeDialog"/&gt;
+    &lt;/buttons&gt;
+&lt;/Dialog&gt;</pre></div>
+
+			<p class="p">Other fragment types are used the same way to define, for instance, a dialog as fragment. </p>
+
+			<p class="p">For example, in JS fragments, the <samp class="ph codeph">createContent()</samp> method returns a
+				dialog control: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+sap.ui.jsfragment("testdata.fragments.JSFragmentDialog", {
+    createContent: function(oController) {
+        var oDialog = new sap.ui.commons.Dialog({title: "JavaScript Fragment Dialog"});
+        
+        var oText = new sap.ui.commons.TextView({text: "{/dialogText}"});
+        oDialog.addContent(oText);
+        
+        var oButton = new sap.ui.commons.Button({
+            text: "Close",
+            press: function(){oDialog .close();}
+        });
+        oDialog.addButton(oButton);
+
+        return oDialog;
+    }
+});</pre></div>
+
+		</div></div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Defining Dialogs as Fragments";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

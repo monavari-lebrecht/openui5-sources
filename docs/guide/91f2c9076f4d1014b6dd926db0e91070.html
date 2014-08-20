@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=8164093405829398"/>
+<title>Initialization Process</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f2c9076f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Initialization Process</h1>
+<div class="body"><p class="p">During the initialization of SAPUI5 runtime, the following steps are executed: </p>
+<ol class="ol" id="loio91f2c9076f4d1014b6dd926db0e91070__ol_c12_f3h_z3"><li class="li">
+				<p class="p">The jQuery plugins, which are mainly located in the <samp class="ph codeph">jQuery.sap</samp> namespace,
+					provide fundamental functionality of SAPUI5, such as the modularization concept,
+					a small logging framework, performance measurement, and so on. </p>
+
+			</li>
+<li class="li">
+				<p class="p">If not already available, the global object <samp class="ph codeph">sap</samp> is created. </p>
+
+			</li>
+<li class="li">
+				<p class="p">The <samp class="ph codeph">sap.ui.core.Core</samp> class is executed with all its dependencies.</p>
+
+			</li>
+<li class="li">
+				<p class="p">The runtime configuration is determined from different sources. </p>
+
+			</li>
+<li class="li">
+				<p class="p">All libraries and modules declared in the configuration as well as their dependencies are
+					loaded. </p>
+
+			</li>
+<li class="li">
+				<p class="p">For each loaded library, the style sheet of the configured theme is added to the page. </p>
+
+			</li>
+<li class="li">
+				<p class="p">When all libraries are loaded and the document is ready, the
+						<samp class="ph codeph">initEvent</samp> of the core is fired and all registered handlers
+					are executed. </p>
+
+			</li>
+</ol>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Initialization Process";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

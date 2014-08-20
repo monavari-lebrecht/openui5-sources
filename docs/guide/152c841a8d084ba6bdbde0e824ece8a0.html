@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=30387911340181595"/>
+<title>SAPUI5 Runtime Libraries Server Version Check</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio152c841a8d084ba6bdbde0e824ece8a0">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">SAPUI5 Runtime Libraries Server Version Check</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">When you develop SAPUI5 applications with SAPUI5 application development tools, the code
+			completion and application preview features are based on SAPUI5 runtime libraries
+			installed in your Eclipse. However, after you have deployed the application to the ABAP
+			server and execute it there, it will use the SAPUI5 runtime libraries installed on the
+			ABAP server.</p>
+<p class="p">We therefore recommended that you always have the same library version installed in
+			Eclipse and on the ABAP server. If this is not the case, for example, if the local
+			version is higher than the one on the server, the following could happen: </p>
+<ul class="ul" id="loio152c841a8d084ba6bdbde0e824ece8a0__ul_o3s_5ym_3j"><li class="li">You may use features during development that are not yet available on the server. </li>
+<li class="li">When  you test your application in Eclipse, the application may behave differently,
+				for example, because in the newer runtime version some issues are fixed which still
+				occur on the server.</li>
+</ul>
+<p class="p">We recommend to check the compatibility rules which apply to SAPUI5 runtime libraries,
+			see <a class="xref" href="91f087396f4d1014b6dd926db0e91070.html">Compatibility Rules</a>.</p>
+<p class="p">When you share a SAPUI5 application project with the SAPUI5 ABAP Repository, or start the
+				<span class="ph uicontrol">Submit</span> wizard, a version comparison of the local libraries
+			against the server is performed. If the versions differ, a warning message is shown
+			which shows the current versions. If you want to proceed anyways, you can suppress the
+			popup for that project and this version constellation.</p>
+<p class="p">To prevent this, we recommend the following measures:</p>
+<ul class="ul" id="loio152c841a8d084ba6bdbde0e824ece8a0__ul_aq1_31n_3j"><li class="li">Check the JavaScript documentation of the used controls and their methods for
+					<samp class="ph codeph">@since</samp> tags. They indicate which version has introduced a new
+				feature which you are going to use.</li>
+<li class="li">When testing in Eclipse you should configure it to use the runtime libraries located
+				on the server instead of the local ones, see <a class="xref" href="61ee9ed2369f4764a6d713abcf73afc1.html">SAPUI5 Library Location Used for
+					Testing</a>.</li>
+<li class="li">Always test your application on the server after submitting changes.</li>
+</ul>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="SAPUI5 Runtime Libraries Server Version Check";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

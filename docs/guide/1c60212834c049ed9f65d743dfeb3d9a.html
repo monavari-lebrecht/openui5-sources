@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="The simple concept of table personalization allows the user to personalize a table and to persist these settings."/>
+<meta name="description" content="The simple concept of table personalization allows the user to personalize a table and to persist these settings."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=012461990565915793"/>
+<title>Table Personalization</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio1c60212834c049ed9f65d743dfeb3d9a">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Table Personalization</h1>
+<div class="body conbody"><p class="shortdesc">The simple concept of table personalization allows the user to personalize a table
+		and to persist these settings.</p>
+<p class="p">Personalization currently supports defining the order of columns and their
+			visibility.</p>
+<div class="section"><div class="section_title">Components to define personalization</div><div type="Components to define personalization">
+			
+			<p class="p">The table personalization concept is built upon three distinct artifacts:</p>
+
+			<ul class="ul" id="loio1c60212834c049ed9f65d743dfeb3d9a__ul_qh4_wms_mn"><li class="li">a table personalization dialog <samp class="ph codeph">sap.m.TablePersoDialog</samp></li>
+<li class="li">a table personalization controller
+					<samp class="ph codeph">sap.m.TablePersoController</samp></li>
+<li class="li">a table personalization persistence service provider, based on abstract class
+						<samp class="ph codeph">sap.m.TablePersoProvider</samp></li>
+</ul>
+
+		</div></div>
+<div class="section"><div class="section_title">Table Personalization Dialog</div><div type="Table Personalization Dialog">
+			
+			<p class="p">The table personalization dialog <samp class="ph codeph">sap.m.TablePersoDialog</samp> is a visual
+				control that can be invoked independently or within the context of the table
+				personalization controller. On instantiation, you specify for which table object the
+				personalization dialog is to be used. The dialog can then be displayed by calling
+				the <samp class="ph codeph">open()</samp> method. The dialog shows the list of columns in the
+				table, in the order that they appear, and whether their visibility is set on or off.
+				The dialog can then be used by the user to adjust these details.</p>
+
+			<p class="p">When the dialog is closed, a close event is fired which you can react to, and there
+				is a <samp class="ph codeph">retrievePersonalizations</samp> method that can be used to retrieve
+				the details of the column order and visibility settings made. The personalization
+				settings retrieved with this method is an object with currently a single property
+				aColumns, the value of which is an array of column objects each with the following
+				properties:</p>
+
+			<table summary="" id="loio1c60212834c049ed9f65d743dfeb3d9a__simpletable_fpk_tlh_nn" border="1" class="simpletable"><tr class="sthead"><th valign="bottom" align="left" id="d135837e58" class="stentry" width="33.333333333333336%">Property</th>
+<th valign="bottom" align="left" id="d135837e60" class="stentry" width="33.333333333333336%">Type</th>
+<th valign="bottom" align="left" id="d135837e62" class="stentry" width="33.333333333333336%">Description</th>
+</tr>
+<tr class="strow"><td valign="top" headers="d135837e58" class="stentry"><samp class="ph codeph">id</samp></td>
+<td valign="top" headers="d135837e60" class="stentry">string</td>
+<td valign="top" headers="d135837e62" class="stentry">the SAPUI5 id of the column</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d135837e58" class="stentry"><samp class="ph codeph">order</samp></td>
+<td valign="top" headers="d135837e60" class="stentry">integer</td>
+<td valign="top" headers="d135837e62" class="stentry">the order of the column. Starts with <samp class="ph codeph">0 </samp></td>
+</tr>
+<tr class="strow"><td valign="top" headers="d135837e58" class="stentry"><samp class="ph codeph">text</samp></td>
+<td valign="top" headers="d135837e60" class="stentry">string</td>
+<td valign="top" headers="d135837e62" class="stentry"> the text of the column header</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d135837e58" class="stentry"><samp class="ph codeph">visible</samp></td>
+<td valign="top" headers="d135837e60" class="stentry">boolean</td>
+<td valign="top" headers="d135837e62" class="stentry">whether the column is visible (true) or not (false)</td>
+</tr>
+</table>
+
+			<p class="p">Note that this TablePersoDialog control does not adjust the table itself. This is
+				realised by the use of a table personalization controller (see below). You would use
+				this table personalization dialog on its own only if you wanted to present a
+				personalization dialog and nothing more (e.g. you intended to manage the persistence
+				of the personalized settings yourself).</p>
+
+			<p class="p">Here is an example of how you would use a table personalization dialog:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+// Create the table, with a button to invoke the personalization dialog
+var oTable = new sap.m.Table({
+    ...
+    headerToolbar: ({
+        ...
+            new sap.m.Button("idPersonalizeButton", { text: "Personalize" })
+        ...
+    }),
+    ...
+});
+
+// Instantiate a table personalization dialog for the table
+oTablePersoDialog = new sap.m.TablePersoDialog({
+    persoDialogFor: oTable
+});
+
+// Cause the dialog to open when the button is pressed
+sap.ui.getCore().byId("idPersonalizeButton").attachPress(function() {
+    oTablePersoDialog.open();
+});
+
+// Catch the dialog close event and do something with the personalizations made
+oTablePersoDialog.attachClose(function() {
+    var oPersoData = oTablePersoDialog.retrievePersonalizations();
+    // do something with oPersoData
+});</pre></div>
+
+		</div></div>
+<div class="section"><div class="section_title">Table Personalization Controller</div><div type="Table Personalization Controller">
+			
+			<p class="p">The table personalization controller <samp class="ph codeph">sap.m.TablePersoController</samp> can
+				be seen as a wrapper around three things:</p>
+
+			<ul class="ul" id="loio1c60212834c049ed9f65d743dfeb3d9a__ul_wq1_lkh_nn"><li class="li">your table (to be personalized)</li>
+<li class="li">a table personalization dialog</li>
+<li class="li">a table personalization persistence service provider</li>
+</ul>
+
+			<p class="p">As an application developer you would probably want to use a table personalization
+				controller. The controller manages the instantiation of the table personalization
+				dialog, and the connection to the table persistence service provider (see later). It
+				also applies the personalizations to the table once the dialog is closed with the
+					<span class="ph uicontrol">OK</span> button.</p>
+
+			<p class="p">Here is an example of how a table personalization controller can be used, assuming
+				the table was created in the same way as the previous example, and assuming you are
+				running in the context of the unified shell, which provides backend services such as
+				persistence.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+// Create a persistence key
+var oPersId = {container: "mycontainer-1", item: "myitem-1"};
+
+// Get a personalization service provider from the shell (or create your own)
+var oProvider = sap.ushell.Container.getService("Personalization").getPersonalizer(oPersId);
+
+// Instantiate a controller connecting your table and the persistence service
+var oTablePersoController = new sap.m.TablePersoController({
+    table: oTable,
+    persoService: oProvider
+}).activate();
+
+// Cause the dialog to open when the button is pressed
+sap.ui.getCore().byId("idPersonalization").attachPress(function() {
+    oTablePersoController.openDialog();
+});</pre></div>
+
+			<p class="p">This is similar to the use of the standalone table personalization dialog, except
+				that once the dialog is closed, the personalizations made are applied to the table
+				automatically, and persisted. Conversely, when the controller is instantiated, any
+				existing personalizations are fetched and applied to the table. The link to the
+				persistence service provider, the instantiation of a table personalization dialog
+				object, and the automatic appliance of any personalization settings to the table is
+				invoked with the activate method as shown above.</p>
+
+			<p class="p">As well as the <samp class="ph codeph">openDialog</samp> and <samp class="ph codeph">activate</samp> methods
+				shown, there are also methods to apply and save the personalizations:
+					<samp class="ph codeph">applyPersonalizations</samp> and <samp class="ph codeph">savePersonalizations</samp>
+				respectively.</p>
+
+			<p class="p">Note the reference to "create your own" in the above code example. The unified shell
+				will provide a shell-based personalization persistence service provider (see below),
+				but you are of course free to build your own. One simple example might be the use of
+				browser local storage to read and write data.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Table Personalization Persistence Service Provider</div><div type="Table Personalization Persistence Service Provider"><p class="p">The table
+				personalization persistence service provider should be based on the abstract class
+					<samp class="ph codeph">sap.m.TablePersoProvider</samp>. Do not instantiate and use this
+					<samp class="ph codeph">sap.m.TablePersoProvider</samp> class directly as a provider; it
+				merely describes the interface that a real persistence service provider should be
+				built to.</p>
+<p class="p">The interface is simple: on instantiation, persistence
+				identification can be supplied; this will be used as the key for retrieving, saving
+				and removing the personalization data. There are three methods:</p>
+<ul class="ul" id="loio1c60212834c049ed9f65d743dfeb3d9a__ul_qvg_5kh_nn"><li class="li"><samp class="ph codeph">getPersData()</samp>: retrieve the personalizations</li>
+<li class="li"><samp class="ph codeph">setPersData(oPersonalizationData)</samp>: save the given
+					personalization data</li>
+<li class="li"><samp class="ph codeph">delPersData()</samp>: remove the personalization data</li>
+</ul>
+<p class="p">Note that there are no keys specified in the calls to the <samp class="ph codeph">get</samp>,
+					<samp class="ph codeph">set</samp> and <samp class="ph codeph">del</samp> functions. These should be
+				inherent from the original instantiation of the service and used implicitly. In
+				future there may be a requirement to supply a variant style sub-key, but this is not
+				yet implemented.</p>
+<div class="sectiondiv"><span class="ph emphasis emphasis">Shell Table Personalization Persistence
+					Service Provider</span><p class="p">A concrete implementation of the Table
+					Personalization Persistence Service Provider (<samp class="ph codeph">sap.m.Table
+						PersoProvider</samp>) is available from the Unified Shell services. The
+					previous code example shows this persistence service provider being instantiated
+					and utilized in the controller.</p>
+<div class="note note"><span class="notetitle">Note</span> Please note that this is not part of
+					the SAPUI5 framework, is delivered separately, and you must check that this
+					service is available in your application context.</div>
+</div></div></div>
+<div class="section"><div class="section_title">API References</div><div type="API References">
+			
+			<ul class="ul" id="loio1c60212834c049ed9f65d743dfeb3d9a__ul_wwp_1nh_nn"><li class="li"><a class="xref" href="../../docs/api/symbols/sap.m.TablePersoDialog.html">sap.m.TablePersoDialog</a></li>
+<li class="li"><a class="xref" href="../../docs/api/symbols/sap.m.TablePersoController.html">sap.m.TablePersoController</a></li>
+<li class="li"><a class="xref" href="../../docs/api/symbols/sap.m.TablePersoProvider.html">sap.m.TablePersoProvider</a></li>
+</ul>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Table Personalization";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

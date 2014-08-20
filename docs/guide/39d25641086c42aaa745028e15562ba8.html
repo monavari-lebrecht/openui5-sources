@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=5201791578912321"/>
+<title>Creating a Simple Container Control</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio39d25641086c42aaa745028e15562ba8">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Creating a Simple Container Control</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">For a container control with arbitrary child controls that are rendered in a row and a colored
+            box around each child, use the following code</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">  sap.ui.core.Control.extend("ColorBoxContainer", { // call the new Control type "Square" 
+                                                    // and let it inherit from sap.ui.core.Control
+
+      // the Control API:
+      metadata : {
+         properties : {            // setter and getter are created behind the scenes, 
+                                   // incl. data binding and type validation
+            "boxColor" : "string"  // the color to use for the frame around each child Control
+         },
+         aggregations: {
+            content: {singularName: "content"} // default type is "sap.ui.core.Control", multiple is "true"
+         }
+      },
+     
+
+      // the part creating the HTML:
+      renderer : function(oRm, oControl) { // static function, so use the given "oControl" instance 
+                                           // instead of "this" in the renderer function
+          oRm.write("&lt;div"); 
+          oRm.writeControlData(oControl);  // writes the Control ID and enables event handling - important!
+          oRm.writeClasses();              // there is no class to write, but this enables 
+                                           // support for ColorBoxContainer.addStyleClass(...)
+          oRm.write("&gt;");
+
+          var aChildren = oControl.getContent();
+          for (var i = 0; i &lt; aChildren.length; i++) { // loop over all child Controls, 
+                                                       // render the colored box around them
+              oRm.write("&lt;div&gt;");
+              oRm.addStyle("display", "inline-block");
+              oRm.addStyle("border", "3px solid " + oControl.getBoxColor()); // specify the border around the child
+              oRm.writeStyles();
+              oRm.write("&gt;");
+
+              oRm.renderControl(aChildren[i]);   // render the child Control 
+                                                 // (could even be a big Control tree, but you don't need to care)
+
+
+              oRm.write("&lt;/div&gt;"); // end of the box around the respective child
+          }
+
+          oRm.write("&lt;/div"); // end of the complete Control
+      }
+  });</pre></div>
+<p class="p">As the control itself has no appearance, no additional CSS required.</p>
+<p class="p">You can use this container control like any SAPUI5 container:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">  var btn = new sap.ui.commons.Button({text:'Hello World'});
+  var tf = new sap.ui.commons.TextField({value:'edit text here'});
+
+  var container = new ColorBoxContainer({
+      boxColor: "#ff7700",
+      content:[
+          btn,
+          tf
+      ]});
+  container.placeAt('content');</pre></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Creating a Simple Container Control";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="LOIO.FOLDER.IWB_FOLDER_ID" content="1234AC50C238B656E10000000A445394"/>
+<meta name="LOIO.FOLDER.IWB_TECH_NAME" content="HELPX.UI_EXT"/>
+<meta name="LOIO.FOLDER.IWB_FOLDER_GROUP" content="SAPXH"/>
+<meta name="LOIO.FOLDER.IWB_SHH_KEY" content=""/>
+<meta name="LOIO.FOLDER.IWB_TRANSLATION_MEMORY" content=""/>
+<meta name="LOIO.FOLDER.TERM_DOMAIN" content="FF"/>
+<meta name="LOIO.IWB_TYPE" content="ICG"/>
+<meta name="LOIO.IWB_SHH_KEY" content=""/>
+<meta name="LOIO.KW_CONVREF.CLASS" content=""/>
+<meta name="LOIO.KW_CONVREF.OBJID" content=""/>
+<meta name="PHIO.IWB_INDUSTRY" content="SHL"/>
+<meta name="PHIO.RELEASE" content="1.0_2014Q2"/>
+<meta name="PHIO.CREATED_AT" content="20140522102832"/>
+<meta name="PHIO.LAST_CHANGED_AT" content="20140522102832"/>
+<meta name="PHIO.IWB_LEVEL" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=1281539577992049"/>
+<title>The Representation Object</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio6a467c53595a6655e10000000a423f68">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">The Representation Object</h1>
+<div class="body"><p class="p">The <span class="ph sap-technical-name sap-technical-name">representation</span> object defines the relation between the requested data and the representation type, for example, a particular chart type or a list. The format is as follows:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+{
+  "type" : "representation",    // optional
+  "id" : <var class="keyword varname">&lt;id::string&gt;</var>
+  "representationTypeId" : <var class="keyword varname">&lt;representation type ID&gt;</var>,
+  "parameter" : {
+    "type" : "parameter"
+    "dimensions" : [ <var class="keyword varname">&lt;dimensions&gt;</var>* ]
+    "measures" : [ <var class="keyword varname">&lt;measures&gt;</var>* ]
+    "alternateRepresentationType" : <var class="keyword varname">&lt;representation type ID&gt;</var>    // optional
+  }
+}</pre></div>
+<p class="p">The properties used in the <span class="ph sap-technical-name sap-technical-name">representation</span> object denote the following:</p>
+
+<div class="tablenoborder"><table summary="" class="table" frame="border" border="1" rules="all"><thead class="thead" align="left"><tr class="row"><th class="entry" valign="top" id="d482695e65"><p class="p">Property</p>
+ </th>
+<th class="entry" valign="top" id="d482695e69"><p class="p">Description</p>
+ </th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry" valign="top" headers="d482695e65 d482695e69 "><p class="p"><span class="ph sap-technical-name sap-technical-name">id</span></p>
+ </td>
+<td class="entry" valign="top" headers="d482695e65 d482695e69 "><p class="p">Unique ID of type string.</p>
+ </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d482695e65 d482695e69 "><p class="p"><span class="ph sap-technical-name sap-technical-name">representationTypeId</span></p>
+ </td>
+<td class="entry" valign="top" headers="d482695e65 d482695e69 "><p class="p">ID of the <span class="ph sap-technical-name sap-technical-name">representation type</span> object, which contains a
+                                label, an image, and a reference to the constructor function of the
+                                representation type.</p>
+ </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d482695e65 d482695e69 "><p class="p"><span class="ph sap-technical-name sap-technical-name">parameter</span></p>
+ </td>
+<td class="entry" valign="top" headers="d482695e65 d482695e69 "><p class="p">Defines specific information for the representation, for example, dimensions, measures, and the alternate representation. At runtime, the constructor defined in the <span class="ph sap-technical-name sap-technical-name">representation type</span> object is called with the parameters defined by this property.</p>
+ </td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section"><div class="section_title">Dimensions and Measures</div><div type="Dimensions and Measures"> <p class="p">The <span class="ph sap-technical-name sap-technical-name">parameter</span> property can contain dimensions and measures for the representation.</p>
+ <p class="p">The <span class="ph sap-technical-name sap-technical-name">dimensions</span> property has the following format:</p>
+ <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">"dimensions" : [</samp><samp class="ph codeph">    {</samp><samp class="ph codeph">        "fieldName" : <var class="keyword varname">&lt;field name&gt;</var></samp><samp class="ph codeph">        "fieldDesc" : {</samp><samp class="ph codeph">            "type" : "label",</samp><samp class="ph codeph">            "kind" : "text",</samp><samp class="ph codeph">            "key" : <var class="keyword varname">&lt;key&gt;</var></samp><samp class="ph codeph">        }</samp><samp class="ph codeph">    }</samp><samp class="ph codeph">]</samp></pre></div>
+ <p class="p">The <span class="ph sap-technical-name sap-technical-name">measures</span> property has the following format:</p>
+ <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">"measures" : [</samp><samp class="ph codeph">    {</samp><samp class="ph codeph">        "fieldName" : <var class="keyword varname">&lt;field name&gt;</var></samp><samp class="ph codeph">        "fieldDesc" : {</samp><samp class="ph codeph">            "type" : "label",</samp><samp class="ph codeph">            "kind" : "text",</samp><samp class="ph codeph">            "key" : <var class="keyword varname">&lt;key&gt;</var></samp><samp class="ph codeph">        }</samp><samp class="ph codeph">    }</samp><samp class="ph codeph">]</samp></pre></div>
+ <p class="p">The optional <span class="ph sap-technical-name sap-technical-name">fieldDesc</span> property of the
+                    <span class="ph sap-technical-name sap-technical-name">dimensions</span> and
+                    <span class="ph sap-technical-name sap-technical-name">measures</span> properties can be used for
+                rendering the axis titles in the chart. For more information, see <a class="xref" href="0bdb7d53b5c19456e10000000a423f68.html">Rendering of Charts</a>.</p>
+ </div></div>
+<div class="section"><div class="section_title">Alternate Representation</div><div type="Alternate Representation"> <p class="p">For each representation, you can define an alternate representation. A user can switch to the alternate representation directly from any representation without having to access the gallery of available representation types.</p>
+ <p class="p">To define an alternate representation, the configuration file must contain the following parameter: <span class="ph sap-technical-name sap-technical-name">"alternateRepresentationType" : <var class="keyword varname">&lt;representationTypeId&gt;</var></span></p>
+ <p class="p">The property <span class="ph sap-technical-name sap-technical-name">alternateRepresentationType</span> contains a reference to the <span class="ph sap-technical-name sap-technical-name">representation type ID</span> that is configured with details such as the constructor. The constructor of an alternate representation type is handed over to the representation instance using the parameter object.</p>
+ </div></div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="The Representation Object";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

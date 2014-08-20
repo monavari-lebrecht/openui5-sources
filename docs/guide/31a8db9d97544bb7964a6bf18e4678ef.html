@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=9067901507945847"/>
+<title>Step 7: Model View Controller</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio31a8db9d97544bb7964a6bf18e4678ef">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Step 7: Model View Controller</h1>
+<div class="body conbody"><p class="shortdesc"/>
+<p class="p">Right now, the error in the console is suggesting that an App view, specifically the file
+				<span class="ph filepath">App.view.xml</span>, is missing. Let's take this opportunity to step
+			back and look at what we're going to build. </p>
+<p class="p">We're using the Model View Controller (MVC) concept, and this starts with a root View
+			that the Component instantiates - the App view. This view is rather simple, in that it
+			contains just a single control - an <samp class="ph codeph">sap.m.SplitApp</samp> - and does not have
+			a corresponding controller. There is no requirement for a controller as the routing and
+			navigation logic is provided by the Router that we've already defined. </p>
+<p class="p">Further, there's no requirement for any great detail in the <samp class="ph codeph">SplitApp</samp>, as the
+			aggregation content is also controlled by the Router. This is what the App view looks
+			like, in its entirety:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!xml</samp>
+&lt;mvc:View
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true"
+	xmlns="sap.m"&gt;
+	&lt;SplitApp id="idAppControl" /&gt;
+&lt;/mvc:View&gt;
+</pre></div>
+<p class="p">A SplitApp is a so-called 'container' control, and inheriting from
+				<samp class="ph codeph">sap.m.NavContainer</samp>, has two container sections, in the form of
+			aggregations: <samp class="ph codeph">masterPages</samp> and <samp class="ph codeph">detailPages</samp>. These
+			aggregations, as we already saw in the Routing configuration in the Component, are
+			managed by the Router, and we don't need to specify anything directly here. While we're
+			already getting some separation of concerns, it's more from the fact that we're using a
+			container control. We're going to go one level deeper and use the MVC approach within
+			the contained controls. The 'pages' suffix of these aggregation names suggest that the
+				<samp class="ph codeph">sap.m.Page</samp> is a candidate for aggregation, however, we're
+			aggregating views, as we can see in the Routing configuration. This is a common pattern. </p>
+<p class="p">Aggregating views within the SplitApp container control allows us to develop the
+			different parts of the app independently, handling the UI and logic in discrete
+			sections. We've already seen the component overview schematic in Part 1, so let's look
+			at a tree-based summary of the controls and MVC elements now (all filenames are relative
+			to the app's root folder):</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+control:UIComponent (Component.js)
+ |
+ +-- view:App (view/App.view.xml)
+      |
+      +-- control:SplitApp
+           |
+           +-- aggregation:masterPages
+           |    |
+           |    +-- view:Master (view/Master.view.xml)
+           |         |
+           |         +-- controller: Master (view/Master.controller.js)
+           |
+           +-- aggregation:detailPages
+                 |
+                 +-- view:Detail (view/Detail.view.xml)
+                 |    |
+                 |    +-- controller:Detail (view/Detail.controller.js)
+                 |
+                 +-- view:NotFound (view/NotFound.view.xml)
+                 |
+                 +-- view:AddProduct (view/AddProduct.view.xml)
+                      |
+                      +-- controller:AddProduct (view/AddProduct.controller.js)
+</pre></div>
+<div class="section"><div class="section_title">Progress Check</div><div type="Progress Check">
+			
+			<p class="p">We'll add the App view, and also a couple of temporary skeleton XML declarations for
+				the Master and Detail views (this is mostly so we can see a little bit of progress).
+				Our skeleton XML declarations for the Master and Detail views look like this:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!xml</samp>
+&lt;mvc:View xmlns:mvc="sap.ui.core.mvc" /&gt;</pre></div>
+
+			<p class="p">In other words, completely empty views. Now our app folder content now looks like
+				this:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+tdg/
+  |
+  +-- i18n/
+  |     |
+  |     +-- messageBundle.properties
+  |
+  +-- view/
+  |     |
+  |     +-- App.view.xml
+  |     +-- Detail.view.xml
+  |     +-- Master.view.xml
+  |
+  +-- Component.js
+  +-- index.html
+  +-- MyRouter.html</pre></div>
+
+			<p class="p">At this stage things look a little more interesting than the previous empty screen.
+				We can see the core structure of the SplitApp.</p>
+
+			<div class="fig fignone"><div class="figcontainer"><img class="image" id="loio31a8db9d97544bb7964a6bf18e4678ef__image_g32_wds_4n" src="731b5c4bd26f42daa77e79ccc40247ca.image"/></div></div>
+
+			<p class="p">There are no relevant error messages in the console - the runtime is delivering exactly what
+				we asked for (a couple of empty views in the <samp class="ph codeph">SplitApp</samp> container
+				control).</p>
+
+			<p class="p">In fact, because there's now actually something visible, let's have a look at an
+				alternative screenshot, where the browser window is maximised to full screen:</p>
+
+			<div class="fig fignone"><div class="figcontainer"><img class="image" id="loio31a8db9d97544bb7964a6bf18e4678ef__image_uvz_wds_4n" src="507ef43bc95d4a83969cb1b94e248de6.image"/></div></div>
+
+			<p class="p">Here we can see that the Master and Detail aggregation proportions remain, despite the extreme
+				width of the browser window; there are margins on the left and right sides. This is
+				due to the <samp class="ph codeph">sap.m.Shell</samp> control that we introduced in the
+					<span class="ph filepath">index.html</span>.</p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Step 7: Model View Controller";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

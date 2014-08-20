@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=4351207065978199"/>
+<title>Example: Use of HTML Templating in SAPUI5</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio312c097c9c7e4df58eee1f121c5490b4">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Example: Use of HTML Templating in SAPUI5</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">The following example demonstrates the use of the helpers for HTML templating that can be used
+			in SAPUI5:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;head&gt;
+
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge" /&gt;
+    &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
+
+    &lt;title&gt;Template - sap.ui.core.tmpl&lt;/title&gt;
+
+    &lt;script id="sap-ui-bootstrap"
+            type="text/javascript"
+            src="resources/sap-ui-core.js"
+            data-sap-ui-libs="sap.ui.commons"
+            data-sap-ui-theme="sap_bluecrystal"
+            data-sap-ui-xx-bindingSyntax="complex"
+            &gt;
+    &lt;/script&gt;
+    
+    &lt;script&gt;
+    
+        // sample code
+        jQuery(function() {
+            
+            // define the model
+            var oModel = new sap.ui.model.json.JSONModel({
+                title: "Persons",
+                persons: [{
+                    firstName: "Peter",
+                    lastName: "Muessig"
+                }, {
+                    firstName: "Tim",
+                    lastName: "Back"
+                }, {
+                    firstName: "Christoph",
+                    lastName: "Kraemer"
+                }]
+            });
+            sap.ui.getCore().setModel(oModel);
+            
+            // register all available templates in the document
+            sap.ui.template();
+            
+        });
+    
+    &lt;/script&gt;
+
+&lt;/head&gt;
+&lt;body class="sapUiBody" role="application"&gt;
+
+    &lt;div id="mySimpleTemplate" data-type="text/x-handlebars-template"&gt;
+    
+        &lt;h3&gt;Text Template (using "text" expression)&lt;/h3&gt;
+        &lt;b&gt;{{text path="/title"}}:&lt;/b&gt;
+        &lt;ul&gt;
+        {{#each path="/persons"}}
+            &lt;li&gt;{{text path="firstName"}} {{text path="lastName"}}&lt;/li&gt;
+        {{/each}}
+        &lt;/ul&gt;
+    
+    &lt;/div&gt;
+
+    &lt;div id="myAdvancedTemplate" data-type="text/x-handlebars-template"&gt;
+    
+        &lt;h3&gt;Advanced Text Template (using "element" expression)&lt;/h3&gt;
+        {{element tag="b" text="{/title}"}}:
+        &lt;ul&gt;
+        {{#each path="/persons"}}
+            {{element tag="li" text="{firstName} {lastName}"}}
+        {{/each}}
+        &lt;/ul&gt;
+    
+    &lt;/div&gt;
+
+    &lt;div id="myAdvancedEditTemplate" data-type="text/x-handlebars-template"&gt;
+    
+        &lt;h3&gt;Advanced Text Template (using editable "element" expression)&lt;/h3&gt;
+        {{element tag="textarea" text="{/title}" rows="2" cols="40"}}
+        &lt;ul&gt;
+        {{#each path="/persons"}}
+            &lt;li&gt;{{element tag="input" value="{firstName}"}} {{element tag="input" value="{lastName}"}}&lt;/li&gt;
+        {{/each}}
+        &lt;/ul&gt;
+    
+    &lt;/div&gt;
+
+    &lt;div id="myControlTemplate" data-type="text/x-handlebars-template"&gt;
+    
+        &lt;h3&gt;Control Template (using "control" expression)&lt;/h3&gt;
+        {{control sap-ui-type="sap.ui.commons.Label" design="Bold" text="{/title}"}}
+        &lt;ul&gt;
+        {{#each path="/persons"}}
+            &lt;li&gt;{{control sap-ui-type="sap.ui.commons.TextView" text="{lastName}, {firstName}"}}&lt;/li&gt;
+        {{/each}}
+        &lt;/ul&gt;
+    
+    &lt;/div&gt;
+
+    &lt;div id="myControlEditTemplate" data-type="text/x-handlebars-template"&gt;
+    
+        &lt;h3&gt;Advanced Control Template (using editable "control" expression)&lt;/h3&gt;
+        {{control sap-ui-type="sap.ui.commons.TextArea" value="{/title}" rows="2" cols="40"}}
+        &lt;ul&gt;
+        {{#each path="/persons"}}
+            &lt;li&gt;{{control sap-ui-type="sap.ui.commons.TextField" value="{lastName}"}}, {{control sap-ui-type="sap.ui.commons.TextField" value="{firstName}"}}&lt;/li&gt;
+        {{/each}}
+        &lt;/ul&gt;
+    
+    &lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</pre></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Example: Use of HTML Templating in SAPUI5";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

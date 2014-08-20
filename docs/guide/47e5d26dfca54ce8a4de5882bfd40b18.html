@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=7246308941252768"/>
+<title>Avoiding Duplicates</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio47e5d26dfca54ce8a4de5882bfd40b18">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Avoiding Duplicates</h1>
+<div class="body"><p class="p">When the runtime dependency resolution is used, the runtime maintains a list of the loaded
+			modules. This list is searched before a new module is loaded and executed. If the
+			requested module is on the list, the module is not loaded again.</p>
+<p class="p">However, if a server or build-time tool is used instead, it creates a bigger file which
+			may contain multiple modules. The runtime can only check if the bigger module has been
+			loaded already, but does not know about the contained modules. In this case, it is not
+			possible to avoid double-loading the modules. To avoid this, the dependency resolution
+			tool wraps embedded modules with a few lines of additional coding. This is evaluated
+			during execution of the merged module and has the same effect as the original runtime
+			checks in an unmerged scenario:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">   ...
+
+    // code of enclosing module 
+    ...
+
+    // location of a jQuery.sap.require('xyz');
+
+    if ( !jQuery.sap.isDeclared('xyz') ) { // check whether module 'xyz' has been loaded already
+      
+
+        jQuery.sap.declare('xyz'); // will only be added if the module 'xyz' doesn't contain a declaration
+    
+
+        // original text of module 'xyz'
+        ...
+    }        
+
+    ...
+    // further code of enclosing module
+    ...</pre></div>
+<div class="note note" id="loio47e5d26dfca54ce8a4de5882bfd40b18__note_N1010A_N100F9_N10013_N10001"><span class="notetitle">Note</span> The generated wrapper coding also contains a module
+			declaration if the module does <span class="ph emphasis emphasis">not</span> contain one. The wrapper avoids
+			double loading no matter whether a module has been loaded as an individual file or as
+			part of a bigger, merged module. It is even possible to recursively merge files (merged
+			module A includes a merged module B).</div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Avoiding Duplicates";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

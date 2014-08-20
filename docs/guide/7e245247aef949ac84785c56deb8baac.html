@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=9504540010818986"/>
+<title>Integrating the ItemNavigation in your Control</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio7e245247aef949ac84785c56deb8baac">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Integrating the ItemNavigation in your Control</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">Apply the delegate in the <samp class="ph codeph">onAfterRendering</samp> hook of your control
+			once:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.commons.ListBox.prototype.onAfterRendering = function () {
+        //Collect the dom references of the items
+        var oFocusRef = this.getDomRef(),
+                 aRows = oFocusRef.getElementsByTagName("TR"),
+                 aDomRefs = [];
+        for (var i=0;i&lt;aRows.length;i++) {
+                 aDomRefs.push(aRows[i].firstChild);
+        }
+        //initialize the delegate add apply it to the control (only once)
+         if (!this.oItemNavigation) {
+                  this.oItemNavigation = new sap.ui.core.delegate.ItemNavigation();
+                  this.addDelegate(this.oItemNavigation);
+        }
+
+       // After each rendering the delegate needs to be initialized as well.
+
+       //set the root dom node that surrounds the items
+         this.oItemNavigation.setRootDomRef(oFocusRef);
+
+       //set the array of dom nodes representing the items.
+         this.oItemNavigation.setItemDomRefs(aDomRefs);
+
+       //turn of the cycling
+        this.oItemNavigation.setCycling(false);
+
+       //set the selected index
+        this.oItemNavigation.setSelectedIndex(this.getSelectedIndex());
+
+      //set the page size
+       this.oItemNavigation.setPageSize(this.getVisibleItems()); };</pre></div>
+<p class="p">After the control is destroyed, ensure that the delegate is correctly removed. Otherwise,
+			memory will leak because DOM nodes are still referenced by the delegate.</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.commons.ListBox.prototype.destroy = function() {
+                   if (this.oItemNavigation) {
+                            this.removeDelegate(this.oItemNavigation);
+                            this.oItemNavigation.destroy();
+                   }
+ }; </pre></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Integrating the ItemNavigation in your Control";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

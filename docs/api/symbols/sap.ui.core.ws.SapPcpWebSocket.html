@@ -1,0 +1,602 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.core.ws.SapPcpWebSocket</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class sap.ui.core.ws.SapPcpWebSocket
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.ui.core.ws.WebSocket" href="../symbols/sap.ui.core.ws.WebSocket.html">WebSocket</a></div>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>WebSocket class implementing the pcp-protocol</p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+						
+						
+							<div class="summary section">
+								<div class="sectionTitle">Namespaces &amp; Classes</div>
+								<div class="sectionItems">
+								
+									<div class="sectionItem itemName namespace static">
+										<b class="icon" title="Protocol versions."><a href="../symbols/sap.ui.core.ws.SapPcpWebSocket.SUPPORTED_PROTOCOLS.html">SUPPORTED_PROTOCOLS</a></b>
+										<span class='description'>Protocol versions.</span>
+									</div>
+								
+								</div>
+							</div>
+						
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="Creates a new WebSocket connection and uses the pcp-protocol for communication.">new <a href="../symbols/sap.ui.core.ws.SapPcpWebSocket.html#constructor">sap.ui.core.ws.SapPcpWebSocket</a></b>
+										<span class='signature'>(<span title="(string) relative or absolute URL for WebSocket connection.">sUrl</span>, <span title="(array) array of protocols as strings, a single protocol as a string.">aProtocols</span><i class="help" title="Optional parameter">?</i>)</span>
+										<span class='description'>Creates a new WebSocket connection and uses the pcp-protocol for communication.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+						
+						
+						
+						
+					
+		
+
+
+					
+						
+						
+						<div class="summary section" cellspacing="0" summary="A summary of the events documented in the class sap.ui.core.ws.SapPcpWebSocket.">
+							<div class="sectionTitle">Event Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="The 'message' event is fired, when a message was received."><a href="../symbols/sap.ui.core.ws.SapPcpWebSocket.html#event:message">message</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>The 'message' event is fired, when a message was received.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+				
+						
+						
+						
+							
+								<div class="summary section">
+									<div class="sectionTitle">Events borrowed from class <a href="../symbols/sap.ui.core.ws.WebSocket.html">sap.ui.core.ws.WebSocket</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.ws.WebSocket.html#event:close">close</a>, <a href="../symbols/sap.ui.core.ws.WebSocket.html#event:error">error</a>, <a href="../symbols/sap.ui.core.ws.WebSocket.html#event:open">open</a>
+									</div>
+								</div>
+							
+						
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Creates a new subclass of class sap.ui.core.ws.SapPcpWebSocket with name sClassName and enriches it with the information contained in oClassInfo."><a href="../symbols/sap.ui.core.ws.SapPcpWebSocket.html#.extend">sap.ui.core.ws.SapPcpWebSocket.extend</a></b><span class='signature'>(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) alternative constructor for a metadata object">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Creates a new subclass of class sap.ui.core.ws.SapPcpWebSocket with name <code>sClassName</code> and enriches it with the information contained in <code>oClassInfo</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Fire event 'message' to attached listeners."><a href="../symbols/sap.ui.core.ws.SapPcpWebSocket.html#fireMessage">fireMessage</a></b><span class='signature'>(<span title="(object) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event 'message' to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Sends a message and optional pcp-header-fields using the pcp-protocol."><a href="../symbols/sap.ui.core.ws.SapPcpWebSocket.html#send">send</a></b><span class='signature'>(<span title="(string|blob|arraybuffer) message to send">message</span>, <span title="(object) additional pcp-fields as key-value map">oPcpFields</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Sends a message and optional pcp-header-fields using the pcp-protocol.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.ws.WebSocket.html">sap.ui.core.ws.WebSocket</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.ws.WebSocket.html#attachClose">attachClose</a>, <a href="../symbols/sap.ui.core.ws.WebSocket.html#attachError">attachError</a>, <a href="../symbols/sap.ui.core.ws.WebSocket.html#attachMessage">attachMessage</a>, <a href="../symbols/sap.ui.core.ws.WebSocket.html#attachOpen">attachOpen</a>, <a href="../symbols/sap.ui.core.ws.WebSocket.html#close">close</a>, <a href="../symbols/sap.ui.core.ws.WebSocket.html#detachClose">detachClose</a>, <a href="../symbols/sap.ui.core.ws.WebSocket.html#detachError">detachError</a>, <a href="../symbols/sap.ui.core.ws.WebSocket.html#detachMessage">detachMessage</a>, <a href="../symbols/sap.ui.core.ws.WebSocket.html#detachOpen">detachOpen</a>, <a href="../symbols/sap.ui.core.ws.WebSocket.html#fireClose">fireClose</a>, <a href="../symbols/sap.ui.core.ws.WebSocket.html#fireError">fireError</a>, <a href="../symbols/sap.ui.core.ws.WebSocket.html#fireOpen">fireOpen</a>, <a href="../symbols/sap.ui.core.ws.WebSocket.html#getInterface">getInterface</a>, <a href="../symbols/sap.ui.core.ws.WebSocket.html#getProtocol">getProtocol</a>, <a href="../symbols/sap.ui.core.ws.WebSocket.html#getReadyState">getReadyState</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.EventProvider.html#attachEvent">attachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#attachEventOnce">attachEventOnce</a>, <a href="../symbols/sap.ui.base.EventProvider.html#destroy">destroy</a>, <a href="../symbols/sap.ui.base.EventProvider.html#detachEvent">detachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#fireEvent">fireEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#getEventingParent">getEventingParent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#toString">toString</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.ui.core.ws.SapPcpWebSocket</b>(<span title="(string) relative or absolute URL for WebSocket connection.">sUrl</span>, <span title="(array) array of protocols as strings, a single protocol as a string.">aProtocols</span><i class="help" title="Optional parameter">?</i>)
+										</div>
+										
+										<div class="full-description">
+											Creates a new WebSocket connection and uses the pcp-protocol for communication.
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sUrl</b>
+													</td>
+													<td class="methodItemDesc">
+												    relative or absolute URL for WebSocket connection.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{array}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>aProtocols</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    array of protocols as strings, a single protocol as a string.
+Protocol(s) should be selected from <a href="../symbols/sap.ui.core.ws.SapPcpWebSocket.SUPPORTED_PROTOCOLS.html">sap.ui.core.ws.SapPcpWebSocket.SUPPORTED_PROTOCOLS</a>.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Event Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:message"> </a>
+									<div class="itemTitle icon">
+										message<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										The 'message' event is fired, when a message was received.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.data</b>
+												</td>
+												<td class="methodItemDesc">
+											    Received data from the server.
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.pcpFields</b>
+												</td>
+												<td class="methodItemDesc">
+											    Received pcpFields as a key-value map.
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+							</div>
+						</div>
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".extend"> </a>
+										<div class="itemTitle icon">
+											sap.ui.core.ws.SapPcpWebSocket.extend<span class="signature">(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) alternative constructor for a metadata object">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns function">: function</span>
+										</div>
+										<div class="full-description">
+											Creates a new subclass of class sap.ui.core.ws.SapPcpWebSocket with name <code>sClassName</code>
+and enriches it with the information contained in <code>oClassInfo</code>.
+</p><p>
+For a detailed description of <code>oClassInfo</code> or <code>FNMetaImpl</code>
+see <a href="../symbols/sap.ui.base.Object.html#.extend">Object.extend</a>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sClassName</b>
+													</td>
+													<td class="methodItemDesc">
+												    name of the class to be created
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oClassInfo</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    object literal with informations about the class
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>FNMetaImpl</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    alternative constructor for a metadata object
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{function}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the created class / constructor function
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="fireMessage"> </a>
+										<div class="itemTitle icon protected">
+											fireMessage<span class="signature">(<span title="(object) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.core.ws.SapPcpWebSocket">: <a href="../symbols/sap.ui.core.ws.SapPcpWebSocket.html">sap.ui.core.ws.SapPcpWebSocket</a></span>
+										</div>
+										<div class="full-description">
+											Fire event 'message' to attached listeners.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments.data</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Received data from the server.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments.pcpFields</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Received pcpFields as a key-value map.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.ws.SapPcpWebSocket.html">sap.ui.core.ws.SapPcpWebSocket</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="send"> </a>
+										<div class="itemTitle icon">
+											send<span class="signature">(<span title="(string|blob|arraybuffer) message to send">message</span>, <span title="(object) additional pcp-fields as key-value map">oPcpFields</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.core.ws.SapPcpWebSocket">: <a href="../symbols/sap.ui.core.ws.SapPcpWebSocket.html">sap.ui.core.ws.SapPcpWebSocket</a></span>
+										</div>
+										<div class="full-description">
+											Sends a message and optional pcp-header-fields using the pcp-protocol.<br>
+<br>
+If the connection is not yet opened, the message will be queued and sent
+when the connection is established.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string|blob|arraybuffer}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>message</b>
+													</td>
+													<td class="methodItemDesc">
+												    message to send
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oPcpFields</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    additional pcp-fields as key-value map
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.ws.SapPcpWebSocket.html">sap.ui.core.ws.SapPcpWebSocket</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

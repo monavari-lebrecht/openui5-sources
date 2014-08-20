@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="You can use CSS to achieve striping of table rows as you might do in other web-based applications."/>
+<meta name="description" content="You can use CSS to achieve striping of table rows as you might do in other web-based applications."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=8283622125430926"/>
+<title>Highlighting Rows and Columns</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio7ec7885ce75c4237aadc67d83f64b66e">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Highlighting Rows and Columns</h1>
+<div class="body conbody"><p class="shortdesc">You can use CSS to achieve striping of table rows as you might do in other web-based
+		applications. </p>
+<p class="p">For example, to highlight alternative rows in the table above, like this:</p>
+<p class="p"><img class="image" id="loio7ec7885ce75c4237aadc67d83f64b66e__image_cn3_s12_mn" src="7caa85eebdaa4e20982e2d7649975564.image"/></p>
+<p class="p">You just need to note the id of the <strong class="ph b">sap.m.List</strong> or <strong class="ph b">sap.m.Table</strong> control (in this
+			case it is "salesdata") and then apply some appropriate CSS such as:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"> 
+<samp class="ph codeph">#!js</samp>
+#salesarea tbody tr:nth-child(even) {
+	background: rgb(245, 245, 245);
+}</pre></div>
+<div class="note note"><span class="notetitle">Note</span> Use <var class="keyword varname">&lt;even&gt;</var>, rather than <var class="keyword varname">&lt;odd&gt;</var>, for the sibling
+			specification. This way, the pop-in highlighting will be correct.</div>
+<p class="p">Highlighting of table columns is also possible by means of the <strong class="ph b">styleClass</strong> property
+			of the <strong class="ph b">sap.m.Column</strong> control. The value of this property is applied as a class to
+			the whole column (header, cells and footer) and can be used like this: Specify a class
+			name for the <strong class="ph b">styleClass</strong> property of your Column, and set the style as you
+			wish:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"> 
+<samp class="ph codeph">#!js</samp>
+new sap.m.Column({
+    header: new sap.m.Label({ text: "Sales (GBP)" }),
+    hAlign: "Right",
+    minScreenWidth: sap.m.ScreenSize.Tablet,
+    demandPopin: true,
+    popinDisplay: "Block",
+    styleClass: "salesamount" // &lt;-- for highlighting 
+}),</pre></div>
+<p class="p">This results in the following:</p>
+<p class="p"><img class="image" id="loio7ec7885ce75c4237aadc67d83f64b66e__image_rk4_nb2_mn" src="1cf61ea3ba90444e8d1cfc28fb4bffdb.image"/></p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Highlighting Rows and Columns";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

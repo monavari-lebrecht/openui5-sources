@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="Finding the origin of a text in the source code has to be done manually:"/>
+<meta name="description" content="Finding the origin of a text in the source code has to be done manually:"/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=6549272540533667"/>
+<title>Finding the Where-Used Location of a Text Element</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio5baaf559a5e54e28a2fb6ed47831cf7d">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Finding the Where-Used Location of a Text Element</h1>
+<div class="body"><p class="shortdesc">Finding the origin of a text in the source code has to be done manually:</p>
+<ul class="ul" id="loio5baaf559a5e54e28a2fb6ed47831cf7d__ul_eds_q5f_bj"><li class="li">
+				<p class="p">Use GUID to find the corresponding property file (path information) in table /UI5/TREP_FILES;
+					the GUID corresponds to the field PROP_FILE_GUID. </p>
+
+			</li>
+<li class="li">
+				<p class="p">The translator sees a key for each text element, which is a concatenation of the
+					text type and another GUID. This GUID corresponds to the field PROP_TEXT_GUID in
+					table /UI5/TREP_TEXT; here you can find the text name for a particular GUID.
+				</p>
+
+			</li>
+<li class="li">
+				<p class="p">The developer can use this text name to search in the corresponding project in Eclipse to
+					find the location where this particular text is used. </p>
+
+			</li>
+</ul>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Finding the Where-Used Location of a Text Element";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

@@ -1,0 +1,4373 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.core.Core</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static final">
+					
+					final Class sap.ui.core.Core
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.ui.base.EventProvider" href="../symbols/sap.ui.base.EventProvider.html">EventProvider</a></div>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>Core Class of the SAP UI Library.
+</p><p>
+This class boots the Core framework and makes it available for the Application
+via the method <code>sap.ui.getCore()</code>.
+</p><p>
+Example:<br/>
+<pre>   var oCore = sap.ui.getCore();</pre><br/>
+
+It provides events where the Application can attach to.<br/>
+Example:<br/>
+<pre>
+oCore.attachInit(function () {
+  //do the needful, do it lean
+});
+</pre><br/>
+</p><p>
+It registers the Browser Eventing.</p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static final">
+									<div class="itemName">
+										<b class="icon" title="">new <a href="../symbols/sap.ui.core.Core.html#constructor">sap.ui.core.Core</a></b>
+										<span class='signature'>()</span>
+										<span class='description'></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+						
+						
+						
+						
+					
+		
+
+
+					
+						
+						
+						<div class="summary section" cellspacing="0" summary="A summary of the events documented in the class sap.ui.core.Core.">
+							<div class="sectionTitle">Event Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="The 'formatError' event is fired when a value formatting fails."><a href="../symbols/sap.ui.core.Core.html#event:formatError">formatError</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>The 'formatError' event is fired when a value formatting fails.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Fired when any of the localization relevant configuration settings has changed (e.g."><a href="../symbols/sap.ui.core.Core.html#event:localizationChanged">localizationChanged</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oEvent</span>)</span>
+									<span class='description'>Fired when any of the localization relevant configuration settings has changed (e.g.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="The 'parseError' event is fired when input parsing fails."><a href="../symbols/sap.ui.core.Core.html#event:parseError">parseError</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>The 'parseError' event is fired when input parsing fails.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="The 'validationError' event is fired when validation of the input fails."><a href="../symbols/sap.ui.core.Core.html#event:validationError">validationError</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>The 'validationError' event is fired when validation of the input fails.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="The 'validationSuccess' event is fired when a value validation was successfully completed."><a href="../symbols/sap.ui.core.Core.html#event:validationSuccess">validationSuccess</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>The 'validationSuccess' event is fired when a value validation was successfully completed.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+				
+						
+						
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Enforces an immediate update of the visible UI (aka &quot;rendering&quot;)."><a href="../symbols/sap.ui.core.Core.html#applyChanges">applyChanges</a></b><span class='signature'>()</span>
+									<span class='description'>Enforces an immediate update of the visible UI (aka "rendering").</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Applies the theme with the given name (by loading the respective style sheets, which does not disrupt the application)."><a href="../symbols/sap.ui.core.Core.html#applyTheme">applyTheme</a></b><span class='signature'>(<span title="(string) the name of the theme to be loaded">sThemeName</span>, <span title="(string) the (optional) base location of the theme">sThemeBaseUrl</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Applies the theme with the given name (by loading the respective style sheets, which does not disrupt the application).</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Registers a listener for control events."><a href="../symbols/sap.ui.core.Core.html#attachControlEvent">attachControlEvent</a></b><span class='signature'>(<span title="(function) callback to be called for each control event">fnFunction</span>, <span title="(object) optional context object to call the callback on.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Registers a listener for control events.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Attach event-handler fnFunction to the 'formatError' event of sap.ui.core.Core."><a href="../symbols/sap.ui.core.Core.html#attachFormatError">attachFormatError</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which to call the given function.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Attach event-handler <code>fnFunction</code> to the 'formatError' event of <code>sap.ui.core.Core</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Attaches a given function to the initEvent event of the core."><a href="../symbols/sap.ui.core.Core.html#attachInit">attachInit</a></b><span class='signature'>(<span title="(function) the callback function to be called on event firing.">fnFunction</span>)</span>
+									<span class='description'>Attaches a given function to the <code>initEvent</code> event of the core.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Registers a listener to the central interval timer."><a href="../symbols/sap.ui.core.Core.html#attachIntervalTimer">attachIntervalTimer</a></b><span class='signature'>(<span title="(function) callback to be called periodically">fnFunction</span>, <span title="(object) optional context object to call the callback on.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Registers a listener to the central interval timer.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Register a listener for the localizationChanged event."><a href="../symbols/sap.ui.core.Core.html#attachLocalizationChanged">attachLocalizationChanged</a></b><span class='signature'>(<span title="(function) callback to be called">fnFunction</span>, <span title="(object) context object to cal lthe function on.">oListener</span>)</span>
+									<span class='description'>Register a listener for the <code>localizationChanged</code> event.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Attach event-handler fnFunction to the 'parseError' event of sap.ui.core.Core."><a href="../symbols/sap.ui.core.Core.html#attachParseError">attachParseError</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which to call the given function.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Attach event-handler <code>fnFunction</code> to the 'parseError' event of <code>sap.ui.core.Core</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Attach event-handler fnFunction to the 'validationError' event of sap.ui.core.Core."><a href="../symbols/sap.ui.core.Core.html#attachValidationError">attachValidationError</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which to call the given function.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Attach event-handler <code>fnFunction</code> to the 'validationError' event of <code>sap.ui.core.Core</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Attach event-handler fnFunction to the 'validationSuccess' event of sap.ui.core.Core."><a href="../symbols/sap.ui.core.Core.html#attachValidationSuccess">attachValidationSuccess</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which to call the given function.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Attach event-handler <code>fnFunction</code> to the 'validationSuccess' event of <code>sap.ui.core.Core</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the registered element for the given id, if any."><a href="../symbols/sap.ui.core.Core.html#byId">byId</a></b><span class='signature'>(<span title="(string) string">sId</span>)</span>
+									<span class='description'>Returns the registered element for the given id, if any.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Creates a component with the provided id and settings."><a href="../symbols/sap.ui.core.Core.html#createComponent">createComponent</a></b><span class='signature'>(<span title="(string|object) name of the component to import or object containing all needed parameters">vComponent</span>, <span title="(string) the URL to load the component from">sUrl</span><i class="help" title="Optional parameter">?</i>, <span title="(string) the ID for the component instance">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) the settings object for the component">mSettings</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Creates a component with the provided id and settings.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns a new instance of the RenderManager interface."><a href="../symbols/sap.ui.core.Core.html#createRenderManager">createRenderManager</a></b><span class='signature'>()</span>
+									<span class='description'>Returns a new instance of the RenderManager interface.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Unregisters a listener for control events."><a href="../symbols/sap.ui.core.Core.html#detachControlEvent">detachControlEvent</a></b><span class='signature'>(<span title="(function) function to unregister">fnFunction</span>, <span title="(object) context object given during registration">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Unregisters a listener for control events.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Detach event-handler fnFunction from the 'formatError' event of sap.ui.core.Core."><a href="../symbols/sap.ui.core.Core.html#detachFormatError">detachFormatError</a></b><span class='signature'>(<span title="(function) The callback function to unregister">fnFunction</span>, <span title="(object) Object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Detach event-handler <code>fnFunction</code> from the 'formatError' event of <code>sap.ui.core.Core</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Unregisters a listener for the central interval timer."><a href="../symbols/sap.ui.core.Core.html#detachIntervalTimer">detachIntervalTimer</a></b><span class='signature'>(<span title="(function) function to unregister">fnFunction</span>, <span title="(object) context object given during registration">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Unregisters a listener for the central interval timer.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Unregister a listener from the localizationChanged event."><a href="../symbols/sap.ui.core.Core.html#detachLocalizationChanged">detachLocalizationChanged</a></b><span class='signature'>(<span title="(function) callback to be deregistered">fnFunction</span>, <span title="(object) context object given in a previous call to attachLocalizationChanged.">oListener</span>)</span>
+									<span class='description'>Unregister a listener from the <code>localizationChanged</code> event.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Detach event-handler fnFunction from the 'parseError' event of sap.ui.core.Core."><a href="../symbols/sap.ui.core.Core.html#detachParseError">detachParseError</a></b><span class='signature'>(<span title="(function) The callback function to unregister.">fnFunction</span>, <span title="(object) Object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Detach event-handler <code>fnFunction</code> from the 'parseError' event of <code>sap.ui.core.Core</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Detach event-handler fnFunction from the 'validationError' event of sap.ui.core.Core."><a href="../symbols/sap.ui.core.Core.html#detachValidationError">detachValidationError</a></b><span class='signature'>(<span title="(function) The callback function to unregister">fnFunction</span>, <span title="(object) Object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Detach event-handler <code>fnFunction</code> from the 'validationError' event of <code>sap.ui.core.Core</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Detach event-handler fnFunction from the 'validationSuccess' event of sap.ui.core.Core."><a href="../symbols/sap.ui.core.Core.html#detachValidationSuccess">detachValidationSuccess</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Detach event-handler <code>fnFunction</code> from the 'validationSuccess' event of <code>sap.ui.core.Core</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Fire event formatError to attached listeners."><a href="../symbols/sap.ui.core.Core.html#fireFormatError">fireFormatError</a></b><span class='signature'>(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event formatError to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Fire event parseError to attached listeners."><a href="../symbols/sap.ui.core.Core.html#fireParseError">fireParseError</a></b><span class='signature'>(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event parseError to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Fire event validationError to attached listeners."><a href="../symbols/sap.ui.core.Core.html#fireValidationError">fireValidationError</a></b><span class='signature'>(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event validationError to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Fire event validationSuccess to attached listeners."><a href="../symbols/sap.ui.core.Core.html#fireValidationSuccess">fireValidationSuccess</a></b><span class='signature'>(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event validationSuccess to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the registered component for the given id, if any."><a href="../symbols/sap.ui.core.Core.html#getComponent">getComponent</a></b><span class='signature'>(<span title="(string) string">sId</span>)</span>
+									<span class='description'>Returns the registered component for the given id, if any.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the Configuration of the Core."><a href="../symbols/sap.ui.core.Core.html#getConfiguration">getConfiguration</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the Configuration of the Core.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the Id of the control/element currently in focus."><a href="../symbols/sap.ui.core.Core.html#getCurrentFocusedControlId">getCurrentFocusedControlId</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the Id of the control/element currently in focus.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the event bus."><a href="../symbols/sap.ui.core.Core.html#getEventBus">getEventBus</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the event bus.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Retrieves a resource bundle for the given library and locale."><a href="../symbols/sap.ui.core.Core.html#getLibraryResourceBundle">getLibraryResourceBundle</a></b><span class='signature'>(<span title="(string) name of the library to retrieve the bundle for">sLibraryName</span><i class="help" title="Optional parameter">?</i>, <span title="(string) locale to retrieve the resource bundle for">sLocale</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Retrieves a resource bundle for the given library and locale.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns a map which contains the names of the loaded libraries as keys and some additional information about each library as values."><a href="../symbols/sap.ui.core.Core.html#getLoadedLibraries">getLoadedLibraries</a></b><span class='signature'>()</span>
+									<span class='description'>Returns a map which contains the names of the loaded libraries as keys and some additional information about each library as values.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Get the model with the given model name."><a href="../symbols/sap.ui.core.Core.html#getModel">getModel</a></b><span class='signature'>(<span title="(string|undefined) name of the model to be retrieved">sName</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Get the model with the given model name.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the instance of the root component (if exists)."><a href="../symbols/sap.ui.core.Core.html#getRootComponent">getRootComponent</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the instance of the root component (if exists).</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the static, hidden area DOM element belonging to this core instance."><a href="../symbols/sap.ui.core.Core.html#getStaticAreaRef">getStaticAreaRef</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the static, hidden area DOM element belonging to this core instance.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the registered template for the given id, if any."><a href="../symbols/sap.ui.core.Core.html#getTemplate">getTemplate</a></b><span class='signature'>(<span title="(string) string">sId</span>)</span>
+									<span class='description'>Returns the registered template for the given id, if any.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns a UIArea if the given ID/Element belongs to one."><a href="../symbols/sap.ui.core.Core.html#getUIArea">getUIArea</a></b><span class='signature'>(<span title="(string|Element) a DOM Element or ID string of the UIArea">o</span>)</span>
+									<span class='description'>Returns a UIArea if the given ID/Element belongs to one.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns true if there are any pending rendering tasks or when such rendering tasks are currently being executed."><a href="../symbols/sap.ui.core.Core.html#getUIDirty">getUIDirty</a></b><span class='signature'>()</span>
+									<span class='description'>Returns <code>true</code> if there are any pending rendering tasks or when such rendering tasks are currently being executed.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Check if a Model is set to the core"><a href="../symbols/sap.ui.core.Core.html#hasModel">hasModel</a></b><span class='signature'>()</span>
+									<span class='description'>Check if a Model is set to the core</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Includes a library theme into the current page (if a variant is specified it will include the variant library theme)"><a href="../symbols/sap.ui.core.Core.html#includeLibraryTheme">includeLibraryTheme</a></b><span class='signature'>(<span title="(string) the name of the UI library">sLibName</span>, <span title="(string) the variant to include (optional)">sVariant</span><i class="help" title="Optional parameter">?</i>, <span title="(string) to be used only by the Core">sQuery</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Includes a library theme into the current page (if a variant is specified it will include the variant library theme)</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Initializes a library for an already loaded library module."><a href="../symbols/sap.ui.core.Core.html#initLibrary">initLibrary</a></b><span class='signature'>(<span title="(string|object) name of or info object for the library to import">vLibInfo</span>)</span>
+									<span class='description'>Initializes a library for an already loaded library module.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns true if the Core has already been initialized."><a href="../symbols/sap.ui.core.Core.html#isInitialized">isInitialized</a></b><span class='signature'>()</span>
+									<span class='description'>Returns true if the Core has already been initialized.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the locked state of the sap.ui.core.Core"><a href="../symbols/sap.ui.core.Core.html#isLocked">isLocked</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the locked state of the <code>sap.ui.core.Core</code></span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Check if the script is running on mobile"><a href="../symbols/sap.ui.core.Core.html#isMobile">isMobile</a></b><span class='signature'>()</span>
+									<span class='description'>Check if the script is running on mobile</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Used to find out whether a certain DOM element is the static area"><a href="../symbols/sap.ui.core.Core.html#isStaticAreaRef">isStaticAreaRef</a></b><span class='signature'>()</span>
+									<span class='description'>Used to find out whether a certain DOM element is the static area</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns true, if the styles of the current theme are already applied, false otherwise."><a href="../symbols/sap.ui.core.Core.html#isThemeApplied">isThemeApplied</a></b><span class='signature'>()</span>
+									<span class='description'>Returns true, if the styles of the current theme are already applied, false otherwise.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Synchronously loads the given library and makes it available to the application."><a href="../symbols/sap.ui.core.Core.html#loadLibrary">loadLibrary</a></b><span class='signature'>(<span title="(string) name of the library to import">sLibrary</span>, <span title="(string) URL to load the library from">sUrl</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Synchronously loads the given library and makes it available to the application.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Locks the Core."><a href="../symbols/sap.ui.core.Core.html#lock">lock</a></b><span class='signature'>()</span>
+									<span class='description'>Locks the Core.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Registers a Plugin to the sap.ui.core.Core, which lifecycle will be managed (start and stop)."><a href="../symbols/sap.ui.core.Core.html#registerPlugin">registerPlugin</a></b><span class='signature'>(<span title="(object) reference to a Plugin object">oPlugin</span>)</span>
+									<span class='description'>Registers a Plugin to the <code>sap.ui.core.Core</code>, which lifecycle will be managed (start and stop).</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Sets or unsets a model for the given model name."><a href="../symbols/sap.ui.core.Core.html#setModel">setModel</a></b><span class='signature'>(<span title="(sap.ui.model.Model) the model to be set or null or undefined">oModel</span>, <span title="(string) the name of the model or undefined">sName</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Sets or unsets a model for the given model name.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Defines the root directory from below which UI5 should load the theme with the given name."><a href="../symbols/sap.ui.core.Core.html#setThemeRoot">setThemeRoot</a></b><span class='signature'>(<span title="(string) the name of the theme for which to configure the location">sThemeName</span>, <span title="(string[]) the optional library names to which the configuration should be restricted">aLibraryNames</span><i class="help" title="Optional parameter">?</i>, <span title="(string) the base URL below which the CSS file(s) will be loaded from">sThemeBaseUrl</span>)</span>
+									<span class='description'>Defines the root directory from below which UI5 should load the theme with the given name.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Unlocks the Core."><a href="../symbols/sap.ui.core.Core.html#unlock">unlock</a></b><span class='signature'>()</span>
+									<span class='description'>Unlocks the Core.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Unregisters a Plugin out of the sap.ui.core.Core"><a href="../symbols/sap.ui.core.Core.html#unregisterPlugin">unregisterPlugin</a></b><span class='signature'>(<span title="(object) reference to a Plugin object">oPlugin</span>)</span>
+									<span class='description'>Unregisters a Plugin out of the <code>sap.ui.core.Core</code></span>
+								</div>
+							
+								<div class="sectionItem classMethod deprecated">
+									<b class="icon" title="Attaches a given function to the initEvent event of the core."><a href="../symbols/sap.ui.core.Core.html#attachInitEvent">attachInitEvent</a></b><span class='signature'>(<span title="(function) the function to be called on event firing.">fnFunction</span>)</span>
+									<span class='description'>Attaches a given function to the <code>initEvent</code> event of the core.</span>
+								</div>
+							
+								<div class="sectionItem classMethod deprecated">
+									<b class="icon" title="Creates a new sap.ui.core.UIArea."><a href="../symbols/sap.ui.core.Core.html#createUIArea">createUIArea</a></b><span class='signature'>(<span title="(string|Element) a DOM Element or ID string of the UIArea">oDomRef</span>)</span>
+									<span class='description'>Creates a new sap.ui.core.UIArea.</span>
+								</div>
+							
+								<div class="sectionItem classMethod deprecated">
+									<b class="icon" title="Returns the instance of the application (if exists)."><a href="../symbols/sap.ui.core.Core.html#getApplication">getApplication</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the instance of the application (if exists).</span>
+								</div>
+							
+								<div class="sectionItem classMethod deprecated">
+									<b class="icon" title="Returns the registered element for the given ID, if any."><a href="../symbols/sap.ui.core.Core.html#getControl">getControl</a></b><span class='signature'>(<span title="(string) string">sId</span>)</span>
+									<span class='description'>Returns the registered element for the given ID, if any.</span>
+								</div>
+							
+								<div class="sectionItem classMethod deprecated">
+									<b class="icon" title="Returns the registered element for the given ID, if any."><a href="../symbols/sap.ui.core.Core.html#getElementById">getElementById</a></b><span class='signature'>(<span title="(string) string">sId</span>)</span>
+									<span class='description'>Returns the registered element for the given ID, if any.</span>
+								</div>
+							
+								<div class="sectionItem classMethod deprecated">
+									<b class="icon" title=""><a href="../symbols/sap.ui.core.Core.html#getRenderManager">getRenderManager</a></b><span class='signature'>()</span>
+									<span class='description'></span>
+								</div>
+							
+								<div class="sectionItem classMethod deprecated">
+									<b class="icon" title="Implicitly creates a new UIArea (or reuses an exiting one) for the given DOM reference and adds the given control reference to the UIAreas content (existing content will be removed)."><a href="../symbols/sap.ui.core.Core.html#setRoot">setRoot</a></b><span class='signature'>(<span title="(string|Element) a DOM Element or Id (string) of the UIArea">oDomRef</span>, <span title="(sap.ui.base.Interface | sap.ui.core.Control) the Control that should be the added to the UIArea.">oControl</span>)</span>
+									<span class='description'>Implicitly creates a new <code>UIArea</code> (or reuses an exiting one) for the given DOM reference and adds the given control reference to the UIAreas content (existing content will be removed).</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.EventProvider.html#attachEvent">attachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#attachEventOnce">attachEventOnce</a>, <a href="../symbols/sap.ui.base.EventProvider.html#destroy">destroy</a>, <a href="../symbols/sap.ui.base.EventProvider.html#detachEvent">detachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#fireEvent">fireEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#getEventingParent">getEventingParent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#toString">toString</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.Object.html">sap.ui.base.Object</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.Object.html#getInterface">getInterface</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static final">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.ui.core.Core</b>()
+										</div>
+										
+										<div class="full-description">
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Event Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:formatError"> </a>
+									<div class="itemTitle icon">
+										formatError<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										The 'formatError' event is fired when a value formatting fails. This can happen when a value stored in the model cannot be formatted to be displayed in an element property.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.element</b>
+												</td>
+												<td class="methodItemDesc">
+											    The Element where the format error occurred
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.property</b>
+												</td>
+												<td class="methodItemDesc">
+											    The property name of the element where the format error occurred
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{type}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.type</b>
+												</td>
+												<td class="methodItemDesc">
+											    The type of the property
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.newValue</b>
+												</td>
+												<td class="methodItemDesc">
+											    The value of the property which was entered when the format error occurred
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.oldValue</b>
+												</td>
+												<td class="methodItemDesc">
+											    The value of the property which was present before a new value was entered (before the format error)
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.exception</b>
+												</td>
+												<td class="methodItemDesc">
+											    The exception object which occurred and has more information about the format error
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:localizationChanged"> </a>
+									<div class="itemTitle icon">
+										localizationChanged<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										Fired when any of the localization relevant configuration settings has changed
+(e.g. language, rtl, formatLocale, datePattern, timePattern, numberSymbol, legacy formats).
+</p><p>
+The parameter <code>changes</code> contains additional information about the change. 
+It is a plain object that can contain one or more of the following properties 
+<ul>
+  <li>language - the language setting has changed</li>
+  <li>rtl - the character orientation mode (aka 'LTR/RTL mode') has changed</li>
+  <li>formatLocale - the format locale has changed</li>
+</ul>
+(there might be other, currently undocumented settings)
+</p><p>
+The value for each property will be the new corresponding setting.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oEvent.getParameters.changes</b>
+												</td>
+												<td class="methodItemDesc">
+											    a map of the changed localization properties
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:parseError"> </a>
+									<div class="itemTitle icon">
+										parseError<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										The 'parseError' event is fired when input parsing fails.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.element</b>
+												</td>
+												<td class="methodItemDesc">
+											    The Element where the parse error occurred
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.property</b>
+												</td>
+												<td class="methodItemDesc">
+											    The property name of the element where the parse error occurred
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{type}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.type</b>
+												</td>
+												<td class="methodItemDesc">
+											    The type of the property
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.newValue</b>
+												</td>
+												<td class="methodItemDesc">
+											    The value of the property which was entered when the parse error occurred
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.oldValue</b>
+												</td>
+												<td class="methodItemDesc">
+											    The value of the property which was present before a new value was entered (before the parse error)
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.exception</b>
+												</td>
+												<td class="methodItemDesc">
+											    The exception object which occurred and has more information about the parse error
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:validationError"> </a>
+									<div class="itemTitle icon">
+										validationError<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										The 'validationError' event is fired when validation of the input fails.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.element</b>
+												</td>
+												<td class="methodItemDesc">
+											    The Element where the validation error occurred
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.property</b>
+												</td>
+												<td class="methodItemDesc">
+											    The property name of the element where the validation error occurred
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{type}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.type</b>
+												</td>
+												<td class="methodItemDesc">
+											    The type of the property
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.newValue</b>
+												</td>
+												<td class="methodItemDesc">
+											    The value of the property which was entered when the validation error occurred
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.oldValue</b>
+												</td>
+												<td class="methodItemDesc">
+											    The value of the property which was present before a new value was entered (before the validation error)
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.exception</b>
+												</td>
+												<td class="methodItemDesc">
+											    The exception object which occurred and has more information about the validation error
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:validationSuccess"> </a>
+									<div class="itemTitle icon">
+										validationSuccess<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										The 'validationSuccess' event is fired when a value validation was successfully completed.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.element</b>
+												</td>
+												<td class="methodItemDesc">
+											    The Element where the successful validation occurred
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.property</b>
+												</td>
+												<td class="methodItemDesc">
+											    The property name of the element where the successfull validation occurred
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{type}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.type</b>
+												</td>
+												<td class="methodItemDesc">
+											    The type of the property
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.newValue</b>
+												</td>
+												<td class="methodItemDesc">
+											    The value of the property which was entered when the validation occurred
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.oldValue</b>
+												</td>
+												<td class="methodItemDesc">
+											    The value of the property which was present before a new value was entered (before the validation)
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+							</div>
+						</div>
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod'>
+										<a name="applyChanges"> </a>
+										<div class="itemTitle icon">
+											applyChanges<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Enforces an immediate update of the visible UI (aka "rendering").
+</p><p>
+In general, applications should avoid calling this method and
+instead let the framework manage any necessary rendering.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="applyTheme"> </a>
+										<div class="itemTitle icon">
+											applyTheme<span class="signature">(<span title="(string) the name of the theme to be loaded">sThemeName</span>, <span title="(string) the (optional) base location of the theme">sThemeBaseUrl</span><i class="help" title="Optional parameter">?</i>)</span>
+											
+										</div>
+										<div class="full-description">
+											Applies the theme with the given name (by loading the respective style sheets, which does not disrupt the application).
+</p><p>
+By default, the theme files are expected to be located at path relative to the respective control library ([libraryLocation]/themes/[themeName]).
+Different locations can be configured by using the method setThemePath() or by using the second parameter "sThemeBaseUrl" of applyTheme().
+Usage of this second parameter is a shorthand for setThemePath and internally calls setThemePath, so the theme location is then known.
+</p><p>
+sThemeBaseUrl is a single URL to specify the default location of all theme files. This URL is the base folder below which the control library folders
+are located. E.g. if the CSS files are not located relative to the root location of UI5, but instead they are at locations like
+   http://my.server/myapp/resources/sap/ui/core/themes/my_theme/library.css
+then the URL that needs to be given is:
+   http://my.server/myapp/resources
+All theme resources are then loaded from below this folder - except if for a certain library a different location has been registered.
+</p><p>
+If the theme resources are not all either below this base location or  with their respective libraries, then setThemePath must be
+used to configure individual locations.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sThemeName</b>
+													</td>
+													<td class="methodItemDesc">
+												    the name of the theme to be loaded
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sThemeBaseUrl</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the (optional) base location of the theme
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachControlEvent"> </a>
+										<div class="itemTitle icon">
+											attachControlEvent<span class="signature">(<span title="(function) callback to be called for each control event">fnFunction</span>, <span title="(object) optional context object to call the callback on.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											
+										</div>
+										<div class="full-description">
+											Registers a listener for control events.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    callback to be called for each control event
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    optional context object to call the callback on.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachFormatError"> </a>
+										<div class="itemTitle icon">
+											attachFormatError<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which to call the given function.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.core.Core">: <a href="../symbols/sap.ui.core.Core.html">sap.ui.core.Core</a></span>
+										</div>
+										<div class="full-description">
+											Attach event-handler <code>fnFunction</code> to the 'formatError' event of <code>sap.ui.core.Core</code>.<br/>
+Please note that this event is a bubbling event and may already be canceled before reaching the core.<br/>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs. This function will be called on the
+           oListener-instance (if present) or in a 'static way'.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Object on which to call the given function. If empty, this Model is used.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Core.html">sap.ui.core.Core</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachInit"> </a>
+										<div class="itemTitle icon">
+											attachInit<span class="signature">(<span title="(function) the callback function to be called on event firing.">fnFunction</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Attaches a given function to the <code>initEvent</code> event of the core. 
+</p><p>
+The given callback function will either be called once the Core has been initialized 
+or, if it has been initialized already, it will be called immediately.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    the callback function to be called on event firing.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.13.2</dd>
+											</dl>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachIntervalTimer"> </a>
+										<div class="itemTitle icon">
+											attachIntervalTimer<span class="signature">(<span title="(function) callback to be called periodically">fnFunction</span>, <span title="(object) optional context object to call the callback on.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											
+										</div>
+										<div class="full-description">
+											Registers a listener to the central interval timer.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    callback to be called periodically
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    optional context object to call the callback on.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.16.0</dd>
+											</dl>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachLocalizationChanged"> </a>
+										<div class="itemTitle icon">
+											attachLocalizationChanged<span class="signature">(<span title="(function) callback to be called">fnFunction</span>, <span title="(object) context object to cal lthe function on.">oListener</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Register a listener for the <code>localizationChanged</code> event.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    callback to be called
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    context object to cal lthe function on.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachParseError"> </a>
+										<div class="itemTitle icon">
+											attachParseError<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which to call the given function.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.core.Core">: <a href="../symbols/sap.ui.core.Core.html">sap.ui.core.Core</a></span>
+										</div>
+										<div class="full-description">
+											Attach event-handler <code>fnFunction</code> to the 'parseError' event of <code>sap.ui.core.Core</code>.<br/>
+Please note that this event is a bubbling event and may already be canceled before reaching the core.<br/>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs. This function will be called on the
+           oListener-instance (if present) or in a 'static way'.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Object on which to call the given function. If empty, this Model is used.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Core.html">sap.ui.core.Core</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachValidationError"> </a>
+										<div class="itemTitle icon">
+											attachValidationError<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which to call the given function.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.core.Core">: <a href="../symbols/sap.ui.core.Core.html">sap.ui.core.Core</a></span>
+										</div>
+										<div class="full-description">
+											Attach event-handler <code>fnFunction</code> to the 'validationError' event of <code>sap.ui.core.Core</code>.<br/>
+Please note that this event is a bubbling event and may already be canceled before reaching the core.<br/>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs. This function will be called on the
+           oListener-instance (if present) or in a 'static way'.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Object on which to call the given function. If empty, this Model is used.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Core.html">sap.ui.core.Core</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachValidationSuccess"> </a>
+										<div class="itemTitle icon">
+											attachValidationSuccess<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which to call the given function.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.core.Core">: <a href="../symbols/sap.ui.core.Core.html">sap.ui.core.Core</a></span>
+										</div>
+										<div class="full-description">
+											Attach event-handler <code>fnFunction</code> to the 'validationSuccess' event of <code>sap.ui.core.Core</code>.<br/>
+Please note that this event is a bubbling event and may already be canceled before reaching the core.<br/>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs. This function will be called on the
+           oListener-instance (if present) or in a 'static way'.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Object on which to call the given function. If empty, this Model is used.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Core.html">sap.ui.core.Core</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="byId"> </a>
+										<div class="itemTitle icon">
+											byId<span class="signature">(<span title="(string) string">sId</span>)</span>
+											<span class="light" title="returns sap.ui.core.Element">: <a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a></span>
+										</div>
+										<div class="full-description">
+											Returns the registered element for the given id, if any.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the element for the given id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="createComponent"> </a>
+										<div class="itemTitle icon">
+											createComponent<span class="signature">(<span title="(string|object) name of the component to import or object containing all needed parameters">vComponent</span>, <span title="(string) the URL to load the component from">sUrl</span><i class="help" title="Optional parameter">?</i>, <span title="(string) the ID for the component instance">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) the settings object for the component">mSettings</span><i class="help" title="Optional parameter">?</i>)</span>
+											
+										</div>
+										<div class="full-description">
+											Creates a component with the provided id and settings.
+</p><p>
+When the optional parameter <code>sUrl</code> is given, then all request for resources of the
+library will be redirected to the given Url. This is convenience for a call to
+<pre>
+  jQuery.sap.registerModulePath(sName, sUrl);
+</pre>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string|object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vComponent</b>
+													</td>
+													<td class="methodItemDesc">
+												    name of the component to import or object containing all needed parameters
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vComponent.name</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    name of the component to import
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vComponent.url</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    URL to load the component from
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vComponent.id</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    ID for the component instance
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vComponent.settings</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    settings object for the component
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vComponent.componentData</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    user specific data which is available during the whole lifecycle of the component
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sUrl</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the URL to load the component from
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the ID for the component instance
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mSettings</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the settings object for the component
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="createRenderManager"> </a>
+										<div class="itemTitle icon">
+											createRenderManager<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.RenderManager">: <a href="../symbols/sap.ui.core.RenderManager.html">sap.ui.core.RenderManager</a></span>
+										</div>
+										<div class="full-description">
+											Returns a new instance of the RenderManager interface.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.RenderManager.html">sap.ui.core.RenderManager</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the new instance of the RenderManager interface.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachControlEvent"> </a>
+										<div class="itemTitle icon">
+											detachControlEvent<span class="signature">(<span title="(function) function to unregister">fnFunction</span>, <span title="(object) context object given during registration">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											
+										</div>
+										<div class="full-description">
+											Unregisters a listener for control events.
+</p><p>
+A listener will only be unregistered if the same function/context combination
+is given as in the attachControlEvent call.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    function to unregister
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    context object given during registration
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachFormatError"> </a>
+										<div class="itemTitle icon">
+											detachFormatError<span class="signature">(<span title="(function) The callback function to unregister">fnFunction</span>, <span title="(object) Object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.ui.core.Core">: <a href="../symbols/sap.ui.core.Core.html">sap.ui.core.Core</a></span>
+										</div>
+										<div class="full-description">
+											Detach event-handler <code>fnFunction</code> from the 'formatError' event of <code>sap.ui.core.Core</code>.<br/>
+</p><p>
+The passed function and listener object must match the ones previously used for event registration.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The callback function to unregister
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Core.html">sap.ui.core.Core</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachIntervalTimer"> </a>
+										<div class="itemTitle icon">
+											detachIntervalTimer<span class="signature">(<span title="(function) function to unregister">fnFunction</span>, <span title="(object) context object given during registration">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											
+										</div>
+										<div class="full-description">
+											Unregisters a listener for the central interval timer.
+</p><p>
+A listener will only be unregistered if the same function/context combination
+is given as in the attachIntervalTimer call.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    function to unregister
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    context object given during registration
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.16.0</dd>
+											</dl>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachLocalizationChanged"> </a>
+										<div class="itemTitle icon">
+											detachLocalizationChanged<span class="signature">(<span title="(function) callback to be deregistered">fnFunction</span>, <span title="(object) context object given in a previous call to attachLocalizationChanged.">oListener</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Unregister a listener from the <code>localizationChanged</code> event.
+</p><p>
+The listener will only be unregistered if the same function/context combination 
+is given as in the call to <code>attachLocalizationListener</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    callback to be deregistered
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    context object given in a previous call to attachLocalizationChanged.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachParseError"> </a>
+										<div class="itemTitle icon">
+											detachParseError<span class="signature">(<span title="(function) The callback function to unregister.">fnFunction</span>, <span title="(object) Object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.ui.core.Core">: <a href="../symbols/sap.ui.core.Core.html">sap.ui.core.Core</a></span>
+										</div>
+										<div class="full-description">
+											Detach event-handler <code>fnFunction</code> from the 'parseError' event of <code>sap.ui.core.Core</code>.<br/>
+</p><p>
+The passed function and listener object must match the ones previously used for event registration.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The callback function to unregister.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Core.html">sap.ui.core.Core</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachValidationError"> </a>
+										<div class="itemTitle icon">
+											detachValidationError<span class="signature">(<span title="(function) The callback function to unregister">fnFunction</span>, <span title="(object) Object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.ui.core.Core">: <a href="../symbols/sap.ui.core.Core.html">sap.ui.core.Core</a></span>
+										</div>
+										<div class="full-description">
+											Detach event-handler <code>fnFunction</code> from the 'validationError' event of <code>sap.ui.core.Core</code>.<br/>
+</p><p>
+The passed function and listener object must match the ones previously used for event registration.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The callback function to unregister
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Core.html">sap.ui.core.Core</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachValidationSuccess"> </a>
+										<div class="itemTitle icon">
+											detachValidationSuccess<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.ui.core.Core">: <a href="../symbols/sap.ui.core.Core.html">sap.ui.core.Core</a></span>
+										</div>
+										<div class="full-description">
+											Detach event-handler <code>fnFunction</code> from the 'validationSuccess' event of <code>sap.ui.core.Core</code>.<br/>
+</p><p>
+The passed function and listener object must match the ones previously used for event registration.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Core.html">sap.ui.core.Core</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="fireFormatError"> </a>
+										<div class="itemTitle icon protected">
+											fireFormatError<span class="signature">(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.core.Core">: <a href="../symbols/sap.ui.core.Core.html">sap.ui.core.Core</a></span>
+										</div>
+										<div class="full-description">
+											Fire event formatError to attached listeners.
+</p><p>
+Expects following event parameters:
+<ul>
+<li>'element' of type <code>sap.ui.core.Element</code> </li>
+<li>'property' of type <code>string</code> </li>
+<li>'type' of type <code>string</code> </li>
+<li>'newValue' of type <code>object</code> </li>
+<li>'oldValue' of type <code>object</code> </li>
+<li>'exception' of type <code>object</code> </li>
+</ul>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Map}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Core.html">sap.ui.core.Core</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="fireParseError"> </a>
+										<div class="itemTitle icon protected">
+											fireParseError<span class="signature">(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.core.Core">: <a href="../symbols/sap.ui.core.Core.html">sap.ui.core.Core</a></span>
+										</div>
+										<div class="full-description">
+											Fire event parseError to attached listeners.
+</p><p>
+Expects following event parameters:
+<ul>
+<li>'element' of type <code>sap.ui.core.Element</code> </li>
+<li>'property' of type <code>string</code> </li>
+<li>'type' of type <code>string</code> </li>
+<li>'newValue' of type <code>object</code> </li>
+<li>'oldValue' of type <code>object</code> </li>
+<li>'exception' of type <code>object</code> </li>
+</ul>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Map}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Core.html">sap.ui.core.Core</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="fireValidationError"> </a>
+										<div class="itemTitle icon protected">
+											fireValidationError<span class="signature">(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.core.Core">: <a href="../symbols/sap.ui.core.Core.html">sap.ui.core.Core</a></span>
+										</div>
+										<div class="full-description">
+											Fire event validationError to attached listeners.
+</p><p>
+Expects following event parameters:
+<ul>
+<li>'element' of type <code>sap.ui.core.Element</code> </li>
+<li>'property' of type <code>string</code> </li>
+<li>'type' of type <code>string</code> </li>
+<li>'newValue' of type <code>object</code> </li>
+<li>'oldValue' of type <code>object</code> </li>
+<li>'exception' of type <code>object</code> </li>
+</ul>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Map}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Core.html">sap.ui.core.Core</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="fireValidationSuccess"> </a>
+										<div class="itemTitle icon protected">
+											fireValidationSuccess<span class="signature">(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.core.Core">: <a href="../symbols/sap.ui.core.Core.html">sap.ui.core.Core</a></span>
+										</div>
+										<div class="full-description">
+											Fire event validationSuccess to attached listeners.
+</p><p>
+Expects following event parameters:
+<ul>
+<li>'element' of type <code>sap.ui.core.Element</code> </li>
+<li>'property' of type <code>string</code> </li>
+<li>'type' of type <code>string</code> </li>
+<li>'newValue' of type <code>object</code> </li>
+<li>'oldValue' of type <code>object</code> </li>
+</ul>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Map}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Core.html">sap.ui.core.Core</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getComponent"> </a>
+										<div class="itemTitle icon">
+											getComponent<span class="signature">(<span title="(string) string">sId</span>)</span>
+											<span class="light" title="returns sap.ui.core.Component">: <a href="../symbols/sap.ui.core.Component.html">sap.ui.core.Component</a></span>
+										</div>
+										<div class="full-description">
+											Returns the registered component for the given id, if any.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Component.html">sap.ui.core.Component</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the component for the given id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getConfiguration"> </a>
+										<div class="itemTitle icon">
+											getConfiguration<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.Configuration">: <a href="../symbols/sap.ui.core.Configuration.html">sap.ui.core.Configuration</a></span>
+										</div>
+										<div class="full-description">
+											Returns the Configuration of the Core.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Configuration.html">sap.ui.core.Configuration</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the Configuration of the current Core.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getCurrentFocusedControlId"> </a>
+										<div class="itemTitle icon">
+											getCurrentFocusedControlId<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Returns the Id of the control/element currently in focus.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the Id of the control/element currently in focus.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getEventBus"> </a>
+										<div class="itemTitle icon">
+											getEventBus<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.EventBus">: <a href="../symbols/sap.ui.core.EventBus.html">sap.ui.core.EventBus</a></span>
+										</div>
+										<div class="full-description">
+											Returns the event bus.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.8.0</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.EventBus.html">sap.ui.core.EventBus</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the event bus
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getLibraryResourceBundle"> </a>
+										<div class="itemTitle icon">
+											getLibraryResourceBundle<span class="signature">(<span title="(string) name of the library to retrieve the bundle for">sLibraryName</span><i class="help" title="Optional parameter">?</i>, <span title="(string) locale to retrieve the resource bundle for">sLocale</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns jQuery.sap.util.ResourceBundle">: <a href="../symbols/jQuery.sap.util.ResourceBundle.html">jQuery.sap.util.ResourceBundle</a></span>
+										</div>
+										<div class="full-description">
+											Retrieves a resource bundle for the given library and locale.
+</p><p>
+If only one argument is given, it is assumed to be the libraryName. The locale
+then falls back to the current session locale.
+If no argument is given, the library also falls back to a default: "sap.ui.core".
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sLibraryName</b><i class="help" title="Optional parameter">?, Default: 'sap.ui.core'</i>
+													</td>
+													<td class="methodItemDesc">
+												    name of the library to retrieve the bundle for
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sLocale</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    locale to retrieve the resource bundle for
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/jQuery.sap.util.ResourceBundle.html">jQuery.sap.util.ResourceBundle</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the best matching resource bundle for the given parameters or undefined
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getLoadedLibraries"> </a>
+										<div class="itemTitle icon">
+											getLoadedLibraries<span class="signature">()</span>
+											<span class="light" title="returns map">: map</span>
+										</div>
+										<div class="full-description">
+											Returns a map which contains the names of the loaded libraries as keys
+and some additional information about each library as values.
+											
+											
+												<p class="tagExperimental"><span class="title">Experimental API:</span><span class="desc">The details of the 'values' in the returned map are not yet specified!
+Their structure might change in future versions without notice. So applications
+can only rely on the set of keys as well as the pure existance of a value.</span></p> 
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{map}</span> 
+													</td>
+													<td class="methodItemDesc">
+														map of library names / controls
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getModel"> </a>
+										<div class="itemTitle icon">
+											getModel<span class="signature">(<span title="(string|undefined) name of the model to be retrieved">sName</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.model.Model">: <a href="../symbols/sap.ui.model.Model.html">sap.ui.model.Model</a></span>
+										</div>
+										<div class="full-description">
+											Get the model with the given model name.
+</p><p>
+The name can be omitted to reference the default model or it must be a non-empty string.
+</p><p>
+Note: to be compatible with future versions of this API, applications must not use the value <code>null</code>,
+the empty string <code>""</code> or the string literals <code>"null"</code> or <code>"undefined"</code> as model name.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string|undefined}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sName</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    name of the model to be retrieved
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.model.Model.html">sap.ui.model.Model</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														oModel
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getRootComponent"> </a>
+										<div class="itemTitle icon">
+											getRootComponent<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.Component">: <a href="../symbols/sap.ui.core.Component.html">sap.ui.core.Component</a></span>
+										</div>
+										<div class="full-description">
+											Returns the instance of the root component (if exists).
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Component.html">sap.ui.core.Component</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														instance of the current root component
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getStaticAreaRef"> </a>
+										<div class="itemTitle icon">
+											getStaticAreaRef<span class="signature">()</span>
+											<span class="light" title="returns Element">: Element</span>
+										</div>
+										<div class="full-description">
+											Returns the static, hidden area DOM element belonging to this core instance.
+</p><p>
+It can be used e.g. for hiding elements like Popups, Shadow, Blocklayer etc.
+</p><p>
+If it is not yet available, a DIV is created and appended to the body.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{Element}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the static, hidden area DOM element belonging to this core instance.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getTemplate"> </a>
+										<div class="itemTitle icon">
+											getTemplate<span class="signature">(<span title="(string) string">sId</span>)</span>
+											<span class="light" title="returns sap.ui.core.Component">: <a href="../symbols/sap.ui.core.Component.html">sap.ui.core.Component</a></span>
+										</div>
+										<div class="full-description">
+											Returns the registered template for the given id, if any.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Component.html">sap.ui.core.Component</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the template for the given id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getUIArea"> </a>
+										<div class="itemTitle icon">
+											getUIArea<span class="signature">(<span title="(string|Element) a DOM Element or ID string of the UIArea">o</span>)</span>
+											<span class="light" title="returns sap.ui.core.UIArea">: sap.ui.core.UIArea</span>
+										</div>
+										<div class="full-description">
+											Returns a UIArea if the given ID/Element belongs to one.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string|Element}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>o</b>
+													</td>
+													<td class="methodItemDesc">
+												    a DOM Element or ID string of the UIArea
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{sap.ui.core.UIArea}</span> 
+													</td>
+													<td class="methodItemDesc">
+														a UIArea with a given id or dom ref.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getUIDirty"> </a>
+										<div class="itemTitle icon">
+											getUIDirty<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Returns <code>true</code> if there are any pending rendering tasks or when 
+such rendering tasks are currently being executed.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														true if there are pending (or executing) rendering tasks.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="hasModel"> </a>
+										<div class="itemTitle icon">
+											hasModel<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Check if a Model is set to the core
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														true or false
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="includeLibraryTheme"> </a>
+										<div class="itemTitle icon">
+											includeLibraryTheme<span class="signature">(<span title="(string) the name of the UI library">sLibName</span>, <span title="(string) the variant to include (optional)">sVariant</span><i class="help" title="Optional parameter">?</i>, <span title="(string) to be used only by the Core">sQuery</span><i class="help" title="Optional parameter">?</i>)</span>
+											
+										</div>
+										<div class="full-description">
+											Includes a library theme into the current page (if a variant is specified it
+will include the variant library theme)
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sLibName</b>
+													</td>
+													<td class="methodItemDesc">
+												    the name of the UI library
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sVariant</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the variant to include (optional)
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sQuery</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    to be used only by the Core
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="initLibrary"> </a>
+										<div class="itemTitle icon">
+											initLibrary<span class="signature">(<span title="(string|object) name of or info object for the library to import">vLibInfo</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Initializes a library for an already loaded library module.
+</p><p>
+This method is intended to be called only from a library.js (e.g. generated code).
+It includes the library specific stylesheet into the current page, and creates
+lazy import stubs for all controls and elements in the library.
+</p><p>
+As a result, consuming applications don't have to write import statements for the controls or for the enums.
+</p><p>
+Synchronously loads any libraries that the given library depends on.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string|object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vLibInfo</b>
+													</td>
+													<td class="methodItemDesc">
+												    name of or info object for the library to import
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="isInitialized"> </a>
+										<div class="itemTitle icon">
+											isInitialized<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Returns true if the Core has already been initialized. This means that instances 
+of RenderManager etc. do already exist and the init event has already been fired 
+(and will not be fired again).
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														whether the Core has already been initialized
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="isLocked"> </a>
+										<div class="itemTitle icon">
+											isLocked<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Returns the locked state of the <code>sap.ui.core.Core</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														locked state
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="isMobile"> </a>
+										<div class="itemTitle icon">
+											isMobile<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Check if the script is running on mobile
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														true or false
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="isStaticAreaRef"> </a>
+										<div class="itemTitle icon protected">
+											isStaticAreaRef<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Used to find out whether a certain DOM element is the static area
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														whether the given DomRef is the StaticAreaRef
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="isThemeApplied"> </a>
+										<div class="itemTitle icon">
+											isThemeApplied<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Returns true, if the styles of the current theme are already applied, false otherwise.
+</p><p>
+This function must not be used before the init event of the Core.
+If the styles are not yet applied an theme changed event will follow when the styles will be applied.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														whether the styles of the current theme are already applied
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="loadLibrary"> </a>
+										<div class="itemTitle icon">
+											loadLibrary<span class="signature">(<span title="(string) name of the library to import">sLibrary</span>, <span title="(string) URL to load the library from">sUrl</span><i class="help" title="Optional parameter">?</i>)</span>
+											
+										</div>
+										<div class="full-description">
+											Synchronously loads the given library and makes it available to the application.
+</p><p>
+Loads the *.library module, which contains all preload modules (enums, types, content of a shared.js
+if it exists). The library module will call initLibrary with additional metadata for the library.
+</p><p>
+As a result, consuming applications can instantiate any control or element from that library
+without having to write import statements for the controls or for the enums.
+</p><p>
+When the optional parameter <code>sUrl</code> is given, then all request for resources of the
+library will be redirected to the given Url. This is convenience for a call to
+<pre>
+  jQuery.sap.registerModulePath(sLibrary, sUrl);
+</pre>
+</p><p>
+When the given library has been loaded already, no further action will be taken.
+Especially, a given Url will not be honored!
+</p><p>
+Note: this method does not participate in the supported preload of libraries.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sLibrary</b>
+													</td>
+													<td class="methodItemDesc">
+												    name of the library to import
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sUrl</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    URL to load the library from
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="lock"> </a>
+										<div class="itemTitle icon">
+											lock<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Locks the Core. No browser events are dispatched to the controls.
+</p><p>
+Lock should be called before and after the dom is modified for rendering, roundtrips...
+Exceptions might be the case for asynchronous UI behavior
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="registerPlugin"> </a>
+										<div class="itemTitle icon">
+											registerPlugin<span class="signature">(<span title="(object) reference to a Plugin object">oPlugin</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Registers a Plugin to the <code>sap.ui.core.Core</code>, which lifecycle
+will be managed (start and stop).
+<br/>
+Plugin object need to implement two methods:
+<ul>
+  <li><code>startPlugin(oCore)</code>: will be invoked, when the Plugin
+      should start (as parameter the reference to the Core will be provided</li>
+  <li><code>stopPlugin()</code>: will be invoked, when the Plugin should stop</li>
+</ul>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oPlugin</b>
+													</td>
+													<td class="methodItemDesc">
+												    reference to a Plugin object
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setModel"> </a>
+										<div class="itemTitle icon">
+											setModel<span class="signature">(<span title="(sap.ui.model.Model) the model to be set or null or undefined">oModel</span>, <span title="(string) the name of the model or undefined">sName</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.core.Core">: <a href="../symbols/sap.ui.core.Core.html">sap.ui.core.Core</a></span>
+										</div>
+										<div class="full-description">
+											Sets or unsets a model for the given model name. 
+</p><p>
+The <code>sName</code> must either be <code>undefined</code> (or omitted) or a non-empty string.
+When the name is omitted, the default model is set/unset. 
+</p><p>
+When <code>oModel</code> is <code>null</code> or <code>undefined</code>, a previously set model 
+with that name is removed from the Core.
+</p><p>
+Any change (new model, removed model) is propagated to all existing UIAreas and their descendants
+as long as a descendant doesn't have its own model set for the given name.
+</p><p>
+Note: to be compatible with future versions of this API, applications must not use the value <code>null</code>,
+the empty string <code>""</code> or the string literals <code>"null"</code> or <code>"undefined"</code> as model name.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.model.Model.html">sap.ui.model.Model</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oModel</b>
+													</td>
+													<td class="methodItemDesc">
+												    the model to be set or <code>null</code> or <code>undefined</code>
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sName</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the name of the model or <code>undefined</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Core.html">sap.ui.core.Core</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setThemeRoot"> </a>
+										<div class="itemTitle icon">
+											setThemeRoot<span class="signature">(<span title="(string) the name of the theme for which to configure the location">sThemeName</span>, <span title="(string[]) the optional library names to which the configuration should be restricted">aLibraryNames</span><i class="help" title="Optional parameter">?</i>, <span title="(string) the base URL below which the CSS file(s) will be loaded from">sThemeBaseUrl</span>)</span>
+											<span class="light" title="returns sap.ui.core.Core">: <a href="../symbols/sap.ui.core.Core.html">sap.ui.core.Core</a></span>
+										</div>
+										<div class="full-description">
+											Defines the root directory from below which UI5 should load the theme with the given name. 
+Optionally allows restricting the setting to parts of a theme covering specific control libraries.
+</p><p>
+Example:
+<code>
+  core.setThemeRoot("my_theme", "http://mythemeserver.com/allThemes");
+  core.applyTheme("my_theme");
+</code>
+will cause the following file to be loaded:
+<code>http://mythemeserver.com/allThemes/sap/ui/core/themes/my_theme/library.css</code>
+(and the respective files for all used control libraries, like <code>http://mythemeserver.com/allThemes/sap/ui/commons/themes/my_theme/library.css</code>
+if the sap.ui.commons library is used)
+</p><p>
+If parts of the theme are at different locations (e.g. because you provide a standard theme like "sap_goldreflection" for a custom control library and
+this self-made part of the standard theme is at a different location than the UI5 resources), you can also specify for which control libraries the setting
+should be used, by giving an array with the names of the respective control libraries as second parameter:
+<code>core.setThemeRoot("sap_goldreflection", ["my.own.library"], "http://mythemeserver.com/allThemes");</code>
+This will cause the Gold Reflection theme to be loaded normally from the UI5 location, but the part for styling the "my.own.library" controls will be loaded from:
+<code>http://mythemeserver.com/allThemes/my/own/library/themes/sap_goldreflection/library.css</code>
+</p><p>
+If the custom theme should be loaded initially (via bootstrap attribute), the "themeRoots" property of the window["sap-ui-config"] object must be used instead
+of Core.setThemeRoot(...) in order to configure the theme location early enough.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sThemeName</b>
+													</td>
+													<td class="methodItemDesc">
+												    the name of the theme for which to configure the location
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string[]}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>aLibraryNames</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the optional library names to which the configuration should be restricted
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sThemeBaseUrl</b>
+													</td>
+													<td class="methodItemDesc">
+												    the base URL below which the CSS file(s) will be loaded from
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.10</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Core.html">sap.ui.core.Core</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the Core, to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="unlock"> </a>
+										<div class="itemTitle icon">
+											unlock<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Unlocks the Core. 
+</p><p>
+Browser events are dispatched to the controls again after this method is called.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="unregisterPlugin"> </a>
+										<div class="itemTitle icon">
+											unregisterPlugin<span class="signature">(<span title="(object) reference to a Plugin object">oPlugin</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Unregisters a Plugin out of the <code>sap.ui.core.Core</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oPlugin</b>
+													</td>
+													<td class="methodItemDesc">
+												    reference to a Plugin object
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod deprecated'>
+										<a name="attachInitEvent"> </a>
+										<div class="itemTitle icon">
+											attachInitEvent<span class="signature">(<span title="(function) the function to be called on event firing.">fnFunction</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Attaches a given function to the <code>initEvent</code> event of the core.
+</p><p>
+This event will only be fired once; you can check if it has been fired already 
+by calling <a href="#isInitialized">#isInitialized</a>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    the function to be called on event firing.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+											<dl class="detailList deprecation">
+												<dt class="heading">Deprecated:</dt>
+												<dt>
+													since 1.13.2 Register to the more convenient <a href="../symbols/sap.ui.core.Core.html#attachInit">init event</a> instead
+												</dt>
+											</dl>
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod deprecated'>
+										<a name="createUIArea"> </a>
+										<div class="itemTitle icon">
+											createUIArea<span class="signature">(<span title="(string|Element) a DOM Element or ID string of the UIArea">oDomRef</span>)</span>
+											<span class="light" title="returns sap.ui.core.UIArea">: sap.ui.core.UIArea</span>
+										</div>
+										<div class="full-description">
+											Creates a new sap.ui.core.UIArea.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string|Element}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oDomRef</b>
+													</td>
+													<td class="methodItemDesc">
+												    a DOM Element or ID string of the UIArea
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+											<dl class="detailList deprecation">
+												<dt class="heading">Deprecated:</dt>
+												<dt>
+													Use <code>setRoot()</code> instead!
+												</dt>
+											</dl>
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{sap.ui.core.UIArea}</span> 
+													</td>
+													<td class="methodItemDesc">
+														a new UIArea
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod deprecated'>
+										<a name="getApplication"> </a>
+										<div class="itemTitle icon">
+											getApplication<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.app.Application">: <a href="../symbols/sap.ui.app.Application.html">sap.ui.app.Application</a></span>
+										</div>
+										<div class="full-description">
+											Returns the instance of the application (if exists).
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+											<dl class="detailList deprecation">
+												<dt class="heading">Deprecated:</dt>
+												<dt>
+													Since 1.15.1. The Component class is enhanced to take care about the Application code.
+												</dt>
+											</dl>
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.app.Application.html">sap.ui.app.Application</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														instance of the current application
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod deprecated'>
+										<a name="getControl"> </a>
+										<div class="itemTitle icon">
+											getControl<span class="signature">(<span title="(string) string">sId</span>)</span>
+											<span class="light" title="returns sap.ui.core.Element">: <a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a></span>
+										</div>
+										<div class="full-description">
+											Returns the registered element for the given ID, if any.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+											<dl class="detailList deprecation">
+												<dt class="heading">Deprecated:</dt>
+												<dt>
+													use <code>sap.ui.core.Core.byId</code> instead!
+												</dt>
+											</dl>
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the element for the given id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod deprecated'>
+										<a name="getElementById"> </a>
+										<div class="itemTitle icon">
+											getElementById<span class="signature">(<span title="(string) string">sId</span>)</span>
+											<span class="light" title="returns sap.ui.core.Element">: <a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a></span>
+										</div>
+										<div class="full-description">
+											Returns the registered element for the given ID, if any.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+											<dl class="detailList deprecation">
+												<dt class="heading">Deprecated:</dt>
+												<dt>
+													use <code>sap.ui.core.Core.byId</code> instead!
+												</dt>
+											</dl>
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the element for the given id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod deprecated'>
+										<a name="getRenderManager"> </a>
+										<div class="itemTitle icon">
+											getRenderManager<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+											<dl class="detailList deprecation">
+												<dt class="heading">Deprecated:</dt>
+												<dt>
+													Since version 0.15.0. Replaced by <code>createRenderManager()</code>
+												</dt>
+											</dl>
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod deprecated'>
+										<a name="setRoot"> </a>
+										<div class="itemTitle icon">
+											setRoot<span class="signature">(<span title="(string|Element) a DOM Element or Id (string) of the UIArea">oDomRef</span>, <span title="(sap.ui.base.Interface | sap.ui.core.Control) the Control that should be the added to the UIArea.">oControl</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Implicitly creates a new <code>UIArea</code> (or reuses an exiting one) for the given DOM reference and
+adds the given control reference to the UIAreas content (existing content will be removed).
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string|Element}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oDomRef</b>
+													</td>
+													<td class="methodItemDesc">
+												    a DOM Element or Id (string) of the UIArea
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.base.Interface.html">sap.ui.base.Interface</a>|<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oControl</b>
+													</td>
+													<td class="methodItemDesc">
+												    the Control that should be the added to the <code>UIArea</code>.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+											<dl class="detailList deprecation">
+												<dt class="heading">Deprecated:</dt>
+												<dt>
+													Use function <code>oControl.placeAt(oDomRef, "only")</code> of <code>sap.ui.core.Control</code> instead.
+												</dt>
+											</dl>
+										
+										
+										
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

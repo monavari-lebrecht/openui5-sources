@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=3027935841512903"/>
+<title>Testing the SAPUI5 Application on an ABAP Server</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio88de8d2121c14cd2a3e42d8f8201838f">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Testing the SAPUI5 Application on an ABAP Server</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">To test a SAPUI5 application that you have uploaded to an ABAP system, you can directly
+			launch its public URL in a browser window. </p>
+<p class="p"><strong class="ph b">Prerequisites</strong>
+		</p>
+<ul class="ul" id="loio88de8d2121c14cd2a3e42d8f8201838f__ul_orx_v1f_bj"><li class="li">You have shared a SAPUI5 application via the SAPUI5 ABAP repository team provider with the
+				ABAP system.</li>
+<li class="li">You have synchronized the application with the ABAP system.</li>
+</ul>
+<p class="p">You have the following options to launch a synchronized file, for example the
+				<samp class="ph codeph">index.html</samp>, on the ABAP server: </p>
+<ul class="ul" id="loio88de8d2121c14cd2a3e42d8f8201838f__ul_yrx_v1f_bj"><li class="li">Right click the file in the Project Explorer and choose <span class="ph menucascade"><img src="images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Run As</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Run On ABAP Server</span> <img src="images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</li>
+<li class="li">Open the file in an editor and from the Eclipse and choose <span class="ph menucascade"><img src="images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Run As</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Run On ABAP Server</span> <img src="images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</li>
+</ul>
+<p class="p">The launch option is only available if the file is accessible via URL, for example, if it
+			is in the WebContent folder.</p>
+<p class="p">The URL of the selected file is opened in a browser window. The URL has the following
+			pattern:</p>
+<p class="p"><span class="ph filepath">&lt;protocol&gt;://&lt;host name&gt;:&lt;port
+				number&gt;/sap/bc/ui5_ui5/&lt;namespace&gt;/&lt;application
+				name&gt;/index.html?sap-client=&lt;client&gt;&amp;sap-ui-language=&lt;language&gt;&amp;sap-ui-appcache=false</span></p>
+<div class="note note" id="loio88de8d2121c14cd2a3e42d8f8201838f__note_N10067_N10011_N10001"><span class="notetitle">Note</span> This URL contains test parameters. Do <strong class="ph b">not</strong> use them for productive use.</div>
+<p class="p">You can also start the SAPUI5 application as follows:</p>
+<p class="p">Select the SAPUI5 application-specific Internet Communication Framework (ICF) node in
+			transaction <samp class="ph codeph">SICF</samp> under
+				<samp class="ph codeph">sap/bc/ui5_ui5/&lt;namespace&gt;/&lt;application name&gt;</samp>, and choose
+				<span class="ph uicontrol">Test Service</span> from the context menu. This starts your
+			index.html page automatically.</p>
+<div class="section" id="loio88de8d2121c14cd2a3e42d8f8201838f__section_N10077_N10011_N10001"><div class="section_title">Cache Behavior for Application Resources</div><div type="Cache Behavior for Application Resources">
+			
+			<p class="p">By default, the application files are stored in the browser cache for one year to
+				speed up the performance in a productive environment. To get the latest changes you
+				need to force your SAPUI5 start page to refresh, for example with CTRL + F5 on
+				Windows systems. If the refresh does not work, clear your browser cache.</p>
+
+			<p class="p">The following is an <strong class="ph b">experimental feature</strong> which might change in future versions of
+				SAPUI5: If you are in development mode and like to immediately get the latest
+				changes without refreshing your SAPUI5 start page, you can add the experimental URL
+				parameter <samp class="ph codeph">sap-ui-xx-devmode</samp> to the SAPUI5 start page in order to
+				force the browser to check whether there is a newer version of the application files
+				available. When switching between development and productive modes, refresh the
+				SAPUI5 start page. If the refresh does not help, clear your browser cache. </p>
+
+		</div></div>
+<div class="section" id="loio88de8d2121c14cd2a3e42d8f8201838f__section_N10090_N10011_N10001"><div class="section_title">Using the Application Cache Buster</div><div type="Using the Application Cache Buster">
+			
+			<p class="p">If you activate the application cache buster in the start page of the application in which the
+				SAPUI5 bootstrap is located by setting
+					<samp class="ph codeph">data-sap-ui-appCacheBuster="true"</samp>, the SAPUI5 application
+				runtime handler on ABAP side supports the application cache buster, see <a class="xref" href="ff7aceda0bd24039beb9bca8e882825d.html">Application Cache Buster</a>.
+				In this case, the ICM server cache on ABAP side as well as the browser cache is used
+				and the application cache buster mechanism ensures that all those resources which
+				are supported by the application cache buster mechanism are up to date. </p>
+
+		</div></div>
+<div class="section" id="loio88de8d2121c14cd2a3e42d8f8201838f__section_N100A6_N10011_N10001"><div class="section_title">Technical Information</div><div type="Technical Information">
+			
+			<ul class="ul" id="loio88de8d2121c14cd2a3e42d8f8201838f__ul_tsx_v1f_bj"><li class="li">Under typical conditions, for example, when using SAPUI5 applications or when
+					doing development with the SAPUI5 ABAP repository team provider or the SAPUI5
+					repository load report, the application cache buster works fully
+					automatically.</li>
+<li class="li">As of UI AddOn 1.0 SP03 it may be necessary after system- and language imports for a SAPUI5
+					application into the SAP NetWeaver Web AS to reset its internal cache buster
+					information. You may explicitly use or schedule the ABAP report
+						<samp class="ph codeph">/UI5/RESET_CACHEBUSTER</samp> to do so on all servers. As an
+					alternative you can trigger the reset for a specific SAPUI5 application from the
+					browser using the URL "&lt;application base path&gt;/resetcachebuster".</li>
+<li class="li">
+					<p class="p">The internal cache buster information for a SAPUI5 application becomes
+						outdated every two hours and is then calculated automatically. As a
+						consequence, the underlying server side cookies
+							<samp class="ph codeph">'cachebuster_info'</samp> get recalculated without the need of
+						manual acitivity.</p>
+
+				</li>
+</ul>
+
+		</div></div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Testing the SAPUI5 Application on an ABAP Server";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

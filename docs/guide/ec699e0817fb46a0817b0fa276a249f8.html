@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="Overview of the architecture and concepts of SAPUI5"/>
+<meta name="description" content="Overview of the architecture and concepts of SAPUI5"/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=9452078825139775"/>
+<title>Concepts</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loioec699e0817fb46a0817b0fa276a249f8">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Concepts</h1>
+<div class="body conbody"><p class="shortdesc">Overview of the architecture and concepts of SAPUI5</p>
+<p class="p"><img class="image" id="loioec699e0817fb46a0817b0fa276a249f8__image_apr_kqh_sk" src="99b4be76a3f94db18172e67e730fb7fb.image" alt="SAPUI5 Architecture Overview" title="SAPUI5 Architecture Overview"/></p>
+<p class="p">SAPUI5 is a client UI technology based on JavaScript, CSS and HTML5. SAPUI5 applications run in
+			a browser. Depending on the device the application is to run on (mobile, tablet or
+			desktop PC), you use different UI libraries. </p>
+<p class="p">Servers come into play for deploying your applications, storing the SAPUI5 libraries and
+			connecting to a database. Depending on the environment in which SAPUI5 is used, the
+			libraries or your applications are stored on an SAP NetWeaver Application Server or an
+			SAP HANA Cloud platform, for instance.  the preferred way to access business data for
+			your application is using the OData model through a SAP NetWeaver Gateway. </p>
+<p class="p">When  users access an SAPUI5 application from their device, a request is sent to the respective
+			server to load the application into the browser. The view accesses the relevant
+			libraries. Usually the model is also instantiated and business data is fetched from the
+			database.</p>
+<div class="section"><div class="section_title">Model View Controller</div><div type="Model View Controller">
+			
+			<p class="p">SAPUI5 uses the model view controller (MVC) concept to achieve the following objectives: </p>
+
+			<ul class="ul" id="loioec699e0817fb46a0817b0fa276a249f8__ul_m2h_m1y_tk"><li class="li">
+					<p class="p">Support development in distributed teams with different source locations </p>
+
+				</li>
+<li class="li">
+					<p class="p">Propose file structure, naming, and usage patterns </p>
+
+				</li>
+<li class="li">
+					<p class="p">Add capability of UI declaration (in comparison to a programmatic
+						construction) </p>
+
+				</li>
+</ul>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="91f233476f4d1014b6dd926db0e91070.html">Model View Controller (MVC)</a></div>
+<div><a class="link" href="e1b625940c104b558e52f47afe5ddb4f.html" title="A model holds the data and provides methods to retrieve the data from the data base and to set and update data.">Models</a></div>
+<div><a class="link" href="91f27e3e6f4d1014b6dd926db0e91070.html">Views</a></div>
+<div><a class="link" href="121b8e6337d147af9819129e428f1f75.html" title="A controller in SAPUI5 is used to separate view logic from model logic. All methods for controlling the data flow should be implemented in a controller.">Controllers</a></div>
+<div><a class="link" href="958ead51e2e94ab8bcdc90fb7e9d53d0.html" title="Components are independent and reusable parts used in SAPUI5 applications. An application can use components from different locations from where the application is running. Thus, components can be developed by different development teams and be used in different projects. Components also support the encapsulation of closely related parts of an application into a particular component. This makes the structure of an application and its code easier to understand and to maintain.">SAPUI5 Components</a></div>
+<div><a class="link" href="36a5b130076e4b4aac2c27eebf324909.html" title="Fragments are pieces of UI, just like SAPUI5 MVC views, but without the view control around the content and without their own controller.">Fragments</a></div>
+<div><a class="link" href="68b9644a253741e8a4b9e4279a35c247.html" title="Data binding is used to bind two data or information sources together to keep them in sync. If data binding is implemented and defined properly, all changes in one data source are automatically reflected in the other data source.">Data Binding</a></div>
+<div><a class="link" href="9141a338ec064813be274198568413af.html" title="There are two layers in SAPUI5 that are responsible for resource handling and that work completely independently from each other: the client side and the server side.">Resource Handling</a></div>
+<div><a class="link" href="363cd16eba1f45babe3f661f321a7820.html" title="The basis of SAPUI5 is a set of JavaScript and CSS libraries.">Libraries</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Concepts";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

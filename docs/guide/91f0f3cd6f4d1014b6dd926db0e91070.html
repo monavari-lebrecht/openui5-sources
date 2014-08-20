@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=03959876201288681"/>
+<title>Data Binding: Getting Started</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f0f3cd6f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Data Binding: Getting Started</h1>
+<div class="body"><p class="p">This chapter gives an overview of how to use data binding in conjunction
+		with SAPUI5 controls in a simple application. It provides information about
+		binding data to a property of a control (property binding) as well as binding a
+		collection of values (aggregation/list binding). 
+	 </p>
+<p class="p">The following steps show how you use data binding in your application: 
+	 </p>
+<ol class="ol"><li class="li">Decide on the model you want
+		  to use. Depending on the service or backend type, you can choose a different
+		  model that supports your backend. Currently, model implementations for JSON,
+		  XML format, and OData services are available. If no suitable model for your
+		  backend is available, you can use your own implementation. 
+		</li>
+<li class="li">Create a model instance. 
+		</li>
+<li class="li">Create a control instance. 
+		</li>
+<li class="li">Bind properties or lists of
+		  the control to your model. 
+		</li>
+<li class="li">Unbind properties if you
+		  wish. 
+		</li>
+</ol>
+<p class="p">The following example uses the JSON model. This model is not specific to
+		a particular backend type or implementation. The only requirement is that the
+		data for the model is provided in JSON format. 
+	 </p>
+<p class="p">The JSON model supports two-way/bidirectional data binding by default,
+		which means that the model will automatically reflect changes to the view and
+		vice versa. 
+	 </p>
+<div class="section" id="loio91f0f3cd6f4d1014b6dd926db0e91070__section_C77C849B5FAA460C97A24C63EB5D8B5B"><div class="section_title">Defining the Data</div><div type="Defining the Data"> 
+		 
+		<p class="p">To define the data, proceed as follows:</p>
+
+			<ol class="ol" id="loio91f0f3cd6f4d1014b6dd926db0e91070__ol_ckr_qwj_1j"><li class="li">Create a simple HTML page and load the SAPUI5 runtime.</li>
+<li class="li">Create the data that you want to bind to a control property. As we are using the
+					JSON model, you need to provide this data in JSON format.</li>
+<li class="li">Place the code into your sample page:
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">// JSON sample data
+var data = {
+    firstName: "John",
+    lastName: "Doe",
+    birthday: {day:01,month:05,year:1982},
+    address:[{city:"Heidelberg"}],
+    enabled: true
+};</pre></div>
+</li>
+</ol>
+ 
+	 </div></div>
+<div class="section" id="loio91f0f3cd6f4d1014b6dd926db0e91070__section_A063E0B8F6A843F3B93A50AD395578CB"><div class="section_title">Creating a Data Binding Model Instance</div><div type="Creating a Data Binding Model Instance"> 
+		 
+		<p class="p">Now you create a new JSON data model and add the data you have created to the model, so that
+				the data is stored there and can be used for binding. Finally, you attach the model
+				to the SAPUI5 core so that it can be used by various controls. It is also possible
+				to attach the model to a specific control by calling
+					<samp class="ph codeph">oElement.setModel(oModel)</samp>. </p>
+ 
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">// create JSON model instance
+var oModel = new sap.ui.model.json.JSONModel();
+// set the data for the model
+oModel.setData(data);
+// set the model to the core
+sap.ui.getCore().setModel(oModel);</pre></div>
+ 
+	 </div></div>
+<div class="section" id="loio91f0f3cd6f4d1014b6dd926db0e91070__section_6D9D2245140D49D2BD12FD72FEE5028E"><div class="section_title">Creating Controls and Property Binding</div><div type="Creating Controls and Property Binding"><p class="p">Now you can create the SAPUI5 controls and define the binding to
+				the properties. In the sample, you first define a <samp class="ph codeph">TextView</samp> control
+				and a <samp class="ph codeph">TextField</samp> control. Both controls should display the
+					<samp class="ph codeph">firstName</samp> property of the model. The corresponding control
+				properties have to be bound to the model property. You do this directly in the
+				control constructor by using {} braces and specifying the path to the property in
+				the model. You do this for both controls.
+				</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">// create your controls        
+var oTextView = new sap.ui.commons.TextView("textView", {
+    // bind text property of textview to firstName property in the model
+    text: "{/firstName}",
+    tooltip: "First Name"
+});
+var oTxt = new sap.ui.commons.TextField("txtField", {
+    // bind text property of textfield to firstName property in the model
+    value: "{/firstName}"
+});</pre></div>
+<p class="p">Next
+				you create a <samp class="ph codeph">CheckBox</samp> control and bind its <samp class="ph codeph">checked</samp>
+				property to the <samp class="ph codeph">enabled</samp> property in the model. You also do this for
+				the previously created <samp class="ph codeph">TextField</samp> by using an alternative binding
+				notation:
+				</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">// create your controls
+var oChkBx = new sap.ui.commons.CheckBox("box", {
+    // bind checked property against enabled property in the model
+    checked: "{/enabled}", 
+    change: handleCheckBoxChange
+});
+// generic bind method bindProperty(control property, model property)
+oTxt.bindProperty("enabled", "/enabled");
+
+function handleCheckBoxChange(oEvent){
+    var bEnabled = oEvent.getParameter("checked");
+    // modify the enabled property value in the model to reflect changes
+    oModel.setData({enabled: bEnabled}, true); // true means merge the data instead of replacing
+};</pre></div>
+<p class="p">The
+					<samp class="ph codeph">handleCheckBoxChange</samp> method sets the <samp class="ph codeph">enabled</samp>
+				property in the model, depending on the current checked state of the
+					<samp class="ph codeph">CheckBox</samp>. </p>
+<p class="p">In a last step, you create a button and define
+				the update method for updating the firstName value in the model with the value of
+				the <samp class="ph codeph">TextField</samp> when the button is clicked.
+				</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">// create your controls
+var oBtn = new sap.ui.commons.Button({
+    id: "btn", 
+    text: "Trigger Change",
+    press: update
+});
+
+function update(){
+    // modify the firstName property value in the model to reflect changes
+    oModel.setData({firstName: sap.ui.getCore().byId("txtField").getValue()}, true);
+};
+</pre></div>
+<p class="p">When
+				you now open the sample application in the Web browser, you can see that the value
+				of the <samp class="ph codeph">firstName</samp> property is already displayed in the
+					<samp class="ph codeph">TextView</samp> and <samp class="ph codeph">TextField</samp>. When you select the
+					<samp class="ph codeph">CheckBox</samp>, the enabled value is modified in the model (by the
+					<samp class="ph codeph">handleCheckBoxChange</samp> method), and the changes are immediately
+				reflected in all control properties that are bound to this property. In this case,
+				the <samp class="ph codeph">TextField</samp> is enabled or disabled. </p>
+<p class="p">As described above,
+				clicking the button modifies the <samp class="ph codeph">firstName</samp> value in the model with
+				the value of the <samp class="ph codeph">TextView</samp>. When this happens, all control
+				properties bound to this model field are updated immediately to reflect the changes
+				(direction Model → View). </p>
+<p class="p">Additionally, since the JSON model supports two-way
+				binding, entering a text value into the <samp class="ph codeph">TextField</samp> will also update
+				the corresponding value in the model, and the <samp class="ph codeph">TextView</samp> will display
+				the changes because it is bound to the same property (direction Model ← View).
+				</p>
+<p class="p">The page then looks as shown in the following figure.</p>
+<img class="image" id="loio91f0f3cd6f4d1014b6dd926db0e91070__image_rvw_3gd_hj" src="837525953f1143bb94392f9a5371ce3b.image" alt="SAPUI5 Property Binding" title="SAPUI5 Property Binding"/></div></div>
+<div class="section" id="loio91f0f3cd6f4d1014b6dd926db0e91070__section_41AA6B5DD91E435193B937FBA10F7116"><div class="section_title">Aggregation Data Binding in a Simple Application</div><div type="Aggregation Data Binding in a Simple Application"><p class="p">The above sample covers the binding of single properties to a
+				control property. Now we want to focus on binding a collection of values, for
+				example, binding multiple rows into a table, the values for a
+					<samp class="ph codeph">ListBox</samp>, or the items in a <samp class="ph codeph">ComboBox</samp>. </p>
+<p class="p">In
+				this example we use the <samp class="ph codeph">RowRepeater</samp> control and bind it to a
+				collection of data. Again, you start with the definition of data and set it to the
+				model and the model to the core.
+				</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">//create test data
+var dataObject = { data : [{index:0, level: "Warning", description: "HAL: I'm sorry, Dave. I'm afraid I can't do that."},
+        {index:1, level: "Warning", description: "Windows Boot Manager has encountered a problem."},
+        {index:2, level: "Error", description: "Failwhale: Twitter is over capacity"},
+        {index:3, level: "Success", description: "Jun 25 12:20:47 pc1h kernel: lp0 on fire"},
+        {index:4, level: "Error", description: "Software failure. Press left mouse button to continue. Guru Meditation #00000004,#0000AACB."},
+        {index:5, level: "Error", description: "[root@localhost root]# Kernel Panic"},
+        {index:6, level: "Error", description: "That does not compute."},
+        {index:7, level: "Warning", description: "404 File not found. Stop messing with the URL."},
+        {index:8, level: "Success", description: "Blue Screen of Death."},
+};
+
+//create JSON model
+var oModel = new sap.ui.model.json.JSONModel();
+oModel.setData(dataObject);
+sap.ui.getCore().setModel(oModel);</pre></div>
+<p class="p">The
+				next step covers the creation of the controls and the definition of a single
+					<samp class="ph codeph">Message</samp> control, which will be used as a template for all items
+				in the <samp class="ph codeph">RowRepeater</samp>. The <samp class="ph codeph">Message</samp> control will hold
+				the corresponding level and description values from the model so that these
+				properties are bound to the model:
+				</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">//create the template control that will be repeated and will display the data
+var oRowTemplate = new sap.ui.commons.Message("rowTemplate", {
+    text : "{description}",
+    type : "{level}"
+});</pre></div>
+<p class="p">Once
+				the template is defined, you create the <samp class="ph codeph">RowRepeater</samp> control. The
+					<samp class="ph codeph">RowRepeater</samp> has an aggregation rows, which can be any SAPUI5
+				control. In our case, this is the above mentioned <samp class="ph codeph">Message</samp> control.
+				You create an aggregation or list binding for this rows property. To do this, you
+				specify the name of the array in the JSON model that contains the actual data (path)
+				and also specify the <samp class="ph codeph">Message</samp> row template:
+				</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">//create the RowRepeater control
+var oRowRepeater = new sap.ui.commons.RowRepeater("rowRepeater", {
+    design : "Standard",
+    numberOfRows : 5,
+    currentPage : 1,
+    title : oTitle,
+    // bind row aggregation
+    rows : {path : "/data", template : oRowTemplate}
+});</pre></div>
+<p class="p">The
+				SAPUI5 runtime clones the row template for each entry in the JSON array for the
+					<samp class="ph codeph">data</samp> property and also binds the <samp class="ph codeph">description</samp>
+				and <samp class="ph codeph">level</samp> properties for each message item.</p>
+<p class="p">The following
+				figure shows a sample page.</p>
+<img class="image" id="loio91f0f3cd6f4d1014b6dd926db0e91070__image_pck_xgd_hj" width="960px" src="23574587a81d47fdb896d9657dcec112.image" alt="SAPUI5 List Binding" title="SAPUI5 List Binding"/></div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Data Binding: Getting Started";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

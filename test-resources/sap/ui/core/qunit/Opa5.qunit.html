@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+
+<!-- 
+	  Tested classes: sap.ui.test.Opa5
+	-->
+
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>qUnit Page for sap.ui.test.Opa5</title>
+
+<script id="sap-ui-bootstrap" type="text/javascript"
+	src="../../../../../resources/sap-ui-core.js"
+	data-sap-ui-theme="sap_bluecrystal" data-sap-ui-noConflict="true"
+	data-sap-ui-libs="sap.ui.commons,sap.ui.ux3"
+	data-sap-ui-resourceroots='{"sap.ui.testlib":"testdata/uilib/", "example.mvc": "testdata/mvc/"}'>
+	
+</script>
+
+<link rel="stylesheet" href="../../../../../resources/sap/ui/thirdparty/qunit.css" type="text/css" media="screen" />
+<script type="text/javascript" src="../../../../../resources/sap/ui/thirdparty/qunit.js"></script>
+<script type="text/javascript" src="../../../../../resources/sap/ui/qunit/QUnitUtils.js"></script>
+<script src="../../../../../resources/sap/ui/thirdparty/sinon.js"></script>
+<script src="../../../../../resources/sap/ui/thirdparty/sinon-qunit.js"></script>
+
+<script>
+sinon.config.useFakeTimers = false;
+jQuery.sap.require("sap.ui.test.Opa5");
+var Opa5 = sap.ui.test.Opa5;
+
+module("iframe");
+
+asyncTest("Should Navigate in an Iframe", function() {
+	// System under Test
+	var oOpa5 = new Opa5();
+
+	// Act
+	oOpa5.iStartMyAppInAFrame("testdata/emptySite.html").done(function() {
+		// Act + Assert
+		var oHashChanger = Opa5.getHashChanger();
+
+		oHashChanger.attachEvent("hashChanged", function () {
+			
+		});
+
+		strictEqual(oHashChanger.getHash(), "");
+		oHashChanger.setHash("buz");
+		oHashChanger.replaceHash("baz");
+		oHashChanger.replaceHash("foo");
+		strictEqual(oHashChanger.getHash(), "foo");
+		oHashChanger.setHash("bar");
+		strictEqual(oHashChanger.getHash(), "bar");
+		Opa5.getWindow().history.back();
+		strictEqual(oHashChanger.getHash(), "foo");
+
+		oHashChanger.setHash("baz");
+		strictEqual(oHashChanger.getHash(), "baz");
+		Opa5.getWindow().history.go(-1);
+
+		strictEqual(oHashChanger.getHash(), "foo");
+
+		start();
+	});
+
+	oOpa5.emptyQueue();
+});
+
+</script>
+</head>
+<body>
+	<h1 id="qunit-header">qUnit Page for sap.ui.test.Opa5</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture"></div>
+
+</body>
+</html>

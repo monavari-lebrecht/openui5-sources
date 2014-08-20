@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=29568274805161676"/>
+<title>Events fired on the Pages</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiob6ab31cb81bd443996cde2f91d203072">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Events fired on the Pages</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">Events fired on the pages allow a decentral reaction to navigation. The
+				<samp class="ph codeph">NavContainer</samp> fires events to its child controls when they are
+			displayed or when they are hidden.</p>
+<div class="note note" id="loiob6ab31cb81bd443996cde2f91d203072__note_N1001C_N10011_N10001"><span class="notetitle">Note</span> 
+			<p class="p">Although this documentation calls them "pages" and a <samp class="ph codeph">sap.m.Page</samp> control may
+				be the typical child of a <samp class="ph codeph">NavContainer</samp>, any full screen control can
+				be used, for example, a <samp class="ph codeph">sap.m.Carousel</samp> control or a custom control.
+				The sirect child controls often may be views. In this case, the events will be fired
+				on the views, and not on a page control that may be contained in the view. Thus, the
+				event is not fired <strong class="ph b">by</strong> the child control, but by the
+					<samp class="ph codeph">NavContainer</samp>
+				<strong class="ph b">on</strong> the child control (whatever type it is). This causes the different
+				registration compared to normal control events.</p>
+
+		</div>
+<p class="p">Before the navigation animation starts, the <samp class="ph codeph">NavContainer</samp> fires the following
+			events: </p>
+<ul class="ul" id="loiob6ab31cb81bd443996cde2f91d203072__ul_olr_l3c_2j"><li class="li"><samp class="ph codeph">beforeHide</samp> on the page which is about to be left</li>
+<li class="li"><samp class="ph codeph">beforeFirstShow</samp> on the page which is about to be shown; this event is only
+				fired if the respective page has not been shown before</li>
+<li class="li"><samp class="ph codeph">beforeShow</samp> on the page which is about to be shown</li>
+</ul>
+<p class="p">These events can be used to create or update the user interface of the new page and to stop any
+			activity, such as animations or repeated data polling, on the page which is left.</p>
+<p class="p">After the navigation has been completed and the new page has covered the whole screen, the
+			following events are fired: </p>
+<ul class="ul" id="loiob6ab31cb81bd443996cde2f91d203072__ul_plr_l3c_2j"><li class="li"><samp class="ph codeph">afterShow</samp> on the page which is now shown</li>
+<li class="li"><samp class="ph codeph">afterHide</samp> on the page which has been left</li>
+</ul>
+<p class="p">You can destroy the hidden page, and the now active page can start its activity.</p>
+<p class="p">You can use the <samp class="ph codeph">addEventDelegate</samp> function to register to these events. This
+			function is available on every control.</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">page1.addEventDelegate({
+   onBeforeShow: function(evt) {
+      // page1 is about to be shown; act accordingly - if required you can read event information from the evt object
+   },
+   onAfterHide: function(evt) {
+      // ...
+   }
+});</pre></div>
+<div class="section"><div class="section_title">API Reference</div><div type="API Reference">
+			
+			<p class="p"><a class="extlink" href="../../docs/api/symbols/sap.m.NavContainerChild.html">sap.m.NavContainerChild<img src="images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Events fired on the Pages";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

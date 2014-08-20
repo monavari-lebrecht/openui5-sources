@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=6263117740707984"/>
+<title>Renderer Methods</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loioc9ab34570cc14ea5ab72a6d1a4a03e3f">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Renderer Methods</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">The <samp class="ph codeph">renderer</samp> method is responsible for creating the HTML structure for the
+			control. The <samp class="ph codeph">renderer</samp> method is a static method, so no
+				<samp class="ph codeph">this</samp> keyword is available, but a control instance and a
+				<samp class="ph codeph">RenderManager</samp> instance are given to the method. The
+				<samp class="ph codeph">RenderManager</samp> collects and concatenates string fragments and places
+			them in the DOM at the appropriate position.</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">renderer: function(rm, oControl) {
+   oRenderManager.write("&lt;div&gt;", oControl.getText(), "&lt;/div&gt;");
+}</pre></div>
+<p class="p">All the features and rules for writing controls also apply to the <samp class="ph codeph">renderer</samp>
+			control. For example, it must only have one HTML element as root node.
+				<samp class="ph codeph">oRenderManager.writeControlData(oControl);</samp> must be called in the
+			root node. Thus, the root element can be marked as SAPUI5 control root and the ID of the
+			control is written.</p>
+<p class="p">A new renderer type inherits from the renderer of the parent control. If a control extends, for
+			example, the <samp class="ph codeph">TextField</samp> control, the function is added to a class that
+			inherits from <samp class="ph codeph">sap.ui.commons.!TextFieldRenderer</samp> and can access the
+			respective functions.</p>
+<p class="p">If an existing renderer is used without modification, you can use the name of the respective
+			renderer class: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">renderer: "sap.ui.commons.ButtonRenderer"</pre></div>
+<p class="p">A control renderer can also override or implement methods from the renderer superclass. And it
+			can just separate out helper functions.</p>
+<p class="p">This is also possible in the following example, but in this case the methods need to be packed
+			together into an object to indicate for the <samp class="ph codeph">extend</samp> method that they all
+			go into the control renderer. The main rendering method is called
+				<samp class="ph codeph">render</samp> just like in a normal control renderer. The
+				<samp class="ph codeph">this</samp> keyword refers to the control renderer type and is used to
+			access the other methods: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">renderer: {
+
+   render: function(rm, oControl) {
+
+      rm.write("&lt;div&gt;");
+
+      rm.writeEscaped(this.square(oControl.getValue()));
+
+      rm.write("&lt;/div&gt;");
+
+   },
+
+   square: function(value) {
+
+      return value * value;
+
+   }
+
+}</pre></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Renderer Methods";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

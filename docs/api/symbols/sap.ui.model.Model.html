@@ -1,0 +1,2947 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.model.Model</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static abstract">
+					
+					abstract Class sap.ui.model.Model
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.ui.base.Object" href="../symbols/sap.ui.base.Object.html">Object</a></div>
+					
+					
+					
+						<div class="classRelation subclasses"><span class="caption">known direct subclasses: </span><a title="sap.ui.model.ClientModel" href="../symbols/sap.ui.model.ClientModel.html">ClientModel</a>, <a title="sap.ui.model.json.JSONModel" href="../symbols/sap.ui.model.json.JSONModel.html">JSONModel</a>, <a title="sap.ui.model.odata.ODataModel" href="../symbols/sap.ui.model.odata.ODataModel.html">ODataModel</a>, <a title="sap.ui.model.resource.ResourceModel" href="../symbols/sap.ui.model.resource.ResourceModel.html">ResourceModel</a>, <a title="sap.ui.model.xml.XMLModel" href="../symbols/sap.ui.model.xml.XMLModel.html">XMLModel</a></div>
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>This is an abstract base class for model objects.</p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static abstract">
+									<div class="itemName">
+										<b class="icon" title="Constructor for a new Model.">new <a href="../symbols/sap.ui.model.Model.html#constructor">sap.ui.model.Model</a></b>
+										<span class='signature'>()</span>
+										<span class='description'>Constructor for a new Model.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+						
+						
+						
+						
+					
+		
+
+
+					
+						
+						
+						<div class="summary section" cellspacing="0" summary="A summary of the events documented in the class sap.ui.model.Model.">
+							<div class="sectionTitle">Event Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="The 'parseError' event is fired when parsing of a model document (e.g."><a href="../symbols/sap.ui.model.Model.html#event:parseError">parseError</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>The 'parseError' event is fired when parsing of a model document (e.g.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="The 'requestCompleted' event is fired, after a request has been completed (includes receiving a response), no matter whether the request succeeded or not."><a href="../symbols/sap.ui.model.Model.html#event:requestCompleted">requestCompleted</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>The 'requestCompleted' event is fired, after a request has been completed (includes receiving a response), no matter whether the request succeeded or not.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="The 'requestFailed' event is fired, when data retrieval from a backend failed."><a href="../symbols/sap.ui.model.Model.html#event:requestFailed">requestFailed</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>The 'requestFailed' event is fired, when data retrieval from a backend failed.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="The 'requestSent' event is fired, after a request has been sent to a backend."><a href="../symbols/sap.ui.model.Model.html#event:requestSent">requestSent</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>The 'requestSent' event is fired, after a request has been sent to a backend.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+				
+						
+						
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Creates a new subclass of class sap.ui.model.Model with name sClassName and enriches it with the information contained in oClassInfo."><a href="../symbols/sap.ui.model.Model.html#.extend">sap.ui.model.Model.extend</a></b><span class='signature'>(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) alternative constructor for a metadata object">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Creates a new subclass of class sap.ui.model.Model with name <code>sClassName</code> and enriches it with the information contained in <code>oClassInfo</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Attach event-handler fnFunction to the 'parseError' event of this sap.ui.model.Model."><a href="../symbols/sap.ui.model.Model.html#attachParseError">attachParseError</a></b><span class='signature'>(<span title="(object) The object, that should be passed along with the event-object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which to call the given function.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Attach event-handler <code>fnFunction</code> to the 'parseError' event of this <code>sap.ui.model.Model</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Attach event-handler fnFunction to the 'requestCompleted' event of this sap.ui.model.Model."><a href="../symbols/sap.ui.model.Model.html#attachRequestCompleted">attachRequestCompleted</a></b><span class='signature'>(<span title="(object) The object, that should be passed along with the event-object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which to call the given function.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Attach event-handler <code>fnFunction</code> to the 'requestCompleted' event of this <code>sap.ui.model.Model</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Attach event-handler fnFunction to the 'requestFailed' event of this sap.ui.model.Model."><a href="../symbols/sap.ui.model.Model.html#attachRequestFailed">attachRequestFailed</a></b><span class='signature'>(<span title="(object) The object, that should be passed along with the event-object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which to call the given function.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Attach event-handler <code>fnFunction</code> to the 'requestFailed' event of this <code>sap.ui.model.Model</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Attach event-handler fnFunction to the 'requestSent' event of this sap.ui.model.Model."><a href="../symbols/sap.ui.model.Model.html#attachRequestSent">attachRequestSent</a></b><span class='signature'>(<span title="(object) The object, that should be passed along with the event-object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which to call the given function.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Attach event-handler <code>fnFunction</code> to the 'requestSent' event of this <code>sap.ui.model.Model</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod abstract">
+									<b class="icon" title="Returns id the provided path is a list (aggregation) or an entity"><a href="../symbols/sap.ui.model.Model.html#bindContext">bindContext</a></b><span class='signature'>(<span title="(string) the path pointing to the property that should be bound">sPath</span>, <span title="(object) the context object for this databinding (optional)">oContext</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Returns id the provided path is a list (aggregation) or an entity</span>
+								</div>
+							
+								<div class="sectionItem classMethod abstract">
+									<b class="icon" title="Implement in inheriting classes"><a href="../symbols/sap.ui.model.Model.html#bindList">bindList</a></b><span class='signature'>(<span title="(string) the path pointing to the list / array that should be bound">sPath</span>, <span title="(object) the context object for this databinding (optional)">oContext</span><i class="help" title="Optional parameter">?</i>, <span title="(sap.ui.model.Sorter) initial sort order (can be either a sorter or an array of sorters) (optional)">aSorters</span><i class="help" title="Optional parameter">?</i>, <span title="(array) predefined filter/s (can be either a filter or an array of filters) (optional)">aFilters</span><i class="help" title="Optional parameter">?</i>, <span title="(object) additional model specific parameters (optional)">mParameters</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Implement in inheriting classes</span>
+								</div>
+							
+								<div class="sectionItem classMethod abstract">
+									<b class="icon" title="Implement in inheriting classes"><a href="../symbols/sap.ui.model.Model.html#bindProperty">bindProperty</a></b><span class='signature'>(<span title="(string) the path pointing to the property that should be bound">sPath</span>, <span title="(object) the context object for this databinding (optional)">oContext</span><i class="help" title="Optional parameter">?</i>, <span title="(object) additional model specific parameters (optional)">mParameters</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Implement in inheriting classes</span>
+								</div>
+							
+								<div class="sectionItem classMethod abstract">
+									<b class="icon" title="Implement in inheriting classes"><a href="../symbols/sap.ui.model.Model.html#bindTree">bindTree</a></b><span class='signature'>(<span title="(string) the path pointing to the tree / array that should be bound">sPath</span>, <span title="(object) the context object for this databinding (optional)">oContext</span><i class="help" title="Optional parameter">?</i>, <span title="(array) predefined filter/s contained in an array (optional)">aFilters</span><i class="help" title="Optional parameter">?</i>, <span title="(object) additional model specific parameters (optional)">mParameters</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Implement in inheriting classes</span>
+								</div>
+							
+								<div class="sectionItem classMethod abstract">
+									<b class="icon" title="Implement in inheriting classes"><a href="../symbols/sap.ui.model.Model.html#createBindingContext">createBindingContext</a></b><span class='signature'>(<span title="(string) the path to create the new context from">sPath</span>, <span title="(object) the context which should be used to create the new binding context">oContext</span><i class="help" title="Optional parameter">?</i>, <span title="(object) the parameters used to create the new binding context">mParameters</span><i class="help" title="Optional parameter">?</i>, <span title="(function) the function which should be called after the binding context has been created">fnCallBack</span>, <span title="(boolean) force reload even if data is already available.">bReload</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Implement in inheriting classes</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys the model and clears the model data."><a href="../symbols/sap.ui.model.Model.html#destroy">destroy</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys the model and clears the model data.</span>
+								</div>
+							
+								<div class="sectionItem classMethod abstract">
+									<b class="icon" title="Implement in inheriting classes"><a href="../symbols/sap.ui.model.Model.html#destroyBindingContext">destroyBindingContext</a></b><span class='signature'>(<span title="(object) to destroy">oContext</span>)</span>
+									<span class='description'>Implement in inheriting classes</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Detach event-handler fnFunction from the 'parseError' event of this sap.ui.model.Model."><a href="../symbols/sap.ui.model.Model.html#detachParseError">detachParseError</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Detach event-handler <code>fnFunction</code> from the 'parseError' event of this <code>sap.ui.model.Model</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Detach event-handler fnFunction from the 'requestCompleted' event of this sap.ui.model.Model."><a href="../symbols/sap.ui.model.Model.html#detachRequestCompleted">detachRequestCompleted</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Detach event-handler <code>fnFunction</code> from the 'requestCompleted' event of this <code>sap.ui.model.Model</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Detach event-handler fnFunction from the 'requestFailed' event of this sap.ui.model.Model."><a href="../symbols/sap.ui.model.Model.html#detachRequestFailed">detachRequestFailed</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Detach event-handler <code>fnFunction</code> from the 'requestFailed' event of this <code>sap.ui.model.Model</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Detach event-handler fnFunction from the 'requestSent' event of this sap.ui.model.Model."><a href="../symbols/sap.ui.model.Model.html#detachRequestSent">detachRequestSent</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Detach event-handler <code>fnFunction</code> from the 'requestSent' event of this <code>sap.ui.model.Model</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Fire event parseError to attached listeners."><a href="../symbols/sap.ui.model.Model.html#fireParseError">fireParseError</a></b><span class='signature'>(<span title="(object) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event parseError to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Fire event requestCompleted to attached listeners."><a href="../symbols/sap.ui.model.Model.html#fireRequestCompleted">fireRequestCompleted</a></b><span class='signature'>(<span title="(object) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event requestCompleted to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Fire event requestFailed to attached listeners."><a href="../symbols/sap.ui.model.Model.html#fireRequestFailed">fireRequestFailed</a></b><span class='signature'>(<span title="(object) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event requestFailed to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Fire event requestSent to attached listeners."><a href="../symbols/sap.ui.model.Model.html#fireRequestSent">fireRequestSent</a></b><span class='signature'>(<span title="(object) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event requestSent to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Get the default binding mode for the model"><a href="../symbols/sap.ui.model.Model.html#getDefaultBindingMode">getDefaultBindingMode</a></b><span class='signature'>()</span>
+									<span class='description'>Get the default binding mode for the model</span>
+								</div>
+							
+								<div class="sectionItem classMethod abstract">
+									<b class="icon" title="Implement in inheriting classes"><a href="../symbols/sap.ui.model.Model.html#getObject">getObject</a></b><span class='signature'>(<span title="(string) the path to where to read the object">sPath</span>, <span title="(object) the context with which the path should be resolved">oContext</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Implement in inheriting classes</span>
+								</div>
+							
+								<div class="sectionItem classMethod abstract">
+									<b class="icon" title="Implement in inheriting classes"><a href="../symbols/sap.ui.model.Model.html#getProperty">getProperty</a></b><span class='signature'>(<span title="(string) the path to where to read the attribute value">sPath</span>, <span title="(object) the context with which the path should be resolved">oContext</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Implement in inheriting classes</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Check if the specified binding mode is supported by the model."><a href="../symbols/sap.ui.model.Model.html#isBindingModeSupported">isBindingModeSupported</a></b><span class='signature'>(<span title="(sap.ui.model.BindingMode) the binding mode to check">sMode</span>)</span>
+									<span class='description'>Check if the specified binding mode is supported by the model.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns whether legacy path syntax is used"><a href="../symbols/sap.ui.model.Model.html#isLegacySyntax">isLegacySyntax</a></b><span class='signature'>()</span>
+									<span class='description'>Returns whether legacy path syntax is used</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Refresh the model."><a href="../symbols/sap.ui.model.Model.html#refresh">refresh</a></b><span class='signature'>(<span title="(boolean) Update controls even if data has not been changed">bForceUpdate</span>)</span>
+									<span class='description'>Refresh the model.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Set the default binding mode for the model."><a href="../symbols/sap.ui.model.Model.html#setDefaultBindingMode">setDefaultBindingMode</a></b><span class='signature'>(<span title="(sap.ui.model.BindingMode) the default binding mode to set for the model">sMode</span>)</span>
+									<span class='description'>Set the default binding mode for the model.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Enables legacy path syntax handling  This defines, whether relative bindings, which do not have a defined binding context, should be compatible to earlier releases which means they are resolved relative to the root element or handled strict and stay unresolved until a binding context is set"><a href="../symbols/sap.ui.model.Model.html#setLegacySyntax">setLegacySyntax</a></b><span class='signature'>(<span title="(boolean) the path syntax to use">bCompatibleSyntax</span>)</span>
+									<span class='description'>Enables legacy path syntax handling </p><p> This defines, whether relative bindings, which do not have a defined binding context, should be compatible to earlier releases which means they are resolved relative to the root element or handled strict and stay unresolved until a binding context is set</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Set the maximum number of entries which are used for for list bindings."><a href="../symbols/sap.ui.model.Model.html#setSizeLimit">setSizeLimit</a></b><span class='signature'>(<span title="(int) size limit">collection</span>)</span>
+									<span class='description'>Set the maximum number of entries which are used for for list bindings.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static abstract">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.ui.model.Model</b>()
+										</div>
+										
+										<div class="full-description">
+											Constructor for a new Model.
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Event Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:parseError"> </a>
+									<div class="itemTitle icon">
+										parseError<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										The 'parseError' event is fired when parsing of a model document (e.g. XML response) fails.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{int}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.errorCode</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.url</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.reason</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.srcText</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{int}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.line</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{int}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.linepos</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{int}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.filepos</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:requestCompleted"> </a>
+									<div class="itemTitle icon">
+										requestCompleted<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										The 'requestCompleted' event is fired, after a request has been completed (includes receiving a response), 
+no matter whether the request succeeded or not.
+</p><p>
+Note: Subclasses might add additional parameters to the event object.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.url</b>
+												</td>
+												<td class="methodItemDesc">
+											    The url which was sent to the backend
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.type</b>
+												</td>
+												<td class="methodItemDesc">
+											    The type of the request (if available)
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{boolean}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.success</b>
+												</td>
+												<td class="methodItemDesc">
+											    if the request has been successful or not. In case of errors consult the optional errorobject parameter.
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.errorobject</b><i class="help" title="Optional parameter">?</i>
+												</td>
+												<td class="methodItemDesc">
+											    If the request failed the error if any can be accessed in this property.
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{boolean}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.async</b><i class="help" title="Optional parameter">?</i>
+												</td>
+												<td class="methodItemDesc">
+											    If the request is synchronous or asynchronous (if available)
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.info</b><i class="help" title="Optional parameter">?</i>
+												</td>
+												<td class="methodItemDesc">
+											    Additional information for the request (if available) <strong>deprecated</strong>
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.infoObject</b><i class="help" title="Optional parameter">?</i>
+												</td>
+												<td class="methodItemDesc">
+											    Additional information for the request (if available)
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:requestFailed"> </a>
+									<div class="itemTitle icon">
+										requestFailed<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										The 'requestFailed' event is fired, when data retrieval from a backend failed.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.message</b>
+												</td>
+												<td class="methodItemDesc">
+											    A text that describes the failure.
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.statusCode</b>
+												</td>
+												<td class="methodItemDesc">
+											    HTTP status code returned by the request (if available)
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.statusText</b>
+												</td>
+												<td class="methodItemDesc">
+											    The status as a text, details not specified, intended only for diagnosis output
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.responseText</b>
+												</td>
+												<td class="methodItemDesc">
+											    Response that has been received for the request ,as a text string
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:requestSent"> </a>
+									<div class="itemTitle icon">
+										requestSent<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										The 'requestSent' event is fired, after a request has been sent to a backend.
+</p><p>
+Note: Subclasses might add additional parameters to the event object.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.url</b>
+												</td>
+												<td class="methodItemDesc">
+											    The url which is sent to the backend
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.type</b>
+												</td>
+												<td class="methodItemDesc">
+											    The type of the request (if available)
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{boolean}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.async</b><i class="help" title="Optional parameter">?</i>
+												</td>
+												<td class="methodItemDesc">
+											    If the request is synchronous or asynchronous (if available)
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.info</b><i class="help" title="Optional parameter">?</i>
+												</td>
+												<td class="methodItemDesc">
+											    Additional information for the request (if available) <strong>deprecated</strong>
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.infoObject</b><i class="help" title="Optional parameter">?</i>
+												</td>
+												<td class="methodItemDesc">
+											    Additional information for the request (if available)
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+							</div>
+						</div>
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".extend"> </a>
+										<div class="itemTitle icon">
+											sap.ui.model.Model.extend<span class="signature">(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) alternative constructor for a metadata object">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns function">: function</span>
+										</div>
+										<div class="full-description">
+											Creates a new subclass of class sap.ui.model.Model with name <code>sClassName</code> 
+and enriches it with the information contained in <code>oClassInfo</code>.
+</p><p>
+For a detailed description of <code>oClassInfo</code> or <code>FNMetaImpl</code> 
+see <a href="../symbols/sap.ui.base.Object.html#.extend">Object.extend</a>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sClassName</b>
+													</td>
+													<td class="methodItemDesc">
+												    name of the class to be created
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oClassInfo</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    object literal with informations about the class
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>FNMetaImpl</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    alternative constructor for a metadata object
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{function}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the created class / constructor function
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachParseError"> </a>
+										<div class="itemTitle icon">
+											attachParseError<span class="signature">(<span title="(object) The object, that should be passed along with the event-object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which to call the given function.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.model.Model">: <a href="../symbols/sap.ui.model.Model.html">sap.ui.model.Model</a></span>
+										</div>
+										<div class="full-description">
+											Attach event-handler <code>fnFunction</code> to the 'parseError' event of this <code>sap.ui.model.Model</code>.<br/>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oData</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    The object, that should be passed along with the event-object when firing the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs. This function will be called on the
+           oListener-instance (if present) or in a 'static way'.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Object on which to call the given function. If empty, the global context (window) is used.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.model.Model.html">sap.ui.model.Model</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachRequestCompleted"> </a>
+										<div class="itemTitle icon">
+											attachRequestCompleted<span class="signature">(<span title="(object) The object, that should be passed along with the event-object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which to call the given function.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.model.Model">: <a href="../symbols/sap.ui.model.Model.html">sap.ui.model.Model</a></span>
+										</div>
+										<div class="full-description">
+											Attach event-handler <code>fnFunction</code> to the 'requestCompleted' event of this <code>sap.ui.model.Model</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oData</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    The object, that should be passed along with the event-object when firing the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs. This function will be called on the
+           oListener-instance (if present) or in a 'static way'.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Object on which to call the given function. If empty, the global context (window) is used.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.model.Model.html">sap.ui.model.Model</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachRequestFailed"> </a>
+										<div class="itemTitle icon">
+											attachRequestFailed<span class="signature">(<span title="(object) The object, that should be passed along with the event-object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which to call the given function.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.model.Model">: <a href="../symbols/sap.ui.model.Model.html">sap.ui.model.Model</a></span>
+										</div>
+										<div class="full-description">
+											Attach event-handler <code>fnFunction</code> to the 'requestFailed' event of this <code>sap.ui.model.Model</code>.<br/>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oData</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    The object, that should be passed along with the event-object when firing the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs. This function will be called on the
+           oListener-instance (if present) or in a 'static way'.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Object on which to call the given function. If empty, this Model is used.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.model.Model.html">sap.ui.model.Model</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachRequestSent"> </a>
+										<div class="itemTitle icon">
+											attachRequestSent<span class="signature">(<span title="(object) The object, that should be passed along with the event-object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which to call the given function.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.model.Model">: <a href="../symbols/sap.ui.model.Model.html">sap.ui.model.Model</a></span>
+										</div>
+										<div class="full-description">
+											Attach event-handler <code>fnFunction</code> to the 'requestSent' event of this <code>sap.ui.model.Model</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oData</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    The object, that should be passed along with the event-object when firing the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs. This function will be called on the
+           oListener-instance (if present) or in a 'static way'.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Object on which to call the given function. If empty, the global context (window) is used.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.model.Model.html">sap.ui.model.Model</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod abstract'>
+										<a name="bindContext"> </a>
+										<div class="itemTitle icon">
+											bindContext<span class="signature">(<span title="(string) the path pointing to the property that should be bound">sPath</span>, <span title="(object) the context object for this databinding (optional)">oContext</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Returns id the provided path is a list (aggregation) or an entity
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sPath</b>
+													</td>
+													<td class="methodItemDesc">
+												    the path pointing to the property that should be bound
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oContext</b><i class="help" title="Optional parameter">?, Default: null</i>
+													</td>
+													<td class="methodItemDesc">
+												    the context object for this databinding (optional)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.17.1</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod abstract'>
+										<a name="bindList"> </a>
+										<div class="itemTitle icon">
+											bindList<span class="signature">(<span title="(string) the path pointing to the list / array that should be bound">sPath</span>, <span title="(object) the context object for this databinding (optional)">oContext</span><i class="help" title="Optional parameter">?</i>, <span title="(sap.ui.model.Sorter) initial sort order (can be either a sorter or an array of sorters) (optional)">aSorters</span><i class="help" title="Optional parameter">?</i>, <span title="(array) predefined filter/s (can be either a filter or an array of filters) (optional)">aFilters</span><i class="help" title="Optional parameter">?</i>, <span title="(object) additional model specific parameters (optional)">mParameters</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.model.ListBinding">: <a href="../symbols/sap.ui.model.ListBinding.html">sap.ui.model.ListBinding</a></span>
+										</div>
+										<div class="full-description">
+											Implement in inheriting classes
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sPath</b>
+													</td>
+													<td class="methodItemDesc">
+												    the path pointing to the list / array that should be bound
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oContext</b><i class="help" title="Optional parameter">?, Default: null</i>
+													</td>
+													<td class="methodItemDesc">
+												    the context object for this databinding (optional)
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.model.Sorter.html">sap.ui.model.Sorter</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>aSorters</b><i class="help" title="Optional parameter">?, Default: null</i>
+													</td>
+													<td class="methodItemDesc">
+												    initial sort order (can be either a sorter or an array of sorters) (optional)
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{array}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>aFilters</b><i class="help" title="Optional parameter">?, Default: null</i>
+													</td>
+													<td class="methodItemDesc">
+												    predefined filter/s (can be either a filter or an array of filters) (optional)
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mParameters</b><i class="help" title="Optional parameter">?, Default: null</i>
+													</td>
+													<td class="methodItemDesc">
+												    additional model specific parameters (optional)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.model.ListBinding.html">sap.ui.model.ListBinding</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod abstract'>
+										<a name="bindProperty"> </a>
+										<div class="itemTitle icon">
+											bindProperty<span class="signature">(<span title="(string) the path pointing to the property that should be bound">sPath</span>, <span title="(object) the context object for this databinding (optional)">oContext</span><i class="help" title="Optional parameter">?</i>, <span title="(object) additional model specific parameters (optional)">mParameters</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.model.PropertyBinding">: <a href="../symbols/sap.ui.model.PropertyBinding.html">sap.ui.model.PropertyBinding</a></span>
+										</div>
+										<div class="full-description">
+											Implement in inheriting classes
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sPath</b>
+													</td>
+													<td class="methodItemDesc">
+												    the path pointing to the property that should be bound
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oContext</b><i class="help" title="Optional parameter">?, Default: null</i>
+													</td>
+													<td class="methodItemDesc">
+												    the context object for this databinding (optional)
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mParameters</b><i class="help" title="Optional parameter">?, Default: null</i>
+													</td>
+													<td class="methodItemDesc">
+												    additional model specific parameters (optional)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.model.PropertyBinding.html">sap.ui.model.PropertyBinding</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod abstract'>
+										<a name="bindTree"> </a>
+										<div class="itemTitle icon">
+											bindTree<span class="signature">(<span title="(string) the path pointing to the tree / array that should be bound">sPath</span>, <span title="(object) the context object for this databinding (optional)">oContext</span><i class="help" title="Optional parameter">?</i>, <span title="(array) predefined filter/s contained in an array (optional)">aFilters</span><i class="help" title="Optional parameter">?</i>, <span title="(object) additional model specific parameters (optional)">mParameters</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.model.TreeBinding">: <a href="../symbols/sap.ui.model.TreeBinding.html">sap.ui.model.TreeBinding</a></span>
+										</div>
+										<div class="full-description">
+											Implement in inheriting classes
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sPath</b>
+													</td>
+													<td class="methodItemDesc">
+												    the path pointing to the tree / array that should be bound
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oContext</b><i class="help" title="Optional parameter">?, Default: null</i>
+													</td>
+													<td class="methodItemDesc">
+												    the context object for this databinding (optional)
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{array}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>aFilters</b><i class="help" title="Optional parameter">?, Default: null</i>
+													</td>
+													<td class="methodItemDesc">
+												    predefined filter/s contained in an array (optional)
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mParameters</b><i class="help" title="Optional parameter">?, Default: null</i>
+													</td>
+													<td class="methodItemDesc">
+												    additional model specific parameters (optional)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.model.TreeBinding.html">sap.ui.model.TreeBinding</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod abstract'>
+										<a name="createBindingContext"> </a>
+										<div class="itemTitle icon">
+											createBindingContext<span class="signature">(<span title="(string) the path to create the new context from">sPath</span>, <span title="(object) the context which should be used to create the new binding context">oContext</span><i class="help" title="Optional parameter">?</i>, <span title="(object) the parameters used to create the new binding context">mParameters</span><i class="help" title="Optional parameter">?</i>, <span title="(function) the function which should be called after the binding context has been created">fnCallBack</span>, <span title="(boolean) force reload even if data is already available.">bReload</span><i class="help" title="Optional parameter">?</i>)</span>
+											
+										</div>
+										<div class="full-description">
+											Implement in inheriting classes
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sPath</b>
+													</td>
+													<td class="methodItemDesc">
+												    the path to create the new context from
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oContext</b><i class="help" title="Optional parameter">?, Default: null</i>
+													</td>
+													<td class="methodItemDesc">
+												    the context which should be used to create the new binding context
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mParameters</b><i class="help" title="Optional parameter">?, Default: null</i>
+													</td>
+													<td class="methodItemDesc">
+												    the parameters used to create the new binding context
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnCallBack</b>
+													</td>
+													<td class="methodItemDesc">
+												    the function which should be called after the binding context has been created
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bReload</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    force reload even if data is already available. For server side models this should 
+                  refetch the data from the server
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroy"> </a>
+										<div class="itemTitle icon">
+											destroy<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Destroys the model and clears the model data. 
+A model implementation may override this function and perform model specific cleanup tasks e.g. 
+abort requests, prevent new requests, etc.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+											<div class="heading">See:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemDesc">
+														sap.ui.base.Object.prototype.destroy
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+									</div>
+								
+									<div class='sectionItem classMethod abstract'>
+										<a name="destroyBindingContext"> </a>
+										<div class="itemTitle icon">
+											destroyBindingContext<span class="signature">(<span title="(object) to destroy">oContext</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Implement in inheriting classes
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oContext</b>
+													</td>
+													<td class="methodItemDesc">
+												    to destroy
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachParseError"> </a>
+										<div class="itemTitle icon">
+											detachParseError<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.ui.model.Model">: <a href="../symbols/sap.ui.model.Model.html">sap.ui.model.Model</a></span>
+										</div>
+										<div class="full-description">
+											Detach event-handler <code>fnFunction</code> from the 'parseError' event of this <code>sap.ui.model.Model</code>.<br/>
+</p><p>
+The passed function and listener object must match the ones previously used for event registration.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.model.Model.html">sap.ui.model.Model</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachRequestCompleted"> </a>
+										<div class="itemTitle icon">
+											detachRequestCompleted<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.ui.model.Model">: <a href="../symbols/sap.ui.model.Model.html">sap.ui.model.Model</a></span>
+										</div>
+										<div class="full-description">
+											Detach event-handler <code>fnFunction</code> from the 'requestCompleted' event of this <code>sap.ui.model.Model</code>.
+</p><p>
+The passed function and listener object must match the ones previously used for event registration.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.model.Model.html">sap.ui.model.Model</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachRequestFailed"> </a>
+										<div class="itemTitle icon">
+											detachRequestFailed<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.ui.model.Model">: <a href="../symbols/sap.ui.model.Model.html">sap.ui.model.Model</a></span>
+										</div>
+										<div class="full-description">
+											Detach event-handler <code>fnFunction</code> from the 'requestFailed' event of this <code>sap.ui.model.Model</code>.<br/>
+</p><p>
+The passed function and listener object must match the ones previously used for event registration.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.model.Model.html">sap.ui.model.Model</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachRequestSent"> </a>
+										<div class="itemTitle icon">
+											detachRequestSent<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.ui.model.Model">: <a href="../symbols/sap.ui.model.Model.html">sap.ui.model.Model</a></span>
+										</div>
+										<div class="full-description">
+											Detach event-handler <code>fnFunction</code> from the 'requestSent' event of this <code>sap.ui.model.Model</code>.
+</p><p>
+The passed function and listener object must match the ones previously used for event registration.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.model.Model.html">sap.ui.model.Model</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="fireParseError"> </a>
+										<div class="itemTitle icon protected">
+											fireParseError<span class="signature">(<span title="(object) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.model.Model">: <a href="../symbols/sap.ui.model.Model.html">sap.ui.model.Model</a></span>
+										</div>
+										<div class="full-description">
+											Fire event parseError to attached listeners.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments.errorCode</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments.url</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments.reason</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments.srcText</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments.line</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments.linepos</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments.filepos</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.model.Model.html">sap.ui.model.Model</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="fireRequestCompleted"> </a>
+										<div class="itemTitle icon protected">
+											fireRequestCompleted<span class="signature">(<span title="(object) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.model.Model">: <a href="../symbols/sap.ui.model.Model.html">sap.ui.model.Model</a></span>
+										</div>
+										<div class="full-description">
+											Fire event requestCompleted to attached listeners.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments.url</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    The url which was sent to the backend.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments.type</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    The type of the request (if available)
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments.async</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    If the request was synchronous or asynchronous (if available)
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments.info</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    additional information for the request (if available) <strong>deprecated</strong>
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments.infoObject</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Additional information for the request (if available)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.model.Model.html">sap.ui.model.Model</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="fireRequestFailed"> </a>
+										<div class="itemTitle icon protected">
+											fireRequestFailed<span class="signature">(<span title="(object) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.model.Model">: <a href="../symbols/sap.ui.model.Model.html">sap.ui.model.Model</a></span>
+										</div>
+										<div class="full-description">
+											Fire event requestFailed to attached listeners.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments.message</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    A text that describes the failure.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments.statusCode</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    HTTP status code returned by the request (if available)
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments.statusText</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    The status as a text, details not specified, intended only for diagnosis output
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments.responseText</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Response that has been received for the request ,as a text string
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.model.Model.html">sap.ui.model.Model</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="fireRequestSent"> </a>
+										<div class="itemTitle icon protected">
+											fireRequestSent<span class="signature">(<span title="(object) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.model.Model">: <a href="../symbols/sap.ui.model.Model.html">sap.ui.model.Model</a></span>
+										</div>
+										<div class="full-description">
+											Fire event requestSent to attached listeners.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments.url</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    The url which is sent to the backend.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments.type</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    The type of the request (if available)
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments.async</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    If the request is synchronous or asynchronous (if available)
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments.info</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    additional information for the request (if available) <strong>deprecated</strong>
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments.infoObject</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Additional information for the request (if available)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.model.Model.html">sap.ui.model.Model</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getDefaultBindingMode"> </a>
+										<div class="itemTitle icon">
+											getDefaultBindingMode<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.model.BindingMode">: <a href="../symbols/sap.ui.model.BindingMode.html">sap.ui.model.BindingMode</a></span>
+										</div>
+										<div class="full-description">
+											Get the default binding mode for the model
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.model.BindingMode.html">sap.ui.model.BindingMode</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														default binding mode of the model
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod abstract'>
+										<a name="getObject"> </a>
+										<div class="itemTitle icon">
+											getObject<span class="signature">(<span title="(string) the path to where to read the object">sPath</span>, <span title="(object) the context with which the path should be resolved">oContext</span><i class="help" title="Optional parameter">?</i>)</span>
+											
+										</div>
+										<div class="full-description">
+											Implement in inheriting classes
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sPath</b>
+													</td>
+													<td class="methodItemDesc">
+												    the path to where to read the object
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oContext</b><i class="help" title="Optional parameter">?, Default: null</i>
+													</td>
+													<td class="methodItemDesc">
+												    the context with which the path should be resolved
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod abstract'>
+										<a name="getProperty"> </a>
+										<div class="itemTitle icon">
+											getProperty<span class="signature">(<span title="(string) the path to where to read the attribute value">sPath</span>, <span title="(object) the context with which the path should be resolved">oContext</span><i class="help" title="Optional parameter">?</i>)</span>
+											
+										</div>
+										<div class="full-description">
+											Implement in inheriting classes
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sPath</b>
+													</td>
+													<td class="methodItemDesc">
+												    the path to where to read the attribute value
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oContext</b><i class="help" title="Optional parameter">?, Default: null</i>
+													</td>
+													<td class="methodItemDesc">
+												    the context with which the path should be resolved
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="isBindingModeSupported"> </a>
+										<div class="itemTitle icon">
+											isBindingModeSupported<span class="signature">(<span title="(sap.ui.model.BindingMode) the binding mode to check">sMode</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Check if the specified binding mode is supported by the model.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.model.BindingMode.html">sap.ui.model.BindingMode</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sMode</b>
+													</td>
+													<td class="methodItemDesc">
+												    the binding mode to check
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="isLegacySyntax"> </a>
+										<div class="itemTitle icon">
+											isLegacySyntax<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Returns whether legacy path syntax is used
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="refresh"> </a>
+										<div class="itemTitle icon">
+											refresh<span class="signature">(<span title="(boolean) Update controls even if data has not been changed">bForceUpdate</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Refresh the model.
+This will check all bindings for updated data and update the controls if data has been changed.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bForceUpdate</b>
+													</td>
+													<td class="methodItemDesc">
+												    Update controls even if data has not been changed
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setDefaultBindingMode"> </a>
+										<div class="itemTitle icon">
+											setDefaultBindingMode<span class="signature">(<span title="(sap.ui.model.BindingMode) the default binding mode to set for the model">sMode</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Set the default binding mode for the model. If the default binding mode should be changed,
+this method should be called directly after model instance creation and before any binding creation.
+Otherwise it is not guaranteed that the existing bindings will be updated with the new binding mode.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.model.BindingMode.html">sap.ui.model.BindingMode</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sMode</b>
+													</td>
+													<td class="methodItemDesc">
+												    the default binding mode to set for the model
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setLegacySyntax"> </a>
+										<div class="itemTitle icon">
+											setLegacySyntax<span class="signature">(<span title="(boolean) the path syntax to use">bCompatibleSyntax</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Enables legacy path syntax handling
+</p><p>
+This defines, whether relative bindings, which do not have a defined
+binding context, should be compatible to earlier releases which means
+they are resolved relative to the root element or handled strict and
+stay unresolved until a binding context is set
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bCompatibleSyntax</b>
+													</td>
+													<td class="methodItemDesc">
+												    the path syntax to use
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setSizeLimit"> </a>
+										<div class="itemTitle icon">
+											setSizeLimit<span class="signature">(<span title="(int) size limit">collection</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Set the maximum number of entries which are used for for list bindings.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>collection</b>
+													</td>
+													<td class="methodItemDesc">
+												    size limit
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

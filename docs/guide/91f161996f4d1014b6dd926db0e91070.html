@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=2593562348695293"/>
+<title>Declarative Support: Properties</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f161996f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Declarative Support: Properties</h1>
+<div class="body"><p class="p">To set a property, for example for a button, you
+		define the property as a data attribute of the corresponding HTML tag. To add
+		text to the button, add the attribute 
+		<samp class="ph codeph">data-text</samp> to its HTML
+		tag: 
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;div data-sap-ui-type="sap.ui.commons.Button" data-text="HelloWorld"&gt;&lt;/div&gt;</pre></div>
+<div class="note note" id="loio91f161996f4d1014b6dd926db0e91070__note_N10020_N10013_N10001"><span class="notetitle">Note</span> To define a property with upper case characters, you have to "escape" them with a dash
+			character, similar to CSS attributes. The following code gives an example: <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;div data-sap-ui-type="sap.ui.commons.ApplicationHeader" data-display-logoff="false" data-display-welcome="false"&gt;&lt;/div&gt;</pre></div>
+
+			<p class="p">As the name of the attributes of HTML tags are case-insensitive, the properties
+					<samp class="ph codeph">displayLogoff</samp> and <samp class="ph codeph">displayWelcome</samp> of the
+					<samp class="ph codeph">ApplicationHeader</samp> control have to be "escaped" as
+					<samp class="ph codeph">data-display-logoff</samp> and <samp class="ph codeph">data-display-welcome</samp>
+				for the name of the attributes of the HTML tag. Keep this in mind when matching
+				properties, associations ,or events as an attribute of the HTML tag. </p>
+
+			<div class="p">The <samp class="ph codeph"><samp class="ph codeph">id</samp></samp> attribute defines the ID of a control:
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;div data-sap-ui-type="sap.ui.commons.Button" id="myButton"&gt;&lt;/div&gt;</pre></div>
+
+			</div>
+
+			<div class="p">To add a CSS class to the control, use the class attribute:
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;div data-sap-ui-type="sap.ui.commons.Button" class="my-button"&gt;&lt;/div&gt;</pre></div>
+
+			</div>
+
+		</div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Declarative Support: Properties";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.core.mvc.Controller</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class sap.ui.core.mvc.Controller
+					</h1>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>A generic controller implementation for the UI5 Model View controller concept.
+</p><p>
+Can either be used as a generic controller which is enriched on the fly with methods
+and properties (see <a href="../symbols/sap.ui.html#.controller">sap.ui.controller</a>) or  as a base class for typed controllers.</p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="Instantiates a (MVC-style) Controller.">new <a href="../symbols/sap.ui.core.mvc.Controller.html#constructor">sap.ui.core.mvc.Controller</a></b>
+										<span class='signature'>(<span title="(string|object[]) The name of the Controller to instantiate.">sName</span>)</span>
+										<span class='description'>Instantiates a (MVC-style) Controller.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Creates a new subclass of class sap.ui.core.mvc.Controller with name sClassName and enriches it with the information contained in oClassInfo."><a href="../symbols/sap.ui.core.mvc.Controller.html#.extend">sap.ui.core.mvc.Controller.extend</a></b><span class='signature'>(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) alternative constructor for a metadata object">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Creates a new subclass of class sap.ui.core.mvc.Controller with name <code>sClassName</code> and enriches it with the information contained in <code>oClassInfo</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns an Element of the connected view with the given local Id."><a href="../symbols/sap.ui.core.mvc.Controller.html#byId">byId</a></b><span class='signature'>(<span title="(string) The view-local id">sId</span>)</span>
+									<span class='description'>Returns an Element of the connected view with the given local Id.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Converts a view local id to a globally unique one by prepending the view id."><a href="../symbols/sap.ui.core.mvc.Controller.html#createId">createId</a></b><span class='signature'>(<span title="(string) The view-local id">sId</span>)</span>
+									<span class='description'>Converts a view local id to a globally unique one by prepending the view id.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the view associated with this controller or undefined."><a href="../symbols/sap.ui.core.mvc.Controller.html#getView">getView</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the view associated with this controller or undefined.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.ui.core.mvc.Controller</b>(<span title="(string|object[]) The name of the Controller to instantiate.">sName</span>)
+										</div>
+										
+										<div class="full-description">
+											Instantiates a (MVC-style) Controller. Consumers should call the constructor only in the
+typed controller scenario. In the generic controller use case, they should use
+<a href="../symbols/sap.ui.html#.controller">sap.ui.controller</a> instead.
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string|object[]}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sName</b>
+													</td>
+													<td class="methodItemDesc">
+												    The name of the Controller to instantiate. If a Controller is defined as real sub-class,
+                                  the "arguments" of the sub-class constructor should be given instead.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".extend"> </a>
+										<div class="itemTitle icon">
+											sap.ui.core.mvc.Controller.extend<span class="signature">(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) alternative constructor for a metadata object">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns function">: function</span>
+										</div>
+										<div class="full-description">
+											Creates a new subclass of class sap.ui.core.mvc.Controller with name <code>sClassName</code> 
+and enriches it with the information contained in <code>oClassInfo</code>.
+</p><p>
+For a detailed description of <code>oClassInfo</code> or <code>FNMetaImpl</code> 
+see <a href="../symbols/sap.ui.base.Object.html#.extend">Object.extend</a>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sClassName</b>
+													</td>
+													<td class="methodItemDesc">
+												    name of the class to be created
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oClassInfo</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    object literal with informations about the class
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>FNMetaImpl</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    alternative constructor for a metadata object
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{function}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the created class / constructor function
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="byId"> </a>
+										<div class="itemTitle icon">
+											byId<span class="signature">(<span title="(string) The view-local id">sId</span>)</span>
+											<span class="light" title="returns sap.ui.core.Element">: <a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a></span>
+										</div>
+										<div class="full-description">
+											Returns an Element of the connected view with the given local Id.
+</p><p>
+Views automatically prepend their own id as a prefix to created Elements
+to make the ids unique even in the case of multiple view instances.
+This method helps to find an element by its local id only.
+</p><p>
+If no view is connected or if the view doesn't contain an element with
+the given local id, undefined is returned.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b>
+													</td>
+													<td class="methodItemDesc">
+												    The view-local id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Element by its (view local) id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="createId"> </a>
+										<div class="itemTitle icon">
+											createId<span class="signature">(<span title="(string) The view-local id">sId</span>)</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Converts a view local id to a globally unique one by prepending
+the view id.
+</p><p>
+If no view is connected, undefined is returned.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b>
+													</td>
+													<td class="methodItemDesc">
+												    The view-local id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														The prefixed id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getView"> </a>
+										<div class="itemTitle icon">
+											getView<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.mvc.View">: <a href="../symbols/sap.ui.core.mvc.View.html">sap.ui.core.mvc.View</a></span>
+										</div>
+										<div class="full-description">
+											Returns the view associated with this controller or undefined.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.mvc.View.html">sap.ui.core.mvc.View</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														View connected to this controller.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

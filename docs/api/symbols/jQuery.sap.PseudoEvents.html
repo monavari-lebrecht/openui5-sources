@@ -1,0 +1,1258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - jQuery.sap.PseudoEvents</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Namespace jQuery.sap.PseudoEvents
+					</h1>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>Enumeration of all so called "pseudo events", a useful classification
+of standard browser events as implied by SAP product standards.
+</p><p>
+Whenever a browser event is recognized as one or more pseudo events, then this
+classification is attached to the original <a href="../symbols/jQuery.Event.html">jQuery.Event</a> object and thereby
+delivered to any jQuery-style listeners registered for that browser event.
+</p><p>
+Pure JavaScript listeners can evaluate the classification information using
+the <a href="../symbols/jQuery.Event.html#isPseudoType">jQuery.Event#isPseudoType</a> method.
+</p><p>
+Instead of using the procedure as described above, the SAPUI5 controls and elements
+should simply implement an <code>on<i>pseudo-event</i>(oEvent)</code> method. It will
+be invoked only when that specific pseudo event has been recognized. This simplifies event
+dispatching even further.</p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+		
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Field Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for keyboard backspace without modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapbackspace">jQuery.sap.PseudoEvents.sapbackspace</a></b>
+									<span class='description'>Pseudo event for keyboard backspace without modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for keyboard backspace with modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapbackspacemodifiers">jQuery.sap.PseudoEvents.sapbackspacemodifiers</a></b>
+									<span class='description'>Pseudo event for keyboard backspace with modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for pseudo bottom event"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapbottom">jQuery.sap.PseudoEvents.sapbottom</a></b>
+									<span class='description'>Pseudo event for pseudo bottom event</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for pseudo collapse event (keyboard numpad -) without modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapcollapse">jQuery.sap.PseudoEvents.sapcollapse</a></b>
+									<span class='description'>Pseudo event for pseudo collapse event (keyboard numpad -) without modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for pseudo collapse event (keyboard numpad *)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapcollapseall">jQuery.sap.PseudoEvents.sapcollapseall</a></b>
+									<span class='description'>Pseudo event for pseudo collapse event (keyboard numpad *)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for pseudo collapse event (keyboard numpad -) with modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapcollapsemodifiers">jQuery.sap.PseudoEvents.sapcollapsemodifiers</a></b>
+									<span class='description'>Pseudo event for pseudo collapse event (keyboard numpad -) with modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for pseudo 'decrease' event without modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapdecrease">jQuery.sap.PseudoEvents.sapdecrease</a></b>
+									<span class='description'>Pseudo event for pseudo 'decrease' event without modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for pseudo 'decrease' event with modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapdecreasemodifiers">jQuery.sap.PseudoEvents.sapdecreasemodifiers</a></b>
+									<span class='description'>Pseudo event for pseudo 'decrease' event with modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event indicating delayed double click (e.g."><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapdelayeddoubleclick">jQuery.sap.PseudoEvents.sapdelayeddoubleclick</a></b>
+									<span class='description'>Pseudo event indicating delayed double click (e.g.</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for keyboard delete without modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapdelete">jQuery.sap.PseudoEvents.sapdelete</a></b>
+									<span class='description'>Pseudo event for keyboard delete without modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for keyboard delete with modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapdeletemodifiers">jQuery.sap.PseudoEvents.sapdeletemodifiers</a></b>
+									<span class='description'>Pseudo event for keyboard delete with modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for keyboard arrow down without modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapdown">jQuery.sap.PseudoEvents.sapdown</a></b>
+									<span class='description'>Pseudo event for keyboard arrow down without modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for keyboard arrow down with modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapdownmodifiers">jQuery.sap.PseudoEvents.sapdownmodifiers</a></b>
+									<span class='description'>Pseudo event for keyboard arrow down with modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for keyboard End without modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapend">jQuery.sap.PseudoEvents.sapend</a></b>
+									<span class='description'>Pseudo event for keyboard End without modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for keyboard End with modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapendmodifiers">jQuery.sap.PseudoEvents.sapendmodifiers</a></b>
+									<span class='description'>Pseudo event for keyboard End with modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for keyboard enter without modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapenter">jQuery.sap.PseudoEvents.sapenter</a></b>
+									<span class='description'>Pseudo event for keyboard enter without modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for keyboard enter with modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapentermodifiers">jQuery.sap.PseudoEvents.sapentermodifiers</a></b>
+									<span class='description'>Pseudo event for keyboard enter with modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for keyboard escape"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapescape">jQuery.sap.PseudoEvents.sapescape</a></b>
+									<span class='description'>Pseudo event for keyboard escape</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for pseudo expand event (keyboard numpad +) without modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapexpand">jQuery.sap.PseudoEvents.sapexpand</a></b>
+									<span class='description'>Pseudo event for pseudo expand event (keyboard numpad +) without modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for pseudo expand event (keyboard numpad +) with modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapexpandmodifiers">jQuery.sap.PseudoEvents.sapexpandmodifiers</a></b>
+									<span class='description'>Pseudo event for pseudo expand event (keyboard numpad +) with modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for pseudo 'hide' event (Alt + up-Arrow)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.saphide">jQuery.sap.PseudoEvents.saphide</a></b>
+									<span class='description'>Pseudo event for pseudo 'hide' event (Alt + up-Arrow)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for keyboard Home/Pos1 with modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.saphome">jQuery.sap.PseudoEvents.saphome</a></b>
+									<span class='description'>Pseudo event for keyboard Home/Pos1 with modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for keyboard Home/Pos1 without modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.saphomemodifiers">jQuery.sap.PseudoEvents.saphomemodifiers</a></b>
+									<span class='description'>Pseudo event for keyboard Home/Pos1 without modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for pseudo 'increase' event without modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapincrease">jQuery.sap.PseudoEvents.sapincrease</a></b>
+									<span class='description'>Pseudo event for pseudo 'increase' event without modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for pseudo 'increase' event with modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapincreasemodifiers">jQuery.sap.PseudoEvents.sapincreasemodifiers</a></b>
+									<span class='description'>Pseudo event for pseudo 'increase' event with modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for keyboard arrow left without modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapleft">jQuery.sap.PseudoEvents.sapleft</a></b>
+									<span class='description'>Pseudo event for keyboard arrow left without modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for keyboard arrow left with modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapleftmodifiers">jQuery.sap.PseudoEvents.sapleftmodifiers</a></b>
+									<span class='description'>Pseudo event for keyboard arrow left with modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for pseudo 'next' event without modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapnext">jQuery.sap.PseudoEvents.sapnext</a></b>
+									<span class='description'>Pseudo event for pseudo 'next' event without modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for pseudo 'next' event with modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapnextmodifiers">jQuery.sap.PseudoEvents.sapnextmodifiers</a></b>
+									<span class='description'>Pseudo event for pseudo 'next' event with modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for keyboard page down without modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sappagedown">jQuery.sap.PseudoEvents.sappagedown</a></b>
+									<span class='description'>Pseudo event for keyboard page down without modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for keyboard page down with modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sappagedownmodifiers">jQuery.sap.PseudoEvents.sappagedownmodifiers</a></b>
+									<span class='description'>Pseudo event for keyboard page down with modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for keyboard page up without modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sappageup">jQuery.sap.PseudoEvents.sappageup</a></b>
+									<span class='description'>Pseudo event for keyboard page up without modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for keyboard page up with modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sappageupmodifiers">jQuery.sap.PseudoEvents.sappageupmodifiers</a></b>
+									<span class='description'>Pseudo event for keyboard page up with modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for pseudo 'previous' event without modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapprevious">jQuery.sap.PseudoEvents.sapprevious</a></b>
+									<span class='description'>Pseudo event for pseudo 'previous' event without modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for pseudo 'previous' event with modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sappreviousmodifiers">jQuery.sap.PseudoEvents.sappreviousmodifiers</a></b>
+									<span class='description'>Pseudo event for pseudo 'previous' event with modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for keyboard arrow right without modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapright">jQuery.sap.PseudoEvents.sapright</a></b>
+									<span class='description'>Pseudo event for keyboard arrow right without modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for keyboard arrow right with modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.saprightmodifiers">jQuery.sap.PseudoEvents.saprightmodifiers</a></b>
+									<span class='description'>Pseudo event for keyboard arrow right with modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for pseudo 'select' event."><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapselect">jQuery.sap.PseudoEvents.sapselect</a></b>
+									<span class='description'>Pseudo event for pseudo 'select' event.</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for pseudo 'select' event."><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapselectmodifiers">jQuery.sap.PseudoEvents.sapselectmodifiers</a></b>
+									<span class='description'>Pseudo event for pseudo 'select' event.</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for pseudo 'show' event (F4, Alt + down-Arrow)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapshow">jQuery.sap.PseudoEvents.sapshow</a></b>
+									<span class='description'>Pseudo event for pseudo 'show' event (F4, Alt + down-Arrow)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for pseudo skip back (F6 + shift modifier)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapskipback">jQuery.sap.PseudoEvents.sapskipback</a></b>
+									<span class='description'>Pseudo event for pseudo skip back (F6 + shift modifier)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for pseudo skip forward (F6 + no modifier)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapskipforward">jQuery.sap.PseudoEvents.sapskipforward</a></b>
+									<span class='description'>Pseudo event for pseudo skip forward (F6 + no modifier)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for keyboard space without modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapspace">jQuery.sap.PseudoEvents.sapspace</a></b>
+									<span class='description'>Pseudo event for keyboard space without modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for keyboard space with modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapspacemodifiers">jQuery.sap.PseudoEvents.sapspacemodifiers</a></b>
+									<span class='description'>Pseudo event for keyboard space with modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for keyboard tab (TAB + no modifier)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.saptabnext">jQuery.sap.PseudoEvents.saptabnext</a></b>
+									<span class='description'>Pseudo event for keyboard tab (TAB + no modifier)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for keyboard tab (TAB + shift modifier)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.saptabprevious">jQuery.sap.PseudoEvents.saptabprevious</a></b>
+									<span class='description'>Pseudo event for keyboard tab (TAB + shift modifier)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for pseudo top event"><a href="../symbols/jQuery.sap.PseudoEvents.html#.saptop">jQuery.sap.PseudoEvents.saptop</a></b>
+									<span class='description'>Pseudo event for pseudo top event</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for keyboard arrow up without modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapup">jQuery.sap.PseudoEvents.sapup</a></b>
+									<span class='description'>Pseudo event for keyboard arrow up without modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+								<div class="sectionItem classProperty static">
+									<b class="icon" title="Pseudo event for keyboard arrow up with modifiers (Ctrl, Alt or Shift)"><a href="../symbols/jQuery.sap.PseudoEvents.html#.sapupmodifiers">jQuery.sap.PseudoEvents.sapupmodifiers</a></b>
+									<span class='description'>Pseudo event for keyboard arrow up with modifiers (Ctrl, Alt or Shift)</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+					
+		
+
+
+					
+
+
+
+					
+		
+		
+
+					
+		
+
+		
+					
+						<div class="section details">
+							<div class="sectionTitle">Field Detail</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapbackspace"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapbackspace</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for keyboard backspace without modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapbackspacemodifiers"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapbackspacemodifiers</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for keyboard backspace with modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapbottom"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapbottom</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for pseudo bottom event
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapcollapse"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapcollapse</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for pseudo collapse event (keyboard numpad -) without modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapcollapseall"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapcollapseall</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for pseudo collapse event (keyboard numpad *)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapcollapsemodifiers"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapcollapsemodifiers</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for pseudo collapse event (keyboard numpad -) with modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapdecrease"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapdecrease</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for pseudo 'decrease' event without modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapdecreasemodifiers"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapdecreasemodifiers</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for pseudo 'decrease' event with modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapdelayeddoubleclick"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapdelayeddoubleclick</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event indicating delayed double click (e.g. for inline edit)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapdelete"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapdelete</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for keyboard delete without modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapdeletemodifiers"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapdeletemodifiers</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for keyboard delete with modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapdown"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapdown</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for keyboard arrow down without modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapdownmodifiers"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapdownmodifiers</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for keyboard arrow down with modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapend"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapend</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for keyboard End without modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapendmodifiers"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapendmodifiers</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for keyboard End with modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapenter"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapenter</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for keyboard enter without modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapentermodifiers"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapentermodifiers</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for keyboard enter with modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapescape"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapescape</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for keyboard escape
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapexpand"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapexpand</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for pseudo expand event (keyboard numpad +) without modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapexpandmodifiers"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapexpandmodifiers</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for pseudo expand event (keyboard numpad +) with modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".saphide"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>saphide</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for pseudo 'hide' event (Alt + up-Arrow)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".saphome"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>saphome</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for keyboard Home/Pos1 with modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".saphomemodifiers"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>saphomemodifiers</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for keyboard Home/Pos1 without modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapincrease"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapincrease</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for pseudo 'increase' event without modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapincreasemodifiers"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapincreasemodifiers</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for pseudo 'increase' event with modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapleft"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapleft</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for keyboard arrow left without modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapleftmodifiers"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapleftmodifiers</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for keyboard arrow left with modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapnext"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapnext</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for pseudo 'next' event without modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapnextmodifiers"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapnextmodifiers</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for pseudo 'next' event with modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sappagedown"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sappagedown</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for keyboard page down without modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sappagedownmodifiers"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sappagedownmodifiers</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for keyboard page down with modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sappageup"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sappageup</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for keyboard page up without modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sappageupmodifiers"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sappageupmodifiers</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for keyboard page up with modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapprevious"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapprevious</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for pseudo 'previous' event without modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sappreviousmodifiers"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sappreviousmodifiers</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for pseudo 'previous' event with modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapright"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapright</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for keyboard arrow right without modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".saprightmodifiers"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>saprightmodifiers</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for keyboard arrow right with modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapselect"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapselect</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for pseudo 'select' event... space, enter, ... without modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapselectmodifiers"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapselectmodifiers</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for pseudo 'select' event... space, enter, ... with modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapshow"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapshow</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for pseudo 'show' event (F4, Alt + down-Arrow)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapskipback"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapskipback</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for pseudo skip back (F6 + shift modifier)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapskipforward"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapskipforward</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for pseudo skip forward (F6 + no modifier)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapspace"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapspace</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for keyboard space without modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapspacemodifiers"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapspacemodifiers</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for keyboard space with modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".saptabnext"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>saptabnext</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for keyboard tab (TAB + no modifier)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".saptabprevious"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>saptabprevious</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for keyboard tab (TAB + shift modifier)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".saptop"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>saptop</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for  pseudo top event
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapup"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapup</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for keyboard arrow up without modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty static'>
+										<a name=".sapupmodifiers"> </a>
+										<div class="itemTitle signature icon">
+											jQuery.sap.PseudoEvents.<b>sapupmodifiers</b>
+											
+										</div>
+										<div class="full-description">
+											Pseudo event for keyboard arrow up with modifiers (Ctrl, Alt or Shift)
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+		
+		
+					
+					
+		
+					
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

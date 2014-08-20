@@ -1,0 +1,905 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.core.delegate.ItemNavigation</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class sap.ui.core.delegate.ItemNavigation
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.ui.base.EventProvider" href="../symbols/sap.ui.base.EventProvider.html">EventProvider</a></div>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>Delegate for the ItemNavigation with the keyboard.</p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="Creates an ItemNavigation delegate that can be attached to Controls requiring capabilities for keyboard navigation between items.">new <a href="../symbols/sap.ui.core.delegate.ItemNavigation.html#constructor">sap.ui.core.delegate.ItemNavigation</a></b>
+										<span class='signature'>(<span title="(Element) the DOM element that is focused if the item navigation is started">oDomRef</span>, <span title="(Element[]) Array of DOM elements representing the items for the navigation">aItemDomRefs</span>, <span title="(boolean) Whether the selected element should be in the tab chain or not">bNotInTabChain</span><i class="help" title="Optional parameter">?</i>)</span>
+										<span class='description'>Creates an ItemNavigation delegate that can be attached to Controls requiring capabilities for keyboard navigation between items.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+						
+						
+						
+						
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns disabled modifiers These modifiers will not be handled by ItemNavigation"><a href="../symbols/sap.ui.core.delegate.ItemNavigation.html#getDisabledModifiers">getDisabledModifiers</a></b><span class='signature'>()</span>
+									<span class='description'>Returns disabled modifiers These modifiers will not be handled by ItemNavigation</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="returns the array of item dom refs"><a href="../symbols/sap.ui.core.delegate.ItemNavigation.html#getItemDomRefs">getItemDomRefs</a></b><span class='signature'>()</span>
+									<span class='description'>returns the array of item dom refs</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="returns the root dom reference surrounding the items"><a href="../symbols/sap.ui.core.delegate.ItemNavigation.html#getRootDomRef">getRootDomRef</a></b><span class='signature'>()</span>
+									<span class='description'>returns the root dom reference surrounding the items</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Check whether given event has disabled modifier or not"><a href="../symbols/sap.ui.core.delegate.ItemNavigation.html#hasDisabledModifier">hasDisabledModifier</a></b><span class='signature'>(<span title="(jQuery.Event) jQuery event">oEvent</span>)</span>
+									<span class='description'>Check whether given event has disabled modifier or not</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Sets behaviour of HOME and END if columns are used"><a href="../symbols/sap.ui.core.delegate.ItemNavigation.html#setColumns">setColumns</a></b><span class='signature'>(<span title="(boolean) HOME -> got to first item in row; END -> go to last item in row">bStayInRow</span>, <span title="(boolean) HOME/END with CTRL -> go to first/last item of all">bCtrlEnabled</span>)</span>
+									<span class='description'>Sets behaviour of HOME and END if columns are used</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Sets whether the ItemNavigation should cycle through the items."><a href="../symbols/sap.ui.core.delegate.ItemNavigation.html#setCycling">setCycling</a></b><span class='signature'>(<span title="(boolean) true if cycling should be done, else false">bCycling</span>)</span>
+									<span class='description'>Sets whether the ItemNavigation should cycle through the items.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Sets the disabled modifiers These modifiers will not be handled by ItemNavigation   Example: Disable shift + up handling of ItemNavigation oItemNavigation.setDisabledModifiers({ sapnext : [&quot;shift&quot;] }); Possible keys are : &quot;shift&quot;, &quot;alt&quot;, &quot;ctrl&quot;, &quot;meta&quot; Possible events are : &quot;sapnext&quot;, &quot;sapprevious&quot;, &quot;saphome&quot;, &quot;sapend&quot; "><a href="../symbols/sap.ui.core.delegate.ItemNavigation.html#setDisabledModifiers">setDisabledModifiers</a></b><span class='signature'>(<span title="(Object) Object that includes event type with disabled keys as an array">oDisabledModifiers</span>)</span>
+									<span class='description'>Sets the disabled modifiers These modifiers will not be handled by ItemNavigation </p><p> <pre> Example: Disable shift + up handling of ItemNavigation oItemNavigation.setDisabledModifiers({ sapnext : ["shift"] }); Possible keys are : "shift", "alt", "ctrl", "meta" Possible events are : "sapnext", "sapprevious", "saphome", "sapend" </pre></span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Sets the item dom refs as an array the items"><a href="../symbols/sap.ui.core.delegate.ItemNavigation.html#setItemDomRefs">setItemDomRefs</a></b><span class='signature'>()</span>
+									<span class='description'>Sets the item dom refs as an array the items</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Sets the page size of the item navigation to allow pageup and down keys."><a href="../symbols/sap.ui.core.delegate.ItemNavigation.html#setPageSize">setPageSize</a></b><span class='signature'>(<span title="(int) the pagesize, needs to be at least 1">iPageSize</span>)</span>
+									<span class='description'>Sets the page size of the item navigation to allow pageup and down keys.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Sets the root reference surrounding the items"><a href="../symbols/sap.ui.core.delegate.ItemNavigation.html#setRootDomRef">setRootDomRef</a></b><span class='signature'>()</span>
+									<span class='description'>Sets the root reference surrounding the items</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Sets the selected index if the used control supports selection."><a href="../symbols/sap.ui.core.delegate.ItemNavigation.html#setSelectedIndex">setSelectedIndex</a></b><span class='signature'>(<span title="(int) the index of the first selected item">iIndex</span>)</span>
+									<span class='description'>Sets the selected index if the used control supports selection.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Sets whether the ItemNavigation should use the table mode to navigate through the items (navigation in a grid)."><a href="../symbols/sap.ui.core.delegate.ItemNavigation.html#setTableMode">setTableMode</a></b><span class='signature'>(<span title="(boolean) true if table mode should be done, else false">bTableMode</span>, <span title="(boolean) this sets a different behaviour for table mode.">bTableList</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Sets whether the ItemNavigation should use the table mode to navigate through the items (navigation in a grid).</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.EventProvider.html#attachEvent">attachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#attachEventOnce">attachEventOnce</a>, <a href="../symbols/sap.ui.base.EventProvider.html#detachEvent">detachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#fireEvent">fireEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#getEventingParent">getEventingParent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#toString">toString</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.Object.html">sap.ui.base.Object</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.Object.html#getInterface">getInterface</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.ui.core.delegate.ItemNavigation</b>(<span title="(Element) the DOM element that is focused if the item navigation is started">oDomRef</span>, <span title="(Element[]) Array of DOM elements representing the items for the navigation">aItemDomRefs</span>, <span title="(boolean) Whether the selected element should be in the tab chain or not">bNotInTabChain</span><i class="help" title="Optional parameter">?</i>)
+										</div>
+										
+										<div class="full-description">
+											Creates an ItemNavigation delegate that can be attached to Controls requiring
+capabilities for keyboard navigation between items.
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Element}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oDomRef</b>
+													</td>
+													<td class="methodItemDesc">
+												    the DOM element that is focused if the item navigation is started
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Element[]}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>aItemDomRefs</b>
+													</td>
+													<td class="methodItemDesc">
+												    Array of DOM elements representing the items for the navigation
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bNotInTabChain</b><i class="help" title="Optional parameter">?, Default: false</i>
+													</td>
+													<td class="methodItemDesc">
+												    Whether the selected element should be in the tab chain or not
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod'>
+										<a name="getDisabledModifiers"> </a>
+										<div class="itemTitle icon">
+											getDisabledModifiers<span class="signature">()</span>
+											<span class="light" title="returns Object">: Object</span>
+										</div>
+										<div class="full-description">
+											Returns disabled modifiers 
+These modifiers will not be handled by ItemNavigation
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{Object}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getItemDomRefs"> </a>
+										<div class="itemTitle icon">
+											getItemDomRefs<span class="signature">()</span>
+											<span class="light" title="returns Element[]">: Element[]</span>
+										</div>
+										<div class="full-description">
+											returns the array of item dom refs
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{Element[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														array of item dom refs
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getRootDomRef"> </a>
+										<div class="itemTitle icon">
+											getRootDomRef<span class="signature">()</span>
+											<span class="light" title="returns Element">: Element</span>
+										</div>
+										<div class="full-description">
+											returns the root dom reference surrounding the items
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{Element}</span> 
+													</td>
+													<td class="methodItemDesc">
+														root dom reference surrounding the items
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="hasDisabledModifier"> </a>
+										<div class="itemTitle icon">
+											hasDisabledModifier<span class="signature">(<span title="(jQuery.Event) jQuery event">oEvent</span>)</span>
+											<span class="light" title="returns Boolean">: Boolean</span>
+										</div>
+										<div class="full-description">
+											Check whether given event has disabled modifier or not
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/jQuery.Event.html">jQuery.Event</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oEvent</b>
+													</td>
+													<td class="methodItemDesc">
+												    jQuery event
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{Boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setColumns"> </a>
+										<div class="itemTitle icon">
+											setColumns<span class="signature">(<span title="(boolean) HOME -> got to first item in row; END -> go to last item in row">bStayInRow</span>, <span title="(boolean) HOME/END with CTRL -> go to first/last item of all">bCtrlEnabled</span>)</span>
+											<span class="light" title="returns sap.ui.core.delegate.ItemNavigation">: <a href="../symbols/sap.ui.core.delegate.ItemNavigation.html">sap.ui.core.delegate.ItemNavigation</a></span>
+										</div>
+										<div class="full-description">
+											Sets behaviour of HOME and END if columns are used
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bStayInRow</b>
+													</td>
+													<td class="methodItemDesc">
+												    HOME -> got to first item in row; END -> go to last item in row
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bCtrlEnabled</b>
+													</td>
+													<td class="methodItemDesc">
+												    HOME/END with CTRL -> go to first/last item of all
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.delegate.ItemNavigation.html">sap.ui.core.delegate.ItemNavigation</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setCycling"> </a>
+										<div class="itemTitle icon">
+											setCycling<span class="signature">(<span title="(boolean) true if cycling should be done, else false">bCycling</span>)</span>
+											<span class="light" title="returns sap.ui.core.delegate.ItemNavigation">: <a href="../symbols/sap.ui.core.delegate.ItemNavigation.html">sap.ui.core.delegate.ItemNavigation</a></span>
+										</div>
+										<div class="full-description">
+											Sets whether the ItemNavigation should cycle through the items.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bCycling</b>
+													</td>
+													<td class="methodItemDesc">
+												    true if cycling should be done, else false
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.delegate.ItemNavigation.html">sap.ui.core.delegate.ItemNavigation</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setDisabledModifiers"> </a>
+										<div class="itemTitle icon">
+											setDisabledModifiers<span class="signature">(<span title="(Object) Object that includes event type with disabled keys as an array">oDisabledModifiers</span>)</span>
+											<span class="light" title="returns sap.ui.core.delegate.ItemNavigation">: <a href="../symbols/sap.ui.core.delegate.ItemNavigation.html">sap.ui.core.delegate.ItemNavigation</a></span>
+										</div>
+										<div class="full-description">
+											Sets the disabled modifiers 
+These modifiers will not be handled by ItemNavigation
+</p><p>
+<pre>
+Example: Disable shift + up handling of ItemNavigation
+
+oItemNavigation.setDisabledModifiers({
+    sapnext : ["shift"]
+});
+
+Possible keys are : "shift", "alt", "ctrl", "meta" 
+Possible events are : "sapnext", "sapprevious", "saphome", "sapend"
+</pre>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oDisabledModifiers</b>
+													</td>
+													<td class="methodItemDesc">
+												    Object that includes event type with disabled keys as an array
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.delegate.ItemNavigation.html">sap.ui.core.delegate.ItemNavigation</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setItemDomRefs"> </a>
+										<div class="itemTitle icon">
+											setItemDomRefs<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.delegate.ItemNavigation">: <a href="../symbols/sap.ui.core.delegate.ItemNavigation.html">sap.ui.core.delegate.ItemNavigation</a></span>
+										</div>
+										<div class="full-description">
+											Sets the item dom refs as an array the items
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.delegate.ItemNavigation.html">sap.ui.core.delegate.ItemNavigation</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setPageSize"> </a>
+										<div class="itemTitle icon">
+											setPageSize<span class="signature">(<span title="(int) the pagesize, needs to be at least 1">iPageSize</span>)</span>
+											<span class="light" title="returns sap.ui.core.delegate.ItemNavigation">: <a href="../symbols/sap.ui.core.delegate.ItemNavigation.html">sap.ui.core.delegate.ItemNavigation</a></span>
+										</div>
+										<div class="full-description">
+											Sets the page size of the item navigation to allow pageup and down keys.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iPageSize</b>
+													</td>
+													<td class="methodItemDesc">
+												    the pagesize, needs to be at least 1
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.delegate.ItemNavigation.html">sap.ui.core.delegate.ItemNavigation</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setRootDomRef"> </a>
+										<div class="itemTitle icon">
+											setRootDomRef<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.delegate.ItemNavigation">: <a href="../symbols/sap.ui.core.delegate.ItemNavigation.html">sap.ui.core.delegate.ItemNavigation</a></span>
+										</div>
+										<div class="full-description">
+											Sets the root reference surrounding the items
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.delegate.ItemNavigation.html">sap.ui.core.delegate.ItemNavigation</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setSelectedIndex"> </a>
+										<div class="itemTitle icon">
+											setSelectedIndex<span class="signature">(<span title="(int) the index of the first selected item">iIndex</span>)</span>
+											<span class="light" title="returns sap.ui.core.delegate.ItemNavigation">: <a href="../symbols/sap.ui.core.delegate.ItemNavigation.html">sap.ui.core.delegate.ItemNavigation</a></span>
+										</div>
+										<div class="full-description">
+											Sets the selected index if the used control supports selection.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    the index of the first selected item
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.delegate.ItemNavigation.html">sap.ui.core.delegate.ItemNavigation</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setTableMode"> </a>
+										<div class="itemTitle icon">
+											setTableMode<span class="signature">(<span title="(boolean) true if table mode should be done, else false">bTableMode</span>, <span title="(boolean) this sets a different behaviour for table mode.">bTableList</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.core.delegate.ItemNavigation">: <a href="../symbols/sap.ui.core.delegate.ItemNavigation.html">sap.ui.core.delegate.ItemNavigation</a></span>
+										</div>
+										<div class="full-description">
+											Sets whether the ItemNavigation should use the table mode to navigate through
+the items (navigation in a grid).
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bTableMode</b>
+													</td>
+													<td class="methodItemDesc">
+												    true if table mode should be done, else false
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bTableList</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    this sets a different behaviour for table mode.
+In this mode we keep using table navigation but there are some differences. e.g.
+	- Page-up moves focus to the first row, not first cell like in table mode
+	- Page-down moves focus to the last row, not last cell like in table mode
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.delegate.ItemNavigation.html">sap.ui.core.delegate.ItemNavigation</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

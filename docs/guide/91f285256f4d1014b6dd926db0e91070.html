@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=0261762361747514"/>
+<title>JSON Views</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f285256f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">JSON Views</h1>
+<div class="body conbody"><p class="p">The JSON view type is defined in a file. The file name has to either end with
+				<samp class="ph codeph">.view.json</samp> or as a JSON string. The file name and the folder
+			structure together specify the name of the view that equals the SAPUI5 module name
+			within the modularization concept. </p>
+<p class="p">For the file <samp class="ph codeph">resources/sap/hcm/Address.view.json</samp>, the view name is
+				<samp class="ph codeph">sap.hcm.Address</samp>. The application uses this view name for displaying
+			an instance of this view. </p>
+<p class="p">The file looks as follows: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">{ 
+   "Type":"sap.ui.core.mvc.JSONView",
+   "controllerName":"sap.hcm.Address",
+   "content": [{
+      "Type":"sap.ui.commons.Image",
+      "id":"MyImage",
+      "src":"http://www.sap.com/global/ui/images/global/sap-logo.png"
+   },
+   {
+      "Type":"sap.ui.commons.Button",
+      "id":"MyButton",
+      "text":"Press Me"
+
+   }]
+
+}</pre></div>
+<p class="p">You nest the JSON objects analogous to the nesting of SAPUI5 controls and add the
+			property values as attributes. The syntax is the same as the syntax of a JSON
+			constructor for any control. </p>
+<div class="note note" id="loio91f285256f4d1014b6dd926db0e91070__note_N10031_N10013_N10001"><span class="notetitle">Note</span> You can use strings, boolean and null in your JSON view. </div>
+<div class="section" id="loio91f285256f4d1014b6dd926db0e91070__section_37BCAE29E4604ABBA78979649D54CF04"><div class="section_title">Aggregation Handling in JSON Views</div><div type="Aggregation Handling in JSON Views">
+			
+			<p class="p">You add child controls as arrays. This is shown in the example above where an image
+				and a button have been added to the view content aggregation. </p>
+
+		</div></div>
+<div class="section"><div class="section_title">Data Binding in JSON Views</div><div type="Data Binding in JSON Views">
+			
+			<p class="p">You can bind data in JSON views. To bind the texts of a control to a language-dependent
+				resource bundle, define the resource bundle via name
+					(<samp class="ph codeph">resourceBundleName</samp> property) or a URL
+					(<samp class="ph codeph">resourceBundleUrl</samp> property) and assign an alias
+					(<samp class="ph codeph">resourceBundleAlias</samp> property) for the bundle within the view
+				definition. The binding path is the same for all other SAPUI5 data bindings.</p>
+
+			<p class="p">Resource bundle content:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">MY_TEXT=Hello World</pre></div>
+
+			<p class="p">Example:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">{   "Type": "sap.ui.core.JSONView",
+    "controllerName":"my.own.views.test",
+    "resourceBundleName":"myBundle",
+    "resourceBundleAlias":"i18n",
+    "content": [{
+        "Type":"sap.ui.commons.Panel",
+        "id":"myPanel",
+        "content":[{
+            "Type":"sap.ui.commons.Button",
+            "id":"Button1",
+            "text":"{i18n&gt;MY_TEXT}",
+            "press": "doIt"
+        }]
+    }]
+}
+</pre></div>
+
+			<p class="p">The <samp class="ph codeph">ResourceModel</samp> for binding this texts is created during view
+				instantiation. The model is set as secondary model with the given alias to the view
+				instance. To bind other properties to another model, create the model in the
+				corresponding controller or HTML page and attach it to the view with another
+				alias.</p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="b065f0eade564a5093ebba37ac7041ba.html" title="Event handlers are used as attributes with the attribute name as event name like &#34;press&#34; for a button and the attribute value as event handler name. The event handler must be defined as a function in the view's controller.">Handling Events in JSON Views</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="JSON Views";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

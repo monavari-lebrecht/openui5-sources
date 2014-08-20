@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=7097192500982425"/>
+<title>Supportability and Limitations</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loioc44813ddee80464985d62c1f852b4a17">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Supportability and Limitations</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">If a customized application does not run properly, you can disable the customizing. In a
+			support case, for example, you can set a breakpoint early in the
+				<samp class="ph codeph">sap-ui-core.js</samp> and then execute the following code in the
+			console:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">  
+  window["sap-ui-config"] = window["sap-ui-config"] ||{};
+  window["sap-ui-config"]["xx-disableCustomizing"] = true;</pre></div>
+<div class="note note"><span class="notetitle">Note</span> For security reasons, it is not possible to use a URL parameter.</div>
+<p class="p">View Modifiation (with <samp class="ph codeph">&lt;core:ExtensionPoint /&gt;</samp>) and Control property
+			modification are supported only for XML type of views Control property modification is
+			only possible for the "visible" property and only for controls which have a given ID
+			(one which is specified in the XMLView) </p>
+<div class="section"><div class="section_title">Limitations</div><div type="Limitations">
+			
+			<p class="p">The view modifications by means of extension points and the modification of control
+				properties are only supported for XML view types.</p>
+
+			<p class="p">The control property modification is only supported for the <samp class="ph codeph">visible</samp>
+				property and only for controls with a given ID specified in the XML view.</p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Supportability and Limitations";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

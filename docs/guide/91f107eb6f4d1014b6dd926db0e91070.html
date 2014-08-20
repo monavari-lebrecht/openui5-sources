@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="The JSON model can be used to bind controls to JavaScript object data, which is usually serialized in the JSON format. The JSON model is a client-side model and, therefore, intended for small datasets, which are completely available on the client. The JSON model does not support mechanisms for server-based paging or loading of deltas. It supports, however, two-way binding."/>
+<meta name="description" content="The JSON model can be used to bind controls to JavaScript object data, which is usually serialized in the JSON format. The JSON model is a client-side model and, therefore, intended for small datasets, which are completely available on the client. The JSON model does not support mechanisms for server-based paging or loading of deltas. It supports, however, two-way binding."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=03755512601542643"/>
+<title>Implementing a JSON Model</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f107eb6f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Implementing a JSON Model</h1>
+<div class="body taskbody"><p class="shortdesc">The JSON model can be used to bind controls to JavaScript object data, which is usually
+		serialized in the JSON format. The JSON model is a client-side model and, therefore,
+		intended for small datasets, which are completely available on the client. The JSON model
+		does <strong class="ph b">not</strong> support mechanisms for server-based paging or loading of deltas. It
+		supports, however, two-way binding.</p>
+<div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loio91f107eb6f4d1014b6dd926db0e91070__steps_q1s_lvg_5k"><li class="li step stepexpand"><span class="ph cmd">To create a JSON model instance, insert the following code: </span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oModel = new sap.ui.model.json.JSONModel();</pre></div>
+
+				</li>
+<li class="li step stepexpand"><span class="ph cmd">After the instance has been created, there are different options to get the
+					data into the model. </span><ul class="ul choices" id="loio91f107eb6f4d1014b6dd926db0e91070__choices_nns_rvg_5k"><li class="li choice">The easiest option is to set data by using the <samp class="ph codeph">setData</samp>
+						method:
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">oModel.setData({
+    firstName: "Peter",
+    lastName: "Pan"
+});</pre></div>
+<div class="note note" id="loio91f107eb6f4d1014b6dd926db0e91070__note_N1003A_N1001C_N10013_N10001"><span class="notetitle">Note</span> The correct JSON notation uses
+							double quotes for the keys and string values.</div>
+</li>
+<li class="li choice">Usually, you do not define your data inline in the application but load
+						it from a server-side service using an XHR request. The JSON model, however,
+						also has a <samp class="ph codeph">loadData</samp> method, which loads the JSON data from
+						the specified URL asynchronously and applies it to the model:
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">oModel.loadData("data.json");</pre></div>
+</li>
+</ul>
+</li>
+</ol>
+<div class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div>
+			<p class="p"><span class="ph emphasis emphasis">API Reference:</span>
+				<a class="xref" href="../../docs/api/symbols/sap.ui.model.json.JSONModel.html">sap.ui.model.json.JSONModel</a></p>
+
+		</div></div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Implementing a JSON Model";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

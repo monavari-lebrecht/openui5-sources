@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=6760170432288818"/>
+<title>SAPUI5 Library Location Used for Testing</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio61ee9ed2369f4764a6d713abcf73afc1">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">SAPUI5 Library Location Used for Testing</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">If the SAPUI5 bootstrap tag contains <samp class="ph codeph">src="resources/sap-ui-core.js"</samp>, the
+			SAPUI5 runtime libraries from the Eclipse plugin are used.</p>
+<p class="p">If you want to test your SAPUI5 application in Eclipse against a different SAPUI5 Library
+			location, for example on the ABAP server when running in the SAP NetWeaver UI AddOn
+			scenario, you can configure the ResourceServlet. For that, open the web.xml file located
+			in the &lt;WebContent folder name&gt;/WEB-INF folder and configure the parameter
+				<samp class="ph codeph">com.sap.ui5.resource.REMOTE_LOCATION</samp> and
+				<samp class="ph codeph">com.sap.ui5.resource.PREFER_REMOTE_LOCATION</samp> of the ResourceServlet
+			where the placeholders {protocol}, {host name}, {port number}, {path to UI5 library} are
+			to be exchanged by the real protocol, host name, port number and path to the SAPUI5
+			library, see <a class="xref" href="91f2b4d66f4d1014b6dd926db0e91070.html">Resource
+				Handling</a>, section <em class="ph i">Tunneling a Remote Location</em>.</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">  &lt;servlet&gt;
+    &lt;display-name&gt;ResourceServlet&lt;/display-name&gt;
+    &lt;servlet-name&gt;ResourceServlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;com.sap.ui5.resource.ResourceServlet&lt;/servlet-class&gt;
+ &lt;/servlet&gt;
+  ...
+  &lt;!-- force to use the remote location --&gt;
+ &lt;context-param&gt;
+    &lt;param-name&gt;com.sap.ui5.resource.PREFER_REMOTE_LOCATION&lt;/param-name&gt;
+    &lt;param-value&gt;true&lt;/param-value&gt;
+ &lt;/context-param&gt;
+ &lt;!-- add the remote location for the UI5 libraries --&gt;
+ &lt;context-param&gt;
+    &lt;param-name&gt;com.sap.ui5.resource.REMOTE_LOCATION&lt;/param-name&gt;
+    &lt;param-value&gt;{protocol}://{host name}:{port number}/{path to UI5 library}&lt;/param-value&gt;
+ &lt;/context-param&gt;</pre></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="SAPUI5 Library Location Used for Testing";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

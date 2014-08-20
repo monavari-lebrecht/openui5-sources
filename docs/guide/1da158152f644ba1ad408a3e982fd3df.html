@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="A list contains list items based on sap.m.ListItemBase."/>
+<meta name="description" content="A list contains list items based on sap.m.ListItemBase."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=4181501566376735"/>
+<title>Lists</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio1da158152f644ba1ad408a3e982fd3df">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Lists</h1>
+<div class="body conbody"><p class="shortdesc">A list contains list items based on <samp class="ph codeph">sap.m.ListItemBase</samp>.</p>
+<p class="p"> It contains the navigation, selection and event features. Five different types are available,
+			which determine the way a list item is interacting. A list item has a content area (main
+			area) which may fire a <samp class="ph codeph">tap</samp> event and a navigation area on the right
+			hand side, which may fire a <samp class="ph codeph">tap</samp> or a <samp class="ph codeph">detailTap</samp> event.
+			The <samp class="ph codeph">type</samp> property for each list item defines the events which are
+			fired. This needs to be configured because it also decides the visual feedback a list
+			item gives when touched.</p>
+<ul class="ul" id="loio1da158152f644ba1ad408a3e982fd3df__ul_fjv_r3g_nn"><li class="li"><samp class="ph codeph">StandardListItem</samp> provides an image, title and description.</li>
+<li class="li"><samp class="ph codeph">ActionListItem</samp> comes with a center aligned text and is used to
+				trigger actions.</li>
+<li class="li"><samp class="ph codeph">DisplayListItem</samp> has a label and a value. </li>
+<li class="li"><samp class="ph codeph">InputListItem</samp> allows you to embed controls which can take user
+				input, such as:  Input button, radio button, checkbox, slider, select, search. It
+				also provides a label. </li>
+<li class="li"><samp class="ph codeph">CustomListItem</samp> can be used for all list items SAPUI5 does not
+				provide. You can build your own content and aggregate it.<p class="p">For more information,
+					see: <a class="xref" href="4f7d43c459844bb7b5b5771dbec22126.html" title="An easy way to cover simple CustomListItems is to add an HTML control, in which you can write your HTML either directly, or if you use a model and data binding, you can use a formatter to integrate it between the HTML.">Creating a Custom List Item</a></p>
+</li>
+</ul>
+<div class="section"><div class="section_title">List Properties</div><div type="List Properties">
+			
+			<p class="p">List can have the following properties:</p>
+
+			<ul class="ul" id="loio1da158152f644ba1ad408a3e982fd3df__ul_zxd_bbv_gj"><li class="li">
+					<p class="p"><samp class="ph codeph">mode</samp>. This property defines in which way the left area of a
+						list item will appear. You can show a single selection, multi selection,
+						delete buttons, or none of these. The <samp class="ph codeph">mode</samp> property can
+						have the following values:</p>
+
+					<ul class="ul" id="loio1da158152f644ba1ad408a3e982fd3df__ul_ry4_4qn_2j"><li class="li">None (default)</li>
+<li class="li">SingleSelect (on the right side)</li>
+<li class="li">SingleSelectLeft (on the left side)</li>
+<li class="li">SingleSelectMaster (without select control for use cases like the split
+							app, by default the !includeItemInSelection = true)</li>
+<li class="li">MultiSelect</li>
+<li class="li">Delete</li>
+</ul>
+
+				</li>
+<li class="li"><samp class="ph codeph">includeItemInSelection</samp> (default: false) This property defines
+					the tap handling of a list item. By default, you can select an item by tapping
+					the radio button or check box. To use the whole list item tap for selecting an
+					item, change the property value to 'true'. This property is only relevant in
+					selection mode.</li>
+<li class="li"><samp class="ph codeph">showUnread</samp> (default: false) This property decides whether an
+					'unread' indicator is added to each list item. When active, it shows a blue
+					bubble for unread list items.</li>
+<li class="li"><samp class="ph codeph">showNoData</samp> (default: true) If set to 'true', a text is shown to
+					the user if a list has no content . The default text is 'No data'. You can use
+					the <samp class="ph codeph">noDataText</samp> property to change the default text.</li>
+<li class="li"><samp class="ph codeph">noDataText</samp> (default: 'No data') </li>
+</ul>
+
+		</div></div>
+<div class="section"><div class="section_title">List Events</div><div type="List Events"><p class="p">For selection, deletion and swiping in lists, events are
+				offered. The selection mode fires a <samp class="ph codeph">select</samp> event and the deletion
+				mode a 'delete' event. A swipe left fires a 'swipe' event. These events contain
+				information about the list item that caused the event.</p>
+<ul class="ul" id="loio1da158152f644ba1ad408a3e982fd3df__ul_sz4_4qn_2j"><li class="li">select </li>
+<li class="li">delete </li>
+<li class="li">swipe, see <a class="xref" href="e49832920f034638bf3ac6d9a0bd9af1.html">Events</a></li>
+</ul>
+<div class="note note" id="loio1da158152f644ba1ad408a3e982fd3df__note_N100FA_N100E4_N10011_N10001"><span class="notetitle">Note</span> 
+				<p class="p">By default, a list item does <strong class="ph b">not</strong> fire an event unless it is configured
+					with a type that defines how events are fired. An exception to this
+						<samp class="ph codeph">ActionListItem</samp>.</p>
+
+			</div>
+<p class="p">The following table shows the different combinations of list item types and
+				events: </p>
+<table summary="" id="loio1da158152f644ba1ad408a3e982fd3df__simpletable_eq4_hrn_2j" border="1" class="simpletable"><tr class="sthead"><th valign="bottom" align="left" id="d145341e149" class="stentry">type</th>
+<th valign="bottom" align="left" id="d145341e151" class="stentry">tap event</th>
+<th valign="bottom" align="left" id="d145341e153" class="stentry">detailTap event</th>
+<th valign="bottom" align="left" id="d145341e155" class="stentry">icon</th>
+<th valign="bottom" align="left" id="d145341e157" class="stentry">active feedback</th>
+</tr>
+<tr class="strow"><td valign="top" headers="d145341e149" class="stentry"><strong class="ph b">Inactive (default)</strong></td>
+<td valign="top" headers="d145341e151" class="stentry">--</td>
+<td valign="top" headers="d145341e153" class="stentry">--</td>
+<td valign="top" headers="d145341e155" class="stentry">--</td>
+<td valign="top" headers="d145341e157" class="stentry">-- </td>
+</tr>
+<tr class="strow"><td valign="top" headers="d145341e149" class="stentry"><strong class="ph b">Active</strong></td>
+<td valign="top" headers="d145341e151" class="stentry">yes</td>
+<td valign="top" headers="d145341e153" class="stentry">--</td>
+<td valign="top" headers="d145341e155" class="stentry">--</td>
+<td valign="top" headers="d145341e157" class="stentry">yes</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d145341e149" class="stentry"><strong class="ph b">Navigation</strong></td>
+<td valign="top" headers="d145341e151" class="stentry">yes</td>
+<td valign="top" headers="d145341e153" class="stentry">--</td>
+<td valign="top" headers="d145341e155" class="stentry">&gt;</td>
+<td valign="top" headers="d145341e157" class="stentry">yes</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d145341e149" class="stentry"><strong class="ph b">Detail</strong></td>
+<td valign="top" headers="d145341e151" class="stentry">--</td>
+<td valign="top" headers="d145341e153" class="stentry">yes</td>
+<td valign="top" headers="d145341e155" class="stentry">(&gt;)</td>
+<td valign="top" headers="d145341e157" class="stentry">--</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d145341e149" class="stentry"><strong class="ph b">DetailAndActive</strong></td>
+<td valign="top" headers="d145341e151" class="stentry">yes</td>
+<td valign="top" headers="d145341e153" class="stentry">yes</td>
+<td valign="top" headers="d145341e155" class="stentry">(&gt;)</td>
+<td valign="top" headers="d145341e157" class="stentry">yes (only content)</td>
+</tr>
+</table>
+<div class="sectiondiv"><strong class="ph b">Swipe For Action</strong><p class="p">A user can swipe left on a list item
+					to bring in a control, for example a button, and initiate an action for this
+					item. This control is defined through the <samp class="ph codeph">swipeContent</samp>
+					aggregation of the list and will be displayed on the right or center of the list
+					item. For more information, see <a class="xref" href="a01822c503014bc0bc6e31dfe7906817.html">Swipe List for
+					Action</a>.</p>
+</div></div></div>
+<div class="section"><div class="section_title">Rerendering</div><div type="Rerendering">
+			
+			<p class="p">A list including all its list items is rerendered when the data of a bound model is
+				changed. Due to the limited hardware resources of mobile devices this can cause
+				delays for lists with many list items. Therefore, we do <strong class="ph b">not</strong> recomment the use
+				of a list for these use cases.</p>
+
+		</div></div>
+<div class="section" id="loio1da158152f644ba1ad408a3e982fd3df__section_N100E4_N10011_N10001"><div class="section_title">ListItemBase</div><div type="ListItemBase">
+			
+			<p class="p"><samp class="ph codeph">ListItemBase</samp> has a 'unread' indicator property (default: false). This has to
+				be enabled in the <samp class="ph codeph">showUnread</samp> property. For the selections on each
+				list item a selected property (default: false) exists. Another feature is the
+				counter property (default: null), which shows integer numbers except zero. If the
+				number is zero, the counter will be hidden. </p>
+
+			<ul class="ul" id="loio1da158152f644ba1ad408a3e982fd3df__ul_ubp_4qn_2j"><li class="li">unread (default: false) </li>
+<li class="li">selected (default: false) </li>
+<li class="li">counter (default: undefined) </li>
+</ul>
+
+		</div></div>
+<div class="section"><div class="section_title">API References</div><div type="API References">
+			
+			<ul class="ul" id="loio1da158152f644ba1ad408a3e982fd3df__ul_mzz_y2g_nn"><li class="li"><a class="extlink" href="../../docs/api/symbols/sap.m.List.html">sap.m.List<img src="images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></li>
+<li class="li"><a class="extlink" href="../../docs/api/symbols/sap.m.ListItemBase.html">sap.m.ListItemBase<img src="images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></li>
+</ul>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="4f7d43c459844bb7b5b5771dbec22126.html" title="An easy way to cover simple CustomListItems is to add an HTML control, in which you can write your HTML either directly, or if you use a model and data binding, you can use a formatter to integrate it between the HTML.">Creating a Custom List Item</a></div>
+<div><a class="link" href="a01822c503014bc0bc6e31dfe7906817.html">Swipe for Action in Lists</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Lists";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=4545725119155982"/>
+<title>Aggregation</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiod4e69addc9ee4a6088441840eb0af509">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Aggregation</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">This control is defined by the <samp class="ph codeph">swipeContent</samp> aggregation of the list. You can
+			add any control as <samp class="ph codeph">swipeContent</samp>, but keep in mind that your content
+			cannot be higher than a list item, see the following examples: </p>
+<ul class="ul" id="loiod4e69addc9ee4a6088441840eb0af509__ul_kcr_tyn_2j"><li class="li">
+				<p class="p">Button <samp class="ph codeph">swipeContent</samp></p>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var list1 = new sap.m.List({
+    swipeContent : new sap.m.Button({
+        text : "Approve",
+        type : "Accept",
+            tap : function() { 
+                /* ...approving code goes here... */
+
+                // we are done hide the swipeContent from screen
+                list1.swipeOut();
+            }
+        })
+    }),
+    ...  </pre></div>
+
+			</li>
+<li class="li">
+				<p class="p">Control combination as <samp class="ph codeph">swipeContent</samp></p>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">new sap.m.List({
+    swipeContent : new sap.m.HBox({
+        items : [
+            new sap.m.Image({
+                src : "images/edit.png",
+                tap : ... 
+            }),
+            new sap.m.Image({
+                src : "images/delete.png",
+                tap : ...
+            })
+       ]
+    }),
+    ...</pre></div>
+
+			</li>
+</ul>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Aggregation";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

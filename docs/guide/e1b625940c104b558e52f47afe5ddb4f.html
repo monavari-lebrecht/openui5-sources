@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="A model holds the data and provides methods to retrieve the data from the data base and to set and update data."/>
+<meta name="description" content="A model holds the data and provides methods to retrieve the data from the data base and to set and update data."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=16031771372035541"/>
+<title>Models</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loioe1b625940c104b558e52f47afe5ddb4f">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Models</h1>
+<div class="body conbody"><p class="shortdesc">A model holds the data and provides methods to retrieve the data from the data base and
+		to set and update data.</p>
+<p class="p">SAPUI5 provides the following predefined models: </p>
+<ul class="ul" id="loioe1b625940c104b558e52f47afe5ddb4f__ul_isr_ltw_qk"><li class="li">The <dfn class="term">JSON model</dfn> can be used to bind controls to JavaScript object data, which is
+				usually serialized in the JSON format. The JSON model is a client-side model and,
+				therefore, intended for small datasets, which are completely available on the
+				client. The JSON model supports two-way binding.</li>
+<li class="li">The <dfn class="term">XML model</dfn> is a client-side model intended for small datasets, which are
+				completely available on the client. The XMLModel does not contain mechanims for
+				server-based paging or loading of deltas </li>
+<li class="li">The <dfn class="term">Resource model </dfn>is designed to handle data in resource bundles, mainly to
+				provide texts in different languages.</li>
+<li class="li">The <dfn class="term">OData model</dfn> enables binding of controls to data from OData services. The
+				OData model is a server-side model: the dataset is only available on the server and
+				the client only knows the currently visible rows and fields. This also means that
+				sorting and filtering on the client is <span class="ph emphasis emphasis">not</span> possible. For this,
+				the client has to send a request to the server. The OData model currently supports
+				OData version 2.0. </li>
+</ul>
+<p class="p">The JSON model, XML model, and the resource model are client-side models, meaning that
+			the model data is loaded completely and is available on the client. Operations such as
+			sorting and filtering are executed on the client without further server requests. The
+			OData model is a server-side model and only loads the data requested by the user
+			interface from the server. Any changes in data binding or list operations require a new
+			request to the server. </p>
+<p class="p">You can not only define one model for your applications, but define different areas in
+			your application with different models and assign single controls to a model. You can
+			also define nested models, for example, a JSON model defined for the application and an
+			OData model for a table control contained in the application. </p>
+<p class="p">A web application should support several data sources, such as JSON, XML, Atom, or OData.
+			However, the way in which data binding is defined and implemented within the UI controls
+			should be independent of the respective data source. It is also possible to create a
+			custom model implementation for data sources that are not yet covered by the framework
+			or are domain-specific. </p>
+<div class="section"><div class="section_title">API References</div><div type="API References">
+			
+			<ul class="ul" id="loioe1b625940c104b558e52f47afe5ddb4f__ul_j4j_ddy_tk"><li class="li"><a class="xref" href="../../docs/api/symbols/sap.ui.model.html">sap.ui.model</a></li>
+<li class="li"><a class="xref" href="../../docs/api/symbols/sap.ui.model.json.JSONModel.html">sap.ui.model.json.JSONModel</a></li>
+<li class="li"><a class="xref" href="../../docs/api/symbols/sap.ui.model.odata.ODataModel.html">sap.ui.model.odata.ODataModel</a></li>
+<li class="li"><a class="xref" href="../../docs/api/symbols/sap.ui.model.resource.ResourceModel.html">sap.ui.model.resource.ResourceModel</a></li>
+<li class="li"><a class="xref" href="../../docs/api/symbols/sap.ui.model.xml.XMLModel.html">sap.ui.model.xml.XMLModel</a></li>
+</ul>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="91f0df546f4d1014b6dd926db0e91070.html">Binding Modes</a></div>
+<div><a class="link" href="91f0ca956f4d1014b6dd926db0e91070.html">Models and Data Binding</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Models";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

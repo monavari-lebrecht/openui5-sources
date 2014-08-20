@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=10969761064532513"/>
+<title>component.js File</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio27ce0e4987cd426f8fa3e60836316428">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">component.js File</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">The <samp class="ph codeph">component.js</samp> file is the component controller and provides the runtime
+			metadata and the component methods.</p>
+<p class="p">A component can depend on the entire SAPUI5 library. If you only require particular controls,
+			you can also start with the corresponding <samp class="ph codeph">require</samp> statements directly.
+			The following code snippet is an example for a declaration statement:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">jQuery.sap.declare ("samples.Components.shell.Component");</pre></div>
+<p class="p">To create a UI component, you extend the UI component's base class and pass to it the name of
+			the new component and its package path as shown in the following code snippet:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">// Shell Component
+sap.ui.core.UIComponent.extent("samples.components.shell.Component", {
+[...]</pre></div>
+<p class="p">The metadata provide the information to ensure the completeness of the elements of which the
+			component consists of. This facilitates the decoupling of the application logic as much
+			as possible from the logic within a particular component.</p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="b430345887f1419fba50320b57c1bdf9.html">Methods Controlling the Initial Instantiation</a></div>
+<div><a class="link" href="182ab413eb54433eb16f1ecf15a00651.html">Using UI Components in Applications</a></div>
+<div><a class="link" href="0187ea5e2eff4166b0453b9dcc8fc64f.html">Component Metadata</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="component.js File";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

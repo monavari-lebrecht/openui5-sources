@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="The Mock Server mimics OData backend calls. It is designed to simulate an OData provider and is completely client-based, which means there is no need for network connectivity to a remote host."/>
+<meta name="description" content="The Mock Server mimics OData backend calls. It is designed to simulate an OData provider and is completely client-based, which means there is no need for network connectivity to a remote host."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=3876647438830997"/>
+<title>The SAPUI5 Mock Server</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio415d1fc8cc154cb189809d3cb9747165">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">The SAPUI5 Mock Server</h1>
+<div class="body conbody"><p class="shortdesc">The Mock Server mimics OData backend calls. It is designed to simulate an OData provider
+		and is completely client-based, which means there is no need for network connectivity to a
+		remote host.</p>
+<p class="p">The Mock Server intercepts HTTP calls made to the server, and provides a fake output to the
+			client. This is transparent to your data binding and usage of OData model. No changes
+			are required on the OData model.</p>
+<div class="p">Together with the mock service, the Mock Server also provides mock data. It supports
+			randomly generated data (based on the service metadata), as well as mock data provided
+			in .JSON files. <div class="note note"><span class="notetitle">Note</span> It supports only the .JSON format for representing the resources
+				(Collections, Entries, Links, etc.) it exposes.</div>
+</div>
+
+<div class="tablenoborder"><table summary="" id="loio415d1fc8cc154cb189809d3cb9747165__table_btj_rj5_wn" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1:
+						Supported OData Features</span></caption><tbody class="tbody"><tr class="row"><td class="entry" valign="top" width="50%">CRUD calls</td>
+<td class="entry" valign="top" width="50%">Supported </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="50%">Navigations</td>
+<td class="entry" valign="top" width="50%">Supported </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="50%">Query String Options: </td>
+<td class="entry" valign="top" width="50%"> </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="50%">- Orderby System Query Option ($orderby) </td>
+<td class="entry" valign="top" width="50%">Supported </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="50%">- Top System Query Option ($top) </td>
+<td class="entry" valign="top" width="50%">Supported </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="50%">- Skip System Query Option ($skip) </td>
+<td class="entry" valign="top" width="50%">Supported </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="50%">- Filter System Query Option ($filter) </td>
+<td class="entry" valign="top" width="50%">Supported: eq, ne, gt, lt, ge, le, substringof, startswith,
+							endswith</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="50%">- Expand System Query Option ($expand) </td>
+<td class="entry" valign="top" width="50%">Supported </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="50%">- Select System Query Option ($select) </td>
+<td class="entry" valign="top" width="50%">Supported </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="50%">- Inlinecount System Query Option ($inlinecount) </td>
+<td class="entry" valign="top" width="50%">Supported </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="50%">- Format System Query Option ($format)</td>
+<td class="entry" valign="top" width="50%">Unsupported </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="50%">Service Operations (function imports)</td>
+<td class="entry" valign="top" width="50%">Unsupported </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="50%">Batch Processing</td>
+<td class="entry" valign="top" width="50%">Supported </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="50%">Multiple Services</td>
+<td class="entry" valign="top" width="50%">Supported </td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="p"><span class="ph emphasis emphasis">SAPUI5 Mock Server API</span></p>
+<p class="p">For methods and parameters , see the <a class="xref" href="../../docs/api/symbols/sap.ui.core.util.MockServer.html">Mock Server API reference</a>.</p>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="The SAPUI5 Mock Server";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

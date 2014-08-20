@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="Several prerequisites have to be taken when using Eclipse to synchronize with the SAPUI5 repository."/>
+<meta name="description" content="Several prerequisites have to be taken when using Eclipse to synchronize with the SAPUI5 repository."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=3430383827850474"/>
+<title>Setup</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio22a19fb27769421a8cf8320c2f7697cd">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Setup</h1>
+<div class="body refbody"><p class="shortdesc">Several prerequisites have to be taken when using Eclipse to synchronize with the SAPUI5
+		repository.</p>
+<div class="section" id="loio22a19fb27769421a8cf8320c2f7697cd__section_50D9A718321E41A0959BAB271F0B7A33">
+			<ul class="ul" id="loio22a19fb27769421a8cf8320c2f7697cd__ul_fv3_wbf_5l"><li class="li">
+					<p class="p">Make sure you install the SAPUI5 application development feature as well as
+						the SAPUI5 ABAP repository team provider feature in you Eclipse
+						installation. </p>
+
+				</li>
+<li class="li">
+					<p class="p">Make sure that the software component <samp class="ph codeph">SAP UI5 TEAM PROVIDER ON
+							731</samp> (<samp class="ph codeph">UI5_731</samp>) is installed on the NetWeaver
+						7.31 ABAP backend </p>
+
+				</li>
+<li class="li">
+					<p class="p">Make sure that SAP Note 1684342 is applied in the NetWeaver 7.31 ABAP
+						backend. </p>
+
+				</li>
+</ul>
+
+			<p class="p">To use a SAPUI5 application as a Collaborative Human Interface Part (CHIP) in the
+				page building service, you must register the application in the CHIP catalog on the
+				server. Use report <samp class="ph codeph">/UI2/CHIP/</samp> for registration with the SAPUI5
+				Repository.</p>
+
+			<p class="p">For more information, see the <em class="ph i">CHIP Administration</em> section in the <em class="ph i">User
+					Interface Add-On Administration Guide</em> on the SAP Help Portal at <span class="ph menucascade"><img src="images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">http://help.sap.com/nw-uiaddon</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Application Help</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">User Interface Add-On 1.0 SPS 04 for SAP NetWeaver</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">SAP Library for User Interface Add-On for SAP NetWeaver</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">User Interface Add-On Administration Guide</span> <img src="images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</p>
+
+		</div>
+<div class="section"><div class="section_title">Remarks</div><div type="Remarks">
+			
+			<ul class="ul" id="loio22a19fb27769421a8cf8320c2f7697cd__ul_gd1_xbf_5l"><li class="li">
+					<p class="p">Not all code pages (text file encoding) are supported. </p>
+
+					<ul class="ul" id="loio22a19fb27769421a8cf8320c2f7697cd__ul_l21_xbf_5l"><li class="li">
+							<p class="p">To set the text file encoding for new files in Eclipse, choose <span class="ph menucascade"><img src="images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Window</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Preferences</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">General</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Workspace</span> <img src="images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> and change <span class="ph menucascade"><img src="images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Text file encoding</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Other:</span> <img src="images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> to <span class="ph uicontrol">UTF-8</span>.</p>
+
+						</li>
+<li class="li">
+							<p class="p">To change the text file encoding in Eclipse for an existing project,
+								go to project <span class="ph menucascade"><img src="images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Resource</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Properties</span> <img src="images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> and change <span class="ph menucascade"><img src="images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Text file encoding</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Other:</span> <img src="images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> to <span class="ph uicontrol">UTF-8</span>.</p>
+
+						</li>
+<li class="li">
+							<p class="p">To change the text file encoding in Eclipse for an existing file, go
+								to file <span class="ph menucascade"><img src="images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Resource</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Properties</span> <img src="images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> and change<span class="ph menucascade"><img src="images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Text file encoding</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Other:</span> <img src="images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> to <span class="ph uicontrol">UTF-8</span>.</p>
+
+						</li>
+</ul>
+
+				</li>
+<li class="li">
+					<p class="p">If you view the BSP pages on the ABAP server, the might look different to the
+						version in Eclipse or at runtime:</p>
+
+					<ul class="ul" id="loio22a19fb27769421a8cf8320c2f7697cd__ul_mns_2pb_c4"><li class="li">
+							<p class="p">Trailing spaces in text lines are escaped with "&amp;nbsp;" in the
+								respective BSP pages.</p>
+
+						</li>
+<li class="li">
+							<p class="p">Lines longer than 254 are broken into several lines and have a + on
+								position 255.</p>
+
+						</li>
+</ul>
+
+				</li>
+</ul>
+
+		</div></div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Setup";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

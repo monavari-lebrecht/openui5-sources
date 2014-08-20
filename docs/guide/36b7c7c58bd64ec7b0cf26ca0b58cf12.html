@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=22892818873605492"/>
+<title>Handling Conflicts</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio36b7c7c58bd64ec7b0cf26ca0b58cf12">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Handling Conflicts</h1>
+<div class="body"><p class="shortdesc"/>
+<div class="section" id="loio36b7c7c58bd64ec7b0cf26ca0b58cf12__section_N10014_N10011_N10001"><div class="section_title">Submit/Retrieve Dialogs</div><div type="Submit/Retrieve Dialogs">
+			
+			<p class="p">When you submit or retrieve a change, the <span class="ph uicontrol">Conflict</span> column on the
+					<span class="ph uicontrol">Submit Changes</span> or <span class="ph uicontrol">Retrieve Changes</span>
+				screen indicates whether there is a conflict for a file. The dialog shows the files
+				for which submit/retrieve conflicts exist, that is, another user has submitted a
+				newer file version in the meantime. Submit conflicts must be resolved before
+				submission. If retrieve conflicts cannot be solved, the local files are overwritten. </p>
+
+			<p class="p">To set the conflict files as resolved, select the file (or multiple files) and choose
+					<span class="ph uicontrol">Set Resolved</span>. The same functionality is also available in
+				the context menu of the selected file or files. </p>
+
+			<p class="p">To display the conflicts with the <span class="ph uicontrol">Compare Editor</span>, choose
+					<span class="ph uicontrol">Edit Conflict</span>. The <span class="ph uicontrol">Edit Conflict</span>
+				function is not supported for multiple file selection. </p>
+
+			<p class="p">Once you have analyzed and edited the changes, you can choose <span class="ph uicontrol">Save and Set as
+					Resolved</span> for the conflict file. </p>
+
+			<p class="p"><img class="image" id="loio36b7c7c58bd64ec7b0cf26ca0b58cf12__image_sdn_tv2_3j" src="cbb50fcf1daa4d68a495c7d643b2d75b.image" alt="SAPUI5 ApplTools SubmitRetrieveConflict" title="SAPUI5 ApplTools SubmitRetrieveConflict"/></p>
+
+		</div></div>
+<div class="section" id="loio36b7c7c58bd64ec7b0cf26ca0b58cf12__section_N1004D_N10011_N10001"><div class="section_title">Synchronize View</div><div type="Synchronize View">
+			
+			<p class="p">In the <span class="ph uicontrol">Synchronize</span> view, you can compare the local and remote state. </p>
+
+			<ol class="ol" id="loio36b7c7c58bd64ec7b0cf26ca0b58cf12__ol_e4w_d1f_bj"><li class="li">Mark the SAPUI5 application project in the <span class="ph uicontrol">Project Explorer</span> in
+					Eclipse. </li>
+<li class="li">To open the <span class="ph uicontrol">Synchronize</span> view, and choose <span class="ph menucascade"><img src="images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Window</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Show View</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Others ...</span> <img src="images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>, then choose <span class="ph menucascade"><img src="images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Team</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Synchronize</span> <img src="images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. <ol class="ol" type="a" id="loio36b7c7c58bd64ec7b0cf26ca0b58cf12__ol_o4w_d1f_bj"><li class="li">To connect to a synchronization type, choose the <span class="ph uicontrol">Synchronize
+								…</span> icon, select <span class="ph uicontrol">Synchronize with SAPUI5
+								Repository</span> as synchronization type, and choose
+								<span class="ph uicontrol">Finish</span>. </li>
+<li class="li">To update the <span class="ph uicontrol">Synchronize</span> view, press F5 in the
+								<span class="ph uicontrol">Synchronize</span> view. </li>
+</ol>
+
+				</li>
+<li class="li">The <span class="ph uicontrol">Synchronize</span> view now shows differences between the local and
+					remote state for all shared projects, by indicating whether the project is in
+					sync with the repository or, if not, indicating the differences. </li>
+</ol>
+
+			<p class="p">The <span class="ph uicontrol">Synchronize</span> view also allows you to schedule a periodic refresh of
+				the state of the files in the backend. </p>
+
+			<p class="p"><img class="image" id="loio36b7c7c58bd64ec7b0cf26ca0b58cf12__image_qvy_3w2_3j" src="598f3ce6a3214fa49c2765ed901aa403.image" alt="SAPUI5 Synchronization" title="SAPUI5 Synchronization"/></p>
+
+			<p class="p"><img class="image" id="loio36b7c7c58bd64ec7b0cf26ca0b58cf12__image_gtp_jw2_3j" src="a656ed3928574ec0ba57892ad52c9f4b.image" alt="SAPUI5 Synchonization Schedule" title="SAPUI5 Synchonization Schedule"/></p>
+
+		</div></div>
+<div class="section" id="loio36b7c7c58bd64ec7b0cf26ca0b58cf12__section_N100AC_N10011_N10001"><div class="section_title">Compare Editor</div><div type="Compare Editor">
+			
+			<ol class="ol" id="loio36b7c7c58bd64ec7b0cf26ca0b58cf12__ol_p4w_d1f_bj"><li class="li">From the <span class="ph uicontrol">Synchronize</span> view, you open the <span class="ph uicontrol">Compare
+						Editor</span> by right-clicking the conflicting file and choosing
+						<span class="ph uicontrol">Open in Compare Editor</span> (or double-clicking the file). </li>
+<li class="li">You can now display and resolve the conflicts in the <span class="ph uicontrol">Compare Editor</span>. </li>
+<li class="li">Once the conflict is resolved, you can set the status of the file to "Resolved" by
+					right-clicking the file and choosing <span class="ph uicontrol">Set Resolved</span>. The
+					file is now ready to be submitted. </li>
+</ol>
+
+			<p class="p"><img class="image" id="loio36b7c7c58bd64ec7b0cf26ca0b58cf12__image_ipm_4w2_3j" src="8e87af460ae749c9bab7ecd671c34a21.image" alt="SAPUI5 ApplTools CompareEditor" title="SAPUI5 ApplTools CompareEditor"/></p>
+
+		</div></div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Handling Conflicts";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=7093073730017887"/>
+<title>Methods Controlling the Initial Instantiation</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiob430345887f1419fba50320b57c1bdf9">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Methods Controlling the Initial Instantiation</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">You can use the following methods to control the initial instantiation of the
+			component:</p>
+<ul class="ul" id="loiob430345887f1419fba50320b57c1bdf9__ul_oby_g41_qk"><li class="li">
+				<p class="p"><samp class="ph codeph">init</samp></p>
+
+				<p class="p">Overwrite this method for example to connect the model between the control and
+					the component. This method is <strong class="ph b">not</strong> called by the application directly, but
+					called automatically when you create the instance of the component.</p>
+
+			</li>
+<li class="li">
+				<p class="p"><samp class="ph codeph">createContent</samp></p>
+
+				<p class="p">The <samp class="ph codeph">createContent</samp> method needs to be overwritten within your
+					component implementation. You use this method to place all the code which is
+					required to fill your component with the respective content, for example,
+					creating an instance of the controls that should be used, or connecting the view
+					that should be displayed. For the latter, you simply need to set this view to
+					the view you whish to use. See the following code snippet for an example:</p>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">this.view = sap.ui.view({id:"myView",viewName:"samples.components.products.details.view.Details",type:sap.ui.core.mvc.ViewType.JS});
+</pre></div>
+
+			</li>
+</ul>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Methods Controlling the Initial Instantiation";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

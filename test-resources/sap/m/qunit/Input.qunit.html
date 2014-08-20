@@ -1,0 +1,1329 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title>Test Page for sap.ui.m.Input</title>
+<script id="sap-ui-bootstrap"
+		data-sap-ui-theme="sap_bluecrystal"
+		data-sap-ui-noConflict="true"
+		data-sap-ui-libs="sap.m" src="../../../../resources/sap-ui-core.js">
+</script>
+
+<link rel="stylesheet" href="../../../../resources/sap/ui/thirdparty/qunit.css" type="text/css" media="screen" />
+<script type="text/javascript" src="../../../../resources/sap/ui/thirdparty/qunit.js"></script>
+
+<script type="text/javascript" src="../../../../resources/sap/ui/qunit/QUnitUtils.js"></script>
+<script src="../../../../resources/sap/ui/thirdparty/sinon.js"></script>
+<script src="../../../../resources/sap/ui/thirdparty/sinon-qunit.js"></script>
+
+<script>
+	var i1;
+	var i2;
+	var value = "value";
+
+	var oInput = new sap.m.Input("i1");
+	//oInput.setMaxLength(12);
+	//@TODO Write qunit for maxlength
+	oInput.placeAt("content");
+	oInput.setValue("ABCD");
+
+	var oInput2 = new sap.m.Input("i2");
+	oInput2.setType("Number");
+	oInput2.placeAt("content");
+
+	var oInput3 = new sap.m.Input("i3");
+	oInput3.setVisible(false);
+	oInput3.placeAt("content");
+
+	var oInput4 = new sap.m.Input("i4");
+	oInput4.setValueState("Error");
+	oInput4.placeAt("content");
+
+	var oInput5 = new sap.m.Input("i5");
+	oInput5.setValueState("Warning");
+	oInput5.placeAt("content");
+	
+	var oInput6 = new sap.m.Input("i6", {
+		showSuggestion: true
+	});
+		oInput6.placeAt("content");
+		
+	var oInput7 = new sap.m.Input("i7", {
+		showSuggestion: true
+	});
+	
+	oInput7.placeAt("content");
+	
+	qutils.delayTestStart();
+
+	module("Basic", {
+		setup : function() {
+			i1 = sap.ui.getCore().getControl("i1");
+			i2 = sap.ui.getCore().getControl("i2");
+			i3 = sap.ui.getCore().getControl("i3");
+			i4 = sap.ui.getCore().getControl("i4");
+			i5 = sap.ui.getCore().getControl("i5");
+		},
+		teardown : function() {
+			i1 = null;
+			i2 = null;
+			i3 = null;
+			i4 = null;
+			i5 = null;
+		}
+	});
+
+	// test property accessor methods
+	test("Value", function() {
+		i1.setValue(value);
+		equals(i1.getValue(), value, "Input value is "+value);
+	});
+
+	test("InputType", function() {
+		var typeDefault = "Text";
+		equals(i1.getType(), typeDefault, "Input Type: Default");
+	});
+
+	test("InputEnabled", function() {
+		var enabled = false;
+		i1.setEnabled(enabled);
+		equals(i1.getEnabled(), enabled, "Input is disabled");
+		enabled = true;
+		i1.setEnabled(enabled);
+		equals(i1.getEnabled(), enabled, "Input is enabled");
+	});
+	
+	test("ValueHelpOnly", function() {
+		equals(i1.getValueHelpOnly(), false, "ValueHelpOnly Default: false");
+		var helponly = true;
+		i1.setValueHelpOnly(helponly);
+		equals(i1.getValueHelpOnly(), helponly, "ValueHelpOnly is true");
+	});
+
+	test("Placeholder", function() {
+		var placeholder = "Placeholder";
+		i1.setPlaceholder(placeholder);
+		equals(i1.getPlaceholder(), placeholder, "Placeholder for text");
+
+		i2.setPlaceholder(placeholder);
+		equals(i2.getPlaceholder(), placeholder, "Placeholder for number field");
+	});
+
+	test("Visible", function() {
+		equals(i1.$().length, 1, "Visible input found");
+		equals(i3.$().length, 0, "Invisible input not found");
+	});
+
+	test("Change", function() {
+		i1.setValue("new");
+		sap.ui.getCore().applyChanges();
+		i1.attachChange(function() {
+			equals(this.getValue(), "new", "New value in onChange");
+		});
+		i1.onChange(jQuery.Event("change"));
+		equals(i1.getValue(),"new", "Value after onchange");
+	});
+
+	test("Value States", function() {
+		var errorTooltip = i4.$().attr("title"),
+			warningTooltip = i5.$().attr("title");
+
+		equals(i4.$().hasClass('sapMInputBaseError'), true, "Before new value state : Error");
+		equals(i5.$().hasClass('sapMInputBaseWarning'), true, "Before new value state : Warning");
+		ok(errorTooltip.length, "Error tooltip is filled with a message");
+		ok(warningTooltip.length, "Warning tooltip is filled with a message");
+
+		i4.setValueState("Warning");
+		i5.setValueState("Error");
+		sap.ui.getCore().applyChanges();
+
+		equals(i4.$().hasClass('sapMInputBaseWarning'), true, "After new value state : Warning");
+		equals(i4.$().attr("title"), warningTooltip,  "Tooltip is \""+ warningTooltip +"\" empty for valueState \"Warning\""); 
+		equals(i5.$().hasClass('sapMInputBaseError'), true, "After new value state : Error");
+		equals(i5.$().attr("title"), errorTooltip,  "Tooltip is \""+ errorTooltip +"\" empty for valueState \"Error\"");
+
+		i4.setValueState();
+		i5.setValueState("None");
+
+		equals(i4.getValueState(), "None", "Last value state : None");
+		equals(i5.getValueState(), "None", "Last value state : None");
+		equals(i5.$().attr("title"), "", "Tooltip is empty for valueState \"None\"");
+	});
+	
+	test("Value Help Indicator", function() {
+		var spy = this.spy(),
+			oInput = new sap.m.Input( {
+				valueHelpRequest: spy
+			}),
+			oInputId = oInput.getId();
+
+		// place control
+		oInput.placeAt("content");
+
+		// first check if value help indicator classes are not set by default
+		ok(oInput.$().children(".sapMInputValHelp").length === 0, "Has no outer value help indicator element");
+		ok(oInput.$().children(".sapMInputValHelpInner").length === 0, "Has no inner value help indicator element");
+		ok(oInput.$().hasClass("sapMInputVH") === false, "Outer div has no additional CSS class\"sapMInputVH\"");
+
+		// set value help indicator to true
+		oInput.setShowValueHelp(true);
+		sap.ui.getCore().applyChanges();
+
+		// then check if value help indicator classes are set 
+		ok(oInput.$().children(".sapMInputValHelp").length === 1, "Has an outer value help indicator element");
+		ok(oInput.$().children(".sapMInputValHelp").children(".sapMInputValHelpInner").length === 1, "Has an inner value help indicator element");
+		ok(oInput.$().hasClass("sapMInputVH") === true, "Outer div has additional CSS class\"sapMInputVH\"");
+
+		// temporarily overwrite function to get a placeholder on all browsers
+		
+		this.stub(sap.m.InputBase.prototype, "_bShowLabelAsPlaceholder", true);
+		oInput._bShowLabelAsPlaceholder = function() {return true;}
+		oInput.rerender();
+		oInput.$().find("label").css("display","block");
+		strictEqual(oInput.$().find("label").css("padding-right"), "12px", "Placeholder label has right padding of 12px when value help icon is enabled");
+
+		// event check
+		sap.ui.getCore().byId(oInputId + "__vhi").firePress();
+		strictEqual(spy.callCount, 1, "Value Help Request has been fired and received successfully");
+	});
+
+	test("Keyboard Handling", function() {
+		// F4 event check
+		var evt = jQuery.Event("sapshow"),
+			spy = this.spy(),
+			oInput = new sap.m.Input( {
+				showValueHelp: true,
+				valueHelpRequest: spy
+			});
+
+		oInput.onsapshow(evt);
+		strictEqual(spy.callCount, 1, "The value help was requested by pressing F4");
+	});
+	
+	test("Value Help Only CSS Classes and event", function() {
+		var spy = this.spy(),
+			oInputVHO = new sap.m.Input( {
+				showValueHelp: true,
+				valueHelpOnly: true,
+				valueHelpRequest: spy
+			}),
+			oInputIdVHO = oInputVHO.getId();
+
+		// place control
+		oInputVHO.placeAt("content");
+		sap.ui.getCore().applyChanges();
+
+		// check if valueHelpOnly class is set in addition to ValueHelp class 
+		ok(oInputVHO.$().hasClass("sapMInputVH") === true, "Outer div has additional CSS class\"sapMInputVH\"");
+		ok(oInputVHO.$().hasClass("sapMInputVHO") === true, "Outer div has additional CSS class\"sapMInputVHO\"");
+		
+		// Value help event check
+		oInputVHO._$input.focus().trigger("tap");
+		this.clock.tick(500);
+        strictEqual(spy.callCount, 1, "Value Help Request has been fired and received successfully");
+	});
+	
+	test("Conditions for Value Help Only not valid", function() {
+	// case1: showValueHelp is false 
+		var spy = this.spy(),
+			oInputVHO = new sap.m.Input( {
+				showValueHelp: false,
+				valueHelpOnly: true,
+				enabled: true,
+				editable: true,
+				valueHelpRequest: spy
+				}),
+			oInputIdVHO = oInputVHO.getId();
+	
+		// place control
+		oInputVHO.placeAt("content");
+		sap.ui.getCore().applyChanges();
+	
+		// check if valueHelpOnly class is set in addition to ValueHelp class 
+		ok(oInputVHO.$().hasClass("sapMInputVH") === false, "showValueHelp = false: Outer div has no additional CSS class\"sapMInputVH\"");
+		ok(oInputVHO.$().hasClass("sapMInputVHO") === false, "showValueHelp = false: Outer div has no additional CSS class\"sapMInputVHO\"");
+	
+		// Value help event check
+		oInputVHO._$input.focus().trigger("tap");
+		this.clock.tick(500);
+		strictEqual(spy.callCount, 0, "showValueHelp = false: Tap has been fired and no Value Help Request is submitted");
+
+		// case2 ValueHelpOnly is false 
+		var spy1 = this.spy(),
+			oInputVHO1 = new sap.m.Input( {
+				showValueHelp: true,
+				valueHelpOnly: false,
+				enabled: true,
+				editable: true,
+				valueHelpRequest: spy1
+				}),
+			oInputIdVHO1 = oInputVHO1.getId();
+
+		// place control
+		oInputVHO1.placeAt("content");
+		sap.ui.getCore().applyChanges();
+
+		// check if valueHelpOnly class is set in addition to ValueHelp class 
+		ok(oInputVHO1.$().hasClass("sapMInputVHO") === false, "valueHelponly = false: Outer div has no additional CSS class\"sapMInputVHO\"");
+
+		// Value help event check
+		oInputVHO1._$input.focus().trigger("tap");
+		this.clock.tick(500);
+		strictEqual(spy1.callCount, 0, "valueHelponly = false: Tap has been fired and no Value Help Request is submitted");
+
+		// case3: Editable is false
+		var spy2 = this.spy(),
+			oInputVHO2 = new sap.m.Input( {
+				showValueHelp: true,
+				valueHelpOnly: true,
+				enabled: true,
+				editable: false,
+				valueHelpRequest: spy2
+				}),
+			oInputIdVHO2 = oInputVHO2.getId();
+
+		// place control
+		oInputVHO2.placeAt("content");
+		sap.ui.getCore().applyChanges();
+
+		// check if valueHelpOnly class is set in addition to ValueHelp class 
+		ok(oInputVHO2.$().hasClass("sapMInputVHO") === false, "editable = false: Outer div has no additional CSS class\"sapMInputVHO\"");
+
+		// Value help event check
+		oInputVHO2._$input.focus().trigger("tap");
+		this.clock.tick(500);
+		strictEqual(spy2.callCount, 0, "editable = false: Tap has been fired and no Value Help Request is submitted");
+
+		// case4: Enabled is false 
+		var spy3 = this.spy(),
+			oInputVHO3 = new sap.m.Input( {
+				showValueHelp: true,
+				valueHelpOnly: true,
+				enabled: false,
+				editable: true,
+				valueHelpRequest: spy3
+				}),
+			oInputIdVHO3 = oInputVHO3.getId();
+
+		// place control
+		oInputVHO3.placeAt("content");
+		sap.ui.getCore().applyChanges();
+
+		// check if valueHelpOnly class is set in addition to ValueHelp class 
+		ok(oInputVHO3.$().hasClass("sapMInputVHO") === false, "enabled = false: Outer div has no additional CSS class\"sapMInputVHO\"");
+
+		// Value help event check
+		oInputVHO3._$input.focus().trigger("tap");
+		this.clock.tick(500);
+		strictEqual(spy3.callCount, 0, "enabled = false: Tap has been fired and no Value Help Request is submitted");
+	});
+
+	test("Keyboard Handling for ValueHelpOnly", function() {
+		//Event check for Enter and Space
+		var evt = jQuery.Event("sapselect"),
+
+		spy = this.spy(),
+		oInput = new sap.m.Input( {
+			showValueHelp: true,
+			valueHelpOnly: true,
+			valueHelpRequest: spy
+		});
+		oInput.onsapselect(evt);
+		strictEqual(spy.callCount, 1, "The value help was requested by pressing Enter or Space");
+	});
+
+	test("Destroy", function() {
+		strictEqual(i4.$().length, 1, "Before destroy Input is available");
+		i4.destroy();
+		strictEqual(i4.$().length, 0, "Input is destroyed");
+		
+		// check if value help indicator icon is destroyed
+		i5.setShowValueHelp(true);
+		sap.ui.getCore().applyChanges();
+		i5.destroy();
+		strictEqual(sap.ui.getCore().byId("i5__vhi"), undefined, "Value Help Indicator icon is also destroyed");
+	});
+	
+	test("Suggestion on Desktop", function(){
+		var $Input = oInput6.$(),
+			oPopup, // is lazy loaded
+			aNames = ["abcTom", "abcPhilips", "abcAnna"],
+			aItemAdded = [],
+			i;
+
+		oInput6.attachSuggest(function(){
+			for(i = 0 ; i < aNames.length ; i++){
+				if(jQuery.inArray(aNames[i], aItemAdded) === -1){
+					oInput6.addSuggestionItem(new sap.ui.core.Item({text: aNames[i]}));
+					aItemAdded.push(aNames[i]);
+				}
+			}
+		});
+
+		oInput6.onfocusin(); // for some reason this is not triggered when calling focus via API 
+		oInput6._$input.focus().val("abc").trigger("input");
+
+		this.clock.tick(1000);
+
+		oPopup = oInput6._oSuggestionPopup;
+		ok(oPopup instanceof sap.m.Popover, "Suggestion Popup is created and is a Popover instance");
+		ok(oPopup.isOpen(), "Suggestion Popup is open now");
+		equal(oPopup.getContent()[0].getItems().length, aNames.length, "Suggestions are inserted");
+		ok(oPopup.getContent()[0] instanceof sap.m.List, "Suggestions are list-based)");
+
+		oInput6._$input.focus().val("abcT").trigger("input");
+		this.clock.tick(400);
+		ok(oPopup.isOpen(), "Suggestion Popup is still open now");
+		equal(oPopup.getContent()[0].getItems().length, 1, "Suggestions are filtered");
+
+		//close the popoup when nothing is typed in input
+		oInput6._$input.focus().val("").trigger("input");
+		this.clock.tick(1000);
+		ok(!oPopup.isOpen(), "Suggestion Popup is closed");
+		equal(oPopup.getContent()[0].getItems().length, 0, "Suggestions are destroyed");
+
+		oInput6.destroy();
+	});
+	
+	test("Two Value Suggestion on Desktop", function(){
+		var $Input = oInput7.$(),
+			oPopup1,
+			aNames = ["abcTom", "abcPhilips", "abcAnna"],
+			aDescription = ["Heidelberg", "Mannheim", "Paris"],
+			aItemAdded = [],
+			i;
+
+		oInput7.attachSuggest(function(){
+			for(i = 0 ; i < aNames.length ; i++){
+				if(jQuery.inArray(aNames[i], aItemAdded) === -1){
+					oInput7.addSuggestionItem(new sap.ui.core.ListItem({text: aNames[i], additionalText: aDescription[i]}));
+					aItemAdded.push(aNames[i]);
+				}
+			}
+		});
+
+		oInput7.onfocusin(); // for some reason this is not triggered when calling focus via API 
+		oInput7._$input.focus().val("abc").trigger("input");
+
+		this.clock.tick(1000);
+		oPopup1 = oInput7._oSuggestionPopup;
+
+		ok(oPopup1 instanceof sap.m.Popover, "Two Value Suggestion Popup is created and is a Popover instance");
+		ok(oPopup1.isOpen(), "Two Value Suggestion Popup is open now");
+		equal(oPopup1.getContent()[0].getItems().length, aNames.length, "Suggestions are inserted");
+		ok(oPopup1.getContent()[0].getItems()[0] instanceof sap.m.DisplayListItem, "Suggestion item is a DisplayListItem");
+		
+		oInput7._$input.focus().val("abcT").trigger("input");
+		this.clock.tick(400);
+		ok(oPopup1.isOpen(), "Two Value Suggestion Popup is still open now");
+		equal(oPopup1.getContent()[0].getItems().length, 1, "Suggestions are filtered");
+		
+		//trigger selection
+		oPopup1.getContent()[0].getItems()[0].firePress();
+		this.clock.tick(500);
+		ok(!oPopup1.isOpen(), "Two Value Suggestion Popup is closed");
+		equal(oInput7.getValue(), aNames[0], "Input value is set to first value of selected suggestion item");
+		
+		//close the popoup when nothing is typed in input
+		oInput7._$input.focus().val("").trigger("input");
+		this.clock.tick(1000);
+		ok(!oPopup1.isOpen(), "Two Value Suggestion Popup is closed");
+		equal(oPopup1.getContent()[0].getItems().length, 0, "Suggestions are destroyed");
+
+		oInput7.destroy();
+	});
+	
+	test("Suggestion on Phone", function(){
+		var oSystem = {
+				desktop: false,
+				phone: true,
+				tablet: false
+			};
+
+		this.stub(sap.ui.Device, "system", oSystem);
+
+		var oInput = new sap.m.Input({
+				showSuggestion: true
+			}),
+			oPopup, // is lazy loaded
+			aNames = ["abcTom", "abcPhilips", "abcAnna"],
+			aItemAdded = [],
+			i;
+
+		oInput.attachSuggest(function(){
+			for(i = 0 ; i < aNames.length ; i++){
+				if(jQuery.inArray(aNames[i], aItemAdded) === -1){
+					oInput.addSuggestionItem(new sap.ui.core.Item({text: aNames[i]}));	
+					aItemAdded.push(aNames[i]);
+				}
+			}
+		});
+
+		oInput.placeAt("content");
+		sap.ui.getCore().applyChanges();
+
+		oInput.onfocusin(); // for some reason this is not triggered when calling focus via API
+		oInput._$input.focus().trigger("click");
+		this.clock.tick(500);
+
+		oPopup = oInput._oSuggestionPopup;
+		ok(oPopup instanceof sap.m.Dialog, "Suggestion Popup is created and is a Dialog instance");
+		ok(oPopup.isOpen(), "Suggestion Popup is open now");
+
+		oInput._oPopupInput._$input.focus().val("abc").trigger("input");
+		this.clock.tick(400);
+		equal(oPopup.getContent()[0].getItems().length, aNames.length, "Suggestions are inserted");
+
+		oInput._oPopupInput._$input.focus().val("abcT").trigger("input");
+		this.clock.tick(400);
+		ok(oPopup.isOpen(), "Suggestion Popup is still open now");
+		equal(oPopup.getContent()[0].getItems().length, 1, "Suggestions are filtered");
+
+		oInput._oPopupInput._$input.focus().val("").trigger("input");
+		this.clock.tick(400);
+		ok(oPopup.isOpen(), "Suggestion Popup is still open now");
+		equal(oPopup.getContent()[0].getItems().length, 0, "Suggestions are destroyed");
+
+		oInput._oPopupInput._$input.focus().val("abc").trigger("input");
+		this.clock.tick(400);
+
+		sap.ui.test.qunit.triggerTouchEvent("tap", oPopup.getContent()[0].getItems()[1].getDomRef());
+		this.clock.tick(500);
+		ok(!oPopup.isOpen(), "Suggestion Popup is closed");
+		equal(oInput.getValue(), aNames[1], "Value is set to originalInput");
+
+		oInput.destroy();
+	});
+	
+	test("Two value Suggestion on Phone", function(){
+		var oSystem = {
+				desktop: false,
+				phone: true,
+				tablet: false
+			};
+
+		this.stub(sap.ui.Device, "system", oSystem);
+
+		var oInput = new sap.m.Input({
+				showSuggestion: true
+			}),
+			oPopup,
+			aNames = ["abcTom", "abcPhilips", "abcAnna"],
+			aDescription = ["Heidelberg", "Mannheim", "Paris"],
+			aItemAdded = [],
+			i;
+
+		oInput.attachSuggest(function(){
+			for(i = 0 ; i < aNames.length ; i++){
+				if(jQuery.inArray(aNames[i], aItemAdded) === -1){
+					oInput.addSuggestionItem(new sap.ui.core.ListItem({text: aNames[i], additionalText: aDescription[i]}));
+					aItemAdded.push(aNames[i]);
+				}
+			}
+		});
+
+		oInput.placeAt("content");
+		sap.ui.getCore().applyChanges();
+
+		oInput._$input.focus().trigger("click");
+		this.clock.tick(500);
+		oPopup = oInput._oSuggestionPopup;
+		
+		ok(oPopup instanceof sap.m.Dialog, "Two value Suggestion Popup is created and is a Dialog instance");
+		ok(oPopup.isOpen(), "Suggestion Popup is open now");
+
+		oInput._oPopupInput._$input.focus().val("abc").trigger("input");
+		this.clock.tick(400);
+		equal(oPopup.getContent()[0].getItems().length, aNames.length, "Suggestions are inserted");
+
+		oInput._oPopupInput._$input.focus().val("abcT").trigger("input");
+		this.clock.tick(400);
+		ok(oPopup.isOpen(), "Two value Suggestion Popup is still open now");
+		equal(oPopup.getContent()[0].getItems().length, 1, "Suggestions are filtered");
+
+		oInput._oPopupInput._$input.focus().val("").trigger("input");
+		this.clock.tick(400);
+		ok(oPopup.isOpen(), "Two value Suggestion Popup is still open now");
+		equal(oPopup.getContent()[0].getItems().length, 0, "Suggestions are destroyed");
+
+		oInput._oPopupInput._$input.focus().val("abc").trigger("input");
+		this.clock.tick(400);
+
+		sap.ui.test.qunit.triggerTouchEvent("tap", oPopup.getContent()[0].getItems()[1].getDomRef());
+		this.clock.tick(500);
+		ok(!oPopup.isOpen(), "Two value Suggestion Popup is closed");
+		equal(oInput.getValue(), aNames[1], "Value is set to originalInput");
+
+		oInput.destroy();
+	});
+
+	test("Suggestion with liveChange handler on phone", function(){
+		var fnLC1 = this.spy();
+
+		var oSystem = {
+				desktop: false,
+				phone: true,
+				tablet: false
+			};
+
+		this.stub(sap.ui.Device, "system", oSystem);
+
+		var oInput = new sap.m.Input({
+			showSuggestion: true,
+			liveChange: fnLC1
+		});
+
+		oInput.placeAt("content");
+		sap.ui.getCore().applyChanges();
+
+		oInput.onfocusin(); // for some reason this is not triggered when calling focus via API
+		oInput._$input.focus().trigger("click");
+		this.clock.tick(500);
+
+		oInput._oPopupInput._$input.focus().val("abc").trigger("input");;
+
+		equal(fnLC1.callCount, 1, "liveChange handler on original input is called");
+
+		oInput.destroy();
+	});
+
+	test("Tabular Suggestions on Desktop", function(){
+		var oInput = new sap.m.Input({
+			width: "100px",
+			suggestionWidth: "500px",
+			suggestionColumns: [
+				new sap.m.Column({
+					styleClass: "name",
+					hAlign: "Left",
+					header: new sap.m.Label({
+						text: "{i18n>/Name}"
+					})
+				}),
+				new sap.m.Column({
+					hAlign : "Center",
+					styleClass : "qty",
+					popinDisplay : "Inline",
+					header : new sap.m.Label({
+						text : "{i18n>/Qty}"
+					}),
+					minScreenWidth : "Tablet",
+					demandPopin : true
+				}),
+				new sap.m.Column({
+					hAlign : "Center",
+					styleClass : "limit",
+					width : "30%",
+					header : new sap.m.Label({
+						text : "{i18n>/Value}"
+					}),
+					minScreenWidth : "XXSmall",
+					demandPopin : true
+				}),
+				new sap.m.Column({
+					hAlign : "Right",
+					styleClass : "price",
+					width : "30%",
+					popinDisplay : "Inline",
+					header : new sap.m.Label({
+						text : "{i18n>/Price}"
+					}),
+					minScreenWidth : "400px",
+					demandPopin : true
+				})
+			]}),
+			oInputId = oInput.getId();
+
+		var oTableItemTemplate = new sap.m.ColumnListItem({
+			type : "Active",
+			vAlign : "Middle",
+			cells : [
+				new sap.m.Label({
+					text : "{name}"
+				}),
+				new sap.m.Label({
+					text: "{qty}",
+					wrapping : true
+				}), new sap.m.Label({
+					text: "{limit}"
+				}), new sap.m.Label({
+					text : "{price}"
+				})
+			]
+		});
+
+		// data for tabular suggestions
+		var oSuggestionData = {
+			tabularSuggestionItems : [{
+				name : "Product1",
+				qty : "10 EA",
+				limit : "15.00 Eur",
+				price : "10.00 EUR"
+			}, {
+				name : "Product2",
+				qty : "9 EA",
+				limit : "25.00 Eur",
+				price : "20.00 EUR"
+			}, {
+				name : "Product3",
+				qty : "8 EA",
+				limit : "35.00 Eur",
+				price : "30.00 EUR"
+			}]
+		};
+
+		oInput.placeAt("content");
+		sap.ui.getCore().applyChanges();
+
+		// this tests calling the setter of showSuggestion after input is rendered
+		oInput.setShowSuggestion(true);
+		sap.ui.getCore().applyChanges();
+
+		var	$Input = oInput.$(),
+			oPopup, // is lazy loaded
+			aAlreadyAddedProducts = [],
+			i;
+
+		oInput.attachSuggest(function() {
+			oInput.destroySuggestionRows();
+			for(i = 0 ; i < oSuggestionData.tabularSuggestionItems.length ; i++){
+				if(jQuery.inArray(oSuggestionData.tabularSuggestionItems[i], aAlreadyAddedProducts) === -1){
+					oSuggestionRow = oTableItemTemplate.clone();
+					oSuggestionRow.getCells()[0].setText(oSuggestionData.tabularSuggestionItems[i].name);
+					oSuggestionRow.getCells()[1].setText(oSuggestionData.tabularSuggestionItems[i].qty);
+					oSuggestionRow.getCells()[2].setText(oSuggestionData.tabularSuggestionItems[i].limit);
+					oSuggestionRow.getCells()[3].setText(oSuggestionData.tabularSuggestionItems[i].price);
+					oInput.addSuggestionRow(oSuggestionRow);
+					aAlreadyAddedProducts.push(oSuggestionData.tabularSuggestionItems[i].name);
+				}
+			}
+		});
+
+		oInput.onfocusin(); // for some reason this is not triggered when calling focus via API
+		oInput._$input.focus().val("Prod").trigger("input");
+
+		this.clock.tick(1000);
+		oPopup = oInput._oSuggestionPopup;
+
+		ok(oPopup instanceof sap.m.Popover, "Suggestion Popup is created and is a Popover instance");
+		ok(oPopup.isOpen(), "Suggestion Popup is open now");
+		equal(oPopup.getContent()[0].getItems().length, oSuggestionData.tabularSuggestionItems.length, "Suggestions are inserted");
+		strictEqual(oPopup.getContent()[0].$().length, 1, "Suggestion table is rendered");
+		ok(oPopup.getContent()[0] instanceof sap.m.Table, "Suggestions are tabular)");
+		strictEqual(oPopup.getContentWidth(), "100px", "Suggestion popup has 100px width");
+
+		oInput._$input.focus().val("Product1").trigger("input");
+		this.clock.tick(400);
+		oInput._oList.rerender(); // TODO: there is a re-rendering issue in core with addDependent, therefore we rerender the table manually to pass the test
+
+		ok(oPopup.isOpen(), "Suggestion Popup is still open now");
+		equal(oPopup.getContent()[0].$().find("tbody").children().length, 1, "Suggestions are filtered");
+
+		//close the popoup when nothing is typed in input
+		oInput._$input.focus().val("").trigger("input");
+		this.clock.tick(1000);
+		ok(!oPopup.isOpen(), "Suggestion Popup is closed");
+
+		oInput.destroy();
+	});
+
+	test("Tabular Suggestion on Phone", function(){
+		var oSystem = {
+				desktop: false,
+				phone: true,
+				tablet: false
+			};
+
+		this.stub(sap.ui.Device, "system", oSystem);
+
+		var oInput = new sap.m.Input({
+			showSuggestion: true,
+			width: "100px",
+			suggestionWidth: "500px",
+			suggestionColumns: [
+				new sap.m.Column({
+					styleClass: "name",
+					hAlign: "Left",
+					header: new sap.m.Label({
+						text: "{i18n>/Name}"
+					})
+				}),
+				new sap.m.Column({
+					hAlign : "Center",
+					styleClass : "qty",
+					popinDisplay : "Inline",
+					header : new sap.m.Label({
+						text : "{i18n>/Qty}"
+					}),
+					minScreenWidth : "Tablet",
+					demandPopin : true
+				}),
+				new sap.m.Column({
+					hAlign : "Center",
+					styleClass : "limit",
+					width : "30%",
+					header : new sap.m.Label({
+						text : "{i18n>/Value}"
+					}),
+					minScreenWidth : "XXSmall",
+					demandPopin : true
+				}),
+				new sap.m.Column({
+					hAlign : "Right",
+					styleClass : "price",
+					width : "30%",
+					popinDisplay : "Inline",
+					header : new sap.m.Label({
+						text : "{i18n>/Price}"
+					}),
+					minScreenWidth : "400px",
+					demandPopin : true
+				})
+			]}),
+			oInputId = oInput.getId();
+
+		var oTableItemTemplate = new sap.m.ColumnListItem({
+			type : "Active",
+			vAlign : "Middle",
+			cells : [
+				new sap.m.Label({
+					text : "{name}"
+				}),
+				new sap.m.Label({
+					text: "{qty}",
+					wrapping : true
+				}), new sap.m.Label({
+					text: "{limit}"
+				}), new sap.m.Label({
+					text : "{price}"
+				})
+			]
+		});
+
+		// data for tabular suggestions
+		var oSuggestionData = {
+			tabularSuggestionItems : [{
+				name : "Product1",
+				qty : "10 EA",
+				limit : "15.00 Eur",
+				price : "10.00 EUR"
+			}, {
+				name : "Product2",
+				qty : "9 EA",
+				limit : "25.00 Eur",
+				price : "20.00 EUR"
+			}, {
+				name : "Product3",
+				qty : "8 EA",
+				limit : "35.00 Eur",
+				price : "30.00 EUR"
+			}]
+		};
+
+		oInput.placeAt("content");
+		sap.ui.getCore().applyChanges();
+
+		var	$Input = oInput.$(),
+			oPopup, // is lazy loaded
+			aAlreadyAddedProducts = [],
+			i;
+
+		oInput.attachSuggest(function() {
+			oInput.destroySuggestionRows();
+			for(i = 0 ; i < oSuggestionData.tabularSuggestionItems.length ; i++){
+				if(jQuery.inArray(oSuggestionData.tabularSuggestionItems[i], aAlreadyAddedProducts) === -1){
+					oSuggestionRow = oTableItemTemplate.clone();
+					oSuggestionRow.getCells()[0].setText(oSuggestionData.tabularSuggestionItems[i].name);
+					oSuggestionRow.getCells()[1].setText(oSuggestionData.tabularSuggestionItems[i].qty);
+					oSuggestionRow.getCells()[2].setText(oSuggestionData.tabularSuggestionItems[i].limit);
+					oSuggestionRow.getCells()[3].setText(oSuggestionData.tabularSuggestionItems[i].price);
+					oInput.addSuggestionRow(oSuggestionRow);
+					aAlreadyAddedProducts.push(oSuggestionData.tabularSuggestionItems[i].name);
+				}
+			}
+		});
+
+		oInput.onfocusin(); // for some reason this is not triggered when calling focus via API
+		oInput._$input.focus().trigger("click");
+		this.clock.tick(1000);
+
+		oPopup = oInput._oSuggestionPopup;
+		ok(oPopup instanceof sap.m.Dialog, "Suggestion Popup is created and is a Dialog instance");
+		ok(oPopup.isOpen(), "Suggestion Popup is open now");
+
+		oInput._oPopupInput._$input.focus().val("Product").trigger("input");
+		this.clock.tick(400);
+		equal(oPopup.getContent()[0].getItems().length, oSuggestionData.tabularSuggestionItems.length, "Suggestions are inserted");
+
+		oInput._oPopupInput._$input.focus().val("Product1").trigger("input");
+		this.clock.tick(400);
+		oInput._oSuggestionPopup.rerender(); // TODO: there is a re-rendering issue in core with addDependent, therefore we rerender the table manually to pass the test
+		ok(oPopup.isOpen(), "Suggestion Popup is still open now");
+		equal(oPopup.getContent()[0].$().find("tbody").children().length, 1, "Suggestions are filtered");
+
+		oInput._oPopupInput._$input.focus().val("").trigger("input");
+		this.clock.tick(400);
+		oInput._oSuggestionPopup.rerender(); // TODO: there is a re-rendering issue in core with addDependent, therefore we rerender the table manually to pass the test
+
+		ok(oPopup.isOpen(), "Suggestion Popup is still open now");
+		equal(oPopup.getContent()[0].$().find("tbody").children().length, 0, "Suggestions are invisible");
+
+		oInput._oPopupInput._$input.focus().val("Product").trigger("input");
+		this.clock.tick(400);
+		oInput._oSuggestionPopup.rerender(); // TODO: there is a re-rendering issue in core with addDependent, therefore we rerender the table manually to pass the test
+
+		// TODO: list does not handle this pseudo event correctly
+		//sap.ui.test.qunit.triggerTouchEvent("tap", oPopup.getContent()[0].getItems()[1].getDomRef());
+		oPopup.getContent()[0]._fireSelectionChangeEvent([oPopup.getContent()[0].getItems()[1]]);
+		this.clock.tick(1000);
+		ok(!oPopup.isOpen(), "Suggestion Popup is closed");
+		equal(oInput.getValue(), oSuggestionData.tabularSuggestionItems[1].name, "Value is set to originalInput");
+
+		oInput.destroy();
+	});
+
+	test("Tabular Suggestions with custom filter and result fuction", function(){
+		var oInput = new sap.m.Input({
+			showSuggestion: true,
+			width: "100px",
+			suggestionWidth: "500px",
+			suggestionColumns: [
+				new sap.m.Column({
+					styleClass: "name",
+					hAlign: "Left",
+					header: new sap.m.Label({
+						text: "{i18n>/Name}"
+					})
+				}),
+				new sap.m.Column({
+					hAlign : "Center",
+					styleClass : "qty",
+					popinDisplay : "Inline",
+					header : new sap.m.Label({
+						text : "{i18n>/Qty}"
+					}),
+					minScreenWidth : "Tablet",
+					demandPopin : true
+				}),
+				new sap.m.Column({
+					hAlign : "Center",
+					styleClass : "limit",
+					width : "30%",
+					header : new sap.m.Label({
+						text : "{i18n>/Value}"
+					}),
+					minScreenWidth : "XXSmall",
+					demandPopin : true
+				}),
+				new sap.m.Column({
+					hAlign : "Right",
+					styleClass : "price",
+					width : "30%",
+					popinDisplay : "Inline",
+					header : new sap.m.Label({
+						text : "{i18n>/Price}"
+					}),
+					minScreenWidth : "400px",
+					demandPopin : true
+				})
+			]}),
+			oInputId = oInput.getId();
+
+		var oTableItemTemplate = new sap.m.ColumnListItem({
+			type : "Active",
+			vAlign : "Middle",
+			cells : [
+				new sap.m.Label({
+					text : "{name}"
+				}),
+				new sap.m.Label({
+					text: "{qty}",
+					wrapping : true
+				}), new sap.m.Label({
+					text: "{limit}"
+				}), new sap.m.Label({
+					text : "{price}"
+				})
+			]
+		});
+
+		// data for tabular suggestions
+		var oSuggestionData = {
+			tabularSuggestionItems : [{
+				name : "Product1",
+				qty : "10 EA",
+				limit : "15.00 Eur",
+				price : "10.00 EUR"
+			}, {
+				name : "Product2",
+				qty : "9 EA",
+				limit : "25.00 Eur",
+				price : "20.00 EUR"
+			}, {
+				name : "Product3",
+				qty : "8 EA",
+				limit : "35.00 Eur",
+				price : "30.00 EUR"
+			}]
+		};
+
+		oInput.placeAt("content");
+		sap.ui.getCore().applyChanges();
+
+		// custom filter for limit field
+		oInput.setFilterFunction(function(sValue, oColumnListItem) {
+			var aCells = oColumnListItem.getCells();
+
+			return jQuery.sap.startsWithIgnoreCase(aCells[2].getText(), sValue);
+		});
+
+		// custom result function using a string and price
+		oInput.setRowResultFunction(function (oColumnListItem) {
+			return "You chose: " + oColumnListItem.getCells()[2].getText();
+		});
+
+		var	$Input = oInput.$(),
+			oPopup, // is lazy loaded
+			aAlreadyAddedProducts = [],
+			i;
+
+		oInput.attachSuggest(function() {
+			oInput.destroySuggestionRows();
+			for(i = 0 ; i < oSuggestionData.tabularSuggestionItems.length ; i++){
+				if(jQuery.inArray(oSuggestionData.tabularSuggestionItems[i], aAlreadyAddedProducts) === -1){
+					oSuggestionRow = oTableItemTemplate.clone();
+					oSuggestionRow.getCells()[0].setText(oSuggestionData.tabularSuggestionItems[i].name);
+					oSuggestionRow.getCells()[1].setText(oSuggestionData.tabularSuggestionItems[i].qty);
+					oSuggestionRow.getCells()[2].setText(oSuggestionData.tabularSuggestionItems[i].limit);
+					oSuggestionRow.getCells()[3].setText(oSuggestionData.tabularSuggestionItems[i].price);
+					oInput.addSuggestionRow(oSuggestionRow);
+					aAlreadyAddedProducts.push(oSuggestionData.tabularSuggestionItems[i].name);
+				}
+			}
+		});
+
+		oInput.onfocusin(); // for some reason this is not triggered when calling focus via API
+		oInput._$input.focus().val("25").trigger("input");
+
+		this.clock.tick(1000);
+		oPopup = oInput._oSuggestionPopup;
+
+		ok(oPopup.isOpen(), "Suggestion Popup is open now");
+		strictEqual(oPopup.getContent()[0].$().find("tbody").children().length, 1, "Suggestions are filtered");
+		strictEqual(oPopup.getContent()[0].$().find("tbody").find(".name").find("label").html(), oSuggestionData.tabularSuggestionItems[1].name, "Product 2 is filtered");
+
+		// TODO: trigger selection with pseudo-events here
+		//oPopup.getContent()[0].getItems()[1].$().trigger("click");
+		oPopup.getContent()[0]._fireSelectionChangeEvent([oPopup.getContent()[0].getItems()[1]]);
+		this.clock.tick(1000);
+		ok(!oPopup.isOpen(), "Suggestion Popup is closed");
+		equal(oInput.getValue(), "You chose: " + oSuggestionData.tabularSuggestionItems[1].limit, "The input value has been formatted with the custom row result function");
+
+		//close the popoup when nothing is typed in input
+		oInput._$input.focus().val("").trigger("input");
+		this.clock.tick(1000);
+		ok(!oPopup.isOpen(), "Suggestion Popup is closed");
+
+		oInput.destroy();
+	});
+
+	test("Property startSuggestion on Desktop (non Zero)",  function() {
+		var oSystem = {
+				desktop: true,
+				phone: false,
+				tablet: false
+			};
+
+		this.stub(sap.ui.Device, "system", oSystem);
+
+		var spy = this.spy();
+
+		var oInput = new sap.m.Input({
+			showSuggestion: true,
+			startSuggestion: 4,
+			suggest: spy
+		});
+
+		oInput.placeAt("content");
+		sap.ui.getCore().applyChanges();
+
+		oInput._$input.focus().val("25").trigger("input");
+		this.clock.tick(400);
+		equal(spy.callCount, 0, "2 letters shouldn't fire suggest event");
+
+		oInput._$input.focus().val("2524").trigger("input");
+		this.clock.tick(400);
+		equal(spy.callCount, 1, "4 letters shouldn fire suggest event");
+
+		oInput._$input.focus().val("25245").trigger("input");
+		this.clock.tick(400);
+		equal(spy.callCount, 2, "5 letters should fire suggest event again");
+
+		oInput.destroy();
+	});
+	
+	test("Property startSuggestion on Desktop (Zero)",  function() {
+		var oSystem = {
+				desktop: true,
+				phone: false,
+				tablet: false
+			};
+
+		this.stub(sap.ui.Device, "system", oSystem);
+
+		var spy = this.spy();
+
+		var oInput = new sap.m.Input({
+			showSuggestion: true,
+			startSuggestion: 0,
+			suggest: spy
+		});
+
+		oInput.placeAt("content");
+		sap.ui.getCore().applyChanges();
+
+		oInput._$input.focus();
+		this.clock.tick(400);
+		equal(spy.callCount, 1, "Focus should fire suggest event");
+
+		oInput._$input.focus().val("25").trigger("input");
+		this.clock.tick(400);
+		equal(spy.callCount, 2, "2 letters shouldn fire suggest event");
+
+		oInput._$input.blur();
+		oInput._$input.focus();
+		this.clock.tick(400);
+		equal(spy.callCount, 2, "Focus with text in input shouldn't fire suggest event");
+
+		oInput._$input.focus().val("").trigger("input");
+		this.clock.tick(400);
+		equal(spy.callCount, 3, "no text should fire suggest event again");
+
+		oInput.destroy();
+	});
+
+	test("The order of setting properties: showValueHelp, bindAggregation and showSuggestion", function(){
+		var oInput = new sap.m.Input({
+			width: "100px",
+			suggestionWidth: "500px",
+			suggestionColumns: [
+				new sap.m.Column({
+					styleClass: "name",
+					hAlign: "Left",
+					header: new sap.m.Label({
+						text: "{i18n>/Name}"
+					})
+				}),
+				new sap.m.Column({
+					hAlign : "Center",
+					styleClass : "qty",
+					popinDisplay : "Inline",
+					header : new sap.m.Label({
+						text : "{i18n>/Qty}"
+					}),
+					minScreenWidth : "Tablet",
+					demandPopin : true
+				}),
+				new sap.m.Column({
+					hAlign : "Center",
+					styleClass : "limit",
+					width : "30%",
+					header : new sap.m.Label({
+						text : "{i18n>/Value}"
+					}),
+					minScreenWidth : "XXSmall",
+					demandPopin : true
+				}),
+				new sap.m.Column({
+					hAlign : "Right",
+					styleClass : "price",
+					width : "30%",
+					popinDisplay : "Inline",
+					header : new sap.m.Label({
+						text : "{i18n>/Price}"
+					}),
+					minScreenWidth : "400px",
+					demandPopin : true
+				})
+			]}),
+			oInputId = oInput.getId();
+
+		var oTableItemTemplate = new sap.m.ColumnListItem({
+			type : "Active",
+			vAlign : "Middle",
+			cells : [
+				new sap.m.Label({
+					text : "{name}"
+				}),
+				new sap.m.Label({
+					text: "{qty}",
+					wrapping : true
+				}), new sap.m.Label({
+					text: "{limit}"
+				}), new sap.m.Label({
+					text : "{price}"
+				})
+			]
+		});
+
+		// data for tabular suggestions
+		var oSuggestionData = {
+			tabularSuggestionItems : [{
+				name : "Product1",
+				qty : "10 EA",
+				limit : "15.00 Eur",
+				price : "10.00 EUR"
+			}, {
+				name : "Product2",
+				qty : "9 EA",
+				limit : "25.00 Eur",
+				price : "20.00 EUR"
+			}, {
+				name : "Product3",
+				qty : "8 EA",
+				limit : "35.00 Eur",
+				price : "30.00 EUR"
+			}]
+		};
+
+		var oModel = new sap.ui.model.json.JSONModel().setData(oSuggestionData);
+
+		oInput.setModel(oModel);
+		oInput.setShowValueHelp(true);
+		oInput.bindSuggestionRows({
+			path: "/tabularSuggestionItems",
+			template: oTableItemTemplate
+		});
+
+		oInput.placeAt("content");
+		sap.ui.getCore().applyChanges();
+
+		oInput.setShowSuggestion(true);
+
+		ok(oInput._oList, "List instance is created");
+		ok(oInput._oSuggestionPopup, "Suggestion Popup instance is created");
+		ok(oInput._oSuggestionPopup.getFooter() instanceof sap.m.Toolbar, "Suggestion Popup has Toolbar footer");
+		ok(oInput._oSuggestionPopup.getFooter().getContent()[1] instanceof sap.m.Button, "Suggestion Popup has showMoreButton");
+
+		oInput.destroy();
+	});
+	
+	test("The order of setting properties: showValueHelp, showSuggestion after bindAggregation", function(){
+		var oInput = new sap.m.Input({
+			width: "100px",
+			suggestionWidth: "500px",
+			suggestionColumns: [
+				new sap.m.Column({
+					styleClass: "name",
+					hAlign: "Left",
+					header: new sap.m.Label({
+						text: "{i18n>/Name}"
+					})
+				}),
+				new sap.m.Column({
+					hAlign : "Center",
+					styleClass : "qty",
+					popinDisplay : "Inline",
+					header : new sap.m.Label({
+						text : "{i18n>/Qty}"
+					}),
+					minScreenWidth : "Tablet",
+					demandPopin : true
+				}),
+				new sap.m.Column({
+					hAlign : "Center",
+					styleClass : "limit",
+					width : "30%",
+					header : new sap.m.Label({
+						text : "{i18n>/Value}"
+					}),
+					minScreenWidth : "XXSmall",
+					demandPopin : true
+				}),
+				new sap.m.Column({
+					hAlign : "Right",
+					styleClass : "price",
+					width : "30%",
+					popinDisplay : "Inline",
+					header : new sap.m.Label({
+						text : "{i18n>/Price}"
+					}),
+					minScreenWidth : "400px",
+					demandPopin : true
+				})
+			]}),
+			oInputId = oInput.getId();
+
+		var oTableItemTemplate = new sap.m.ColumnListItem({
+			type : "Active",
+			vAlign : "Middle",
+			cells : [
+				new sap.m.Label({
+					text : "{name}"
+				}),
+				new sap.m.Label({
+					text: "{qty}",
+					wrapping : true
+				}), new sap.m.Label({
+					text: "{limit}"
+				}), new sap.m.Label({
+					text : "{price}"
+				})
+			]
+		});
+
+		// data for tabular suggestions
+		var oSuggestionData = {
+			tabularSuggestionItems : [{
+				name : "Product1",
+				qty : "10 EA",
+				limit : "15.00 Eur",
+				price : "10.00 EUR"
+			}, {
+				name : "Product2",
+				qty : "9 EA",
+				limit : "25.00 Eur",
+				price : "20.00 EUR"
+			}, {
+				name : "Product3",
+				qty : "8 EA",
+				limit : "35.00 Eur",
+				price : "30.00 EUR"
+			}]
+		};
+
+		var oModel = new sap.ui.model.json.JSONModel().setData(oSuggestionData);
+
+		oInput.setModel(oModel);
+
+		oInput.bindSuggestionRows({
+			path: "/tabularSuggestionItems",
+			template: oTableItemTemplate
+		});
+		oInput.setShowValueHelp(true);
+
+		oInput.placeAt("content");
+		sap.ui.getCore().applyChanges();
+
+		oInput.setShowSuggestion(true);
+
+		ok(oInput._oList, "List instance is created");
+		ok(oInput._oSuggestionPopup, "Suggestion Popup instance is created");
+		ok(oInput._oSuggestionPopup.getFooter() instanceof sap.m.Toolbar, "Suggestion Popup has Toolbar footer");
+		ok(oInput._oSuggestionPopup.getFooter().getContent()[1] instanceof sap.m.Button, "Suggestion Popup has showMoreButton");
+
+		oInput.destroy();
+	});
+</script>
+
+</head>
+<body>
+	<h1 id="qunit-header">QUnit page for sap.ui.m.Input</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<div id="qunit-testrunner-toolbar"></div>
+	<div id="qunit-fixture">test markup, will be hidden</div>
+	<ol id="qunit-tests"></ol>
+	<div id="content"></div>
+</body>
+</html>

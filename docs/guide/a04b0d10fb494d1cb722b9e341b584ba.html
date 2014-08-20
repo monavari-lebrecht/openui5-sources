@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="This section provides information about bootstrapping and configuration options for SAPUI5."/>
+<meta name="description" content="This section provides information about bootstrapping and configuration options for SAPUI5."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=5494787423530505"/>
+<title>Initializing and Loading SAPUI5</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loioa04b0d10fb494d1cb722b9e341b584ba">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Initializing and Loading SAPUI5</h1>
+<div class="body conbody"><p class="shortdesc">This section provides information about bootstrapping and configuration options for
+		SAPUI5.</p>
+<p class="p">To use SAPUI5 for your application, you must load and initialize SAPUI5 in your HTML page. You
+			can use the SAPUI5 bootstrap script in your page to initialize SAPUI5 runtime
+			automatically as soon as the script is loaded and executed by the browser. For simple
+			use cases as well as the default SAPUI5 installation, this is sufficient to build and
+			run UIs.</p>
+<p class="p">Additionally, you can specify the set of SAPUI5 libraries and the theme used for your
+			application in the configuration settings.</p>
+<p class="p">The following code snippet shows a typical bootstrap script tag:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+	&lt;script id="sap-ui-bootstrap" 
+		type="text/javascript"
+		src="resources/sap-ui-core.js"
+		data-sap-ui-theme="sap_bluecrystal"
+		data-sap-ui-libs="sap.ui.commons"  
+		&gt;
+	&lt;/script&gt;</pre></div>
+<p class="p">The attributes <samp class="ph codeph">data-sap-ui-theme="sap_bluecrystal"</samp> and
+				<samp class="ph codeph">data-sap-ui-libs="sap.ui.commons"</samp> already provide examples of how
+			SAPUI5 runtime can be configured to the needs of an application.</p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="91f1cea36f4d1014b6dd926db0e91070.html">Bootstrapping: Loading and Initializing SAPUI5 in HTML Pages</a></div>
+<div><a class="link" href="91f2c9076f4d1014b6dd926db0e91070.html">Initialization Process</a></div>
+<div><a class="link" href="91f08de06f4d1014b6dd926db0e91070.html">Configuration of the SAPUI5 Runtime</a></div>
+</div>
+
+<div class="linklist linklist"/>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Initializing and Loading SAPUI5";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

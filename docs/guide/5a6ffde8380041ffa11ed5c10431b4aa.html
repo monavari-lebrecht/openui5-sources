@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=8772933632211476"/>
+<title>Step 11: AddProduct View</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio5a6ffde8380041ffa11ed5c10431b4aa">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Step 11: AddProduct View</h1>
+<div class="body conbody"><p class="shortdesc"/>
+<p class="p">Let's round out the core functionality of the app by bringing in the the facility to add a new
+			product. </p>
+<p class="p">We've already got the "add" button in the footer of the Page in the master view, but
+			right now, when we press it, predictably, nothing happens visually, and we get this
+			error in the console:</p>
+<p class="p"><samp class="ph systemoutput">Uncaught Error: resource sap/ui/demo/tdg/view/AddProduct.view.xml could not
+				be loaded from ./view/AddProduct.view.xml. Check for 'file not found' or parse
+				errors.</samp></p>
+<p class="p">So let's add the view and controller.</p>
+<div class="section"><div class="section_title">View</div><div type="View">
+			
+			<p class="p">Let's first take a peek at what we're trying to achieve in this view definition.</p>
+
+			<div class="fig fignone" id="loio5a6ffde8380041ffa11ed5c10431b4aa__fig_xjr_llx_4n"><div class="figcontainer"><img class="image" id="loio5a6ffde8380041ffa11ed5c10431b4aa__image_wc4_rlx_4n" src="75d4b82a71a641b5869ade9c12cbc3b3.image"/></div></div>
+
+			<p class="p">It's an <samp class="ph codeph">sap.m.Page</samp>, with an <samp class="ph codeph">sap.ui.layout.form.SimpleForm</samp>
+				within the flexible <samp class="ph codeph">sap.ui.layout.Grid</samp> control. Like the Page
+				controls in the master and detail views, this Page also has a Bar in the footer, and
+				in this case, there are two buttons on the right hand side.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!xml</samp>
+&lt;mvc:View
+	controllerName="sap.ui.demo.tdg.view.AddProduct"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:c="sap.ui.core"
+	xmlns="sap.m"&gt;
+</pre></div>
+
+			<p class="p">This should be familiar by now; we're declaring our view with the namespaces for the
+				controls we're going to use within.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!xml</samp>
+	&lt;Page
+		class="sapUiFioriObjectPage"
+		title="{i18n&gt;addProductTitle}"&gt;
+		&lt;l:Grid
+			defaultSpan="L12 M12 S12"
+			width="auto"&gt;
+			&lt;l:content&gt;
+				&lt;f:SimpleForm
+					id="idAddProductForm"
+					minWidth="800"
+					maxContainerCols="2"
+					editable="true"
+					layout="ResponsiveGridLayout"
+					title="New Product"
+					labelSpanL="3"
+					labelSpanM="3"
+					emptySpanL="4"
+					emptySpanM="4"
+					columnsL="1"
+					columnsM="1"
+					class="editableForm"&gt;
+					&lt;f:content&gt;
+</pre></div>
+
+			<p class="p">The SimpleForm sits within the Grid. The SimpleForm's content aggregation is where we
+				define our separate form sections. Each section begins with an
+					<samp class="ph codeph">sap.ui.core.Title</samp> control, which causes a subheader style title
+				to appear (these are the <span class="ph uicontrol">Basic Info</span>,
+					<span class="ph uicontrol">Discontinued</span> and <span class="ph uicontrol">Supplier &amp;
+					Category</span> texts visible in the screenshot above).</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+
+						&lt;!-- Basic info --&gt;
+						&lt;c:Title text="{i18n&gt;addProductTitleBasic}" /&gt;
+						&lt;Label text="{i18n&gt;addProductLabelName}" /&gt;
+						&lt;Input value="{newProduct&gt;/Detail/Name}" /&gt;
+						&lt;Label text="{i18n&gt;addProductLabelDescription}" /&gt;
+						&lt;TextArea value="{newProduct&gt;/Detail/Description}" /&gt;
+						&lt;Label text="{i18n&gt;addProductLabelReleaseDate}" /&gt;
+						&lt;DateTimeInput
+							type="Date"
+							value="{newProduct&gt;/Detail/ReleaseDate}" /&gt;
+						&lt;Label text="{i18n&gt;addProductLabelPrice}" /&gt;
+						&lt;Input value="{newProduct&gt;/Detail/Price}" /&gt;
+						&lt;Label text="{i18n&gt;addProductLabelRating}" /&gt;
+						&lt;RatingIndicator
+							visualMode="Full"
+							value="{newProduct&gt;/Detail/Rating}" /&gt;
+</pre></div>
+
+			<p class="p">To collect the data in the form fields, and have access to it in the controller,
+				we're using a named client side model - an
+					<samp class="ph codeph">sap.ui.model.json.JSONModel</samp> to be precise. The model's name is
+					<samp class="ph codeph">newProduct</samp> and we can see the prefix in use in the property
+				bindings such as <samp class="ph codeph">{newProduct&gt;/Detail/Name}</samp>. The model is
+				instantiated and set on this view in the init event (see the details on the
+				controller below). </p>
+
+			<p class="p">In the OData service, the Rating property of the Product entity id defined as an
+				integer ( <samp class="ph codeph">&lt;Property Name="Rating" Type="Edm.Int32"
+					Nullable="false"/&gt;</samp> ) and therefore we set the
+					<samp class="ph codeph">visualMode</samp> property of the
+					<samp class="ph codeph">sap.m.RatingIndicator</samp> control to "Full" to cause the values to
+				be rounded to the nearest integer value.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!xml</samp>
+					&lt;!-- Discontinued? --&gt;
+					&lt;c:Title text="{i18n&gt;addProductTitleDiscontinued}" /&gt;
+					&lt;Label text="{i18n&gt;addProductLabelDiscontinuedFlag}" /&gt;
+					&lt;CheckBox selected="{newProduct&gt;/Detail/DiscontinuedFlag}" /&gt;
+					&lt;Label
+						visible="{newProduct&gt;/Detail/DiscontinuedFlag}"
+						text="{i18n&gt;addProductLabelDiscontinuedDate}" /&gt;
+					&lt;DateTimeInput
+						type="Date"
+						visible="{newProduct&gt;/Detail/DiscontinuedFlag}"
+						value="{newProduct&gt;/Detail/DiscontinuedDate}" /&gt;
+</pre></div>
+
+			<p class="p">This section is similar to the Basic Info section of the form. Noteworthy, however,
+				is the use of the <samp class="ph codeph">Detail/DiscontinuedFlag</samp> property in the
+					<samp class="ph codeph">newProduct</samp> JSON model. It's set to false by default, and is
+				used to set the visibility of the <samp class="ph codeph">sap.m.Label</samp> and
+					<samp class="ph codeph">sap.m.DateTimeInput</samp> controls for the
+					<samp class="ph codeph">DiscontinuedDate</samp> value. So only if the
+					<span class="ph uicontrol">Discontinued</span> checkbox is checked does the extra label and
+				field for the date appear. This is done just with property bindings on a model,
+				without controller logic.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!xml</samp>
+	&lt;!-- Supplier &amp; Category --&gt;
+						&lt;c:Title text="{i18n&gt;addProductTitleSupplierCategory}" /&gt;
+						&lt;Label text="{i18n&gt;addProductLabelSupplier}" /&gt;
+						&lt;Select
+							id="idSelectSupplier"
+							items="{/Suppliers}"
+							width="100%"&gt;
+							&lt;c:Item text="{Name}" /&gt;
+						&lt;/Select&gt;
+						&lt;Label text="{i18n&gt;addProductLabelCategory}" /&gt;
+						&lt;Select
+							id="idSelectCategory"
+							items="{/Categories}"
+							width="100%"&gt;
+							&lt;c:Item text="{Name}" /&gt;
+						&lt;/Select&gt;
+					&lt;/f:content&gt;
+				&lt;/f:SimpleForm&gt;
+			&lt;/l:content&gt;
+		&lt;/l:Grid&gt;
+</pre></div>
+
+			<p class="p">The last form section is a pair of <samp class="ph codeph">sap.m.Select</samp> controls, each bound
+				to entitysets in the ODataModel so that a Supplier and a Category can be chosen for
+				the new Product. Note that in this case, the binding path is absolute, because
+				there's no binding in this form that would be relevant for any relative
+				connection.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!xml</samp>
+&lt;footer&gt;
+			&lt;Bar&gt;
+				&lt;contentRight&gt;
+					&lt;Button text="{i18n&gt;addProductButtonSave}" type="Emphasized" press="onSave" /&gt;
+					&lt;Button text="{i18n&gt;addProductButtonCancel}" press="onCancel" /&gt;
+				&lt;/contentRight&gt;
+			&lt;/Bar&gt;
+		&lt;/footer&gt;
+	&lt;/Page&gt;
+&lt;/mvc:View&gt;
+</pre></div>
+
+			<p class="p">Finally, there are the two <samp class="ph codeph">sap.m.Button</samp> controls in the footer's
+				Bar. The action button (<span class="ph uicontrol">Save</span>) is highlighted using the
+				Emphasized type from the <samp class="ph codeph">sap.m.ButtonType</samp> enumeration.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Controller</div><div type="Controller">
+			
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+sap.ui.core.mvc.Controller.extend("sap.ui.demo.tdg.view.AddProduct", {
+
+	oAlertDialog : null,
+	oBusyDialog : null,
+</pre></div>
+
+			<p class="p">We're going to show an alert dialog if there's a problem with the input, and we also
+				have an <samp class="ph codeph">sap.m.BusyDialog</samp> to show while the process of saving the
+				new product is carried out. We'll hold references to these here.</p>
+
+			<div class="note note"><span class="notetitle">Note</span> In this demo app, there is little to no client side validation. That is left as an
+				exercise for you, dear reader!</div>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+initializeNewProductData : function() {
+		this.getView().getModel("newProduct").setData({
+			Detail: {
+				DiscontinuedFlag: false
+			}
+		});
+	},
+</pre></div>
+
+			<p class="p">With this<samp class="ph codeph"> initializeNewProductData</samp> function, we can reset the data
+				in the JSON model, effectively clearing the values in the form fields. We're holding
+				the properties within a single member "Detail" to make it simpler to reset.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+onInit : function() {
+		this.getView().setModel(new sap.ui.model.json.JSONModel(), "newProduct");
+		this.initializeNewProductData();
+	},
+</pre></div>
+
+			<p class="p">This is the named model that is used to communicate data between the form in the view
+				and controller. </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+showErrorAlert : function(sMessage) {
+		jQuery.sap.require("sap.m.MessageBox");
+		sap.m.MessageBox.alert(sMessage);
+	},
+</pre></div>
+
+			<p class="p">Later, we instantiate an <samp class="ph codeph">sap.m.Dialog</samp> control to alert the user to
+				issues with form input. But not all alerts need to use explicitly instantiated
+				controls; in this <samp class="ph codeph">showErrorAlert</samp> function, invoked in a couple of
+				places in this controller, we use the static method
+					<samp class="ph codeph">sap.m.MessageBox.alert</samp> as a convenience.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+	dateFromString : function(sDate) {
+		// Try to create date directly, otherwise assume dd/mm/yyyy
+		var oDate = new Date(sDate);
+		return oDate === "Invalid Date" ? new Date(sDate.split("/").reverse()) : oDate;
+
+	},
+
+	saveProduct : function(nID) {
+		var mNewProduct = this.getView().getModel("newProduct").getData().Detail;
+		// Basic payload data
+		var mPayload = {
+			ID: nID,
+			Name: mNewProduct.Name,
+			Description: mNewProduct.Description,
+			ReleaseDate: this.dateFromString(mNewProduct.ReleaseDate),
+			Price: mNewProduct.Price.toString(),
+			Rating: mNewProduct.Rating
+		};
+
+		if (mNewProduct.DiscontinuedDate) {
+			mPayload.DiscontinuedDate = this.dateFromString(mNewProduct.DiscontinuedDate);
+		}
+</pre></div>
+
+			<p class="p">The <samp class="ph codeph">saveProduct</samp> function does the heavy lifting of invoking the
+				OData <samp class="ph codeph">CREATE</samp> operation on the OData service via the domain model.
+				First, the data in the JSON model is retrieved and unpacked, and a payload for the
+					<samp class="ph codeph">CREATE</samp> operation is created.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+// Add supplier &amp; category associations
+		["Supplier", "Category"].forEach(function(sRelation) {
+			var oSelect = this.getView().byId("idSelect" + sRelation);
+			var sPath = oSelect.getSelectedItem().getBindingContext().getPath();
+			mPayload[sRelation] = {
+				__metadata: {
+					uri: sPath
+				}
+			};
+		}, this);
+</pre></div>
+
+			<p class="p">Remember that the Product entity has associations to the Supplier and Category
+				entities. So when we create the new Product, we must ensure that the associations
+				are made to the Supplier and Category chosen in the form. This is done by specifying
+				a <samp class="ph codeph">__metadata</samp> object for each association, with a uri property
+				pointing to the chosen entity's path.</p>
+
+			<p class="p">Here's an example of what that payload looks like:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+{
+   "ID":9,
+   "Name":"Galaxy S4",
+   "Description":"Samsung smartphone",
+   "ReleaseDate":null,
+   "Price":"499.00",
+   "Rating":4,
+   "Supplier":{
+      "__metadata":{
+         "uri":"/Suppliers(1)"
+      }
+   },
+   "Category":{
+      "__metadata":{
+         "uri":"/Categories(2)"
+      }
+   }
+}
+</pre></div>
+
+			<p class="p">This example is for a new product that is associated with the supplier Tokyo Traders
+					(<samp class="ph codeph">/Suppliers(1)</samp>) and category "Electronics"
+					(<samp class="ph codeph">/Categories(2)</samp>).</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+	// Send OData Create request
+		var oModel = this.getView().getModel();
+		oModel.create("/Products", mPayload, {
+			success : jQuery.proxy(function(mResponse) {
+				this.initializeNewProductData();
+				sap.ui.core.UIComponent.getRouterFor(this).navTo("product", {
+					from: "master",
+					product: "Products(" + mResponse.ID + ")",
+					tab: "supplier"
+				}, false);
+				jQuery.sap.require("sap.m.MessageToast");
+				// ID of newly inserted product is available in mResponse.ID
+				this.oBusyDialog.close();
+				sap.m.MessageToast.show("Product '" + mPayload.Name + "' added");
+			}, this),
+			error : jQuery.proxy(function() {
+				this.oBusyDialog.close();
+				this.showErrorAlert("Problem creating new product");
+			}, this)
+		});
+
+	},
+</pre></div>
+
+			<p class="p">Once the payload is ready the OData <samp class="ph codeph">CREATE</samp> request is invoked. On
+				success, a <samp class="ph codeph">MessageToast</samp> is shown with the ID of the newly created
+				Product entity, the form data is reset, and we get the Router to navigate the user
+				to the display of the new Product entry. Otherwise a simple alert message is shown
+				using the <samp class="ph codeph">showAlertError</samp> function that we've already seen.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+
+	onSave : function() {
+		// Show message if no product name has been entered
+		// Otherwise, get highest existing ID, and invoke create for new product
+		if (!this.getView().getModel("newProduct").getProperty("/Detail/Name")) {
+			if (!this.oAlertDialog) {
+				this.oAlertDialog = sap.ui.xmlfragment("sap.ui.demo.tdg.view.NameRequiredDialog", this);
+				this.getView().addDependent(this.oAlertDialog);
+			}
+			this.oAlertDialog.open();
+</pre></div>
+
+			<p class="p">We impose a small restriction on the input of the new product details - there must be
+				a name specified. If not, we instantiate an alert Dialog (if it doesn't exist
+				already) and show it. Where is the definition? In an XML fragment, of course! </p>
+
+			<p class="p">Fragments are not only useful for for separating out UI definitions into discrete and
+				maintainable chunks, but also allow you to use your choice of view definition
+				language (in our case XML) for all of your UI elements. So instead of declaring the
+					<samp class="ph codeph">sap.m.Dialog</samp>-based alert in-line, in this condition, with
+				JavaScript, you can and should declare it using the same approach (XML) as the rest
+				of your UI. See below for the XML fragment where this Dialog is defined.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+	} else {
+			if (!this.oBusyDialog) {
+				this.oBusyDialog = new sap.m.BusyDialog();
+			}
+			this.oBusyDialog.open();
+			this.getView().getModel().read("/Products", {
+				urlParameters : {
+					"$top" : 1,
+					"$orderby" : "ID desc",
+					"$select" : "ID"
+				},
+				async : false,
+				success : jQuery.proxy(function(oData) {
+					this.saveProduct(oData.results[0].ID + 1);
+				}, this),
+				error : jQuery.proxy(function() {
+					this.oBusyDialog.close();
+					this.showErrorAlert("Cannot determine next ID for new product");
+				}, this)
+			});
+
+		}
+	},
+</pre></div>
+
+			<p class="p">If all is ok with the form input, we want to go ahead with saving the new product. Our OData
+				service (Northwind) requires an ID key to be specified (it's not auto-generated on
+				creation). So we need to find the highest ID and then increment it.For the first
+				time in this app, we're going to invoke an explicit OData operation to retrieve
+				data: a <samp class="ph codeph">QUERY</samp>, via the
+					<samp class="ph codeph">sap.ui.model.odata.ODataModel.read</samp> function. For
+					<samp class="ph codeph">READ</samp> and <samp class="ph codeph">QUERY </samp>operations on an OData service,
+				this should be the exception. But in this case it's required - we need to use a
+				combination of the <samp class="ph codeph">$top</samp>, <samp class="ph codeph">$orderby</samp> and
+					<samp class="ph codeph">$select</samp> query options: "Give me the ID property of the entity
+				that has the highest ID in the Products entityset"</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+	onCancel : function() {
+		sap.ui.core.UIComponent.geRouterFor(this).backWithoutHash(this.getView());
+	},
+</pre></div>
+
+			<p class="p">This function is called to handle the press event of the "Cancel" Button. It uses the
+					<samp class="ph codeph">sap.ui.demo.tdg.MyRouter.backWithoutHash</samp> function to return to
+				the product detail that was visible before this AddProduct view was displayed. This
+					<samp class="ph codeph">backWithoutHash</samp> function recursively ascends the UI tree via a
+				helper function <samp class="ph codeph">_findSplitApp</samp>, to discover the app's "root'
+				control, the <samp class="ph codeph">sap.m.SplitApp</samp>. On finding this, it can call the
+				appropriate back function. </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+onDialogClose : function(oEvent) {
+		oEvent.getSource().getParent().close();
+	}
+});
+</pre></div>
+
+			<p class="p">The last function in this controller is a handler for the press event on the
+					<samp class="ph codeph">sap.m.Dialog</samp> defined in the XML fragment
+					<span class="ph filepath">NameRequiredDialog.fragment.xml</span>.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Fragment</div><div type="Fragment">
+			
+			<p class="p">The XML fragment <span class="ph filepath">NameRequiredDialog.fragment.xml</span> is where the
+				alert Dialog is defined, and looks like this:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!xml</samp>
+&lt;core:FragmentDefinition
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"&gt;
+	&lt;Dialog
+		title="{i18n&gt;nameRequiredDialogTitle}"
+		type="Message"&gt;
+		&lt;content&gt;
+			&lt;Text text="{i18n&gt;nameRequiredDialogText}" /&gt;
+		&lt;/content&gt;
+		&lt;beginButton&gt;
+			&lt;Button text="{i18n&gt;nameRequiredDialogButton}" press="onDialogClose" /&gt;
+		&lt;/beginButton&gt;
+	&lt;/Dialog&gt;
+&lt;/core:FragmentDefinition&gt;
+</pre></div>
+
+			<p class="p">Like the other fragments in this app (see the Detail XML Fragments section) this fragment has
+				only a single root node ( <samp class="ph codeph">&lt;Dialog&gt; </samp>), nevertheless we're
+				using the <samp class="ph codeph">&lt;core:FragmentDefinition&gt;</samp> wrapper here too. Note
+				also that we're also explicitly specifying the <samp class="ph codeph">sap.m.Dialog</samp>'s
+				default aggregation rather than implying it ( <samp class="ph codeph">&lt;content&gt;</samp> ).
+				Finally, it's worth pointing out that the handler for the press event is to be found
+				in the controller related to the view where this fragment is inserted, i.e.
+					<span class="ph filepath">AddProduct.controller.js</span>.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Progress Check</div><div type="Progress Check">
+			
+			<p class="p">Ok, we're almost there. Our app folder content now looks like this:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+tdg/
+  |
+  +-- i18n/
+  |     |
+  |     +-- messageBundle.properties
+  |
+  +-- util/
+  |     |
+  |     +-- Formatter.js
+  |
+  +-- view/
+  |     |
+  |     +-- AddProduct.controller.js
+  |     +-- AddProduct.view.xml
+  |     +-- App.view.xml
+  |     +-- CategoryInfoForm.fragment.xml
+  |     +-- Detail.controller.js
+  |     +-- Detail.view.xml
+  |     +-- Master.controller.js
+  |     +-- Master.view.xml
+  |     +-- NameRequiredDialog.fragment.xml
+  |     +-- SupplierAddressForm.fragment.xml
+  |
+  +-- Component.js
+  +-- index.html
+  +-- MyRouter.html
+</pre></div>
+
+			<p class="p">Here's a shot of the AddProduct view with the alert Dialog shown (as we have
+				deliberately not specified a value for the Product Name:</p>
+
+			<div class="fig fignone" id="loio5a6ffde8380041ffa11ed5c10431b4aa__fig_k52_3rx_4n"><div class="figcontainer"><img class="image" id="loio5a6ffde8380041ffa11ed5c10431b4aa__image_unb_jrx_4n" src="18837ef7e00b4eddb36761d954c51d12.image"/></div></div>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Step 11: AddProduct View";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="A Table basically consists of columns (sap.m.Column) and rows. The rows, defines as sap.m.ColumnListItems consist of cells."/>
+<meta name="description" content="A Table basically consists of columns (sap.m.Column) and rows. The rows, defines as sap.m.ColumnListItems consist of cells."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=3614252973045914"/>
+<title>Creating Tables</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio5eb6f63e0cc547d0bdc934d3652fdc9b">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Creating Tables</h1>
+<div class="body taskbody"><p class="shortdesc">A Table basically consists of columns (<samp class="ph codeph">sap.m.Column</samp>) and rows. The
+		rows, defines as <samp class="ph codeph">sap.m.ColumnListItems</samp> consist of cells.</p>
+<div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand"><span class="ph cmd">To build a table,we first need to define columns. For this purpose you can define the
+					Column control with the following properties or aggregations: </span>
+<table border="1" frame="hsides" rules="rows" cellpadding="4" cellspacing="0" summary="" class="simpletable choicetable choicetableborder" id="loio5eb6f63e0cc547d0bdc934d3652fdc9b__choicetable_abl_twh_nn">
+<thead><tr><th valign="bottom" align="left" id="d459465e22-option">Property or Aggregation</th>
+<th valign="bottom" align="left" id="d459465e22-desc">Description</th></tr></thead>
+<tbody><tr class="strow chrow"><td valign="top" headers="d459465e22-option" id="d459465e29" class="stentry choption" width="50%"><strong>header</strong></td>
+<td valign="top" headers="d459465e22-desc d459465e29" class="stentry chdesc" width="50%">Defines column header. Any control can be used but most likely
+							<span class="ph emphasis emphasis">Label</span> or <span class="ph emphasis emphasis">Text</span> control.
+							If any column has header definition then header line gets visible
+							for all columns.</td>
+</tr>
+<tr class="strow chrow"><td valign="top" headers="d459465e22-option" id="d459465e40" class="stentry choption" width="50%"><strong>footer</strong></td>
+<td valign="top" headers="d459465e22-desc d459465e40" class="stentry chdesc" width="50%">Any control can be assigned to be displayed in the column footer.
+							If at least one column has a footer definition, then the footer line
+							is displayed for all columns.</td>
+</tr>
+<tr class="strow chrow"><td valign="top" headers="d459465e22-option" id="d459465e45" class="stentry choption" width="50%"><strong>width</strong></td>
+<td valign="top" headers="d459465e22-desc d459465e45" class="stentry chdesc" width="50%">Defines the width of the column. If you leave it empty then this column covers the
+							remaining space.</td>
+</tr>
+<tr class="strow chrow"><td valign="top" headers="d459465e22-option" id="d459465e50" class="stentry choption" width="50%"><strong>hAlign</strong></td>
+<td valign="top" headers="d459465e22-desc d459465e50" class="stentry chdesc" width="50%">Defines the horizontal alignment(<span class="keyword option">Begin</span>, <span class="keyword option">Center</span>,
+							<span class="keyword option">End</span>, <span class="keyword option">Left</span>,
+							<span class="keyword option">Right</span>) of the column content. Controls with a
+							textAlign property inherit the horizontal alignment from Column
+							hAlign property.</td>
+</tr>
+<tr class="strow chrow"><td valign="top" headers="d459465e22-option" id="d459465e70" class="stentry choption" width="50%"><strong>vAlign</strong></td>
+<td valign="top" headers="d459465e22-desc d459465e70" class="stentry chdesc" width="50%">Defines the vertical alignment of column cells. Possible values are
+							<span class="keyword option">Top</span>, <span class="keyword option">Middle</span>,
+							<span class="keyword option">Bottom</span>. This property does not affect the
+							vertical alignment of header and footer.</td>
+</tr>
+<tr class="strow chrow"><td valign="top" headers="d459465e22-option" id="d459465e84" class="stentry choption" width="50%"><strong>visible</strong></td>
+<td valign="top" headers="d459465e22-desc d459465e84" class="stentry chdesc" width="50%">Specifies whether the column is visible. Invisible columns are not rendered.</td>
+</tr>
+</tbody></table>
+</li>
+<li class="li step stepexpand"><span class="ph cmd">Sure, we have more properties to make it responsive and to change the design of
+					a column, but we will explain this later. Now, let's see how we can define a
+					right aligned column header:</span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+var col = new sap.m.Column({
+        width : "25%",
+        hAlign : "Right",
+        vAlign : "Middle", 
+        header : new sap.m.Label({
+                text : "Price"
+        })
+});</pre></div>
+
+				</li>
+<li class="li step stepexpand"><span class="ph cmd">To build a Table, you have to define table rows. For this purpose you use
+						<samp class="ph codeph">ColumnListItems</samp>. <samp class="ph codeph">ColumnListItems</samp> have a
+					cell aggregation (one to many) which defines cells in one row according to the
+					column definition. Let's build a real table example to understand it better.
+					Here's the implementation:</span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+new sap.m.List({    // define List Control
+    mode: "MultiSelect",    // multi selection mode
+    columns : [
+        new sap.m.Column({  // first column
+            header : new sap.m.Label({  // header of the first column
+                text : "Name"
+            })
+        }), 
+        new sap.m.Column({  // second column
+            hAlign : "Right",   // column will be right aligned
+            header : new sap.m.Label({  // header of the second column
+                text : "Price"
+            }),
+            footer : new sap.m.Label({  // footer of the second column
+                text : "15.00 EUR"
+            })
+        })
+    ], 
+    items : [
+        new sap.m.ColumnListItem({  // first row
+            selected : true,    // first item is selected (from ListItemBase)
+            cells : [
+                new sap.m.Label({
+                    text : "Headphone"  // first cell related to first column definition
+                }),
+                new sap.m.Label({       // second cell related to second column definition
+                    text : "12.00 EUR"  
+                })
+            ]
+        }),
+        new sap.m.ColumnListItem({  // second row
+            cells : [
+                new sap.m.Label({       // first cell related to first column definition
+                    text : "Mouse Pad"
+                }),
+                new sap.m.Label({       // second cell related to second column definition
+                    text : "3.00 EUR"
+                })
+            ]
+        })  
+    ]
+});</pre></div>
+
+				<div class="itemgroup stepresult">And that's what we've built: <p class="p"><img class="image" id="loio5eb6f63e0cc547d0bdc934d3652fdc9b__image_b3m_lqj_ln" src="06efdfbc0b984eaeb89a4de3853371fe.image"/></p>
+</div></li>
+</ol>
+<div class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div>
+			<p class="p"><span class="ph emphasis emphasis">API References</span></p>
+
+			<ul class="ul" id="loio5eb6f63e0cc547d0bdc934d3652fdc9b__ul_xpr_nvh_nn"><li class="li"><a class="xref" href="../../docs/api/symbols/sap.m.Column.html">sap.m.Column</a></li>
+<li class="li"><a class="xref" href="../../docs/api/symbols/sap.m.ColumnListItem.html">sap.m.ColumnListItem</a></li>
+</ul>
+
+		</div></div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Creating Tables";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

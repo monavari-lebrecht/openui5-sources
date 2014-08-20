@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=18314793648182948"/>
+<title>Bootstrapping: Loading and Initializing SAPUI5 in HTML Pages</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f1cea36f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Bootstrapping: Loading and Initializing SAPUI5 in HTML Pages</h1>
+<div class="body"><p class="p">To use SAPUI5 for your application, you must load and initialize SAPUI5 in your HTML pages. For
+			this, SAPUI5 provides several bootstrap files to support different use cases of
+			bootstrapping. All supported use cases have in common that you need to load and execute
+			at least one SAPUI5-specific JavaScript resource.</p>
+<p class="p">The following table gives an overview of the most important resources and the respective use
+			cases. The resource names refer to the <samp class="ph codeph">resources/</samp> folder in the SAPUI5
+			installation. The actual base URL depends on your platform and administrative setup.</p>
+<table summary="" border="1" class="simpletable"><tr class="sthead"><th valign="bottom" align="left" id="d787176e21" class="stentry">Resource</th>
+<th valign="bottom" align="left" id="d787176e23" class="stentry">Description</th>
+</tr>
+<tr class="strow"><td valign="top" headers="d787176e21" class="stentry"><samp class="ph codeph">sap-ui-core.js</samp></td>
+<td valign="top" headers="d787176e23" class="stentry"> 
+			 <p class="p">This is the standard bootstrap file. It already contains jQuery,
+							<samp class="ph codeph">jquery-ui-position</samp> and only the minimum required parts
+						of the SAPUI5 core library (<samp class="ph codeph">sap.ui.core</samp>). Required files
+						are loaded dynamically using XMLHttpRequest (XHR).</p>
+ 
+			 <p class="p">For more information, see <a class="xref" href="91f1f4536f4d1014b6dd926db0e91070.html">Standard
+							Variant for Bootstrapping</a>. </p>
+</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d787176e21" class="stentry"><samp class="ph codeph">sap-ui-core-nojQuery.js</samp></td>
+<td valign="top" headers="d787176e23" class="stentry"> 
+			 <p class="p">You use this bootstrap file for applications with their own jQuery version. It also contains
+						the minimum required parts of the SAPUI5 core library, but <strong class="ph b">not</strong> jQuery
+						and <samp class="ph codeph">jquery-ui-position</samp>.</p>
+ 
+			 <p class="p">For more information, see <a class="xref" href="91f1dd0c6f4d1014b6dd926db0e91070.html">noJQuery
+							Variant for Bootstrapping</a>. </p>
+ 
+		  </td>
+</tr>
+<tr class="strow"><td valign="top" headers="d787176e21" class="stentry"><samp class="ph codeph">sap-ui-core-all.js</samp></td>
+<td valign="top" headers="d787176e23" class="stentry"> 
+			 <p class="p">This bootstrap file contains almost all resources of the <samp class="ph codeph">sap.ui.core</samp>
+						library. Only a few duplicates, such as multiple jQuery versions, testing
+						resources, and so on, are omitted. If you use this file for bootstrapping,
+						the <samp class="ph codeph">*-all.js</samp> file is also loaded for all other libraries.
+						This reduces the number of JavaScript requests to the number of libraries
+						(typically 1..4). </p>
+
+			 <div class="note note" id="loio91f1cea36f4d1014b6dd926db0e91070__note_N10080_N1006D_N10066_N1001F_N10013_N10001"><span class="notetitle">Note</span> To ensure proper encapsulation, the
+							<samp class="ph codeph">*-all.js</samp> files will be renamed in future versions of
+						SAPUI5. The <samp class="ph codeph">sap-ui-core-all.js</samp> file remains as is, but for
+						the files for other libraries a name relative to the libary will be used,
+						for example <samp class="ph codeph">sap/ui/commons/library-all.js</samp>. Applications
+						must <strong class="ph b">not</strong> address these files directly as SAPUI5 runtime loads them.
+						Only <samp class="ph codeph">sap-ui-core-all.js</samp> can be directly referenced in the
+						bootstrap tag.</div>
+
+					<p class="p">For more information, see <a class="xref" href="91f1d5736f4d1014b6dd926db0e91070.html">All-in-one per Library
+							Variant for
+							Bootstrapping</a>. </p>
+ 
+		  </td>
+</tr>
+<tr class="strow"><td valign="top" headers="d787176e21" class="stentry"><samp class="ph codeph">sap/ui/core/library-preload.js</samp></td>
+<td valign="top" headers="d787176e23" class="stentry"> 
+			 <p class="p">This bootstrap file is similar to the <samp class="ph codeph">sap-ui-core-all.js</samp> file, but the
+						modules are parsed and executed only on demand, and not immmediately.</p>
+
+			 <div class="note caution" id="loio91f1cea36f4d1014b6dd926db0e91070__note_N100AB_N100A0_N10099_N1001F_N10013_N10001"><span class="cautiontitle">Caution</span> An application must not
+						reference this file. If the configuration option is set to
+							<samp class="ph codeph">preload</samp>, SAPUI5 automatically loads the file.</div>
+ 
+			 <p class="p">For more information, see <a class="xref" href="91f1e3626f4d1014b6dd926db0e91070.html">Preload
+							Variant for Bootstrapping</a>. </p>
+ 
+		  </td>
+</tr>
+<tr class="strow"><td valign="top" headers="d787176e21" class="stentry"><samp class="ph codeph">sap-ui-core-lean.js</samp></td>
+<td valign="top" headers="d787176e23" class="stentry"> 
+			 <p class="p">This bootstrap file is similar to the <samp class="ph codeph">sap-ui-core.js</samp> file, but in this use
+						case only the jQuery and one SAPUI5 file are loaded immediately and the
+						other files are loaded dynamically.</p>
+
+					<div class="note note"><span class="notetitle">Note</span> 
+						<p class="p">This use case is usually not used and may be removed in future.</p>
+
+					</div>
+</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d787176e21" class="stentry"><samp class="ph codeph">sap-ui5.js</samp></td>
+<td valign="top" headers="d787176e23" class="stentry">
+			 <p class="p">This bootstrap file contains all JavaScript modules from the <samp class="ph codeph">sap.ui.core</samp>,
+							<samp class="ph codeph">sap.ui.commons</samp>, <samp class="ph codeph">sap.ui.table</samp> and
+							<samp class="ph codeph">sap.ui.ux3</samp> libraries. If you use this file for
+						bootstrapping, you only need one single request, but the loading time may be
+						longer as the loading time for other use cases. Another drawback of this use
+						case is the fixed set of libraries.</p>
+
+					<p class="p">This file is only available on platorms based on the <samp class="ph codeph">sapui5.war</samp> or
+							<samp class="ph codeph">sapui5-static.zip</samp> artifacts. The OSGi/Eclipse versions
+							(<samp class="ph codeph">com.sap.ui5.core.jar</samp>), for example, do <strong class="ph b">not</strong>
+						contain this file.</p>
+
+					<p class="p">For more information, see <a class="xref" href="91f1eba86f4d1014b6dd926db0e91070.html">sap-ui5 Variant for Bootstrapping</a>. </p>
+ 
+		  </td>
+</tr>
+<tr class="strow"><td valign="top" headers="d787176e21" class="stentry"><samp class="ph codeph">sap-ui-custom*.js</samp></td>
+<td valign="top" headers="d787176e23" class="stentry"> 
+			 <p class="p">This bootstrap file is reserved for custom merged files created by the application.</p>
+
+			 <div class="note note" id="loio91f1cea36f4d1014b6dd926db0e91070__note_N10120_N10119_N10112_N1001F_N10013_N10001"><span class="notetitle">Note</span> The proposed naming scheme for these files needs to be adapted
+				in future versions for the same encapsulation reasons as mentioned above.
+			 </div>
+ 
+		  </td>
+</tr>
+</table>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="91f2c9076f4d1014b6dd926db0e91070.html">Initialization Process</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Bootstrapping: Loading and Initializing SAPUI5 in HTML Pages";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

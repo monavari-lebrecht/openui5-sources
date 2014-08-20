@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="Describes how to create a component for SAPUI5 from scratch"/>
+<meta name="description" content="Describes how to create a component for SAPUI5 from scratch"/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=8775843213473773"/>
+<title>Creating a New SAPUI5 Component</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio301b05f212334a66b1a2bc5411a6c030">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Creating a New SAPUI5 Component</h1>
+<div class="body taskbody"><p class="shortdesc">Describes how to create a component for SAPUI5 from scratch</p>
+<div class="section context" id="loio301b05f212334a66b1a2bc5411a6c030__context_N10015_N10012_N10001"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">This procedure describes how you create a new component for SAPUI5 from scratch. The example
+                component used in the procedure has a button with configurable text.</p>
+
+		</div><div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand" id="loio301b05f212334a66b1a2bc5411a6c030__step_N10021_N1001E_N10012_N10001"><span class="ph cmd">Create a new folder with the name of your component, for example <em class="ph i">button</em>.</span></li>
+<li class="li step stepexpand" id="loio301b05f212334a66b1a2bc5411a6c030__step_N1002E_N1001E_N10012_N10001"><span class="ph cmd">Create the following files in your folder:</span><ul class="ul choices" id="loio301b05f212334a66b1a2bc5411a6c030__choices_gs3_3bt_pk"><li class="li choice">
+						<p class="p"><samp class="ph codeph">Component.js</samp></p>
+
+                        <p class="p">If you use particular controls in your component, start with the
+                                <samp class="ph codeph">require</samp> statements. If your component depends on an
+                            entire library, you can include the <samp class="ph codeph">require</samp> statements
+                            in the metadata. The <samp class="ph codeph">declare</samp> statement for the
+                            component follows the <samp class="ph codeph">require</samp> statements. Then you
+                            extend the <samp class="ph codeph">UIComponent</samp> base class and pass the name of
+                            the component as well as the package path to it.</p>
+
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">// define a new (simple) UIComponent
+jQuery.sap.require("sap.ui.core.UIComponent");
+jQuery.sap.require("sap.ui.commons.Button");
+jQuery.sap.declare("samples.components.button.Component");
+
+// new Component
+sap.ui.core.UIComponent.extend("samples.components.button.Component", {
+
+    metadata : {
+        properties : {
+            text: "string"
+        }
+    }
+});
+
+
+samples.components.button.Component.prototype.createContent = function(){
+    this.oButton = new sap.ui.commons.Button("btn");
+    return this.oButton; 
+}; 
+
+/*
+* Overrides setText method of the component to set this text in the button
+*/
+samples.components.button.Component.prototype.setText = function(sText) {
+    this.oButton.setText(sText);
+    this.setProperty("text", sText);
+    return this;
+};
+</pre></div>
+
+					</li>
+<li class="li choice">
+						<p class="p"><samp class="ph codeph">Component.json</samp></p>
+
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">{
+    "name": "samples.components.button",
+    "version": "0.1.0",
+    "description": "Sample button components",
+    "keywords": [
+        "button",
+        "example" 
+    ],
+    "dependencies": {
+    }
+}
+</pre></div>
+
+					</li>
+</ul>
+<div class="itemgroup stepresult">
+					<p class="p">The component is now ready to be used in an application. The following code snippet gives an
+                        example of the use of the component in two instances:</p>
+
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">// Create a component
+       var oComp1 = sap.ui.getCore().createComponent({
+        name: "samples.components.button",
+        id: "Comp1", 
+        settings: {text: "Hello World"}
+    });
+        // Create a Ui container 
+    var oCompCont1 = new sap.ui.core.ComponentContainer("CompCont1", {
+        component: oComp1
+    });
+        // place this Ui Container with the Component inside into UI Area 
+    oCompCont1.placeAt("target1");
+
+
+        // You can also create a component and container at once. 
+        // In this example the container will create a new component according to the name.
+    var oCompCont2 = new sap.ui.core.ComponentContainer("CompCont2", {
+        name: "samples.components.button",
+        settings: {text: "Hello World again"}
+    });
+    oCompCont2.placeAt("target2");</pre></div>
+
+				</div></li>
+</ol>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="958ead51e2e94ab8bcdc90fb7e9d53d0.html" title="Components are independent and reusable parts used in SAPUI5 applications. An application can use components from different locations from where the application is running. Thus, components can be developed by different development teams and be used in different projects. Components also support the encapsulation of closely related parts of an application into a particular component. This makes the structure of an application and its code easier to understand and to maintain.">SAPUI5 Components</a></div>
+<div><a class="link" href="182ab413eb54433eb16f1ecf15a00651.html">Using UI Components in Applications</a></div>
+</div>
+
+<div class="linklist linklist"/>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Creating a New SAPUI5 Component";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

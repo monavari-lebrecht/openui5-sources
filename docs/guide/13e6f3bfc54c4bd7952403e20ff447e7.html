@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=6356865470885765"/>
+<title>Compact Mode for sap.m.controls in Blue Crystal</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio13e6f3bfc54c4bd7952403e20ff447e7">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Compact Mode for sap.m.controls in Blue Crystal</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">The compact mode is a reduced-size design which is available for <samp class="ph codeph">sap.m</samp>
+			controls used in the Blue Crystal theme. The font size is the same, but the dimensions
+			of controls and the spacing between them are reduced compared to the
+				<samp class="ph codeph">sap.m</samp> controls.</p>
+<div class="note caution"><span class="cautiontitle">Caution</span> 
+			<p class="p">The compact mode feature is <span class="ph emphasis emphasis">not</span> supported for Internet Explorer
+				9.</p>
+
+		</div>
+<div class="section"><div class="section_title">Using Compact Mode</div><div type="Using Compact Mode">
+			
+			<p class="p">Compact mode is triggered by the CSS class <samp class="ph codeph">sapUiSizeCompact</samp> set on a
+				parent element of the UI region for which you want to use compact mode controls.
+				This means that parts of the UI or different apps inside a
+					<samp class="ph codeph">sap.m.Shell</samp> can use the normal mode of the
+					<samp class="ph codeph">sap.m</samp> controls and other parts can at the same time use the
+				compact mode. However, sub-parts of the UI part that is set to compact mode can
+					<span class="ph emphasis emphasis">not</span> use the normal mode because the CSS class affects the
+				entire HTML subtree.</p>
+
+			<p class="p">As dialogs and other popups are located at the root of the HTML document, you also
+				have to set the CSS class for those elements to the respective mode. The CSS class
+				only affects child controls. You can <span class="ph emphasis emphasis">not</span> make a control itself
+				compact by adding the CSS class to it. Instead, set the CSS class on the parent
+				container, for example a view or a component.</p>
+
+			<p class="p">XML view definition - Example:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;mvc:View class="sapUiSizeCompact" xmlns=....&gt;
+   ...
+&lt;/mvc:View&gt;
+</pre></div>
+
+			<p class="p">JS view definition - Example:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">createContent: function(oController) {
+   ...
+   this.addStyleClass("sapUiSizeCompact"); // make everything inside this View appear in Compact mode
+   ...
+}
+</pre></div>
+
+			<p class="p">JavaScript opening a dialog - Example:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var myDialog = new sap.ui.commons.Dialog({.....}).addStyleClass("sapUiSizeCompact");
+myDialog.open();
+</pre></div>
+
+			<p class="p">JavaScript instantiating a view - Example:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var myView = sap.ui.view(...);
+myView.addStyleClass("sapUiSizeCompact");
+</pre></div>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p">It is also possible to apply the compact mode only under certain circumstances,
+					for example, for devices that do <span class="ph emphasis emphasis">not</span> support touch
+					interaction. In this case, add the class dynamically to the UI instead of
+					statically. You can do this, for example, in the view controller:</p>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.controller("my.controller", {
+   onInit: function() {
+      if (!jQuery.support.touch) { // apply compact mode if touch is not supported
+         this.getView().addStyleClass("sapUiSizeCompact");
+      }
+   }
+});
+</pre></div>
+
+			</div>
+
+			<p class="p">As the check depends on several factors, you may not want to repeat the same logic again and
+				again. A dialog opened from a compact view should, for example, also be in compact
+				mode.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Synchronizing Compact Mode for a Dialog</div><div type="Synchronizing Compact Mode for a Dialog">
+			
+			<p class="p">As dialogs are rendered in a different part of the HTML tree, they do
+					<span class="ph emphasis emphasis">not</span>t automatically inherit the compact mode. To decide if
+				you set the compact mode for a dialog, either perform the same check as for the view
+				or use the convenience function <samp class="ph codeph">jQuery.sap.syncStyleClass</samp>. This
+				convenience function synchronizes a style class between elements. The function
+				accepts the following parameters: Name of the style class, source element, and
+				destination element. The following code snippet shows an example:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;mvc:View
+    controllerName="mycontroller"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"&gt;
+    &lt;Button text="Show Dialog" press="onOpenDialog" /&gt;
+&lt;/mvc:View&gt;</pre></div>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core"&gt;
+    &lt;Dialog title="Alert" type="Message"&gt;
+        &lt;Text text="Lorem ipsum dolor sit amet" /&gt;
+        &lt;beginButton&gt;
+            &lt;Button text="Close" press="onDialogClose" /&gt;
+        &lt;/beginButton&gt;
+    &lt;/Dialog&gt;
+&lt;/core:FragmentDefinition&gt;</pre></div>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.controller("mycontroller", {
+    onOpenDialog: function (oEvent) {
+        if (! this._oDialog) {
+            this._oDialog = sap.ui.xmlfragment("mydialog", this);
+            this.getView().addDependent(this._oDialog);
+        }
+
+        // sync compact style
+        jQuery.sap.syncStyleClass("sapUiSizeCompact", this.getView(), this._oDialog);
+        this._oDialog.open();
+    }
+});
+</pre></div>
+
+			<p class="p">When calling <samp class="ph codeph">jQuery.sap.syncStyleClass</samp>, the source element can be a
+				jQuery object, a SAPUI5 control, or the ID of an HTML element. The destination
+				object can either be a jQuery object or a SAPUI5 control.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Checking for Compact Mode Style Class</div><div type="Checking for Compact Mode Style Class">
+			
+			<p class="p">To determine if the compact style class is set anywhere above a certain HTML element,
+				you can use the <samp class="ph codeph">closest</samp> function from jQuery as shown in the
+				following example:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var btn = new sap.m.Button({
+    text: "Hello World",
+    press: function(){
+        var dialog = new sap.m.Dialog({
+            title: "Hello World",
+            content: new sap.m.Button({text:"Test Me"})
+        });
+        
+        
+        // add the 'sapUiSizeCompact' class if the Button is in an area using Compact Mode
+        if (this.$().closest(".sapUiSizeCompact").length &gt; 0) { // "this" in the event handler is the control that triggered the event
+            dialog.addStyleClass("sapUiSizeCompact");
+        }
+        
+        
+        dialog.open();
+    }
+});</pre></div>
+
+		</div></div>
+<div class="section"><div class="section_title">Providing Compact Mode support for a Control</div><div type="Providing Compact Mode support for a Control">
+			
+			<p class="p">If you want to apply the normal and compact mode to your own controls, provide the
+				normal CSS styling for the normal mode regardless of any size mode classes and
+				provide extra CSS to shrink the size, if an ancestor element has the
+					<samp class="ph codeph">sapUiSizeCompact</samp> class. The following code snippet provides an
+				example:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">.myOwnControl { /* the standard (big) style */
+   ...
+   height: 3rem;
+   ...
+}
+
+.sapUiSizeCompact .myOwnControl { /* reduce the height in compact mode */
+   height: 2rem;
+}
+
+</pre></div>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Compact Mode for sap.m.controls in Blue Crystal";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

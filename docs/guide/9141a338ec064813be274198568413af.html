@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="There are two layers in SAPUI5 that are responsible for resource handling and that work completely independently from each other: the client side and the server side."/>
+<meta name="description" content="There are two layers in SAPUI5 that are responsible for resource handling and that work completely independently from each other: the client side and the server side."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=515860493597075"/>
+<title>Resource Handling</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio9141a338ec064813be274198568413af">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Resource Handling</h1>
+<div class="body conbody"><p class="shortdesc">There are two layers in SAPUI5 that are responsible for resource handling and that work
+		completely independently from each other: the client side and the server side. </p>
+<p class="p">The resource handling of SAPUI5 is separated in two parts - a client-side and a server-side
+			resource handling. </p>
+<div class="section" id="loio9141a338ec064813be274198568413af__section_N10021_N10012_N10001"><div class="section_title">Server-side Resource Handling</div><div type="Server-side Resource Handling">
+			
+			<p class="p">SAPUI5 provides resource handlers for different servers. The main purpose of  server-side
+				resource handlers is to provide access to the SAPUI5 libraries. It improves the
+				interaction between client and server, for example in providing a server-side locale
+				fallback for the language, which helps to avoid multiple requests to get the correct
+				language. It is also used to support modularized development of SAPUI5 applications
+				and libraries.The Java resource handler is aligned with the concept of the
+				JavaServer Faces. </p>
+
+		</div></div>
+<div class="section" id="loio9141a338ec064813be274198568413af__section_N10018_N10012_N10001"><div class="section_title">Client-side Resource Handling</div><div type="Client-side Resource Handling">
+			
+			<p class="p">On the client-side, SAPUI5 provides the following mechanisms to manage resources: </p>
+
+			<ul class="ul" id="loio9141a338ec064813be274198568413af__ul_vxg_lvw_qk"><li class="li">
+					<p class="p">It supports localization of application texts with resource bundles. </p>
+
+				</li>
+<li class="li">
+					<p class="p">It allows  JavaScript files to be modularized.</p>
+
+				</li>
+</ul>
+
+			<p class="p">Both concepts load additional resources from a server that can be any kind of web server. It
+				does not depend on any server.side technology. </p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="91f2412f6f4d1014b6dd926db0e91070.html" title="The SAPUI5 framework has built-in support for modularizing comprehensive JavaScript applications. That means, instead of defining and loading one large bundle of JavaScript code, an application can be splitted into smaller parts which then can be loaded at runtime at the time when they are needed. These smaller individual files are called modules.">Modularization and Resource Handling</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Resource Handling";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

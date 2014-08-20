@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=7097361983773541"/>
+<title>Step 4: Internationalization</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiob6d1a9511f994b3a86e2f34a32e40a34">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Step 4: Internationalization</h1>
+<div class="body conbody"><p class="shortdesc"/>
+<p class="p">For localization, or internationalization (i18n), use data binding and the
+				<samp class="ph codeph">sap.ui.model.resource.ResourceModel</samp> as a named model. This allows
+			easily using translation keys instead of the actual texts. The alternative, using
+				<dfn class="term">ResourceBundles</dfn>, requires code execution for every translated text set
+			on a control.</p>
+<p class="p">Let's examine the relevant code that we briefly saw earlier in the Component section. The
+			i18n model is set up in the Component's initialization section, based upon configuration
+			in the component's metadata: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+ // always use absolute paths relative to our own component
+        // (relative paths will fail if running in the Fiori Launchpad)
+        var rootPath = jQuery.sap.getModulePath("sap.ui.demo.tdg");
+
+        // set i18n model
+        var i18nModel = new sap.ui.model.resource.ResourceModel({
+            bundleUrl : [rootPath, mConfig.resourceBundle].join("/")
+        });
+        this.setModel(i18nModel, "i18n");
+</pre></div>
+<p class="p">Use "i18n" as the name for the model; use only one global property file that contains all
+			texts used in the application.</p>
+<p class="p"> The configuration specifies the relative location of the resource bundle. This is made
+			absolute (in relation to our app's namespace) by use of the
+				<samp class="ph codeph">jQuery.sap.getModulePath</samp> utility function, and then used to create
+			the named model, before it it set on the component. Here's an exerpt from the
+				<span class="ph filepath">messageBundle.properties</span> file in the i18n folder:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+masterTitle=Products
+masterFooterAddButtonTooltip=Add new product
+masterListNoDataText=No products
+notFoundTitle=Not Found
+notFoundText=The requested resource was not found
+addProductTitle=Add Product
+addProductButtonSave=Save
+...
+</pre></div>
+<p class="p">Group view specific texts with prefixes, as shown here (master, notFound, addProduct). If
+			you have texts that are common across all views of your app, do not apply a prefix, so
+			as to avoid redundancies. Note that here, the name of the resource bundle file has no
+			locale-specific suffix. This is the 'catchall' case. UI5 will attempt to load the most
+			specific locale-specific resource bundle file, with graceful degradation down to this
+			catchall case. For example, with a UK-based browser, and no explicit language-related
+			URL parameters, the UI5 runtime, given the above configuration, will attempt to load the
+			following files in this order: </p>
+<ol class="ol" id="loiob6d1a9511f994b3a86e2f34a32e40a34__ol_s4m_rx3_4n"><li dir="ltr" class="li"><span class="ph filepath">messageBundle_en_GB.properties </span></li>
+<li dir="ltr" class="li"><span class="ph filepath">messageBundle_en.properties </span></li>
+<li dir="ltr" class="li"><span class="ph filepath">messageBundle.properties </span></li>
+</ol>
+<p class="p">Texts for translation keys in more specific resource bundles (loaded earlier) will take
+			precedence over texts for the same translation keys in less specific resource bundles
+			(loaded later). In our sample application we only have the least specific
+			messageBundle.properties file. </p>
+<div class="note note"><span class="notetitle">Note</span> Note that when using the <samp class="ph codeph">sap.ui.model.resource.ResourceModel</samp>, the
+			translation keys are referred to without the slash prefix that normally denotes a root
+			data property. In other words, in the data binding, use
+				<samp class="ph codeph">{i18n&gt;masterTitle}</samp> rather than
+				<samp class="ph codeph">{i18n&gt;/masterTitle}</samp>.</div>
+<div class="section"><div class="section_title">Progress Check</div><div type="Progress Check">
+			
+			<p class="p">We've added the i18n subfolder, and the <span class="ph filepath">messageBundle.properties</span> file in
+				it, so our app folder content looks like this:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+tdg/
+  |
+  +-- i18n/
+  |     |
+  |     +-- messageBundle.properties
+  |
+  +-- Component.js
+  +-- index.html
+  +-- MyRouter.html</pre></div>
+
+			<p class="p">But as you might expect, we'll get the same outcome as before, as we still don't have
+				the App view. Let's press on.</p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Step 4: Internationalization";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

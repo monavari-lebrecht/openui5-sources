@@ -1,0 +1,425 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.m.NavContainerChild</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Interface sap.m.NavContainerChild
+					</h1>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>sap.m.NavContainerChild is an artificial interface with the only purpose to bear the documentation of 
+pseudo events triggered by sap.m.NavContainer on its child controls when navigation occurs and child controls are displayed/hidden.
+</p><p>
+Interested parties outside the child control can listen to one or more of these events by registering a Delegate:
+<pre>
+page1.addEventDelegate({
+   onBeforeShow: function(evt) {
+      // page1 is about to be shown; act accordingly - if required you can read event information from the evt object
+   },
+   onAfterHide: function(evt) {
+      // ...
+   }
+});
+</pre></p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+		
+
+
+					
+		
+
+
+					
+						
+						
+						<div class="summary section" cellspacing="0" summary="A summary of the events documented in the class sap.m.NavContainerChild.">
+							<div class="sectionTitle">Event Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="This event is fired every time when the NavContainer has made this child control invisible."><a href="../symbols/sap.m.NavContainerChild.html#event:AfterHide">AfterHide</a></b><span class='signature'>()</span>
+									<span class='description'>This event is fired every time when the NavContainer has made this child control invisible.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="This event is fired every time when the NavContainer has made this child control visible."><a href="../symbols/sap.m.NavContainerChild.html#event:AfterShow">AfterShow</a></b><span class='signature'>()</span>
+									<span class='description'>This event is fired every time when the NavContainer has made this child control visible.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="This event is fired before the NavContainer shows this child control for the first time."><a href="../symbols/sap.m.NavContainerChild.html#event:BeforeFirstShow">BeforeFirstShow</a></b><span class='signature'>()</span>
+									<span class='description'>This event is fired before the NavContainer shows this child control for the first time.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="This event is fired every time before the NavContainer hides this child control."><a href="../symbols/sap.m.NavContainerChild.html#event:BeforeHide">BeforeHide</a></b><span class='signature'>()</span>
+									<span class='description'>This event is fired every time before the NavContainer hides this child control.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="This event is fired every time before the NavContainer shows this child control."><a href="../symbols/sap.m.NavContainerChild.html#event:BeforeShow">BeforeShow</a></b><span class='signature'>()</span>
+									<span class='description'>This event is fired every time before the NavContainer shows this child control.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+				
+						
+						
+					
+
+
+
+					
+		
+		
+
+					
+		
+
+		
+					
+		
+		
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Event Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:AfterHide"> </a>
+									<div class="itemTitle icon">
+										AfterHide<span class="signature">()</span>
+										
+									</div>
+									<div class="full-description">
+										This event is fired every time when the NavContainer has made this child control invisible. In case of animated transitions this 
+event is fired after the transition finishes. This control is now no longer being displayed and not animated anymore.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oEvent.srcControl</b>
+												</td>
+												<td class="methodItemDesc">
+											    the NavContainer firing the event
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:AfterShow"> </a>
+									<div class="itemTitle icon">
+										AfterShow<span class="signature">()</span>
+										
+									</div>
+									<div class="full-description">
+										This event is fired every time when the NavContainer has made this child control visible. In case of animated transitions this 
+event is fired after the transition finishes. This control is now being displayed and not animated anymore.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oEvent.srcControl</b>
+												</td>
+												<td class="methodItemDesc">
+											    the NavContainer firing the event
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oEvent.data</b>
+												</td>
+												<td class="methodItemDesc">
+											    the data object which has been passed with the "to" navigation, or an empty object
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oEvent.backData</b>
+												</td>
+												<td class="methodItemDesc">
+											    the data object which has been passed with the back navigation, or an empty object
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:BeforeFirstShow"> </a>
+									<div class="itemTitle icon">
+										BeforeFirstShow<span class="signature">()</span>
+										
+									</div>
+									<div class="full-description">
+										This event is fired before the NavContainer shows this child control for the first time.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oEvent.srcControl</b>
+												</td>
+												<td class="methodItemDesc">
+											    the NavContainer firing the event
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oEvent.data</b>
+												</td>
+												<td class="methodItemDesc">
+											    the data object which has been passed with the "to" navigation, or an empty object
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oEvent.backData</b>
+												</td>
+												<td class="methodItemDesc">
+											    the data object which has been passed with the back navigation, or an empty object
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:BeforeHide"> </a>
+									<div class="itemTitle icon">
+										BeforeHide<span class="signature">()</span>
+										
+									</div>
+									<div class="full-description">
+										This event is fired every time before the NavContainer hides this child control. In case of animated transitions this 
+event is fired before the transition starts.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oEvent.srcControl</b>
+												</td>
+												<td class="methodItemDesc">
+											    the NavContainer firing the event
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:BeforeShow"> </a>
+									<div class="itemTitle icon">
+										BeforeShow<span class="signature">()</span>
+										
+									</div>
+									<div class="full-description">
+										This event is fired every time before the NavContainer shows this child control. In case of animated transitions this 
+event is fired before the transition starts.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oEvent.srcControl</b>
+												</td>
+												<td class="methodItemDesc">
+											    the NavContainer firing the event
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oEvent.data</b>
+												</td>
+												<td class="methodItemDesc">
+											    the data object which has been passed with the "to" navigation, or an empty object
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oEvent.backData</b>
+												</td>
+												<td class="methodItemDesc">
+											    the data object which has been passed with the back navigation, or an empty object
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+							</div>
+						</div>
+					
+					
+		
+					
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

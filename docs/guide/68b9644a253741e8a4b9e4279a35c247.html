@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="Data binding is used to bind two data or information sources together to keep them in sync. If data binding is implemented and defined properly, all changes in one data source are automatically reflected in the other data source."/>
+<meta name="description" content="Data binding is used to bind two data or information sources together to keep them in sync. If data binding is implemented and defined properly, all changes in one data source are automatically reflected in the other data source."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=833140974155026"/>
+<title>Data Binding</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio68b9644a253741e8a4b9e4279a35c247">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Data Binding</h1>
+<div class="body conbody"><p class="shortdesc">Data binding is used to bind two data or information sources together to keep them in
+		sync. If data binding is implemented and defined properly, all changes in one data source
+		are automatically reflected in the other data source.</p>
+<p class="p">To achieve this, there is a <dfn class="term">model</dfn> and a <dfn class="term">data binding</dfn>. The
+				<dfn class="term">model</dfn> instance holds the data and provides methods to set the data or
+			to retrieve data from a server. It also provides a method for creating bindings to the
+			data. When this method is called, a <dfn class="term">data binding</dfn> instance is created, which
+			contains the binding information and provides an event, which is fired whenever the
+			bound data is changed. An element can listen to this event and update its visualization
+			according to the new data. </p>
+<p class="p"> Usually, the UI uses data binding to bind UI controls to the model, which holds the
+			application data, so that the controls are updated automatically whenever application
+			data is changed. The data binding is also used when changes in the control cause updates
+			in the underlying application data, such as data being entered by a user. This is called
+			two-way binding.</p>
+<p class="p">The default binding mode for model implementations (if not implemented otherwise) is
+			two-way binding and the supported binding modes by the model are one-way binding,
+			two-way binding and one-time binding. The default binding mode can be changed by the
+			application for each model instance. A model implementation should specify its supported
+			binding modes and set the default binding mode accordingly (e.g. if the model supports
+			only one way binding the default binding mode should also be set to one way).</p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="91f0df546f4d1014b6dd926db0e91070.html">Binding Modes</a></div>
+<div><a class="link" href="91f0ca956f4d1014b6dd926db0e91070.html">Models and Data Binding</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Data Binding";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

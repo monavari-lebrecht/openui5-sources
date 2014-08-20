@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=058897959219155305"/>
+<title>Using Dialogs Defined as Fragments</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loioaeb86c181b9742a2bf88049abf9ccb95">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Using Dialogs Defined as Fragments</h1>
+<div class="body taskbody"><p class="shortdesc"/>
+<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">Regardless of the fragment type, the fragment instantiation function returns the root control
+				of the fragment, which is a dialog control that can be used like any dialog, e.g. it
+				can be immediately opened: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+var oDialogFragment = sap.ui.jsfragment("testdata.fragments.JSFragmentDialog");
+oDialogFragment.open();</pre></div>
+
+			<p class="p">Note that any global model is available for data binding within this dialog. Also any model
+				set on the dialog itself. However, if this dialog is opened from a controller, the
+				model of this controller's view is NOT automatically available within the dialog
+				fragment. The reason for this is that the dialog is not part of the view UI. If the
+				above code for opening the fragment dialog is part of a controller, it could set the
+				view's model on the dialog: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+var oDialogFragment = sap.ui.jsfragment("testdata.fragments.JSFragmentDialog");
+oDialogFragment.setModel(this.getView().getModel());
+oDialogFragment.open();</pre></div>
+
+			<div class="p">Alternatively, the special aggregation <samp class="ph codeph">dependents</samp> of
+					<samp class="ph codeph">sap.ui.core.Element</samp> can be used to connect the dialog to the
+				lifecycle management and databinding of the view:
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+var oDialogFragment = sap.ui.jsfragment("testdata.fragments.JSFragmentDialog"); 
+this.getView().addDependent(oDialogFragment);
+oDialogFragment.open();</pre></div>
+</div>
+
+		</div></div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Using Dialogs Defined as Fragments";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

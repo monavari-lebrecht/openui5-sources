@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=14245437341602307"/>
+<title>Example: JS Fragments Used in XML Views</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiofaaff35246414793b061f0244fb67338">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Example: JS Fragments Used in XML Views</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">The example uses different combinations. Make sure that the <samp class="ph codeph">sap-ui-core.js</samp>
+			script location points to an existing SAPUI5 installation.</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;&lt;head&gt;
+	&lt;meta http-equiv='X-UA-Compatible' content='IE=edge' /&gt;
+	&lt;meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/&gt;
+	
+	&lt;title&gt;JSFragment used in XmlView&lt;/title&gt;
+	
+	&lt;!-- Load UI5, select Blue Crystal theme and the "commons" control library --&gt;
+	&lt;script id='sap-ui-bootstrap' type='text/javascript'
+			src='/sapui5/resources/sap-ui-core.js'
+			data-sap-ui-theme='sap_bluecrystal'
+			data-sap-ui-libs='sap.ui.commons'&gt;&lt;/script&gt;
+	
+	
+	&lt;!-- DEFINE RE-USE COMPONENTS - NORMALLY DONE IN SEPARATE FILES --&gt;
+	
+	&lt;!-- define a JS Fragment - normally done in a separate file --&gt;
+	&lt;script&gt;
+		// define a new (simple) View type
+		// ...alternatively this can be done in an XML file without JavaScript!
+		sap.ui.jsfragment("my.own.frag", {
+			
+			// defines the UI of this View
+			createContent: function() {
+				// button text is bound to Model, "press" action is bound to Controller's event handler
+				return [ 
+					new sap.ui.commons.Button({text:'my Fragment Button'}),
+					new sap.ui.commons.Button(this.createId("btn2"), {text:'my second Fragment Button'}) 
+				]
+			}
+		});
+	&lt;/script&gt;
+	
+	
+	&lt;!-- define an XMLView - normally done in a separate file --&gt;
+	&lt;script id="view1" type="sapui5/xmlview"&gt;
+		&lt;mvc:View xmlns:core="sap.ui.core" xmlns:layout="sap.ui.commons.layout" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.ui.commons"
+				controllerName="my.own.controller" xmlns:html="http://www.w3.org/1999/xhtml"&gt;
+			&lt;layout:VerticalLayout id="vl"&gt;
+				&lt;Button text="Find controls by ID" press="findControls"&gt;&lt;/Button&gt;
+				&lt;TextView text="Fragment referenced inline, no Fragment ID:" /&gt;
+				&lt;core:Fragment fragmentName='my.own.frag' type='JS' /&gt;
+				&lt;TextView text="Fragment referenced inline, with Fragment ID 'myFrag':" /&gt;
+				&lt;core:Fragment id="myFrag" fragmentName='my.own.frag' type='JS' /&gt;
+			&lt;/layout:VerticalLayout&gt;
+		&lt;/mvc:View&gt; 
+	&lt;/script&gt;
+	
+	
+	&lt;script&gt;
+		// define a new (simple) Controller type
+		sap.ui.controller("my.own.controller", {
+			
+			// implement an event handler in the Controller
+			findControls: function() {
+				// Fragment is instantiated within an XMLView =&gt; all GIVEN IDs are prefixed with the 
+				// View ID and View.byId() needs to be used to find the controls
+				var b1 = null; // ID is generated: "__button1"
+				var b2 = this.byId("btn2"); // Button ID is given, Fragment has no ID: "myView--btn2"
+				var b3 = null // Fragment has an ID, but Control ID is generated and hence not prefixed: "__button2"
+				var b4 = this.byId(sap.ui.core.Fragment.createId("myFrag", "btn2")); // Button and Fragment ID are given, let the Fragment construct the prefixed ID and then let the View search the again prefixed ID
+				alert("Controls in Fragment:\nButton 1: has no given ID, cannot be found\nButton 2: " + b2 + "\nButton 3: has no given ID, cannot be found\nButton 4: " + b4);
+			}
+		});
+		
+		
+		
+		/*** THIS IS THE "APPLICATION" CODE ***/
+		
+		// instantiate the View
+		var myView = sap.ui.xmlview("myView", {viewContent:jQuery('#view1').html()}); // accessing the HTML inside the script tag above
+		
+		// put the View onto the screen
+		myView.placeAt('content');
+		
+		
+	&lt;/script&gt;
+	
+	&lt;/head&gt;
+	&lt;body class='sapUiBody'&gt;
+		&lt;div id='content'&gt;&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Example: JS Fragments Used in XML Views";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

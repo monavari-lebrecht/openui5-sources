@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=5675385175849721"/>
+<title>Procedure for Development in Correction Phase</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiod47b6324ed4747c2b5e89071485c9006">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Procedure for Development in Correction Phase</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">For applications in the correction phase, development has to conduct an additional step when
+			performing text changes.</p>
+<p class="p">An additional task is required in the correction system for the table entries of the
+			SAPUI5 text repository. the classification of this task must be set to 'Repair'. If
+			there is double maintenace, the changes should only be submitted to the SAPUI5
+			repository in one system and then be applied to the other (correction) system via the
+			Software Correction Workbench, transaction code SCWB). As the SCWB does not support
+			table entries, execute the <samp class="ph codeph">/UI5/TEXT_FILE_SAP_UPDATE</samp>report after
+			applying the request with SCWB.</p>
+<p class="p">Use the following import parameter for the report:</p>
+<ul class="ul" id="loiod47b6324ed4747c2b5e89071485c9006__ul_vpb_nxb_qn"><li class="li">
+				<p class="p">Name of the application</p>
+
+			</li>
+<li class="li">
+				<p class="p">Path of the property file which contains added or changed texts</p>
+
+				<p class="p">The path is only required if the application contains more than one single
+					property file. You can copy the path directly frm the ABAP workbench.</p>
+
+			</li>
+</ul>
+<p class="p">Changed texts are then updated automatically in the text repository.</p>
+<p class="p">For new texts, a dialog box appears asking for a GUID for that text. Enter the original
+			GUID of the text element from the system where the text has been originally created. You
+			can find this GUID the <samp class="ph codeph">/UI5/TREP_TEXT</samp> table in the
+				<samp class="ph codeph">PROP_TEXT_GUID</samp> attribute. This ensures key consistency and avoids
+			duplicate elements later on.</p>
+<p class="p">If a note for customers is created, the same steps have to be performed at customer site:
+			The note should contain a step by step description for the customer:</p>
+<ul class="ul" id="loiod47b6324ed4747c2b5e89071485c9006__ul_fk5_sxb_qn"><li class="li">
+				<p class="p">Manual steps to perform after the note is applied:</p>
+
+			</li>
+<li class="li">
+				<p class="p">Execution of report <samp class="ph codeph">/UI5/TEXT_FILE_SAP_UPDATE</samp></p>
+
+			</li>
+<li class="li">
+				<p class="p">Name of the application and property file which contains changed text
+					elements</p>
+
+			</li>
+<li class="li">
+				<p class="p">For each new text element: </p>
+
+				<p class="p">The name (key) of the text element from the property file and the corresponding
+					GUID of that text element from table <samp class="ph codeph">/UI5/TREP_TEXT</samp> in the
+					original SAP system.</p>
+
+			</li>
+</ul>
+<p class="p">As the translated text elements will come to the customer system only with the next
+			support package, the customer needs to translate the new SAPUI5 text elements in
+			transaction SE63 beforehand, if required.</p>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Procedure for Development in Correction Phase";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

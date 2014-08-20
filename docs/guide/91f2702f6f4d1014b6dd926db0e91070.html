@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=14463864061607923"/>
+<title>Typed Views and Controllers</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f2702f6f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Typed Views and Controllers</h1>
+<div class="body"><p class="p">For more complex use cases, a more formal and, thus,
+		more complex way to define views and controllers may be necessary. 
+	 </p>
+<p class="p">The following section describes how you create new classes by using prototype inheritance and how
+			to declare their API. </p>
+<div class="section" id="loio91f2702f6f4d1014b6dd926db0e91070__section_B7B59CDE8EA84350B1FB50F6B2911A4D"><div class="section_title">Typed Controllers</div><div type="Typed Controllers"> 
+		 
+		<p class="p">To create a controller that is a new type of its
+		  own, you need to write a boilerplate code and declare the functions of the new
+		  prototype: 
+		</p>
+ 
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">/* boilerplate code for typed Controller */
+jQuery.sap.declare({modName:"sap.hcm.AddressController", type:"controller"}); // declaring a special type of module   
+sap.hcm.AddressController = function () { // the constructor
+   sap.ui.core.mvc.Controller.apply(this, arguments);
+};
+jQuery.sap.require("sap.ui.core.mvc.Controller"); // this is currently required, as the Controller is not loaded by default
+sap.hcm.AddressController.prototype = jQuery.sap.newObject(sap.ui.core.mvc.Controller.prototype); // chain the prototypes
+/* end of boilerplate code for typed Controller */
+        
+
+// to avoid the above we could in the future offer it behind a simple call to:
+// sap.ui.defineController("sap.hcm.Address");
+        
+
+sap.hcm.AddressController.prototype.onInit = function() {
+   // modify control tree - this is the regular lifecycle hook
+
+};
+        
+
+// implement an event handler in the Controller
+sap.hcm.AddressController.prototype.doSomething = function() {
+   alert("Hello World");
+};</pre></div>
+ 
+		<p class="p">
+		  
+		</p>
+ 
+	 </div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Typed Views and Controllers";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

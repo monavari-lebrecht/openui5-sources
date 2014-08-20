@@ -1,0 +1,1112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.m.InstanceManager</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Static Class sap.m.InstanceManager
+					</h1>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>Provides methods to manage instances. This is specifically designed for managing the opened Popover, Dialog, ActionSheet,
+and it's possible to close all of the opened Popover, Dialog, ActionSheet in history handling.
+</p><p>
+As <code>InstanceManager</code> is a static class, a <code>jQuery.sap.require("sap.m.InstanceManager");</code> statement
+must be explicitly executed before the class can be used. Example:
+<pre>
+  jQuery.sap.require("sap.m.InstanceManager");
+  sap.m.InstanceManager.closeAllPopovers();
+</pre></p>
+						
+						
+						
+						
+						
+						
+							<br />
+							<i>Since: </i>1.9.2.
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+		
+
+
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod static protected">
+									<b class="icon protected" title="Adds a control to predefined dialog category in instance manager."><a href="../symbols/sap.m.InstanceManager.html#.addDialogInstance">sap.m.InstanceManager.addDialogInstance</a></b><span class='signature'>(<span title="(sap.ui.core.Control) Dialog to be added to instance manager.">oDialog</span>)</span>
+									<span class='description'>Adds a control to predefined dialog category in instance manager.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static protected">
+									<b class="icon protected" title="Adds an instance to the given category."><a href="../symbols/sap.m.InstanceManager.html#.addInstance">sap.m.InstanceManager.addInstance</a></b><span class='signature'>(<span title="(string) The category's id.">sCategoryId</span>, <span title="(object) The instance that will be added to the given category.">oInstance</span>)</span>
+									<span class='description'>Adds an instance to the given category.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static protected">
+									<b class="icon protected" title="Adds a control to predefined popover category in instance manager."><a href="../symbols/sap.m.InstanceManager.html#.addPopoverInstance">sap.m.InstanceManager.addPopoverInstance</a></b><span class='signature'>(<span title="(sap.ui.core.Control) Popover to be added to instance manager.">oPopover</span>)</span>
+									<span class='description'>Adds a control to predefined popover category in instance manager.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Closes all of the open dialogs."><a href="../symbols/sap.m.InstanceManager.html#.closeAllDialogs">sap.m.InstanceManager.closeAllDialogs</a></b><span class='signature'>(<span>fnCallback</span>)</span>
+									<span class='description'>Closes all of the open dialogs.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Closes all open popovers."><a href="../symbols/sap.m.InstanceManager.html#.closeAllPopovers">sap.m.InstanceManager.closeAllPopovers</a></b><span class='signature'>()</span>
+									<span class='description'>Closes all open popovers.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static protected">
+									<b class="icon protected" title="Returns an array of managed instances in the given category."><a href="../symbols/sap.m.InstanceManager.html#.getInstancesByCategoryId">sap.m.InstanceManager.getInstancesByCategoryId</a></b><span class='signature'>(<span title="(string) The category's id.">sCategoryId</span>)</span>
+									<span class='description'>Returns an array of managed instances in the given category.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Gets all of the open dialogs."><a href="../symbols/sap.m.InstanceManager.html#.getOpenDialogs">sap.m.InstanceManager.getOpenDialogs</a></b><span class='signature'>()</span>
+									<span class='description'>Gets all of the open dialogs.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Gets all of the open popovers."><a href="../symbols/sap.m.InstanceManager.html#.getOpenPopovers">sap.m.InstanceManager.getOpenPopovers</a></b><span class='signature'>()</span>
+									<span class='description'>Gets all of the open popovers.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Returns true if there's dialog(s) managed in predefined dialog category, otherwise it returns false."><a href="../symbols/sap.m.InstanceManager.html#.hasOpenDialog">sap.m.InstanceManager.hasOpenDialog</a></b><span class='signature'>()</span>
+									<span class='description'>Returns true if there's dialog(s) managed in predefined dialog category, otherwise it returns false.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Returns true if there's popover(s) managed in predefined popover category, otherwise it returns false."><a href="../symbols/sap.m.InstanceManager.html#.hasOpenPopover">sap.m.InstanceManager.hasOpenPopover</a></b><span class='signature'>()</span>
+									<span class='description'>Returns true if there's popover(s) managed in predefined popover category, otherwise it returns false.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static protected">
+									<b class="icon protected" title="Returns if there's no managed instance in the given category."><a href="../symbols/sap.m.InstanceManager.html#.isCategoryEmpty">sap.m.InstanceManager.isCategoryEmpty</a></b><span class='signature'>(<span title="(string) The category's id.">sCategoryId</span>)</span>
+									<span class='description'>Returns if there's no managed instance in the given category.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Check if the given dialog instance is managed under the dialog category."><a href="../symbols/sap.m.InstanceManager.html#.isDialogOpen">sap.m.InstanceManager.isDialogOpen</a></b><span class='signature'>(<span title="(sap.ui.core.Control) The dialog that is checked for the openness.">oDialog</span>)</span>
+									<span class='description'>Check if the given dialog instance is managed under the dialog category.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static protected">
+									<b class="icon protected" title="Checks if an instance is managed under the given category."><a href="../symbols/sap.m.InstanceManager.html#.isInstanceManaged">sap.m.InstanceManager.isInstanceManaged</a></b><span class='signature'>(<span title="(string) The category that the instance is supposed to be in.">sCategoryId</span>, <span title="(object) The instance that needs to be checked.">oInstance</span>)</span>
+									<span class='description'>Checks if an instance is managed under the given category.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Check if the given popover instance is managed under the popover category."><a href="../symbols/sap.m.InstanceManager.html#.isPopoverOpen">sap.m.InstanceManager.isPopoverOpen</a></b><span class='signature'>(<span title="(sap.ui.core.Control) The popover that is checked for the openness.">oPopover</span>)</span>
+									<span class='description'>Check if the given popover instance is managed under the popover category.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static protected">
+									<b class="icon protected" title="Removes control from predefined dialog category in instance manager."><a href="../symbols/sap.m.InstanceManager.html#.removeDialogInstance">sap.m.InstanceManager.removeDialogInstance</a></b><span class='signature'>(<span title="(sap.ui.core.Control) to be removed from instance manager.">Dialog</span>)</span>
+									<span class='description'>Removes control from predefined dialog category in instance manager.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static protected">
+									<b class="icon protected" title="Removes a managed instance from the given category."><a href="../symbols/sap.m.InstanceManager.html#.removeInstance">sap.m.InstanceManager.removeInstance</a></b><span class='signature'>(<span title="(string) The category's id.">sCategoryId</span>, <span title="(object) The instance that will be removed from the given category.">oInstance</span>)</span>
+									<span class='description'>Removes a managed instance from the given category.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static protected">
+									<b class="icon protected" title="Removes control from predefined popover category in instance manager."><a href="../symbols/sap.m.InstanceManager.html#.removePopoverInstance">sap.m.InstanceManager.removePopoverInstance</a></b><span class='signature'>(<span title="(sap.ui.core.Control) to be removed from instance manager.">Popover</span>)</span>
+									<span class='description'>Removes control from predefined popover category in instance manager.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+					
+		
+		
+
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod protected static protected'>
+										<a name=".addDialogInstance"> </a>
+										<div class="itemTitle icon protected">
+											sap.m.InstanceManager.addDialogInstance<span class="signature">(<span title="(sap.ui.core.Control) Dialog to be added to instance manager.">oDialog</span>)</span>
+											<span class="light" title="returns sap.m.InstanceManager">: <a href="../symbols/sap.m.InstanceManager.html">sap.m.InstanceManager</a></span>
+										</div>
+										<div class="full-description">
+											Adds a control to predefined dialog category in instance manager.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oDialog</b>
+													</td>
+													<td class="methodItemDesc">
+												    Dialog to be added to instance manager. Dialog which doesn't inherit from sap.m.Dialog can also be added as long as it has a close method.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.InstanceManager.html">sap.m.InstanceManager</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Enable method chaining.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected static protected'>
+										<a name=".addInstance"> </a>
+										<div class="itemTitle icon protected">
+											sap.m.InstanceManager.addInstance<span class="signature">(<span title="(string) The category's id.">sCategoryId</span>, <span title="(object) The instance that will be added to the given category.">oInstance</span>)</span>
+											<span class="light" title="returns sap.m.InstanceManager">: <a href="../symbols/sap.m.InstanceManager.html">sap.m.InstanceManager</a></span>
+										</div>
+										<div class="full-description">
+											Adds an instance to the given category.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sCategoryId</b>
+													</td>
+													<td class="methodItemDesc">
+												    The category's id.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oInstance</b>
+													</td>
+													<td class="methodItemDesc">
+												    The instance that will be added to the given category.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.InstanceManager.html">sap.m.InstanceManager</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Enable method chaining.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected static protected'>
+										<a name=".addPopoverInstance"> </a>
+										<div class="itemTitle icon protected">
+											sap.m.InstanceManager.addPopoverInstance<span class="signature">(<span title="(sap.ui.core.Control) Popover to be added to instance manager.">oPopover</span>)</span>
+											<span class="light" title="returns sap.m.InstanceManager">: <a href="../symbols/sap.m.InstanceManager.html">sap.m.InstanceManager</a></span>
+										</div>
+										<div class="full-description">
+											Adds a control to predefined popover category in instance manager.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oPopover</b>
+													</td>
+													<td class="methodItemDesc">
+												    Popover to be added to instance manager. Custom popover which doesn't inherit from sap.m.Popover can also be added as long as it has a close method.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.InstanceManager.html">sap.m.InstanceManager</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Enable method chaining.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".closeAllDialogs"> </a>
+										<div class="itemTitle icon">
+											sap.m.InstanceManager.closeAllDialogs<span class="signature">(<span>fnCallback</span>)</span>
+											<span class="light" title="returns sap.m.InstanceManager">: <a href="../symbols/sap.m.InstanceManager.html">sap.m.InstanceManager</a></span>
+										</div>
+										<div class="full-description">
+											Closes all of the open dialogs.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  
+													</td>
+													<td class="methodItemName">
+													  <b>fnCallback</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.InstanceManager.html">sap.m.InstanceManager</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Enable method chaining.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".closeAllPopovers"> </a>
+										<div class="itemTitle icon">
+											sap.m.InstanceManager.closeAllPopovers<span class="signature">()</span>
+											<span class="light" title="returns sap.m.InstanceManager">: <a href="../symbols/sap.m.InstanceManager.html">sap.m.InstanceManager</a></span>
+										</div>
+										<div class="full-description">
+											Closes all open popovers.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.InstanceManager.html">sap.m.InstanceManager</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Enable method chaining.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected static protected'>
+										<a name=".getInstancesByCategoryId"> </a>
+										<div class="itemTitle icon protected">
+											sap.m.InstanceManager.getInstancesByCategoryId<span class="signature">(<span title="(string) The category's id.">sCategoryId</span>)</span>
+											<span class="light" title="returns object">: object</span>
+										</div>
+										<div class="full-description">
+											Returns an array of managed instances in the given category.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sCategoryId</b>
+													</td>
+													<td class="methodItemDesc">
+												    The category's id.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{object}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Managed instances in the given category.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".getOpenDialogs"> </a>
+										<div class="itemTitle icon">
+											sap.m.InstanceManager.getOpenDialogs<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.Control[]">: <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>[]</span>
+										</div>
+										<div class="full-description">
+											Gets all of the open dialogs. If there's no dialog open, it returns an empty array.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														The open dialogs.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".getOpenPopovers"> </a>
+										<div class="itemTitle icon">
+											sap.m.InstanceManager.getOpenPopovers<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.Control[]">: <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>[]</span>
+										</div>
+										<div class="full-description">
+											Gets all of the open popovers. If there's no popover open, it returns an empty array.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														The open popovers.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".hasOpenDialog"> </a>
+										<div class="itemTitle icon">
+											sap.m.InstanceManager.hasOpenDialog<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Returns true if there's dialog(s) managed in predefined dialog category, otherwise it returns false.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Whether there's dialog(s) open.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".hasOpenPopover"> </a>
+										<div class="itemTitle icon">
+											sap.m.InstanceManager.hasOpenPopover<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Returns true if there's popover(s) managed in predefined popover category, otherwise it returns false.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Whether there's popover(s) open.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected static protected'>
+										<a name=".isCategoryEmpty"> </a>
+										<div class="itemTitle icon protected">
+											sap.m.InstanceManager.isCategoryEmpty<span class="signature">(<span title="(string) The category's id.">sCategoryId</span>)</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Returns if there's no managed instance in the given category.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sCategoryId</b>
+													</td>
+													<td class="methodItemDesc">
+												    The category's id.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Whether the category is empty.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".isDialogOpen"> </a>
+										<div class="itemTitle icon">
+											sap.m.InstanceManager.isDialogOpen<span class="signature">(<span title="(sap.ui.core.Control) The dialog that is checked for the openness.">oDialog</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Check if the given dialog instance is managed under the dialog category.
+For dialog instances, managed means the dialog is open.
+</p><p>
+This function is specially provided for customized controls which doesn't have the possibility to check whether it's open.
+If the given dialog is an instance of sap.m.Dialog, sap.m.ActionSheet, the isOpen() method on the instance is 
+preferred to be called than this function.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oDialog</b>
+													</td>
+													<td class="methodItemDesc">
+												    The dialog that is checked for the openness.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														
+													</td>
+													<td class="methodItemDesc">
+														Whether the given dialog is open.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected static protected'>
+										<a name=".isInstanceManaged"> </a>
+										<div class="itemTitle icon protected">
+											sap.m.InstanceManager.isInstanceManaged<span class="signature">(<span title="(string) The category that the instance is supposed to be in.">sCategoryId</span>, <span title="(object) The instance that needs to be checked.">oInstance</span>)</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Checks if an instance is managed under the given category.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sCategoryId</b>
+													</td>
+													<td class="methodItemDesc">
+												    The category that the instance is supposed to be in.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oInstance</b>
+													</td>
+													<td class="methodItemDesc">
+												    The instance that needs to be checked.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Whether the instance is managed in the given category.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".isPopoverOpen"> </a>
+										<div class="itemTitle icon">
+											sap.m.InstanceManager.isPopoverOpen<span class="signature">(<span title="(sap.ui.core.Control) The popover that is checked for the openness.">oPopover</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Check if the given popover instance is managed under the popover category.
+For popover instances, managed means the popover is open.
+</p><p>
+This function is specially provided for customized controls which doesn't have the possibility to check whether it's open. 
+If the given popover is an instance of sap.m.Popover, sap.m.ActionSheet, the isOpen() method on the instance is 
+preferred to be called than this function.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oPopover</b>
+													</td>
+													<td class="methodItemDesc">
+												    The popover that is checked for the openness.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														
+													</td>
+													<td class="methodItemDesc">
+														Whether the given popover is open.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected static protected'>
+										<a name=".removeDialogInstance"> </a>
+										<div class="itemTitle icon protected">
+											sap.m.InstanceManager.removeDialogInstance<span class="signature">(<span title="(sap.ui.core.Control) to be removed from instance manager.">Dialog</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Removes control from predefined dialog category in instance manager.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>Dialog</b>
+													</td>
+													<td class="methodItemDesc">
+												    to be removed from instance manager.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														
+													</td>
+													<td class="methodItemDesc">
+														The removed popover or null. If the popover isn't managed, this method returns null instead of the removed popover.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected static protected'>
+										<a name=".removeInstance"> </a>
+										<div class="itemTitle icon protected">
+											sap.m.InstanceManager.removeInstance<span class="signature">(<span title="(string) The category's id.">sCategoryId</span>, <span title="(object) The instance that will be removed from the given category.">oInstance</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Removes a managed instance from the given category.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sCategoryId</b>
+													</td>
+													<td class="methodItemDesc">
+												    The category's id.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oInstance</b>
+													</td>
+													<td class="methodItemDesc">
+												    The instance that will be removed from the given category.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														
+													</td>
+													<td class="methodItemDesc">
+														The removed instance or null. If the instance isn't managed, this method returns null instead of the instance object.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected static protected'>
+										<a name=".removePopoverInstance"> </a>
+										<div class="itemTitle icon protected">
+											sap.m.InstanceManager.removePopoverInstance<span class="signature">(<span title="(sap.ui.core.Control) to be removed from instance manager.">Popover</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Removes control from predefined popover category in instance manager.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>Popover</b>
+													</td>
+													<td class="methodItemDesc">
+												    to be removed from instance manager.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														
+													</td>
+													<td class="methodItemDesc">
+														The removed popover or null. If the popover isn't managed, this method returns null instead of the removed popover.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

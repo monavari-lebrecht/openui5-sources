@@ -1,0 +1,2762 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.m.Column</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class sap.m.Column
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.ui.core.Element" href="../symbols/sap.ui.core.Element.html">Element</a></div>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>The column allows to define column specific properties that will be applied when rendering the List.</p>
+						
+						
+						
+						
+						
+						
+							<br />
+							<i>Since: </i>1.12.
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="Constructor for a new Column.">new <a href="../symbols/sap.m.Column.html#constructor">sap.m.Column</a></b>
+										<span class='signature'>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)</span>
+										<span class='description'>Constructor for a new Column.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Field Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classProperty static protected">
+									<b class="icon protected" title="Checks if box-sizing border-box works for columns Most of the browser does not respect this CSS property, even buggy https://bugs.webkit.org/show_bug.cgi?id=18565"><a href="../symbols/sap.m.Column.html#.hasBorderBoxSupport">sap.m.Column.hasBorderBoxSupport</a></b>
+									<span class='description'>Checks if box-sizing border-box works for columns Most of the browser does not respect this CSS property, even buggy https://bugs.webkit.org/show_bug.cgi?id=18565</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Creates a new subclass of class sap.m.Column with name sClassName and enriches it with the information contained in oClassInfo."><a href="../symbols/sap.m.Column.html#.extend">sap.m.Column.extend</a></b><span class='signature'>(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Creates a new subclass of class sap.m.Column with name <code>sClassName</code> and enriches it with the information contained in <code>oClassInfo</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Apply text alignment of the Column to Text/Label/Link."><a href="../symbols/sap.m.Column.html#applyAlignTo">applyAlignTo</a></b><span class='signature'>(<span title="(sap.ui.core.Control) List control">oControl</span>, <span title="(String) TextAlign enumeration">sAlign</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Apply text alignment of the Column to Text/Label/Link.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Clears the last value of the column if mergeDuplicates property is true"><a href="../symbols/sap.m.Column.html#clearLastValue">clearLastValue</a></b><span class='signature'>()</span>
+									<span class='description'>Clears the last value of the column if mergeDuplicates property is true</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys the footer in the aggregation named footer."><a href="../symbols/sap.m.Column.html#destroyFooter">destroyFooter</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys the footer in the aggregation named <code>footer</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys the header in the aggregation named header."><a href="../symbols/sap.m.Column.html#destroyHeader">destroyHeader</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys the header in the aggregation named <code>header</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Returns CSS alignment according to column hAlign setting or given parameter for Begin/End values checks the locale settings"><a href="../symbols/sap.m.Column.html#getCssAlign">getCssAlign</a></b><span class='signature'>(<span title="(String) TextAlign enumeration">sAlign</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Returns CSS alignment according to column hAlign setting or given parameter for Begin/End values checks the locale settings</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property demandPopin."><a href="../symbols/sap.m.Column.html#getDemandPopin">getDemandPopin</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>demandPopin</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation footer."><a href="../symbols/sap.m.Column.html#getFooter">getFooter</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>footer</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property hAlign."><a href="../symbols/sap.m.Column.html#getHAlign">getHAlign</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>hAlign</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation header."><a href="../symbols/sap.m.Column.html#getHeader">getHeader</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>header</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Gets the initial order of the column"><a href="../symbols/sap.m.Column.html#getInitialOrder">getInitialOrder</a></b><span class='signature'>()</span>
+									<span class='description'>Gets the initial order of the column</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Gets the last value of the column"><a href="../symbols/sap.m.Column.html#getLastValue">getLastValue</a></b><span class='signature'>()</span>
+									<span class='description'>Gets the last value of the column</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property mergeDuplicates."><a href="../symbols/sap.m.Column.html#getMergeDuplicates">getMergeDuplicates</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>mergeDuplicates</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property mergeFunctionName."><a href="../symbols/sap.m.Column.html#getMergeFunctionName">getMergeFunctionName</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>mergeFunctionName</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property minScreenWidth."><a href="../symbols/sap.m.Column.html#getMinScreenWidth">getMinScreenWidth</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>minScreenWidth</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Gets the order of the column"><a href="../symbols/sap.m.Column.html#getOrder">getOrder</a></b><span class='signature'>()</span>
+									<span class='description'>Gets the order of the column</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property popinDisplay."><a href="../symbols/sap.m.Column.html#getPopinDisplay">getPopinDisplay</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>popinDisplay</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property styleClass."><a href="../symbols/sap.m.Column.html#getStyleClass">getStyleClass</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>styleClass</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property vAlign."><a href="../symbols/sap.m.Column.html#getVAlign">getVAlign</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>vAlign</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property visible."><a href="../symbols/sap.m.Column.html#getVisible">getVisible</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>visible</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property width."><a href="../symbols/sap.m.Column.html#getWidth">getWidth</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>width</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Checks the column will be hidden"><a href="../symbols/sap.m.Column.html#isHidden">isHidden</a></b><span class='signature'>()</span>
+									<span class='description'>Checks the column will be hidden</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Returns visible probability of the column"><a href="../symbols/sap.m.Column.html#isNeverVisible">isNeverVisible</a></b><span class='signature'>(<span title="(boolean) Whether return cache or new result">bReturnCache</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Returns visible probability of the column</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Checks the column will be shown as pop-in"><a href="../symbols/sap.m.Column.html#isPopin">isPopin</a></b><span class='signature'>()</span>
+									<span class='description'>Checks the column will be shown as pop-in</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="This method is called from parent after all cells in column are rendered"><a href="../symbols/sap.m.Column.html#onColumnRendered">onColumnRendered</a></b><span class='signature'>(<span title="(jQuery) Table jQuery reference">$table</span>)</span>
+									<span class='description'>This method is called from parent after all cells in column are rendered</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Calls from Table to notify all items are removed"><a href="../symbols/sap.m.Column.html#onItemsRemoved">onItemsRemoved</a></b><span class='signature'>()</span>
+									<span class='description'>Calls from Table to notify all items are removed</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property demandPopin."><a href="../symbols/sap.m.Column.html#setDemandPopin">setDemandPopin</a></b><span class='signature'>(<span title="(boolean) new value for property demandPopin">bDemandPopin</span>)</span>
+									<span class='description'>Setter for property <code>demandPopin</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Display or hide the column from given table This does not set the visibility property of the column"><a href="../symbols/sap.m.Column.html#setDisplay">setDisplay</a></b><span class='signature'>(<span title="(Object) Table DOM reference">oTableDomRef</span>, <span title="(boolean) whether visible or not">bDisplay</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Display or hide the column from given table This does not set the visibility property of the column</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Display or hide the column from given table via checking media query changes"><a href="../symbols/sap.m.Column.html#setDisplayViaMedia">setDisplayViaMedia</a></b><span class='signature'>(<span title="(Object) Table DOM reference">oTableDomRef</span>)</span>
+									<span class='description'>Display or hide the column from given table via checking media query changes</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for the aggregated footer."><a href="../symbols/sap.m.Column.html#setFooter">setFooter</a></b><span class='signature'>(<span title="(sap.ui.core.Control) sap.ui.core.Control">oFooter</span>)</span>
+									<span class='description'>Setter for the aggregated <code>footer</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property hAlign."><a href="../symbols/sap.m.Column.html#setHAlign">setHAlign</a></b><span class='signature'>(<span title="(sap.ui.core.TextAlign) new value for property hAlign">oHAlign</span>)</span>
+									<span class='description'>Setter for property <code>hAlign</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for the aggregated header."><a href="../symbols/sap.m.Column.html#setHeader">setHeader</a></b><span class='signature'>(<span title="(sap.ui.core.Control) sap.ui.core.Control">oHeader</span>)</span>
+									<span class='description'>Setter for the aggregated <code>header</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Sets the visible column index Negative index values can be used to clear"><a href="../symbols/sap.m.Column.html#setIndex">setIndex</a></b><span class='signature'>(<span title="(int) index of the visible column">nIndex</span>)</span>
+									<span class='description'>Sets the visible column index Negative index values can be used to clear</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Sets the initial order of the column"><a href="../symbols/sap.m.Column.html#setInitialOrder">setInitialOrder</a></b><span class='signature'>(<span title="(int) initial order of the column">nOrder</span>)</span>
+									<span class='description'>Sets the initial order of the column</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Sets the last value of the column if mergeDuplicates property is true"><a href="../symbols/sap.m.Column.html#setLastValue">setLastValue</a></b><span class='signature'>(<span title="(any) Any Value">value</span>)</span>
+									<span class='description'>Sets the last value of the column if mergeDuplicates property is true</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property mergeDuplicates."><a href="../symbols/sap.m.Column.html#setMergeDuplicates">setMergeDuplicates</a></b><span class='signature'>(<span title="(boolean) new value for property mergeDuplicates">bMergeDuplicates</span>)</span>
+									<span class='description'>Setter for property <code>mergeDuplicates</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property mergeFunctionName."><a href="../symbols/sap.m.Column.html#setMergeFunctionName">setMergeFunctionName</a></b><span class='signature'>(<span title="(string) new value for property mergeFunctionName">sMergeFunctionName</span>)</span>
+									<span class='description'>Setter for property <code>mergeFunctionName</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property minScreenWidth."><a href="../symbols/sap.m.Column.html#setMinScreenWidth">setMinScreenWidth</a></b><span class='signature'>(<span title="(string) new value for property minScreenWidth">sMinScreenWidth</span>)</span>
+									<span class='description'>Setter for property <code>minScreenWidth</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Sets the order of the column Does not do the visual effect Table should be invalidate to re-render"><a href="../symbols/sap.m.Column.html#setOrder">setOrder</a></b><span class='signature'>(<span title="(int) order of the column">nOrder</span>)</span>
+									<span class='description'>Sets the order of the column Does not do the visual effect Table should be invalidate to re-render</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property popinDisplay."><a href="../symbols/sap.m.Column.html#setPopinDisplay">setPopinDisplay</a></b><span class='signature'>(<span title="(sap.m.PopinDisplay) new value for property popinDisplay">oPopinDisplay</span>)</span>
+									<span class='description'>Setter for property <code>popinDisplay</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property styleClass."><a href="../symbols/sap.m.Column.html#setStyleClass">setStyleClass</a></b><span class='signature'>(<span title="(string) new value for property styleClass">sStyleClass</span>)</span>
+									<span class='description'>Setter for property <code>styleClass</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property vAlign."><a href="../symbols/sap.m.Column.html#setVAlign">setVAlign</a></b><span class='signature'>(<span title="(sap.ui.core.VerticalAlign) new value for property vAlign">oVAlign</span>)</span>
+									<span class='description'>Setter for property <code>vAlign</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property visible."><a href="../symbols/sap.m.Column.html#setVisible">setVisible</a></b><span class='signature'>(<span title="(boolean) new value for property visible">bVisible</span>)</span>
+									<span class='description'>Setter for property <code>visible</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property width."><a href="../symbols/sap.m.Column.html#setWidth">setWidth</a></b><span class='signature'>(<span title="(sap.ui.core.CSSSize) new value for property width">sWidth</span>)</span>
+									<span class='description'>Setter for property <code>width</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod deprecated">
+									<b class="icon" title="Getter for property popinHAlign."><a href="../symbols/sap.m.Column.html#getPopinHAlign">getPopinHAlign</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>popinHAlign</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod deprecated">
+									<b class="icon" title="Setter for property popinHAlign."><a href="../symbols/sap.m.Column.html#setPopinHAlign">setPopinHAlign</a></b><span class='signature'>(<span title="(sap.ui.core.TextAlign) new value for property popinHAlign">oPopinHAlign</span>)</span>
+									<span class='description'>Setter for property <code>popinHAlign</code>.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Element.html#$">$</a>, <a href="../symbols/sap.ui.core.Element.html#addCustomData">addCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#addDependent">addDependent</a>, <a href="../symbols/sap.ui.core.Element.html#addEventDelegate">addEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#applyFocusInfo">applyFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#bindElement">bindElement</a>, <a href="../symbols/sap.ui.core.Element.html#clone">clone</a>, <a href="../symbols/sap.ui.core.Element.html#data">data</a>, <a href="../symbols/sap.ui.core.Element.html#destroy">destroy</a>, <a href="../symbols/sap.ui.core.Element.html#destroyCustomData">destroyCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#destroyDependents">destroyDependents</a>, <a href="../symbols/sap.ui.core.Element.html#enhanceAccessibilityState">enhanceAccessibilityState</a>, <a href="../symbols/sap.ui.core.Element.html#exit">exit</a>, <a href="../symbols/sap.ui.core.Element.html#findElements">findElements</a>, <a href="../symbols/sap.ui.core.Element.html#fireEvent">fireEvent</a>, <a href="../symbols/sap.ui.core.Element.html#getCustomData">getCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#getDependents">getDependents</a>, <a href="../symbols/sap.ui.core.Element.html#getDomRef">getDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getElementBinding">getElementBinding</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusDomRef">getFocusDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusInfo">getFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#getInterface">getInterface</a>, <a href="../symbols/sap.ui.core.Element.html#getLayoutData">getLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#getMetadata">getMetadata</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip">getTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_AsString">getTooltip_AsString</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_Text">getTooltip_Text</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfCustomData">indexOfCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfDependent">indexOfDependent</a>, <a href="../symbols/sap.ui.core.Element.html#init">init</a>, <a href="../symbols/sap.ui.core.Element.html#insertCustomData">insertCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#insertDependent">insertDependent</a>, <a href="../symbols/sap.ui.core.Element.html#prop">prop</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllCustomData">removeAllCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllDependents">removeAllDependents</a>, <a href="../symbols/sap.ui.core.Element.html#removeCustomData">removeCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeDependent">removeDependent</a>, <a href="../symbols/sap.ui.core.Element.html#removeEventDelegate">removeEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#rerender">rerender</a>, <a href="../symbols/sap.ui.core.Element.html#setLayoutData">setLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#setTooltip">setTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#toString">toString</a>, <a href="../symbols/sap.ui.core.Element.html#unbindElement">unbindElement</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.ManagedObject.html">sap.ui.base.ManagedObject</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.ManagedObject.html#addAggregation">addAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#addAssociation">addAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#applySettings">applySettings</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindAggregation">bindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindContext">bindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindObject">bindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindProperty">bindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#destroyAggregation">destroyAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#findAggregatedObjects">findAggregatedObjects</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAggregation">getAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAssociation">getAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBinding">getBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingContext">getBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingInfo">getBindingInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingPath">getBindingPath</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getEventingParent">getEventingParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getId">getId</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getModel">getModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getObjectBinding">getObjectBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getOriginInfo">getOriginInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getParent">getParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getProperty">getProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#hasModel">hasModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#indexOfAggregation">indexOfAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#insertAggregation">insertAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#invalidate">invalidate</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isBound">isBound</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isInvalidateSuppressed">isInvalidateSuppressed</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isTreeBinding">isTreeBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAggregation">removeAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAggregation">removeAllAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAssociation">removeAllAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAssociation">removeAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAggregation">setAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAssociation">setAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setBindingContext">setBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setModel">setModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setProperty">setProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindAggregation">unbindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindContext">unbindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindObject">unbindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindProperty">unbindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateAggregation">validateAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateProperty">validateProperty</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.EventProvider.html#attachEvent">attachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#attachEventOnce">attachEventOnce</a>, <a href="../symbols/sap.ui.base.EventProvider.html#detachEvent">detachEvent</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.m.Column</b>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)
+										</div>
+										
+										<div class="full-description">
+											Constructor for a new Column.
+</p><p>
+Accepts an object literal <code>mSettings</code> that defines initial 
+property values, aggregated and associated objects as well as event handlers. 
+</p><p>
+If the name of a setting is ambiguous (e.g. a property has the same name as an event), 
+then the framework assumes property, aggregation, association, event in that order. 
+To override this automatic resolution, one of the prefixes "aggregation:", "association:" 
+or "event:" can be added to the name of the setting (such a prefixed name must be
+enclosed in single or double quotes).
+</p><p>
+The supported settings are:
+<ul>
+<li>Properties
+<ul>
+<li><a href="#getWidth">width</a> : sap.ui.core.CSSSize</li>
+<li><a href="#getHAlign">hAlign</a> : sap.ui.core.TextAlign (default: sap.ui.core.TextAlign.Begin)</li>
+<li><a href="#getVAlign">vAlign</a> : sap.ui.core.VerticalAlign (default: sap.ui.core.VerticalAlign.Inherit)</li>
+<li><a href="#getStyleClass">styleClass</a> : string</li>
+<li><a href="#getVisible">visible</a> : boolean (default: true)</li>
+<li><a href="#getMinScreenWidth">minScreenWidth</a> : string</li>
+<li><a href="#getDemandPopin">demandPopin</a> : boolean (default: false)</li>
+<li><a href="#getPopinHAlign">popinHAlign</a> : sap.ui.core.TextAlign (default: sap.ui.core.TextAlign.Begin)</li>
+<li><a href="#getPopinDisplay">popinDisplay</a> : sap.m.PopinDisplay (default: sap.m.PopinDisplay.Block)</li>
+<li><a href="#getMergeDuplicates">mergeDuplicates</a> : boolean (default: false)</li>
+<li><a href="#getMergeFunctionName">mergeFunctionName</a> : string (default: 'getText')</li></ul>
+</li>
+<li>Aggregations
+<ul>
+<li><a href="#getHeader">header</a> <strong>(default aggregation)</strong> : sap.ui.core.Control</li>
+<li><a href="#getFooter">footer</a> : sap.ui.core.Control</li></ul>
+</li>
+<li>Associations
+<ul></ul>
+</li>
+<li>Events
+<ul></ul>
+</li>
+</ul> 
+</p><p>
+</p><p>
+In addition, all settings applicable to the base type <a href="../symbols/sap.ui.core.Element.html#constructor">sap.ui.core.Element</a>
+can be used as well.
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    id for the new control, generated automatically if no id is given
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mSettings</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    initial settings for the new control
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+						<div class="section details">
+							<div class="sectionTitle">Field Detail</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classProperty static protected'>
+										<a name=".hasBorderBoxSupport"> </a>
+										<div class="itemTitle signature icon protected">
+											sap.m.Column.<b>hasBorderBoxSupport</b>
+											
+										</div>
+										<div class="full-description">
+											Checks if box-sizing border-box works for columns
+Most of the browser does not respect this CSS property, even buggy
+https://bugs.webkit.org/show_bug.cgi?id=18565
+											
+											
+										</div>
+										
+										
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".extend"> </a>
+										<div class="itemTitle icon">
+											sap.m.Column.extend<span class="signature">(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns function">: function</span>
+										</div>
+										<div class="full-description">
+											Creates a new subclass of class sap.m.Column with name <code>sClassName</code> 
+and enriches it with the information contained in <code>oClassInfo</code>.
+</p><p>
+<code>oClassInfo</code> might contain the same kind of informations as described in <a href="../symbols/sap.ui.core.Element.html#.extend">Element.extend</a>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sClassName</b>
+													</td>
+													<td class="methodItemDesc">
+												    name of the class to be created
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oClassInfo</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    object literal with informations about the class
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>FNMetaImpl</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    constructor function for the metadata object. If not given, it defaults to sap.ui.core.ElementMetadata.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{function}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the created class / constructor function
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="applyAlignTo"> </a>
+										<div class="itemTitle icon protected">
+											applyAlignTo<span class="signature">(<span title="(sap.ui.core.Control) List control">oControl</span>, <span title="(String) TextAlign enumeration">sAlign</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.core.Control">: <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></span>
+										</div>
+										<div class="full-description">
+											Apply text alignment of the Column to Text/Label/Link...
+</p><p>
+TODO: This is so ugly to check content functions
+instead we should document how to use our controls
+to inherit text-alignment and we should add a new
+sap.ui.core.TextAlign type called "Inherit"
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oControl</b>
+													</td>
+													<td class="methodItemDesc">
+												    List control
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{String}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sAlign</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    TextAlign enumeration
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														oControl
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="clearLastValue"> </a>
+										<div class="itemTitle icon protected">
+											clearLastValue<span class="signature">()</span>
+											<span class="light" title="returns sap.m.Column">: <a href="../symbols/sap.m.Column.html">sap.m.Column</a></span>
+										</div>
+										<div class="full-description">
+											Clears the last value of the column if mergeDuplicates property is true
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.20.4</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Column.html">sap.m.Column</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyFooter"> </a>
+										<div class="itemTitle icon">
+											destroyFooter<span class="signature">()</span>
+											<span class="light" title="returns sap.m.Column">: <a href="../symbols/sap.m.Column.html">sap.m.Column</a></span>
+										</div>
+										<div class="full-description">
+											Destroys the footer in the aggregation 
+named <code>footer</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Column.html">sap.m.Column</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyHeader"> </a>
+										<div class="itemTitle icon">
+											destroyHeader<span class="signature">()</span>
+											<span class="light" title="returns sap.m.Column">: <a href="../symbols/sap.m.Column.html">sap.m.Column</a></span>
+										</div>
+										<div class="full-description">
+											Destroys the header in the aggregation 
+named <code>header</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Column.html">sap.m.Column</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="getCssAlign"> </a>
+										<div class="itemTitle icon protected">
+											getCssAlign<span class="signature">(<span title="(String) TextAlign enumeration">sAlign</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns String">: String</span>
+										</div>
+										<div class="full-description">
+											Returns CSS alignment according to column hAlign setting or given parameter
+for Begin/End values checks the locale settings
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{String}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sAlign</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    TextAlign enumeration
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{String}</span> 
+													</td>
+													<td class="methodItemDesc">
+														left|center|right
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getDemandPopin"> </a>
+										<div class="itemTitle icon">
+											getDemandPopin<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>demandPopin</code>.
+According to your minScreenWidth settings, the column can be hidden in different screen sizes.
+Setting this property to true, shows this column as pop-in instead of hiding it.
+</p><p>
+Default value is <code>false</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>demandPopin</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getFooter"> </a>
+										<div class="itemTitle icon">
+											getFooter<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.Control">: <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>footer</code>.<br/>
+Control to be displayed in the column footer.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getHAlign"> </a>
+										<div class="itemTitle icon">
+											getHAlign<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.TextAlign">: <a href="../symbols/sap.ui.core.TextAlign.html">sap.ui.core.TextAlign</a></span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>hAlign</code>.
+Horizontal alignment of the column content. Available alignment settings are "Begin", "Center", "End", "Left", and "Right".
+</p><p>
+NOTE: Control with a "textAlign" property inherits the horizontal alignment.
+</p><p>
+Default value is <code>Begin</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.TextAlign.html">sap.ui.core.TextAlign</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>hAlign</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getHeader"> </a>
+										<div class="itemTitle icon">
+											getHeader<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.Control">: <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>header</code>.<br/>
+Control to be displayed in the column header.
+</p><p>
+<strong>Note</strong>: this is the default aggregation for Column.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="getInitialOrder"> </a>
+										<div class="itemTitle icon protected">
+											getInitialOrder<span class="signature">()</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Gets the initial order of the column
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														initial order of the column
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="getLastValue"> </a>
+										<div class="itemTitle icon protected">
+											getLastValue<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Gets the last value of the column
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.16</dd>
+											</dl>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getMergeDuplicates"> </a>
+										<div class="itemTitle icon">
+											getMergeDuplicates<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>mergeDuplicates</code>.
+Set "true" to merge repeating cells(duplicates) into one.
+Also see "mergeFunctionName" property to customize.
+Note: this property gets disabled if any column is in pop-in!
+</p><p>
+Default value is <code>false</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.16</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>mergeDuplicates</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getMergeFunctionName"> </a>
+										<div class="itemTitle icon">
+											getMergeFunctionName<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>mergeFunctionName</code>.
+Defines the value getter(serialization) function if "mergeDuplicates" property is set "true"
+Control itself uses this function to compare values of two repeating cells.
+Default value "getText" is suitable for Label and Text control.
+e.g. For "Icon" control "getSrc" can be used.
+Note: You can pass one string parameter to given function after "#" sign. e.g. "data#myparameter"
+</p><p>
+Default value is <code>getText</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.16</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>mergeFunctionName</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getMinScreenWidth"> </a>
+										<div class="itemTitle icon">
+											getMinScreenWidth<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>minScreenWidth</code>.
+By default column is always shown. If you set this property, control checks the minimum width of the screen to show or hide this column.
+As you can give specific CSS sizes(e.g: "480px" or "40em"), you can also use sap.m.ScreenSize enumeration(e.g: "Phone", "Tablet", "Desktop", "Small", "Medium", "Large", ....).
+</p><p>
+sap.m.Column.MediaQuery1->Range1 = 199
+</p><p>
+This property can be used for responsive design. e.g: "40em"(or "640px" or "Tablet") setting shows this column in iPad(and Desktop) but hides in iPhone.
+Please also see "demandPopin" property
+</p><p>
+Default value is empty/<code>undefined</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>minScreenWidth</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="getOrder"> </a>
+										<div class="itemTitle icon protected">
+											getOrder<span class="signature">()</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Gets the order of the column
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														nOrder order of the column
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getPopinDisplay"> </a>
+										<div class="itemTitle icon">
+											getPopinDisplay<span class="signature">()</span>
+											<span class="light" title="returns sap.m.PopinDisplay">: <a href="../symbols/sap.m.PopinDisplay.html">sap.m.PopinDisplay</a></span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>popinDisplay</code>.
+Defines the display options of pop-in.
+Possible values are
+1 - "Block"(Header is displayed in first line and value field in next line.)
+2 - "Inline" (Value field is displayed next to the header in same line.)
+</p><p>
+Default value is <code>sap.m.PopinDisplay.Block</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.13.2</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.PopinDisplay.html">sap.m.PopinDisplay</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>popinDisplay</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getStyleClass"> </a>
+										<div class="itemTitle icon">
+											getStyleClass<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>styleClass</code>.
+CSS class name for column contents(header, cells and footer of column). This property can be used for different column styling. If column is shown as pop-in then this class name is applied to related pop-in row.
+</p><p>
+Default value is empty/<code>undefined</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>styleClass</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getVAlign"> </a>
+										<div class="itemTitle icon">
+											getVAlign<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.VerticalAlign">: <a href="../symbols/sap.ui.core.VerticalAlign.html">sap.ui.core.VerticalAlign</a></span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>vAlign</code>.
+Vertical alignment of the cells in a column. Possible values are "Inherit", "Top", "Middle", "Bottom"
+This property does not affect the vertical alignment of header and footer.
+</p><p>
+Default value is <code>Inherit</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.VerticalAlign.html">sap.ui.core.VerticalAlign</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>vAlign</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getVisible"> </a>
+										<div class="itemTitle icon">
+											getVisible<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>visible</code>.
+Specifies whether or not the column is visible. Invisible columns are not rendered.
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>visible</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getWidth"> </a>
+										<div class="itemTitle icon">
+											getWidth<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.CSSSize">: <a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a></span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>width</code>.
+Defines the width of the column. If you leave it empty then this column covers the remaining space.
+</p><p>
+Default value is empty/<code>undefined</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>width</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="isHidden"> </a>
+										<div class="itemTitle icon protected">
+											isHidden<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Checks the column will be hidden
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="isNeverVisible"> </a>
+										<div class="itemTitle icon protected">
+											isNeverVisible<span class="signature">(<span title="(boolean) Whether return cache or new result">bReturnCache</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Returns visible probability of the column
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bReturnCache</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Whether return cache or new result
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="isPopin"> </a>
+										<div class="itemTitle icon protected">
+											isPopin<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Checks the column will be shown as pop-in
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="onColumnRendered"> </a>
+										<div class="itemTitle icon protected">
+											onColumnRendered<span class="signature">(<span title="(jQuery) Table jQuery reference">$table</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											This method is called from parent after all cells in column are rendered
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/jQuery.html">jQuery</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>$table</b>
+													</td>
+													<td class="methodItemDesc">
+												    Table jQuery reference
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="onItemsRemoved"> </a>
+										<div class="itemTitle icon protected">
+											onItemsRemoved<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Calls from Table to notify all items are removed
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.16</dd>
+											</dl>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setDemandPopin"> </a>
+										<div class="itemTitle icon">
+											setDemandPopin<span class="signature">(<span title="(boolean) new value for property demandPopin">bDemandPopin</span>)</span>
+											<span class="light" title="returns sap.m.Column">: <a href="../symbols/sap.m.Column.html">sap.m.Column</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>demandPopin</code>.
+</p><p>
+Default value is <code>false</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bDemandPopin</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>demandPopin</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Column.html">sap.m.Column</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="setDisplay"> </a>
+										<div class="itemTitle icon protected">
+											setDisplay<span class="signature">(<span title="(Object) Table DOM reference">oTableDomRef</span>, <span title="(boolean) whether visible or not">bDisplay</span><i class="help" title="Optional parameter">?</i>)</span>
+											
+										</div>
+										<div class="full-description">
+											Display or hide the column from given table
+This does not set the visibility property of the column
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oTableDomRef</b>
+													</td>
+													<td class="methodItemDesc">
+												    Table DOM reference
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bDisplay</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    whether visible or not
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="setDisplayViaMedia"> </a>
+										<div class="itemTitle icon protected">
+											setDisplayViaMedia<span class="signature">(<span title="(Object) Table DOM reference">oTableDomRef</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Display or hide the column from given table via checking media query changes
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oTableDomRef</b>
+													</td>
+													<td class="methodItemDesc">
+												    Table DOM reference
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setFooter"> </a>
+										<div class="itemTitle icon">
+											setFooter<span class="signature">(<span title="(sap.ui.core.Control) sap.ui.core.Control">oFooter</span>)</span>
+											<span class="light" title="returns sap.m.Column">: <a href="../symbols/sap.m.Column.html">sap.m.Column</a></span>
+										</div>
+										<div class="full-description">
+											Setter for the aggregated <code>footer</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oFooter</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Column.html">sap.m.Column</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setHAlign"> </a>
+										<div class="itemTitle icon">
+											setHAlign<span class="signature">(<span title="(sap.ui.core.TextAlign) new value for property hAlign">oHAlign</span>)</span>
+											<span class="light" title="returns sap.m.Column">: <a href="../symbols/sap.m.Column.html">sap.m.Column</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>hAlign</code>.
+</p><p>
+Default value is <code>Begin</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.TextAlign.html">sap.ui.core.TextAlign</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oHAlign</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>hAlign</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Column.html">sap.m.Column</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setHeader"> </a>
+										<div class="itemTitle icon">
+											setHeader<span class="signature">(<span title="(sap.ui.core.Control) sap.ui.core.Control">oHeader</span>)</span>
+											<span class="light" title="returns sap.m.Column">: <a href="../symbols/sap.m.Column.html">sap.m.Column</a></span>
+										</div>
+										<div class="full-description">
+											Setter for the aggregated <code>header</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oHeader</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Column.html">sap.m.Column</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="setIndex"> </a>
+										<div class="itemTitle icon protected">
+											setIndex<span class="signature">(<span title="(int) index of the visible column">nIndex</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Sets the visible column index
+Negative index values can be used to clear
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>nIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    index of the visible column
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="setInitialOrder"> </a>
+										<div class="itemTitle icon protected">
+											setInitialOrder<span class="signature">(<span title="(int) initial order of the column">nOrder</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Sets the initial order of the column
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>nOrder</b>
+													</td>
+													<td class="methodItemDesc">
+												    initial order of the column
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="setLastValue"> </a>
+										<div class="itemTitle icon protected">
+											setLastValue<span class="signature">(<span title="(any) Any Value">value</span>)</span>
+											<span class="light" title="returns sap.m.Column">: <a href="../symbols/sap.m.Column.html">sap.m.Column</a></span>
+										</div>
+										<div class="full-description">
+											Sets the last value of the column if mergeDuplicates property is true
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{any}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>value</b>
+													</td>
+													<td class="methodItemDesc">
+												    Any Value
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.16</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Column.html">sap.m.Column</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setMergeDuplicates"> </a>
+										<div class="itemTitle icon">
+											setMergeDuplicates<span class="signature">(<span title="(boolean) new value for property mergeDuplicates">bMergeDuplicates</span>)</span>
+											<span class="light" title="returns sap.m.Column">: <a href="../symbols/sap.m.Column.html">sap.m.Column</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>mergeDuplicates</code>.
+</p><p>
+Default value is <code>false</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bMergeDuplicates</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>mergeDuplicates</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.16</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Column.html">sap.m.Column</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setMergeFunctionName"> </a>
+										<div class="itemTitle icon">
+											setMergeFunctionName<span class="signature">(<span title="(string) new value for property mergeFunctionName">sMergeFunctionName</span>)</span>
+											<span class="light" title="returns sap.m.Column">: <a href="../symbols/sap.m.Column.html">sap.m.Column</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>mergeFunctionName</code>.
+</p><p>
+Default value is <code>getText</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sMergeFunctionName</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>mergeFunctionName</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.16</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Column.html">sap.m.Column</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setMinScreenWidth"> </a>
+										<div class="itemTitle icon">
+											setMinScreenWidth<span class="signature">(<span title="(string) new value for property minScreenWidth">sMinScreenWidth</span>)</span>
+											<span class="light" title="returns sap.m.Column">: <a href="../symbols/sap.m.Column.html">sap.m.Column</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>minScreenWidth</code>.
+</p><p>
+Default value is empty/<code>undefined</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sMinScreenWidth</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>minScreenWidth</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Column.html">sap.m.Column</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="setOrder"> </a>
+										<div class="itemTitle icon protected">
+											setOrder<span class="signature">(<span title="(int) order of the column">nOrder</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Sets the order of the column
+Does not do the visual effect
+Table should be invalidate to re-render
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>nOrder</b>
+													</td>
+													<td class="methodItemDesc">
+												    order of the column
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setPopinDisplay"> </a>
+										<div class="itemTitle icon">
+											setPopinDisplay<span class="signature">(<span title="(sap.m.PopinDisplay) new value for property popinDisplay">oPopinDisplay</span>)</span>
+											<span class="light" title="returns sap.m.Column">: <a href="../symbols/sap.m.Column.html">sap.m.Column</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>popinDisplay</code>.
+</p><p>
+Default value is <code>sap.m.PopinDisplay.Block</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.PopinDisplay.html">sap.m.PopinDisplay</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oPopinDisplay</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>popinDisplay</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.13.2</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Column.html">sap.m.Column</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setStyleClass"> </a>
+										<div class="itemTitle icon">
+											setStyleClass<span class="signature">(<span title="(string) new value for property styleClass">sStyleClass</span>)</span>
+											<span class="light" title="returns sap.m.Column">: <a href="../symbols/sap.m.Column.html">sap.m.Column</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>styleClass</code>.
+</p><p>
+Default value is empty/<code>undefined</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sStyleClass</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>styleClass</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Column.html">sap.m.Column</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setVAlign"> </a>
+										<div class="itemTitle icon">
+											setVAlign<span class="signature">(<span title="(sap.ui.core.VerticalAlign) new value for property vAlign">oVAlign</span>)</span>
+											<span class="light" title="returns sap.m.Column">: <a href="../symbols/sap.m.Column.html">sap.m.Column</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>vAlign</code>.
+</p><p>
+Default value is <code>Inherit</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.VerticalAlign.html">sap.ui.core.VerticalAlign</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oVAlign</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>vAlign</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Column.html">sap.m.Column</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setVisible"> </a>
+										<div class="itemTitle icon">
+											setVisible<span class="signature">(<span title="(boolean) new value for property visible">bVisible</span>)</span>
+											<span class="light" title="returns sap.m.Column">: <a href="../symbols/sap.m.Column.html">sap.m.Column</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>visible</code>.
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bVisible</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>visible</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Column.html">sap.m.Column</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setWidth"> </a>
+										<div class="itemTitle icon">
+											setWidth<span class="signature">(<span title="(sap.ui.core.CSSSize) new value for property width">sWidth</span>)</span>
+											<span class="light" title="returns sap.m.Column">: <a href="../symbols/sap.m.Column.html">sap.m.Column</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>width</code>.
+</p><p>
+Default value is empty/<code>undefined</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sWidth</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>width</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Column.html">sap.m.Column</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod deprecated'>
+										<a name="getPopinHAlign"> </a>
+										<div class="itemTitle icon">
+											getPopinHAlign<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.TextAlign">: <a href="../symbols/sap.ui.core.TextAlign.html">sap.ui.core.TextAlign</a></span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>popinHAlign</code>.
+Horizontal alignment of the pop-in content. Available alignment settings are "Begin", "Center", "End", "Left", and "Right".
+</p><p>
+NOTE: Controls with a text align do not inherit the horizontal alignment.
+</p><p>
+Default value is <code>Begin</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+											<dl class="detailList deprecation">
+												<dt class="heading">Deprecated:</dt>
+												<dt>
+													Since version 1.14. 
+Use popinDisplay property instead.
+												</dt>
+											</dl>
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.TextAlign.html">sap.ui.core.TextAlign</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>popinHAlign</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod deprecated'>
+										<a name="setPopinHAlign"> </a>
+										<div class="itemTitle icon">
+											setPopinHAlign<span class="signature">(<span title="(sap.ui.core.TextAlign) new value for property popinHAlign">oPopinHAlign</span>)</span>
+											<span class="light" title="returns sap.m.Column">: <a href="../symbols/sap.m.Column.html">sap.m.Column</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>popinHAlign</code>.
+</p><p>
+Default value is <code>Begin</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.TextAlign.html">sap.ui.core.TextAlign</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oPopinHAlign</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>popinHAlign</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+											<dl class="detailList deprecation">
+												<dt class="heading">Deprecated:</dt>
+												<dt>
+													Since version 1.14. 
+Use popinDisplay property instead.
+												</dt>
+											</dl>
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Column.html">sap.m.Column</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

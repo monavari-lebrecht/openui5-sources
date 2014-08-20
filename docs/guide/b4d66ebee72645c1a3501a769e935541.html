@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="We'll take a step-by-step approach and build up the app over a series of small progressions. We'll start out at nothing, and end up with a fully functioning app."/>
+<meta name="description" content="We'll take a step-by-step approach and build up the app over a series of small progressions. We'll start out at nothing, and end up with a fully functioning app."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=04660218452210685"/>
+<title>Building</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiob4d66ebee72645c1a3501a769e935541">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Building</h1>
+<div class="body conbody"><p class="shortdesc">We'll take a step-by-step approach and build up the app over a series of small
+		progressions. We'll start out at nothing, and end up with a fully functioning
+		app.</p>
+<p dir="ltr" class="p">In the previous part "Preparing", we examined the general characteristics and
+			specific aspects of an enterprise scale app. We also looked into design patterns, and
+			the specific business scenario that we're going to cover. In this part, we're going to
+			build the app.</p>
+<div class="section"><div class="section_title">App Overview and Structure</div><div type="App Overview and Structure">
+			
+			<p class="p">Let's remind ourselves of what we're aiming for:</p>
+
+			<div class="fig fignone"><div class="figcontainer"><img class="image" id="loiob4d66ebee72645c1a3501a769e935541__image_bwh_qgr_4n" src="5a47e13f7051418ea277275a2caf79c0.image"/></div></div>
+
+			<p class="p">The app is made up of a number of moving parts, which are shown in this diagram:</p>
+
+			<div class="fig fignone"><div class="figcontainer"><img class="image" id="loiob4d66ebee72645c1a3501a769e935541__image_cbn_dlb_ln" width="960px" src="0614575f0ea04cc7bc87ca53f2ea2bf5.image"/></div></div>
+
+			<p class="p">Let's have a quick tour of how the app is put together, visiting each file in turn.
+			</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Index, Component and Message Bundle</div><div type="Index, Component and Message Bundle">
+			
+			<p class="p">In the beginning the browser loads the web application's
+					<span class="ph filepath">index.html</span> which contains only minimal code. It loads the
+				UI5 toolkit core using the standard variant bootstrap script tag, and there is a
+				single function call to instantiate an
+					<samp class="ph codeph">sap.ui.core.ComponentContainer</samp> and place it in the body of the
+				HTML document. The <samp class="ph codeph">sap.ui.core.ComponentContainer</samp> loads an
+					<samp class="ph codeph">sap.ui.core.UIComponent</samp> which is the self-contained
+				encapsulation of the whole application. </p>
+
+			<p class="p">The <samp class="ph codeph">sap.ui.core.UIComponent</samp> (henceforth referred to as the
+					'<dfn class="term">Component</dfn>') is defined in the <span class="ph filepath">Component.js</span>
+				file in the same folder as <span class="ph filepath">index.html</span>; it is found through the
+				specification of resource locations in the bootstrap tag - see the Bootstrap section
+				for more details. The Component has metadata defined, which includes
+				application-level configuration and routing information. Routing is the key best
+				practice navigation mechanism and for non-trivial apps supersedes
+					<samp class="ph codeph">sap.ui.core.EventBus</samp>-based navigation, and even
+				shared-controller-based access to the top-level navigation control (such as an
+					<samp class="ph codeph">sap.m.NavContainer</samp>). </p>
+
+			<p class="p">In the initialization part of the Component, models are created and set on the
+				component: the main model that connects to the OData source, and some helper models
+				for internationalization (i18n), where the texts are loaded from a local resource
+					<samp class="ph codeph">messageBundle.properties</samp>, and device detection based
+				arrangement of user interface (UI) controls. Further, the intialization of the
+					<samp class="ph codeph">sap.ui.core.routing.Router</samp> (the Router) is performed. In the
+				main section of the Component the root view ('<dfn class="term">App</dfn>') is instantiated.
+				Like all the other views in this sample app, the root view is an XML view. </p>
+
+		</div></div>
+<div class="section"><div class="section_title">The Views and Fragments</div><div type="The Views and Fragments">
+			
+			<p dir="ltr" class="p">The root view <dfn class="term">App</dfn>, defined in <span class="ph filepath">App.view.xml</span>, is
+				very simple and contains a single <samp class="ph codeph">sap.m.SplitApp</samp> control. Neither
+				the master nor the detail pages aggregations are filled at this time in the view
+				definition; this is all managed by the Router, which is also the reason why there's
+				no explicit requirement for a controller connected to this view.</p>
+
+			<p dir="ltr" class="p">The visible part of the sample app is provided by three main XML views and a
+				fragment. When displayed on devices other than a smartphone, there are two views
+				shown - the master and the detail. Initially this is the
+					<span class="ph filepath">Master.view.xml</span> and the
+					<span class="ph filepath">Detail.view.xml</span> . Each of these views contain an
+					<samp class="ph codeph">sap.m.Page</samp>. There's also
+				<span class="ph filepath">NotFound.view.xml</span>, to be used when no view can be matched to
+				the resource requested. There is also the AddProduct view
+					(<span class="ph filepath">AddProduct.view.xml</span>) which is shown in the detail pages
+				aggregation when the <span class="ph uicontrol">add product</span> button is pressed. There are
+				no direct dependencies between views. </p>
+
+			<p dir="ltr" class="p">In the Detail view there is a couple of
+					<samp class="ph codeph">sap.ui.layout.form.SimpleForm</samp> controls to display the supplier
+				address and category details. These controls are defined separately in XML fragments
+					<span class="ph filepath">SupplierAddressForm.fragment.xml</span> and
+					<span class="ph filepath">CategoryInfoForm.fragment.xml</span>. They are included in the
+				Detail view using the <samp class="ph codeph">sap.ui.core.Fragment</samp> element. Finally,
+				there's another fragment <span class="ph filepath">NameRequiredDialog.fragment.xml</span>, where
+				a Dialog control is defined, to be shown if no name is specified in the new product
+				form.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Other Files</div><div type="Other Files">
+			
+			<p dir="ltr" class="p">The <span class="ph filepath">Formatter.js</span> file contains formatting utilities
+				that are used in various controls within the Master and Detail views. </p>
+
+			<p dir="ltr" class="p">The css folder contains <span class="ph filepath">style.css</span> which has a very
+				small amount of custom CSS, specifically to position the "not found" message further
+				down that it would normally sit.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">The Overall Folder Structure</div><div type="The Overall Folder Structure">
+			
+			<p class="p">The folder structure containing all the resources mentioned in this overview looks
+				like this:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+tdg/
+  |
+  +-- css/
+  |     |
+  |     +-- style.css
+  |
+  +-- i18n/
+  |     |
+  |     +-- messageBundle.properties
+  |
+  +-- util/
+  |     |
+  |     +-- Formatter.js
+  |
+  +-- view/
+  |     |
+  |     +-- AddProduct.controller.js
+  |     +-- AddProduct.view.xml
+  |     +-- App.view.xml
+  |     +-- CategoryInfoForm.fragment.xml
+  |     +-- Detail.controller.js
+  |     +-- Detail.view.xml
+  |     +-- Master.controller.js
+  |     +-- Master.view.xml
+  |     +-- NameRequiredDialog.fragment.xml
+  |     +-- NotFound.view.xml
+  |     +-- SupplierAddressForm.fragment.xml
+  |
+  +-- Component.js
+  +-- index.html
+  +-- MyRouter.js</pre></div>
+
+			<p class="p">So now we have an idea of what our app should consist of, let's start building
+				it.</p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="f6998380aeb94af6917eff27aa5cc14c.html">Step 1: Index</a></div>
+<div><a class="link" href="170638b7a2b4424e8580fb473af6a3cd.html">Step 2: Component</a></div>
+<div><a class="link" href="688f36bd758e4ce2b4e682eef4dc794e.html">Step 3: Navigation and Routing</a></div>
+<div><a class="link" href="b6d1a9511f994b3a86e2f34a32e40a34.html">Step 4: Internationalization</a></div>
+<div><a class="link" href="325b8edafcfa4c9c8fbd42455a60e379.html">Step 5: Device Model</a></div>
+<div><a class="link" href="482df92c6e8b429c8fc9022179515194.html">Step 6: Custom Utilities</a></div>
+<div><a class="link" href="31a8db9d97544bb7964a6bf18e4678ef.html">Step 7: Model View Controller</a></div>
+<div><a class="link" href="a425399ec2fe47a8b9ba9653ab4f6623.html">Step 8: Master View</a></div>
+<div><a class="link" href="08887a263aa94c14838593aecddf1529.html">Step 9: Detail View</a></div>
+<div><a class="link" href="b87b4b705c144423a2fec1628b85a486.html">Step 10: Detail XML Fragments</a></div>
+<div><a class="link" href="5a6ffde8380041ffa11ed5c10431b4aa.html">Step 11: AddProduct View</a></div>
+<div><a class="link" href="9a3e13a8688144ec9e8b4075ee970224.html">Step 12: NotFound View</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Building";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

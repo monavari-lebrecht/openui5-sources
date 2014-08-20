@@ -1,0 +1,4332 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.commons.RowRepeater</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class sap.ui.commons.RowRepeater
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.ui.core.Control" href="../symbols/sap.ui.core.Control.html">Control</a></div>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>This control displays items in a stacked list format, allowing the user to page in order to see more items or to use the offered filtering and sorting capabilities in order to manipulate the displayed data.</p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="Constructor for a new RowRepeater.">new <a href="../symbols/sap.ui.commons.RowRepeater.html#constructor">sap.ui.commons.RowRepeater</a></b>
+										<span class='signature'>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)</span>
+										<span class='description'>Constructor for a new RowRepeater.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+						
+						
+						
+						
+					
+		
+
+
+					
+						
+						
+						<div class="summary section" cellspacing="0" summary="A summary of the events documented in the class sap.ui.commons.RowRepeater.">
+							<div class="sectionTitle">Event Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="This event is triggered when a filter is set."><a href="../symbols/sap.ui.commons.RowRepeater.html#event:filter">filter</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>This event is triggered when a filter is set.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="This event is triggered when paging was executed."><a href="../symbols/sap.ui.commons.RowRepeater.html#event:page">page</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>This event is triggered when paging was executed.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="This event is triggered when the number of rows was changed."><a href="../symbols/sap.ui.commons.RowRepeater.html#event:resize">resize</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>This event is triggered when the number of rows was changed.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="This event is triggered when a sorting is applied."><a href="../symbols/sap.ui.commons.RowRepeater.html#event:sort">sort</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>This event is triggered when a sorting is applied.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+				
+						
+						
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Creates a new subclass of class sap.ui.commons.RowRepeater with name sClassName and enriches it with the information contained in oClassInfo."><a href="../symbols/sap.ui.commons.RowRepeater.html#.extend">sap.ui.commons.RowRepeater.extend</a></b><span class='signature'>(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Creates a new subclass of class sap.ui.commons.RowRepeater with name <code>sClassName</code> and enriches it with the information contained in <code>oClassInfo</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Adds some filter oFilter to the aggregation named filters."><a href="../symbols/sap.ui.commons.RowRepeater.html#addFilter">addFilter</a></b><span class='signature'>(<span title="(sap.ui.commons.RowRepeaterFilter) the filter to add; if empty, nothing is inserted">oFilter</span>)</span>
+									<span class='description'>Adds some filter <code>oFilter</code> to the aggregation named <code>filters</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Adds some row oRow to the aggregation named rows."><a href="../symbols/sap.ui.commons.RowRepeater.html#addRow">addRow</a></b><span class='signature'>(<span title="(sap.ui.core.Control) the row to add; if empty, nothing is inserted">oRow</span>)</span>
+									<span class='description'>Adds some row <code>oRow</code> to the aggregation named <code>rows</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Adds some sorter oSorter to the aggregation named sorters."><a href="../symbols/sap.ui.commons.RowRepeater.html#addSorter">addSorter</a></b><span class='signature'>(<span title="(sap.ui.commons.RowRepeaterSorter) the sorter to add; if empty, nothing is inserted">oSorter</span>)</span>
+									<span class='description'>Adds some sorter <code>oSorter</code> to the aggregation named <code>sorters</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Applies a filter."><a href="../symbols/sap.ui.commons.RowRepeater.html#applyFilter">applyFilter</a></b><span class='signature'>(<span title="(string) The ID if the filter.">sId</span>)</span>
+									<span class='description'>Applies a filter.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Attach event handler fnFunction to the 'filter' event of this sap.ui.commons.RowRepeater."><a href="../symbols/sap.ui.commons.RowRepeater.html#attachFilter">attachFilter</a></b><span class='signature'>(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Attach event handler <code>fnFunction</code> to the 'filter' event of this <code>sap.ui.commons.RowRepeater</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Attach event handler fnFunction to the 'page' event of this sap.ui.commons.RowRepeater."><a href="../symbols/sap.ui.commons.RowRepeater.html#attachPage">attachPage</a></b><span class='signature'>(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Attach event handler <code>fnFunction</code> to the 'page' event of this <code>sap.ui.commons.RowRepeater</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Attach event handler fnFunction to the 'resize' event of this sap.ui.commons.RowRepeater."><a href="../symbols/sap.ui.commons.RowRepeater.html#attachResize">attachResize</a></b><span class='signature'>(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Attach event handler <code>fnFunction</code> to the 'resize' event of this <code>sap.ui.commons.RowRepeater</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Attach event handler fnFunction to the 'sort' event of this sap.ui.commons.RowRepeater."><a href="../symbols/sap.ui.commons.RowRepeater.html#attachSort">attachSort</a></b><span class='signature'>(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Attach event handler <code>fnFunction</code> to the 'sort' event of this <code>sap.ui.commons.RowRepeater</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Binder for aggregation rows."><a href="../symbols/sap.ui.commons.RowRepeater.html#bindRows">bindRows</a></b><span class='signature'>(<span title="(string) path to a list in the model">sPath</span>, <span title="(sap.ui.core.Element) the control template for this aggregation">oTemplate</span>, <span title="(sap.ui.model.Sorter) the initial sort order (optional)">oSorter</span>, <span title="(array) the predefined filters for this aggregation (optional)">aFilters</span>)</span>
+									<span class='description'>Binder for aggregation <code>rows</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys all the filters in the aggregation named filters."><a href="../symbols/sap.ui.commons.RowRepeater.html#destroyFilters">destroyFilters</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys all the filters in the aggregation named <code>filters</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys the noData in the aggregation named noData."><a href="../symbols/sap.ui.commons.RowRepeater.html#destroyNoData">destroyNoData</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys the noData in the aggregation named <code>noData</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys all the rows in the aggregation named rows."><a href="../symbols/sap.ui.commons.RowRepeater.html#destroyRows">destroyRows</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys all the rows in the aggregation named <code>rows</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys all the sorters in the aggregation named sorters."><a href="../symbols/sap.ui.commons.RowRepeater.html#destroySorters">destroySorters</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys all the sorters in the aggregation named <code>sorters</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys the title in the aggregation named title."><a href="../symbols/sap.ui.commons.RowRepeater.html#destroyTitle">destroyTitle</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys the title in the aggregation named <code>title</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Detach event handler fnFunction from the 'filter' event of this sap.ui.commons.RowRepeater."><a href="../symbols/sap.ui.commons.RowRepeater.html#detachFilter">detachFilter</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Detach event handler <code>fnFunction</code> from the 'filter' event of this <code>sap.ui.commons.RowRepeater</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Detach event handler fnFunction from the 'page' event of this sap.ui.commons.RowRepeater."><a href="../symbols/sap.ui.commons.RowRepeater.html#detachPage">detachPage</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Detach event handler <code>fnFunction</code> from the 'page' event of this <code>sap.ui.commons.RowRepeater</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Detach event handler fnFunction from the 'resize' event of this sap.ui.commons.RowRepeater."><a href="../symbols/sap.ui.commons.RowRepeater.html#detachResize">detachResize</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Detach event handler <code>fnFunction</code> from the 'resize' event of this <code>sap.ui.commons.RowRepeater</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Detach event handler fnFunction from the 'sort' event of this sap.ui.commons.RowRepeater."><a href="../symbols/sap.ui.commons.RowRepeater.html#detachSort">detachSort</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Detach event handler <code>fnFunction</code> from the 'sort' event of this <code>sap.ui.commons.RowRepeater</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Fire event filter to attached listeners."><a href="../symbols/sap.ui.commons.RowRepeater.html#fireFilter">fireFilter</a></b><span class='signature'>(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event filter to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Fire event page to attached listeners."><a href="../symbols/sap.ui.commons.RowRepeater.html#firePage">firePage</a></b><span class='signature'>(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event page to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Fire event resize to attached listeners."><a href="../symbols/sap.ui.commons.RowRepeater.html#fireResize">fireResize</a></b><span class='signature'>(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event resize to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Fire event sort to attached listeners."><a href="../symbols/sap.ui.commons.RowRepeater.html#fireSort">fireSort</a></b><span class='signature'>(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event sort to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Switch to first page."><a href="../symbols/sap.ui.commons.RowRepeater.html#firstPage">firstPage</a></b><span class='signature'>()</span>
+									<span class='description'>Switch to first page.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property currentPage."><a href="../symbols/sap.ui.commons.RowRepeater.html#getCurrentPage">getCurrentPage</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>currentPage</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property design."><a href="../symbols/sap.ui.commons.RowRepeater.html#getDesign">getDesign</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>design</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation filters."><a href="../symbols/sap.ui.commons.RowRepeater.html#getFilters">getFilters</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>filters</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property fixedRowHeight."><a href="../symbols/sap.ui.commons.RowRepeater.html#getFixedRowHeight">getFixedRowHeight</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>fixedRowHeight</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation noData."><a href="../symbols/sap.ui.commons.RowRepeater.html#getNoData">getNoData</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>noData</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property numberOfRows."><a href="../symbols/sap.ui.commons.RowRepeater.html#getNumberOfRows">getNumberOfRows</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>numberOfRows</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation rows."><a href="../symbols/sap.ui.commons.RowRepeater.html#getRows">getRows</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>rows</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property showMoreSteps."><a href="../symbols/sap.ui.commons.RowRepeater.html#getShowMoreSteps">getShowMoreSteps</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>showMoreSteps</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation sorters."><a href="../symbols/sap.ui.commons.RowRepeater.html#getSorters">getSorters</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>sorters</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property threshold."><a href="../symbols/sap.ui.commons.RowRepeater.html#getThreshold">getThreshold</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>threshold</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation title."><a href="../symbols/sap.ui.commons.RowRepeater.html#getTitle">getTitle</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>title</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property visible."><a href="../symbols/sap.ui.commons.RowRepeater.html#getVisible">getVisible</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>visible</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Switch to specified page."><a href="../symbols/sap.ui.commons.RowRepeater.html#gotoPage">gotoPage</a></b><span class='signature'>(<span title="(int) The index of the page to go to.">iPageNumber</span>)</span>
+									<span class='description'>Switch to specified page.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Checks for the provided sap.ui.commons.RowRepeaterFilter in the aggregation named filters and returns its index if found or -1 otherwise."><a href="../symbols/sap.ui.commons.RowRepeater.html#indexOfFilter">indexOfFilter</a></b><span class='signature'>(<span title="(sap.ui.commons.RowRepeaterFilter) the filter whose index is looked for.">oFilter</span>)</span>
+									<span class='description'>Checks for the provided <code>sap.ui.commons.RowRepeaterFilter</code> in the aggregation named <code>filters</code> and returns its index if found or -1 otherwise.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Checks for the provided sap.ui.core.Control in the aggregation named rows and returns its index if found or -1 otherwise."><a href="../symbols/sap.ui.commons.RowRepeater.html#indexOfRow">indexOfRow</a></b><span class='signature'>(<span title="(sap.ui.core.Control) the row whose index is looked for.">oRow</span>)</span>
+									<span class='description'>Checks for the provided <code>sap.ui.core.Control</code> in the aggregation named <code>rows</code> and returns its index if found or -1 otherwise.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Checks for the provided sap.ui.commons.RowRepeaterSorter in the aggregation named sorters and returns its index if found or -1 otherwise."><a href="../symbols/sap.ui.commons.RowRepeater.html#indexOfSorter">indexOfSorter</a></b><span class='signature'>(<span title="(sap.ui.commons.RowRepeaterSorter) the sorter whose index is looked for.">oSorter</span>)</span>
+									<span class='description'>Checks for the provided <code>sap.ui.commons.RowRepeaterSorter</code> in the aggregation named <code>sorters</code> and returns its index if found or -1 otherwise.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Inserts a filter into the aggregation named filters."><a href="../symbols/sap.ui.commons.RowRepeater.html#insertFilter">insertFilter</a></b><span class='signature'>(<span title="(sap.ui.commons.RowRepeaterFilter) the filter to insert; if empty, nothing is inserted">oFilter</span>, <span title="(int) the 0-based index the filter should be inserted at; for a negative value of iIndex, the filter is inserted at position 0; for a value greater than the current size of the aggregation, the filter is inserted at the last position">iIndex</span>)</span>
+									<span class='description'>Inserts a filter into the aggregation named <code>filters</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Inserts a row into the aggregation named rows."><a href="../symbols/sap.ui.commons.RowRepeater.html#insertRow">insertRow</a></b><span class='signature'>(<span title="(sap.ui.core.Control) the row to insert; if empty, nothing is inserted">oRow</span>, <span title="(int) the 0-based index the row should be inserted at; for a negative value of iIndex, the row is inserted at position 0; for a value greater than the current size of the aggregation, the row is inserted at the last position">iIndex</span>)</span>
+									<span class='description'>Inserts a row into the aggregation named <code>rows</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Inserts a sorter into the aggregation named sorters."><a href="../symbols/sap.ui.commons.RowRepeater.html#insertSorter">insertSorter</a></b><span class='signature'>(<span title="(sap.ui.commons.RowRepeaterSorter) the sorter to insert; if empty, nothing is inserted">oSorter</span>, <span title="(int) the 0-based index the sorter should be inserted at; for a negative value of iIndex, the sorter is inserted at position 0; for a value greater than the current size of the aggregation, the sorter is inserted at the last position">iIndex</span>)</span>
+									<span class='description'>Inserts a sorter into the aggregation named <code>sorters</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Switch to last page."><a href="../symbols/sap.ui.commons.RowRepeater.html#lastPage">lastPage</a></b><span class='signature'>()</span>
+									<span class='description'>Switch to last page.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Switch to next page."><a href="../symbols/sap.ui.commons.RowRepeater.html#nextPage">nextPage</a></b><span class='signature'>()</span>
+									<span class='description'>Switch to next page.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Switch to previous page."><a href="../symbols/sap.ui.commons.RowRepeater.html#previousPage">previousPage</a></b><span class='signature'>()</span>
+									<span class='description'>Switch to previous page.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes all the controls in the aggregation named filters."><a href="../symbols/sap.ui.commons.RowRepeater.html#removeAllFilters">removeAllFilters</a></b><span class='signature'>()</span>
+									<span class='description'>Removes all the controls in the aggregation named <code>filters</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes all the controls in the aggregation named rows."><a href="../symbols/sap.ui.commons.RowRepeater.html#removeAllRows">removeAllRows</a></b><span class='signature'>()</span>
+									<span class='description'>Removes all the controls in the aggregation named <code>rows</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes all the controls in the aggregation named sorters."><a href="../symbols/sap.ui.commons.RowRepeater.html#removeAllSorters">removeAllSorters</a></b><span class='signature'>()</span>
+									<span class='description'>Removes all the controls in the aggregation named <code>sorters</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes an filter from the aggregation named filters."><a href="../symbols/sap.ui.commons.RowRepeater.html#removeFilter">removeFilter</a></b><span class='signature'>(<span title="(int | string | sap.ui.commons.RowRepeaterFilter) the filter to remove or its index or id">vFilter</span>)</span>
+									<span class='description'>Removes an filter from the aggregation named <code>filters</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes an row from the aggregation named rows."><a href="../symbols/sap.ui.commons.RowRepeater.html#removeRow">removeRow</a></b><span class='signature'>(<span title="(int | string | sap.ui.core.Control) the row to remove or its index or id">vRow</span>)</span>
+									<span class='description'>Removes an row from the aggregation named <code>rows</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes an sorter from the aggregation named sorters."><a href="../symbols/sap.ui.commons.RowRepeater.html#removeSorter">removeSorter</a></b><span class='signature'>(<span title="(int | string | sap.ui.commons.RowRepeaterSorter) the sorter to remove or its index or id">vSorter</span>)</span>
+									<span class='description'>Removes an sorter from the aggregation named <code>sorters</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Resizes the row repeater by changing the number of displayed rows."><a href="../symbols/sap.ui.commons.RowRepeater.html#resize">resize</a></b><span class='signature'>(<span title="(int) The new value of number of rows displayed.">iNumberOfRows</span>)</span>
+									<span class='description'>Resizes the row repeater by changing the number of displayed rows.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property currentPage."><a href="../symbols/sap.ui.commons.RowRepeater.html#setCurrentPage">setCurrentPage</a></b><span class='signature'>(<span title="(int) new value for property currentPage">iCurrentPage</span>)</span>
+									<span class='description'>Setter for property <code>currentPage</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property design."><a href="../symbols/sap.ui.commons.RowRepeater.html#setDesign">setDesign</a></b><span class='signature'>(<span title="(sap.ui.commons.RowRepeaterDesign) new value for property design">oDesign</span>)</span>
+									<span class='description'>Setter for property <code>design</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property fixedRowHeight."><a href="../symbols/sap.ui.commons.RowRepeater.html#setFixedRowHeight">setFixedRowHeight</a></b><span class='signature'>(<span title="(sap.ui.core.CSSSize) new value for property fixedRowHeight">sFixedRowHeight</span>)</span>
+									<span class='description'>Setter for property <code>fixedRowHeight</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for the aggregated noData."><a href="../symbols/sap.ui.commons.RowRepeater.html#setNoData">setNoData</a></b><span class='signature'>(<span title="(sap.ui.core.Control) sap.ui.core.Control">oNoData</span>)</span>
+									<span class='description'>Setter for the aggregated <code>noData</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property numberOfRows."><a href="../symbols/sap.ui.commons.RowRepeater.html#setNumberOfRows">setNumberOfRows</a></b><span class='signature'>(<span title="(int) new value for property numberOfRows">iNumberOfRows</span>)</span>
+									<span class='description'>Setter for property <code>numberOfRows</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Override the default behavior of setShowMoreSteps to update the paging mode flag."><a href="../symbols/sap.ui.commons.RowRepeater.html#setShowMoreSteps">setShowMoreSteps</a></b><span class='signature'>(<span title="(int) new value for property showMoreSteps">iShowMoreSteps</span>)</span>
+									<span class='description'>Override the default behavior of <code>setShowMoreSteps</code> to update the paging mode flag.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property threshold."><a href="../symbols/sap.ui.commons.RowRepeater.html#setThreshold">setThreshold</a></b><span class='signature'>(<span title="(int) new value for property threshold">iThreshold</span>)</span>
+									<span class='description'>Setter for property <code>threshold</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for the aggregated title."><a href="../symbols/sap.ui.commons.RowRepeater.html#setTitle">setTitle</a></b><span class='signature'>(<span title="(sap.ui.core.Title) sap.ui.core.Title">oTitle</span>)</span>
+									<span class='description'>Setter for the aggregated <code>title</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property visible."><a href="../symbols/sap.ui.commons.RowRepeater.html#setVisible">setVisible</a></b><span class='signature'>(<span title="(boolean) new value for property visible">bVisible</span>)</span>
+									<span class='description'>Setter for property <code>visible</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="The triggerShowMore function increments the number of rows by the value of showMoreSteps."><a href="../symbols/sap.ui.commons.RowRepeater.html#triggerShowMore">triggerShowMore</a></b><span class='signature'>()</span>
+									<span class='description'>The <code>triggerShowMore</code> function increments the number of rows by the value of <code>showMoreSteps</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Sort the data."><a href="../symbols/sap.ui.commons.RowRepeater.html#triggerSort">triggerSort</a></b><span class='signature'>(<span title="(string) The ID of the sorter.">sId</span>)</span>
+									<span class='description'>Sort the data.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Unbinder for aggregation rows."><a href="../symbols/sap.ui.commons.RowRepeater.html#unbindRows">unbindRows</a></b><span class='signature'>()</span>
+									<span class='description'>Unbinder for aggregation <code>rows</code>.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Control.html#addStyleClass">addStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#allowTextSelection">allowTextSelection</a>, <a href="../symbols/sap.ui.core.Control.html#attachBrowserEvent">attachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#clone">clone</a>, <a href="../symbols/sap.ui.core.Control.html#detachBrowserEvent">detachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#getBusy">getBusy</a>, <a href="../symbols/sap.ui.core.Control.html#getBusyIndicatorDelay">getBusyIndicatorDelay</a>, <a href="../symbols/sap.ui.core.Control.html#getIdForLabel">getIdForLabel</a>, <a href="../symbols/sap.ui.core.Control.html#getRenderer">getRenderer</a>, <a href="../symbols/sap.ui.core.Control.html#hasStyleClass">hasStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#invalidate">invalidate</a>, <a href="../symbols/sap.ui.core.Control.html#isBusy">isBusy</a>, <a href="../symbols/sap.ui.core.Control.html#onAfterRendering">onAfterRendering</a>, <a href="../symbols/sap.ui.core.Control.html#onBeforeRendering">onBeforeRendering</a>, <a href="../symbols/sap.ui.core.Control.html#placeAt">placeAt</a>, <a href="../symbols/sap.ui.core.Control.html#removeStyleClass">removeStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#rerender">rerender</a>, <a href="../symbols/sap.ui.core.Control.html#setBusy">setBusy</a>, <a href="../symbols/sap.ui.core.Control.html#setBusyIndicatorDelay">setBusyIndicatorDelay</a>, <a href="../symbols/sap.ui.core.Control.html#toggleStyleClass">toggleStyleClass</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Element.html#$">$</a>, <a href="../symbols/sap.ui.core.Element.html#addCustomData">addCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#addDependent">addDependent</a>, <a href="../symbols/sap.ui.core.Element.html#addEventDelegate">addEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#applyFocusInfo">applyFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#bindElement">bindElement</a>, <a href="../symbols/sap.ui.core.Element.html#data">data</a>, <a href="../symbols/sap.ui.core.Element.html#destroy">destroy</a>, <a href="../symbols/sap.ui.core.Element.html#destroyCustomData">destroyCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#destroyDependents">destroyDependents</a>, <a href="../symbols/sap.ui.core.Element.html#enhanceAccessibilityState">enhanceAccessibilityState</a>, <a href="../symbols/sap.ui.core.Element.html#exit">exit</a>, <a href="../symbols/sap.ui.core.Element.html#findElements">findElements</a>, <a href="../symbols/sap.ui.core.Element.html#fireEvent">fireEvent</a>, <a href="../symbols/sap.ui.core.Element.html#getCustomData">getCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#getDependents">getDependents</a>, <a href="../symbols/sap.ui.core.Element.html#getDomRef">getDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getElementBinding">getElementBinding</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusDomRef">getFocusDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusInfo">getFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#getInterface">getInterface</a>, <a href="../symbols/sap.ui.core.Element.html#getLayoutData">getLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#getMetadata">getMetadata</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip">getTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_AsString">getTooltip_AsString</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_Text">getTooltip_Text</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfCustomData">indexOfCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfDependent">indexOfDependent</a>, <a href="../symbols/sap.ui.core.Element.html#init">init</a>, <a href="../symbols/sap.ui.core.Element.html#insertCustomData">insertCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#insertDependent">insertDependent</a>, <a href="../symbols/sap.ui.core.Element.html#prop">prop</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllCustomData">removeAllCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllDependents">removeAllDependents</a>, <a href="../symbols/sap.ui.core.Element.html#removeCustomData">removeCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeDependent">removeDependent</a>, <a href="../symbols/sap.ui.core.Element.html#removeEventDelegate">removeEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#setLayoutData">setLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#setTooltip">setTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#toString">toString</a>, <a href="../symbols/sap.ui.core.Element.html#unbindElement">unbindElement</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.ManagedObject.html">sap.ui.base.ManagedObject</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.ManagedObject.html#addAggregation">addAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#addAssociation">addAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#applySettings">applySettings</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindAggregation">bindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindContext">bindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindObject">bindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindProperty">bindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#destroyAggregation">destroyAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#findAggregatedObjects">findAggregatedObjects</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAggregation">getAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAssociation">getAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBinding">getBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingContext">getBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingInfo">getBindingInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingPath">getBindingPath</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getEventingParent">getEventingParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getId">getId</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getModel">getModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getObjectBinding">getObjectBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getOriginInfo">getOriginInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getParent">getParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getProperty">getProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#hasModel">hasModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#indexOfAggregation">indexOfAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#insertAggregation">insertAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isInvalidateSuppressed">isInvalidateSuppressed</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isTreeBinding">isTreeBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAggregation">removeAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAggregation">removeAllAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAssociation">removeAllAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAssociation">removeAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAggregation">setAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAssociation">setAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setBindingContext">setBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setModel">setModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setProperty">setProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindContext">unbindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindObject">unbindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindProperty">unbindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateAggregation">validateAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateProperty">validateProperty</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.EventProvider.html#attachEvent">attachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#attachEventOnce">attachEventOnce</a>, <a href="../symbols/sap.ui.base.EventProvider.html#detachEvent">detachEvent</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.ui.commons.RowRepeater</b>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)
+										</div>
+										
+										<div class="full-description">
+											Constructor for a new RowRepeater.
+</p><p>
+Accepts an object literal <code>mSettings</code> that defines initial 
+property values, aggregated and associated objects as well as event handlers. 
+</p><p>
+If the name of a setting is ambiguous (e.g. a property has the same name as an event), 
+then the framework assumes property, aggregation, association, event in that order. 
+To override this automatic resolution, one of the prefixes "aggregation:", "association:" 
+or "event:" can be added to the name of the setting (such a prefixed name must be
+enclosed in single or double quotes).
+</p><p>
+The supported settings are:
+<ul>
+<li>Properties
+<ul>
+<li><a href="#getVisible">visible</a> : boolean (default: true)</li>
+<li><a href="#getNumberOfRows">numberOfRows</a> : int (default: 5)</li>
+<li><a href="#getCurrentPage">currentPage</a> : int (default: 1)</li>
+<li><a href="#getShowMoreSteps">showMoreSteps</a> : int (default: 0)</li>
+<li><a href="#getFixedRowHeight">fixedRowHeight</a> : sap.ui.core.CSSSize (default: '')</li>
+<li><a href="#getDesign">design</a> : sap.ui.commons.RowRepeaterDesign (default: sap.ui.commons.RowRepeaterDesign.Standard)</li>
+<li><a href="#getThreshold">threshold</a> : int</li></ul>
+</li>
+<li>Aggregations
+<ul>
+<li><a href="#getRows">rows</a> <strong>(default aggregation)</strong> : sap.ui.core.Control[]</li>
+<li><a href="#getTitle">title</a> : sap.ui.core.Title</li>
+<li><a href="#getFilters">filters</a> : sap.ui.commons.RowRepeaterFilter[]</li>
+<li><a href="#getSorters">sorters</a> : sap.ui.commons.RowRepeaterSorter[]</li>
+<li><a href="#getNoData">noData</a> : sap.ui.core.Control</li></ul>
+</li>
+<li>Associations
+<ul></ul>
+</li>
+<li>Events
+<ul>
+<li><a href="../symbols/sap.ui.commons.RowRepeater.html#event:filter">filter</a> : fnListenerFunction or [fnListenerFunction, oListenerObject] or [oData, fnListenerFunction, oListenerObject]</li>
+<li><a href="../symbols/sap.ui.commons.RowRepeater.html#event:sort">sort</a> : fnListenerFunction or [fnListenerFunction, oListenerObject] or [oData, fnListenerFunction, oListenerObject]</li>
+<li><a href="../symbols/sap.ui.commons.RowRepeater.html#event:page">page</a> : fnListenerFunction or [fnListenerFunction, oListenerObject] or [oData, fnListenerFunction, oListenerObject]</li>
+<li><a href="../symbols/sap.ui.commons.RowRepeater.html#event:resize">resize</a> : fnListenerFunction or [fnListenerFunction, oListenerObject] or [oData, fnListenerFunction, oListenerObject]</li></ul>
+</li>
+</ul>
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    id for the new control, generated automatically if no id is given
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mSettings</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    initial settings for the new control
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Event Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:filter"> </a>
+									<div class="itemTitle icon">
+										filter<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										This event is triggered when a filter is set.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.filterId</b>
+												</td>
+												<td class="methodItemDesc">
+											    The ID of the filter that has just been applied.
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:page"> </a>
+									<div class="itemTitle icon">
+										page<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										This event is triggered when paging was executed.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{int}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.currentPage</b>
+												</td>
+												<td class="methodItemDesc">
+											    The value of the currentPage property after the change.
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{int}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.previousPage</b>
+												</td>
+												<td class="methodItemDesc">
+											    The value of the currentPage property before the change.
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:resize"> </a>
+									<div class="itemTitle icon">
+										resize<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										This event is triggered when the number of rows was changed.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{int}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.numberOfRows</b>
+												</td>
+												<td class="methodItemDesc">
+											    The value of the numberOfRows property after the change.
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{int}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.previousNumberOfRows</b>
+												</td>
+												<td class="methodItemDesc">
+											    The value of the numberOfRows property before the change.
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:sort"> </a>
+									<div class="itemTitle icon">
+										sort<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										This event is triggered when a sorting is applied.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.sorterId</b>
+												</td>
+												<td class="methodItemDesc">
+											    The ID of the sorter that has just been applied.
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+							</div>
+						</div>
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".extend"> </a>
+										<div class="itemTitle icon">
+											sap.ui.commons.RowRepeater.extend<span class="signature">(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns function">: function</span>
+										</div>
+										<div class="full-description">
+											Creates a new subclass of class sap.ui.commons.RowRepeater with name <code>sClassName</code> 
+and enriches it with the information contained in <code>oClassInfo</code>.
+</p><p>
+<code>oClassInfo</code> might contain the same kind of informations as described in <a href="../symbols/sap.ui.core.Element.html#.extend">Element.extend</a>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sClassName</b>
+													</td>
+													<td class="methodItemDesc">
+												    name of the class to be created
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oClassInfo</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    object literal with informations about the class
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>FNMetaImpl</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    constructor function for the metadata object. If not given, it defaults to sap.ui.core.ElementMetadata.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{function}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the created class / constructor function
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addFilter"> </a>
+										<div class="itemTitle icon">
+											addFilter<span class="signature">(<span title="(sap.ui.commons.RowRepeaterFilter) the filter to add; if empty, nothing is inserted">oFilter</span>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Adds some filter <code>oFilter</code> 
+to the aggregation named <code>filters</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.commons.RowRepeaterFilter.html">sap.ui.commons.RowRepeaterFilter</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oFilter</b>
+													</td>
+													<td class="methodItemDesc">
+												    the filter to add; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addRow"> </a>
+										<div class="itemTitle icon">
+											addRow<span class="signature">(<span title="(sap.ui.core.Control) the row to add; if empty, nothing is inserted">oRow</span>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Adds some row <code>oRow</code> 
+to the aggregation named <code>rows</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oRow</b>
+													</td>
+													<td class="methodItemDesc">
+												    the row to add; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addSorter"> </a>
+										<div class="itemTitle icon">
+											addSorter<span class="signature">(<span title="(sap.ui.commons.RowRepeaterSorter) the sorter to add; if empty, nothing is inserted">oSorter</span>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Adds some sorter <code>oSorter</code> 
+to the aggregation named <code>sorters</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.commons.RowRepeaterSorter.html">sap.ui.commons.RowRepeaterSorter</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oSorter</b>
+													</td>
+													<td class="methodItemDesc">
+												    the sorter to add; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="applyFilter"> </a>
+										<div class="itemTitle icon">
+											applyFilter<span class="signature">(<span title="(string) The ID if the filter.">sId</span>)</span>
+											<span class="light" title="returns void">: void</span>
+										</div>
+										<div class="full-description">
+											Applies a filter.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b>
+													</td>
+													<td class="methodItemDesc">
+												    The ID if the filter.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachFilter"> </a>
+										<div class="itemTitle icon">
+											attachFilter<span class="signature">(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Attach event handler <code>fnFunction</code> to the 'filter' event of this <code>sap.ui.commons.RowRepeater</code>.<br/>.
+When called, the context of the event handler (its <code>this</code>) will be bound to <code>oListener<code> if specified
+otherwise to this <code>sap.ui.commons.RowRepeater</code>.<br/> itself. 
+</p><p>
+This event is triggered when a filter is set.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oData</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    An application specific payload object, that will be passed to the event handler along with the event object when firing the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Context object to call the event handler with. Defaults to this <code>sap.ui.commons.RowRepeater</code>.<br/> itself.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachPage"> </a>
+										<div class="itemTitle icon">
+											attachPage<span class="signature">(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Attach event handler <code>fnFunction</code> to the 'page' event of this <code>sap.ui.commons.RowRepeater</code>.<br/>.
+When called, the context of the event handler (its <code>this</code>) will be bound to <code>oListener<code> if specified
+otherwise to this <code>sap.ui.commons.RowRepeater</code>.<br/> itself. 
+</p><p>
+This event is triggered when paging was executed.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oData</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    An application specific payload object, that will be passed to the event handler along with the event object when firing the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Context object to call the event handler with. Defaults to this <code>sap.ui.commons.RowRepeater</code>.<br/> itself.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachResize"> </a>
+										<div class="itemTitle icon">
+											attachResize<span class="signature">(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Attach event handler <code>fnFunction</code> to the 'resize' event of this <code>sap.ui.commons.RowRepeater</code>.<br/>.
+When called, the context of the event handler (its <code>this</code>) will be bound to <code>oListener<code> if specified
+otherwise to this <code>sap.ui.commons.RowRepeater</code>.<br/> itself. 
+</p><p>
+This event is triggered when the number of rows was changed.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oData</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    An application specific payload object, that will be passed to the event handler along with the event object when firing the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Context object to call the event handler with. Defaults to this <code>sap.ui.commons.RowRepeater</code>.<br/> itself.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachSort"> </a>
+										<div class="itemTitle icon">
+											attachSort<span class="signature">(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Attach event handler <code>fnFunction</code> to the 'sort' event of this <code>sap.ui.commons.RowRepeater</code>.<br/>.
+When called, the context of the event handler (its <code>this</code>) will be bound to <code>oListener<code> if specified
+otherwise to this <code>sap.ui.commons.RowRepeater</code>.<br/> itself. 
+</p><p>
+This event is triggered when a sorting is applied.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oData</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    An application specific payload object, that will be passed to the event handler along with the event object when firing the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Context object to call the event handler with. Defaults to this <code>sap.ui.commons.RowRepeater</code>.<br/> itself.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="bindRows"> </a>
+										<div class="itemTitle icon">
+											bindRows<span class="signature">(<span title="(string) path to a list in the model">sPath</span>, <span title="(sap.ui.core.Element) the control template for this aggregation">oTemplate</span>, <span title="(sap.ui.model.Sorter) the initial sort order (optional)">oSorter</span>, <span title="(array) the predefined filters for this aggregation (optional)">aFilters</span>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Binder for aggregation <code>rows</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sPath</b>
+													</td>
+													<td class="methodItemDesc">
+												    path to a list in the model
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oTemplate</b>
+													</td>
+													<td class="methodItemDesc">
+												    the control template for this aggregation
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.model.Sorter.html">sap.ui.model.Sorter</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oSorter</b>
+													</td>
+													<td class="methodItemDesc">
+												    the initial sort order (optional)
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{array}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>aFilters</b>
+													</td>
+													<td class="methodItemDesc">
+												    the predefined filters for this aggregation (optional)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyFilters"> </a>
+										<div class="itemTitle icon">
+											destroyFilters<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Destroys all the filters in the aggregation 
+named <code>filters</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyNoData"> </a>
+										<div class="itemTitle icon">
+											destroyNoData<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Destroys the noData in the aggregation 
+named <code>noData</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyRows"> </a>
+										<div class="itemTitle icon">
+											destroyRows<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Destroys all the rows in the aggregation 
+named <code>rows</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroySorters"> </a>
+										<div class="itemTitle icon">
+											destroySorters<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Destroys all the sorters in the aggregation 
+named <code>sorters</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyTitle"> </a>
+										<div class="itemTitle icon">
+											destroyTitle<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Destroys the title in the aggregation 
+named <code>title</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachFilter"> </a>
+										<div class="itemTitle icon">
+											detachFilter<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Detach event handler <code>fnFunction</code> from the 'filter' event of this <code>sap.ui.commons.RowRepeater</code>.<br/>
+</p><p>
+The passed function and listener object must match the ones used for event registration.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Context object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachPage"> </a>
+										<div class="itemTitle icon">
+											detachPage<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Detach event handler <code>fnFunction</code> from the 'page' event of this <code>sap.ui.commons.RowRepeater</code>.<br/>
+</p><p>
+The passed function and listener object must match the ones used for event registration.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Context object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachResize"> </a>
+										<div class="itemTitle icon">
+											detachResize<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Detach event handler <code>fnFunction</code> from the 'resize' event of this <code>sap.ui.commons.RowRepeater</code>.<br/>
+</p><p>
+The passed function and listener object must match the ones used for event registration.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Context object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachSort"> </a>
+										<div class="itemTitle icon">
+											detachSort<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Detach event handler <code>fnFunction</code> from the 'sort' event of this <code>sap.ui.commons.RowRepeater</code>.<br/>
+</p><p>
+The passed function and listener object must match the ones used for event registration.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Context object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="fireFilter"> </a>
+										<div class="itemTitle icon protected">
+											fireFilter<span class="signature">(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Fire event filter to attached listeners.
+</p><p>
+Expects following event parameters:
+<ul>
+<li>'filterId' of type <code>string</code> The ID of the filter that has just been applied.</li>
+</ul>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Map}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="firePage"> </a>
+										<div class="itemTitle icon protected">
+											firePage<span class="signature">(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Fire event page to attached listeners.
+</p><p>
+Expects following event parameters:
+<ul>
+<li>'currentPage' of type <code>int</code> The value of the currentPage property after the change.</li>
+<li>'previousPage' of type <code>int</code> The value of the currentPage property before the change.</li>
+</ul>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Map}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="fireResize"> </a>
+										<div class="itemTitle icon protected">
+											fireResize<span class="signature">(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Fire event resize to attached listeners.
+</p><p>
+Expects following event parameters:
+<ul>
+<li>'numberOfRows' of type <code>int</code> The value of the numberOfRows property after the change.</li>
+<li>'previousNumberOfRows' of type <code>int</code> The value of the numberOfRows property before the change.</li>
+</ul>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Map}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="fireSort"> </a>
+										<div class="itemTitle icon protected">
+											fireSort<span class="signature">(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Fire event sort to attached listeners.
+</p><p>
+Expects following event parameters:
+<ul>
+<li>'sorterId' of type <code>string</code> The ID of the sorter that has just been applied.</li>
+</ul>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Map}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="firstPage"> </a>
+										<div class="itemTitle icon">
+											firstPage<span class="signature">()</span>
+											<span class="light" title="returns void">: void</span>
+										</div>
+										<div class="full-description">
+											Switch to first page.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getCurrentPage"> </a>
+										<div class="itemTitle icon">
+											getCurrentPage<span class="signature">()</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>currentPage</code>.
+The index of the page currently displayed. The index starts at 1.
+</p><p>
+Default value is <code>1</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>currentPage</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getDesign"> </a>
+										<div class="itemTitle icon">
+											getDesign<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeaterDesign">: <a href="../symbols/sap.ui.commons.RowRepeaterDesign.html">sap.ui.commons.RowRepeaterDesign</a></span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>design</code>.
+The visual design of the control.
+</p><p>
+Default value is <code>Standard</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeaterDesign.html">sap.ui.commons.RowRepeaterDesign</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>design</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getFilters"> </a>
+										<div class="itemTitle icon">
+											getFilters<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeaterFilter[]">: <a href="../symbols/sap.ui.commons.RowRepeaterFilter.html">sap.ui.commons.RowRepeaterFilter</a>[]</span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>filters</code>.<br/>
+Filters to be provided in toolbar.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeaterFilter.html">sap.ui.commons.RowRepeaterFilter</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getFixedRowHeight"> </a>
+										<div class="itemTitle icon">
+											getFixedRowHeight<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.CSSSize">: <a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a></span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>fixedRowHeight</code>.
+Row height adapts to rendered content. If a fixed height is specified the cells have a maximum height and the overflow will be hidden.
+</p><p>
+Default value is empty/<code>undefined</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>fixedRowHeight</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getNoData"> </a>
+										<div class="itemTitle icon">
+											getNoData<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.Control">: <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>noData</code>.<br/>
+This control is shown, in case there is no data available to be displayed in the RowRepeater.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getNumberOfRows"> </a>
+										<div class="itemTitle icon">
+											getNumberOfRows<span class="signature">()</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>numberOfRows</code>.
+Number of rows displayed.
+</p><p>
+Default value is <code>5</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>numberOfRows</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getRows"> </a>
+										<div class="itemTitle icon">
+											getRows<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.Control[]">: <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>[]</span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>rows</code>.<br/>
+Rows to be repeated.
+</p><p>
+<strong>Note</strong>: this is the default aggregation for RowRepeater.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getShowMoreSteps"> </a>
+										<div class="itemTitle icon">
+											getShowMoreSteps<span class="signature">()</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>showMoreSteps</code>.
+Step size used to increase the numberOfRows value. This feature is only active if value is greater than 0. This will deactivate the paging feature.
+</p><p>
+Default value is <code>0</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>showMoreSteps</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getSorters"> </a>
+										<div class="itemTitle icon">
+											getSorters<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeaterSorter[]">: <a href="../symbols/sap.ui.commons.RowRepeaterSorter.html">sap.ui.commons.RowRepeaterSorter</a>[]</span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>sorters</code>.<br/>
+Sorters to be provided in secondary toolbar.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeaterSorter.html">sap.ui.commons.RowRepeaterSorter</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getThreshold"> </a>
+										<div class="itemTitle icon">
+											getThreshold<span class="signature">()</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>threshold</code>.
+Threshold to fetch the next chunk of data. The minimal threshold can be the numberOfRows of the RR.
+</p><p>
+Default value is empty/<code>undefined</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>threshold</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getTitle"> </a>
+										<div class="itemTitle icon">
+											getTitle<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.Title">: <a href="../symbols/sap.ui.core.Title.html">sap.ui.core.Title</a></span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>title</code>.<br/>
+Title to be displayed in top left corner. Either text or icon.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Title.html">sap.ui.core.Title</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getVisible"> </a>
+										<div class="itemTitle icon">
+											getVisible<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>visible</code>.
+Invisible row-repeaters are not rendered.
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>visible</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="gotoPage"> </a>
+										<div class="itemTitle icon">
+											gotoPage<span class="signature">(<span title="(int) The index of the page to go to.">iPageNumber</span>)</span>
+											<span class="light" title="returns void">: void</span>
+										</div>
+										<div class="full-description">
+											Switch to specified page.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iPageNumber</b>
+													</td>
+													<td class="methodItemDesc">
+												    The index of the page to go to.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="indexOfFilter"> </a>
+										<div class="itemTitle icon">
+											indexOfFilter<span class="signature">(<span title="(sap.ui.commons.RowRepeaterFilter) the filter whose index is looked for.">oFilter</span>)</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Checks for the provided <code>sap.ui.commons.RowRepeaterFilter</code> in the aggregation named <code>filters</code> 
+and returns its index if found or -1 otherwise.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.commons.RowRepeaterFilter.html">sap.ui.commons.RowRepeaterFilter</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oFilter</b>
+													</td>
+													<td class="methodItemDesc">
+												    the filter whose index is looked for.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the index of the provided control in the aggregation if found, or -1 otherwise
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="indexOfRow"> </a>
+										<div class="itemTitle icon">
+											indexOfRow<span class="signature">(<span title="(sap.ui.core.Control) the row whose index is looked for.">oRow</span>)</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Checks for the provided <code>sap.ui.core.Control</code> in the aggregation named <code>rows</code> 
+and returns its index if found or -1 otherwise.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oRow</b>
+													</td>
+													<td class="methodItemDesc">
+												    the row whose index is looked for.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the index of the provided control in the aggregation if found, or -1 otherwise
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="indexOfSorter"> </a>
+										<div class="itemTitle icon">
+											indexOfSorter<span class="signature">(<span title="(sap.ui.commons.RowRepeaterSorter) the sorter whose index is looked for.">oSorter</span>)</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Checks for the provided <code>sap.ui.commons.RowRepeaterSorter</code> in the aggregation named <code>sorters</code> 
+and returns its index if found or -1 otherwise.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.commons.RowRepeaterSorter.html">sap.ui.commons.RowRepeaterSorter</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oSorter</b>
+													</td>
+													<td class="methodItemDesc">
+												    the sorter whose index is looked for.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the index of the provided control in the aggregation if found, or -1 otherwise
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="insertFilter"> </a>
+										<div class="itemTitle icon">
+											insertFilter<span class="signature">(<span title="(sap.ui.commons.RowRepeaterFilter) the filter to insert; if empty, nothing is inserted">oFilter</span>, <span title="(int) the 0-based index the filter should be inserted at; for a negative value of iIndex, the filter is inserted at position 0; for a value greater than the current size of the aggregation, the filter is inserted at the last position">iIndex</span>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Inserts a filter into the aggregation named <code>filters</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.commons.RowRepeaterFilter.html">sap.ui.commons.RowRepeaterFilter</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oFilter</b>
+													</td>
+													<td class="methodItemDesc">
+												    the filter to insert; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    the <code>0</code>-based index the filter should be inserted at; for 
+            a negative value of <code>iIndex</code>, the filter is inserted at position 0; for a value 
+            greater than the current size of the aggregation, the filter is inserted at 
+            the last position
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="insertRow"> </a>
+										<div class="itemTitle icon">
+											insertRow<span class="signature">(<span title="(sap.ui.core.Control) the row to insert; if empty, nothing is inserted">oRow</span>, <span title="(int) the 0-based index the row should be inserted at; for a negative value of iIndex, the row is inserted at position 0; for a value greater than the current size of the aggregation, the row is inserted at the last position">iIndex</span>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Inserts a row into the aggregation named <code>rows</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oRow</b>
+													</td>
+													<td class="methodItemDesc">
+												    the row to insert; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    the <code>0</code>-based index the row should be inserted at; for 
+            a negative value of <code>iIndex</code>, the row is inserted at position 0; for a value 
+            greater than the current size of the aggregation, the row is inserted at 
+            the last position
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="insertSorter"> </a>
+										<div class="itemTitle icon">
+											insertSorter<span class="signature">(<span title="(sap.ui.commons.RowRepeaterSorter) the sorter to insert; if empty, nothing is inserted">oSorter</span>, <span title="(int) the 0-based index the sorter should be inserted at; for a negative value of iIndex, the sorter is inserted at position 0; for a value greater than the current size of the aggregation, the sorter is inserted at the last position">iIndex</span>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Inserts a sorter into the aggregation named <code>sorters</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.commons.RowRepeaterSorter.html">sap.ui.commons.RowRepeaterSorter</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oSorter</b>
+													</td>
+													<td class="methodItemDesc">
+												    the sorter to insert; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    the <code>0</code>-based index the sorter should be inserted at; for 
+            a negative value of <code>iIndex</code>, the sorter is inserted at position 0; for a value 
+            greater than the current size of the aggregation, the sorter is inserted at 
+            the last position
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="lastPage"> </a>
+										<div class="itemTitle icon">
+											lastPage<span class="signature">()</span>
+											<span class="light" title="returns void">: void</span>
+										</div>
+										<div class="full-description">
+											Switch to last page.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="nextPage"> </a>
+										<div class="itemTitle icon">
+											nextPage<span class="signature">()</span>
+											<span class="light" title="returns void">: void</span>
+										</div>
+										<div class="full-description">
+											Switch to next page.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="previousPage"> </a>
+										<div class="itemTitle icon">
+											previousPage<span class="signature">()</span>
+											<span class="light" title="returns void">: void</span>
+										</div>
+										<div class="full-description">
+											Switch to previous page.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeAllFilters"> </a>
+										<div class="itemTitle icon">
+											removeAllFilters<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeaterFilter[]">: <a href="../symbols/sap.ui.commons.RowRepeaterFilter.html">sap.ui.commons.RowRepeaterFilter</a>[]</span>
+										</div>
+										<div class="full-description">
+											Removes all the controls in the aggregation named <code>filters</code>.<br/>
+Additionally unregisters them from the hosting UIArea.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeaterFilter.html">sap.ui.commons.RowRepeaterFilter</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														an array of the removed elements (might be empty)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeAllRows"> </a>
+										<div class="itemTitle icon">
+											removeAllRows<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.Control[]">: <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>[]</span>
+										</div>
+										<div class="full-description">
+											Removes all the controls in the aggregation named <code>rows</code>.<br/>
+Additionally unregisters them from the hosting UIArea.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														an array of the removed elements (might be empty)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeAllSorters"> </a>
+										<div class="itemTitle icon">
+											removeAllSorters<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeaterSorter[]">: <a href="../symbols/sap.ui.commons.RowRepeaterSorter.html">sap.ui.commons.RowRepeaterSorter</a>[]</span>
+										</div>
+										<div class="full-description">
+											Removes all the controls in the aggregation named <code>sorters</code>.<br/>
+Additionally unregisters them from the hosting UIArea.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeaterSorter.html">sap.ui.commons.RowRepeaterSorter</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														an array of the removed elements (might be empty)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeFilter"> </a>
+										<div class="itemTitle icon">
+											removeFilter<span class="signature">(<span title="(int | string | sap.ui.commons.RowRepeaterFilter) the filter to remove or its index or id">vFilter</span>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeaterFilter">: <a href="../symbols/sap.ui.commons.RowRepeaterFilter.html">sap.ui.commons.RowRepeaterFilter</a></span>
+										</div>
+										<div class="full-description">
+											Removes an filter from the aggregation named <code>filters</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int|string|<a href="../symbols/sap.ui.commons.RowRepeaterFilter.html">sap.ui.commons.RowRepeaterFilter</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vFilter</b>
+													</td>
+													<td class="methodItemDesc">
+												    the filter to remove or its index or id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeaterFilter.html">sap.ui.commons.RowRepeaterFilter</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the removed filter or null
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeRow"> </a>
+										<div class="itemTitle icon">
+											removeRow<span class="signature">(<span title="(int | string | sap.ui.core.Control) the row to remove or its index or id">vRow</span>)</span>
+											<span class="light" title="returns sap.ui.core.Control">: <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></span>
+										</div>
+										<div class="full-description">
+											Removes an row from the aggregation named <code>rows</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int|string|<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vRow</b>
+													</td>
+													<td class="methodItemDesc">
+												    the row to remove or its index or id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the removed row or null
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeSorter"> </a>
+										<div class="itemTitle icon">
+											removeSorter<span class="signature">(<span title="(int | string | sap.ui.commons.RowRepeaterSorter) the sorter to remove or its index or id">vSorter</span>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeaterSorter">: <a href="../symbols/sap.ui.commons.RowRepeaterSorter.html">sap.ui.commons.RowRepeaterSorter</a></span>
+										</div>
+										<div class="full-description">
+											Removes an sorter from the aggregation named <code>sorters</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int|string|<a href="../symbols/sap.ui.commons.RowRepeaterSorter.html">sap.ui.commons.RowRepeaterSorter</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vSorter</b>
+													</td>
+													<td class="methodItemDesc">
+												    the sorter to remove or its index or id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeaterSorter.html">sap.ui.commons.RowRepeaterSorter</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the removed sorter or null
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="resize"> </a>
+										<div class="itemTitle icon">
+											resize<span class="signature">(<span title="(int) The new value of number of rows displayed.">iNumberOfRows</span>)</span>
+											<span class="light" title="returns void">: void</span>
+										</div>
+										<div class="full-description">
+											Resizes the row repeater by changing the number of displayed rows. This method will only resize the RowRepeater if the property showMoreSteps is set.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iNumberOfRows</b>
+													</td>
+													<td class="methodItemDesc">
+												    The new value of number of rows displayed.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setCurrentPage"> </a>
+										<div class="itemTitle icon">
+											setCurrentPage<span class="signature">(<span title="(int) new value for property currentPage">iCurrentPage</span>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>currentPage</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iCurrentPage</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>currentPage</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setDesign"> </a>
+										<div class="itemTitle icon">
+											setDesign<span class="signature">(<span title="(sap.ui.commons.RowRepeaterDesign) new value for property design">oDesign</span>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>design</code>.
+</p><p>
+Default value is <code>Standard</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.commons.RowRepeaterDesign.html">sap.ui.commons.RowRepeaterDesign</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oDesign</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>design</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setFixedRowHeight"> </a>
+										<div class="itemTitle icon">
+											setFixedRowHeight<span class="signature">(<span title="(sap.ui.core.CSSSize) new value for property fixedRowHeight">sFixedRowHeight</span>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>fixedRowHeight</code>.
+</p><p>
+Default value is empty/<code>undefined</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sFixedRowHeight</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>fixedRowHeight</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setNoData"> </a>
+										<div class="itemTitle icon">
+											setNoData<span class="signature">(<span title="(sap.ui.core.Control) sap.ui.core.Control">oNoData</span>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Setter for the aggregated <code>noData</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oNoData</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setNumberOfRows"> </a>
+										<div class="itemTitle icon">
+											setNumberOfRows<span class="signature">(<span title="(int) new value for property numberOfRows">iNumberOfRows</span>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>numberOfRows</code>.
+</p><p>
+Default value is <code>5</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iNumberOfRows</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>numberOfRows</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setShowMoreSteps"> </a>
+										<div class="itemTitle icon">
+											setShowMoreSteps<span class="signature">(<span title="(int) new value for property showMoreSteps">iShowMoreSteps</span>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Override the default behavior of <code>setShowMoreSteps</code> to update the
+paging mode flag. Any change to the paging mode flag will result in the current
+page being set to the first page.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iShowMoreSteps</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>showMoreSteps</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setThreshold"> </a>
+										<div class="itemTitle icon">
+											setThreshold<span class="signature">(<span title="(int) new value for property threshold">iThreshold</span>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>threshold</code>.
+</p><p>
+Default value is empty/<code>undefined</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iThreshold</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>threshold</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setTitle"> </a>
+										<div class="itemTitle icon">
+											setTitle<span class="signature">(<span title="(sap.ui.core.Title) sap.ui.core.Title">oTitle</span>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Setter for the aggregated <code>title</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Title.html">sap.ui.core.Title</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oTitle</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setVisible"> </a>
+										<div class="itemTitle icon">
+											setVisible<span class="signature">(<span title="(boolean) new value for property visible">bVisible</span>)</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>visible</code>.
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bVisible</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>visible</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="triggerShowMore"> </a>
+										<div class="itemTitle icon">
+											triggerShowMore<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											The <code>triggerShowMore</code> function increments the number of rows by the
+value of <code>showMoreSteps</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="triggerSort"> </a>
+										<div class="itemTitle icon">
+											triggerSort<span class="signature">(<span title="(string) The ID of the sorter.">sId</span>)</span>
+											<span class="light" title="returns void">: void</span>
+										</div>
+										<div class="full-description">
+											Sort the data.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b>
+													</td>
+													<td class="methodItemDesc">
+												    The ID of the sorter.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="unbindRows"> </a>
+										<div class="itemTitle icon">
+											unbindRows<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.commons.RowRepeater">: <a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a></span>
+										</div>
+										<div class="full-description">
+											Unbinder for aggregation <code>rows</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.RowRepeater.html">sap.ui.commons.RowRepeater</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

@@ -1,0 +1,3503 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.commons.SearchField</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class sap.ui.commons.SearchField
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.ui.core.Control" href="../symbols/sap.ui.core.Control.html">Control</a></div>
+					
+					
+						<div class="classRelation implements"><span class="caption">implements </span> <a title="sap.ui.commons.ToolbarItem" href="../symbols/sap.ui.commons.ToolbarItem.html">ToolbarItem</a></div>
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>Allows the user to type search queries and to trigger the search. Optionally, suggestions can be added.</p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="Constructor for a new SearchField.">new <a href="../symbols/sap.ui.commons.SearchField.html#constructor">sap.ui.commons.SearchField</a></b>
+										<span class='signature'>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)</span>
+										<span class='description'>Constructor for a new SearchField.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+						
+						
+						
+						
+					
+		
+
+
+					
+						
+						
+						<div class="summary section" cellspacing="0" summary="A summary of the events documented in the class sap.ui.commons.SearchField.">
+							<div class="sectionTitle">Event Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Event which is fired when the user triggers a search"><a href="../symbols/sap.ui.commons.SearchField.html#event:search">search</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>Event which is fired when the user triggers a search</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Event which is fired when new suggest values are required."><a href="../symbols/sap.ui.commons.SearchField.html#event:suggest">suggest</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>Event which is fired when new suggest values are required.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+				
+						
+						
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Creates a new subclass of class sap.ui.commons.SearchField with name sClassName and enriches it with the information contained in oClassInfo."><a href="../symbols/sap.ui.commons.SearchField.html#.extend">sap.ui.commons.SearchField.extend</a></b><span class='signature'>(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Creates a new subclass of class sap.ui.commons.SearchField with name <code>sClassName</code> and enriches it with the information contained in <code>oClassInfo</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title=""><a href="../symbols/sap.ui.commons.SearchField.html#addAriaDescribedBy">addAriaDescribedBy</a></b><span class='signature'>(<span title="(string | sap.ui.core.Control) Id of a ariaDescribedBy which becomes an additional target of this ariaDescribedBy association.">vAriaDescribedBy</span>)</span>
+									<span class='description'></span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title=""><a href="../symbols/sap.ui.commons.SearchField.html#addAriaLabelledBy">addAriaLabelledBy</a></b><span class='signature'>(<span title="(string | sap.ui.core.Control) Id of a ariaLabelledBy which becomes an additional target of this ariaLabelledBy association.">vAriaLabelledBy</span>)</span>
+									<span class='description'></span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Attach event handler fnFunction to the 'search' event of this sap.ui.commons.SearchField."><a href="../symbols/sap.ui.commons.SearchField.html#attachSearch">attachSearch</a></b><span class='signature'>(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Attach event handler <code>fnFunction</code> to the 'search' event of this <code>sap.ui.commons.SearchField</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Attach event handler fnFunction to the 'suggest' event of this sap.ui.commons.SearchField."><a href="../symbols/sap.ui.commons.SearchField.html#attachSuggest">attachSuggest</a></b><span class='signature'>(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Attach event handler <code>fnFunction</code> to the 'suggest' event of this <code>sap.ui.commons.SearchField</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Clears the history of the control"><a href="../symbols/sap.ui.commons.SearchField.html#clearHistory">clearHistory</a></b><span class='signature'>()</span>
+									<span class='description'>Clears the history of the control</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys the searchProvider in the aggregation named searchProvider."><a href="../symbols/sap.ui.commons.SearchField.html#destroySearchProvider">destroySearchProvider</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys the searchProvider in the aggregation named <code>searchProvider</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Detach event handler fnFunction from the 'search' event of this sap.ui.commons.SearchField."><a href="../symbols/sap.ui.commons.SearchField.html#detachSearch">detachSearch</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Detach event handler <code>fnFunction</code> from the 'search' event of this <code>sap.ui.commons.SearchField</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Detach event handler fnFunction from the 'suggest' event of this sap.ui.commons.SearchField."><a href="../symbols/sap.ui.commons.SearchField.html#detachSuggest">detachSuggest</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Detach event handler <code>fnFunction</code> from the 'suggest' event of this <code>sap.ui.commons.SearchField</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Fire event search to attached listeners."><a href="../symbols/sap.ui.commons.SearchField.html#fireSearch">fireSearch</a></b><span class='signature'>(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event search to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Fire event suggest to attached listeners."><a href="../symbols/sap.ui.commons.SearchField.html#fireSuggest">fireSuggest</a></b><span class='signature'>(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event suggest to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Association to controls / ids which describe this control (see WAI-ARIA attribute aria-describedby)."><a href="../symbols/sap.ui.commons.SearchField.html#getAriaDescribedBy">getAriaDescribedBy</a></b><span class='signature'>()</span>
+									<span class='description'>Association to controls / ids which describe this control (see WAI-ARIA attribute aria-describedby).</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Association to controls / ids which label this control (see WAI-ARIA attribute aria-labelledby)."><a href="../symbols/sap.ui.commons.SearchField.html#getAriaLabelledBy">getAriaLabelledBy</a></b><span class='signature'>()</span>
+									<span class='description'>Association to controls / ids which label this control (see WAI-ARIA attribute aria-labelledby).</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property editable."><a href="../symbols/sap.ui.commons.SearchField.html#getEditable">getEditable</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>editable</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property enableCache."><a href="../symbols/sap.ui.commons.SearchField.html#getEnableCache">getEnableCache</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>enableCache</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property enableClear."><a href="../symbols/sap.ui.commons.SearchField.html#getEnableClear">getEnableClear</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>enableClear</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property enabled."><a href="../symbols/sap.ui.commons.SearchField.html#getEnabled">getEnabled</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>enabled</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property enableFilterMode."><a href="../symbols/sap.ui.commons.SearchField.html#getEnableFilterMode">getEnableFilterMode</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>enableFilterMode</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property enableListSuggest."><a href="../symbols/sap.ui.commons.SearchField.html#getEnableListSuggest">getEnableListSuggest</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>enableListSuggest</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property maxHistoryItems."><a href="../symbols/sap.ui.commons.SearchField.html#getMaxHistoryItems">getMaxHistoryItems</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>maxHistoryItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property maxLength."><a href="../symbols/sap.ui.commons.SearchField.html#getMaxLength">getMaxLength</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>maxLength</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property maxSuggestionItems."><a href="../symbols/sap.ui.commons.SearchField.html#getMaxSuggestionItems">getMaxSuggestionItems</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>maxSuggestionItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation searchProvider."><a href="../symbols/sap.ui.commons.SearchField.html#getSearchProvider">getSearchProvider</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>searchProvider</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property showExternalButton."><a href="../symbols/sap.ui.commons.SearchField.html#getShowExternalButton">getShowExternalButton</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>showExternalButton</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property showListExpander."><a href="../symbols/sap.ui.commons.SearchField.html#getShowListExpander">getShowListExpander</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>showListExpander</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property startSuggestion."><a href="../symbols/sap.ui.commons.SearchField.html#getStartSuggestion">getStartSuggestion</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>startSuggestion</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property textAlign."><a href="../symbols/sap.ui.commons.SearchField.html#getTextAlign">getTextAlign</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>textAlign</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property value."><a href="../symbols/sap.ui.commons.SearchField.html#getValue">getValue</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>value</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property visible."><a href="../symbols/sap.ui.commons.SearchField.html#getVisible">getVisible</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>visible</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property visibleItemCount."><a href="../symbols/sap.ui.commons.SearchField.html#getVisibleItemCount">getVisibleItemCount</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>visibleItemCount</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property width."><a href="../symbols/sap.ui.commons.SearchField.html#getWidth">getWidth</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>width</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title=""><a href="../symbols/sap.ui.commons.SearchField.html#removeAllAriaDescribedBy">removeAllAriaDescribedBy</a></b><span class='signature'>()</span>
+									<span class='description'></span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title=""><a href="../symbols/sap.ui.commons.SearchField.html#removeAllAriaLabelledBy">removeAllAriaLabelledBy</a></b><span class='signature'>()</span>
+									<span class='description'></span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title=""><a href="../symbols/sap.ui.commons.SearchField.html#removeAriaDescribedBy">removeAriaDescribedBy</a></b><span class='signature'>(<span title="(int | string | sap.ui.core.Control) the ariaDescribedBy to remove or its index or id">vAriaDescribedBy</span>)</span>
+									<span class='description'></span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title=""><a href="../symbols/sap.ui.commons.SearchField.html#removeAriaLabelledBy">removeAriaLabelledBy</a></b><span class='signature'>(<span title="(int | string | sap.ui.core.Control) the ariaLabelledBy to remove or its index or id">vAriaLabelledBy</span>)</span>
+									<span class='description'></span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property editable."><a href="../symbols/sap.ui.commons.SearchField.html#setEditable">setEditable</a></b><span class='signature'>(<span title="(boolean) new value for property editable">bEditable</span>)</span>
+									<span class='description'>Setter for property <code>editable</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property enableCache."><a href="../symbols/sap.ui.commons.SearchField.html#setEnableCache">setEnableCache</a></b><span class='signature'>(<span title="(boolean) new value for property enableCache">bEnableCache</span>)</span>
+									<span class='description'>Setter for property <code>enableCache</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property enableClear."><a href="../symbols/sap.ui.commons.SearchField.html#setEnableClear">setEnableClear</a></b><span class='signature'>(<span title="(boolean) new value for property enableClear">bEnableClear</span>)</span>
+									<span class='description'>Setter for property <code>enableClear</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property enabled."><a href="../symbols/sap.ui.commons.SearchField.html#setEnabled">setEnabled</a></b><span class='signature'>(<span title="(boolean) new value for property enabled">bEnabled</span>)</span>
+									<span class='description'>Setter for property <code>enabled</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property enableFilterMode."><a href="../symbols/sap.ui.commons.SearchField.html#setEnableFilterMode">setEnableFilterMode</a></b><span class='signature'>(<span title="(boolean) new value for property enableFilterMode">bEnableFilterMode</span>)</span>
+									<span class='description'>Setter for property <code>enableFilterMode</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property enableListSuggest."><a href="../symbols/sap.ui.commons.SearchField.html#setEnableListSuggest">setEnableListSuggest</a></b><span class='signature'>(<span title="(boolean) new value for property enableListSuggest">bEnableListSuggest</span>)</span>
+									<span class='description'>Setter for property <code>enableListSuggest</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property maxHistoryItems."><a href="../symbols/sap.ui.commons.SearchField.html#setMaxHistoryItems">setMaxHistoryItems</a></b><span class='signature'>(<span title="(int) new value for property maxHistoryItems">iMaxHistoryItems</span>)</span>
+									<span class='description'>Setter for property <code>maxHistoryItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property maxLength."><a href="../symbols/sap.ui.commons.SearchField.html#setMaxLength">setMaxLength</a></b><span class='signature'>(<span title="(int) new value for property maxLength">iMaxLength</span>)</span>
+									<span class='description'>Setter for property <code>maxLength</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property maxSuggestionItems."><a href="../symbols/sap.ui.commons.SearchField.html#setMaxSuggestionItems">setMaxSuggestionItems</a></b><span class='signature'>(<span title="(int) new value for property maxSuggestionItems">iMaxSuggestionItems</span>)</span>
+									<span class='description'>Setter for property <code>maxSuggestionItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for the aggregated searchProvider."><a href="../symbols/sap.ui.commons.SearchField.html#setSearchProvider">setSearchProvider</a></b><span class='signature'>(<span title="(sap.ui.core.search.SearchProvider) sap.ui.core.search.SearchProvider">oSearchProvider</span>)</span>
+									<span class='description'>Setter for the aggregated <code>searchProvider</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property showExternalButton."><a href="../symbols/sap.ui.commons.SearchField.html#setShowExternalButton">setShowExternalButton</a></b><span class='signature'>(<span title="(boolean) new value for property showExternalButton">bShowExternalButton</span>)</span>
+									<span class='description'>Setter for property <code>showExternalButton</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property showListExpander."><a href="../symbols/sap.ui.commons.SearchField.html#setShowListExpander">setShowListExpander</a></b><span class='signature'>(<span title="(boolean) new value for property showListExpander">bShowListExpander</span>)</span>
+									<span class='description'>Setter for property <code>showListExpander</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property startSuggestion."><a href="../symbols/sap.ui.commons.SearchField.html#setStartSuggestion">setStartSuggestion</a></b><span class='signature'>(<span title="(int) new value for property startSuggestion">iStartSuggestion</span>)</span>
+									<span class='description'>Setter for property <code>startSuggestion</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property textAlign."><a href="../symbols/sap.ui.commons.SearchField.html#setTextAlign">setTextAlign</a></b><span class='signature'>(<span title="(sap.ui.core.TextAlign) new value for property textAlign">oTextAlign</span>)</span>
+									<span class='description'>Setter for property <code>textAlign</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property value."><a href="../symbols/sap.ui.commons.SearchField.html#setValue">setValue</a></b><span class='signature'>(<span title="(string) new value for property value">sValue</span>)</span>
+									<span class='description'>Setter for property <code>value</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property visible."><a href="../symbols/sap.ui.commons.SearchField.html#setVisible">setVisible</a></b><span class='signature'>(<span title="(boolean) new value for property visible">bVisible</span>)</span>
+									<span class='description'>Setter for property <code>visible</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property visibleItemCount."><a href="../symbols/sap.ui.commons.SearchField.html#setVisibleItemCount">setVisibleItemCount</a></b><span class='signature'>(<span title="(int) new value for property visibleItemCount">iVisibleItemCount</span>)</span>
+									<span class='description'>Setter for property <code>visibleItemCount</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property width."><a href="../symbols/sap.ui.commons.SearchField.html#setWidth">setWidth</a></b><span class='signature'>(<span title="(sap.ui.core.CSSSize) new value for property width">sWidth</span>)</span>
+									<span class='description'>Setter for property <code>width</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Callback function used to provide the suggest values in the handler of the suggest event (only in list suggestion mode)"><a href="../symbols/sap.ui.commons.SearchField.html#suggest">suggest</a></b><span class='signature'>(<span title="(string) The value which was provided in the corresponding suggest event (parameter 'value')">sSSuggestValue</span>, <span title="(string[]) The list of suggestions belonging to the suggest value">aASuggestions</span>)</span>
+									<span class='description'>Callback function used to provide the suggest values in the handler of the suggest event (only in list suggestion mode)</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Control.html#addStyleClass">addStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#allowTextSelection">allowTextSelection</a>, <a href="../symbols/sap.ui.core.Control.html#attachBrowserEvent">attachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#clone">clone</a>, <a href="../symbols/sap.ui.core.Control.html#detachBrowserEvent">detachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#getBusy">getBusy</a>, <a href="../symbols/sap.ui.core.Control.html#getBusyIndicatorDelay">getBusyIndicatorDelay</a>, <a href="../symbols/sap.ui.core.Control.html#getIdForLabel">getIdForLabel</a>, <a href="../symbols/sap.ui.core.Control.html#getRenderer">getRenderer</a>, <a href="../symbols/sap.ui.core.Control.html#hasStyleClass">hasStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#invalidate">invalidate</a>, <a href="../symbols/sap.ui.core.Control.html#isBusy">isBusy</a>, <a href="../symbols/sap.ui.core.Control.html#onBeforeRendering">onBeforeRendering</a>, <a href="../symbols/sap.ui.core.Control.html#placeAt">placeAt</a>, <a href="../symbols/sap.ui.core.Control.html#removeStyleClass">removeStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#rerender">rerender</a>, <a href="../symbols/sap.ui.core.Control.html#setBusy">setBusy</a>, <a href="../symbols/sap.ui.core.Control.html#setBusyIndicatorDelay">setBusyIndicatorDelay</a>, <a href="../symbols/sap.ui.core.Control.html#toggleStyleClass">toggleStyleClass</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Element.html#$">$</a>, <a href="../symbols/sap.ui.core.Element.html#addCustomData">addCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#addDependent">addDependent</a>, <a href="../symbols/sap.ui.core.Element.html#addEventDelegate">addEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#applyFocusInfo">applyFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#bindElement">bindElement</a>, <a href="../symbols/sap.ui.core.Element.html#data">data</a>, <a href="../symbols/sap.ui.core.Element.html#destroy">destroy</a>, <a href="../symbols/sap.ui.core.Element.html#destroyCustomData">destroyCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#destroyDependents">destroyDependents</a>, <a href="../symbols/sap.ui.core.Element.html#enhanceAccessibilityState">enhanceAccessibilityState</a>, <a href="../symbols/sap.ui.core.Element.html#findElements">findElements</a>, <a href="../symbols/sap.ui.core.Element.html#fireEvent">fireEvent</a>, <a href="../symbols/sap.ui.core.Element.html#getCustomData">getCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#getDependents">getDependents</a>, <a href="../symbols/sap.ui.core.Element.html#getDomRef">getDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getElementBinding">getElementBinding</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusDomRef">getFocusDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusInfo">getFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#getInterface">getInterface</a>, <a href="../symbols/sap.ui.core.Element.html#getLayoutData">getLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#getMetadata">getMetadata</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip">getTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_AsString">getTooltip_AsString</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_Text">getTooltip_Text</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfCustomData">indexOfCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfDependent">indexOfDependent</a>, <a href="../symbols/sap.ui.core.Element.html#insertCustomData">insertCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#insertDependent">insertDependent</a>, <a href="../symbols/sap.ui.core.Element.html#prop">prop</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllCustomData">removeAllCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllDependents">removeAllDependents</a>, <a href="../symbols/sap.ui.core.Element.html#removeCustomData">removeCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeDependent">removeDependent</a>, <a href="../symbols/sap.ui.core.Element.html#removeEventDelegate">removeEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#setLayoutData">setLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#setTooltip">setTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#toString">toString</a>, <a href="../symbols/sap.ui.core.Element.html#unbindElement">unbindElement</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.ManagedObject.html">sap.ui.base.ManagedObject</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.ManagedObject.html#addAggregation">addAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#addAssociation">addAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#applySettings">applySettings</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindAggregation">bindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindContext">bindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindObject">bindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindProperty">bindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#destroyAggregation">destroyAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#findAggregatedObjects">findAggregatedObjects</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAggregation">getAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAssociation">getAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBinding">getBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingContext">getBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingInfo">getBindingInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingPath">getBindingPath</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getEventingParent">getEventingParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getId">getId</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getModel">getModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getObjectBinding">getObjectBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getOriginInfo">getOriginInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getParent">getParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getProperty">getProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#hasModel">hasModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#indexOfAggregation">indexOfAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#insertAggregation">insertAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isBound">isBound</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isInvalidateSuppressed">isInvalidateSuppressed</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isTreeBinding">isTreeBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAggregation">removeAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAggregation">removeAllAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAssociation">removeAllAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAssociation">removeAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAggregation">setAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAssociation">setAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setBindingContext">setBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setModel">setModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setProperty">setProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindAggregation">unbindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindContext">unbindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindObject">unbindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindProperty">unbindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateAggregation">validateAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateProperty">validateProperty</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.EventProvider.html#attachEvent">attachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#attachEventOnce">attachEventOnce</a>, <a href="../symbols/sap.ui.base.EventProvider.html#detachEvent">detachEvent</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.ui.commons.SearchField</b>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)
+										</div>
+										
+										<div class="full-description">
+											Constructor for a new SearchField.
+</p><p>
+Accepts an object literal <code>mSettings</code> that defines initial 
+property values, aggregated and associated objects as well as event handlers. 
+</p><p>
+If the name of a setting is ambiguous (e.g. a property has the same name as an event), 
+then the framework assumes property, aggregation, association, event in that order. 
+To override this automatic resolution, one of the prefixes "aggregation:", "association:" 
+or "event:" can be added to the name of the setting (such a prefixed name must be
+enclosed in single or double quotes).
+</p><p>
+The supported settings are:
+<ul>
+<li>Properties
+<ul>
+<li><a href="#getEnableListSuggest">enableListSuggest</a> : boolean (default: true)</li>
+<li><a href="#getShowListExpander">showListExpander</a> : boolean (default: true)</li>
+<li><a href="#getEnableClear">enableClear</a> : boolean (default: false)</li>
+<li><a href="#getShowExternalButton">showExternalButton</a> : boolean (default: false)</li>
+<li><a href="#getEnableCache">enableCache</a> : boolean (default: true)</li>
+<li><a href="#getEnableFilterMode">enableFilterMode</a> : boolean (default: false)</li>
+<li><a href="#getValue">value</a> : string (default: '')</li>
+<li><a href="#getEnabled">enabled</a> : boolean (default: true)</li>
+<li><a href="#getEditable">editable</a> : boolean (default: true)</li>
+<li><a href="#getVisible">visible</a> : boolean (default: true)</li>
+<li><a href="#getWidth">width</a> : sap.ui.core.CSSSize</li>
+<li><a href="#getMaxLength">maxLength</a> : int (default: 0)</li>
+<li><a href="#getTextAlign">textAlign</a> : sap.ui.core.TextAlign (default: sap.ui.core.TextAlign.Begin)</li>
+<li><a href="#getVisibleItemCount">visibleItemCount</a> : int (default: 20)</li>
+<li><a href="#getStartSuggestion">startSuggestion</a> : int (default: 3)</li>
+<li><a href="#getMaxSuggestionItems">maxSuggestionItems</a> : int (default: 10)</li>
+<li><a href="#getMaxHistoryItems">maxHistoryItems</a> : int (default: 0)</li></ul>
+</li>
+<li>Aggregations
+<ul>
+<li><a href="#getSearchProvider">searchProvider</a> : sap.ui.core.search.SearchProvider</li></ul>
+</li>
+<li>Associations
+<ul>
+<li><a href="#getAriaDescribedBy">ariaDescribedBy</a> : string | sap.ui.core.Control</li>
+<li><a href="#getAriaLabelledBy">ariaLabelledBy</a> : string | sap.ui.core.Control</li></ul>
+</li>
+<li>Events
+<ul>
+<li><a href="../symbols/sap.ui.commons.SearchField.html#event:search">search</a> : fnListenerFunction or [fnListenerFunction, oListenerObject] or [oData, fnListenerFunction, oListenerObject]</li>
+<li><a href="../symbols/sap.ui.commons.SearchField.html#event:suggest">suggest</a> : fnListenerFunction or [fnListenerFunction, oListenerObject] or [oData, fnListenerFunction, oListenerObject]</li></ul>
+</li>
+</ul>
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    id for the new control, generated automatically if no id is given
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mSettings</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    initial settings for the new control
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Event Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:search"> </a>
+									<div class="itemTitle icon">
+										search<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										Event which is fired when the user triggers a search
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.query</b>
+												</td>
+												<td class="methodItemDesc">
+											    The search query
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:suggest"> </a>
+									<div class="itemTitle icon">
+										suggest<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										Event which is fired when new suggest values are required.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.value</b>
+												</td>
+												<td class="methodItemDesc">
+											    The value for which suggestions are required.
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+							</div>
+						</div>
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".extend"> </a>
+										<div class="itemTitle icon">
+											sap.ui.commons.SearchField.extend<span class="signature">(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns function">: function</span>
+										</div>
+										<div class="full-description">
+											Creates a new subclass of class sap.ui.commons.SearchField with name <code>sClassName</code> 
+and enriches it with the information contained in <code>oClassInfo</code>.
+</p><p>
+<code>oClassInfo</code> might contain the same kind of informations as described in <a href="../symbols/sap.ui.core.Element.html#.extend">Element.extend</a>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sClassName</b>
+													</td>
+													<td class="methodItemDesc">
+												    name of the class to be created
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oClassInfo</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    object literal with informations about the class
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>FNMetaImpl</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    constructor function for the metadata object. If not given, it defaults to sap.ui.core.ElementMetadata.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{function}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the created class / constructor function
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addAriaDescribedBy"> </a>
+										<div class="itemTitle icon">
+											addAriaDescribedBy<span class="signature">(<span title="(string | sap.ui.core.Control) Id of a ariaDescribedBy which becomes an additional target of this ariaDescribedBy association.">vAriaDescribedBy</span>)</span>
+											<span class="light" title="returns sap.ui.commons.SearchField">: <a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a></span>
+										</div>
+										<div class="full-description">
+											
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string|<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vAriaDescribedBy</b>
+													</td>
+													<td class="methodItemDesc">
+												    Id of a ariaDescribedBy which becomes an additional target of this <code>ariaDescribedBy</code> association.
+   Alternatively, a ariaDescribedBy instance may be given.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addAriaLabelledBy"> </a>
+										<div class="itemTitle icon">
+											addAriaLabelledBy<span class="signature">(<span title="(string | sap.ui.core.Control) Id of a ariaLabelledBy which becomes an additional target of this ariaLabelledBy association.">vAriaLabelledBy</span>)</span>
+											<span class="light" title="returns sap.ui.commons.SearchField">: <a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a></span>
+										</div>
+										<div class="full-description">
+											
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string|<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vAriaLabelledBy</b>
+													</td>
+													<td class="methodItemDesc">
+												    Id of a ariaLabelledBy which becomes an additional target of this <code>ariaLabelledBy</code> association.
+   Alternatively, a ariaLabelledBy instance may be given.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachSearch"> </a>
+										<div class="itemTitle icon">
+											attachSearch<span class="signature">(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.commons.SearchField">: <a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a></span>
+										</div>
+										<div class="full-description">
+											Attach event handler <code>fnFunction</code> to the 'search' event of this <code>sap.ui.commons.SearchField</code>.<br/>.
+When called, the context of the event handler (its <code>this</code>) will be bound to <code>oListener<code> if specified
+otherwise to this <code>sap.ui.commons.SearchField</code>.<br/> itself. 
+</p><p>
+Event which is fired when the user triggers a search
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oData</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    An application specific payload object, that will be passed to the event handler along with the event object when firing the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Context object to call the event handler with. Defaults to this <code>sap.ui.commons.SearchField</code>.<br/> itself.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachSuggest"> </a>
+										<div class="itemTitle icon">
+											attachSuggest<span class="signature">(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.commons.SearchField">: <a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a></span>
+										</div>
+										<div class="full-description">
+											Attach event handler <code>fnFunction</code> to the 'suggest' event of this <code>sap.ui.commons.SearchField</code>.<br/>.
+When called, the context of the event handler (its <code>this</code>) will be bound to <code>oListener<code> if specified
+otherwise to this <code>sap.ui.commons.SearchField</code>.<br/> itself. 
+</p><p>
+Event which is fired when new suggest values are required.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oData</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    An application specific payload object, that will be passed to the event handler along with the event object when firing the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Context object to call the event handler with. Defaults to this <code>sap.ui.commons.SearchField</code>.<br/> itself.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="clearHistory"> </a>
+										<div class="itemTitle icon">
+											clearHistory<span class="signature">()</span>
+											<span class="light" title="returns void">: void</span>
+										</div>
+										<div class="full-description">
+											Clears the history of the control
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroySearchProvider"> </a>
+										<div class="itemTitle icon">
+											destroySearchProvider<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.commons.SearchField">: <a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a></span>
+										</div>
+										<div class="full-description">
+											Destroys the searchProvider in the aggregation 
+named <code>searchProvider</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachSearch"> </a>
+										<div class="itemTitle icon">
+											detachSearch<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.ui.commons.SearchField">: <a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a></span>
+										</div>
+										<div class="full-description">
+											Detach event handler <code>fnFunction</code> from the 'search' event of this <code>sap.ui.commons.SearchField</code>.<br/>
+</p><p>
+The passed function and listener object must match the ones used for event registration.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Context object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachSuggest"> </a>
+										<div class="itemTitle icon">
+											detachSuggest<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.ui.commons.SearchField">: <a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a></span>
+										</div>
+										<div class="full-description">
+											Detach event handler <code>fnFunction</code> from the 'suggest' event of this <code>sap.ui.commons.SearchField</code>.<br/>
+</p><p>
+The passed function and listener object must match the ones used for event registration.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Context object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="fireSearch"> </a>
+										<div class="itemTitle icon protected">
+											fireSearch<span class="signature">(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.commons.SearchField">: <a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a></span>
+										</div>
+										<div class="full-description">
+											Fire event search to attached listeners.
+</p><p>
+Expects following event parameters:
+<ul>
+<li>'query' of type <code>string</code> The search query</li>
+</ul>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Map}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="fireSuggest"> </a>
+										<div class="itemTitle icon protected">
+											fireSuggest<span class="signature">(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.commons.SearchField">: <a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a></span>
+										</div>
+										<div class="full-description">
+											Fire event suggest to attached listeners.
+</p><p>
+Expects following event parameters:
+<ul>
+<li>'value' of type <code>string</code> The value for which suggestions are required.</li>
+</ul>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Map}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getAriaDescribedBy"> </a>
+										<div class="itemTitle icon">
+											getAriaDescribedBy<span class="signature">()</span>
+											<span class="light" title="returns string[]">: string[]</span>
+										</div>
+										<div class="full-description">
+											Association to controls / ids which describe this control (see WAI-ARIA attribute aria-describedby).
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getAriaLabelledBy"> </a>
+										<div class="itemTitle icon">
+											getAriaLabelledBy<span class="signature">()</span>
+											<span class="light" title="returns string[]">: string[]</span>
+										</div>
+										<div class="full-description">
+											Association to controls / ids which label this control (see WAI-ARIA attribute aria-labelledby).
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getEditable"> </a>
+										<div class="itemTitle icon">
+											getEditable<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>editable</code>.
+Non-editable controls have different colors, depending on custom settings
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>editable</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getEnableCache"> </a>
+										<div class="itemTitle icon">
+											getEnableCache<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>enableCache</code>.
+When list suggestion is enabled all suggestions are cached and no suggest event is fired.
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.10.3</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>enableCache</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getEnableClear"> </a>
+										<div class="itemTitle icon">
+											getEnableClear<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>enableClear</code>.
+Defines whether the clear functionality shall be active
+</p><p>
+Default value is <code>false</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>enableClear</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getEnabled"> </a>
+										<div class="itemTitle icon">
+											getEnabled<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>enabled</code>.
+Disabled fields have different colors, and they can not be focused.
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>enabled</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getEnableFilterMode"> </a>
+										<div class="itemTitle icon">
+											getEnableFilterMode<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>enableFilterMode</code>.
+Defines whether the search event should also be fired when the SearchField is empty (like a Filter field) and when the clear button (if activated) is pressed.
+</p><p>
+Default value is <code>false</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>enableFilterMode</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getEnableListSuggest"> </a>
+										<div class="itemTitle icon">
+											getEnableListSuggest<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>enableListSuggest</code>.
+Defines whether a pop up list shall be provided for suggestions
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>enableListSuggest</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getMaxHistoryItems"> </a>
+										<div class="itemTitle icon">
+											getMaxHistoryItems<span class="signature">()</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>maxHistoryItems</code>.
+Maximum number of history items in the suggestion list.
+0 displays and stores no history. The history is locally stored on the client. Therefore do not activate this feature when this control handles confidential data.
+</p><p>
+Default value is <code>0</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>maxHistoryItems</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getMaxLength"> </a>
+										<div class="itemTitle icon">
+											getMaxLength<span class="signature">()</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>maxLength</code>.
+Maximum number of characters. Value '0' means the feature is switched off.
+</p><p>
+Default value is <code>0</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>maxLength</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getMaxSuggestionItems"> </a>
+										<div class="itemTitle icon">
+											getMaxSuggestionItems<span class="signature">()</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>maxSuggestionItems</code>.
+</p><p>
+Maximum number of suggestion items in the suggestion list.
+</p><p>
+</p><p>
+Default value is <code>10</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>maxSuggestionItems</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getSearchProvider"> </a>
+										<div class="itemTitle icon">
+											getSearchProvider<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.search.SearchProvider">: <a href="../symbols/sap.ui.core.search.SearchProvider.html">sap.ui.core.search.SearchProvider</a></span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>searchProvider</code>.<br/>
+Search provider instance which handles the suggestions for this SearchField (e.g. Open Search Protocol).
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.search.SearchProvider.html">sap.ui.core.search.SearchProvider</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getShowExternalButton"> </a>
+										<div class="itemTitle icon">
+											getShowExternalButton<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>showExternalButton</code>.
+Defines whether an additional search button shall be displayed
+</p><p>
+Default value is <code>false</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>showExternalButton</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getShowListExpander"> </a>
+										<div class="itemTitle icon">
+											getShowListExpander<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>showListExpander</code>.
+Defines whether the list expander shall be displayed in the case of an enabled list for suggestions. This feature is deactivated on mobile devices.
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>showListExpander</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getStartSuggestion"> </a>
+										<div class="itemTitle icon">
+											getStartSuggestion<span class="signature">()</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>startSuggestion</code>.
+</p><p>
+Minimum length of the entered string triggering the suggestion list.
+</p><p>
+</p><p>
+Default value is <code>3</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>startSuggestion</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getTextAlign"> </a>
+										<div class="itemTitle icon">
+											getTextAlign<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.TextAlign">: <a href="../symbols/sap.ui.core.TextAlign.html">sap.ui.core.TextAlign</a></span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>textAlign</code>.
+Sets the horizontal alignment of the text
+</p><p>
+Default value is <code>Begin</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.TextAlign.html">sap.ui.core.TextAlign</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>textAlign</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getValue"> </a>
+										<div class="itemTitle icon">
+											getValue<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>value</code>.
+Text that shall be displayed within the search field
+</p><p>
+Default value is <code>''</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>value</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getVisible"> </a>
+										<div class="itemTitle icon">
+											getVisible<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>visible</code>.
+Invisible controls are not rendered.
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>visible</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getVisibleItemCount"> </a>
+										<div class="itemTitle icon">
+											getVisibleItemCount<span class="signature">()</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>visibleItemCount</code>.
+</p><p>
+Defines the number of items in the suggestion list that shall be displayed at once. If the overall number of list items is higher than the setting,
+a scroll bar is provided.
+</p><p>
+</p><p>
+Default value is <code>20</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>visibleItemCount</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getWidth"> </a>
+										<div class="itemTitle icon">
+											getWidth<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.CSSSize">: <a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a></span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>width</code>.
+Control width in CSS-size
+</p><p>
+Default value is empty/<code>undefined</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>width</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeAllAriaDescribedBy"> </a>
+										<div class="itemTitle icon">
+											removeAllAriaDescribedBy<span class="signature">()</span>
+											<span class="light" title="returns string[]">: string[]</span>
+										</div>
+										<div class="full-description">
+											
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														an array with the ids of the removed elements (might be empty)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeAllAriaLabelledBy"> </a>
+										<div class="itemTitle icon">
+											removeAllAriaLabelledBy<span class="signature">()</span>
+											<span class="light" title="returns string[]">: string[]</span>
+										</div>
+										<div class="full-description">
+											
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														an array with the ids of the removed elements (might be empty)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeAriaDescribedBy"> </a>
+										<div class="itemTitle icon">
+											removeAriaDescribedBy<span class="signature">(<span title="(int | string | sap.ui.core.Control) the ariaDescribedBy to remove or its index or id">vAriaDescribedBy</span>)</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int|string|<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vAriaDescribedBy</b>
+													</td>
+													<td class="methodItemDesc">
+												    the ariaDescribedBy to remove or its index or id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the id of the removed ariaDescribedBy or null
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeAriaLabelledBy"> </a>
+										<div class="itemTitle icon">
+											removeAriaLabelledBy<span class="signature">(<span title="(int | string | sap.ui.core.Control) the ariaLabelledBy to remove or its index or id">vAriaLabelledBy</span>)</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int|string|<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vAriaLabelledBy</b>
+													</td>
+													<td class="methodItemDesc">
+												    the ariaLabelledBy to remove or its index or id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the id of the removed ariaLabelledBy or null
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setEditable"> </a>
+										<div class="itemTitle icon">
+											setEditable<span class="signature">(<span title="(boolean) new value for property editable">bEditable</span>)</span>
+											<span class="light" title="returns sap.ui.commons.SearchField">: <a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>editable</code>.
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bEditable</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>editable</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setEnableCache"> </a>
+										<div class="itemTitle icon">
+											setEnableCache<span class="signature">(<span title="(boolean) new value for property enableCache">bEnableCache</span>)</span>
+											<span class="light" title="returns sap.ui.commons.SearchField">: <a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>enableCache</code>.
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bEnableCache</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>enableCache</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.10.3</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setEnableClear"> </a>
+										<div class="itemTitle icon">
+											setEnableClear<span class="signature">(<span title="(boolean) new value for property enableClear">bEnableClear</span>)</span>
+											<span class="light" title="returns sap.ui.commons.SearchField">: <a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>enableClear</code>.
+</p><p>
+Default value is <code>false</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bEnableClear</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>enableClear</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setEnabled"> </a>
+										<div class="itemTitle icon">
+											setEnabled<span class="signature">(<span title="(boolean) new value for property enabled">bEnabled</span>)</span>
+											<span class="light" title="returns sap.ui.commons.SearchField">: <a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>enabled</code>.
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bEnabled</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>enabled</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setEnableFilterMode"> </a>
+										<div class="itemTitle icon">
+											setEnableFilterMode<span class="signature">(<span title="(boolean) new value for property enableFilterMode">bEnableFilterMode</span>)</span>
+											<span class="light" title="returns sap.ui.commons.SearchField">: <a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>enableFilterMode</code>.
+</p><p>
+Default value is <code>false</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bEnableFilterMode</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>enableFilterMode</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setEnableListSuggest"> </a>
+										<div class="itemTitle icon">
+											setEnableListSuggest<span class="signature">(<span title="(boolean) new value for property enableListSuggest">bEnableListSuggest</span>)</span>
+											<span class="light" title="returns sap.ui.commons.SearchField">: <a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>enableListSuggest</code>.
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bEnableListSuggest</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>enableListSuggest</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setMaxHistoryItems"> </a>
+										<div class="itemTitle icon">
+											setMaxHistoryItems<span class="signature">(<span title="(int) new value for property maxHistoryItems">iMaxHistoryItems</span>)</span>
+											<span class="light" title="returns sap.ui.commons.SearchField">: <a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>maxHistoryItems</code>.
+</p><p>
+Default value is <code>0</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iMaxHistoryItems</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>maxHistoryItems</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setMaxLength"> </a>
+										<div class="itemTitle icon">
+											setMaxLength<span class="signature">(<span title="(int) new value for property maxLength">iMaxLength</span>)</span>
+											<span class="light" title="returns sap.ui.commons.SearchField">: <a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>maxLength</code>.
+</p><p>
+Default value is <code>0</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iMaxLength</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>maxLength</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setMaxSuggestionItems"> </a>
+										<div class="itemTitle icon">
+											setMaxSuggestionItems<span class="signature">(<span title="(int) new value for property maxSuggestionItems">iMaxSuggestionItems</span>)</span>
+											<span class="light" title="returns sap.ui.commons.SearchField">: <a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>maxSuggestionItems</code>.
+</p><p>
+Default value is <code>10</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iMaxSuggestionItems</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>maxSuggestionItems</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setSearchProvider"> </a>
+										<div class="itemTitle icon">
+											setSearchProvider<span class="signature">(<span title="(sap.ui.core.search.SearchProvider) sap.ui.core.search.SearchProvider">oSearchProvider</span>)</span>
+											<span class="light" title="returns sap.ui.commons.SearchField">: <a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a></span>
+										</div>
+										<div class="full-description">
+											Setter for the aggregated <code>searchProvider</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.search.SearchProvider.html">sap.ui.core.search.SearchProvider</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oSearchProvider</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setShowExternalButton"> </a>
+										<div class="itemTitle icon">
+											setShowExternalButton<span class="signature">(<span title="(boolean) new value for property showExternalButton">bShowExternalButton</span>)</span>
+											<span class="light" title="returns sap.ui.commons.SearchField">: <a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>showExternalButton</code>.
+</p><p>
+Default value is <code>false</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bShowExternalButton</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>showExternalButton</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setShowListExpander"> </a>
+										<div class="itemTitle icon">
+											setShowListExpander<span class="signature">(<span title="(boolean) new value for property showListExpander">bShowListExpander</span>)</span>
+											<span class="light" title="returns sap.ui.commons.SearchField">: <a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>showListExpander</code>.
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bShowListExpander</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>showListExpander</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setStartSuggestion"> </a>
+										<div class="itemTitle icon">
+											setStartSuggestion<span class="signature">(<span title="(int) new value for property startSuggestion">iStartSuggestion</span>)</span>
+											<span class="light" title="returns sap.ui.commons.SearchField">: <a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>startSuggestion</code>.
+</p><p>
+Default value is <code>3</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iStartSuggestion</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>startSuggestion</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setTextAlign"> </a>
+										<div class="itemTitle icon">
+											setTextAlign<span class="signature">(<span title="(sap.ui.core.TextAlign) new value for property textAlign">oTextAlign</span>)</span>
+											<span class="light" title="returns sap.ui.commons.SearchField">: <a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>textAlign</code>.
+</p><p>
+Default value is <code>Begin</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.TextAlign.html">sap.ui.core.TextAlign</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oTextAlign</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>textAlign</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setValue"> </a>
+										<div class="itemTitle icon">
+											setValue<span class="signature">(<span title="(string) new value for property value">sValue</span>)</span>
+											<span class="light" title="returns sap.ui.commons.SearchField">: <a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>value</code>.
+</p><p>
+Default value is <code>''</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sValue</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>value</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setVisible"> </a>
+										<div class="itemTitle icon">
+											setVisible<span class="signature">(<span title="(boolean) new value for property visible">bVisible</span>)</span>
+											<span class="light" title="returns sap.ui.commons.SearchField">: <a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>visible</code>.
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bVisible</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>visible</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setVisibleItemCount"> </a>
+										<div class="itemTitle icon">
+											setVisibleItemCount<span class="signature">(<span title="(int) new value for property visibleItemCount">iVisibleItemCount</span>)</span>
+											<span class="light" title="returns sap.ui.commons.SearchField">: <a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>visibleItemCount</code>.
+</p><p>
+Default value is <code>20</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iVisibleItemCount</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>visibleItemCount</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setWidth"> </a>
+										<div class="itemTitle icon">
+											setWidth<span class="signature">(<span title="(sap.ui.core.CSSSize) new value for property width">sWidth</span>)</span>
+											<span class="light" title="returns sap.ui.commons.SearchField">: <a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>width</code>.
+</p><p>
+Default value is empty/<code>undefined</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sWidth</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>width</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.SearchField.html">sap.ui.commons.SearchField</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="suggest"> </a>
+										<div class="itemTitle icon">
+											suggest<span class="signature">(<span title="(string) The value which was provided in the corresponding suggest event (parameter 'value')">sSSuggestValue</span>, <span title="(string[]) The list of suggestions belonging to the suggest value">aASuggestions</span>)</span>
+											<span class="light" title="returns void">: void</span>
+										</div>
+										<div class="full-description">
+											Callback function used to provide the suggest values in the handler of the suggest event (only in list suggestion mode)
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sSSuggestValue</b>
+													</td>
+													<td class="methodItemDesc">
+												    The value which was provided in the corresponding suggest event (parameter 'value')
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string[]}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>aASuggestions</b>
+													</td>
+													<td class="methodItemDesc">
+												    The list of suggestions belonging to the suggest value
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

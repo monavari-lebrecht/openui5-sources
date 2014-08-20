@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=2664034988358027"/>
+<title>Step 5: Device Model</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio325b8edafcfa4c9c8fbd42455a60e379">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Step 5: Device Model</h1>
+<div class="body conbody"><p class="shortdesc"/>
+<p class="p">Before we get to the App view, there are a couple of other areas to cover. The first is the
+			Device Model that we saw briefly in the Component section.</p>
+<p class="p">As a reminder, this is what it looks like:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+       // set device model
+        var deviceModel = new sap.ui.model.json.JSONModel({
+            isTouch : sap.ui.Device.support.touch,
+            isNoTouch : !sap.ui.Device.support.touch,
+            isPhone : sap.ui.Device.system.phone,
+            isNoPhone : !sap.ui.Device.system.phone,
+            listMode : sap.ui.Device.system.phone ? "None" : "SingleSelectMaster",
+            listItemType : sap.ui.Device.system.phone ? "Active" : "Inactive"
+        });
+        deviceModel.setDefaultBindingMode("OneWay");
+        this.setModel(deviceModel, "device");
+</pre></div>
+<p class="p">Using the <samp class="ph codeph">sap.ui.Device</samp> library, various runtime platform
+			characteristics are determined, and stored in a client side JSON model. The properties
+			in this model follow a standard pattern; it's advisable to use the same properties, even
+			if you aren't going to utilise all of them. Here's a table showing which properties are
+			used where in our demo app.</p>
+
+<div class="tablenoborder"><table summary="" id="loio325b8edafcfa4c9c8fbd42455a60e379__table_iy5_ly3_4n" class="table" frame="border" border="1" rules="all"><tbody class="tbody"><tr class="row"><td class="entry" dir="ltr" valign="top"><span class="ph emphasis emphasis">Property</span></td>
+<td class="entry" dir="ltr" valign="top"><span class="ph emphasis emphasis">Description</span></td>
+<td class="entry" dir="ltr" valign="top"><span class="ph emphasis emphasis">Usage</span></td>
+</tr>
+<tr class="row"><td class="entry" dir="ltr" valign="top">i<samp class="ph codeph">sTouch</samp></td>
+<td class="entry" dir="ltr" valign="top">The device has touch support</td>
+<td class="entry" dir="ltr" valign="top">nowhere in this particular app</td>
+</tr>
+<tr class="row"><td class="entry" dir="ltr" valign="top"><samp class="ph codeph">isNoTouch</samp></td>
+<td class="entry" dir="ltr" valign="top">Opposite of <samp class="ph codeph">isTouch</samp>, for opposite declarative boolean
+							usage</td>
+<td class="entry" dir="ltr" valign="top"><span class="ph filepath">Master.view.xml</span>, to show a refresh button on the
+							SearchField if the device doesn't have touch support</td>
+</tr>
+<tr class="row"><td class="entry" dir="ltr" valign="top"><samp class="ph codeph">isPhone</samp></td>
+<td class="entry" dir="ltr" valign="top">The device is a smartphone</td>
+<td class="entry" dir="ltr" valign="top"><span class="ph filepath">Detail.view.xml</span>, to control whether the Page's
+								<span class="ph uicontrol">navButton</span> is displayed or not (only when the
+							device is a smartphone)</td>
+</tr>
+<tr class="row"><td class="entry" dir="ltr" valign="top"><samp class="ph codeph">isNoPhone</samp></td>
+<td class="entry" dir="ltr" valign="top">Opposite of <samp class="ph codeph">isPhone</samp>, for opposite declarative boolean
+							usage</td>
+<td class="entry" dir="ltr" valign="top">nowhere in this particular app</td>
+</tr>
+<tr class="row"><td class="entry" dir="ltr" valign="top"><samp class="ph codeph">listMode</samp></td>
+<td class="entry" dir="ltr" valign="top">Setting the selection mode of a List control</td>
+<td class="entry" dir="ltr" valign="top"><span class="ph filepath">Master.view.xml</span>, to have the List in
+								<samp class="ph codeph">SingleSelectMaster</samp> mode unless the device is a
+							phone</td>
+</tr>
+<tr class="row"><td class="entry" dir="ltr" valign="top"><samp class="ph codeph">listItemType</samp></td>
+<td class="entry" dir="ltr" valign="top">Setting the type of each item in a <samp class="ph codeph">List</samp> control's item
+							aggregation</td>
+<td class="entry" dir="ltr" valign="top"><span class="ph filepath">Master.view.xml</span>, to have the type of each List item
+								(<samp class="ph codeph">ObjectListItem</samp> controls) set to
+								<samp class="ph codeph">Active</samp> if the device is a phone (otherwise
+								<samp class="ph codeph">Inactive</samp>)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="p">The List's <samp class="ph codeph">mode</samp> property and the <samp class="ph codeph">ObjectListItem</samp>'s
+				<samp class="ph codeph">type</samp> property are similar and control how items are selectable. On
+			a smartphone the selection should be via the item (<samp class="ph codeph">listMode</samp>
+				"<span class="keyword option">None</span>", <samp class="ph codeph">listItemType</samp> "<span class="keyword option">Active</span>"),
+			otherwise it should be via the List itself (<samp class="ph codeph">listMode</samp>
+				"<span class="keyword option">SingleSelectMaster</span>", <samp class="ph codeph">listItemType</samp>
+				"<span class="keyword option">Inactive</span>").The Device Model is a JSON client side model, and
+			should be set with a One Way binding mode. This is to prevent unintentional modification
+			of the detected device type and support when control properties are changed through UI
+			use. Also, the recommendation is always to use "device" for the name of this named
+			model.</p>
+<div class="section"><div class="section_title">Progress Check</div><div type="Progress Check">
+			
+			<p class="p">There is no further progress beyond the previous section; this Device Model is part
+				of the Component, which we already have. While the information in the Device Model
+				influences visual aspects of our app, these will be apparent in other sections.</p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Step 5: Device Model";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

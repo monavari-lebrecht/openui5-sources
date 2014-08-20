@@ -1,0 +1,1662 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.core.util.Export</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class sap.ui.core.util.Export
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.ui.core.Control" href="../symbols/sap.ui.core.Control.html">Control</a></div>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>Export provides the possibility to generate a list of data in a specific format / type, e.g. CSV to use it in other programs / applications.</p>
+						
+						
+						
+						
+						
+						
+							<br />
+							<i>Since: </i>1.22.0.
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="Constructor for a new Export.">new <a href="../symbols/sap.ui.core.util.Export.html#constructor">sap.ui.core.util.Export</a></b>
+										<span class='signature'>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)</span>
+										<span class='description'>Constructor for a new Export.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+						
+						
+						
+						
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Creates a new subclass of class sap.ui.core.util.Export with name sClassName and enriches it with the information contained in oClassInfo."><a href="../symbols/sap.ui.core.util.Export.html#.extend">sap.ui.core.util.Export.extend</a></b><span class='signature'>(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Creates a new subclass of class sap.ui.core.util.Export with name <code>sClassName</code> and enriches it with the information contained in <code>oClassInfo</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Adds some column oColumn to the aggregation named columns."><a href="../symbols/sap.ui.core.util.Export.html#addColumn">addColumn</a></b><span class='signature'>(<span title="(sap.ui.core.util.ExportColumn) the column to add; if empty, nothing is inserted">oColumn</span>)</span>
+									<span class='description'>Adds some column <code>oColumn</code> to the aggregation named <code>columns</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Adds some row oRow to the aggregation named rows."><a href="../symbols/sap.ui.core.util.Export.html#addRow">addRow</a></b><span class='signature'>(<span title="(sap.ui.core.util.ExportRow) the row to add; if empty, nothing is inserted">oRow</span>)</span>
+									<span class='description'>Adds some row <code>oRow</code> to the aggregation named <code>rows</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Binder for aggregation columns."><a href="../symbols/sap.ui.core.util.Export.html#bindColumns">bindColumns</a></b><span class='signature'>(<span title="(string) path to a list in the model">sPath</span>, <span title="(sap.ui.core.Element) the control template for this aggregation">oTemplate</span>, <span title="(sap.ui.model.Sorter) the initial sort order (optional)">oSorter</span>, <span title="(array) the predefined filters for this aggregation (optional)">aFilters</span>)</span>
+									<span class='description'>Binder for aggregation <code>columns</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Binder for aggregation rows."><a href="../symbols/sap.ui.core.util.Export.html#bindRows">bindRows</a></b><span class='signature'>(<span title="(string) path to a list in the model">sPath</span>, <span title="(sap.ui.core.Element) the control template for this aggregation">oTemplate</span>, <span title="(sap.ui.model.Sorter) the initial sort order (optional)">oSorter</span>, <span title="(array) the predefined filters for this aggregation (optional)">aFilters</span>)</span>
+									<span class='description'>Binder for aggregation <code>rows</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys all the columns in the aggregation named columns."><a href="../symbols/sap.ui.core.util.Export.html#destroyColumns">destroyColumns</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys all the columns in the aggregation named <code>columns</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys the exportType in the aggregation named exportType."><a href="../symbols/sap.ui.core.util.Export.html#destroyExportType">destroyExportType</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys the exportType in the aggregation named <code>exportType</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys all the rows in the aggregation named rows."><a href="../symbols/sap.ui.core.util.Export.html#destroyRows">destroyRows</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys all the rows in the aggregation named <code>rows</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Generates the file content and returns a jQuery Promise with the instance as context (this)."><a href="../symbols/sap.ui.core.util.Export.html#generate">generate</a></b><span class='signature'>()</span>
+									<span class='description'>Generates the file content and returns a jQuery Promise with the instance as context (this).</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation columns."><a href="../symbols/sap.ui.core.util.Export.html#getColumns">getColumns</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>columns</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation exportType."><a href="../symbols/sap.ui.core.util.Export.html#getExportType">getExportType</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>exportType</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation rows."><a href="../symbols/sap.ui.core.util.Export.html#getRows">getRows</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>rows</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Checks for the provided sap.ui.core.util.ExportColumn in the aggregation named columns and returns its index if found or -1 otherwise."><a href="../symbols/sap.ui.core.util.Export.html#indexOfColumn">indexOfColumn</a></b><span class='signature'>(<span title="(sap.ui.core.util.ExportColumn) the column whose index is looked for.">oColumn</span>)</span>
+									<span class='description'>Checks for the provided <code>sap.ui.core.util.ExportColumn</code> in the aggregation named <code>columns</code> and returns its index if found or -1 otherwise.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Checks for the provided sap.ui.core.util.ExportRow in the aggregation named rows and returns its index if found or -1 otherwise."><a href="../symbols/sap.ui.core.util.Export.html#indexOfRow">indexOfRow</a></b><span class='signature'>(<span title="(sap.ui.core.util.ExportRow) the row whose index is looked for.">oRow</span>)</span>
+									<span class='description'>Checks for the provided <code>sap.ui.core.util.ExportRow</code> in the aggregation named <code>rows</code> and returns its index if found or -1 otherwise.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Inserts a column into the aggregation named columns."><a href="../symbols/sap.ui.core.util.Export.html#insertColumn">insertColumn</a></b><span class='signature'>(<span title="(sap.ui.core.util.ExportColumn) the column to insert; if empty, nothing is inserted">oColumn</span>, <span title="(int) the 0-based index the column should be inserted at; for a negative value of iIndex, the column is inserted at position 0; for a value greater than the current size of the aggregation, the column is inserted at the last position">iIndex</span>)</span>
+									<span class='description'>Inserts a column into the aggregation named <code>columns</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Inserts a row into the aggregation named rows."><a href="../symbols/sap.ui.core.util.Export.html#insertRow">insertRow</a></b><span class='signature'>(<span title="(sap.ui.core.util.ExportRow) the row to insert; if empty, nothing is inserted">oRow</span>, <span title="(int) the 0-based index the row should be inserted at; for a negative value of iIndex, the row is inserted at position 0; for a value greater than the current size of the aggregation, the row is inserted at the last position">iIndex</span>)</span>
+									<span class='description'>Inserts a row into the aggregation named <code>rows</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes all the controls in the aggregation named columns."><a href="../symbols/sap.ui.core.util.Export.html#removeAllColumns">removeAllColumns</a></b><span class='signature'>()</span>
+									<span class='description'>Removes all the controls in the aggregation named <code>columns</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes all the controls in the aggregation named rows."><a href="../symbols/sap.ui.core.util.Export.html#removeAllRows">removeAllRows</a></b><span class='signature'>()</span>
+									<span class='description'>Removes all the controls in the aggregation named <code>rows</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes an column from the aggregation named columns."><a href="../symbols/sap.ui.core.util.Export.html#removeColumn">removeColumn</a></b><span class='signature'>(<span title="(int | string | sap.ui.core.util.ExportColumn) the column to remove or its index or id">vColumn</span>)</span>
+									<span class='description'>Removes an column from the aggregation named <code>columns</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes an row from the aggregation named rows."><a href="../symbols/sap.ui.core.util.Export.html#removeRow">removeRow</a></b><span class='signature'>(<span title="(int | string | sap.ui.core.util.ExportRow) the row to remove or its index or id">vRow</span>)</span>
+									<span class='description'>Removes an row from the aggregation named <code>rows</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Generates the file content, triggers a download / save action and returns a jQuery Promise with the instance as context (this)."><a href="../symbols/sap.ui.core.util.Export.html#saveFile">saveFile</a></b><span class='signature'>(<span title="(string) file name, defaults to 'data'">sFileName</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Generates the file content, triggers a download / save action and returns a jQuery Promise with the instance as context (this).</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for the aggregated exportType."><a href="../symbols/sap.ui.core.util.Export.html#setExportType">setExportType</a></b><span class='signature'>(<span title="(sap.ui.core.util.ExportType) sap.ui.core.util.ExportType">oExportType</span>)</span>
+									<span class='description'>Setter for the aggregated <code>exportType</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Unbinder for aggregation columns."><a href="../symbols/sap.ui.core.util.Export.html#unbindColumns">unbindColumns</a></b><span class='signature'>()</span>
+									<span class='description'>Unbinder for aggregation <code>columns</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Unbinder for aggregation rows."><a href="../symbols/sap.ui.core.util.Export.html#unbindRows">unbindRows</a></b><span class='signature'>()</span>
+									<span class='description'>Unbinder for aggregation <code>rows</code>.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Control.html#addStyleClass">addStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#allowTextSelection">allowTextSelection</a>, <a href="../symbols/sap.ui.core.Control.html#attachBrowserEvent">attachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#clone">clone</a>, <a href="../symbols/sap.ui.core.Control.html#detachBrowserEvent">detachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#getBusy">getBusy</a>, <a href="../symbols/sap.ui.core.Control.html#getBusyIndicatorDelay">getBusyIndicatorDelay</a>, <a href="../symbols/sap.ui.core.Control.html#getIdForLabel">getIdForLabel</a>, <a href="../symbols/sap.ui.core.Control.html#getRenderer">getRenderer</a>, <a href="../symbols/sap.ui.core.Control.html#hasStyleClass">hasStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#invalidate">invalidate</a>, <a href="../symbols/sap.ui.core.Control.html#isBusy">isBusy</a>, <a href="../symbols/sap.ui.core.Control.html#onAfterRendering">onAfterRendering</a>, <a href="../symbols/sap.ui.core.Control.html#onBeforeRendering">onBeforeRendering</a>, <a href="../symbols/sap.ui.core.Control.html#placeAt">placeAt</a>, <a href="../symbols/sap.ui.core.Control.html#removeStyleClass">removeStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#rerender">rerender</a>, <a href="../symbols/sap.ui.core.Control.html#setBusy">setBusy</a>, <a href="../symbols/sap.ui.core.Control.html#setBusyIndicatorDelay">setBusyIndicatorDelay</a>, <a href="../symbols/sap.ui.core.Control.html#toggleStyleClass">toggleStyleClass</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Element.html#$">$</a>, <a href="../symbols/sap.ui.core.Element.html#addCustomData">addCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#addDependent">addDependent</a>, <a href="../symbols/sap.ui.core.Element.html#addEventDelegate">addEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#applyFocusInfo">applyFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#bindElement">bindElement</a>, <a href="../symbols/sap.ui.core.Element.html#data">data</a>, <a href="../symbols/sap.ui.core.Element.html#destroy">destroy</a>, <a href="../symbols/sap.ui.core.Element.html#destroyCustomData">destroyCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#destroyDependents">destroyDependents</a>, <a href="../symbols/sap.ui.core.Element.html#enhanceAccessibilityState">enhanceAccessibilityState</a>, <a href="../symbols/sap.ui.core.Element.html#findElements">findElements</a>, <a href="../symbols/sap.ui.core.Element.html#fireEvent">fireEvent</a>, <a href="../symbols/sap.ui.core.Element.html#getCustomData">getCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#getDependents">getDependents</a>, <a href="../symbols/sap.ui.core.Element.html#getDomRef">getDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getElementBinding">getElementBinding</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusDomRef">getFocusDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusInfo">getFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#getInterface">getInterface</a>, <a href="../symbols/sap.ui.core.Element.html#getLayoutData">getLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#getMetadata">getMetadata</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip">getTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_AsString">getTooltip_AsString</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_Text">getTooltip_Text</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfCustomData">indexOfCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfDependent">indexOfDependent</a>, <a href="../symbols/sap.ui.core.Element.html#insertCustomData">insertCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#insertDependent">insertDependent</a>, <a href="../symbols/sap.ui.core.Element.html#prop">prop</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllCustomData">removeAllCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllDependents">removeAllDependents</a>, <a href="../symbols/sap.ui.core.Element.html#removeCustomData">removeCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeDependent">removeDependent</a>, <a href="../symbols/sap.ui.core.Element.html#removeEventDelegate">removeEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#setLayoutData">setLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#setTooltip">setTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#toString">toString</a>, <a href="../symbols/sap.ui.core.Element.html#unbindElement">unbindElement</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.ManagedObject.html">sap.ui.base.ManagedObject</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.ManagedObject.html#addAggregation">addAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#addAssociation">addAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#applySettings">applySettings</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindAggregation">bindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindContext">bindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindObject">bindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindProperty">bindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#destroyAggregation">destroyAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#findAggregatedObjects">findAggregatedObjects</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAggregation">getAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAssociation">getAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBinding">getBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingContext">getBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingInfo">getBindingInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingPath">getBindingPath</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getEventingParent">getEventingParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getId">getId</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getModel">getModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getObjectBinding">getObjectBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getOriginInfo">getOriginInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getParent">getParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getProperty">getProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#hasModel">hasModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#indexOfAggregation">indexOfAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#insertAggregation">insertAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isBound">isBound</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isInvalidateSuppressed">isInvalidateSuppressed</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isTreeBinding">isTreeBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAggregation">removeAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAggregation">removeAllAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAssociation">removeAllAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAssociation">removeAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAggregation">setAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAssociation">setAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setBindingContext">setBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setModel">setModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setProperty">setProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindAggregation">unbindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindContext">unbindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindObject">unbindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindProperty">unbindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateAggregation">validateAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateProperty">validateProperty</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.EventProvider.html#attachEvent">attachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#attachEventOnce">attachEventOnce</a>, <a href="../symbols/sap.ui.base.EventProvider.html#detachEvent">detachEvent</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.ui.core.util.Export</b>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)
+										</div>
+										
+										<div class="full-description">
+											Constructor for a new Export.
+</p><p>
+Accepts an object literal <code>mSettings</code> that defines initial 
+property values, aggregated and associated objects as well as event handlers. 
+</p><p>
+If the name of a setting is ambiguous (e.g. a property has the same name as an event), 
+then the framework assumes property, aggregation, association, event in that order. 
+To override this automatic resolution, one of the prefixes "aggregation:", "association:" 
+or "event:" can be added to the name of the setting (such a prefixed name must be
+enclosed in single or double quotes).
+</p><p>
+The supported settings are:
+<ul>
+<li>Properties
+<ul></ul>
+</li>
+<li>Aggregations
+<ul>
+<li><a href="#getExportType">exportType</a> : sap.ui.core.util.ExportType</li>
+<li><a href="#getColumns">columns</a> : sap.ui.core.util.ExportColumn[]</li>
+<li><a href="#getRows">rows</a> : sap.ui.core.util.ExportRow[]</li></ul>
+</li>
+<li>Associations
+<ul></ul>
+</li>
+<li>Events
+<ul></ul>
+</li>
+</ul>
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    id for the new control, generated automatically if no id is given
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mSettings</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    initial settings for the new control
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".extend"> </a>
+										<div class="itemTitle icon">
+											sap.ui.core.util.Export.extend<span class="signature">(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns function">: function</span>
+										</div>
+										<div class="full-description">
+											Creates a new subclass of class sap.ui.core.util.Export with name <code>sClassName</code> 
+and enriches it with the information contained in <code>oClassInfo</code>.
+</p><p>
+<code>oClassInfo</code> might contain the same kind of informations as described in <a href="../symbols/sap.ui.core.Element.html#.extend">Element.extend</a>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sClassName</b>
+													</td>
+													<td class="methodItemDesc">
+												    name of the class to be created
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oClassInfo</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    object literal with informations about the class
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>FNMetaImpl</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    constructor function for the metadata object. If not given, it defaults to sap.ui.core.ElementMetadata.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{function}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the created class / constructor function
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addColumn"> </a>
+										<div class="itemTitle icon">
+											addColumn<span class="signature">(<span title="(sap.ui.core.util.ExportColumn) the column to add; if empty, nothing is inserted">oColumn</span>)</span>
+											<span class="light" title="returns sap.ui.core.util.Export">: <a href="../symbols/sap.ui.core.util.Export.html">sap.ui.core.util.Export</a></span>
+										</div>
+										<div class="full-description">
+											Adds some column <code>oColumn</code> 
+to the aggregation named <code>columns</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.util.ExportColumn.html">sap.ui.core.util.ExportColumn</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oColumn</b>
+													</td>
+													<td class="methodItemDesc">
+												    the column to add; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.util.Export.html">sap.ui.core.util.Export</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addRow"> </a>
+										<div class="itemTitle icon">
+											addRow<span class="signature">(<span title="(sap.ui.core.util.ExportRow) the row to add; if empty, nothing is inserted">oRow</span>)</span>
+											<span class="light" title="returns sap.ui.core.util.Export">: <a href="../symbols/sap.ui.core.util.Export.html">sap.ui.core.util.Export</a></span>
+										</div>
+										<div class="full-description">
+											Adds some row <code>oRow</code> 
+to the aggregation named <code>rows</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.util.ExportRow.html">sap.ui.core.util.ExportRow</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oRow</b>
+													</td>
+													<td class="methodItemDesc">
+												    the row to add; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.util.Export.html">sap.ui.core.util.Export</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="bindColumns"> </a>
+										<div class="itemTitle icon">
+											bindColumns<span class="signature">(<span title="(string) path to a list in the model">sPath</span>, <span title="(sap.ui.core.Element) the control template for this aggregation">oTemplate</span>, <span title="(sap.ui.model.Sorter) the initial sort order (optional)">oSorter</span>, <span title="(array) the predefined filters for this aggregation (optional)">aFilters</span>)</span>
+											<span class="light" title="returns sap.ui.core.util.Export">: <a href="../symbols/sap.ui.core.util.Export.html">sap.ui.core.util.Export</a></span>
+										</div>
+										<div class="full-description">
+											Binder for aggregation <code>columns</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sPath</b>
+													</td>
+													<td class="methodItemDesc">
+												    path to a list in the model
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oTemplate</b>
+													</td>
+													<td class="methodItemDesc">
+												    the control template for this aggregation
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.model.Sorter.html">sap.ui.model.Sorter</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oSorter</b>
+													</td>
+													<td class="methodItemDesc">
+												    the initial sort order (optional)
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{array}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>aFilters</b>
+													</td>
+													<td class="methodItemDesc">
+												    the predefined filters for this aggregation (optional)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.util.Export.html">sap.ui.core.util.Export</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="bindRows"> </a>
+										<div class="itemTitle icon">
+											bindRows<span class="signature">(<span title="(string) path to a list in the model">sPath</span>, <span title="(sap.ui.core.Element) the control template for this aggregation">oTemplate</span>, <span title="(sap.ui.model.Sorter) the initial sort order (optional)">oSorter</span>, <span title="(array) the predefined filters for this aggregation (optional)">aFilters</span>)</span>
+											<span class="light" title="returns sap.ui.core.util.Export">: <a href="../symbols/sap.ui.core.util.Export.html">sap.ui.core.util.Export</a></span>
+										</div>
+										<div class="full-description">
+											Binder for aggregation <code>rows</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sPath</b>
+													</td>
+													<td class="methodItemDesc">
+												    path to a list in the model
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oTemplate</b>
+													</td>
+													<td class="methodItemDesc">
+												    the control template for this aggregation
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.model.Sorter.html">sap.ui.model.Sorter</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oSorter</b>
+													</td>
+													<td class="methodItemDesc">
+												    the initial sort order (optional)
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{array}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>aFilters</b>
+													</td>
+													<td class="methodItemDesc">
+												    the predefined filters for this aggregation (optional)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.util.Export.html">sap.ui.core.util.Export</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyColumns"> </a>
+										<div class="itemTitle icon">
+											destroyColumns<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.util.Export">: <a href="../symbols/sap.ui.core.util.Export.html">sap.ui.core.util.Export</a></span>
+										</div>
+										<div class="full-description">
+											Destroys all the columns in the aggregation 
+named <code>columns</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.util.Export.html">sap.ui.core.util.Export</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyExportType"> </a>
+										<div class="itemTitle icon">
+											destroyExportType<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.util.Export">: <a href="../symbols/sap.ui.core.util.Export.html">sap.ui.core.util.Export</a></span>
+										</div>
+										<div class="full-description">
+											Destroys the exportType in the aggregation 
+named <code>exportType</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.util.Export.html">sap.ui.core.util.Export</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyRows"> </a>
+										<div class="itemTitle icon">
+											destroyRows<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.util.Export">: <a href="../symbols/sap.ui.core.util.Export.html">sap.ui.core.util.Export</a></span>
+										</div>
+										<div class="full-description">
+											Destroys all the rows in the aggregation 
+named <code>rows</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.util.Export.html">sap.ui.core.util.Export</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="generate"> </a>
+										<div class="itemTitle icon">
+											generate<span class="signature">()</span>
+											<span class="light" title="returns jQuery.Promise">: jQuery.Promise</span>
+										</div>
+										<div class="full-description">
+											Generates the file content and returns a jQuery Promise
+with the instance as context (this).<br>
+The promise will be resolved with the generated content
+as a string.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{jQuery.Promise}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Promise object
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getColumns"> </a>
+										<div class="itemTitle icon">
+											getColumns<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.util.ExportColumn[]">: <a href="../symbols/sap.ui.core.util.ExportColumn.html">sap.ui.core.util.ExportColumn</a>[]</span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>columns</code>.<br/>
+Columns for the Export.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.util.ExportColumn.html">sap.ui.core.util.ExportColumn</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getExportType"> </a>
+										<div class="itemTitle icon">
+											getExportType<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.util.ExportType">: <a href="../symbols/sap.ui.core.util.ExportType.html">sap.ui.core.util.ExportType</a></span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>exportType</code>.<br/>
+Type that generates the content.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.util.ExportType.html">sap.ui.core.util.ExportType</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getRows"> </a>
+										<div class="itemTitle icon">
+											getRows<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.util.ExportRow[]">: <a href="../symbols/sap.ui.core.util.ExportRow.html">sap.ui.core.util.ExportRow</a>[]</span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>rows</code>.<br/>
+Rows of the Export.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.util.ExportRow.html">sap.ui.core.util.ExportRow</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="indexOfColumn"> </a>
+										<div class="itemTitle icon">
+											indexOfColumn<span class="signature">(<span title="(sap.ui.core.util.ExportColumn) the column whose index is looked for.">oColumn</span>)</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Checks for the provided <code>sap.ui.core.util.ExportColumn</code> in the aggregation named <code>columns</code> 
+and returns its index if found or -1 otherwise.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.util.ExportColumn.html">sap.ui.core.util.ExportColumn</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oColumn</b>
+													</td>
+													<td class="methodItemDesc">
+												    the column whose index is looked for.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the index of the provided control in the aggregation if found, or -1 otherwise
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="indexOfRow"> </a>
+										<div class="itemTitle icon">
+											indexOfRow<span class="signature">(<span title="(sap.ui.core.util.ExportRow) the row whose index is looked for.">oRow</span>)</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Checks for the provided <code>sap.ui.core.util.ExportRow</code> in the aggregation named <code>rows</code> 
+and returns its index if found or -1 otherwise.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.util.ExportRow.html">sap.ui.core.util.ExportRow</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oRow</b>
+													</td>
+													<td class="methodItemDesc">
+												    the row whose index is looked for.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the index of the provided control in the aggregation if found, or -1 otherwise
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="insertColumn"> </a>
+										<div class="itemTitle icon">
+											insertColumn<span class="signature">(<span title="(sap.ui.core.util.ExportColumn) the column to insert; if empty, nothing is inserted">oColumn</span>, <span title="(int) the 0-based index the column should be inserted at; for a negative value of iIndex, the column is inserted at position 0; for a value greater than the current size of the aggregation, the column is inserted at the last position">iIndex</span>)</span>
+											<span class="light" title="returns sap.ui.core.util.Export">: <a href="../symbols/sap.ui.core.util.Export.html">sap.ui.core.util.Export</a></span>
+										</div>
+										<div class="full-description">
+											Inserts a column into the aggregation named <code>columns</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.util.ExportColumn.html">sap.ui.core.util.ExportColumn</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oColumn</b>
+													</td>
+													<td class="methodItemDesc">
+												    the column to insert; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    the <code>0</code>-based index the column should be inserted at; for
+            a negative value of <code>iIndex</code>, the column is inserted at position 0; for a value
+            greater than the current size of the aggregation, the column is inserted at
+            the last position
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.util.Export.html">sap.ui.core.util.Export</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="insertRow"> </a>
+										<div class="itemTitle icon">
+											insertRow<span class="signature">(<span title="(sap.ui.core.util.ExportRow) the row to insert; if empty, nothing is inserted">oRow</span>, <span title="(int) the 0-based index the row should be inserted at; for a negative value of iIndex, the row is inserted at position 0; for a value greater than the current size of the aggregation, the row is inserted at the last position">iIndex</span>)</span>
+											<span class="light" title="returns sap.ui.core.util.Export">: <a href="../symbols/sap.ui.core.util.Export.html">sap.ui.core.util.Export</a></span>
+										</div>
+										<div class="full-description">
+											Inserts a row into the aggregation named <code>rows</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.util.ExportRow.html">sap.ui.core.util.ExportRow</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oRow</b>
+													</td>
+													<td class="methodItemDesc">
+												    the row to insert; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    the <code>0</code>-based index the row should be inserted at; for 
+            a negative value of <code>iIndex</code>, the row is inserted at position 0; for a value 
+            greater than the current size of the aggregation, the row is inserted at 
+            the last position
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.util.Export.html">sap.ui.core.util.Export</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeAllColumns"> </a>
+										<div class="itemTitle icon">
+											removeAllColumns<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.util.ExportColumn[]">: <a href="../symbols/sap.ui.core.util.ExportColumn.html">sap.ui.core.util.ExportColumn</a>[]</span>
+										</div>
+										<div class="full-description">
+											Removes all the controls in the aggregation named <code>columns</code>.<br/>
+Additionally unregisters them from the hosting UIArea.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.util.ExportColumn.html">sap.ui.core.util.ExportColumn</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														an array of the removed elements (might be empty)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeAllRows"> </a>
+										<div class="itemTitle icon">
+											removeAllRows<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.util.ExportRow[]">: <a href="../symbols/sap.ui.core.util.ExportRow.html">sap.ui.core.util.ExportRow</a>[]</span>
+										</div>
+										<div class="full-description">
+											Removes all the controls in the aggregation named <code>rows</code>.<br/>
+Additionally unregisters them from the hosting UIArea.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.util.ExportRow.html">sap.ui.core.util.ExportRow</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														an array of the removed elements (might be empty)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeColumn"> </a>
+										<div class="itemTitle icon">
+											removeColumn<span class="signature">(<span title="(int | string | sap.ui.core.util.ExportColumn) the column to remove or its index or id">vColumn</span>)</span>
+											<span class="light" title="returns sap.ui.core.util.ExportColumn">: <a href="../symbols/sap.ui.core.util.ExportColumn.html">sap.ui.core.util.ExportColumn</a></span>
+										</div>
+										<div class="full-description">
+											Removes an column from the aggregation named <code>columns</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int|string|<a href="../symbols/sap.ui.core.util.ExportColumn.html">sap.ui.core.util.ExportColumn</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vColumn</b>
+													</td>
+													<td class="methodItemDesc">
+												    the column to remove or its index or id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.util.ExportColumn.html">sap.ui.core.util.ExportColumn</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the removed column or null
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeRow"> </a>
+										<div class="itemTitle icon">
+											removeRow<span class="signature">(<span title="(int | string | sap.ui.core.util.ExportRow) the row to remove or its index or id">vRow</span>)</span>
+											<span class="light" title="returns sap.ui.core.util.ExportRow">: <a href="../symbols/sap.ui.core.util.ExportRow.html">sap.ui.core.util.ExportRow</a></span>
+										</div>
+										<div class="full-description">
+											Removes an row from the aggregation named <code>rows</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int|string|<a href="../symbols/sap.ui.core.util.ExportRow.html">sap.ui.core.util.ExportRow</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vRow</b>
+													</td>
+													<td class="methodItemDesc">
+												    the row to remove or its index or id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.util.ExportRow.html">sap.ui.core.util.ExportRow</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the removed row or null
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="saveFile"> </a>
+										<div class="itemTitle icon">
+											saveFile<span class="signature">(<span title="(string) file name, defaults to 'data'">sFileName</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns jQuery.Promise">: jQuery.Promise</span>
+										</div>
+										<div class="full-description">
+											Generates the file content, triggers a download / save action and
+returns a jQuery Promise with the instance as context (this).<br>
+The promise will be resolved with the generated content
+as a string.
+<p><b>For information about browser support, see <code>sap.ui.core.util.File.save</code></b></p>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sFileName</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    file name, defaults to 'data'
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{jQuery.Promise}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Promise object
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setExportType"> </a>
+										<div class="itemTitle icon">
+											setExportType<span class="signature">(<span title="(sap.ui.core.util.ExportType) sap.ui.core.util.ExportType">oExportType</span>)</span>
+											<span class="light" title="returns sap.ui.core.util.Export">: <a href="../symbols/sap.ui.core.util.Export.html">sap.ui.core.util.Export</a></span>
+										</div>
+										<div class="full-description">
+											Setter for the aggregated <code>exportType</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.util.ExportType.html">sap.ui.core.util.ExportType</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oExportType</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.util.Export.html">sap.ui.core.util.Export</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="unbindColumns"> </a>
+										<div class="itemTitle icon">
+											unbindColumns<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.util.Export">: <a href="../symbols/sap.ui.core.util.Export.html">sap.ui.core.util.Export</a></span>
+										</div>
+										<div class="full-description">
+											Unbinder for aggregation <code>columns</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.util.Export.html">sap.ui.core.util.Export</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="unbindRows"> </a>
+										<div class="itemTitle icon">
+											unbindRows<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.util.Export">: <a href="../symbols/sap.ui.core.util.Export.html">sap.ui.core.util.Export</a></span>
+										</div>
+										<div class="full-description">
+											Unbinder for aggregation <code>rows</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.util.Export.html">sap.ui.core.util.Export</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

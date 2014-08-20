@@ -1,0 +1,193 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>qUnit Page for sap.m.ListBase Binding</title>
+
+<script id="sap-ui-bootstrap" src="../../../../resources/sap-ui-core.js"
+	data-sap-ui-theme="sap_bluecrystal" data-sap-ui-noConflict="true"
+	data-sap-ui-libs="sap.m"></script>
+
+<script>
+	jQuery.sap.require("sap.ui.app.MockServer");
+	jQuery.sap.require("sap.ui.model.odata.ODataModel");
+</script>
+
+<link rel="stylesheet" href="../../../../resources/sap/ui/thirdparty/qunit.css"	type="text/css" media="screen" />
+<script src="../../../../resources/sap/ui/thirdparty/qunit.js"></script>
+<script src="../../../../resources/sap/ui/qunit/QUnitUtils.js"></script>
+<script src="../../../../resources/sap/ui/thirdparty/sinon-qunit.js"></script>
+<script>
+
+	// fakeTimers causing issue with MockServer
+	sinon.config.useFakeTimers = false;
+	
+	function startMockServer(iRespondAfter) {
+		// configure respond to requests delay
+		sap.ui.app.MockServer.config({
+			autoRespond : true,
+			autoRespondAfter : iRespondAfter || 10
+		});
+
+		// create mockserver
+		var oMockServer = new sap.ui.app.MockServer({
+			rootUri : "http://sap.com/model/"
+		});
+
+		// start and return
+		oMockServer.simulate("data/metadata.xml", "data");
+		oMockServer.start();
+		return oMockServer;
+	}
+
+	function createList(oListConfig, oBindConfig) {
+		// init
+		var oDeferred = jQuery.Deferred();
+		var oList = new sap.m.List(oListConfig || {});
+		var oModel = new sap.ui.model.odata.ODataModel("http://sap.com/model", true);
+		var oItemTemplate = new sap.m.StandardListItem({
+			title : "{Name}",
+			description : "{Category}"
+		});
+
+		// render the list
+		oList.placeAt("qunit-fixture");
+		sap.ui.getCore().applyChanges();
+
+		// set the list as a promise
+		oDeferred.promise(oList);
+		oList.attachUpdateFinished(oDeferred.resolve);
+
+		// build binding confing
+		oBindConfig = jQuery.extend({
+			path : "/Products",
+			template : oItemTemplate
+		}, oBindConfig);
+
+		// set model and bind items
+		oList.setModel(oModel).bindItems(oBindConfig);
+
+		return oList;
+	}
+
+	module("BusyIndicator");
+	asyncTest("List should show busy indicator during the binding update", function() {
+		var oMockServer = startMockServer(),
+			oList = createList({
+				busyIndicatorDelay : 0,
+				updateStarted : function() {
+					var $BusyIndicator = this.$().find(".sapUiLocalBusyIndicator");
+					strictEqual($BusyIndicator.length, 1, "Busy indicator should be visible when update is started");
+				},
+				updateFinished : function() {
+					var $BusyIndicator = this.$().find(".sapUiLocalBusyIndicator");
+					strictEqual($BusyIndicator.length, 0, "Busy indicator should be removed when update is finished");
+				}
+			});
+
+		// when initial binding is completed
+		oList.done(function () {
+			oMockServer.stop();
+			oList.destroy();
+			start();
+		});
+	});
+
+	asyncTest("List should show busy indicator during the binding update when growing is true", function() {
+		var oMockServer = startMockServer(),
+			oList = createList({
+				growing : true,
+				growingThreshold : 10,
+				busyIndicatorDelay : 0,
+				updateStarted : function() {
+					var $BusyIndicator = this.$().find(".sapUiLocalBusyIndicator");
+					strictEqual($BusyIndicator.length, 1, "Busy indicator should be visible when update is started");
+				},
+				updateFinished : function(oEvent) {
+					var $BusyIndicator = this.$().find(".sapUiLocalBusyIndicator");
+					strictEqual($BusyIndicator.length, 0, "Busy indicator should be removed when update is finished");
+					strictEqual(oEvent.getParameter("actual"), 10, "Because of the growingThreshold we should see only first 10 items.");
+				}
+			});
+
+		// when initial binding is completed
+		oList.done(function () {
+			oMockServer.stop();
+			oList.destroy();
+			start();
+		});
+	});
+	
+	asyncTest("List should show busy indicator when there is no data found", function() {
+		var oMockServer = startMockServer(),
+			oList = createList({
+				busyIndicatorDelay : 0,
+				updateStarted : function() {
+					var $BusyIndicator = this.$().find(".sapUiLocalBusyIndicator");
+					strictEqual($BusyIndicator.length, 1, "Busy indicator should be visible when update is started");
+				},
+				updateFinished : function(oEvent) {
+					var $BusyIndicator = this.$().find(".sapUiLocalBusyIndicator");
+					strictEqual($BusyIndicator.length, 0, "Busy indicator should be removed when update is finished");
+					strictEqual(oEvent.getParameter("total"), 0, "Because of the filter total binding length should be 0");
+				}
+			}, {
+				filters : [new sap.ui.model.Filter("Name", sap.ui.model.FilterOperator.EQ, "ThisTextShouldNotBeFound")]
+			});
+
+		// when initial binding is completed
+		oList.done(function () {
+			oMockServer.stop();
+			oList.destroy();
+			start();
+		});
+	});
+
+	asyncTest("List should respect busyIndicatorDelay property to show busy indicator.", function() {
+		var iRespondDelay = 10,
+			oMockServer = startMockServer(iRespondDelay),
+			oList = createList({
+				busyIndicatorDelay : iRespondDelay + 1,
+				updateStarted : function() {
+					var $BusyIndicator = this.$().find(".sapUiLocalBusyIndicator");
+					strictEqual($BusyIndicator.length, 0, "Delay is longer than response time busy indicator should not be visible");
+				}
+			});
+
+		// when initial binding is completed
+		oList.done(function() {
+			oMockServer.stop();
+			oList.destroy();
+			start();
+		});
+	});
+	
+	asyncTest("List should respect enableBusyIndicator property to show busy indicator.", function() {
+		var oMockServer = startMockServer(),
+			oList = createList({
+				enableBusyIndicator : false,
+				updateStarted : function() {
+					var $BusyIndicator = this.$().find(".sapUiLocalBusyIndicator");
+					strictEqual($BusyIndicator.length, 0, "enableBusyIndicator is false List should not show busy indicator.");
+				}
+			});
+
+		// when initial binding is completed
+		oList.done(function() {
+			oMockServer.stop();
+			oList.destroy();
+			start();
+		});
+	});
+</script>
+
+</head>
+<body id="body" class="sapUiBody">
+	<h1 id="qunit-header">qUnit Page for sap.m.ListBase Binding</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture"></div>
+</body>
+</html>

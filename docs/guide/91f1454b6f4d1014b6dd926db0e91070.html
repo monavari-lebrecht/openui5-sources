@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=2833907103300646"/>
+<title>Compiling Declarative HTML</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f1454b6f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Compiling Declarative HTML</h1>
+<div class="body"><div class="p">The plugin only works for controls that are defined as declarative markup on startup time. To
+			compile the declarative UI markup deferred, for example, when the markup is dynamically
+			loaded and added to the DOM you can call the
+				<samp class="ph codeph">sap.ui.core.plugin.DeclarativeSupport</samp>.compile method, see the
+			following code snippet:
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;div id="button"&gt;
+  &lt;div data-sap-ui-type="sap.ui.commons.Button" data-text="This button is added dynamically"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  sap.ui.core.plugin.DeclarativeSupport.compile(document.getElementById("button"));
+&lt;/script&gt;</pre></div>
+
+		</div>
+<p class="p"> 
+	 </p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Compiling Declarative HTML";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

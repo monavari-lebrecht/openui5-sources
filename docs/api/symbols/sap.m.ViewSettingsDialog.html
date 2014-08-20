@@ -1,0 +1,4591 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.m.ViewSettingsDialog</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class sap.m.ViewSettingsDialog
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.ui.core.Control" href="../symbols/sap.ui.core.Control.html">Control</a></div>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>ViewSettingsDialog provides functionality to easily select the options for sorting, grouping, and filtering data. It is a composite control, consisting of a modal popover and several internal lists. There are three different tabs (Sort, Group, Filter) in the dialog that can be activated by filling the respecive associations. If only one assication is filled, the other tabs are automatically hidden. The selected options can be used to create sorters and filters for the table.</p>
+						
+						
+						
+						
+						
+						
+							<br />
+							<i>Since: </i>1.16.
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="Constructor for a new ViewSettingsDialog.">new <a href="../symbols/sap.m.ViewSettingsDialog.html#constructor">sap.m.ViewSettingsDialog</a></b>
+										<span class='signature'>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)</span>
+										<span class='description'>Constructor for a new ViewSettingsDialog.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+						
+						
+						
+						
+					
+		
+
+
+					
+						
+						
+						<div class="summary section" cellspacing="0" summary="A summary of the events documented in the class sap.m.ViewSettingsDialog.">
+							<div class="sectionTitle">Event Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Event is called when the cancel button is pressed."><a href="../symbols/sap.m.ViewSettingsDialog.html#event:cancel">cancel</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>Event is called when the cancel button is pressed.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="The event indicates that the user has pressed the OK button and the selected sort, group, and filter settings should be applied to the data on this page."><a href="../symbols/sap.m.ViewSettingsDialog.html#event:confirm">confirm</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>The event indicates that the user has pressed the OK button and the selected sort, group, and filter settings should be applied to the data on this page.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Event is called when the reset filters button is pressed."><a href="../symbols/sap.m.ViewSettingsDialog.html#event:resetFilters">resetFilters</a></b><span class='signature'>(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+									<span class='description'>Event is called when the reset filters button is pressed.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+				
+						
+						
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Creates a new subclass of class sap.m.ViewSettingsDialog with name sClassName and enriches it with the information contained in oClassInfo."><a href="../symbols/sap.m.ViewSettingsDialog.html#.extend">sap.m.ViewSettingsDialog.extend</a></b><span class='signature'>(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Creates a new subclass of class sap.m.ViewSettingsDialog with name <code>sClassName</code> and enriches it with the information contained in <code>oClassInfo</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Adds some filterItem oFilterItem to the aggregation named filterItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#addFilterItem">addFilterItem</a></b><span class='signature'>(<span title="(sap.m.ViewSettingsItem) the filterItem to add; if empty, nothing is inserted">oFilterItem</span>)</span>
+									<span class='description'>Adds some filterItem <code>oFilterItem</code> to the aggregation named <code>filterItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Adds a group item and sets the association to reflect the selected state"><a href="../symbols/sap.m.ViewSettingsDialog.html#addGroupItem">addGroupItem</a></b><span class='signature'>(<span title="(sap.m.ViewSettingsItem) the item to be added to the aggregation">oItem</span>)</span>
+									<span class='description'>Adds a group item and sets the association to reflect the selected state</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Adds a preset filter item and sets the association to reflect the selected state"><a href="../symbols/sap.m.ViewSettingsDialog.html#addPresetFilterItem">addPresetFilterItem</a></b><span class='signature'>(<span title="(sap.m.ViewSettingsItem) the selected item or a string with the key">oItem</span>)</span>
+									<span class='description'>Adds a preset filter item and sets the association to reflect the selected state</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Adds a sort item and sets the association to reflect the selected state"><a href="../symbols/sap.m.ViewSettingsDialog.html#addSortItem">addSortItem</a></b><span class='signature'>(<span title="(sap.m.ViewSettingsItem) the item to be added to the aggregation">oItem</span>)</span>
+									<span class='description'>Adds a sort item and sets the association to reflect the selected state</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Forward method to the inner dialog: addStyleClass"><a href="../symbols/sap.m.ViewSettingsDialog.html#addStyleClass">addStyleClass</a></b><span class='signature'>()</span>
+									<span class='description'>Forward method to the inner dialog: addStyleClass</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Attach event handler fnFunction to the 'cancel' event of this sap.m.ViewSettingsDialog."><a href="../symbols/sap.m.ViewSettingsDialog.html#attachCancel">attachCancel</a></b><span class='signature'>(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Attach event handler <code>fnFunction</code> to the 'cancel' event of this <code>sap.m.ViewSettingsDialog</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Attach event handler fnFunction to the 'confirm' event of this sap.m.ViewSettingsDialog."><a href="../symbols/sap.m.ViewSettingsDialog.html#attachConfirm">attachConfirm</a></b><span class='signature'>(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Attach event handler <code>fnFunction</code> to the 'confirm' event of this <code>sap.m.ViewSettingsDialog</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Attach event handler fnFunction to the 'resetFilters' event of this sap.m.ViewSettingsDialog."><a href="../symbols/sap.m.ViewSettingsDialog.html#attachResetFilters">attachResetFilters</a></b><span class='signature'>(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Attach event handler <code>fnFunction</code> to the 'resetFilters' event of this <code>sap.m.ViewSettingsDialog</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Binder for aggregation filterItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#bindFilterItems">bindFilterItems</a></b><span class='signature'>(<span title="(string) path to a list in the model">sPath</span>, <span title="(sap.ui.core.Element) the control template for this aggregation">oTemplate</span>, <span title="(sap.ui.model.Sorter) the initial sort order (optional)">oSorter</span>, <span title="(array) the predefined filters for this aggregation (optional)">aFilters</span>)</span>
+									<span class='description'>Binder for aggregation <code>filterItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Binder for aggregation groupItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#bindGroupItems">bindGroupItems</a></b><span class='signature'>(<span title="(string) path to a list in the model">sPath</span>, <span title="(sap.ui.core.Element) the control template for this aggregation">oTemplate</span>, <span title="(sap.ui.model.Sorter) the initial sort order (optional)">oSorter</span>, <span title="(array) the predefined filters for this aggregation (optional)">aFilters</span>)</span>
+									<span class='description'>Binder for aggregation <code>groupItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Binder for aggregation presetFilterItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#bindPresetFilterItems">bindPresetFilterItems</a></b><span class='signature'>(<span title="(string) path to a list in the model">sPath</span>, <span title="(sap.ui.core.Element) the control template for this aggregation">oTemplate</span>, <span title="(sap.ui.model.Sorter) the initial sort order (optional)">oSorter</span>, <span title="(array) the predefined filters for this aggregation (optional)">aFilters</span>)</span>
+									<span class='description'>Binder for aggregation <code>presetFilterItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Binder for aggregation sortItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#bindSortItems">bindSortItems</a></b><span class='signature'>(<span title="(string) path to a list in the model">sPath</span>, <span title="(sap.ui.core.Element) the control template for this aggregation">oTemplate</span>, <span title="(sap.ui.model.Sorter) the initial sort order (optional)">oSorter</span>, <span title="(array) the predefined filters for this aggregation (optional)">aFilters</span>)</span>
+									<span class='description'>Binder for aggregation <code>sortItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys all the filterItems in the aggregation named filterItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#destroyFilterItems">destroyFilterItems</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys all the filterItems in the aggregation named <code>filterItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys all the groupItems in the aggregation named groupItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#destroyGroupItems">destroyGroupItems</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys all the groupItems in the aggregation named <code>groupItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys all the presetFilterItems in the aggregation named presetFilterItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#destroyPresetFilterItems">destroyPresetFilterItems</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys all the presetFilterItems in the aggregation named <code>presetFilterItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys all the sortItems in the aggregation named sortItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#destroySortItems">destroySortItems</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys all the sortItems in the aggregation named <code>sortItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Detach event handler fnFunction from the 'cancel' event of this sap.m.ViewSettingsDialog."><a href="../symbols/sap.m.ViewSettingsDialog.html#detachCancel">detachCancel</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Detach event handler <code>fnFunction</code> from the 'cancel' event of this <code>sap.m.ViewSettingsDialog</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Detach event handler fnFunction from the 'confirm' event of this sap.m.ViewSettingsDialog."><a href="../symbols/sap.m.ViewSettingsDialog.html#detachConfirm">detachConfirm</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Detach event handler <code>fnFunction</code> from the 'confirm' event of this <code>sap.m.ViewSettingsDialog</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Detach event handler fnFunction from the 'resetFilters' event of this sap.m.ViewSettingsDialog."><a href="../symbols/sap.m.ViewSettingsDialog.html#detachResetFilters">detachResetFilters</a></b><span class='signature'>(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+									<span class='description'>Detach event handler <code>fnFunction</code> from the 'resetFilters' event of this <code>sap.m.ViewSettingsDialog</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Fire event cancel to attached listeners."><a href="../symbols/sap.m.ViewSettingsDialog.html#fireCancel">fireCancel</a></b><span class='signature'>(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event cancel to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Fire event confirm to attached listeners."><a href="../symbols/sap.m.ViewSettingsDialog.html#fireConfirm">fireConfirm</a></b><span class='signature'>(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event confirm to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Fire event resetFilters to attached listeners."><a href="../symbols/sap.m.ViewSettingsDialog.html#fireResetFilters">fireResetFilters</a></b><span class='signature'>(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Fire event resetFilters to attached listeners.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Forward method to the inner dialog: getDomRef"><a href="../symbols/sap.m.ViewSettingsDialog.html#getDomRef">getDomRef</a></b><span class='signature'>()</span>
+									<span class='description'>Forward method to the inner dialog: getDomRef</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation filterItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#getFilterItems">getFilterItems</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>filterItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property groupDescending."><a href="../symbols/sap.m.ViewSettingsDialog.html#getGroupDescending">getGroupDescending</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>groupDescending</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation groupItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#getGroupItems">getGroupItems</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>groupItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation presetFilterItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#getPresetFilterItems">getPresetFilterItems</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>presetFilterItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the selected filters in an array of ViewSettingsItem."><a href="../symbols/sap.m.ViewSettingsDialog.html#getSelectedFilterItems">getSelectedFilterItems</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the selected filters in an array of ViewSettingsItem.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Get the selected filter object in format {key: boolean}"><a href="../symbols/sap.m.ViewSettingsDialog.html#getSelectedFilterKeys">getSelectedFilterKeys</a></b><span class='signature'>()</span>
+									<span class='description'>Get the selected filter object in format {key: boolean}</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the selected filters as an array of ViewSettingsItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#getSelectedFilters">getSelectedFilters</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the selected filters as an array of ViewSettingsItems.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Get the filter string in the format &quot;filter name (subfilter1 name, subfilter2 name, ."><a href="../symbols/sap.m.ViewSettingsDialog.html#getSelectedFilterString">getSelectedFilterString</a></b><span class='signature'>()</span>
+									<span class='description'>Get the filter string in the format "filter name (subfilter1 name, subfilter2 name, .</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Group item that is selected."><a href="../symbols/sap.m.ViewSettingsDialog.html#getSelectedGroupItem">getSelectedGroupItem</a></b><span class='signature'>()</span>
+									<span class='description'>Group item that is selected.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Preset filter item that is selected."><a href="../symbols/sap.m.ViewSettingsDialog.html#getSelectedPresetFilterItem">getSelectedPresetFilterItem</a></b><span class='signature'>()</span>
+									<span class='description'>Preset filter item that is selected.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Sort item that is selected."><a href="../symbols/sap.m.ViewSettingsDialog.html#getSelectedSortItem">getSelectedSortItem</a></b><span class='signature'>()</span>
+									<span class='description'>Sort item that is selected.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property sortDescending."><a href="../symbols/sap.m.ViewSettingsDialog.html#getSortDescending">getSortDescending</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>sortDescending</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation sortItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#getSortItems">getSortItems</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>sortItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property title."><a href="../symbols/sap.m.ViewSettingsDialog.html#getTitle">getTitle</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>title</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Forward method to the inner dialog: hasStyleClass"><a href="../symbols/sap.m.ViewSettingsDialog.html#hasStyleClass">hasStyleClass</a></b><span class='signature'>()</span>
+									<span class='description'>Forward method to the inner dialog: hasStyleClass</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Checks for the provided sap.m.ViewSettingsItem in the aggregation named filterItems and returns its index if found or -1 otherwise."><a href="../symbols/sap.m.ViewSettingsDialog.html#indexOfFilterItem">indexOfFilterItem</a></b><span class='signature'>(<span title="(sap.m.ViewSettingsItem) the filterItem whose index is looked for.">oFilterItem</span>)</span>
+									<span class='description'>Checks for the provided <code>sap.m.ViewSettingsItem</code> in the aggregation named <code>filterItems</code> and returns its index if found or -1 otherwise.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Checks for the provided sap.m.ViewSettingsItem in the aggregation named groupItems and returns its index if found or -1 otherwise."><a href="../symbols/sap.m.ViewSettingsDialog.html#indexOfGroupItem">indexOfGroupItem</a></b><span class='signature'>(<span title="(sap.m.ViewSettingsItem) the groupItem whose index is looked for.">oGroupItem</span>)</span>
+									<span class='description'>Checks for the provided <code>sap.m.ViewSettingsItem</code> in the aggregation named <code>groupItems</code> and returns its index if found or -1 otherwise.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Checks for the provided sap.m.ViewSettingsItem in the aggregation named presetFilterItems and returns its index if found or -1 otherwise."><a href="../symbols/sap.m.ViewSettingsDialog.html#indexOfPresetFilterItem">indexOfPresetFilterItem</a></b><span class='signature'>(<span title="(sap.m.ViewSettingsItem) the presetFilterItem whose index is looked for.">oPresetFilterItem</span>)</span>
+									<span class='description'>Checks for the provided <code>sap.m.ViewSettingsItem</code> in the aggregation named <code>presetFilterItems</code> and returns its index if found or -1 otherwise.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Checks for the provided sap.m.ViewSettingsItem in the aggregation named sortItems and returns its index if found or -1 otherwise."><a href="../symbols/sap.m.ViewSettingsDialog.html#indexOfSortItem">indexOfSortItem</a></b><span class='signature'>(<span title="(sap.m.ViewSettingsItem) the sortItem whose index is looked for.">oSortItem</span>)</span>
+									<span class='description'>Checks for the provided <code>sap.m.ViewSettingsItem</code> in the aggregation named <code>sortItems</code> and returns its index if found or -1 otherwise.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Inserts a filterItem into the aggregation named filterItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#insertFilterItem">insertFilterItem</a></b><span class='signature'>(<span title="(sap.m.ViewSettingsItem) the filterItem to insert; if empty, nothing is inserted">oFilterItem</span>, <span title="(int) the 0-based index the filterItem should be inserted at; for a negative value of iIndex, the filterItem is inserted at position 0; for a value greater than the current size of the aggregation, the filterItem is inserted at the last position">iIndex</span>)</span>
+									<span class='description'>Inserts a filterItem into the aggregation named <code>filterItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Inserts a groupItem into the aggregation named groupItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#insertGroupItem">insertGroupItem</a></b><span class='signature'>(<span title="(sap.m.ViewSettingsItem) the groupItem to insert; if empty, nothing is inserted">oGroupItem</span>, <span title="(int) the 0-based index the groupItem should be inserted at; for a negative value of iIndex, the groupItem is inserted at position 0; for a value greater than the current size of the aggregation, the groupItem is inserted at the last position">iIndex</span>)</span>
+									<span class='description'>Inserts a groupItem into the aggregation named <code>groupItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Inserts a presetFilterItem into the aggregation named presetFilterItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#insertPresetFilterItem">insertPresetFilterItem</a></b><span class='signature'>(<span title="(sap.m.ViewSettingsItem) the presetFilterItem to insert; if empty, nothing is inserted">oPresetFilterItem</span>, <span title="(int) the 0-based index the presetFilterItem should be inserted at; for a negative value of iIndex, the presetFilterItem is inserted at position 0; for a value greater than the current size of the aggregation, the presetFilterItem is inserted at the last position">iIndex</span>)</span>
+									<span class='description'>Inserts a presetFilterItem into the aggregation named <code>presetFilterItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Inserts a sortItem into the aggregation named sortItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#insertSortItem">insertSortItem</a></b><span class='signature'>(<span title="(sap.m.ViewSettingsItem) the sortItem to insert; if empty, nothing is inserted">oSortItem</span>, <span title="(int) the 0-based index the sortItem should be inserted at; for a negative value of iIndex, the sortItem is inserted at position 0; for a value greater than the current size of the aggregation, the sortItem is inserted at the last position">iIndex</span>)</span>
+									<span class='description'>Inserts a sortItem into the aggregation named <code>sortItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Opens the view settings dialog relative to the parent control"><a href="../symbols/sap.m.ViewSettingsDialog.html#open">open</a></b><span class='signature'>(<span title="(sap.ui.core.Control) the parent control">oParentControl</span>)</span>
+									<span class='description'>Opens the view settings dialog relative to the parent control</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes all the controls in the aggregation named filterItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#removeAllFilterItems">removeAllFilterItems</a></b><span class='signature'>()</span>
+									<span class='description'>Removes all the controls in the aggregation named <code>filterItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes all the controls in the aggregation named groupItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#removeAllGroupItems">removeAllGroupItems</a></b><span class='signature'>()</span>
+									<span class='description'>Removes all the controls in the aggregation named <code>groupItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes all the controls in the aggregation named presetFilterItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#removeAllPresetFilterItems">removeAllPresetFilterItems</a></b><span class='signature'>()</span>
+									<span class='description'>Removes all the controls in the aggregation named <code>presetFilterItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes all the controls in the aggregation named sortItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#removeAllSortItems">removeAllSortItems</a></b><span class='signature'>()</span>
+									<span class='description'>Removes all the controls in the aggregation named <code>sortItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes an filterItem from the aggregation named filterItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#removeFilterItem">removeFilterItem</a></b><span class='signature'>(<span title="(int | string | sap.m.ViewSettingsItem) the filterItem to remove or its index or id">vFilterItem</span>)</span>
+									<span class='description'>Removes an filterItem from the aggregation named <code>filterItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes an groupItem from the aggregation named groupItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#removeGroupItem">removeGroupItem</a></b><span class='signature'>(<span title="(int | string | sap.m.ViewSettingsItem) the groupItem to remove or its index or id">vGroupItem</span>)</span>
+									<span class='description'>Removes an groupItem from the aggregation named <code>groupItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes an presetFilterItem from the aggregation named presetFilterItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#removePresetFilterItem">removePresetFilterItem</a></b><span class='signature'>(<span title="(int | string | sap.m.ViewSettingsItem) the presetFilterItem to remove or its index or id">vPresetFilterItem</span>)</span>
+									<span class='description'>Removes an presetFilterItem from the aggregation named <code>presetFilterItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes an sortItem from the aggregation named sortItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#removeSortItem">removeSortItem</a></b><span class='signature'>(<span title="(int | string | sap.m.ViewSettingsItem) the sortItem to remove or its index or id">vSortItem</span>)</span>
+									<span class='description'>Removes an sortItem from the aggregation named <code>sortItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Forward method to the inner dialog: removeStyleClass"><a href="../symbols/sap.m.ViewSettingsDialog.html#removeStyleClass">removeStyleClass</a></b><span class='signature'>()</span>
+									<span class='description'>Forward method to the inner dialog: removeStyleClass</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property groupDescending."><a href="../symbols/sap.m.ViewSettingsDialog.html#setGroupDescending">setGroupDescending</a></b><span class='signature'>(<span title="(boolean) new value for property groupDescending">bGroupDescending</span>)</span>
+									<span class='description'>Setter for property <code>groupDescending</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Set the selected filter object in format {key: boolean}"><a href="../symbols/sap.m.ViewSettingsDialog.html#setSelectedFilterKeys">setSelectedFilterKeys</a></b><span class='signature'>(<span title="(object) an object with filter item and sub keys">oAny</span>)</span>
+									<span class='description'>Set the selected filter object in format {key: boolean}</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Set the selected group item (either by key or by item)"><a href="../symbols/sap.m.ViewSettingsDialog.html#setSelectedGroupItem">setSelectedGroupItem</a></b><span class='signature'>(<span title="(sap.m.ViewSettingsItem) the selected item or a string with the key">oItem</span>)</span>
+									<span class='description'>Set the selected group item (either by key or by item)</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Set the selected preset filter item"><a href="../symbols/sap.m.ViewSettingsDialog.html#setSelectedPresetFilterItem">setSelectedPresetFilterItem</a></b><span class='signature'>(<span title="(sap.m.ViewSettingsItem) the selected item or a string with the key">oItem</span>)</span>
+									<span class='description'>Set the selected preset filter item</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Set the selected sort item (either by key or by item)"><a href="../symbols/sap.m.ViewSettingsDialog.html#setSelectedSortItem">setSelectedSortItem</a></b><span class='signature'>(<span title="(sap.m.ViewSettingsItem) the selected item or a string with the key">oItem</span>)</span>
+									<span class='description'>Set the selected sort item (either by key or by item)</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property sortDescending."><a href="../symbols/sap.m.ViewSettingsDialog.html#setSortDescending">setSortDescending</a></b><span class='signature'>(<span title="(boolean) new value for property sortDescending">bSortDescending</span>)</span>
+									<span class='description'>Setter for property <code>sortDescending</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Set the title of the internal dialog"><a href="../symbols/sap.m.ViewSettingsDialog.html#setTitle">setTitle</a></b><span class='signature'>(<span title="(string) the title text for the dialog">sTitle</span>)</span>
+									<span class='description'>Set the title of the internal dialog</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Forward method to the inner dialog: toggleStyleClass"><a href="../symbols/sap.m.ViewSettingsDialog.html#toggleStyleClass">toggleStyleClass</a></b><span class='signature'>()</span>
+									<span class='description'>Forward method to the inner dialog: toggleStyleClass</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Unbinder for aggregation filterItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#unbindFilterItems">unbindFilterItems</a></b><span class='signature'>()</span>
+									<span class='description'>Unbinder for aggregation <code>filterItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Unbinder for aggregation groupItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#unbindGroupItems">unbindGroupItems</a></b><span class='signature'>()</span>
+									<span class='description'>Unbinder for aggregation <code>groupItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Unbinder for aggregation presetFilterItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#unbindPresetFilterItems">unbindPresetFilterItems</a></b><span class='signature'>()</span>
+									<span class='description'>Unbinder for aggregation <code>presetFilterItems</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Unbinder for aggregation sortItems."><a href="../symbols/sap.m.ViewSettingsDialog.html#unbindSortItems">unbindSortItems</a></b><span class='signature'>()</span>
+									<span class='description'>Unbinder for aggregation <code>sortItems</code>.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Control.html#allowTextSelection">allowTextSelection</a>, <a href="../symbols/sap.ui.core.Control.html#attachBrowserEvent">attachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#clone">clone</a>, <a href="../symbols/sap.ui.core.Control.html#detachBrowserEvent">detachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#getBusy">getBusy</a>, <a href="../symbols/sap.ui.core.Control.html#getBusyIndicatorDelay">getBusyIndicatorDelay</a>, <a href="../symbols/sap.ui.core.Control.html#getIdForLabel">getIdForLabel</a>, <a href="../symbols/sap.ui.core.Control.html#getRenderer">getRenderer</a>, <a href="../symbols/sap.ui.core.Control.html#invalidate">invalidate</a>, <a href="../symbols/sap.ui.core.Control.html#isBusy">isBusy</a>, <a href="../symbols/sap.ui.core.Control.html#onAfterRendering">onAfterRendering</a>, <a href="../symbols/sap.ui.core.Control.html#onBeforeRendering">onBeforeRendering</a>, <a href="../symbols/sap.ui.core.Control.html#placeAt">placeAt</a>, <a href="../symbols/sap.ui.core.Control.html#rerender">rerender</a>, <a href="../symbols/sap.ui.core.Control.html#setBusy">setBusy</a>, <a href="../symbols/sap.ui.core.Control.html#setBusyIndicatorDelay">setBusyIndicatorDelay</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Element.html#$">$</a>, <a href="../symbols/sap.ui.core.Element.html#addCustomData">addCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#addDependent">addDependent</a>, <a href="../symbols/sap.ui.core.Element.html#addEventDelegate">addEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#applyFocusInfo">applyFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#bindElement">bindElement</a>, <a href="../symbols/sap.ui.core.Element.html#data">data</a>, <a href="../symbols/sap.ui.core.Element.html#destroy">destroy</a>, <a href="../symbols/sap.ui.core.Element.html#destroyCustomData">destroyCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#destroyDependents">destroyDependents</a>, <a href="../symbols/sap.ui.core.Element.html#enhanceAccessibilityState">enhanceAccessibilityState</a>, <a href="../symbols/sap.ui.core.Element.html#exit">exit</a>, <a href="../symbols/sap.ui.core.Element.html#findElements">findElements</a>, <a href="../symbols/sap.ui.core.Element.html#fireEvent">fireEvent</a>, <a href="../symbols/sap.ui.core.Element.html#getCustomData">getCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#getDependents">getDependents</a>, <a href="../symbols/sap.ui.core.Element.html#getElementBinding">getElementBinding</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusDomRef">getFocusDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusInfo">getFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#getInterface">getInterface</a>, <a href="../symbols/sap.ui.core.Element.html#getLayoutData">getLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#getMetadata">getMetadata</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip">getTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_AsString">getTooltip_AsString</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_Text">getTooltip_Text</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfCustomData">indexOfCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfDependent">indexOfDependent</a>, <a href="../symbols/sap.ui.core.Element.html#init">init</a>, <a href="../symbols/sap.ui.core.Element.html#insertCustomData">insertCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#insertDependent">insertDependent</a>, <a href="../symbols/sap.ui.core.Element.html#prop">prop</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllCustomData">removeAllCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllDependents">removeAllDependents</a>, <a href="../symbols/sap.ui.core.Element.html#removeCustomData">removeCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeDependent">removeDependent</a>, <a href="../symbols/sap.ui.core.Element.html#removeEventDelegate">removeEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#setLayoutData">setLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#setTooltip">setTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#toString">toString</a>, <a href="../symbols/sap.ui.core.Element.html#unbindElement">unbindElement</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.ManagedObject.html">sap.ui.base.ManagedObject</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.ManagedObject.html#addAggregation">addAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#addAssociation">addAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#applySettings">applySettings</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindAggregation">bindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindContext">bindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindObject">bindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindProperty">bindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#destroyAggregation">destroyAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#findAggregatedObjects">findAggregatedObjects</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAggregation">getAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAssociation">getAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBinding">getBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingContext">getBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingInfo">getBindingInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingPath">getBindingPath</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getEventingParent">getEventingParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getId">getId</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getModel">getModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getObjectBinding">getObjectBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getOriginInfo">getOriginInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getParent">getParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getProperty">getProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#hasModel">hasModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#indexOfAggregation">indexOfAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#insertAggregation">insertAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isBound">isBound</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isInvalidateSuppressed">isInvalidateSuppressed</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isTreeBinding">isTreeBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAggregation">removeAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAggregation">removeAllAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAssociation">removeAllAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAssociation">removeAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAggregation">setAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAssociation">setAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setBindingContext">setBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setModel">setModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setProperty">setProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindAggregation">unbindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindContext">unbindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindObject">unbindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindProperty">unbindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateAggregation">validateAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateProperty">validateProperty</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.EventProvider.html#attachEvent">attachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#attachEventOnce">attachEventOnce</a>, <a href="../symbols/sap.ui.base.EventProvider.html#detachEvent">detachEvent</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.m.ViewSettingsDialog</b>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)
+										</div>
+										
+										<div class="full-description">
+											Constructor for a new ViewSettingsDialog.
+</p><p>
+Accepts an object literal <code>mSettings</code> that defines initial 
+property values, aggregated and associated objects as well as event handlers. 
+</p><p>
+If the name of a setting is ambiguous (e.g. a property has the same name as an event), 
+then the framework assumes property, aggregation, association, event in that order. 
+To override this automatic resolution, one of the prefixes "aggregation:", "association:" 
+or "event:" can be added to the name of the setting (such a prefixed name must be
+enclosed in single or double quotes).
+</p><p>
+The supported settings are:
+<ul>
+<li>Properties
+<ul>
+<li><a href="#getTitle">title</a> : string</li>
+<li><a href="#getSortDescending">sortDescending</a> : boolean (default: false)</li>
+<li><a href="#getGroupDescending">groupDescending</a> : boolean (default: false)</li></ul>
+</li>
+<li>Aggregations
+<ul>
+<li><a href="#getSortItems">sortItems</a> : sap.m.ViewSettingsItem[]</li>
+<li><a href="#getGroupItems">groupItems</a> : sap.m.ViewSettingsItem[]</li>
+<li><a href="#getFilterItems">filterItems</a> : sap.m.ViewSettingsItem[]</li>
+<li><a href="#getPresetFilterItems">presetFilterItems</a> : sap.m.ViewSettingsItem[]</li></ul>
+</li>
+<li>Associations
+<ul>
+<li><a href="#getSelectedSortItem">selectedSortItem</a> : string | sap.m.ViewSettingsItem</li>
+<li><a href="#getSelectedGroupItem">selectedGroupItem</a> : string | sap.m.ViewSettingsItem</li>
+<li><a href="#getSelectedPresetFilterItem">selectedPresetFilterItem</a> : string | sap.m.ViewSettingsItem</li></ul>
+</li>
+<li>Events
+<ul>
+<li><a href="../symbols/sap.m.ViewSettingsDialog.html#event:confirm">confirm</a> : fnListenerFunction or [fnListenerFunction, oListenerObject] or [oData, fnListenerFunction, oListenerObject]</li>
+<li><a href="../symbols/sap.m.ViewSettingsDialog.html#event:cancel">cancel</a> : fnListenerFunction or [fnListenerFunction, oListenerObject] or [oData, fnListenerFunction, oListenerObject]</li>
+<li><a href="../symbols/sap.m.ViewSettingsDialog.html#event:resetFilters">resetFilters</a> : fnListenerFunction or [fnListenerFunction, oListenerObject] or [oData, fnListenerFunction, oListenerObject]</li></ul>
+</li>
+</ul>
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    id for the new control, generated automatically if no id is given
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mSettings</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    initial settings for the new control
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Event Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:cancel"> </a>
+									<div class="itemTitle icon">
+										cancel<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										Event is called when the cancel button is pressed. It can be used to set the state of custom filter controls.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:confirm"> </a>
+									<div class="itemTitle icon">
+										confirm<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										The event indicates that the user has pressed the OK button and the selected sort, group, and filter settings should be applied to the data on this page.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.sortItem</b>
+												</td>
+												<td class="methodItemDesc">
+											    Selected sort item.
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{boolean}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.sortDescending</b>
+												</td>
+												<td class="methodItemDesc">
+											    Selected sort order (true = descending, false = ascending).
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.groupItem</b>
+												</td>
+												<td class="methodItemDesc">
+											    Selected group item
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{boolean}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.groupDescending</b>
+												</td>
+												<td class="methodItemDesc">
+											    Selected group order (true = descending, false = ascending).
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.presetFilterItem</b>
+												</td>
+												<td class="methodItemDesc">
+											    Selected preset filter item.
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>[]}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.filterItems</b>
+												</td>
+												<td class="methodItemDesc">
+											    Selected filters in an array of ViewSettingsItem.
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.filterKeys</b>
+												</td>
+												<td class="methodItemDesc">
+											    Selected filter items in an object notation format: { key: boolean }. If a custom control filter was displayed (e.g. the user clicked on the filter item), the value for its key is set to true to indicate that there has been an interaction with the control.
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{string}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters.filterString</b>
+												</td>
+												<td class="methodItemDesc">
+											    Selected filter items in string format to display in a control's header bar in format "Filtered by: key (subkey1, subkey2, subkey3)".
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+									<div class='sectionItem classProperty'>
+									<a name="event:resetFilters"> </a>
+									<div class="itemTitle icon">
+										resetFilters<span class="signature">(<span title="(sap.ui.base.Event) sap.ui.base.Event">oControlEvent</span>)</span>
+										
+									</div>
+									<div class="full-description">
+										Event is called when the reset filters button is pressed. It can be used to clear the state of custom filter controls.
+										
+										
+										
+									</div>
+									
+										<div class="heading">Parameters:</div>
+										<table class="methodItem"><tbody>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.Event.html">sap.ui.base.Event</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{<a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a>}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getSource</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="methodItemType">
+												  <span class="light">{object}</span> 
+												</td>
+												<td class="methodItemName">
+												  <b>oControlEvent.getParameters</b>
+												</td>
+												<td class="methodItemDesc">
+											    
+												</td>
+											</tr>
+										
+										</tbody></table>
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+							</div>
+						</div>
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".extend"> </a>
+										<div class="itemTitle icon">
+											sap.m.ViewSettingsDialog.extend<span class="signature">(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns function">: function</span>
+										</div>
+										<div class="full-description">
+											Creates a new subclass of class sap.m.ViewSettingsDialog with name <code>sClassName</code> 
+and enriches it with the information contained in <code>oClassInfo</code>.
+</p><p>
+<code>oClassInfo</code> might contain the same kind of informations as described in <a href="../symbols/sap.ui.core.Element.html#.extend">Element.extend</a>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sClassName</b>
+													</td>
+													<td class="methodItemDesc">
+												    name of the class to be created
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oClassInfo</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    object literal with informations about the class
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>FNMetaImpl</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    constructor function for the metadata object. If not given, it defaults to sap.ui.core.ElementMetadata.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{function}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the created class / constructor function
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addFilterItem"> </a>
+										<div class="itemTitle icon">
+											addFilterItem<span class="signature">(<span title="(sap.m.ViewSettingsItem) the filterItem to add; if empty, nothing is inserted">oFilterItem</span>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Adds some filterItem <code>oFilterItem</code> 
+to the aggregation named <code>filterItems</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oFilterItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    the filterItem to add; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addGroupItem"> </a>
+										<div class="itemTitle icon">
+											addGroupItem<span class="signature">(<span title="(sap.m.ViewSettingsItem) the item to be added to the aggregation">oItem</span>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Adds a group item and sets the association to reflect the selected state
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    the item to be added to the aggregation
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														this pointer for chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addPresetFilterItem"> </a>
+										<div class="itemTitle icon">
+											addPresetFilterItem<span class="signature">(<span title="(sap.m.ViewSettingsItem) the selected item or a string with the key">oItem</span>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Adds a preset filter item and sets the association to reflect the selected
+state
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    the selected item or a string with the key
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														this pointer for chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addSortItem"> </a>
+										<div class="itemTitle icon">
+											addSortItem<span class="signature">(<span title="(sap.m.ViewSettingsItem) the item to be added to the aggregation">oItem</span>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Adds a sort item and sets the association to reflect the selected state
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    the item to be added to the aggregation
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														this pointer for chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addStyleClass"> </a>
+										<div class="itemTitle icon">
+											addStyleClass<span class="signature">()</span>
+											<span class="light" title="returns this">: this</span>
+										</div>
+										<div class="full-description">
+											Forward method to the inner dialog: addStyleClass
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{this}</span> 
+													</td>
+													<td class="methodItemDesc">
+														this pointer for chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachCancel"> </a>
+										<div class="itemTitle icon">
+											attachCancel<span class="signature">(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Attach event handler <code>fnFunction</code> to the 'cancel' event of this <code>sap.m.ViewSettingsDialog</code>.<br/>.
+When called, the context of the event handler (its <code>this</code>) will be bound to <code>oListener<code> if specified
+otherwise to this <code>sap.m.ViewSettingsDialog</code>.<br/> itself. 
+</p><p>
+Event is called when the cancel button is pressed. It can be used to set the state of custom filter controls.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oData</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    An application specific payload object, that will be passed to the event handler along with the event object when firing the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Context object to call the event handler with. Defaults to this <code>sap.m.ViewSettingsDialog</code>.<br/> itself.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachConfirm"> </a>
+										<div class="itemTitle icon">
+											attachConfirm<span class="signature">(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Attach event handler <code>fnFunction</code> to the 'confirm' event of this <code>sap.m.ViewSettingsDialog</code>.<br/>.
+When called, the context of the event handler (its <code>this</code>) will be bound to <code>oListener<code> if specified
+otherwise to this <code>sap.m.ViewSettingsDialog</code>.<br/> itself. 
+</p><p>
+The event indicates that the user has pressed the OK button and the selected sort, group, and filter settings should be applied to the data on this page.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oData</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    An application specific payload object, that will be passed to the event handler along with the event object when firing the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Context object to call the event handler with. Defaults to this <code>sap.m.ViewSettingsDialog</code>.<br/> itself.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachResetFilters"> </a>
+										<div class="itemTitle icon">
+											attachResetFilters<span class="signature">(<span title="(object) An application specific payload object, that will be passed to the event handler along with the event object when firing the event.">oData</span><i class="help" title="Optional parameter">?</i>, <span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object to call the event handler with.">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Attach event handler <code>fnFunction</code> to the 'resetFilters' event of this <code>sap.m.ViewSettingsDialog</code>.<br/>.
+When called, the context of the event handler (its <code>this</code>) will be bound to <code>oListener<code> if specified
+otherwise to this <code>sap.m.ViewSettingsDialog</code>.<br/> itself. 
+</p><p>
+Event is called when the reset filters button is pressed. It can be used to clear the state of custom filter controls.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oData</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    An application specific payload object, that will be passed to the event handler along with the event object when firing the event.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Context object to call the event handler with. Defaults to this <code>sap.m.ViewSettingsDialog</code>.<br/> itself.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="bindFilterItems"> </a>
+										<div class="itemTitle icon">
+											bindFilterItems<span class="signature">(<span title="(string) path to a list in the model">sPath</span>, <span title="(sap.ui.core.Element) the control template for this aggregation">oTemplate</span>, <span title="(sap.ui.model.Sorter) the initial sort order (optional)">oSorter</span>, <span title="(array) the predefined filters for this aggregation (optional)">aFilters</span>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Binder for aggregation <code>filterItems</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sPath</b>
+													</td>
+													<td class="methodItemDesc">
+												    path to a list in the model
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oTemplate</b>
+													</td>
+													<td class="methodItemDesc">
+												    the control template for this aggregation
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.model.Sorter.html">sap.ui.model.Sorter</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oSorter</b>
+													</td>
+													<td class="methodItemDesc">
+												    the initial sort order (optional)
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{array}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>aFilters</b>
+													</td>
+													<td class="methodItemDesc">
+												    the predefined filters for this aggregation (optional)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="bindGroupItems"> </a>
+										<div class="itemTitle icon">
+											bindGroupItems<span class="signature">(<span title="(string) path to a list in the model">sPath</span>, <span title="(sap.ui.core.Element) the control template for this aggregation">oTemplate</span>, <span title="(sap.ui.model.Sorter) the initial sort order (optional)">oSorter</span>, <span title="(array) the predefined filters for this aggregation (optional)">aFilters</span>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Binder for aggregation <code>groupItems</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sPath</b>
+													</td>
+													<td class="methodItemDesc">
+												    path to a list in the model
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oTemplate</b>
+													</td>
+													<td class="methodItemDesc">
+												    the control template for this aggregation
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.model.Sorter.html">sap.ui.model.Sorter</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oSorter</b>
+													</td>
+													<td class="methodItemDesc">
+												    the initial sort order (optional)
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{array}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>aFilters</b>
+													</td>
+													<td class="methodItemDesc">
+												    the predefined filters for this aggregation (optional)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="bindPresetFilterItems"> </a>
+										<div class="itemTitle icon">
+											bindPresetFilterItems<span class="signature">(<span title="(string) path to a list in the model">sPath</span>, <span title="(sap.ui.core.Element) the control template for this aggregation">oTemplate</span>, <span title="(sap.ui.model.Sorter) the initial sort order (optional)">oSorter</span>, <span title="(array) the predefined filters for this aggregation (optional)">aFilters</span>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Binder for aggregation <code>presetFilterItems</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sPath</b>
+													</td>
+													<td class="methodItemDesc">
+												    path to a list in the model
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oTemplate</b>
+													</td>
+													<td class="methodItemDesc">
+												    the control template for this aggregation
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.model.Sorter.html">sap.ui.model.Sorter</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oSorter</b>
+													</td>
+													<td class="methodItemDesc">
+												    the initial sort order (optional)
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{array}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>aFilters</b>
+													</td>
+													<td class="methodItemDesc">
+												    the predefined filters for this aggregation (optional)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="bindSortItems"> </a>
+										<div class="itemTitle icon">
+											bindSortItems<span class="signature">(<span title="(string) path to a list in the model">sPath</span>, <span title="(sap.ui.core.Element) the control template for this aggregation">oTemplate</span>, <span title="(sap.ui.model.Sorter) the initial sort order (optional)">oSorter</span>, <span title="(array) the predefined filters for this aggregation (optional)">aFilters</span>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Binder for aggregation <code>sortItems</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sPath</b>
+													</td>
+													<td class="methodItemDesc">
+												    path to a list in the model
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oTemplate</b>
+													</td>
+													<td class="methodItemDesc">
+												    the control template for this aggregation
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.model.Sorter.html">sap.ui.model.Sorter</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oSorter</b>
+													</td>
+													<td class="methodItemDesc">
+												    the initial sort order (optional)
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{array}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>aFilters</b>
+													</td>
+													<td class="methodItemDesc">
+												    the predefined filters for this aggregation (optional)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyFilterItems"> </a>
+										<div class="itemTitle icon">
+											destroyFilterItems<span class="signature">()</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Destroys all the filterItems in the aggregation 
+named <code>filterItems</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyGroupItems"> </a>
+										<div class="itemTitle icon">
+											destroyGroupItems<span class="signature">()</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Destroys all the groupItems in the aggregation 
+named <code>groupItems</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyPresetFilterItems"> </a>
+										<div class="itemTitle icon">
+											destroyPresetFilterItems<span class="signature">()</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Destroys all the presetFilterItems in the aggregation 
+named <code>presetFilterItems</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroySortItems"> </a>
+										<div class="itemTitle icon">
+											destroySortItems<span class="signature">()</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Destroys all the sortItems in the aggregation 
+named <code>sortItems</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachCancel"> </a>
+										<div class="itemTitle icon">
+											detachCancel<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Detach event handler <code>fnFunction</code> from the 'cancel' event of this <code>sap.m.ViewSettingsDialog</code>.<br/>
+</p><p>
+The passed function and listener object must match the ones used for event registration.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Context object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachConfirm"> </a>
+										<div class="itemTitle icon">
+											detachConfirm<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Detach event handler <code>fnFunction</code> from the 'confirm' event of this <code>sap.m.ViewSettingsDialog</code>.<br/>
+</p><p>
+The passed function and listener object must match the ones used for event registration.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Context object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachResetFilters"> </a>
+										<div class="itemTitle icon">
+											detachResetFilters<span class="signature">(<span title="(function) The function to call, when the event occurs.">fnFunction</span>, <span title="(object) Context object on which the given function had to be called.">oListener</span>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Detach event handler <code>fnFunction</code> from the 'resetFilters' event of this <code>sap.m.ViewSettingsDialog</code>.<br/>
+</p><p>
+The passed function and listener object must match the ones used for event registration.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b>
+													</td>
+													<td class="methodItemDesc">
+												    Context object on which the given function had to be called.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="fireCancel"> </a>
+										<div class="itemTitle icon protected">
+											fireCancel<span class="signature">(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Fire event cancel to attached listeners.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Map}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="fireConfirm"> </a>
+										<div class="itemTitle icon protected">
+											fireConfirm<span class="signature">(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Fire event confirm to attached listeners.
+</p><p>
+Expects following event parameters:
+<ul>
+<li>'sortItem' of type <code>sap.m.ViewSettingsItem</code> Selected sort item.</li>
+<li>'sortDescending' of type <code>boolean</code> Selected sort order (true = descending, false = ascending).</li>
+<li>'groupItem' of type <code>sap.m.ViewSettingsItem</code> Selected group item</li>
+<li>'groupDescending' of type <code>boolean</code> Selected group order (true = descending, false = ascending).</li>
+<li>'presetFilterItem' of type <code>sap.m.ViewSettingsItem</code> Selected preset filter item.</li>
+<li>'filterItems' of type <code>sap.m.ViewSettingsItem[]</code> Selected filters in an array of ViewSettingsItem.</li>
+<li>'filterKeys' of type <code>object</code> Selected filter items in an object notation format: { key: boolean }. If a custom control filter was displayed (e.g. the user clicked on the filter item), the value for its key is set to true to indicate that there has been an interaction with the control.</li>
+<li>'filterString' of type <code>string</code> Selected filter items in string format to display in a control's header bar in format "Filtered by: key (subkey1, subkey2, subkey3)".</li>
+</ul>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Map}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="fireResetFilters"> </a>
+										<div class="itemTitle icon protected">
+											fireResetFilters<span class="signature">(<span title="(Map) the arguments to pass along with the event.">mArguments</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Fire event resetFilters to attached listeners.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Map}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mArguments</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    the arguments to pass along with the event.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getDomRef"> </a>
+										<div class="itemTitle icon">
+											getDomRef<span class="signature">()</span>
+											<span class="light" title="returns Element">: Element</span>
+										</div>
+										<div class="full-description">
+											Forward method to the inner dialog: getDomRef
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{Element}</span> 
+													</td>
+													<td class="methodItemDesc">
+														The Element's DOM Element sub DOM Element or null
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getFilterItems"> </a>
+										<div class="itemTitle icon">
+											getFilterItems<span class="signature">()</span>
+											<span class="light" title="returns sap.m.ViewSettingsItem[]">: <a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>[]</span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>filterItems</code>.<br/>
+List of items with key and value that can be filtered on (e.g. a list of columns for a table). A filterItem is associated with one or more detail filters.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getGroupDescending"> </a>
+										<div class="itemTitle icon">
+											getGroupDescending<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>groupDescending</code>.
+If set to true, the group order is descending, otherwise ascending (default).
+</p><p>
+Default value is <code>false</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>groupDescending</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getGroupItems"> </a>
+										<div class="itemTitle icon">
+											getGroupItems<span class="signature">()</span>
+											<span class="light" title="returns sap.m.ViewSettingsItem[]">: <a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>[]</span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>groupItems</code>.<br/>
+List of items with key and value that can be grouped on (e.g. a list of columns for a table).
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getPresetFilterItems"> </a>
+										<div class="itemTitle icon">
+											getPresetFilterItems<span class="signature">()</span>
+											<span class="light" title="returns sap.m.ViewSettingsItem[]">: <a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>[]</span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>presetFilterItems</code>.<br/>
+List of preset filter items that allow the selection of more complex or custom filters. These entries are displayed at the top of the filter tab.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getSelectedFilterItems"> </a>
+										<div class="itemTitle icon">
+											getSelectedFilterItems<span class="signature">()</span>
+											<span class="light" title="returns sap.m.ViewSettingsItem[]">: <a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>[]</span>
+										</div>
+										<div class="full-description">
+											Returns the selected filters in an array of ViewSettingsItem.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														an array of selected filter items
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getSelectedFilterKeys"> </a>
+										<div class="itemTitle icon">
+											getSelectedFilterKeys<span class="signature">()</span>
+											<span class="light" title="returns object">: object</span>
+										</div>
+										<div class="full-description">
+											Get the selected filter object in format {key: boolean}
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{object}</span> 
+													</td>
+													<td class="methodItemDesc">
+														an object with item and subitem keys
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getSelectedFilters"> </a>
+										<div class="itemTitle icon">
+											getSelectedFilters<span class="signature">()</span>
+											<span class="light" title="returns sap.m.ViewSettingsItem[]">: <a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>[]</span>
+										</div>
+										<div class="full-description">
+											Returns the selected filters as an array of ViewSettingsItems. It can be used to create matching sorters and filters to apply the selected settings to the data.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getSelectedFilterString"> </a>
+										<div class="itemTitle icon">
+											getSelectedFilterString<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Get the filter string in the format "filter name (subfilter1 name, subfilter2
+name, ...), ..." For custom filters and preset filters it will only add the
+filter name to the resulting string
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the selected filter string
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getSelectedGroupItem"> </a>
+										<div class="itemTitle icon">
+											getSelectedGroupItem<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Group item that is selected. It can be set by either passing a key or the item itself to the function "setSelectedGrouptItem"
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Id of the element which is the current target of the <code>selectedGroupItem</code> association, or null
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getSelectedPresetFilterItem"> </a>
+										<div class="itemTitle icon">
+											getSelectedPresetFilterItem<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Preset filter item that is selected. It can be set by either passing a key or the item itself to the function "setSelectedPresetFilterItem". Note that either a preset filter OR multiple detail filters can be active at the same time.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Id of the element which is the current target of the <code>selectedPresetFilterItem</code> association, or null
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getSelectedSortItem"> </a>
+										<div class="itemTitle icon">
+											getSelectedSortItem<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Sort item that is selected. It can be set by either passing a key or the item itself to the function "setSelectedSortItem"
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Id of the element which is the current target of the <code>selectedSortItem</code> association, or null
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getSortDescending"> </a>
+										<div class="itemTitle icon">
+											getSortDescending<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>sortDescending</code>.
+If set to true, the sort order is descending, otherwise ascending (default).
+</p><p>
+Default value is <code>false</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>sortDescending</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getSortItems"> </a>
+										<div class="itemTitle icon">
+											getSortItems<span class="signature">()</span>
+											<span class="light" title="returns sap.m.ViewSettingsItem[]">: <a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>[]</span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>sortItems</code>.<br/>
+List of items with key and value that can be sorted over (e.g. a list of columns for a table).
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getTitle"> </a>
+										<div class="itemTitle icon">
+											getTitle<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>title</code>.
+Title of the dialog. If not set, the dialog uses the default "View" or "Sort", "Group", "Filter" respectively if there is only one active tab.
+</p><p>
+Default value is empty/<code>undefined</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>title</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="hasStyleClass"> </a>
+										<div class="itemTitle icon">
+											hasStyleClass<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Forward method to the inner dialog: hasStyleClass
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														true if the class is set, false otherwise
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="indexOfFilterItem"> </a>
+										<div class="itemTitle icon">
+											indexOfFilterItem<span class="signature">(<span title="(sap.m.ViewSettingsItem) the filterItem whose index is looked for.">oFilterItem</span>)</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Checks for the provided <code>sap.m.ViewSettingsItem</code> in the aggregation named <code>filterItems</code> 
+and returns its index if found or -1 otherwise.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oFilterItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    the filterItem whose index is looked for.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the index of the provided control in the aggregation if found, or -1 otherwise
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="indexOfGroupItem"> </a>
+										<div class="itemTitle icon">
+											indexOfGroupItem<span class="signature">(<span title="(sap.m.ViewSettingsItem) the groupItem whose index is looked for.">oGroupItem</span>)</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Checks for the provided <code>sap.m.ViewSettingsItem</code> in the aggregation named <code>groupItems</code> 
+and returns its index if found or -1 otherwise.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oGroupItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    the groupItem whose index is looked for.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the index of the provided control in the aggregation if found, or -1 otherwise
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="indexOfPresetFilterItem"> </a>
+										<div class="itemTitle icon">
+											indexOfPresetFilterItem<span class="signature">(<span title="(sap.m.ViewSettingsItem) the presetFilterItem whose index is looked for.">oPresetFilterItem</span>)</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Checks for the provided <code>sap.m.ViewSettingsItem</code> in the aggregation named <code>presetFilterItems</code> 
+and returns its index if found or -1 otherwise.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oPresetFilterItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    the presetFilterItem whose index is looked for.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the index of the provided control in the aggregation if found, or -1 otherwise
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="indexOfSortItem"> </a>
+										<div class="itemTitle icon">
+											indexOfSortItem<span class="signature">(<span title="(sap.m.ViewSettingsItem) the sortItem whose index is looked for.">oSortItem</span>)</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Checks for the provided <code>sap.m.ViewSettingsItem</code> in the aggregation named <code>sortItems</code> 
+and returns its index if found or -1 otherwise.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oSortItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    the sortItem whose index is looked for.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the index of the provided control in the aggregation if found, or -1 otherwise
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="insertFilterItem"> </a>
+										<div class="itemTitle icon">
+											insertFilterItem<span class="signature">(<span title="(sap.m.ViewSettingsItem) the filterItem to insert; if empty, nothing is inserted">oFilterItem</span>, <span title="(int) the 0-based index the filterItem should be inserted at; for a negative value of iIndex, the filterItem is inserted at position 0; for a value greater than the current size of the aggregation, the filterItem is inserted at the last position">iIndex</span>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Inserts a filterItem into the aggregation named <code>filterItems</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oFilterItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    the filterItem to insert; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    the <code>0</code>-based index the filterItem should be inserted at; for 
+            a negative value of <code>iIndex</code>, the filterItem is inserted at position 0; for a value 
+            greater than the current size of the aggregation, the filterItem is inserted at 
+            the last position
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="insertGroupItem"> </a>
+										<div class="itemTitle icon">
+											insertGroupItem<span class="signature">(<span title="(sap.m.ViewSettingsItem) the groupItem to insert; if empty, nothing is inserted">oGroupItem</span>, <span title="(int) the 0-based index the groupItem should be inserted at; for a negative value of iIndex, the groupItem is inserted at position 0; for a value greater than the current size of the aggregation, the groupItem is inserted at the last position">iIndex</span>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Inserts a groupItem into the aggregation named <code>groupItems</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oGroupItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    the groupItem to insert; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    the <code>0</code>-based index the groupItem should be inserted at; for 
+            a negative value of <code>iIndex</code>, the groupItem is inserted at position 0; for a value 
+            greater than the current size of the aggregation, the groupItem is inserted at 
+            the last position
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="insertPresetFilterItem"> </a>
+										<div class="itemTitle icon">
+											insertPresetFilterItem<span class="signature">(<span title="(sap.m.ViewSettingsItem) the presetFilterItem to insert; if empty, nothing is inserted">oPresetFilterItem</span>, <span title="(int) the 0-based index the presetFilterItem should be inserted at; for a negative value of iIndex, the presetFilterItem is inserted at position 0; for a value greater than the current size of the aggregation, the presetFilterItem is inserted at the last position">iIndex</span>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Inserts a presetFilterItem into the aggregation named <code>presetFilterItems</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oPresetFilterItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    the presetFilterItem to insert; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    the <code>0</code>-based index the presetFilterItem should be inserted at; for 
+            a negative value of <code>iIndex</code>, the presetFilterItem is inserted at position 0; for a value 
+            greater than the current size of the aggregation, the presetFilterItem is inserted at 
+            the last position
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="insertSortItem"> </a>
+										<div class="itemTitle icon">
+											insertSortItem<span class="signature">(<span title="(sap.m.ViewSettingsItem) the sortItem to insert; if empty, nothing is inserted">oSortItem</span>, <span title="(int) the 0-based index the sortItem should be inserted at; for a negative value of iIndex, the sortItem is inserted at position 0; for a value greater than the current size of the aggregation, the sortItem is inserted at the last position">iIndex</span>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Inserts a sortItem into the aggregation named <code>sortItems</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oSortItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    the sortItem to insert; if empty, nothing is inserted
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    the <code>0</code>-based index the sortItem should be inserted at; for 
+            a negative value of <code>iIndex</code>, the sortItem is inserted at position 0; for a value 
+            greater than the current size of the aggregation, the sortItem is inserted at 
+            the last position
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="open"> </a>
+										<div class="itemTitle icon">
+											open<span class="signature">(<span title="(sap.ui.core.Control) the parent control">oParentControl</span>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Opens the view settings dialog relative to the parent control
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oParentControl</b>
+													</td>
+													<td class="methodItemDesc">
+												    the parent control
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														this pointer for chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeAllFilterItems"> </a>
+										<div class="itemTitle icon">
+											removeAllFilterItems<span class="signature">()</span>
+											<span class="light" title="returns sap.m.ViewSettingsItem[]">: <a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>[]</span>
+										</div>
+										<div class="full-description">
+											Removes all the controls in the aggregation named <code>filterItems</code>.<br/>
+Additionally unregisters them from the hosting UIArea.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														an array of the removed elements (might be empty)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeAllGroupItems"> </a>
+										<div class="itemTitle icon">
+											removeAllGroupItems<span class="signature">()</span>
+											<span class="light" title="returns sap.m.ViewSettingsItem[]">: <a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>[]</span>
+										</div>
+										<div class="full-description">
+											Removes all the controls in the aggregation named <code>groupItems</code>.<br/>
+Additionally unregisters them from the hosting UIArea.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														an array of the removed elements (might be empty)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeAllPresetFilterItems"> </a>
+										<div class="itemTitle icon">
+											removeAllPresetFilterItems<span class="signature">()</span>
+											<span class="light" title="returns sap.m.ViewSettingsItem[]">: <a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>[]</span>
+										</div>
+										<div class="full-description">
+											Removes all the controls in the aggregation named <code>presetFilterItems</code>.<br/>
+Additionally unregisters them from the hosting UIArea.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														an array of the removed elements (might be empty)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeAllSortItems"> </a>
+										<div class="itemTitle icon">
+											removeAllSortItems<span class="signature">()</span>
+											<span class="light" title="returns sap.m.ViewSettingsItem[]">: <a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>[]</span>
+										</div>
+										<div class="full-description">
+											Removes all the controls in the aggregation named <code>sortItems</code>.<br/>
+Additionally unregisters them from the hosting UIArea.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														an array of the removed elements (might be empty)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeFilterItem"> </a>
+										<div class="itemTitle icon">
+											removeFilterItem<span class="signature">(<span title="(int | string | sap.m.ViewSettingsItem) the filterItem to remove or its index or id">vFilterItem</span>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsItem">: <a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a></span>
+										</div>
+										<div class="full-description">
+											Removes an filterItem from the aggregation named <code>filterItems</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int|string|<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vFilterItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    the filterItem to remove or its index or id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the removed filterItem or null
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeGroupItem"> </a>
+										<div class="itemTitle icon">
+											removeGroupItem<span class="signature">(<span title="(int | string | sap.m.ViewSettingsItem) the groupItem to remove or its index or id">vGroupItem</span>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsItem">: <a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a></span>
+										</div>
+										<div class="full-description">
+											Removes an groupItem from the aggregation named <code>groupItems</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int|string|<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vGroupItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    the groupItem to remove or its index or id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the removed groupItem or null
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removePresetFilterItem"> </a>
+										<div class="itemTitle icon">
+											removePresetFilterItem<span class="signature">(<span title="(int | string | sap.m.ViewSettingsItem) the presetFilterItem to remove or its index or id">vPresetFilterItem</span>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsItem">: <a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a></span>
+										</div>
+										<div class="full-description">
+											Removes an presetFilterItem from the aggregation named <code>presetFilterItems</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int|string|<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vPresetFilterItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    the presetFilterItem to remove or its index or id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the removed presetFilterItem or null
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeSortItem"> </a>
+										<div class="itemTitle icon">
+											removeSortItem<span class="signature">(<span title="(int | string | sap.m.ViewSettingsItem) the sortItem to remove or its index or id">vSortItem</span>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsItem">: <a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a></span>
+										</div>
+										<div class="full-description">
+											Removes an sortItem from the aggregation named <code>sortItems</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int|string|<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vSortItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    the sortItem to remove or its index or id
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the removed sortItem or null
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeStyleClass"> </a>
+										<div class="itemTitle icon">
+											removeStyleClass<span class="signature">()</span>
+											<span class="light" title="returns this">: this</span>
+										</div>
+										<div class="full-description">
+											Forward method to the inner dialog: removeStyleClass
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{this}</span> 
+													</td>
+													<td class="methodItemDesc">
+														this pointer for chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setGroupDescending"> </a>
+										<div class="itemTitle icon">
+											setGroupDescending<span class="signature">(<span title="(boolean) new value for property groupDescending">bGroupDescending</span>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>groupDescending</code>.
+</p><p>
+Default value is <code>false</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bGroupDescending</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>groupDescending</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setSelectedFilterKeys"> </a>
+										<div class="itemTitle icon">
+											setSelectedFilterKeys<span class="signature">(<span title="(object) an object with filter item and sub keys">oAny</span>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Set the selected filter object in format {key: boolean}
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oAny</b>
+													</td>
+													<td class="methodItemDesc">
+												    an object with filter item and sub keys
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														this pointer for chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setSelectedGroupItem"> </a>
+										<div class="itemTitle icon">
+											setSelectedGroupItem<span class="signature">(<span title="(sap.m.ViewSettingsItem) the selected item or a string with the key">oItem</span>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Set the selected group item (either by key or by item)
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    the selected item or a string with the key
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														this pointer for chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setSelectedPresetFilterItem"> </a>
+										<div class="itemTitle icon">
+											setSelectedPresetFilterItem<span class="signature">(<span title="(sap.m.ViewSettingsItem) the selected item or a string with the key">oItem</span>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Set the selected preset filter item
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    the selected item or a string with the key
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														this pointer for chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setSelectedSortItem"> </a>
+										<div class="itemTitle icon">
+											setSelectedSortItem<span class="signature">(<span title="(sap.m.ViewSettingsItem) the selected item or a string with the key">oItem</span>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Set the selected sort item (either by key or by item)
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.m.ViewSettingsItem.html">sap.m.ViewSettingsItem</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    the selected item or a string with the key
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														this pointer for chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setSortDescending"> </a>
+										<div class="itemTitle icon">
+											setSortDescending<span class="signature">(<span title="(boolean) new value for property sortDescending">bSortDescending</span>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>sortDescending</code>.
+</p><p>
+Default value is <code>false</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bSortDescending</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>sortDescending</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setTitle"> </a>
+										<div class="itemTitle icon">
+											setTitle<span class="signature">(<span title="(string) the title text for the dialog">sTitle</span>)</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Set the title of the internal dialog
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sTitle</b>
+													</td>
+													<td class="methodItemDesc">
+												    the title text for the dialog
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														this pointer for chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="toggleStyleClass"> </a>
+										<div class="itemTitle icon">
+											toggleStyleClass<span class="signature">()</span>
+											<span class="light" title="returns this">: this</span>
+										</div>
+										<div class="full-description">
+											Forward method to the inner dialog: toggleStyleClass
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{this}</span> 
+													</td>
+													<td class="methodItemDesc">
+														this pointer for chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="unbindFilterItems"> </a>
+										<div class="itemTitle icon">
+											unbindFilterItems<span class="signature">()</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Unbinder for aggregation <code>filterItems</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="unbindGroupItems"> </a>
+										<div class="itemTitle icon">
+											unbindGroupItems<span class="signature">()</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Unbinder for aggregation <code>groupItems</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="unbindPresetFilterItems"> </a>
+										<div class="itemTitle icon">
+											unbindPresetFilterItems<span class="signature">()</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Unbinder for aggregation <code>presetFilterItems</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="unbindSortItems"> </a>
+										<div class="itemTitle icon">
+											unbindSortItems<span class="signature">()</span>
+											<span class="light" title="returns sap.m.ViewSettingsDialog">: <a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a></span>
+										</div>
+										<div class="full-description">
+											Unbinder for aggregation <code>sortItems</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ViewSettingsDialog.html">sap.m.ViewSettingsDialog</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

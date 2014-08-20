@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=1725472890138411"/>
+<title>Right-to-Left Support in Controls</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f2c24b6f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Right-to-Left Support in Controls</h1>
+<div class="body"><p class="p">Unicode defines the direction in which a browser arranges characters to form words. CSS 2.1
+			also provides a <samp class="ph codeph">direction</samp> property. The <samp class="ph codeph">dir</samp> attribute
+			in HTML overrides the overall direction of blocks and influences the text alignment, if
+			not set explicitely. The <samp class="ph codeph">lang</samp> attribute does <span class="ph emphasis emphasis">not</span>
+			influence the text direction.</p>
+<p class="p">It is possible to use <samp class="ph codeph">document.dir</samp> for text direction. The browser
+			supports it and it can be set in the bootstrap. However, if it is set too early, webkit
+			seems to reset this to LTR. The <samp class="ph codeph">&lt;BDO&gt;</samp> tag in HTML turns off the
+			bidirectional algorithm: The character order is then not reversed if RTL and LTR words
+			are mixed.</p>
+<p class="p">This means in a nutshell: </p>
+<ul class="ul"><li class="li">
+				<p class="p">Each character inherently belongs to a RTL or LTR script (defined by Unicode). Some
+					characters like parentheses and dots have no inherent directionality. Browsers
+					know this.</p>
+
+			</li>
+<li class="li">
+				<p class="p">Single words equal character sequences with same directionality. For these, the browser knows
+					the text direction and handles them as a sort of blocks that get their internal
+					text direction <strong class="ph b">only</strong> from the used characters.</p>
+
+			</li>
+<li class="li">
+				<p class="p">These words/sequences/"runs" are separated by the direction-neutral characters
+					like parentheses and dots - and obviously when character directionality changes.
+				</p>
+
+			</li>
+<li class="li">
+				<p class="p">The direction in which these blocks are put next to each other depends on the
+					base direction.</p>
+
+			</li>
+<li class="li">
+				<p class="p">The default base direction of HTML is left-to-right, but can be inverted by setting the
+					attribute <samp class="ph codeph">"dir='rtl'"</samp>, either on the
+						<samp class="ph codeph">&lt;html&gt;</samp> tag or on any subregion which should have a
+					different base direction.</p>
+
+			</li>
+<li class="li">
+				<p class="p">This base direction also determines the default text alignment, the order of columns in
+					tables and the presentation of some direction-neutral characters: opening
+					parentheses are still opening parentheses when RTL mode is switched. This means
+					they render horizontally flipped.</p>
+
+			</li>
+<li class="li">
+				<p class="p">The algorithm for ordering words/runs/blocks according to the base direction only
+					covers one level of mixed directionality. To achieve deeper nesting, spans with
+					dir attribute can be used o define a subcontext with different base direction.
+				</p>
+
+			</li>
+<li class="li">
+				<p class="p">While (as said above) words/runs internally always have the text direction implied by the
+					used characters, this behavior can also be overridden by using the
+						<samp class="ph codeph">&lt;bdo&gt;</samp> tag or via CSS
+						<samp class="ph codeph">unicode-bidi:bidi-override</samp>) when the order of characters
+					must follow the base direction regardless of the inherent character direction.
+					For example, because the characters do not form a word but are really just a
+					list of characters, such as in a part number. </p>
+
+			</li>
+<li class="li">
+				<p class="p">The <samp class="ph codeph">lang</samp> attribute defining the document language does not have any
+					influence on directionality. </p>
+
+			</li>
+</ul>
+<div class="section" id="loio91f2c24b6f4d1014b6dd926db0e91070__section_0B022A7E260F4CC4BAA335BBDBB43D3B"><div class="section_title">Steps</div><div type="Steps">
+			
+			<p class="p">If SAPUI5 is configured for RTL mode, the core performs the following steps:</p>
+
+			<ol class="ol"><li class="li">
+					<p class="p"><samp class="ph codeph">dir="rtl"</samp> is set  on the HTML tag.</p>
+
+					<div class="note note"><span class="notetitle">Note</span> 
+						<p class="p">The W3C officially recommends to use the HTML attribute instead of the
+							CSS properties as directionality is determined by content and has
+							nothing to do with the presentation. Another reason is that CSS
+							properties can be ignored. It is also recommended to use the
+								<samp class="ph codeph">&lt;HTML&gt;</samp> tag instead of the
+								<samp class="ph codeph">&lt;BODY&gt;</samp> tag.</p>
+
+					</div>
+
+				</li>
+<li class="li">
+					<p class="p">The respective <samp class="ph codeph">library-RTL.css</samp> files are loaded.</p>
+
+				</li>
+</ol>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Right-to-Left Support in Controls";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

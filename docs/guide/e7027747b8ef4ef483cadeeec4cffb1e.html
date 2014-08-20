@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=5439554092389715"/>
+<title>Dependent Facets</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loioe7027747b8ef4ef483cadeeec4cffb1e">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Dependent Facets</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">Applications can have dependencies between facets where selection of filter items in one facet
+            list limits the list of valid filters in another facet list. For example, an application
+            displays a list of products and uses a facet filter with two facets: Categories and
+            Products. If users select a category filter, they should only be able to filter products
+            from that selected category. Facet filter does <span class="ph emphasis emphasis">not</span> explicitly
+            handle dependencies between facets. Instead, use <samp class="ph codeph">FacetFilterList</samp> events
+            in the application.</p>
+<div class="example"><h2 class="exampletitle">Example</h2><p class="p">In this example, only products from the selected category are displayed. </p>
+<img class="image" id="loioe7027747b8ef4ef483cadeeec4cffb1e__image_xq2_wnj_qn" src="1f47e6058f5747b687d1822040e46b1f.image"/><div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oCategoriesModel = new sap.ui.model.odata.ODataModel(
+"/uilib-sample/proxy/http/services.odata.org/V3/Northwind/Northwind.svc", 
+true);
+
+var oCategoriesFFL = new sap.m.FacetFilterList({ // create the categories facet list
+    title : "Categories",
+    mode : sap.m.ListMode.SingleSelectMaster, // restrict to one selection for simplicity
+    key : "Categories",
+    items : {
+        path : "/Categories",
+        template : new sap.m.FacetFilterItem({
+            text : "{CategoryName}",
+            key : "{CategoryID}"
+        })
+    }
+});
+oCategoriesFFL.setModel(oCategoriesModel); // set the data model
+
+// create the data model for the products facet list
+var oProductsModel = new sap.ui.model.odata.ODataModel(
+    "/uilib-sample/proxy/http/services.odata.org/V3/Northwind/Northwind.svc",
+    true);
+
+var oProductsFFL = new sap.m.FacetFilterList({
+    title : "Products",
+    key : "Products",
+    items : {
+        path : "/Products_by_Categories",
+        template : new sap.m.FacetFilterItem({
+            text : "{ProductName}",
+            key : "{ProductID}"
+        })
+    },
+    listOpen : function(oEvent) {
+
+        // only display products from the selected category (if any)
+        var aSelectedKeys = Object.getOwnPropertyNames(oCategoriesFFL.getSelectedKeys());
+        if(aSelectedKeys.length &gt; 0) {
+            
+            var oBinding = this.getBinding("items");
+            var oUserFilter = new sap.ui.model.Filter(
+            "CategoryName", 
+            sap.ui.model.FilterOperator.Contains,
+            oCategoriesFFL.getSelectedKeys()[aSelectedKeys[0]]);
+            var oFinalFilter = new sap.ui.model.Filter([ oUserFilter ], true);
+            oBinding.filter(oFinalFilter, sap.ui.model.FilterType.Control);
+        }
+    },
+});
+oProductsFFL.setModel(oProductsModel);
+
+// create the facet filter control
+var oFF = new sap.m.FacetFilter(genId(), { 
+    lists : [ oCategoriesFFL, oProductsFFL ],
+});
+</pre></div>
+</div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Dependent Facets";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

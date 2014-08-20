@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=7687367968634324"/>
+<title>Step 9: Detail View</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio08887a263aa94c14838593aecddf1529">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Step 9: Detail View</h1>
+<div class="body conbody"><p class="shortdesc"> </p>
+<div class="section"><div class="section_title">View</div><div type="View">
+			
+			<p class="p">We'll now add the Detail view, replacing the skeleton placeholder we had up until now.</p>
+
+			<p class="p">Here's what the view declaration looks like.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!xml</samp>
+&lt;mvc:View
+	controllerName="sap.ui.demo.tdg.view.Detail"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"&gt;
+</pre></div>
+
+			<p class="p">Like the Master view we specify that this view has a controller, which we'll get to shortly,
+				and that the default namespace is sap.m. While the "mvc" namespace is for the
+				outermost View element itself, unlike the Master view we also have a "core"
+				namespace (<samp class="ph codeph">sap.ui.core</samp>), which is needed in this view because we're
+				going to pull in a couple of XML fragments using
+					<samp class="ph codeph">sap.ui.core.Fragment</samp>.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!xml</samp>
+&lt;Page
+		showNavButton="{device&gt;/isPhone}"
+		navButtonPress="onNavBack"
+		class="sapUiFioriObjectPage"
+		title="{i18n&gt;detailTitle}"&gt;
+		&lt;content&gt;
+</pre></div>
+
+			<p class="p">Also like the Master view, this view's main control is a Page. This time, however, we
+				may or may not need a back button. Remember that we may be running on a smartphone,
+				or a tablet, or a desktop. </p>
+
+			<p class="p">If we're running on a tablet or a desktop, the app will look like what you see in the
+				screenshot, with the master and detail parts of the SplitApp visible at the same
+				time. So the user has no difficulty navigating to another Product in the master
+				list. But on a smartphone, only either the master or the detail part is displayed at
+				any given time, meaning that if the user is viewing a detail page and wants to
+				select another product, they first need to get to the master. This is what the
+				navigation button is for - to go back. And we only want it to be shown if the device
+				is a smartphone, so we use the Device Model and a boolean flag to set on the
+					<samp class="ph codeph">showNavButton</samp> property of the Page.</p>
+
+			<p class="p">A Page control's default aggregation is 'content'; while we therefore don't need to
+				specify the <samp class="ph codeph">&lt;content&gt;</samp> tag here, we should do as it's good
+				practice.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!xml</samp>
+			&lt;ObjectHeader
+				title="{Name}"
+				number="{
+					path: 'Price',
+					formatter: 'sap.ui.demo.tdg.util.Formatter.currencyValue'
+				}"
+				numberUnit="USD"&gt;
+				&lt;attributes&gt;
+					&lt;ObjectAttribute text="{i18n&gt;detailFromDate} {
+						path: 'ReleaseDate',
+						type: 'sap.ui.model.type.Date'
+						}" /&gt;
+					&lt;ObjectAttribute text="{Description}" /&gt;
+				&lt;/attributes&gt;
+				&lt;firstStatus&gt;
+					&lt;ObjectStatus
+						text="{
+							path: 'DiscontinuedDate',
+							formatter: 'sap.ui.demo.tdg.util.Formatter.discontinuedStatusValue'
+						}"
+						state="{
+							path: 'DiscontinuedDate',
+							formatter: 'sap.ui.demo.tdg.util.Formatter.discontinuedStatusState'
+						}" /&gt;
+				&lt;/firstStatus&gt;
+			&lt;/ObjectHeader&gt;
+</pre></div>
+
+			<p class="p">The detail consists of an <samp class="ph codeph">sap.m.ObjectHeader</samp> control at the top.
+				This has a couple of aggregations that are being used - <samp class="ph codeph">attributes</samp>
+				and <samp class="ph codeph">firstStatus</samp>. For all of the properties in the controls that are
+				aggregated (such as <samp class="ph codeph">sap.m.ObjectAttribute</samp> and
+					<samp class="ph codeph">sap.m.ObjectStatus</samp>), as well as some of the basic properties
+				(such as 'number') we use the extended binding syntax again to enable us to use
+				formatter and type specifications. </p>
+
+			<p class="p">While the formatter functions were introduced in the Custom Utilities section, it's
+				worth highlighting here that formatter functions are not just for returning
+				formatted versions of the values that are passed to them. They can be used, as here
+				in the state property of the ObjectStatus control, to return any value, in this case
+				one of the enumerated states in <samp class="ph codeph">sap.ui.core.ValueState</samp>, to
+				highlight a discontinued product status with a semantic color - red, via the Error
+				state.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!xml</samp>
+			&lt;IconTabBar
+				select="onDetailSelect"
+				id="idIconTabBar"&gt;
+				&lt;items&gt;
+					&lt;IconTabFilter
+						key="supplier"
+						text="{i18n&gt;iconTabFilterSupplier}"
+						icon="sap-icon://supplier"&gt;
+						&lt;content&gt;
+							&lt;!--core:Fragment fragmentName="sap.ui.demo.tdg.view.SupplierAddressForm" type="XML" /--&gt;
+						&lt;/content&gt;
+					&lt;/IconTabFilter&gt;
+					&lt;IconTabFilter
+						key="category"
+						text="{i18n&gt;iconTabFilterCategory}"
+						icon="sap-icon://hint"&gt;
+						&lt;content&gt;
+							&lt;!--core:Fragment fragmentName="sap.ui.demo.tdg.view.CategoryInfoForm" type="XML" /--&gt;
+						&lt;/content&gt;
+					&lt;/IconTabFilter&gt;
+				&lt;/items&gt;
+			&lt;/IconTabBar&gt;</pre></div>
+
+			<p class="p">The other main part of the detail view's content is an
+					<samp class="ph codeph">sap.m.IconTabBar</samp>, to display information about the selected
+				Product entity's Supplier and Category information. </p>
+
+			<p class="p">The two <samp class="ph codeph">sap.m.IconTabFilter</samp> controls that are contained in the
+					<samp class="ph codeph">IconTabBar</samp> reference XML fragments where the bulk of the
+				information layout is declared. We'll come to the content of these XML fragments
+				later. For now, the references ("<samp class="ph codeph">core:Fragment...</samp>") are temporarily
+				commented out, because if we include them now without adding the actual XML fragment
+				files, we'll get an error and our progress will take a few steps backwards. Note the
+				key properties of each <samp class="ph codeph">IconTabFilter</samp> - we'll be using these to
+				control the navigation to the appropriate information display and data binding in
+				the RouteMatched handler in the controller. </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!xml</samp>
+&lt;/content&gt;
+		&lt;footer&gt;
+			&lt;Bar&gt;
+			&lt;/Bar&gt;
+		&lt;/footer&gt;
+	&lt;/Page&gt;
+&lt;/mvc:View&gt;
+</pre></div>
+
+			<p class="p">To finish off the Page, we have an <samp class="ph codeph">sap.m.Bar</samp> in the footer aggregation, so
+				that the detail view matches the master visually.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Controller</div><div type="Controller">
+			
+			<p class="p">The bulk of the detail view's controller is for handling the navigation events that
+				are initiated through the Router. </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+sap.ui.core.mvc.Controller.extend("sap.ui.demo.tdg.view.Detail", {
+
+	onInit : function() {
+		var oView = this.getView();
+
+		sap.ui.core.UIComponent.getRouterFor(this).attachRouteMatched(function(oEvent) {
+			// when detail navigation occurs, update the binding context
+			if (oEvent.getParameter("name") === "product") {
+
+				var sProductPath = "/" + oEvent.getParameter("arguments").product;
+
+				oView.bindElement(sProductPath);
+
+				// Check that the product specified actually was found
+				oView.getElementBinding().attachEventOnce("dataReceived", jQuery.proxy(function() {
+					var oData = oView.getModel().getData(sProductPath);
+					if (!oData) {
+						sap.ui.core.UIComponent.getRouterFor(this).myNavToWithoutHash({
+							currentView : oView,
+							targetViewName : "sap.ui.demo.tdg.view.NotFound",
+							targetViewType : "XML"
+						});
+					}
+				}, this));
+
+
+				// Make sure the master is here
+				var oIconTabBar = oView.byId("idIconTabBar");
+				oIconTabBar.getItems().forEach(function(oItem) {
+					oItem.bindElement(sap.ui.demo.tdg.util.Formatter.uppercaseFirstChar(oItem.getKey()));
+				});
+
+				// Which tab?
+				var sTabKey = oEvent.getParameter("arguments").tab || "supplier";
+				if (oIconTabBar.getSelectedKey() !== sTabKey) {
+					oIconTabBar.setSelectedKey(sTabKey);
+				}
+			}
+		}, this);
+
+	},
+</pre></div>
+
+			<p class="p">This <samp class="ph codeph">RouteMatched</samp> event handler has been covered already in the <a class="xref" href="688f36bd758e4ce2b4e682eef4dc794e.html">Navigation and Routing</a>
+				section, but it's worth revisiting and looking at a couple of details. </p>
+
+			<p class="p">We determine the path of the chosen Product (in <samp class="ph codeph">sProductPath</samp>) and perform an
+				element binding to this on the detail view. Further, we bind each
+					<samp class="ph codeph">IconTabFilter</samp> (the items in the <samp class="ph codeph">IconTabBar</samp>) to
+				the entity that directly relates to the key of that <samp class="ph codeph">IconTabFilter</samp>,
+				i.e. Supplier or Category.</p>
+
+			<p class="p">Note that we also attach a handler to the <samp class="ph codeph">dataReceived</samp> event to check that
+				data was actually received for this binding - and if not we ask the Router to
+				navigate to the NotFound view. </p>
+
+			<p class="p">We're not making an explicit call to navigate from the selected Product to the associated
+				Supplier or Category, the Supplier and Category details are not contained within the
+				Product entity, and we haven't tried to use the OData <samp class="ph codeph">$expand</samp> in
+				the original Product entityset binding to pull each associated entity in with the
+				original call (that would be retrieving too much data perhaps unnecessarily). So
+				what's happening here? </p>
+
+			<p class="p">What's happening is that the <samp class="ph codeph">sap.ui.model.odata.ODataModel</samp> mechanism
+				is handling the navigation from entity to entity for us automatically, following the
+				navigation properties that are described in the OData service metadata thus:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!xml</samp>
+&lt;EntityType Name="Product"&gt;
+  &lt;Key&gt;
+    &lt;PropertyRef Name="ProductID" /&gt;
+  &lt;/Key&gt;
+  &lt;Property Name="ProductID" ... /&gt;
+  ...
+  &lt;NavigationProperty Name="Category" ... /&gt;
+  &lt;NavigationProperty Name="Supplier" ... /&gt;
+&lt;/EntityType&gt;</pre></div>
+
+			<p class="p">The automatic navigation also causes the appropriate OData operations to be invoked
+				implicitly. You can see this in the browser's developer console in the Network tab:
+				two GET requests are made:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+GET 
+http://localhost:8080/uilib-sample/proxy/http/services.odata.org/V2/(S(sapuidemotdg))/OData/OData.svc/Products(2)/Supplier
+GET 
+http://localhost:8080/uilib-sample/proxy/http/services.odata.org/V2/(S(sapuidemotdg))/OData/OData.svc/Products(2)/Supplier
+</pre></div>
+
+			<p class="p">So - you don't need to "drive" the ODataModel to navigate your service; embrace it
+				and let it do the hard work for you!</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+onNavBack : function() {
+		// This is only relevant when running on phone devices
+		sap.ui.core.UIComponent.getRouterFor(this).myNavBack("main");
+	},
+
+	onDetailSelect : function(oEvent) {
+		sap.ui.core.UIComponent.getRouterFor(this).navTo("product",{
+			product : oEvent.getSource().getBindingContext().getPath().slice(1),
+			tab: oEvent.getParameter("selectedKey")
+		}, true);
+
+	}
+
+});
+</pre></div>
+
+			<p class="p">There are a couple of events that will be raised in the UI, and they need to be
+				handled. </p>
+
+			<p class="p">The first is when the Page's navigation button (if shown) is pressed. In this case,
+				the <samp class="ph codeph">onNavBack</samp> function is invoked, and this uses the Router to
+				navigate back to the Master view via the "main" route (defined earlier - see the
+				Component section).There's also an event that's raised when an
+					<samp class="ph codeph">sap.m.IconTabBar</samp> item is selected. In this case we just use the
+				Router again to move us to the appropriate <samp class="ph codeph">sap.m.IconTabFilter</samp>; in
+				calling the Router's <samp class="ph codeph">navTo</samp> function we pass the name of the Product
+				(from the binding context path) and the key of the <samp class="ph codeph">IconTabFilter</samp>
+				that was selected.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Progress Check</div><div type="Progress Check">
+			
+			<p class="p">With our skeleton <span class="ph filepath">Detail.view.xml </span>file replaced, and a corresponding
+				controller added, our app folder content now looks like this:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+tdg/
+  |
+  +-- i18n/
+  |     |
+  |     +-- messageBundle.properties
+  |
+  +-- util/
+  |     |
+  |     +-- Formatter.js
+  |
+  +-- view/
+  |     |
+  |     +-- App.view.xml
+  |     +-- Detail.controller.js
+  |     +-- Detail.view.xml
+  |     +-- Master.controller.js
+  |     +-- Master.view.xml
+  |
+  +-- Component.js
+  +-- index.html
+  +-- MyRouter.html
+</pre></div>
+
+			<p class="p">When a Product is selected, this is how it appears:</p>
+
+			<div class="fig fignone"><div class="figcontainer"><img class="image" id="loio08887a263aa94c14838593aecddf1529__image_uhd_1js_4n" src="bfc4fbd740b7471fa10dc55ee4915ed0.image"/></div></div>
+
+			<p class="p">The IconTabFilters for the Supplier and Category information are empty, but that's
+				just because we haven't got round to including the XML fragments that describe what
+				goes in there. Let's get to that next.</p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Step 9: Detail View";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

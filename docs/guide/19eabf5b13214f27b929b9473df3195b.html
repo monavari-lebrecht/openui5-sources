@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=5804865384933316"/>
+<title>Aggregation Handling in XML Views</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio19eabf5b13214f27b929b9473df3195b">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Aggregation Handling in XML Views</h1>
+<div class="body conbody"><p class="shortdesc"/>
+<p class="p">You can simply add child controls as child tags, as shown in the example above where a
+			&lt;Button&gt; tag is added to a &lt;Panel&gt; tag. </p>
+<p class="p">Some controls have more than one content area, for example the shell control that has the
+			main content area, a pane bar, a <samp class="ph codeph">headerItems</samp> aggregation,
+				<samp class="ph codeph">worksetItems</samp>, and so on. Hence, an aggregation tag usually serves
+			as direct child of a container and contains children. It is only possible to directly
+			add children as shown in the example above if the container control has marked one of
+			the child aggregations as default. </p>
+<p class="p">Some containers may not have default content, for example, the splitter container has two
+			equally important content areas. </p>
+<div class="note note" id="loio19eabf5b13214f27b929b9473df3195b__note_N10028_N10011_N10001"><span class="notetitle">Note</span> The framework supports you by issuing error message in case of errors in the
+			aggregation handling in XML views. </div>
+<p class="p">You fill aggregations as shown in the following example. </p>
+<div class="p">
+			<div class="note note" id="loio19eabf5b13214f27b929b9473df3195b__note_N10034_N10031_N10011_N10001"><span class="notetitle">Note</span> The namespace of the parent control tag and the aggregation tag must be the same.
+			</div>
+
+		</div>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;core:View controllerName="sap.hcm.Address" xmlns="sap.ui.commons" xmlns:core="sap.ui.core"&gt;
+   &lt;Panel&gt;
+      &lt;content&gt;  &lt;!-- this is the general way of adding children: use the aggregation name --&gt;
+         &lt;Image src="http://www.sap.com/global/ui/images/global/sap-logo.png"/&gt;
+         &lt;Button text="Press Me"/&gt;
+      &lt;/content&gt;
+   &lt;/Panel&gt;
+&lt;core:View&gt;</pre></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Aggregation Handling in XML Views";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="If you are testing locally in your Java Eclipse environment and you want to access an OData service in the ABAP system, a proxy is needed to ensure the same origin policy. In an SAPUI5 application project you can use a SimpleProxyServlet for local testing."/>
+<meta name="description" content="If you are testing locally in your Java Eclipse environment and you want to access an OData service in the ABAP system, a proxy is needed to ensure the same origin policy. In an SAPUI5 application project you can use a SimpleProxyServlet for local testing."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=07120749989884778"/>
+<title>Use a SimpleProxyServlet for Testing to Avoid Cross-domain Requests</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio2d3f5fb63a2f4090942375df80abc39f">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Use a SimpleProxyServlet for Testing to Avoid Cross-domain Requests</h1>
+<div class="body conbody"><p class="shortdesc">If you are testing locally in your Java Eclipse environment and you want to access an
+		OData service in the ABAP system, a proxy is needed to ensure the same origin policy. In an
+		SAPUI5 application project you can use a SimpleProxyServlet for local testing.</p>
+<div class="p"><div class="note caution" id="loio2d3f5fb63a2f4090942375df80abc39f__note_N10017_N10015_N10012_N10001"><span class="cautiontitle">Caution</span> 
+				<p class="p">Be aware that due to security reasons the <samp class="ph codeph">SimpleProxyServlet</samp> is
+					restricted to local testing purposes only. It can only be used for local host
+					scenarios (accessing Gateway services to avoid cross-domain issues) and will not
+					work when deployed on an application server. For productive use, refer to a
+					mature proxy servlet.</p>
+
+			</div>
+<div class="note note" id="loio2d3f5fb63a2f4090942375df80abc39f__note_N10024_N10015_N10012_N10001"><span class="notetitle">Note</span> If you have issues with accessing HTTPS systems via the
+					<samp class="ph codeph">ResourceServlet</samp> or the <samp class="ph codeph">SimpleProxyServlet</samp> it
+				may be necessary to import the root certificate into the Java keystore. </div>
+
+			.</div>
+<p class="p">Ideally, all OData service URLs should be in one file to make the exchange easier - either in
+			the <samp class="ph codeph">index.html</samp>, or in one separate .js file which needs to be included.
+			The application is responsible for exchanging the URLs before checking in and after
+			checking out to SAPUI5 Repository. You can also use the helper function
+				<samp class="ph codeph">getServiceUrl </samp>for which also the application is responsible. See
+			the following example:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+&lt;script&gt;
+//var serviceUrl = "/mypath/myservice";       //url when running on the ABAP system
+//var serviceUrl = "proxy/mypath/myservice";  //url when running locally in Eclipse
+var serviceUrl = getServiceUrl("/mypath/myservice");
+function getServiceUrl(sServiceUrl) {
+  //for local testing prefix with proxy
+  //if you and your team use a special host name or IP like 127.0.0.1 for localhost please adapt the if statement below 
+  if (window.location.hostname == "localhost") {
+      return "proxy" + sServiceUrl;
+  } else {
+      return sServiceUrl;
+  }
+}
+&lt;/script&gt;</pre></div>
+<p class="p">As parameter for the <samp class="ph codeph">getServiceUrl</samp> helper method, use the URL of the
+			OData service document without {protocol}://{host name}:{port number}, for example:
+				<em class="ph i">/mypath/myservice</em>.</p>
+<div class="note note" id="loio2d3f5fb63a2f4090942375df80abc39f__note_N1003E_N10011_N10001"><span class="notetitle">Note</span> Place the script tag before the script that calls the view
+				(<samp class="ph codeph">sap.ui.view</samp>).</div>
+<div class="section" id="loio2d3f5fb63a2f4090942375df80abc39f__section_4107381EFDEE47F39063E52AE8E35FEA"><div class="section_title">Intranet Servers</div><div type="Intranet Servers">
+			
+			<p class="p">The <samp class="ph codeph">SimpleProxyServlet</samp> allows proxy requests to an arbitrary server in the
+				intranet. </p>
+
+			<p class="p">The proxy URL that is used in the coding looks like this: <em class="ph i">proxy/&lt;service
+					url&gt;</em>. </p>
+
+			<p class="p">Open the <samp class="ph codeph">web.xml</samp> file located in the <samp class="ph codeph">&lt;WebContent folder
+					name&gt;/WEB-INF</samp> folder and configure the parameter
+					<samp class="ph codeph">com.sap.ui5.proxy.REMOTE_LOCATION</samp> of the SimpleProxyServlet
+				where the placeholders {protocol}, {host name}, {port number} are to be exchanged by
+				the real protocol, host name and port number: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;SimpleProxyServlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;com.sap.ui5.proxy.SimpleProxyServlet&lt;/servlet-class&gt;
+  &lt;/servlet&gt;
+
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;SimpleProxyServlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/proxy/*&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+
+  &lt;context-param&gt;
+    &lt;param-name&gt;com.sap.ui5.proxy.REMOTE_LOCATION&lt;/param-name&gt;
+    &lt;param-value&gt;{protocol}://{host name}:{port number}&lt;/param-value&gt;
+  &lt;/context-param&gt;</pre></div>
+
+		</div></div>
+<div class="section" id="loio2d3f5fb63a2f4090942375df80abc39f__section_B34F4B95794A49D7A12871CC22A6C29B"><div class="section_title">Internet Servers</div><div type="Internet Servers">
+			
+			<p class="p">The <samp class="ph codeph">SimpleProxyServlet</samp> can be configured for proxy requests to internet
+				servers in the same way as for intranet servers. Additional proxy settings may be
+				necessary. </p>
+
+			<p class="p">As the <samp class="ph codeph">SimpleProxyServlet</samp> automatically uses the proxy settings from your
+				Eclipse this can be configured in Eclipse under <span class="ph menucascade"><img src="images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Window</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Preferences</span> <img src="images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>, and select <span class="ph menucascade"><img src="images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">General</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Network Connections</span> <img src="images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. Here you can specify the proxy entries and the proxy bypass. </p>
+
+			<p class="p">For example, set <em class="ph i">Active Provider</em> to Manual, <em class="ph i">Schema</em>=HTTP,
+				<em class="ph i">Host</em>=proxy, <em class="ph i">Port</em>=8080 under proxy entries and localhost, *.sap.corp as
+					<em class="ph i">Host</em> under proxy bypass. </p>
+
+		</div></div>
+<div class="section" id="loio2d3f5fb63a2f4090942375df80abc39f__section_1490F589E7374BD294D004B6D51C6A59"><div class="section_title">Simple Proxy Servlet - Restriction Regarding DELETE Requests</div><div type="Simple Proxy Servlet - Restriction Regarding DELETE Requests">
+			
+			<p class="p">The simple proxy servlet currently does not support the sending of HTTP DELETE requests with
+				content. This is due to restrictions of the Java SE functionality that is used. If
+				an HTTP DELETE request with content is sent, an HTTP 500 result status is sent with
+				the description: "The HttpUrlConnection used by the SimpleProxyServlet doesn't allow
+				to send content with the HTTP method DELETE. Due to spec having content for DELETE
+				methods is possible but the default implementation of the HttpUrlConnection doesn't
+				allow this!" </p>
+
+			<p class="p">For practical purposes, this restriction should have only minor effects. This is because: </p>
+
+			<ul class="ul" id="loio2d3f5fb63a2f4090942375df80abc39f__ul_o5g_lf2_bj"><li class="li">
+					<p class="p">When applying a REST-like programming style, an HTTP DELETE request would use
+						the URL to transmit which objects should be deleted, but not the content.
+					</p>
+
+				</li>
+<li class="li">
+					<p class="p">When building your own protocol that uses the content of the HTTP request,
+						you typically use HTTP POST. </p>
+
+				</li>
+</ul>
+
+		</div></div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Use a SimpleProxyServlet for Testing to Avoid Cross-domain Requests";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

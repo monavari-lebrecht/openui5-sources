@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=2811291803939483"/>
+<title>Defining the Control Metadata</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio7b52540d9d8c4e00b9723151622bbb64">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Defining the Control Metadata</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">The control metadata define the properties, aggregations, events, and so on of a
+			control.</p>
+<ul class="ul" id="loio7b52540d9d8c4e00b9723151622bbb64__ul_gqc_fgp_zm"><li class="li">
+				<p class="p">Properties</p>
+
+				<p class="p">A property is defined by a name and a type. Additionally, a default value can be
+					defined for a property. The following list gives an overview of the available
+					settings:</p>
+
+				<ul class="ul" id="loio7b52540d9d8c4e00b9723151622bbb64__ul_iwr_ngp_zm"><li class="li">
+						<p class="p"><samp class="ph codeph">type</samp>: Data type of the control property; SAPUI5 provides an automatic type
+							validation. Valid types are, for example, <samp class="ph codeph">string</samp>
+							(default) for a string property, <samp class="ph codeph">int</samp> or
+								<samp class="ph codeph">float</samp> for number properties,
+							<samp class="ph codeph">int[]</samp>, etc. for arrays and
+								<samp class="ph codeph">sap.ui.core.CSSSize</samp> for a custom-defined type.</p>
+
+					</li>
+<li class="li">
+						<p class="p"><samp class="ph codeph">defaultValue</samp>: Default value that is set if the application does not set a
+							value; if no default value is defined, the property value is
+								<samp class="ph codeph">undefined</samp>.</p>
+
+					</li>
+</ul>
+
+				<p class="p">These control-specific settings are not available for class extensions, because they do not
+					inherit the properties from a control or an element but from a more generic
+					class, see <a class="xref" href="91f29fea6f4d1014b6dd926db0e91070.html">Object Metadata and Implementation</a>.</p>
+
+			</li>
+<li class="li">
+				<p class="p">Events</p>
+
+				<p class="p">An event is defined by its name only.</p>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">events: {
+   "logout": {}
+}</pre></div>
+
+				<p class="p">For each event, methods for registering, de-registering and firing the event are created. For
+					the <samp class="ph codeph">logout</samp> event, for example, the
+						<samp class="ph codeph">attachLogout</samp>, <samp class="ph codeph">detachLogout</samp>,
+						<samp class="ph codeph">fireLogout</samp> methods are created.</p>
+
+				<p class="p">A control can enable events to be interrupted by the application. A tab control, for example,
+					can enable the application to cancel a <samp class="ph codeph">close</samp> event by setting
+					the <samp class="ph codeph">enablePreventDefault</samp> property of the event to
+						<samp class="ph codeph">true</samp> and checking the return value after firing the
+					event:</p>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">events: {
+   "close": {enablePreventDefault : true}  
+}</pre></div>
+
+			</li>
+<li class="li">
+				<p class="p">Aggregations and Associations</p>
+
+				<p class="p">Aggregations and associations are defined by their name and a configuration
+					object with the following information:</p>
+
+				<ul class="ul" id="loio7b52540d9d8c4e00b9723151622bbb64__ul_t3g_z54_zm"><li class="li">
+						<p class="p">
+							<samp class="ph codeph">type</samp>: The type should be a subclass of the element or
+							the control; the default is <samp class="ph codeph">sap.ui.core.control</samp></p>
+
+					</li>
+<li class="li">
+						<p class="p">
+							<samp class="ph codeph">multiple</samp>: Defines whether it is a 0..1 aggregation or a
+							0..n aggregation; the default for aggregations is <samp class="ph codeph">true</samp>
+							= 0..n, and for associations the default is <samp class="ph codeph">false</samp></p>
+
+					</li>
+<li class="li">
+						<p class="p">
+							<samp class="ph codeph">singularName</samp>: For 0..n aggregations, the aggregation
+							name typically is plural, but certain methods are created where the
+							singular form is required (for example, <samp class="ph codeph">addWorksetItem</samp>}
+							for the "worksetItem' <em class="ph i">s'</em>" aggregation). </p>
+
+					</li>
+</ul>
+
+				<p class="p">If only the type needs to be set, you can just give it as a string instead of the
+					configuration object. </p>
+
+				<p class="p">One example: </p>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">aggregations: {
+   "acceptButton" : "sap.ui.commons.Button", // if only type is given, no object is required
+   "content" : {singularName: "content"},    // default type is "sap.ui.core.Control", 
+                                             // which is appropriate for generic containers
+   "worksetItems" : {type : "sap.ui.ux3.NavigationItem", multiple : true, singularName : "worksetItem"} 
+                                             // a fully specified aggregation
+}</pre></div>
+
+				<p class="p">Multiple methods are created, depending on the multiplicity, for example
+						<samp class="ph codeph">getWorksetItems</samp>, <samp class="ph codeph">insertWorksetItem</samp>,
+						<samp class="ph codeph">addWorksetItem</samp>, <samp class="ph codeph">removeWorksetItem</samp>,
+						<samp class="ph codeph">removeAllWorksetItems</samp>, <samp class="ph codeph">indexOfWorksetItem</samp>,
+						<samp class="ph codeph">destroyWorksetItems</samp>.</p>
+
+				<p class="p">If you want to mark one aggregation as default aggregation in order to be able to omit the
+					aggregation tag in XML views, you can do this by setting the
+						<samp class="ph codeph">defaultAggregation</samp> property to the name of the aggregation
+					as shown in the following code snippet:</p>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">aggregations: {
+   "content": {singularName: "content"} // default type is "sap.ui.core.Control", multiple is "true"
+
+},
+defaultAggregation: "content"</pre></div>
+
+			</li>
+</ul>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Defining the Control Metadata";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=23290380434912272"/>
+<title>Preload Variant for Bootstrapping</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f1e3626f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Preload Variant for Bootstrapping</h1>
+<div class="body"><p class="p">In the preload variant, SAPUI5 loads all JavaScript modules of a library in advance with one
+			single request. The runtime executes the code only if the application requires the
+			module. Thus, the preload variant significantly reduces the number of roundtrips. To
+			activate the preload variant, set the <samp class="ph codeph">preload</samp> configuration parameter
+			with one of the following values:</p>
+<ul class="ul"><li class="li"> 
+		  <p class="p"><samp class="ph codeph">sync</samp>
+				</p>
+
+		  <p class="p">If you set the <samp class="ph codeph">preload</samp> configuration parameter to <samp class="ph codeph">synch</samp>,
+					the runtime loads the modules for all declared libraries synchronously. After
+					processing the bootstrap tag, all preload files of all libraries are loaded and
+					the libraries are initialized as usual. The <samp class="ph codeph">preload=sync</samp> mode
+					should be transparent for most applications.</p>
+ 
+		</li>
+<li class="li"> 
+		  <p class="p"><samp class="ph codeph">async</samp>
+				</p>
+
+		  <p class="p">If you set the <samp class="ph codeph">preload</samp> configuration option to <samp class="ph codeph">asynch</samp>, the
+					runtime loads the modules for all declared libraries asynchronously. Thus, any
+					code that follows the SAPUI5 bootstrap tag can <strong class="ph b">not</strong> be sure that the
+					SAPUI5 classes are available already. Therefore, the application must delay the
+					access to the SAPUI5 APIs by using the <samp class="ph codeph">Core.attachInitEvent</samp>
+					method. SAPUI5 supports the <samp class="ph codeph">asynch</samp> mode only for libraries that
+					are loaded by the SAPUI5 core. Libraries that are loaded dynamically by using
+					the <samp class="ph codeph">sap.ui.getCore().loadLibrary()</samp> API will be preloaded with
+						<samp class="ph codeph">preload=sync</samp>.</p>
+ 
+		</li>
+<li class="li"> 
+		  <p class="p"><samp class="ph codeph">auto</samp>
+				</p>
+
+		  <p class="p">The <samp class="ph codeph">preload=auto</samp> configuration parameter is the default value. This mode
+					checks whether SAPUI5 runtime uses optimized sources. If optimized sources are
+					used, it enables the <samp class="ph codeph">preload=sync</samp> option to further optimize
+					the runtime. For normal or debug sources, the preload is deactivated.</p>
+ 
+		</li>
+</ul>
+<div class="note note" id="loio91f1e3626f4d1014b6dd926db0e91070__note_N1005B_N10013_N10001"><span class="notetitle">Note</span> Preload sources always have to be optimized. Therefore, using
+			the preload variant with the <samp class="ph codeph">debug</samp> configuration parameter is
+			counterproductive and <samp class="ph codeph">debug</samp> always overrides the
+				<samp class="ph codeph">preload</samp> configuration parameter.</div>
+<p class="p">You can easily check the preload variant with an existing application by specifying the
+				<samp class="ph codeph">sap-ui-preload=/mode/</samp> parameter in the start URL by adding the
+				<samp class="ph codeph">data-sap-ui-preload</samp> attribute to the bootstrap tag:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">    &lt;script 
+            id="sap-ui-bootstrap"            
+            src="resources/sap-ui-core.js" 
+            data-sap-ui-libs="sap.ui.commons"
+            data-sap-ui-theme="sap_bluecrystal" 
+            data-sap-ui-preload="sync" &gt;
+    &lt;/script&gt;</pre></div>
+<div class="note note" id="loio91f1e3626f4d1014b6dd926db0e91070__note_N10070_N10013_N10001"><span class="notetitle">Note</span> The <samp class="ph codeph">preload=async</samp> option requires active
+			cooperation of the application. It is therefore <strong class="ph b">not</strong> activated automatically, but
+			only by configuration. </div>
+<div class="note note" id="loio91f1e3626f4d1014b6dd926db0e91070__note_N10078_N10013_N10001"><span class="notetitle">Note</span> You can combine the <samp class="ph codeph">preload</samp> configuration
+			option with other bootstrap variants such as <samp class="ph codeph">sap-ui-core-noJQuery</samp>. </div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="91f1dd0c6f4d1014b6dd926db0e91070.html">noJQuery Variant for Bootstrapping</a></div>
+<div><a class="link" href="91f08de06f4d1014b6dd926db0e91070.html">Configuration of the SAPUI5 Runtime</a></div>
+</div>
+
+<div class="linklist linklist"/>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Preload Variant for Bootstrapping";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

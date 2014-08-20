@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="The Configure KPI Drill-Down app allows you to configure the generic drill-down application that you navigate to when you click the KPI or OPI tile in the runtime environment."/>
+<meta name="description" content="The Configure KPI Drill-Down app allows you to configure the generic drill-down application that you navigate to when you click the KPI or OPI tile in the runtime environment."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=8709579995633385"/>
+<title>Configure KPI Drill-Down</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loioba3330d57f2f4361bd108adcde23cfdd">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Configure KPI Drill-Down</h1>
+<div class="body conbody"><p class="shortdesc">The <span class="ph pname">Configure KPI Drill-Down</span> app allows you to configure the generic
+		drill-down application that you navigate to when you click the KPI or OPI tile in the
+		runtime environment. </p>
+<div class="p">There are several different kinds of chart available and you can configure aspects such
+			as the color, how the data is sorted, and whether data from associated KPIs should be
+			displayed. <div class="note note"><span class="notetitle">Note</span> You do not need to activate a drill-down configuration. Each time you
+				save, the changes are immediately effective and are reflected in the runtime
+				environment.</div>
+</div>
+<div class="section"><div class="section_title">Key Features</div><div type="Key Features">
+			
+		</div></div>
+<div class="section"><div class="section_title">Configure the Facet Filter</div><div type="Configure the Facet Filter">
+			
+			<p class="p">The facet filter allows the SAP Smart Business user to filter the information shown on the
+				screen at runtime. The user can filter based on any of the dimensions present in the
+				entity set of the virtual data model (VDM) in the backend. At runtime, the user can
+				also either choose to have all values of a specific dimension or restrict the data
+				set to specified values of the dimension.</p>
+
+			<p class="p">Using the <span class="ph pname">Configure KPI Drill-Down</span> app, at design time you can choose the
+				default dimensions that appear in the facet filter bar at runtime; however you
+				cannot pre-select default values for each of the dimensions.</p>
+
+			<div class="p">At runtime, the SAP Smart Business user can carry out the following adjustments to
+				the facet filter:<ul class="ul" id="loioba3330d57f2f4361bd108adcde23cfdd__ul_dbr_rv4_n4"><li class="li">Toggle the visibility of the facet filter bar.</li>
+<li class="li">Reset the applied filter values to <span class="ph uicontrol">All</span> for all of the dimensions
+						currently added to the filter bar.</li>
+<li class="li">Add any of the remaining dimensions present in the VDM to the facet filter bar, or hide
+						dimensions that are currently visible.</li>
+</ul>
+</div>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<ol class="ol" id="loioba3330d57f2f4361bd108adcde23cfdd__ol_m45_wv4_n4"><li class="li">The values listed for each dimension of the facet filter are only retrieved
+						from the backend when you click the dimension.</li>
+<li class="li">When multiple filters are applied, each of the filters is not applied
+						separately but together with the other specified filters. That is, the
+						system filters on the following basis: <ol class="ol" type="a" id="loioba3330d57f2f4361bd108adcde23cfdd__ol_v24_1w4_n4"><li class="li">Filter1 = Value1 and Filter 2 = Value 2 <p class="p">and not</p>
+</li>
+<li class="li">Filter1 = Value 1 or Filter 2 = Value 2<p class="p">Also, every time a filter value is specified,
+									the filter values for the rest of the dimensions are refreshed
+									based on the currently selected filter values as in the
+									following example:</p>
+
+								<p class="p">You have selected 3 dimensions for the filter bar: Filter 1 (all
+									countries where a company has manufacturing plants), Filter 2
+									(all cities where a company has manufacturing plants), and
+									Filter 3 (all heads of the manufacturing plants).</p>
+<p class="p">At
+									runtime, if the user clicks a country in Filter 1, only the
+									cities within that country are used to populate the value list
+									for Filter 2 and only the manufacturing plants within that
+									country are used to populate the value list for Filter 3. The
+									values within Filter 2 and Filter 3 are only updated when the
+									user clicks the respective filters.</p>
+<p class="p">If nothing is selected
+									in any of the filters and the user chooses a city in Filter 2,
+									the values of Filter 1 and Filter 3 are filtered based on the
+									selected city. If the user now selects a user in Filter 3, then
+									the values within Filter 1 and Filter 2 are again refreshed
+									based on the Filter 3 selection. That is, only countries that
+									represent the chosen cities (Filter 2) and countries that have
+									manufacturing plants headed by the chosen individual (Filter 3)
+									are displayed in the Filter 1 value list.</p>
+</li>
+</ol>
+</li>
+</ol>
+
+			</div>
+
+		</div></div>
+<div class="section"><div class="section_title">Show or Hide the KPI Aggregate Value</div><div type="Show or Hide the KPI Aggregate Value">
+			
+			<p class="p">You can choose to either to show or hide the KPI aggregate value at runtime. If you choose to
+				show the KPI aggregate value, this value refreshes each time the facet filter value
+				is refreshed. The unit of measure (UoM) of the KPI’s main measure is also shown,
+				together with the KPI aggregate value, if it is maintained in the VDM and also
+				present in the OData service as an SAP annotation.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Display KPI Visualizations in the KPI Header</div><div type="Display KPI Visualizations in the KPI Header">
+			
+			<p class="p">You can add tile visualizations (mini charts) to the drill-down. Four types of mini chart are
+				supported: number, bullet, trend, and comparison. Any or all of these visualizations
+				can be added to the header for all evaluations related to the current evaluation for
+				which the drill-down is configured. This includes the current KPI’s other
+				evaluations, as well as all evaluations of the KPIs associated with the current
+				KPI.</p>
+
+			<div class="note note"><span class="notetitle">Note</span> The KPI header is temporarily hidden if the SAP Smart Business user applies a
+				value filter for any of the dimensions. The header becomes visible again when the
+				filter is removed.</div>
+
+		</div></div>
+<div class="section"><div class="section_title">Configure the Views</div><div type="Configure the Views">
+			
+			<p class="p">A drill-down configuration can consist of many views in either the chart or table format. You
+				can reorganize the views and edit or delete them as required. You can make the
+				following configurations for each view:</p>
+
+			<ul class="ul" id="loioba3330d57f2f4361bd108adcde23cfdd__ul_wwl_cjd_44"><li class="li">Measures and Dimensions<p class="p">You can choose which measures and dimensions to add to the chart
+						or table representation. All measures and dimensions configured in the
+						entity set of the VDM in the backend are available for selection.</p>
+<p class="p">To
+						make the following additional configurations for each measure or dimension,
+						click the Gear icon beside the individual dimension or measure.</p>
+</li>
+</ul>
+
+			<ul class="ul" id="loioba3330d57f2f4361bd108adcde23cfdd__ul_ozz_jkp_n4"><li class="li">Sort Order<p class="p">Choose either ascending, descending, or no sorting order. You can
+						also choose on which measure or dimension the sorting is carried out when a
+						sort is selected for this measure or dimension. The sorting is done on the
+						order of the listing of the measure or dimension. For example, Measure 1 is
+						sorted in ascending order and Measure 2 in descending order. If Measure 1 is
+						listed above Measure 2 at design time, then at runtime the data is first
+						sorted on Measure 1 (ascending order) and then on Measure 2 (in descending
+						order).</p>
+<p class="p">In <span class="ph uicontrol">Dummy Data</span> mode, sorting is not
+						possible. You must use <span class="ph uicontrol">Runtime Mode</span> for the data
+						source to check the sorting behavior at design time. At runtime, you can
+						also change the sort order by clicking the header of the column.</p>
+</li>
+</ul>
+
+			<ul class="ul" id="loioba3330d57f2f4361bd108adcde23cfdd__ul_dnp_glp_n4"><li class="li">Hide in Table<p class="p">You can hide the measure or dimension in the table view.</p>
+
+				</li>
+<li class="li">Enable Stacking<p class="p">You can choose whether measures or dimensions are stacked in
+						the chart visualization. Stacking is only possible for bar charts and column
+						charts. For all other visualizations, you cannot change the default
+						behavior. When stacking is enabled, you can either choose to stack all
+						chosen measures or choose a single stacking dimension. Stacking on both
+						measure and dimension is not possible. When dual axis charts are selected,
+						stacking is always done on measures only, dimension stacking is not
+						possible.</p>
+</li>
+<li class="li">Visualization Type<div class="p">You can choose from the following visualization types:<ul class="ul" id="loioba3330d57f2f4361bd108adcde23cfdd__ul_wpq_yjd_44"><li class="li">Bar Chart</li>
+<li class="li">Column Chart</li>
+<li class="li">Line Chart</li>
+<li class="li">Combination Chart (Columns and Lines)</li>
+<li class="li">Bubble Chart</li>
+<li class="li">Table</li>
+</ul>
+</div>
+<p class="p">If you configure a chart visualization, then at runtime the SAP
+						Smart Business user can toggle to a table view. However if you configure a
+						table visualization, there is no option to toggle to a chart view at
+						runtime.</p>
+</li>
+<li class="li">Configure a Single or a Dual Axis<p class="p">This is applicable only to bar or column
+						charts. If you configure a dual axis then you must also select the measure
+						against which each axis should be created. In a dual axis chart, only two
+						bars or columns are present, therefore all measures must either be part of
+						the first bar or column (Stack 1) or second bar or column (Stack 2). As part
+						of dual axis configuration, at runtime you can specify which measures should
+						make up the Stack 1 – all other measures are then added to Stack 2.
+						Dimension stacking is not possible in a dual axis chart.</p>
+</li>
+<li class="li">Configure Absolute or Percentage Values<p class="p">Absolute charts display the exact value in the
+						graph. Percentage graphs display the scale of the axis from 0 to 100 (based
+						on possible percentage values) and all measures are stacked. Dimension
+						staking is not possible here. In a percentage chart, the value inside the
+						bar or column represents the absolute value. Only the axis values are in a
+						percentage basis and the text beside the axis lists the names of all
+						measures with in % appended to them.</p>
+</li>
+<li class="li">Configure the Color Scheme<p class="p">SAP Smart Business allows the following color
+						schemes:</p>
+
+<div class="tablenoborder"><table summary="" id="loioba3330d57f2f4361bd108adcde23cfdd__table_efp_nnp_n4" class="table" frame="border" border="1" rules="all"><tbody class="tbody"><tr class="row"><td class="entry" valign="top" width="50%">Default colors</td>
+<td class="entry" valign="top" width="50%">These colors are applied if you do not choose any other
+										color scheme. The colors are applied directly by the SAP
+										Fiori framework.</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="50%">Manual non-semantic color</td>
+<td class="entry" valign="top" width="50%">You can choose the color for each measure from the SAP
+										Fiori standard color palette. You configure the color by
+										clicking the Gear icon beside the individual
+										measure.</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="50%">Manual semantic color </td>
+<td class="entry" valign="top" width="50%">You can choose the color for each measure from the SAP Fiori semantic color palette.
+										The semantic color palette is used where the color has a
+										symbolic meaning (for example, green for OK, yellow for
+										warning, and red for critical). You configure the color by
+										clicking the Gear icon beside the individual measure. For
+										example, you want to display a plant’s cost and profit
+										measurements for each financial year. It is visually clearer
+										to always color the cost with the bad semantic color (red)
+										and profit with good semantic color (green) rather than with
+										other colors. In such a case, you choose the
+											<span class="ph uicontrol">Manual semantic color</span> scheme to
+										assign the bad semantic color to cost and good semantic
+										color to profit.</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="50%">Auto semantic color</td>
+<td class="entry" valign="top" width="50%">You must mark one measure as the threshold measure. At
+										runtime the other measures are automatically colored with
+										the good semantic color or the bad semantic color based on
+										how the value of the measure compares to the value of the
+										threshold measure.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p">Not all coloring options are available for each visualization type.
+						The options are as follows:
+<div class="tablenoborder"><table summary="" id="loioba3330d57f2f4361bd108adcde23cfdd__table_ixc_1pp_n4" class="table" frame="border" border="1" rules="all"><tbody class="tbody"><tr class="row"><td class="entry" valign="top" width="50%">Bar Charts</td>
+<td class="entry" valign="top" width="50%">All color schemes are possible</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="50%">Column Charts</td>
+<td class="entry" valign="top" width="50%">All color schemes are possible</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="50%"> Line Charts</td>
+<td class="entry" valign="top" width="50%">All color schemes are possible, except auto semantic
+											color</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="50%"> Column and Line Chart</td>
+<td class="entry" valign="top" width="50%">All color schemes are possible, except auto semantic
+											color</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="50%">Bubble Chart</td>
+<td class="entry" valign="top" width="50%">You cannot choose a color scheme; default colors are
+											applied</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="50%"> Table display</td>
+<td class="entry" valign="top" width="50%">Only the auto semantic color and the default color
+											schemes are possible</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="note note"><span class="notetitle">Note</span> When stacking is enabled and you choose stacking by dimension,
+							only the default color scheme is permitted.</div>
+</div>
+</li>
+<li class="li">Set the Data Limit<p class="p">By default, the <span class="ph uicontrol">Set Data Limit</span> checkbox is
+						unchecked. Checking this opens a textbox where you can enter a valid integer
+						representing the number of records to be retrieved. By default this value is
+						set to 200. Changing this number is only necessary if the data source is set
+						to <span class="ph uicontrol">Runtime Mode</span> (see <span class="ph uicontrol">Data</span> in
+						this document). If you do not set the data limit at design time, at runtime
+						the system retrieves all data in the backend (if you set the data limit,
+						this is the maximum number of records that the system retrieves).</p>
+</li>
+<li class="li">Data<p class="p">This setting is only for the preview mode of the visualization at design time. At
+						runtime, SAP Smart Business always retrieves the real-time data from the
+						backend. By default the data shown in the design time chart configuration is
+						dummy data. If required, you can select <span class="ph uicontrol">Runtime Mode</span>
+						to use the real-time data. This setting is not saved, therefore each time
+						you visit this screen the data source always points to dummy data.</p>
+</li>
+</ul>
+
+		</div></div>
+<div class="section"><div class="section_title">Additional Information</div><div type="Additional Information">
+			
+			<ul class="ul" id="loioba3330d57f2f4361bd108adcde23cfdd__ul_hdj_1qp_n4"><li class="li">Add to Home<p class="p">When the SAP Smart Business user navigates to the generic drill-down from the
+						KPI or OPI tile, the <span class="ph uicontrol">Add to Home</span> button is available
+						in the footer. The user can use this option to create a new personalized
+						tile in their tile catalog. All the filters applied in the drill-down are
+						also applied to the tile, which is visible only to the user who has created
+						it.</p>
+<p class="p">When creating the personalized tile, the user must specify a
+						title. They can also change the threshold values if the existing threshold
+						for the current evaluation is not dynamic (that is, the threshold type is
+						not a measure but has fixed value). </p>
+</li>
+<li class="li">Navigation from the Drill-Down Application<p class="p">The SAP Smart Business framework allows two
+						different possibilities for app-navigation from the drill-down
+						application:</p>
+<ol class="ol" id="loioba3330d57f2f4361bd108adcde23cfdd__ol_dzb_4cr_44"><li class="li">Every application parameter URL configured for the given semantic object
+							that has no mandatory parameters configured is shown in the
+								<span class="ph uicontrol">Open In</span> menu in the footer of the SAP Fiori
+							Launchpad (except the action that is used to call up the current
+							drill-down application page).</li>
+<li class="li">In the pop-over displayed when the user selects a data point in a chart
+							or a record in the table view, all navigation links that require the
+							selected dimensions, or a subset of them, as mandatory parameters are
+							chosen. Only these links are shown. Generic links that do not require
+							mandatory parameters or those that require mandatory parameters in
+							addition to the selected dimensions are not shown.<div class="note note"><span class="notetitle">Note</span> It is not
+								currently possible to configure the drill-down to drill-down
+								application navigation.</div>
+</li>
+</ol>
+</li>
+</ul>
+
+		</div></div>
+<div class="section"><div class="section_title">Related Apps</div><div type="Related Apps">
+			
+			<ul class="ul" id="loioba3330d57f2f4361bd108adcde23cfdd__ul_ecj_2tp_n4"><li class="li">Create KPI</li>
+<li class="li">Create Evaluation</li>
+<li class="li">Configure KPI Tiles</li>
+<li class="li">Manage KPI Associations</li>
+<li class="li">Manage KPI Authorizations</li>
+<li class="li">KPI Workspace</li>
+<li class="li">Migration Tool </li>
+</ul>
+
+		</div></div>
+<div class="section"><div class="section_title">Component for Customer Incidents</div><div type="Component for Customer Incidents">
+			
+			
+<div class="tablenoborder"><table summary="" id="loioba3330d57f2f4361bd108adcde23cfdd__table_y3q_ltp_n4" class="table" frame="border" border="1" rules="all"><tbody class="tbody"><tr class="row"><td class="entry" valign="top" width="50%">For all design time issues</td>
+<td class="entry" valign="top" width="50%"><span class="ph sap-technical-name sap-technical-name">CA-GTF-SB-DT</span></td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="50%">For all runtime issues</td>
+<td class="entry" valign="top" width="50%"><span class="ph sap-technical-name sap-technical-name">CA-GTF-SB-RT</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+		</div></div>
+<div class="section"><div class="section_title">SAP Notes</div><div type="SAP Notes">
+			
+			<p class="p"><a href="http://help.sap.com/disclaimer?site=https://service.sap.com/sap/support/notes/2018360">2018360 <img src="images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="2ee2365cbbdc405bad32401fee1a9fbb.html">Create KPI</a></div>
+<div><a class="link" href="4348711baf09464284eaea36751c2628.html">Create Evaluation</a></div>
+<div><a class="link" href="11cd984817f24248b4291899b510f466.html">Manage KPI Authorizations</a></div>
+<div><a class="link" href="cc627d93b81e4fb5ae034f1e3c949c9f.html" title="The Configure KPI Tiles app allows you to create tile visualizations for an active evaluation.">Configure KPI Tiles</a></div>
+<div><a class="link" href="1288e9cb3d4b432082ae408efac8d7ae.html" title="The Manage Associations app allows you to create associations between KPIs or OPIs. Two types of association are available: supporting or conflicting.">Manage KPI Associations</a></div>
+<div><a class="link" href="cefc748420eb49d2b0e639ca0c86c6c0.html" title="The KPI Workspace app allows you to manage all of your KPIs and OPIs and their evaluations.">KPI Workspace</a></div>
+<div><a class="link" href="77543cb4350147ac84937fc16a4182bb.html" title="The Migration Tool app allows you to migrate content that you created with SAP Smart Business 1.0 (SP 02) wave 4 KPI modeler to the new SAP Smart Business wave 5 version.">Migration Tool</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Configure KPI Drill-Down";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

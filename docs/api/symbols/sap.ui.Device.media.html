@@ -1,0 +1,564 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.Device.media</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Namespace sap.ui.Device.media
+					</h1>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>Event API for Screen width media queries.</p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+						
+						
+							<div class="summary section">
+								<div class="sectionTitle">Namespaces &amp; Classes</div>
+								<div class="sectionItems">
+								
+									<div class="sectionItem itemName namespace static">
+										<b class="icon" title="Enumeration containing the names of predefined Screen width media query range sets."><a href="../symbols/sap.ui.Device.media.RANGESETS.html">RANGESETS</a></b>
+										<span class='description'>Enumeration containing the names of predefined Screen width media query range sets.</span>
+									</div>
+								
+								</div>
+							</div>
+						
+					
+		
+			
+
+					
+		
+
+
+					
+						
+						
+						
+						
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Registers the given handler to the range change event, which is fired when a new range of the set is entered."><a href="../symbols/sap.ui.Device.media.html#attachHandler">attachHandler</a></b><span class='signature'>(<span title="(Function) The function to call, when the range change event occurs.">fnFunction</span>, <span title="(Object) The 'this' context of the handler function.">oListener</span><i class="help" title="Optional parameter">?</i>, <span title="(String) The name of the range set to listen to.">sName</span>)</span>
+									<span class='description'>Registers the given handler to the range change event, which is fired when a new range of the set is entered.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Deregisters a previously registered handler from the range change event."><a href="../symbols/sap.ui.Device.media.html#detachHandler">detachHandler</a></b><span class='signature'>(<span title="(Function) The function to call, when the range change event occurs.">fnFunction</span>, <span title="(Object) The 'this' context of the handler function.">oListener</span><i class="help" title="Optional parameter">?</i>, <span title="(String) The name of the range set to listen to.">sName</span>)</span>
+									<span class='description'>Deregisters a previously registered handler from the range change event.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns information about the current active range of the range set with the given name."><a href="../symbols/sap.ui.Device.media.html#getCurrentRange">getCurrentRange</a></b><span class='signature'>(<span title="(String) The name of the range set.">sName</span>)</span>
+									<span class='description'>Returns information about the current active range of the range set with the given name.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns whether a range set with the given name is initialized."><a href="../symbols/sap.ui.Device.media.html#hasRangeSet">hasRangeSet</a></b><span class='signature'>(<span title="(String) The name of the range set.">sName</span>)</span>
+									<span class='description'>Returns whether a range set with the given name is initialized.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Initializes a Screen width media query range set."><a href="../symbols/sap.ui.Device.media.html#initRangeSet">initRangeSet</a></b><span class='signature'>(<span title="(String) The name of the range set.">sName</span>, <span title="(int[]) The range borders">aRangeBorders</span>, <span title="(String) The unit which should be used.">sUnit</span><i class="help" title="Optional parameter">?</i>, <span title="(String[]) The names of the ranges.">aRangeNames</span><i class="help" title="Optional parameter">?</i>, <span title="(boolean) Whether writing CSS classes to the document root should be suppressed">bSuppressClasses</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Initializes a Screen width media query range set.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Removes a previously initialized range set and detaches all registered handlers."><a href="../symbols/sap.ui.Device.media.html#removeRangeSet">removeRangeSet</a></b><span class='signature'>(<span title="(String) The name of the range set.">sName</span>)</span>
+									<span class='description'>Removes a previously initialized range set and detaches all registered handlers.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+					
+		
+		
+
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachHandler"> </a>
+										<div class="itemTitle icon">
+											attachHandler<span class="signature">(<span title="(Function) The function to call, when the range change event occurs.">fnFunction</span>, <span title="(Object) The 'this' context of the handler function.">oListener</span><i class="help" title="Optional parameter">?</i>, <span title="(String) The name of the range set to listen to.">sName</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Registers the given handler to the range change event, which is fired when a new range of the set is entered.
+</p><p>
+The handler has one map parameter <code>mParams</code>:
+<ul>
+<li>mParams.from: the range start value</li>
+<li>mParams.to: the range end value, not defined for the last range (INFINITY)</li>
+<li>mParams.unit: the used unit, e.g. px</li>
+<li>mParams.name: the range name if defined</li>
+</ul>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the range change event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    The 'this' context of the handler function.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{String}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sName</b>
+													</td>
+													<td class="methodItemDesc">
+												    The name of the range set to listen to.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachHandler"> </a>
+										<div class="itemTitle icon">
+											detachHandler<span class="signature">(<span title="(Function) The function to call, when the range change event occurs.">fnFunction</span>, <span title="(Object) The 'this' context of the handler function.">oListener</span><i class="help" title="Optional parameter">?</i>, <span title="(String) The name of the range set to listen to.">sName</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Deregisters a previously registered handler from the range change event.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the range change event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    The 'this' context of the handler function.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{String}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sName</b>
+													</td>
+													<td class="methodItemDesc">
+												    The name of the range set to listen to.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getCurrentRange"> </a>
+										<div class="itemTitle icon">
+											getCurrentRange<span class="signature">(<span title="(String) The name of the range set.">sName</span>)</span>
+											<span class="light" title="returns Map">: Map</span>
+										</div>
+										<div class="full-description">
+											Returns information about the current active range of the range set with the given name.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{String}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sName</b>
+													</td>
+													<td class="methodItemDesc">
+												    The name of the range set.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{Map}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the information about the current active range (same structure like the handler parameters (@see sap.ui.Device.media#attachHandler))
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="hasRangeSet"> </a>
+										<div class="itemTitle icon">
+											hasRangeSet<span class="signature">(<span title="(String) The name of the range set.">sName</span>)</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Returns whether a range set with the given name is initialized.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{String}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sName</b>
+													</td>
+													<td class="methodItemDesc">
+												    The name of the range set.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="initRangeSet"> </a>
+										<div class="itemTitle icon">
+											initRangeSet<span class="signature">(<span title="(String) The name of the range set.">sName</span>, <span title="(int[]) The range borders">aRangeBorders</span>, <span title="(String) The unit which should be used.">sUnit</span><i class="help" title="Optional parameter">?</i>, <span title="(String[]) The names of the ranges.">aRangeNames</span><i class="help" title="Optional parameter">?</i>, <span title="(boolean) Whether writing CSS classes to the document root should be suppressed">bSuppressClasses</span><i class="help" title="Optional parameter">?</i>)</span>
+											
+										</div>
+										<div class="full-description">
+											Initializes a Screen width media query range set.
+</p><p>
+This function can either be called only with the name parameter to initialize a predefined range set,
+e.g. <code>sap.ui.Device.media.initRangeSet(sap.ui.Device.media.RANGESETS.SAP_3STEPS)</code>.
+</p><p>
+Or it is possible to define a custom range set as in the following example:
+<code>sap.ui.Device.media.initRangeSet("MyRangeSet", [200, 400], "px", ["Small", "Medium", "Large"])</code> defines 3 ranges:
+<ul>
+<li>0px-199.999px with name "Small"</li>
+<li>200px-399.999px with name "Medium"</li>
+<li>400px-INFINITY with name "Large"</li>
+</ul>
+</p><p>
+The range names are optional. If they are specified also a CSS class (e.g. sapUiMedia-MyRangeSet-Small) is added to the document root
+depending on the current active range. This can be suppressed via parameter <code>bSuppressClasses</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{String}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sName</b>
+													</td>
+													<td class="methodItemDesc">
+												    The name of the range set. Either a predefined or custom one. The name must be a valid id (consist of letters and digits).
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int[]}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>aRangeBorders</b>
+													</td>
+													<td class="methodItemDesc">
+												    The range borders
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{String}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sUnit</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    The unit which should be used. Allowed values are px (default), em or rem.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{String[]}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>aRangeNames</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    The names of the ranges. The names must be a valid id (consist of letters and digits).
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bSuppressClasses</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Whether writing CSS classes to the document root should be suppressed
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="removeRangeSet"> </a>
+										<div class="itemTitle icon protected">
+											removeRangeSet<span class="signature">(<span title="(String) The name of the range set.">sName</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Removes a previously initialized range set and detaches all registered handlers.
+</p><p>
+Initialized predefined range sets (@see sap.ui.Device.media#RANGESETS) cannot be removed.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{String}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sName</b>
+													</td>
+													<td class="methodItemDesc">
+												    The name of the range set.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

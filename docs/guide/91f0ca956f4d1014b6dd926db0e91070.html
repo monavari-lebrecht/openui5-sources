@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=8233400570310518"/>
+<title>Models and Data Binding</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f0ca956f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Models and Data Binding</h1>
+<div class="body conbody"><p class="p">Data binding is used to bind two data or information sources together to keep them in
+			sync. If data binding is implemented and defined properly, all changes in one data
+			source are automatically reflected in the other data source. Usually, the UI uses data
+			binding to bind UI controls to a data source that holds the application data, so that
+			the controls are updated automatically whenever application data is changed.</p>
+<p class="p">To achieve this, there is a <dfn class="term">model</dfn> and a <dfn class="term">data binding</dfn>. The
+				<dfn class="term">model</dfn> instance holds the data and provides methods to set the data or
+			to retrieve data from a server. It also provides a method for creating bindings to the
+			data. When this method is called, a <dfn class="term">data binding</dfn> instance is created, which
+			contains the binding information and provides an event, which is fired whenever the
+			bound data is changed. An element can listen to this event and update its visualization
+			according to the new data. </p>
+<p class="p">The term <dfn class="term">data binding</dfn> is also used when changes in the control cause updates in
+			the underlying application data, such as data being entered by a user. This is called
+				<dfn class="term">bi-directional binding</dfn> or <dfn class="term">two-way binding</dfn>. </p>
+<p class="p">A Web application should support several data sources, such as JSON, XML, Atom, or OData.
+			However, the way in which data binding is defined and implemented within the UI controls
+			should be independent of the respective data source. It should also be possible to
+			create a custom model implementation for data sources that are not yet covered by the
+			framework or are domain-specific. </p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="91f0f3cd6f4d1014b6dd926db0e91070.html">Data Binding: Getting Started</a></div>
+<div><a class="link" href="91f0fa976f4d1014b6dd926db0e91070.html" title="This page describes how data binding can be used in SAPUI5 applications. It describes how to create a model instance, how to assign it to the UI, and how the controls on the UI can be bound to the model.">Models and Data Binding in Applications</a></div>
+<div><a class="link" href="91f050cf6f4d1014b6dd926db0e91070.html">Binding Types</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Models and Data Binding";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

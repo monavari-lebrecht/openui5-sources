@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=652157786677455"/>
+<title>Theming FAQ</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiod0db4d538edb43bca893acd4d6814a40">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Theming FAQ</h1>
+<div class="body conbody"><p class="shortdesc"/>
+<div class="section"><div class="section_title">How can I adapt the visuals of a control?</div><div type="How can I adapt the visuals of a control?"><p class="p">While there is always the
+				option to create a new Theme, this is overkill for most minor style adaptations. For
+				those minor changes, the recommendation is to include additional CSS into the page
+				which changes the style of the respective tags of the SAPUI5 control. This allows
+				complete, arbitrary changes of the visual design - after all it is the same
+				technology that the UI5 controls use for their styling.</p>
+<p class="p"> The main options
+				are:</p>
+<ul class="ul" id="loiod0db4d538edb43bca893acd4d6814a40__ul_dkq_lsy_c4"><li class="li">Inspect the HTML and CSS of a control and write a similar, but adapted CSS rule
+					for a CSS property you want to override for all controls of a type.</li>
+<li class="li">Call <samp class="ph codeph">.addStyleClass("myStyle") </samp>on some control instances if you
+					want only those instances to look different than other instances - and then
+					write CSS code that refers to the normal classes/tags AND to this CSS class you
+					just added.</li>
+</ul>
+<div class="note note"><span class="notetitle">Note</span> 
+				<ul class="ul" id="loiod0db4d538edb43bca893acd4d6814a40__ul_rdg_g3s_f4"><li class="li">With this high degree of power and flexibility comes quite some
+						responsibility. With CSS you are perfectly capable of destroying the
+						functionality of a control. This is no SAPUI5-specific thing, but when you
+						do CSS adaptions, you should always have good knowledge of this open
+						standard.</li>
+<li class="li">The inner structure of a control, the tag hierarchy, the IDs and CSS classes
+						are NOT part of the public control API that we guarantee to stay stable.
+						This is also the case in other UI libraries which may define some CSS
+						classes as stable, but not everything else. As CSS can refer to the inner
+						structures of a control, you have to accept the risk that your style changes
+						break when we change the inner structure. Changing the inner structure is a
+						freedom we absolutely need to reserve, so we can fix bugs and add features
+						to a control, so this is nothing that can be discussed.</li>
+<li class="li">When your CSS does not work as expected, use Firebug or the Internet
+						Explorer F12 developer tools or similar tools to inspect the page and check
+						which CSS rules are applied to the respective tag - and which rules may be
+						applied, but overridden by other rules. If your rules are overwritten by
+						other rules, this is probably because of either the order of appearance
+						(last rule wins) or because of the CSS selector specificity (more specific
+						CSS selectors win). If the latter sounds strange to you, look it up in the
+						CSS spec or on Google.</li>
+<li class="li"/>
+</ul>
+
+			</div>
+<strong class="ph b">DON'Ts</strong>:<ul class="ul" id="loiod0db4d538edb43bca893acd4d6814a40__ul_xkq_lsy_c4"><li class="li">Do not adapt the style attribute of HTML elements belonging to SAPUI5 controls.
+					When these controls are re-rendered, the changes will be lost.</li>
+</ul>
+</div></div>
+<div class="section"><div class="section_title">Why do SAPUI5 controls not have a 'style' property where I can do arbitrary changes?</div><div type="Why do SAPUI5 controls not have a 'style' property where I can do arbitrary changes?">
+			
+			<p class="p">One tricky thing is that a control usually does not map to ONE HTML element, but to a whole
+				tree of HTML elements. Whatever is set to the 'style' property we would probably add
+				to the root element of this HTML tree – and only there, so you have no 'style'
+				access to inner parts. If you just want to override the height of a button, this
+				would actually work. But as soon as things get more complex, it will not work that
+				easy. And “more complex” already starts with the height of a
+					<span class="ph uicontrol">ComboBox</span>. The outer <samp class="ph codeph">&lt;div&gt;</samp> will get
+				the proper height, yes. And incidentally also the <samp class="ph codeph">&lt;input&gt;</samp> tag
+				inside, as it has 100% height set. But the dropdown arrow and the respective
+				button-kind-of-thing has a fixed height and the whole control will look pretty
+				broken, then.</p>
+
+			<p class="p">In other cases, when HTML elements are nested that break the CSS inheritance chain
+				e.g. like a <samp class="ph codeph">&lt;table&gt;</samp> does for font settings, you may change
+				the “style” to a different font and text color, but it will just do nothing.</p>
+
+			<p class="p">In general, we try to expose the obvious adaptation stuff in the API, for example the button
+				height. But the less obvious adaptations may require support inside the control to
+				work properly and as we cannot foresee and support everything you can do with a
+				'style' property, we raise the bar a little bit by requiring you to write CSS
+				(potentially using <samp class="ph codeph">.addStyleClass(…)</samp> on the respective control).
+				With CSS you can do what you cannot do with a 'style' property: tweak the inner HTML
+				components of a control.</p>
+
+			<p class="p">Plus: SAP applications (at least the more traditional ones – currently this seems to
+				be less of a rule, but I’m not sure it will stay like this forever) need to conform
+				to some visual design guideline and in general it is not even desired that
+				applications change the TextField height or used font however they like. As you can
+				use CSS, UI5 still supports that, but we shouldn’t make breaking the visual design
+				an option in our official API.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">How can I provide additional CSS which is not overwritten by the SAPUI5 CSS?</div><div type="How can I provide additional CSS which is not overwritten by the SAPUI5 CSS?"><p class="p">When SAPUI5 is used "normally" (which means: loaded by a<samp class="ph codeph">
+					&lt;script&gt;</samp> element in the <samp class="ph codeph">&lt;head&gt;</samp> of a page,
+				all libraries declared in the respective attribute of the script tag), it is
+				sufficient to just add the custom CSS at any place after the SPAUI5
+					<samp class="ph codeph">&lt;script&gt;</samp> element. SAPUI5 will insert its CSS links
+				immediately after the <samp class="ph codeph">&lt;script&gt;</samp> tag, so any later CSS will
+				appear later in the document and can thus overwrite the SAPUI5 CSS.</p>
+<p class="p">However,
+				it is important to understand the precedence rules of CSS! </p>
+<p class="p"> The order of
+				appearance is <strong class="ph b">not the only factor</strong> deciding which one of two or more
+				conflicting rules wins. Actually it is only the least important factor. In practice,
+				the most important (and maybe least known) factor is the "specificity" of the
+				selector belonging to a rule. </p>
+<p class="p"> For example, if one rule says <samp class="ph codeph">button
+					{color:red;} </samp>to make all button texts red and a second rule says
+					<samp class="ph codeph">div &gt; button {color:green;}</samp> to make all texts green in
+				buttons which are direct children of a <samp class="ph codeph">&lt;div&gt;</samp> element, the
+				second rule always wins, if applicable, because it is more specific. The order of
+				appearance in the document does not matter in this case. It would only matter if
+				both rules would start with an equal selector like
+					<samp class="ph codeph">button{color:***}</samp>.</p>
+<p class="p"> The order of loading is completely
+				irrelevant, only the position in the document counts in this case.</p>
+<p class="p">If you load
+				SAPUI5 not with a <samp class="ph codeph">&lt;script&gt;</samp> tag in the
+					<samp class="ph codeph">&lt;head&gt;</samp>, or if you did not specify all used control
+				libraries in the <samp class="ph codeph">&lt;script&gt; </samp>tag, but loaded some lateron when
+				the body was already loaded, you can still make sure a custom CSS appears later in
+				the document by loading it with <samp class="ph codeph">jQuery.sap.includeStyleSheet(stylesheetUrl[,
+					id]) </samp><strong class="ph b">after</strong> loading SAPUI5 or the dynamically loaded control
+				library.</p>
+<div class="sectiondiv"><span class="ph emphasis emphasis">More information</span><ul class="ul" id="loiod0db4d538edb43bca893acd4d6814a40__ul_djq_53s_f4"><li class="li">For the respective part of the CSS specification, see <a class="extlink" href="http://help.sap.com/disclaimer?site=http://www.w3.org/TR/CSS21/cascade.html#cascading-order">http://www.w3.org/TR/CSS21/cascade.html#cascading-order<img src="images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></li>
+<li class="li">For more on specificity, see <a class="extlink" href="http://help.sap.com/disclaimer?site=http://www.w3.org/TR/CSS21/cascade.html#specificity">http://www.w3.org/TR/CSS21/cascade.html#specificity<img src="images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>
+					</li>
+</ul>
+</div></div></div>
+<div class="section"><div class="section_title">I am adding a style class, but it does not work! Why?</div><div type="I am adding a style class, but it does not work! Why?">
+			
+			<p class="p">If you want to change some styling and use <samp class="ph codeph">control.addStyleClass(…)</samp> to add a
+				CSS class, but it does not seem to work, you first have to understand WHAT is not
+				working:</p>
+
+			<ul class="ul" id="loiod0db4d538edb43bca893acd4d6814a40__ol_xnq_lsy_c4"><li class="li"> Is the style class not added to the HTML?</li>
+<li class="li"> Or is the style class correctly added, but the style you supplied is not
+					applied by the browser?</li>
+</ul>
+
+			<p class="p">You can check this by inspecting the HTML with your browser's developer tools/ web
+				inspector.</p>
+
+			<ul class="ul" id="loiod0db4d538edb43bca893acd4d6814a40__ul_u4q_lsy_c4"><li class="li">If the style class is really not added to a control (which is rather unlikely),
+					it would be a bug that needs to be reported and fixed. Note: some entities are
+					not Controls, but only Elements (inherit from
+						<samp class="ph codeph">sap.ui.core.Element</samp>). They only sometimes have support for
+						<samp class="ph codeph">addStyleClass</samp>.</li>
+<li class="li">If the style class is there in the HTML, the bug is inside the CSS styles you
+					supplied: <ul class="ul" id="loiod0db4d538edb43bca893acd4d6814a40__ul_arq_lsy_c4"><li class="li">Are they loaded by the browser?</li>
+<li class="li">Are the selectors matching the element you want to style? You can again
+							check in the developer tools: they mostly list all styles which would
+							apply, but some are overriding others (those others are usually listed
+							striked-through). If your style is not listed at all, your CSS selector
+							seems to be wrong.</li>
+<li class="li">If your selector is fine, but other style rules override your styles
+							(potentially those from the original UI5 theme), then the CSS precedence
+							rules decided this. Please read the section "How can I provide
+							additional CSS which is not overwritten by the UI5 CSS?" above and see
+								<a class="extlink" href="http://help.sap.com/disclaimer?site=http://www.w3.org/TR/CSS21/cascade.html#cascading-order">http://www.w3.org/TR/CSS21/cascade.html#cascading-order<img src="images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a> for
+							the respective part of the CSS spec and <a class="extlink" href="http://help.sap.com/disclaimer?site=http://www.w3.org/TR/CSS21/cascade.html#specificity">http://www.w3.org/TR/CSS21/cascade.html#specificity<img src="images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a> for more
+							on specificity.</li>
+<li class="li">It could also be that your browser does not understand the CSS styles
+							you have written. Some browsers still display them in the developer
+							tools, some don't, so you may want to try changing very common styles
+							like the border to check whether selector and specificity are fine.</li>
+</ul>
+</li>
+</ul>
+
+		</div></div>
+<div class="section"><div class="section_title">When can I use UI Theme Designer and when do I have to do some separate steps?</div><div type="When can I use UI Theme Designer and when do I have to do some separate steps?">
+			
+			<div class="p">There is not one single way to create a new theme, but there are several options.
+				Which one to choose depends on several factors:<ul class="ul" id="loiod0db4d538edb43bca893acd4d6814a40__ul_cdq_jwp_qn"><li class="li">How different is the desired design from an existing theme?</li>
+<li class="li">Should the theme be used across several applications or just in one?</li>
+<li class="li">Are sufficient CSS skills available?</li>
+<li class="li">How much effort can be invested?</li>
+<li class="li">How structured and clean should the result be?</li>
+</ul>
+</div>
+
+			<p class="p">Depending on the answers it may be that one should not even create a new theme but
+				just adapt an existing one.</p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Theming FAQ";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

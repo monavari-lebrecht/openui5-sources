@@ -1,0 +1,73 @@
+<mvc:View
+	controllerName="sap.m.sample.TableVerticalAlignment.Table"
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<Table id="idProductsTable"
+		mode="MultiSelect"
+		inset="false"
+		items="{
+			path: '/ProductCollection',
+			sorter: {
+				path: 'Name'
+			}
+		}">
+		<headerToolbar>
+			<Toolbar>
+				<Label text="Products"></Label>
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			<Column>
+				<Text text="Product" />
+			</Column>
+			<Column
+				hAlign="Center"
+				width="12em"
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Quantity" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="Weight" />
+			</Column>
+			<Column
+				hAlign="Right">
+				<Text text="Unit Price" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle" type="Navigation">
+				<cells>
+					<ObjectIdentifier
+						title="{Name}"
+						text="{ProductId}"
+						class="sapMTableContentMargin" />
+					<l:Grid vSpacing="0" class="columnListItemGridPadding">
+						<l:content>
+							<Input value="{Quantity}">
+								<layoutData>
+									<l:GridData span="L8 M6 S6" />
+								</layoutData>
+							</Input>
+							<Text text="{UoM}" class="gridMarginTop" />
+						</l:content>
+					</l:Grid>
+					<ObjectNumber
+						number="{WeightMeasure}"
+						unit="{WeightUnit}"
+						state="{
+							path: 'WeightMeasure',
+							formatter: 'sap.m.sample.TableVerticalAlignment.Formatter.weightState'
+						}" />
+					<ObjectNumber
+						number="{Price}"
+						unit="{CurrencyCode}" />
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</mvc:View>

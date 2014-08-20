@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=9572076221936595"/>
+<title>Custom Formatter Functions</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio07e4b920f5734fd78fdaa236f26236d8">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Custom Formatter Functions</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">The examples for constructor declaration and bind property declaration (see <a class="xref" href="a2fe8e763014477e87990ff50657a0d0.html">Calculated Fields for Data
+				Binding</a>) do <strong class="ph b">not</strong> contain a formatter function. In this case, all values
+			of the various parts are joined together as a string with a space seperator. To specify
+			your own formatter, proceed as shown in the following example:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">oTxt.bindValue({
+                parts: [
+                    {path: "/firstName", type: new sap.ui.model.type.String()},
+                    {path: "/lastName", type: new sap.ui.model.type.String()},
+                    {path: "/amount", type: new sap.ui.model.type.Float()},
+                    {path: "/currency", type: new sap.ui.model.type.String()}
+                    ],
+               formatter: function(firstName, lastName, amount, currency){ // all parameters are strings
+                   if (firstName &amp;&amp; lastName) {
+                          return "Dear " + firstName + " " + lastName + ". Your current balance is: " + amount + " " + currency; 
+                   } else {
+                          return null;
+                   }
+               }
+}); </pre></div>
+<p class="p">The values provided in the parameters of the formatter function are already formatted to
+			the output type of the control, which is a string in this case (that is, the value
+			property of text field is a string). </p>
+<div class="section" id="loio07e4b920f5734fd78fdaa236f26236d8__section_N1002A_N10011_N10001"><div class="section_title">Custom Formatter Function with Raw Values</div><div type="Custom Formatter Function with Raw Values">
+			
+			<p class="p">If you do not want the provided values in the formatter function being already
+				formatted according to their type, you can set a flag to get the raw unformatted
+				values. These values are also stored in the model. In this case, the types of the
+				parts are ignored: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">oTxt.bindValue({
+        parts: [
+            {path: "/firstName", type: new sap.ui.model.type.String()},
+            {path: "/lastName", type: new sap.ui.model.type.String()},
+            {path: "/amount", type: new sap.ui.model.type.Float()},
+            {path: "/model2&gt;debts", type: new sap.ui.model.type.Float()}
+            ],
+        formatter: function(firstName, lastName, amount, debt){ // string, string, float, float
+            if (firstName &amp;&amp; lastName) {
+                    return "Dear " + firstName + " " + lastName + ". Your current balance is: " + (amount - debts); 
+            } else {
+                    return null;
+            }
+        },
+        useRawValues : true
+});</pre></div>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Custom Formatter Functions";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

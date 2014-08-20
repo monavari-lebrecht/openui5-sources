@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="An easy way to cover simple CustomListItems is to add an HTML control, in which you can write your HTML either directly, or if you use a model and data binding, you can use a formatter to integrate it between the HTML."/>
+<meta name="description" content="An easy way to cover simple CustomListItems is to add an HTML control, in which you can write your HTML either directly, or if you use a model and data binding, you can use a formatter to integrate it between the HTML."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=12904743157029785"/>
+<title>Creating a Custom List Item</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio4f7d43c459844bb7b5b5771dbec22126">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Creating a Custom List Item</h1>
+<div class="body taskbody"><p class="shortdesc">An easy way to cover simple <samp class="ph codeph">CustomListItems</samp> is to add an HTML control,
+		in which you can write your HTML either directly, or if you use a model and data binding,
+		you can use a formatter to integrate it between the HTML.</p>
+<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<div class="note caution" id="loio4f7d43c459844bb7b5b5771dbec22126__note_N10229_N10211_N101F1_N10011_N10001"><span class="cautiontitle">Caution</span> This approach only
+				works when you use JavaScript for the UI. When using a declarative model, such as
+				XML Views, use an on-the-fly control, see <a class="xref" href="91f1703b6f4d1014b6dd926db0e91070.html">Developing UI5 Controls in
+					JavaScript</a>.</div>
+
+		</div><div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><div class="li step p"><span class="ph cmd">Let's assume we have a model with first name, last name, age, and city properties. We
+					create a <samp class="ph codeph">CustomListItem</samp>, add an HTML control to the list item
+					content and than write a formatter as follows: </span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+var myCustomListItem = new sap.m.CustomListItem({
+  content: new sap.ui.core.HTML({
+    content: { parts: [
+                          {path: "firstName"},
+                          {path: "lastName"},
+                          {path: "age"},
+                          {path: "city"}
+                      ],
+            formatter: function(firstName, lastName, age, city) {
+    return "&lt;div&gt;&lt;div class='myStyleClass'&gt;Name: " + firstName + " " + lastName 
+        + "&lt;/div&gt;&lt;div&gt;Age: " + age +"&lt;/div&gt;&lt;div&gt;City: " + city +"&lt;/div&gt;&lt;/div&gt;";
+    }
+    }}),
+  type : 'Navigation' //({type} if provided by the model)
+  tap : myTapEvent
+});</pre></div>
+
+				</div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Creating a Custom List Item";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

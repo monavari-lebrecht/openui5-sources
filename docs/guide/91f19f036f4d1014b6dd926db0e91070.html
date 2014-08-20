@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=8678764060874"/>
+<title>Implementing Focus Handling</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f19f036f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Implementing Focus Handling</h1>
+<div class="body"><p class="p">Each control provided by the SAPUI5 framework has its own behavior for focus handling, depending
+			on the functionality that is provided by the control. Complex controls and their
+			embedded content constitute the highest level of complexity. </p>
+<p class="p">SAPUI5 core provides mechanisms for observing the moving focus in an application page for
+			custom controls. The information is preserved for refocusing elements after rerendering.
+			The focus triggers event firing. However, due to the high degree of flexibility in
+			control rendering, a functionality tailored to the respective controls is required. For
+			this, the framework provides helper functions for the implementation of focus
+			handling.</p>
+<p class="p">The base class for elements (<samp class="ph codeph">Element.js</samp>) provides the following four methods
+			to support the implementation of focus handling: </p>
+<ul class="ul" id="loio91f19f036f4d1014b6dd926db0e91070__ul_cbn_4g4_bn"><li class="li">
+				<p class="p">
+					<samp class="ph codeph">Element.getFocusDomRef()</samp>
+				</p>
+
+				<p class="p">Once a visible element is rendered, it has a Document Object Model (DOM) representation. The
+					root DOM node can be accessed by using the method <samp class="ph codeph">getDomRef()</samp>
+					on the element. The root DOM node is the default focused DOM node. After
+					rendering, the framework asks the control for its focus DOM node by using the
+						<samp class="ph codeph">getFocusDomRef()</samp> method. If the root DOM node does
+						<span class="ph emphasis emphasis">not</span> represent the element that should have the focus,
+					you have to return another DOM node by overriding the
+						<samp class="ph codeph">getFocusDomRef()</samp> method. </p>
+
+			</li>
+<li class="li">
+				<p class="p">
+					<samp class="ph codeph">Element.focus()</samp>
+				</p>
+
+				<p class="p">The <samp class="ph codeph">focus()</samp> method sets the focus on the element. This is done
+					using the focus DOM node. </p>
+
+			</li>
+<li class="li">
+				<p class="p">
+					<samp class="ph codeph">Element.getFocusInfo()</samp>
+				</p>
+
+				<p class="p">For some controls, it is even more difficult to apply the focus once the control has been
+					rerendered. List controls, for example, have their own internal focus handling
+					and set the focus on the different items. A data table moves the focus over a
+					matrix of cells. The requirement is that a control can apply the focus to its
+					exact previous position after rerendering. To implement this, override the
+						<samp class="ph codeph">getFocusInfo()</samp> method and serialize the focus state into a
+					JSON object and return it. Before rendering, the render manager calls this
+					method for the element instance and stores this information for future use.
+					After rendering, it calls the <samp class="ph codeph">applyFocusInfo()</samp> methodand passes
+					back the serialized object. The cursor position of a <samp class="ph codeph">TextField</samp>
+					control, for example, can also be stored in such an object.</p>
+
+			</li>
+<li class="li">
+				<p class="p">
+					<samp class="ph codeph">Element.applyFocusInfo(oFocusInfo)</samp>
+				</p>
+
+				<p class="p">The <samp class="ph codeph">applyFocusInfo()</samp> method applies the focus to the element after
+					rerendering. You use this method if a different behavior is expected for the
+					element. The default implementation of this method sets the focus as it is
+					implemented in the <samp class="ph codeph">focus()</samp> method (see above). </p>
+
+			</li>
+</ul>
+<div class="section" id="loio91f19f036f4d1014b6dd926db0e91070__section_52A752721BCF4CFBB9D724F17370144A"><div class="section_title">Example</div><div type="Example"> 
+		 
+		<p class="p">In the following example, the control would usually set the focus on the second child node of
+				its root node. In this case, simply override the <samp class="ph codeph">getFocusDomRef()</samp>
+				method:</p>
+ 
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.commons.&lt;SampleControl&gt;.getFocusDomRef = function() {
+   return this.getDomRef().firstChild.nextSibling;
+}</pre></div>
+ 
+		<p class="p">Another control generally sets the focus back to the element that
+		  previously had the focus. Therefore, it overrides the methods 
+		  <samp class="ph codeph">getFocusInfo</samp> and 
+		  <samp class="ph codeph">applyFocusInfo</samp>. 
+		</p>
+ 
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.commons.&lt;SampleControl&gt;.getFocusInfo = function() {
+   return {id:this.getId(),idx:this.&lt;myFocusElementIndex&gt;};
+}
+
+sap.ui.commons.&lt;SampleControl&gt;.applyFocusInfo = function(oFocusInfo) {
+   var oDomRef = this.getDomRef();
+   if (oDomRef) {
+      this.&lt;myFocusElementIndex&gt; = oFocusInfo.idx;
+      this.focus();
+   }
+}</pre></div>
+ 
+	 </div></div>
+<div class="section"><div class="section_title">API Reference</div><div type="API Reference">
+			
+			<p class="p"><a class="xref" href="../../docs/api/symbols/sap.ui.core.Element.html">sap.ui.core.Element</a>.</p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="1f2d73b86e414d35970e405986f07e76.html">Convenience Functionality</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Implementing Focus Handling";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

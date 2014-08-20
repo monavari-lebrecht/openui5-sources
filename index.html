@@ -1,0 +1,206 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta charset="UTF-8" />
+		<title>OpenUI5 SDK - Demo Kit</title>
+		<link type="image/x-icon" href="resources/sap/ui/core/mimes/logo/txtonly_16x16.ico" rel="shortcut icon" />
+		<link type="image/x-icon" href="resources/sap/ui/core/mimes/logo/txtonly_16x16.ico" rel="icon" />
+
+		<script id="sap-ui-bootstrap"
+				src="resources/sap-ui-core.js"
+				data-sap-ui-theme="sap_bluecrystal"
+				data-sap-ui-preload="async"
+				data-sap-ui-libs="sap.ui.commons, sap.ui.ux3, sap.ui.demokit"
+				>
+		</script>
+
+		<!-- the dynamic-mode-check script distinguishes between a static mode where no search is available   -->
+		<!-- and a rich mode where a backend provides search results. The default version of the file handles -->
+		<!-- the rich mode. it is replaced with a static mode version during the lightening build             -->
+		<script src="js/dynamic-mode-check.js"></script>
+
+		<script>
+		
+			var oDemokit;
+			
+			sap.ui.getCore().attachInit(function() {
+
+				// determine the version to display
+				var sVersion;
+				try {
+					var oVersionInfo = sap.ui.getVersionInfo();
+					sVersion = oVersionInfo.version || sap.ui.version;
+				} catch (ex) {
+					sVersion = sap.ui.version;
+				}
+
+				// init the UI
+				oDemokit = new sap.ui.demokit.DemokitApp("UI development toolkit for HTML5 - Demo Kit", sVersion, ["sap_bluecrystal", "sap_goldreflection", "sap_hcb"]);
+				oDemokit.createUI(isDynamicInstallation(), oDemokit.getInitialPage("content/Overview.html"));
+				oDemokit.placeAt('ctrRoot');
+
+				// now define content
+				oDemokit.addIndex("home", {
+					caption : "Overview",
+					index : {
+						ref: "content/Overview.html",
+						links : [
+							{text: "Overview", ref:"content/Overview.html"}
+						]
+					}
+				});
+			
+				oDemokit.addIndex("devguidekm", {
+					caption : "Developer Guide", 
+					url : "docs/guide/index.json", 
+					transformer : sap.ui.demokit.DemokitApp.addReleaseNotesToDevGuide
+				});
+				
+				(function() {
+					
+					function transformer(oResponse) {
+	
+						var oIndexData = oResponse;
+						
+						function transformNode(sPath, oNode) {
+							
+							if ( !oNode.alias && oNode.ref ) {
+								var sAlias = oNode.ref.split('/').slice(-1)[0];
+								if ( sAlias == "index.html" ) {
+									sAlias = sPath + oNode.text + "/" + "index.html";
+								} else {
+									sAlias = sPath + sAlias;
+								}
+								if ( sAlias !== oNode.ref ) {
+									oNode.alias = sAlias;
+								}
+							}
+	
+							// Icon URL is computed automatically: e.g. DropDownBox -> /ValueHolders/images/ctrls/dropdownbox-icon.png 
+							// With the ico property it is possible to define an alternative icon.
+							// If no icon is available please add "ico:false"
+							if ( oNode.ico !== false && oNode.ref ) {
+								var sIconName = oNode.ico ? oNode.ico : "images/ctrls/" + (oNode.text.toLowerCase() + "-icon.png"); // TODO use first control instead?
+								var sIconPrefix = oNode.ref.substring(0, oNode.ref.lastIndexOf("/")+1);
+								oNode.ico = sIconPrefix + sIconName;
+							}
+	
+							if ( typeof oNode.controls === "string" ) {
+								oNode.controls = oNode.controls.split(/,/); 
+							}
+							if ( jQuery.isArray(oNode.controls) ) {
+								oDemokit.registerPageForType(oNode.ref, oNode.controls);
+							}
+							
+							if ( oNode.links ) {
+								for(var i=0; i<oNode.links.length; i++) { 
+									transformNode(sPath + oNode.text + "/", oNode.links[i]);
+								}
+							}
+						}
+						
+						oIndexData.text = "content";
+						transformNode("", oIndexData);
+						oIndexData.ref = "content/Controls/index.html"; // TODO determine default from index.json
+						return oIndexData;
+					}
+					
+					oDemokit.addIndex("controls", {
+						caption: "Controls", 
+						url : "content/index.json", 
+						themable: true,
+						transformer : transformer 
+					});
+					
+					oDemokit.addIndex("explored", {
+						caption : "Explored",
+						newWindow : true,
+						index : {
+							ref: "explored.html",
+							links : [
+								{text: "Explored", ref: "explored.html"}
+							]
+						}
+					});
+	
+				}());
+
+				(function() {
+					
+					function transformer(oResponse) {
+						
+						var oJSDocLinks = {
+							ref: "docs/api/symbols/sap.ui.html",
+							links: []
+						};
+	
+						function initLinks(oParent) {
+							var $ = jQuery(this);
+							var aLinks = [];
+							var oLink = {text: $.children("name").text(), tooltip: "", ref: "docs/api/" + $.children("ref").text(), links: []};
+							oParent.links.push(oLink);
+							var $children = $.children("children").children();
+							if($children.size() > 0){
+								$children.each(function(){ initLinks.call(this, oLink); }); 
+							}
+						}
+	
+						if ( oResponse ) {
+							jQuery(oResponse.documentElement).children("namespace").each(function(){ initLinks.call(this, oJSDocLinks); });
+						} 
+	
+						// TODO include in index
+						oJSDocLinks.links.push({text: "Experimental APIs", tooltip: "", ref: "docs/api/experimental.html", links: []});
+						oJSDocLinks.links.push({text: "Deprecated APIs", tooltip: "", ref: "docs/api/deprecation.html", links: []});
+						oJSDocLinks.links.push({text: "Security Relevant APIs", tooltip: "", ref: "docs/api/security.html", links: []});
+	
+						return oJSDocLinks;
+					}
+					
+					oDemokit.addIndex("api", {
+						caption: "API Reference", 
+						url : "docs/api/index.xml", 
+						transformer: transformer
+					});
+	
+				}());
+
+				oDemokit.addIndex("demoApps", {
+					caption : "Demo Apps",
+					index : {
+						ref: "demoapps.html",
+						links : [
+							{text: "Demo Apps", ref: "demoapps.html"}
+						]
+					}
+				});
+
+				oDemokit.addIndex("versioninfo", {
+					caption : "Version Info",
+					index : {
+						ref: "versioninfo.html",
+						links : [
+							{text: "Version Info", ref:"versioninfo.html"}
+						]
+					}
+				});
+
+				oDemokit.addIndex("license", {
+					caption : "License",
+					index : {
+						ref: "LICENSE.txt",
+						links : [
+							{text: "License", ref:"LICENSE.txt"}
+						]
+					}
+				});
+
+			});
+
+		</script>
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="ctrRoot"></div>
+	</body>
+</html>

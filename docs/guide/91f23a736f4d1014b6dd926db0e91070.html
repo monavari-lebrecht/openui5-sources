@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=5780837292715632"/>
+<title>Modularization and Dependency Management</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f23a736f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Modularization and Dependency Management</h1>
+<div class="body"><p class="p">The SAPUI5 framework has built-in support for modularizing comprehensive JavaScript applications.
+			That means, instead of defining and loading one large bundle of JavaScript code, an
+			application can be splitted into smaller parts which then can be loaded at runtime at
+			the time when they are needed. These smaller individual files are called
+				<dfn class="term">modules</dfn>. </p>
+<p class="p">A module is a JavaScript file that can be loaded and executed in a browser. There are no
+			rules or definitions what code belongs to a module, and what code does <strong class="ph b">not</strong>. The
+			content bundled in a module is up to the developer, but typically the content has a
+			common topic, such as forming a JavaScript class or namespace or the contained functions
+			address a specific topic, for example client to server communication or mathematical
+			functions.</p>
+<p class="p">Modules have no predefined syntax or structure, but module developers can use the
+			following features:</p>
+<ul class="ul" id="loio91f23a736f4d1014b6dd926db0e91070__ul_uz1_rtr_m4"><li class="li">
+				<p class="p"><strong class="ph b">Name</strong></p>
+
+				<p class="p">The name identifies the module and is used with
+						<samp class="ph codeph">jQuery.sap.require</samp> to load the module. As human readers
+					associate a module with the main JavaScript object declared in it, the module
+					names by convention are a hierarchical sequence of dot-separated identifiers
+					like <samp class="ph codeph">sap.ui.core.Core</samp>. It is best practice to use all but the
+					last identifier to group modules in a logical and/or organizational order,
+					similar to packages in Java, and to use the last identifier to give the module a
+					semantical name.</p>
+
+			</li>
+<li class="li">
+				<p class="p"><strong class="ph b">Declaration</strong></p>
+
+				<p class="p"> Modules can declare themselves by calling the static <samp class="ph codeph">jQuery.sap.declare</samp>
+					function with their name. This helps SAPUI5 to check at runtime whether a loaded
+					module contains the expected content by comparing the required name against the
+					declared name. As a side effect, <samp class="ph codeph">jQuery.sap.declare</samp> ensures
+					that the parent namespace of the module name exists in the current global
+					namespace (window). For more information, see <a class="xref" href="../../docs/api/symbols/jQuery.sap.html">jQuery.sap.declare</a>.</p>
+
+				<p class="p">For modules without declaration, the framework assumes that the module has the expected
+					content and declares it with the name that was used for loading. In some cases a
+					module declaration is mandatory, see <a class="xref" href="47e5d26dfca54ce8a4de5882bfd40b18.html">Avoiding Duplicates</a>.</p>
+
+			</li>
+<li class="li">
+				<p class="p"><strong class="ph b">Description</strong></p>
+
+				<p class="p">The description is any JavaScript comment preceeding the module's declaration
+					statement and is intended to help to decide whether a module is useful for the
+					intended purpose. The configuration UI displays the description next to the
+					module name.</p>
+
+			</li>
+<li class="li">
+				<p class="p"><strong class="ph b">Dependencies</strong></p>
+
+				<p class="p">Modules can use the <samp class="ph codeph">jQuery.sap.require</samp> method to load other
+					modules they depend on. While <samp class="ph codeph">jQuery.sap.require</samp> internally has
+					the effect of a <samp class="ph codeph">loadModule</samp> call, it can also be regarded as a
+					dependency declaration. The dependency declarations can be evaluated at runtime,
+					but can also be analyzed at built time or at runtime on the server.</p>
+
+			</li>
+</ul>
+<div class="example"><h2 class="exampletitle">Example</h2>
+			<p class="p">The following code snippet shows a typical module that uses all of features listed above. The
+				name of the module is <samp class="ph codeph">my.useful.SampleModule</samp>):</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">   /*
+    * A short documentation of the module. This documentation is not evaluated at runtime, only during build time
+    */    
+   jQuery.sap.declare("my.useful.SampleModule"); // declaration of the module. Will ensure that the containing namespace 'my.useful' exists.
+
+   // list of dependencies of this module
+   jQuery.sap.require("sap.ui.core.Core");
+   jQuery.sap.require("some.other.Module");
+   jQuery.sap.require("you.can.Also", "list.multiple.Modules", "if.you.Want");
+   ...
+
+   // create the 'main' object of the module
+   my.useful.SampleModule = {};</pre></div>
+
+		</div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Modularization and Dependency Management";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

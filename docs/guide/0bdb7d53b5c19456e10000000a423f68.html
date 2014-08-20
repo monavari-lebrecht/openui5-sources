@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="LOIO.FOLDER.IWB_FOLDER_ID" content="1234AC50C238B656E10000000A445394"/>
+<meta name="LOIO.FOLDER.IWB_TECH_NAME" content="HELPX.UI_EXT"/>
+<meta name="LOIO.FOLDER.IWB_FOLDER_GROUP" content="SAPXH"/>
+<meta name="LOIO.FOLDER.IWB_SHH_KEY" content=""/>
+<meta name="LOIO.FOLDER.IWB_TRANSLATION_MEMORY" content=""/>
+<meta name="LOIO.FOLDER.TERM_DOMAIN" content="FF"/>
+<meta name="LOIO.IWB_TYPE" content="ICG"/>
+<meta name="LOIO.IWB_SHH_KEY" content=""/>
+<meta name="LOIO.KW_CONVREF.CLASS" content=""/>
+<meta name="LOIO.KW_CONVREF.OBJID" content=""/>
+<meta name="PHIO.IWB_INDUSTRY" content="SHL"/>
+<meta name="PHIO.RELEASE" content="1.0_2014Q1"/>
+<meta name="PHIO.CREATED_AT" content="20140522103026"/>
+<meta name="PHIO.LAST_CHANGED_AT" content="20140522103026"/>
+<meta name="PHIO.IWB_LEVEL" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=14198120068279463"/>
+<title>Rendering of Charts</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio0bdb7d53b5c19456e10000000a423f68">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Rendering of Charts</h1>
+<div class="body"><p class="p">The rendering of charts includes the following elements:</p>
+<ul class="ul"><li class="li"><p class="p">Chart title</p>
+<p class="p">The chart title is taken from the <span class="ph sap-technical-name sap-technical-name">longTitle</span> property of the step object. It is displayed above any representation of a particular analysis step.</p>
+ </li>
+<li class="li"><p class="p">Titles of the x-axis and y-axis</p>
+<p class="p">The general format of the title is &lt;title (unit)&gt;. It can be determined in one of the following ways:</p>
+ <ul class="ul"><li class="li"><p class="p">The tile is first read from the <span class="ph sap-technical-name sap-technical-name">fieldDesc</span> property of the <span class="ph sap-technical-name sap-technical-name">representation</span> object in the analytical content configuration file, if this property has been configured.</p>
+</li>
+<li class="li"><p class="p">If the <span class="ph sap-technical-name sap-technical-name">fieldDesc</span> property has not been configured, but the field has a corresponding <span class="ph sap-technical-name sap-technical-name">sap:text</span> annotation in the OData metadata, the system looks up the field name specified in the annotation and retrieves the <span class="ph sap-technical-name sap-technical-name">sap:label</span> value of that field. This applies to those fields for which you want to display the name rather than an ID, for example, the customer ID.</p>
+</li>
+<li class="li"><p class="p">If the <span class="ph sap-technical-name sap-technical-name">fieldDesc</span> property has not been configured and a <span class="ph sap-technical-name sap-technical-name">sap:text</span> annotation does not exist, the system looks up the <span class="ph sap-technical-name sap-technical-name">sap:label</span> annotation of the OData metadata, which retrieves the label specified for this field in the SAP HANA model.</p>
+</li>
+</ul>
+ </li>
+<li class="li"><p class="p">Value formatting rules:</p>
+ <ul class="ul"><li class="li"><p class="p">All fields of type <span class="ph sap-technical-name sap-technical-name">CalendarYearMonth</span> are formatted to MM YYYY.</p>
+</li>
+<li class="li"><p class="p">If a <span class="ph sap-technical-name sap-technical-name">sap:text</span> annotation exists in the metadata of a field, the value is formatted to <span class="ph sap-technical-name sap-technical-name">textValue (keyValue)</span>, where <span class="ph sap-technical-name sap-technical-name">textValue</span> is the value of the <span class="ph sap-technical-name sap-technical-name">sap:text</span> field, and <span class="ph sap-technical-name sap-technical-name">keyValue</span> is the value of the actual field, which is given as dimension or measure.</p>
+</li>
+<li class="li"><p class="p">In all other cases, the value is displayed without any formatting.</p>
+</li>
+</ul>
+ </li>
+<li class="li"><p class="p">Legend</p>
+<p class="p">A legend is displayed for all charts that have multiple dimensions or measures. The values can be formatted as described in the value formatting rules.</p>
+ </li>
+<li class="li"><p class="p">Labels of the x-axis and y-axis</p>
+<p class="p">The rendering of the labels of the axes is defined by the behavior of the core chart. The values can be formatted as described in the value formatting rules.</p>
+ </li>
+</ul>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Rendering of Charts";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

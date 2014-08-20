@@ -1,0 +1,320 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.core.routing.Route</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class sap.ui.core.routing.Route
+					</h1>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p></p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="Instantiates a SAPUI5 Route">new <a href="../symbols/sap.ui.core.routing.Route.html#constructor">sap.ui.core.routing.Route</a></b>
+										<span class='signature'>(<span title="(sap.ui.core.routing.Router) The parent route">oParent</span>, <span title="(object) configuration object for the route  oConfig.pattern: the url pattern where it needs to match agains oConfig.name: the name of the route oConfig.viewId: An optional id for the view which is created.">oConfig</span>, <span title="(sap.ui.core.routing.Route) The parent route">oParent</span>)</span>
+										<span class='description'>Instantiates a SAPUI5 Route</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Return the pattern of the route."><a href="../symbols/sap.ui.core.routing.Route.html#getPattern">getPattern</a></b><span class='signature'>()</span>
+									<span class='description'>Return the pattern of the route.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the URL for the route and replaces the placeholders with the values in oParameters"><a href="../symbols/sap.ui.core.routing.Route.html#getURL">getURL</a></b><span class='signature'>(<span title="(object) for the route">Parameters</span>)</span>
+									<span class='description'>Returns the URL for the route and replaces the placeholders with the values in oParameters</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.ui.core.routing.Route</b>(<span title="(sap.ui.core.routing.Router) The parent route">oParent</span>, <span title="(object) configuration object for the route  oConfig.pattern: the url pattern where it needs to match agains oConfig.name: the name of the route oConfig.viewId: An optional id for the view which is created.">oConfig</span>, <span title="(sap.ui.core.routing.Route) The parent route">oParent</span>)
+										</div>
+										
+										<div class="full-description">
+											Instantiates a SAPUI5 Route
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.routing.Router.html">sap.ui.core.routing.Router</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oParent</b>
+													</td>
+													<td class="methodItemDesc">
+												    The parent route
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oConfig</b>
+													</td>
+													<td class="methodItemDesc">
+												    configuration object for the route 
+<ul>
+       <li>oConfig.pattern:           the url pattern where it needs to match agains</li>
+       <li>oConfig.name:              the name of the route</li>
+       <li>oConfig.viewId:            An optional id for the view which is created. No automatic id creation will be used for the view of this route.</li>
+       <li>oConfig.view:              The name of a view that will be created, the first time this route will be matched. To place the view into a Control use the targetAggregation and targetControl. Views will only be created once.</li>
+       <li>oConfig.viewType:          The type of the view that is going to be created</li>
+       <li>oConfig.viewPath:          A prefix that will be prependet in front of the view eg: view is set to "myView" and viewPath is set to "myApp" - the created view will be "myApp.myView".</li>
+       <li>oConfig.targetParent:      the id of the parent of the targetControl - if targetParent is undefined and the route is a subroute, the targetControl of the parent route is taken.</li>
+       <li>oConfig.targetControl:     Views will be put into a container Control, this might be a Shell control or a NavContainer? if working with mobile, or any other container. The id of this control has to be put in here.</li>
+       <li>oConfig.targetAggregation: The name of an aggregation of the targetControl, that contains views. Eg: a NavigationContainer? has an aggregation Pages , another Example is the Shell it has Content.</li>
+       <li>oConfig.clearTarget:       Defines a boolean that can be passed to specify if the aggregation should be cleared before adding the View to it.</li>
+       <li>oConfig.callback: a function which is executed after the route matched</li>
+</ul>
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.routing.Route.html">sap.ui.core.routing.Route</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oParent</b>
+													</td>
+													<td class="methodItemDesc">
+												    The parent route
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod'>
+										<a name="getPattern"> </a>
+										<div class="itemTitle icon">
+											getPattern<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Return the pattern of the route. If there are multiple patterns, the first pattern is returned
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the routes pattern
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getURL"> </a>
+										<div class="itemTitle icon">
+											getURL<span class="signature">(<span title="(object) for the route">Parameters</span>)</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Returns the URL for the route and replaces the placeholders with the values in oParameters
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>Parameters</b>
+													</td>
+													<td class="methodItemDesc">
+												    for the route
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the unencoded pattern with interpolated arguments
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

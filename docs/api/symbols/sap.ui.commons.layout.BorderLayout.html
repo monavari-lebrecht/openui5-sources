@@ -1,0 +1,2080 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.commons.layout.BorderLayout</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class sap.ui.commons.layout.BorderLayout
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.ui.core.Control" href="../symbols/sap.ui.core.Control.html">Control</a></div>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>Based upon the border layout as it comes with the Java standard. Using this layout, you are able to divide your available UI space into five areas whose sizes can be defined. These areas are: Top: Header; Bottom: Footer; Begin: Left/right-hand side panel; Center: Content area
+in the middle; End: Right/left-hand side panel.</p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="Constructor for a new layout/BorderLayout.">new <a href="../symbols/sap.ui.commons.layout.BorderLayout.html#constructor">sap.ui.commons.layout.BorderLayout</a></b>
+										<span class='signature'>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)</span>
+										<span class='description'>Constructor for a new layout/BorderLayout.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+						
+						
+						
+						
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Creates a new subclass of class sap.ui.commons.layout.BorderLayout with name sClassName and enriches it with the information contained in oClassInfo."><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#.extend">sap.ui.commons.layout.BorderLayout.extend</a></b><span class='signature'>(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Creates a new subclass of class sap.ui.commons.layout.BorderLayout with name <code>sClassName</code> and enriches it with the information contained in <code>oClassInfo</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Adds controls to the specified area"><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#addContent">addContent</a></b><span class='signature'>(<span title="(sap.ui.commons.layout.BorderLayoutAreaTypes) Specifies the area where controls will be added">oAreaId</span>, <span title="(sap.ui.core.Control) N controls can be submitted to be added.">oControls</span>)</span>
+									<span class='description'>Adds controls to the specified area</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Creates the specified area and adds the given controls to it."><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#createArea">createArea</a></b><span class='signature'>(<span title="(sap.ui.commons.layout.BorderLayoutAreaTypes) Specifies which area will be created.">oAreaId</span>, <span title="(sap.ui.core.Control) Any number of controls can be submitted to be added to the newly created area; where each control is submitted as one argument.">oControls</span>)</span>
+									<span class='description'>Creates the specified area and adds the given controls to it.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys the begin in the aggregation named begin."><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#destroyBegin">destroyBegin</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys the begin in the aggregation named <code>begin</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys the bottom in the aggregation named bottom."><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#destroyBottom">destroyBottom</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys the bottom in the aggregation named <code>bottom</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys the center in the aggregation named center."><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#destroyCenter">destroyCenter</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys the center in the aggregation named <code>center</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys the content of the specified area"><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#destroyContent">destroyContent</a></b><span class='signature'>(<span title="(sap.ui.commons.layout.BorderLayoutAreaTypes) Specifies the area whose content will be destroyed">oAreaId</span>)</span>
+									<span class='description'>Destroys the content of the specified area</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys the end in the aggregation named end."><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#destroyEnd">destroyEnd</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys the end in the aggregation named <code>end</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys the top in the aggregation named top."><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#destroyTop">destroyTop</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys the top in the aggregation named <code>top</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the area of the given type."><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#getArea">getArea</a></b><span class='signature'>(<span title="(sap.ui.commons.layout.BorderLayoutAreaTypes) sap.ui.commons.layout.BorderLayoutAreaTypes">oAreaId</span>, <span title="(boolean) boolean">bCreate</span>)</span>
+									<span class='description'>Returns the area of the given type.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the object of the specified area."><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#getAreaById">getAreaById</a></b><span class='signature'>(<span title="(sap.ui.commons.layout.BorderLayoutAreaTypes) Specifies the area whose object will be returned.">oAreaId</span>)</span>
+									<span class='description'>Returns the object of the specified area.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns a JSON-like object that contains all property values of the requested area"><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#getAreaData">getAreaData</a></b><span class='signature'>(<span title="(sap.ui.commons.layout.BorderLayoutAreaTypes) Specifies the area whose data will be returned">oAreaId</span>)</span>
+									<span class='description'>Returns a JSON-like object that contains all property values of the requested area</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation begin."><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#getBegin">getBegin</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>begin</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation bottom."><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#getBottom">getBottom</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>bottom</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation center."><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#getCenter">getCenter</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>center</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns all controls inside the specified area inside an array"><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#getContent">getContent</a></b><span class='signature'>(<span title="(sap.ui.commons.layout.BorderLayoutAreaTypes) Specifies the area whose content controls shall be returned.">oAreaId</span>)</span>
+									<span class='description'>Returns all controls inside the specified area inside an array</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation end."><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#getEnd">getEnd</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>end</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property height."><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#getHeight">getHeight</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>height</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation top."><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#getTop">getTop</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>top</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property width."><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#getWidth">getWidth</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>width</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Determines the index of a given content control"><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#indexOfContent">indexOfContent</a></b><span class='signature'>(<span title="(sap.ui.commons.layout.BorderLayoutAreaTypes) Specifies the area that will be searched">oAreaId</span>, <span title="(sap.ui.core.Control) Specifies the control whose index will be searched">oContent</span>)</span>
+									<span class='description'>Determines the index of a given content control</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Inserts controls to an area at a given index."><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#insertContent">insertContent</a></b><span class='signature'>(<span title="(sap.ui.commons.layout.BorderLayoutAreaTypes) Specifies the area where the controls shall be inserted.">oAreaId</span>, <span title="(int) Specifies the index where the controls shall be added.">iIndex</span>, <span title="(sap.ui.core.Control) N controls can be submitted to be added.">oControl</span>)</span>
+									<span class='description'>Inserts controls to an area at a given index.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes all content from an area"><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#removeAllContent">removeAllContent</a></b><span class='signature'>(<span title="(sap.ui.commons.layout.BorderLayoutAreaTypes) Specifies the area whose content shall be removed">oAreaId</span>)</span>
+									<span class='description'>Removes all content from an area</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes the content with the given index from an area"><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#removeContent">removeContent</a></b><span class='signature'>(<span title="(sap.ui.commons.layout.BorderLayoutAreaTypes) Specifies the area whose content shall be removed">oAreaId</span>, <span title="(int) Specifies the index of the control that shall be removed">iIndex</span>)</span>
+									<span class='description'>Removes the content with the given index from an area</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Sets the properties of the specified area with the given values"><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#setAreaData">setAreaData</a></b><span class='signature'>(<span title="(sap.ui.commons.layout.BorderLayoutAreaTypes) Specifies the area whose properties will be set">oAreaId</span>, <span title="(object) JSON-like object that contains the values to be set">oData</span>)</span>
+									<span class='description'>Sets the properties of the specified area with the given values</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for the aggregated begin."><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#setBegin">setBegin</a></b><span class='signature'>(<span title="(sap.ui.commons.layout.BorderLayoutArea) sap.ui.commons.layout.BorderLayoutArea">oBegin</span>)</span>
+									<span class='description'>Setter for the aggregated <code>begin</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for the aggregated bottom."><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#setBottom">setBottom</a></b><span class='signature'>(<span title="(sap.ui.commons.layout.BorderLayoutArea) sap.ui.commons.layout.BorderLayoutArea">oBottom</span>)</span>
+									<span class='description'>Setter for the aggregated <code>bottom</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for the aggregated center."><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#setCenter">setCenter</a></b><span class='signature'>(<span title="(sap.ui.commons.layout.BorderLayoutArea) sap.ui.commons.layout.BorderLayoutArea">oCenter</span>)</span>
+									<span class='description'>Setter for the aggregated <code>center</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for the aggregated end."><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#setEnd">setEnd</a></b><span class='signature'>(<span title="(sap.ui.commons.layout.BorderLayoutArea) sap.ui.commons.layout.BorderLayoutArea">oEnd</span>)</span>
+									<span class='description'>Setter for the aggregated <code>end</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property height."><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#setHeight">setHeight</a></b><span class='signature'>(<span title="(sap.ui.core.CSSSize) new value for property height">sHeight</span>)</span>
+									<span class='description'>Setter for property <code>height</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for the aggregated top."><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#setTop">setTop</a></b><span class='signature'>(<span title="(sap.ui.commons.layout.BorderLayoutArea) sap.ui.commons.layout.BorderLayoutArea">oTop</span>)</span>
+									<span class='description'>Setter for the aggregated <code>top</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property width."><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#setWidth">setWidth</a></b><span class='signature'>(<span title="(sap.ui.core.CSSSize) new value for property width">sWidth</span>)</span>
+									<span class='description'>Setter for property <code>width</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod deprecated">
+									<b class="icon" title="Getter for property rtl."><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#getRtl">getRtl</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>rtl</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod deprecated">
+									<b class="icon" title="Setter for property rtl."><a href="../symbols/sap.ui.commons.layout.BorderLayout.html#setRtl">setRtl</a></b><span class='signature'>(<span title="(boolean) new value for property rtl">bRtl</span>)</span>
+									<span class='description'>Setter for property <code>rtl</code>.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Control.html#addStyleClass">addStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#allowTextSelection">allowTextSelection</a>, <a href="../symbols/sap.ui.core.Control.html#attachBrowserEvent">attachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#clone">clone</a>, <a href="../symbols/sap.ui.core.Control.html#detachBrowserEvent">detachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#getBusy">getBusy</a>, <a href="../symbols/sap.ui.core.Control.html#getBusyIndicatorDelay">getBusyIndicatorDelay</a>, <a href="../symbols/sap.ui.core.Control.html#getIdForLabel">getIdForLabel</a>, <a href="../symbols/sap.ui.core.Control.html#getRenderer">getRenderer</a>, <a href="../symbols/sap.ui.core.Control.html#hasStyleClass">hasStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#invalidate">invalidate</a>, <a href="../symbols/sap.ui.core.Control.html#isBusy">isBusy</a>, <a href="../symbols/sap.ui.core.Control.html#onAfterRendering">onAfterRendering</a>, <a href="../symbols/sap.ui.core.Control.html#onBeforeRendering">onBeforeRendering</a>, <a href="../symbols/sap.ui.core.Control.html#placeAt">placeAt</a>, <a href="../symbols/sap.ui.core.Control.html#removeStyleClass">removeStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#rerender">rerender</a>, <a href="../symbols/sap.ui.core.Control.html#setBusy">setBusy</a>, <a href="../symbols/sap.ui.core.Control.html#setBusyIndicatorDelay">setBusyIndicatorDelay</a>, <a href="../symbols/sap.ui.core.Control.html#toggleStyleClass">toggleStyleClass</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Element.html#$">$</a>, <a href="../symbols/sap.ui.core.Element.html#addCustomData">addCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#addDependent">addDependent</a>, <a href="../symbols/sap.ui.core.Element.html#addEventDelegate">addEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#applyFocusInfo">applyFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#bindElement">bindElement</a>, <a href="../symbols/sap.ui.core.Element.html#data">data</a>, <a href="../symbols/sap.ui.core.Element.html#destroy">destroy</a>, <a href="../symbols/sap.ui.core.Element.html#destroyCustomData">destroyCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#destroyDependents">destroyDependents</a>, <a href="../symbols/sap.ui.core.Element.html#enhanceAccessibilityState">enhanceAccessibilityState</a>, <a href="../symbols/sap.ui.core.Element.html#exit">exit</a>, <a href="../symbols/sap.ui.core.Element.html#findElements">findElements</a>, <a href="../symbols/sap.ui.core.Element.html#fireEvent">fireEvent</a>, <a href="../symbols/sap.ui.core.Element.html#getCustomData">getCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#getDependents">getDependents</a>, <a href="../symbols/sap.ui.core.Element.html#getDomRef">getDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getElementBinding">getElementBinding</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusDomRef">getFocusDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusInfo">getFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#getInterface">getInterface</a>, <a href="../symbols/sap.ui.core.Element.html#getLayoutData">getLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#getMetadata">getMetadata</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip">getTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_AsString">getTooltip_AsString</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_Text">getTooltip_Text</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfCustomData">indexOfCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfDependent">indexOfDependent</a>, <a href="../symbols/sap.ui.core.Element.html#init">init</a>, <a href="../symbols/sap.ui.core.Element.html#insertCustomData">insertCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#insertDependent">insertDependent</a>, <a href="../symbols/sap.ui.core.Element.html#prop">prop</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllCustomData">removeAllCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllDependents">removeAllDependents</a>, <a href="../symbols/sap.ui.core.Element.html#removeCustomData">removeCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeDependent">removeDependent</a>, <a href="../symbols/sap.ui.core.Element.html#removeEventDelegate">removeEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#setLayoutData">setLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#setTooltip">setTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#toString">toString</a>, <a href="../symbols/sap.ui.core.Element.html#unbindElement">unbindElement</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.ManagedObject.html">sap.ui.base.ManagedObject</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.ManagedObject.html#addAggregation">addAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#addAssociation">addAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#applySettings">applySettings</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindAggregation">bindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindContext">bindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindObject">bindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindProperty">bindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#destroyAggregation">destroyAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#findAggregatedObjects">findAggregatedObjects</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAggregation">getAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAssociation">getAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBinding">getBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingContext">getBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingInfo">getBindingInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingPath">getBindingPath</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getEventingParent">getEventingParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getId">getId</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getModel">getModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getObjectBinding">getObjectBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getOriginInfo">getOriginInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getParent">getParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getProperty">getProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#hasModel">hasModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#indexOfAggregation">indexOfAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#insertAggregation">insertAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isBound">isBound</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isInvalidateSuppressed">isInvalidateSuppressed</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isTreeBinding">isTreeBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAggregation">removeAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAggregation">removeAllAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAssociation">removeAllAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAssociation">removeAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAggregation">setAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAssociation">setAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setBindingContext">setBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setModel">setModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setProperty">setProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindAggregation">unbindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindContext">unbindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindObject">unbindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindProperty">unbindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateAggregation">validateAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateProperty">validateProperty</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.EventProvider.html#attachEvent">attachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#attachEventOnce">attachEventOnce</a>, <a href="../symbols/sap.ui.base.EventProvider.html#detachEvent">detachEvent</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.ui.commons.layout.BorderLayout</b>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)
+										</div>
+										
+										<div class="full-description">
+											Constructor for a new layout/BorderLayout.
+</p><p>
+Accepts an object literal <code>mSettings</code> that defines initial 
+property values, aggregated and associated objects as well as event handlers. 
+</p><p>
+If the name of a setting is ambiguous (e.g. a property has the same name as an event), 
+then the framework assumes property, aggregation, association, event in that order. 
+To override this automatic resolution, one of the prefixes "aggregation:", "association:" 
+or "event:" can be added to the name of the setting (such a prefixed name must be
+enclosed in single or double quotes).
+</p><p>
+The supported settings are:
+<ul>
+<li>Properties
+<ul>
+<li><a href="#getRtl">rtl</a> : boolean (default: false)</li>
+<li><a href="#getWidth">width</a> : sap.ui.core.CSSSize (default: '100%')</li>
+<li><a href="#getHeight">height</a> : sap.ui.core.CSSSize (default: '100%')</li></ul>
+</li>
+<li>Aggregations
+<ul>
+<li><a href="#getTop">top</a> : sap.ui.commons.layout.BorderLayoutArea</li>
+<li><a href="#getBegin">begin</a> : sap.ui.commons.layout.BorderLayoutArea</li>
+<li><a href="#getCenter">center</a> : sap.ui.commons.layout.BorderLayoutArea</li>
+<li><a href="#getEnd">end</a> : sap.ui.commons.layout.BorderLayoutArea</li>
+<li><a href="#getBottom">bottom</a> : sap.ui.commons.layout.BorderLayoutArea</li></ul>
+</li>
+<li>Associations
+<ul></ul>
+</li>
+<li>Events
+<ul></ul>
+</li>
+</ul>
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    id for the new control, generated automatically if no id is given
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mSettings</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    initial settings for the new control
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".extend"> </a>
+										<div class="itemTitle icon">
+											sap.ui.commons.layout.BorderLayout.extend<span class="signature">(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns function">: function</span>
+										</div>
+										<div class="full-description">
+											Creates a new subclass of class sap.ui.commons.layout.BorderLayout with name <code>sClassName</code> 
+and enriches it with the information contained in <code>oClassInfo</code>.
+</p><p>
+<code>oClassInfo</code> might contain the same kind of informations as described in <a href="../symbols/sap.ui.core.Element.html#.extend">Element.extend</a>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sClassName</b>
+													</td>
+													<td class="methodItemDesc">
+												    name of the class to be created
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oClassInfo</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    object literal with informations about the class
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>FNMetaImpl</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    constructor function for the metadata object. If not given, it defaults to sap.ui.core.ElementMetadata.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{function}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the created class / constructor function
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addContent"> </a>
+										<div class="itemTitle icon">
+											addContent<span class="signature">(<span title="(sap.ui.commons.layout.BorderLayoutAreaTypes) Specifies the area where controls will be added">oAreaId</span>, <span title="(sap.ui.core.Control) N controls can be submitted to be added.">oControls</span>)</span>
+											<span class="light" title="returns void">: void</span>
+										</div>
+										<div class="full-description">
+											Adds controls to the specified area
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayoutAreaTypes.html">sap.ui.commons.layout.BorderLayoutAreaTypes</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oAreaId</b>
+													</td>
+													<td class="methodItemDesc">
+												    Specifies the area where controls will be added
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oControls</b>
+													</td>
+													<td class="methodItemDesc">
+												    N controls can be submitted to be added. Each control is submitted as one argument.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="createArea"> </a>
+										<div class="itemTitle icon">
+											createArea<span class="signature">(<span title="(sap.ui.commons.layout.BorderLayoutAreaTypes) Specifies which area will be created.">oAreaId</span>, <span title="(sap.ui.core.Control) Any number of controls can be submitted to be added to the newly created area; where each control is submitted as one argument.">oControls</span>)</span>
+											<span class="light" title="returns sap.ui.commons.layout.BorderLayoutArea">: <a href="../symbols/sap.ui.commons.layout.BorderLayoutArea.html">sap.ui.commons.layout.BorderLayoutArea</a></span>
+										</div>
+										<div class="full-description">
+											Creates the specified area and adds the given controls to it. Returns the created area.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayoutAreaTypes.html">sap.ui.commons.layout.BorderLayoutAreaTypes</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oAreaId</b>
+													</td>
+													<td class="methodItemDesc">
+												    Specifies which area will be created. If the area is already available, the method call is ignored.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oControls</b>
+													</td>
+													<td class="methodItemDesc">
+												    Any number of controls can be submitted to be added to the newly created area; where each control is submitted as one argument.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyBegin"> </a>
+										<div class="itemTitle icon">
+											destroyBegin<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.commons.layout.BorderLayout">: <a href="../symbols/sap.ui.commons.layout.BorderLayout.html">sap.ui.commons.layout.BorderLayout</a></span>
+										</div>
+										<div class="full-description">
+											Destroys the begin in the aggregation 
+named <code>begin</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayout.html">sap.ui.commons.layout.BorderLayout</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyBottom"> </a>
+										<div class="itemTitle icon">
+											destroyBottom<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.commons.layout.BorderLayout">: <a href="../symbols/sap.ui.commons.layout.BorderLayout.html">sap.ui.commons.layout.BorderLayout</a></span>
+										</div>
+										<div class="full-description">
+											Destroys the bottom in the aggregation 
+named <code>bottom</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayout.html">sap.ui.commons.layout.BorderLayout</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyCenter"> </a>
+										<div class="itemTitle icon">
+											destroyCenter<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.commons.layout.BorderLayout">: <a href="../symbols/sap.ui.commons.layout.BorderLayout.html">sap.ui.commons.layout.BorderLayout</a></span>
+										</div>
+										<div class="full-description">
+											Destroys the center in the aggregation 
+named <code>center</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayout.html">sap.ui.commons.layout.BorderLayout</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyContent"> </a>
+										<div class="itemTitle icon">
+											destroyContent<span class="signature">(<span title="(sap.ui.commons.layout.BorderLayoutAreaTypes) Specifies the area whose content will be destroyed">oAreaId</span>)</span>
+											<span class="light" title="returns void">: void</span>
+										</div>
+										<div class="full-description">
+											Destroys the content of the specified area
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayoutAreaTypes.html">sap.ui.commons.layout.BorderLayoutAreaTypes</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oAreaId</b>
+													</td>
+													<td class="methodItemDesc">
+												    Specifies the area whose content will be destroyed
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyEnd"> </a>
+										<div class="itemTitle icon">
+											destroyEnd<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.commons.layout.BorderLayout">: <a href="../symbols/sap.ui.commons.layout.BorderLayout.html">sap.ui.commons.layout.BorderLayout</a></span>
+										</div>
+										<div class="full-description">
+											Destroys the end in the aggregation 
+named <code>end</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayout.html">sap.ui.commons.layout.BorderLayout</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyTop"> </a>
+										<div class="itemTitle icon">
+											destroyTop<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.commons.layout.BorderLayout">: <a href="../symbols/sap.ui.commons.layout.BorderLayout.html">sap.ui.commons.layout.BorderLayout</a></span>
+										</div>
+										<div class="full-description">
+											Destroys the top in the aggregation 
+named <code>top</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayout.html">sap.ui.commons.layout.BorderLayout</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getArea"> </a>
+										<div class="itemTitle icon">
+											getArea<span class="signature">(<span title="(sap.ui.commons.layout.BorderLayoutAreaTypes) sap.ui.commons.layout.BorderLayoutAreaTypes">oAreaId</span>, <span title="(boolean) boolean">bCreate</span>)</span>
+											<span class="light" title="returns sap.ui.commons.layout.BorderLayoutAreaTypes">: <a href="../symbols/sap.ui.commons.layout.BorderLayoutAreaTypes.html">sap.ui.commons.layout.BorderLayoutAreaTypes</a></span>
+										</div>
+										<div class="full-description">
+											Returns the area of the given type. If the area does not exist, it will be created when create is set to true.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayoutAreaTypes.html">sap.ui.commons.layout.BorderLayoutAreaTypes</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oAreaId</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bCreate</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getAreaById"> </a>
+										<div class="itemTitle icon">
+											getAreaById<span class="signature">(<span title="(sap.ui.commons.layout.BorderLayoutAreaTypes) Specifies the area whose object will be returned.">oAreaId</span>)</span>
+											<span class="light" title="returns sap.ui.commons.layout.BorderLayoutArea">: <a href="../symbols/sap.ui.commons.layout.BorderLayoutArea.html">sap.ui.commons.layout.BorderLayoutArea</a></span>
+										</div>
+										<div class="full-description">
+											Returns the object of the specified area. If the area does not exist, the area will be created and returned.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayoutAreaTypes.html">sap.ui.commons.layout.BorderLayoutAreaTypes</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oAreaId</b>
+													</td>
+													<td class="methodItemDesc">
+												    Specifies the area whose object will be returned.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getAreaData"> </a>
+										<div class="itemTitle icon">
+											getAreaData<span class="signature">(<span title="(sap.ui.commons.layout.BorderLayoutAreaTypes) Specifies the area whose data will be returned">oAreaId</span>)</span>
+											<span class="light" title="returns object">: object</span>
+										</div>
+										<div class="full-description">
+											Returns a JSON-like object that contains all property values of the requested area
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayoutAreaTypes.html">sap.ui.commons.layout.BorderLayoutAreaTypes</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oAreaId</b>
+													</td>
+													<td class="methodItemDesc">
+												    Specifies the area whose data will be returned
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getBegin"> </a>
+										<div class="itemTitle icon">
+											getBegin<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.commons.layout.BorderLayoutArea">: <a href="../symbols/sap.ui.commons.layout.BorderLayoutArea.html">sap.ui.commons.layout.BorderLayoutArea</a></span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>begin</code>.<br/>
+Represents the Begin area
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayoutArea.html">sap.ui.commons.layout.BorderLayoutArea</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getBottom"> </a>
+										<div class="itemTitle icon">
+											getBottom<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.commons.layout.BorderLayoutArea">: <a href="../symbols/sap.ui.commons.layout.BorderLayoutArea.html">sap.ui.commons.layout.BorderLayoutArea</a></span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>bottom</code>.<br/>
+Represents the Bottom area
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayoutArea.html">sap.ui.commons.layout.BorderLayoutArea</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getCenter"> </a>
+										<div class="itemTitle icon">
+											getCenter<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.commons.layout.BorderLayoutArea">: <a href="../symbols/sap.ui.commons.layout.BorderLayoutArea.html">sap.ui.commons.layout.BorderLayoutArea</a></span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>center</code>.<br/>
+Represents the Center area
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayoutArea.html">sap.ui.commons.layout.BorderLayoutArea</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getContent"> </a>
+										<div class="itemTitle icon">
+											getContent<span class="signature">(<span title="(sap.ui.commons.layout.BorderLayoutAreaTypes) Specifies the area whose content controls shall be returned.">oAreaId</span>)</span>
+											<span class="light" title="returns sap.ui.core.Control[]">: <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>[]</span>
+										</div>
+										<div class="full-description">
+											Returns all controls inside the specified area inside an array
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayoutAreaTypes.html">sap.ui.commons.layout.BorderLayoutAreaTypes</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oAreaId</b>
+													</td>
+													<td class="methodItemDesc">
+												    Specifies the area whose content controls shall be returned.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getEnd"> </a>
+										<div class="itemTitle icon">
+											getEnd<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.commons.layout.BorderLayoutArea">: <a href="../symbols/sap.ui.commons.layout.BorderLayoutArea.html">sap.ui.commons.layout.BorderLayoutArea</a></span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>end</code>.<br/>
+Represents the End area
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayoutArea.html">sap.ui.commons.layout.BorderLayoutArea</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getHeight"> </a>
+										<div class="itemTitle icon">
+											getHeight<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.CSSSize">: <a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a></span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>height</code>.
+Defines the overall height of the layout
+</p><p>
+Default value is <code>100%</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>height</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getTop"> </a>
+										<div class="itemTitle icon">
+											getTop<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.commons.layout.BorderLayoutArea">: <a href="../symbols/sap.ui.commons.layout.BorderLayoutArea.html">sap.ui.commons.layout.BorderLayoutArea</a></span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>top</code>.<br/>
+Represents the Top area
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayoutArea.html">sap.ui.commons.layout.BorderLayoutArea</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getWidth"> </a>
+										<div class="itemTitle icon">
+											getWidth<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.CSSSize">: <a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a></span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>width</code>.
+Defines the overall width of the layout
+</p><p>
+Default value is <code>100%</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>width</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="indexOfContent"> </a>
+										<div class="itemTitle icon">
+											indexOfContent<span class="signature">(<span title="(sap.ui.commons.layout.BorderLayoutAreaTypes) Specifies the area that will be searched">oAreaId</span>, <span title="(sap.ui.core.Control) Specifies the control whose index will be searched">oContent</span>)</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Determines the index of a given content control
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayoutAreaTypes.html">sap.ui.commons.layout.BorderLayoutAreaTypes</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oAreaId</b>
+													</td>
+													<td class="methodItemDesc">
+												    Specifies the area that will be searched
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oContent</b>
+													</td>
+													<td class="methodItemDesc">
+												    Specifies the control whose index will be searched
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="insertContent"> </a>
+										<div class="itemTitle icon">
+											insertContent<span class="signature">(<span title="(sap.ui.commons.layout.BorderLayoutAreaTypes) Specifies the area where the controls shall be inserted.">oAreaId</span>, <span title="(int) Specifies the index where the controls shall be added.">iIndex</span>, <span title="(sap.ui.core.Control) N controls can be submitted to be added.">oControl</span>)</span>
+											<span class="light" title="returns void">: void</span>
+										</div>
+										<div class="full-description">
+											Inserts controls to an area at a given index.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayoutAreaTypes.html">sap.ui.commons.layout.BorderLayoutAreaTypes</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oAreaId</b>
+													</td>
+													<td class="methodItemDesc">
+												    Specifies the area where the controls shall be inserted.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    Specifies the index where the controls shall be added. For a negative value of iIndex, the content is inserted at
+        position '0'; for a value greater than the current size of the aggregation, the content is inserted at the last position.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oControl</b>
+													</td>
+													<td class="methodItemDesc">
+												    N controls can be submitted to be added. Each control is submitted as one argument.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeAllContent"> </a>
+										<div class="itemTitle icon">
+											removeAllContent<span class="signature">(<span title="(sap.ui.commons.layout.BorderLayoutAreaTypes) Specifies the area whose content shall be removed">oAreaId</span>)</span>
+											<span class="light" title="returns void">: void</span>
+										</div>
+										<div class="full-description">
+											Removes all content from an area
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayoutAreaTypes.html">sap.ui.commons.layout.BorderLayoutAreaTypes</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oAreaId</b>
+													</td>
+													<td class="methodItemDesc">
+												    Specifies the area whose content shall be removed
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeContent"> </a>
+										<div class="itemTitle icon">
+											removeContent<span class="signature">(<span title="(sap.ui.commons.layout.BorderLayoutAreaTypes) Specifies the area whose content shall be removed">oAreaId</span>, <span title="(int) Specifies the index of the control that shall be removed">iIndex</span>)</span>
+											<span class="light" title="returns void">: void</span>
+										</div>
+										<div class="full-description">
+											Removes the content with the given index from an area
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayoutAreaTypes.html">sap.ui.commons.layout.BorderLayoutAreaTypes</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oAreaId</b>
+													</td>
+													<td class="methodItemDesc">
+												    Specifies the area whose content shall be removed
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    Specifies the index of the control that shall be removed
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setAreaData"> </a>
+										<div class="itemTitle icon">
+											setAreaData<span class="signature">(<span title="(sap.ui.commons.layout.BorderLayoutAreaTypes) Specifies the area whose properties will be set">oAreaId</span>, <span title="(object) JSON-like object that contains the values to be set">oData</span>)</span>
+											<span class="light" title="returns void">: void</span>
+										</div>
+										<div class="full-description">
+											Sets the properties of the specified area with the given values
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayoutAreaTypes.html">sap.ui.commons.layout.BorderLayoutAreaTypes</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oAreaId</b>
+													</td>
+													<td class="methodItemDesc">
+												    Specifies the area whose properties will be set
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oData</b>
+													</td>
+													<td class="methodItemDesc">
+												    JSON-like object that contains the values to be set
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setBegin"> </a>
+										<div class="itemTitle icon">
+											setBegin<span class="signature">(<span title="(sap.ui.commons.layout.BorderLayoutArea) sap.ui.commons.layout.BorderLayoutArea">oBegin</span>)</span>
+											<span class="light" title="returns sap.ui.commons.layout.BorderLayout">: <a href="../symbols/sap.ui.commons.layout.BorderLayout.html">sap.ui.commons.layout.BorderLayout</a></span>
+										</div>
+										<div class="full-description">
+											Setter for the aggregated <code>begin</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayoutArea.html">sap.ui.commons.layout.BorderLayoutArea</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oBegin</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayout.html">sap.ui.commons.layout.BorderLayout</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setBottom"> </a>
+										<div class="itemTitle icon">
+											setBottom<span class="signature">(<span title="(sap.ui.commons.layout.BorderLayoutArea) sap.ui.commons.layout.BorderLayoutArea">oBottom</span>)</span>
+											<span class="light" title="returns sap.ui.commons.layout.BorderLayout">: <a href="../symbols/sap.ui.commons.layout.BorderLayout.html">sap.ui.commons.layout.BorderLayout</a></span>
+										</div>
+										<div class="full-description">
+											Setter for the aggregated <code>bottom</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayoutArea.html">sap.ui.commons.layout.BorderLayoutArea</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oBottom</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayout.html">sap.ui.commons.layout.BorderLayout</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setCenter"> </a>
+										<div class="itemTitle icon">
+											setCenter<span class="signature">(<span title="(sap.ui.commons.layout.BorderLayoutArea) sap.ui.commons.layout.BorderLayoutArea">oCenter</span>)</span>
+											<span class="light" title="returns sap.ui.commons.layout.BorderLayout">: <a href="../symbols/sap.ui.commons.layout.BorderLayout.html">sap.ui.commons.layout.BorderLayout</a></span>
+										</div>
+										<div class="full-description">
+											Setter for the aggregated <code>center</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayoutArea.html">sap.ui.commons.layout.BorderLayoutArea</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oCenter</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayout.html">sap.ui.commons.layout.BorderLayout</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setEnd"> </a>
+										<div class="itemTitle icon">
+											setEnd<span class="signature">(<span title="(sap.ui.commons.layout.BorderLayoutArea) sap.ui.commons.layout.BorderLayoutArea">oEnd</span>)</span>
+											<span class="light" title="returns sap.ui.commons.layout.BorderLayout">: <a href="../symbols/sap.ui.commons.layout.BorderLayout.html">sap.ui.commons.layout.BorderLayout</a></span>
+										</div>
+										<div class="full-description">
+											Setter for the aggregated <code>end</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayoutArea.html">sap.ui.commons.layout.BorderLayoutArea</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oEnd</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayout.html">sap.ui.commons.layout.BorderLayout</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setHeight"> </a>
+										<div class="itemTitle icon">
+											setHeight<span class="signature">(<span title="(sap.ui.core.CSSSize) new value for property height">sHeight</span>)</span>
+											<span class="light" title="returns sap.ui.commons.layout.BorderLayout">: <a href="../symbols/sap.ui.commons.layout.BorderLayout.html">sap.ui.commons.layout.BorderLayout</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>height</code>.
+</p><p>
+Default value is <code>100%</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sHeight</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>height</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayout.html">sap.ui.commons.layout.BorderLayout</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setTop"> </a>
+										<div class="itemTitle icon">
+											setTop<span class="signature">(<span title="(sap.ui.commons.layout.BorderLayoutArea) sap.ui.commons.layout.BorderLayoutArea">oTop</span>)</span>
+											<span class="light" title="returns sap.ui.commons.layout.BorderLayout">: <a href="../symbols/sap.ui.commons.layout.BorderLayout.html">sap.ui.commons.layout.BorderLayout</a></span>
+										</div>
+										<div class="full-description">
+											Setter for the aggregated <code>top</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayoutArea.html">sap.ui.commons.layout.BorderLayoutArea</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oTop</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayout.html">sap.ui.commons.layout.BorderLayout</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setWidth"> </a>
+										<div class="itemTitle icon">
+											setWidth<span class="signature">(<span title="(sap.ui.core.CSSSize) new value for property width">sWidth</span>)</span>
+											<span class="light" title="returns sap.ui.commons.layout.BorderLayout">: <a href="../symbols/sap.ui.commons.layout.BorderLayout.html">sap.ui.commons.layout.BorderLayout</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>width</code>.
+</p><p>
+Default value is <code>100%</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sWidth</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>width</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayout.html">sap.ui.commons.layout.BorderLayout</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod deprecated'>
+										<a name="getRtl"> </a>
+										<div class="itemTitle icon">
+											getRtl<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>rtl</code>.
+The RTL setting swaps the areas Begin and End. Since version 1.5.2, this property is deprecated and ignored as it conflicts with the central configuration for the page.
+</p><p>
+Default value is <code>false</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+											<dl class="detailList deprecation">
+												<dt class="heading">Deprecated:</dt>
+												<dt>
+													Since version 1.5.2. 
+RTL should not be configured on control level but is determined by a global configuration.
+												</dt>
+											</dl>
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>rtl</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod deprecated'>
+										<a name="setRtl"> </a>
+										<div class="itemTitle icon">
+											setRtl<span class="signature">(<span title="(boolean) new value for property rtl">bRtl</span>)</span>
+											<span class="light" title="returns sap.ui.commons.layout.BorderLayout">: <a href="../symbols/sap.ui.commons.layout.BorderLayout.html">sap.ui.commons.layout.BorderLayout</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>rtl</code>.
+</p><p>
+Default value is <code>false</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bRtl</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>rtl</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+											<dl class="detailList deprecation">
+												<dt class="heading">Deprecated:</dt>
+												<dt>
+													Since version 1.5.2. 
+RTL should not be configured on control level but is determined by a global configuration.
+												</dt>
+											</dl>
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.commons.layout.BorderLayout.html">sap.ui.commons.layout.BorderLayout</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

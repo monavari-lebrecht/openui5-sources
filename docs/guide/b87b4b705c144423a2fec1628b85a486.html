@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=07049433670340244"/>
+<title>Step 10: Detail XML Fragments</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiob87b4b705c144423a2fec1628b85a486">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Step 10: Detail XML Fragments</h1>
+<div class="body conbody"><p class="shortdesc"/>
+<p class="p">In the Detail View section, we referenced XML fragments in the
+				<samp class="ph codeph">sap.m.IconTabFilters</samp>. These fragments are separately maintainable
+			and reusable collections of control declarations. </p>
+<p class="p">In both cases, for the Supplier and Category information display, we use the
+				<samp class="ph codeph">sap.ui.layout.form.SimpleForm</samp>. This offers a flexible approach to
+			building responsive form layouts that automatically adjust according to screen size.</p>
+<p class="p">Because of the way Fragments are instantiated and inserted, the binding context is
+			inherited according to the insertion point. So in the case of both of the XML fragments
+			that we have for our app, the binding context is relative to the binding already on the
+			detail view.</p>
+<p class="p">Here are the XML fragments. Both are held in their own files, and are normally kept in
+			the same folder as the views and controllers.</p>
+<div class="section"><div class="section_title">SupplierAddressForm</div><div type="SupplierAddressForm">
+			
+			<p class="p">First up is the SupplierAddressForm fragment, in file
+					<span class="ph filepath">SupplierAddressForm.fragment.xml</span>.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!xml</samp>
+&lt;core:FragmentDefinition
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"&gt;
+</pre></div>
+
+			<p class="p">This outermost element <samp class="ph codeph">core:FragmentDefinition</samp> is not strictly
+				necessary here, as our control definition has a single root node
+					<samp class="ph codeph">l:Grid</samp>. However, it's good practice to always use this
+					<samp class="ph codeph">core:FragmentDefinition</samp> element as a container, not least
+				because then any additional root node in the definition doesn't cause a bigger
+				change during maintenance. The container element doesn't have any representation in
+				the HTML.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!xml</samp>
+&lt;l:Grid
+		defaultSpan="L12 M12 S12"
+		width="auto"&gt;
+		&lt;l:content&gt;
+			&lt;f:SimpleForm
+				minWidth="1024"
+				maxContainerCols="2"
+				editable="false"
+				layout="ResponsiveGridLayout"
+				title="{i18n&gt;supplierAddress}"
+				labelSpanL="3"
+				labelSpanM="3"
+				emptySpanL="4"
+				emptySpanM="4"
+				columnsL="1"
+				columnsM="1"&gt;
+				&lt;f:content&gt;
+					&lt;Label text="{i18n&gt;supplierAddressName}" /&gt;
+					&lt;Text text="{Name}" /&gt;
+					&lt;Label text="{i18n&gt;supplierAddressStreet}" /&gt;
+					&lt;Text text="{Address/Street}" /&gt;
+					&lt;Label text="{i18n&gt;supplierAddressCity}" /&gt;
+					&lt;Text text="{Address/City}" /&gt;
+					&lt;Label text="{i18n&gt;supplierAddressZIPCode}" /&gt;
+					&lt;Text text="{Address/ZipCode}" /&gt;
+					&lt;Label text="{i18n&gt;supplierAddressCountry}" /&gt;
+					&lt;Text text="{Address/Country}" /&gt;
+				&lt;/f:content&gt;
+			&lt;/f:SimpleForm&gt;
+		&lt;/l:content&gt;
+	&lt;/l:Grid&gt;
+&lt;/core:FragmentDefinition&gt;
+</pre></div>
+
+			<p class="p">The SimpleForm's layout is a series of <samp class="ph codeph">sap.m.Label</samp> and
+					<samp class="ph codeph">sap.m.Text</samp> controls. Note that the Supplier address is defined
+				as a <samp class="ph codeph">ComplexType</samp> in the OData service and this type is used in the
+				definition of the Supplier entity:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!xml</samp>
+&lt;Schema Namespace="ODataDemo" ...&gt;
+  &lt;EntityType Name="Supplier"&gt;
+    &lt;Key&gt;
+      &lt;PropertyRef Name="ID" /&gt;
+    &lt;/Key&gt;
+    &lt;Property Name="ID" Type="Edm.Int32" ... /&gt;
+    &lt;Property Name="Name" Type="Edm.String" ... /&gt;
+    &lt;Property Name="Address" Type="ODataDemo.Address" ... /&gt;
+    ...
+  &lt;/EntityType&gt;
+
+  ...
+
+  &lt;ComplexType Name="Address"&gt;
+    &lt;PropertyRef Name="Street" ... /&gt;
+    &lt;PropertyRef Name="City" ... /&gt;
+    ...
+  &lt;/EntityType&gt;
+
+  ...
+&lt;/Schema&gt;
+</pre></div>
+
+			<p class="p">This means that we can refer to the address details for a Supplier entity via a
+				binding path that includes an "Address/" prefix, as seen in the bindings for the
+				text properties of the address-relevant Text controls.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">CategoryInfoForm</div><div type="CategoryInfoForm">
+			
+			<p class="p">Here's the CategoryInfoForm fragment.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!xml</samp>
+&lt;core:FragmentDefinition
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"&gt;
+	&lt;l:Grid
+		defaultSpan="L12 M12 S12"
+		width="auto"&gt;
+		&lt;l:content&gt;
+			&lt;f:SimpleForm
+				minWidth="1024"
+				maxContainerCols="2"
+				editable="false"
+				layout="ResponsiveGridLayout"
+				title="{i18n&gt;categoryInfo}"
+				labelSpanL="3"
+				labelSpanM="3"
+				emptySpanL="4"
+				emptySpanM="4"
+				columnsL="1"
+				columnsM="1"&gt;
+				&lt;f:content&gt;
+					&lt;Label text="{i18n&gt;categoryInfoID}" /&gt;
+					&lt;Text text="{ID}" /&gt;
+					&lt;Label text="{i18n&gt;categoryInfoName}" /&gt;
+					&lt;Text text="{Name}" /&gt;
+				&lt;/f:content&gt;
+			&lt;/f:SimpleForm&gt;
+		&lt;/l:content&gt;
+	&lt;/l:Grid&gt;
+&lt;/core:FragmentDefinition&gt;
+</pre></div>
+
+			<p class="p">It's very similar to the SupplierAddressForm fragment. Again, the bindings for the
+				Text controls are relative to where the fragment is inserted; in this case it will
+				be relative to the associated Category.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Progress Check</div><div type="Progress Check">
+			
+			<p class="p">With the fragment files added to the view subfolder, our app folder content now looks
+				like this:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+tdg/
+  |
+  +-- i18n/
+  |     |
+  |     +-- messageBundle.properties
+  |
+  +-- util/
+  |     |
+  |     +-- Formatter.js
+  |
+  +-- view/
+  |     |
+  |     +-- App.view.xml
+  |     +-- CategoryInfoForm.fragment.xml
+  |     +-- Detail.controller.js
+  |     +-- Detail.view.xml
+  |     +-- Master.controller.js
+  |     +-- Master.view.xml
+  |     +-- SupplierAddressForm.fragment.xml
+  |
+  +-- Component.js
+  +-- index.html
+  +-- MyRouter.html
+</pre></div>
+
+			<p class="p">And when we uncomment the fragment insertion points in the detail view (see the <a class="xref" href="08887a263aa94c14838593aecddf1529.html">Detail View </a>section)</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+&lt;items&gt;
+	&lt;IconTabFilter
+		key="supplier"
+		text="{i18n&gt;iconTabFilterSupplier}"
+		icon="sap-icon://supplier"&gt;
+		&lt;content&gt;
+			&lt;core:Fragment fragmentName="sap.ui.demo.tdg.view.SupplierAddressForm" type="XML" /&gt;
+		&lt;/content&gt;
+	&lt;/IconTabFilter&gt;
+	&lt;IconTabFilter
+		key="category"
+		text="{i18n&gt;iconTabFilterCategory}"
+		icon="sap-icon://hint"&gt;
+		&lt;content&gt;
+			&lt;core:Fragment fragmentName="sap.ui.demo.tdg.view.CategoryInfoForm" type="XML" /&gt;
+		&lt;/content&gt;
+	&lt;/IconTabFilter&gt;
+&lt;/items&gt;
+</pre></div>
+
+			<p class="p">our app now looks like this, when a product is selected (remember, the default
+					<samp class="ph codeph">IconTabFilter</samp> is the for the supplier information):</p>
+
+			<div class="fig fignone"><div class="figcontainer"><img class="image" id="loiob87b4b705c144423a2fec1628b85a486__image_skn_pns_4n" src="7ec77752c2c34bcf99cd9063f4858de1.image"/></div></div>
+
+			<p class="p">And it looks like this when the category IconTabFilter is selected:</p>
+
+			<div class="fig fignone"><div class="figcontainer"><img class="image" id="loiob87b4b705c144423a2fec1628b85a486__image_g2g_sns_4n" src="dbabe12706ce41f38e091697ea378204.image"/></div></div>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Step 10: Detail XML Fragments";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

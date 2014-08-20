@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=07097595059560713"/>
+<title>Inline Definition and Instantiation of Fragments</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiob807931a353649859a92f7c7bf1111e3">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Inline Definition and Instantiation of Fragments</h1>
+<div class="body conbody"><p class="shortdesc"/>
+<p class="p">In addition to external definition in separate files, fragments can also be defined inline and
+			immediately instantiated. The content definition and also the instantiation syntax are
+			just the same compared to an instantiation in a program. However, instead of the
+			"fragmentName" the "fragmentContent" needs to be given. This feature can both be used
+			for prototyping or for dynamic fragment composition or for loading fragment content from
+			sources which are not accessible by the normal module loading mechanism. In general,
+			inline definition of fragments plays only a minor role. </p>
+<p class="p">JS fragment definitions can be done both inline and within a separate file without any
+			changes. Example inline definitions of XML and HTML fragments are displayed in the
+			following code examples: </p>
+<div class="section"><div class="section_title">Example of an Inline XML Fragment</div><div type="Example of an Inline XML Fragment">
+			
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!xml</samp>
+// define the XML fragment as a string (or load it from anywhere)
+var myXml = '&lt;Panel xmlns="sap.ui.commons" text="Hello World"&gt;&lt;Button text="Hello World"&gt;&lt;/Button&gt;&lt;/Panel&gt;';
+
+// use this XML string as "fragmentContent"
+var oFragment = sap.ui.xmlfragment({fragmentContent:myXml}); // oFragment is now the Panel Control
+
+// put the Fragment content into the document
+oFragment.placeAt('content');</pre></div>
+
+		</div></div>
+<div class="section"><div class="section_title">Example of an Inline HTML Fragment</div><div type="Example of an Inline HTML Fragment">
+			
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!text/html</samp>
+// define the HTML fragment as a string (or load it from anywhere)
+var myHtml = '&lt;div data-sap-ui-type="sap.m.Button" data-text="Hello World"&gt;&lt;/div&gt;';
+
+// use this HTML string as "fragmentContent"
+var oFragment = sap.ui.htmlfragment({fragmentContent:myHtml}); // oFragment is now the Button Control
+
+// put the Fragment content into the document
+oFragment.placeAt('content');</pre></div>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="3cff5d0fa6754c0d9fdacd80653b81fb.html">Programmatically Instantiating JS Fragments</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Inline Definition and Instantiation of Fragments";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

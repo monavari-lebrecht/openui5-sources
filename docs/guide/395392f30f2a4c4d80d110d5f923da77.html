@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=6849811720207083"/>
+<title>Using the Facet Filter List and Facet Filter Item Controls</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio395392f30f2a4c4d80d110d5f923da77">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Using the Facet Filter List and Facet Filter Item Controls</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">The <samp class="ph codeph">FacetFilter</samp> control uses the <samp class="ph codeph">FacetFilterList</samp> and the
+				<samp class="ph codeph">FacetFilterItem</samp> controls to model facets and their associated
+			filters. The facet filter list aggregation is a collection of facet filter list objects,
+			where each element in the collection represents a different facet. Likewise, the facet
+			filter list items aggregation is a collection of facet filter item objects where each
+			element in the collection represents a different filter items available for the
+			facet.</p>
+<div class="section"><div class="section_title">Facet Filter List</div><div type="Facet Filter List">
+			
+			<p class="p">The <samp class="ph codeph">FacetFilterList</samp> control extends and supports all the features of
+				the <samp class="ph codeph">sap.m.List</samp> control, for example swipe for action, growing
+				dfeature, remember selections and grouping.</p>
+
+			<p class="p">The following properties of <samp class="ph codeph">FacetFilterList</samp> affect the display of lists in
+				the <samp class="ph codeph">FacetFilter</samp> control.</p>
+
+			<table summary="" id="loio395392f30f2a4c4d80d110d5f923da77__simpletable_icj_3wh_qn" border="1" class="simpletable"><tr class="sthead"><th valign="bottom" align="left" id="d293282e47" class="stentry" width="50%">Property</th>
+<th valign="bottom" align="left" id="d293282e49" class="stentry" width="50%">Description</th>
+</tr>
+<tr class="strow"><td valign="top" headers="d293282e47" class="stentry"><samp class="ph codeph">title</samp></td>
+<td valign="top" headers="d293282e49" class="stentry">Facet name</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d293282e47" class="stentry"><samp class="ph codeph">mode</samp></td>
+<td valign="top" headers="d293282e49" class="stentry">
+						<p class="p">Controls the selection mode for the list</p>
+
+						<p class="p">This property is overridden from <samp class="ph codeph">ListBase</samp> and only
+							allows <samp class="ph codeph">SingleSelectMaster</samp> or
+								<samp class="ph codeph">MultiSelect</samp> settings. <samp class="ph codeph">MultiSelect</samp>
+							is the default: This setting displays the <span class="ph uicontrol">All</span>
+							checkbox above the filter list to allow the user to select all filters.
+							This does not actually select individual filters to avoid performance
+							overhead for lists with a large number of items.</p>
+
+					</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d293282e47" class="stentry"><samp class="ph codeph">sequence</samp></td>
+<td valign="top" headers="d293282e49" class="stentry">
+						<p class="p">Controls the order in which the facets are displayed in the toolbar</p>
+
+						<p class="p">Lists appear in the toolbar in ascending order according to sequence (assuming left to
+							right). Lists with a sequence less than 0 are placed last, not before
+							facets with sequence of zero. Only active lists are displayed regardless
+							of sequence setting. </p>
+
+					</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d293282e47" class="stentry"><samp class="ph codeph">active</samp></td>
+<td valign="top" headers="d293282e49" class="stentry">Indicates if a facet filter list is active and should appear on the toolbar; this is
+						only applicable for the simple type as all facet filter lists are active in
+						the light type</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d293282e47" class="stentry"><samp class="ph codeph">allCount</samp></td>
+<td valign="top" headers="d293282e49" class="stentry">The <samp class="ph codeph">allCount</samp> value can be set to the number of filter matches in the
+						target data set given the currently selected filters for the facet filter
+						list.</td>
+</tr>
+</table>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p">The list of properties is not complete. For a complete list, refer to the API
+					documentation.</p>
+
+			</div>
+
+		</div></div>
+<div class="section"><div class="section_title">Facet Filter Item</div><div type="Facet Filter Item">
+			
+			<p class="p">The <samp class="ph codeph">FacetFilterItem</samp> control extends and supports all features of
+					<samp class="ph codeph">sap.m.ListItemBase</samp>, for example item selection and counter.
+					<samp class="ph codeph">FacetFilterItem</samp> provides the following properties:</p>
+
+			<table summary="" id="loio395392f30f2a4c4d80d110d5f923da77__simpletable_ezr_fc3_qn" border="1" class="simpletable"><tr class="sthead"><th valign="bottom" align="left" id="d293282e137" class="stentry" width="50%">Property</th>
+<th valign="bottom" align="left" id="d293282e139" class="stentry" width="50%">Description</th>
+</tr>
+<tr class="strow"><td valign="top" headers="d293282e137" class="stentry"><samp class="ph codeph">text</samp></td>
+<td valign="top" headers="d293282e139" class="stentry">Filter item name</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d293282e137" class="stentry"><samp class="ph codeph">key</samp></td>
+<td valign="top" headers="d293282e139" class="stentry">
+						<p class="p">Unique identifier of the filter item; used to filter the target data
+							set</p>
+
+						<p class="p">If <samp class="ph codeph">key</samp> is not set, <samp class="ph codeph">text</samp> is used as the
+							key value.</p>
+
+					</td>
+</tr>
+</table>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p">You must either set the <samp class="ph codeph">text</samp> or the <samp class="ph codeph">key</samp>
+					property. Otherwise, the facet filter list can not properly maintain the
+					selected state of the item and an error message is logged to the console.</p>
+
+			</div>
+
+		</div></div>
+<div class="section"><div class="section_title">Example</div><div type="Example"><p class="p">The following example shows how you use the controls. To
+				build the face filter in the figure, use the code below the figure:</p>
+<img class="image" id="loio395392f30f2a4c4d80d110d5f923da77__image_cl1_gv3_qn" src="118e5d5c01ed49ccbf00c174e87c416a.image"/><div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">    var oFacetFilter = new sap.m.FacetFilter({ // define FacetFilter Control
+        lists : [ new sap.m.FacetFilterList({ // city facet
+            title : "City",
+            items : [ new sap.m.FacetFilterItem({
+                text : "Waldorf",
+                key : "WDF"
+            }), new sap.m.FacetFilterItem({
+                selected : true, // filter is selected (from ListItemBase)
+                text : "Atlanta",
+                key : "ATL"
+            }) ]
+        }), new sap.m.FacetFilterList({ // restaurant facet
+            title : "Restaurants",
+            items : [ new sap.m.FacetFilterItem({
+                text : "Caribbean",
+                key : "CRB"
+            }), new sap.m.FacetFilterItem({
+                selected : true, // filter is selected (from ListItemBase)
+                text : "Italian",
+                key : "ITL"
+            }) ]
+        }) ]
+    });
+</pre></div>
+<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p">The example does not have a model binding. A binding to the filter items is
+					required for the search.</p>
+
+			</div>
+</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Using the Facet Filter List and Facet Filter Item Controls";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

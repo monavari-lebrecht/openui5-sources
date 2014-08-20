@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=5335192672871298"/>
+<title>Windows 8 Support - Known Issues</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio8168059f21bb41bda96901eaf9c4302e">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Windows 8 Support - Known Issues</h1>
+<div class="body conbody"><p class="shortdesc"/>
+<div class="section"><div class="section_title">Firefox doesn't simulate mouse events correctly for touch input method</div><div type="Firefox doesn't simulate mouse events correctly for touch input method">
+			
+			<p class="p">Firefox currently only fires mouse events on Windows 8 for both touch and mouse input methods.
+				When a touch input method is used to perform a single tap, all of the mouse events
+				aren't fired until the touch input is released from the screen. This causes an issue
+				that all UI updates between <samp class="ph codeph">mousedown</samp> and <samp class="ph codeph">mouseup</samp>
+				events can't be reflected on the UI because UI Tray doesn't get the chance to
+				update. For example, a blue color should be shown when button is tapped and set back
+				to the normal color after tap. This blue color can't be seen on Firefox because the
+				setting and resetting of blue color are executed in a row and UI Tray doesn't have
+				the time to reflect the blue color.</p>
+
+			<p class="p">A fix is only available in the beta version of Mozilla Firefox. Here you can start Firefox in
+				Windows 8 metro mode in which touch events are fired instead of mouse events when
+				touch input method is used. </p>
+
+			<p class="p">In the desktop mode of Firefox, touch event support is off and can be turned on only by
+				modifying the <samp class="ph codeph">dom.w3c_touch_events.enabled</samp> parameter.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">More Information</div><div type="More Information">
+			
+			<ul class="ul" id="loio8168059f21bb41bda96901eaf9c4302e__ul_rss_mhk_4n"><li class="li"><a class="extlink" href="http://help.sap.com/disclaimer?site=http://www.mozilla.org/en-US/firefox/beta/">
+						Mozilla Firefox Beta version<img src="images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>
+				</li>
+<li class="li"><a class="extlink" href="http://help.sap.com/disclaimer?site=https://support.mozilla.org/en-US/kb/how-do-i-launch-firefox-windows-8-touch"> Mozilla Support: How do I launch Firefox for Windows 8
+						Touch?<img src="images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></li>
+<li class="li"><a class="extlink" href="http://help.sap.com/disclaimer?site=https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Touch_events">Mozilla Firefox - Touch events<img src="images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></li>
+</ul>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Windows 8 Support - Known Issues";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

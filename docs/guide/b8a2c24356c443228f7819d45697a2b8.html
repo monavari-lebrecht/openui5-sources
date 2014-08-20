@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="XML differentiates between attributes and content, XML has no arrays and defines lists as multiple elements with the same name instead."/>
+<meta name="description" content="XML differentiates between attributes and content, XML has no arrays and defines lists as multiple elements with the same name instead."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=6273194236741444"/>
+<title>Binding Path Syntax for XML Models</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiob8a2c24356c443228f7819d45697a2b8">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Binding Path Syntax for XML Models</h1>
+<div class="body conbody"><p class="shortdesc">XML differentiates between attributes and content, XML has no arrays and defines
+		lists as multiple elements with the same name instead.</p>
+<p class="p"> This makes data binding in XML models more difficult. For attributes, a special selector
+			using the "@" character exists and "text()" can be used to reference the content text of
+			an element. Lists are referenced by using the path to the multiple element. </p>
+<div class="note note" id="loiob8a2c24356c443228f7819d45697a2b8__note_N10065_N10059_N10013_N10001"><span class="notetitle">Note</span> For the XML model the root must <strong class="ph b">not</strong> be
+			included in the path. </div>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+&lt;companies&gt;
+  &lt;company name="Treefish Inc"&gt;
+    &lt;info&gt;
+       &lt;employees&gt;3&lt;/employees&gt;
+    &lt;/info&gt;
+    &lt;contact phone="873"&gt;Barbara&lt;/contact&gt;
+    &lt;contact phone="734"&gt;Gerry&lt;/contact&gt;
+    &lt;contact phone="275"&gt;Susan&lt;/contact&gt;
+  &lt;/company&gt;
+&lt;/companies&gt;</pre></div>
+<p class="p">Absolute binding paths within this model: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">/company/@name
+/company/info/employees</pre></div>
+<p class="p">Relative binding paths within the <samp class="ph codeph">/company</samp> context: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">@name
+info/employees/text()</pre></div>
+<p class="p">Relative binding paths within an aggregation binding of
+			<samp class="ph codeph">/company/contact</samp>: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">text()
+@phone</pre></div>
+<div class="note note" id="loiob8a2c24356c443228f7819d45697a2b8__note_N1008A_N10059_N10013_N10001"><span class="notetitle">Note</span> In a similar JSON model you would use<samp class="ph codeph">
+				/companies/company/locations</samp> as binding path for the
+				<samp class="ph codeph">locations</samp> collection. In an XML model the respective collection
+			binding path is: <samp class="ph codeph">/company/locations/location</samp>.</div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Binding Path Syntax for XML Models";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

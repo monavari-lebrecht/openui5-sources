@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=64832440814858"/>
+<title>Adding Method Implementations</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f0a8dc6f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Adding Method Implementations</h1>
+<div class="body"><p class="p">After defining the metadata, you add method implementations to the control. For the method names,
+			the following restrictions apply:</p>
+<ul class="ul"><li class="li"> 
+		  <p class="p">Do not use names of methods that are or will be provided by a superclass. Due to inheritance,
+					your implementation would overwrite the implementation of the superclass.</p>
+ 
+		</li>
+<li class="li"> 
+		  <p class="p">Names starting with
+						<samp class="ph codeph">set...</samp>/<samp class="ph codeph">get...</samp>/<samp class="ph codeph">insert...</samp>/<samp class="ph codeph">add...</samp>/<samp class="ph codeph">remove...</samp>/<samp class="ph codeph">indexOf...</samp>
+					shall not be used because they may collide with setters/getters for properties
+					or aggregations you defined.</p>
+ 
+		</li>
+<li class="li"> 
+		  <p class="p">Names starting with
+						<samp class="ph codeph">attach...</samp>/<samp class="ph codeph">detach...</samp>/<samp class="ph codeph">fire</samp>
+					may collide with methods created for events.</p>
+ 
+		</li>
+</ul>
+<p class="p">The following method names have a specific meaning and should be used accordingly:</p>
+<ul class="ul"><li class="li"> 
+		  <p class="p"><samp class="ph codeph">on...</samp>: Used for event handlers that are automatically bound to browser
+					events</p>
+ 
+		</li>
+<li class="li"> 
+		  <p class="p"><samp class="ph codeph">init</samp>: Used for the initialization function that is called after control
+					instantiation</p>
+ 
+		</li>
+<li class="li"> 
+		  <p class="p"><samp class="ph codeph">renderer</samp>: Used for the function that creates the control's HTML or for a
+					complete structure that contains the function to create HTML, and more</p>
+ 
+		</li>
+</ul>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="85738e3ac3bb407d9e1cfeb8bb9268cb.html">Normal Methods</a></div>
+<div><a class="link" href="6d6b5bda5727419eadcc9cbac1f6e6a1.html">init() Method</a></div>
+<div><a class="link" href="bdf3e9818cd84d37a18ee5680e97e1c1.html">Event Handler Methods</a></div>
+<div><a class="link" href="c9ab34570cc14ea5ab72a6d1a4a03e3f.html">Renderer Methods</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Adding Method Implementations";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

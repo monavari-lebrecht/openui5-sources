@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=19849015550424498"/>
+<title>Step 8: Master View</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loioa425399ec2fe47a8b9ba9653ab4f6623">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Step 8: Master View</h1>
+<div class="body conbody"><p class="shortdesc"/>
+<p class="p">Flushed with the success of seeing our SplitApp container on the screen, we'll add the first
+			main view, Master, replacing the empty skeleton we used in the Model View Controller
+			section.</p>
+<div class="section"><div class="section_title">View</div><div type="View">
+			
+			<p class="p">Let's examine the view definition bit by bit.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!xml</samp>
+&lt;mvc:View
+	controllerName="sap.ui.demo.tdg.view.Master"
+	displayBlock="true"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"&gt;
+</pre></div>
+
+			<p class="p">We start with the view declaration itself, which also points to a corresponding controller,
+				which we'll introduce shortly. Note that in all the views in this app, we're
+				specifying <samp class="ph codeph">sap.m</samp> as the default namespace (this means that elements
+				that don't have an XML namespace prefix belong to the <samp class="ph codeph">sap.m</samp>
+				library). The <samp class="ph codeph">displayBlock="true"</samp> declaration is to prevent
+				scrollbars appearing.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!xml</samp>
+	&lt;Page
+		id="page"
+		title="{i18n&gt;masterTitle}"&gt;
+		&lt;subHeader&gt;
+			&lt;Bar id="searchBar"&gt;
+				&lt;contentMiddle&gt;
+					&lt;SearchField
+						id="searchField"
+						showRefreshButton="{device&gt;/isNoTouch}"
+						search="onSearch"
+						tooltip="{i18n&gt;masterSearchTooltip}"
+						width="100%"&gt;
+					&lt;/SearchField&gt;
+				&lt;/contentMiddle&gt;
+			&lt;/Bar&gt;
+		&lt;/subHeader&gt;
+</pre></div>
+
+			<p class="p">The Master view contains a single top-level control - an <samp class="ph codeph">sap.m.Page</samp>. As a UI
+				unit this makes sense especially being within the context of the SplitApp's
+				masterPages aggregation. The page's title is determined via our Internationalization
+				mechanism, and has a <samp class="ph codeph">subHeader</samp> aggregation, which is a single
+				aggregation that expects an <samp class="ph codeph">sap.m.Bar</samp>. In the middle of the Bar we
+				have an <samp class="ph codeph">sap.m.SearchField</samp> control. The SearchField should appear
+				slightly different depending on whether the device on which the app is running has
+				touch capabilities. There's a boolean value controlling the display of the refresh
+				button, and this is taken from the device model - the named model "device" in the
+				property binding for <samp class="ph codeph">showRefreshButton</samp>. The device model was
+				introduced briefly in the Component section of this part, and is covered in more
+				detail in the Device Model section. We'll examine the handler for the Search Field
+				shortly, when we look at the Master controller.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!xml</samp>
+&lt;content&gt;
+			&lt;List
+				id="list"
+				items="{/Products}"
+				mode="{device&gt;/listMode}"
+				noDataText="{i18n&gt;masterListNoDataText}"
+				select="onSelect"
+				growing="true"
+				growingScrollToLoad="true"&gt;
+				&lt;items&gt;
+					&lt;ObjectListItem
+						type="{device&gt;/listItemType}"
+						press="onSelect"
+						title="{Name}"
+						number="{
+							path: 'Price',
+							formatter: 'sap.ui.demo.tdg.util.Formatter.currencyValue'
+						}"
+						numberUnit="USD"&gt;
+					&lt;/ObjectListItem&gt;
+				&lt;/items&gt;
+			&lt;/List&gt;
+		&lt;/content&gt;
+</pre></div>
+
+			<p class="p">The Page's default aggregation is the 'content' aggregation, and contains an
+					<samp class="ph codeph">sap.m.List control</samp>. The List is bound to the
+					"<samp class="ph codeph">/Products</samp>" entityset in our domain model (more on this in the
+				Data Sources section), and uses <samp class="ph codeph">growing</samp> features to provide paging
+				facilities. The List's selection mode is dependent on whether the device is a
+				smartphone or not - again, covered by the device model (see later).</p>
+
+			<p class="p">With an aggregation binding, a template is required that is used to present each
+				element of the aggregation - in this case each "Product" entity in the domain
+				model's "/Products" entityset. We declare this in the "items" aggregation
+				declaration - specifying an <samp class="ph codeph">sap.m.ObjectListItem</samp>. Each Product will
+				be presented using a separate <samp class="ph codeph">ObjectListItem</samp> instance in the
+				List.</p>
+
+			<p class="p">Like the List's selection mode, the <samp class="ph codeph">ObjectListItem</samp>'s behaviour (via the
+				"type" property) is also device-dependent. We use some of the
+					<samp class="ph codeph">ObjectListItem</samp>'s basic properties to display information for
+				each Product's name and price properties. Because the Northwind service that is
+				being used for the domain model doesn't have currency information, we're just
+				showing "USD" for this demo. </p>
+
+			<p class="p">The Product's price itself needs to be subject to special formatting if it is to look
+				presentable in the app - we would like the values to always appear with two decimal
+				places. For this, we use a formatter "currencyValue" in the
+					<samp class="ph codeph">Formatter.js</samp> file in our app's util folder. See the "Custom
+				Utilities" section for more details on how this formatter works. But here, note how
+				the formatter is used, in a complex property binding for the
+					<samp class="ph codeph">ObjectListItem</samp>'s <span class="keyword parmname">number</span> property: the
+				binding is still introduced with the braces, but is specified as a JavaScript object
+				with a 'path' key pointing to the model property, and a 'formatter' key pointing to
+				the formatter function.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!xml</samp>
+	&lt;footer&gt;
+			&lt;Bar&gt;
+				&lt;contentRight&gt;
+					&lt;Button
+						icon="sap-icon://add"
+						tooltip="{i18n&gt;masterFooterAddButtonTooltip}"
+						press="onAddProduct" /&gt;
+				&lt;/contentRight&gt;
+			&lt;/Bar&gt;
+		&lt;/footer&gt;
+	&lt;/Page&gt;
+&lt;/mvc:View&gt;
+</pre></div>
+
+			<p class="p">Finally we have an <samp class="ph codeph">sap.m.Bar</samp> in the Page's footer aggregation. In this Bar we
+				have an "add" button, on the right, which, when pressed, is to bring up the
+				AddProduct view for creating a new product. You can see this in the app screenshot
+				in the Introduction section of this part.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Controller</div><div type="Controller">
+			
+			<p class="p">Now we've got the view declaration done, we need to look at the related controller
+				view/Master.controller.js. </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">jQuery.sap.require("sap.ui.demo.tdg.util.Formatter");</pre></div>
+
+			<p class="p">In order to be able to reference and use the currencyValue formatter function (in our
+					<span class="ph filepath">util/Formatter.js</span>) for each Product's price property, we
+				need to declare a requirement for the module. We do it at the top of the view's
+				controller file.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+sap.ui.core.mvc.Controller.extend("sap.ui.demo.tdg.view.Master", {
+
+	onInit : function() {
+		this.oUpdateFinishedDeferred = jQuery.Deferred();
+
+		this.getView().byId("list").attachEventOnce("updateFinished", function() {
+			this.oUpdateFinishedDeferred.resolve();
+		}, this);
+
+</pre></div>
+
+			<p class="p">In the init event, we create a jQuery Deferred object to be able to know when the update of
+				our List control is finished - in other words, when data has been loaded. We set the
+				Deferred object to resolved in a handler that we attach to the "updateFinished"
+				event which signals that the binding has been updated. </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+		sap.ui.core.UIComponent.getRouterFor(this).attachRouteMatched(this.onRouteMatched, this);
+	
+
+</pre></div>
+
+			<p class="p">We then set a handler to handle the routing event.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+	onRouteMatched : function(oEvent) {
+
+		var oList = this.getView().byId("list");
+		var sName = oEvent.getParameter("name");
+		var oArguments = oEvent.getParameter("arguments");
+</pre></div>
+
+			<p class="p">In the routing handler, we retrieve and store the event arguments passed, which are
+				the name of the route (the "name" parameter) and the arguments from the placeholders
+				(in the "arguments") parameter. </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+		// Wait for the list to be loaded once
+		jQuery.when(this.oUpdateFinishedDeferred).then(jQuery.proxy(function() {
+			var aItems;
+
+			// On the empty hash select the first item
+			if (sName === "main") {
+				this.selectDetail();
+			}
+
+			// Try to select the item in the list
+			if (sName === "product") {
+
+				aItems = oList.getItems();
+				for (var i = 0; i &lt; aItems.length; i++) {
+					if (aItems[i].getBindingContext().getPath() === "/" + oArguments.product) {
+						oList.setSelectedItem(aItems[i], true);
+						break;
+					}
+				}	
+			}	
+
+		}, this));
+	},
+
+</pre></div>
+
+			<p class="p">It's only when the list has been updated with data do we want to properly handle the
+				route. There are two cases relating to whether a product has been selected via the
+				hash or not. The "main" route will match where there's no hash, and the "product"
+				route will match with a hash containing product (and optional supplier or category
+				tab) information. If there's no product selected, we just select the first item.
+				Otherwise we try to find the selected product in the list and set that to be visibly
+				selected. </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+	selectDetail : function() {
+		if (!sap.ui.Device.system.phone) {
+			var oList = this.getView().byId("list");
+			var aItems = oList.getItems();
+			if (aItems.length &amp;&amp; !oList.getSelectedItem()) {
+				oList.setSelectedItem(aItems[0], true);
+				this.showDetail(aItems[0]);
+			}
+		}
+	},
+</pre></div>
+
+			<p class="p">The <samp class="ph codeph">selectDetail</samp> function checks to see if an item has already been selected
+				(this could have happened based on the route match handling above) and if so, makes
+				sure that the item's details are shown in the Detail view, via the
+					<samp class="ph codeph">showDetail</samp> function. </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+	onSearch : function() {
+		// add filter for search
+		var filters = [];
+		var searchString = this.getView().byId("searchField").getValue();
+		if (searchString &amp;&amp; searchString.length &gt; 0) {
+			filters = [ new sap.ui.model.Filter("Name", sap.ui.model.FilterOperator.Contains, searchString) ];
+		}
+
+		// update list binding
+		this.getView().byId("list").getBinding("items").filter(filters);
+	},
+</pre></div>
+
+			<p class="p">This function is the handler for the SearchField in the Master view (
+					<samp class="ph codeph">&lt;SearchField ... search="onSearch" ... /&gt; </samp>). This is where
+				some of the real power of the ODataModel is to be seen. We retrieve the search text
+				entered, and create a "Contains" filter, in the form of an
+					<samp class="ph codeph">sap.ui.model.Filter</samp>, to search for that text. And by applying
+				this Filter (within an array of possible Filters) to the List's "items" binding, an
+				OData QUERY operation is performed automatically via the ODataModel mechanism.
+				Here's an example of what that request might look like, with a search term of
+				"Lemon":</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+GET
+http://&lt;host&gt;:&lt;port&gt;/uilib-sample/proxy/http/services.odata.org/V2/(S(sapuidemotdg))/OData/OData.svc/Products?$skip=0&amp;$top=1&amp;$filter=substringof(%27Lemon%27,Name)</pre></div>
+
+			<p class="p">Note that the <samp class="ph codeph">$top=1</samp> was included as it the number of entities
+				containing "Lemon" in the name was determined as being 1, according to an also
+				automatic request for a count:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+GET 
+http://&lt;host&gt;:&lt;port&gt;/uilib-sample/proxy/http/services.odata.org/V2/(S(sapuidemotdg))/OData/OData.svc/Products?$count?$filter=substringof(%27Lemon%27,Name)
+</pre></div>
+
+			<p class="p">This automatic request for a count is based on the fact that this domain model is specified as
+				supporting the OData <samp class="ph codeph">$count</samp> by default. You can turn this off with
+					<samp class="ph codeph">sap.ui.model.odata.ODataModel.setCountSupported</samp> function.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+	onSelect : function(oEvent) {
+		// Get the list item, either from the listItem parameter or from the event's
+		// source itself (will depend on the device-dependent mode).
+		this.showDetail(oEvent.getParameter("listItem") || oEvent.getSource());
+	},
+</pre></div>
+
+			<p class="p">At some stage, the user will select an item, either via the List itself, or via one
+				of the aggregated ObjectListItems. Which one depends on the device model settings.
+				We handle both events (one on the List, the other on the ObjectListItem) with the
+					<samp class="ph codeph">onSelect</samp> function. </p>
+
+			<p class="p">We're looking for the control instance that has the appropriate data context. If the event is
+				triggered from the List, then the event parameter<span class="keyword parmname">listItem</span>  is
+				made available, and that's the context. Otherwise the context is the control itself
+				that's raising the event - i.e. the individual <samp class="ph codeph">ObjectListItem </samp>bound
+				to the specific entity in the Products entityset. In both cases we pass this object
+				to the <samp class="ph codeph">showDetail</samp> function.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+showDetail : function(oItem) {
+		// If we're on a phone, include nav in history; if not, don't.
+		var bReplace = jQuery.device.is.phone ? false : true;
+		sap.ui.core.UIComponent.getRouterFor(this).navTo("product", {
+			from: "master",
+			product: oItem.getBindingContext().getPath().substr(1),
+			tab: "supplier"
+		}, bReplace);
+	},
+</pre></div>
+
+			<p class="p">The <samp class="ph codeph">showDetail</samp> function is called from the onSelect event handler to show the
+				detail of the selected item in this Master view. It does this by using the Router to
+				navigate to the "product" view (this is the name from the routing configuration in
+				the Component). </p>
+
+			<p class="p">Note how we pass the information as to which product detail is to be shown: the two parameter
+				names "product" and "tab" from the pattern " <samp class="ph codeph">{product}/:tab:</samp> " in
+				the "product" subroute definition are specified with appropriate values: </p>
+
+			<ul class="ul" id="loioa425399ec2fe47a8b9ba9653ab4f6623__ul_wzg_rdj_4n"><li dir="ltr" class="li">"product" gets the value of the path of the selected item's binding
+					context, minus the leading slash (e.g. "/Products(7)" -&gt; "Products(7)")</li>
+<li dir="ltr" class="li">"tab" gets the default value "supplier" so that the initial entry in the Detail
+					view's <samp class="ph codeph">IconTabBar</samp> is pre-selected</li>
+</ul>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+	onAddProduct : function() {
+		sap.ui.core.UIComponent.getRouterFor(this).myNavToWithoutHash({
+			currentView : this.getView(),
+			targetViewName : "sap.ui.demo.tdg.view.AddProduct",
+			targetViewType : "XML",
+			transition : "slide"
+		});
+	}
+
+});
+
+</pre></div>
+
+			<p dir="ltr" class="p">Finally we must handle the "add" button in the Page's footer Bar. In this case we
+				just need to get the Router to put the AddProduct view into place. This uses our
+				custom routing function <samp class="ph codeph">sap.ui.demo.tdg.MyRouter.myNavToWithoutHash</samp>
+				to</p>
+
+			<ul class="ul" id="loioa425399ec2fe47a8b9ba9653ab4f6623__ul_pkv_wdj_4n"><li dir="ltr" class="li">load the view</li>
+<li dir="ltr" class="li">add it to the appropriate aggregation in the SplitApp (masterPages or
+					detailPages)</li>
+<li dir="ltr" class="li">navigate to it</li>
+</ul>
+
+		</div></div>
+<div class="section"><div class="section_title">Progress Check</div><div type="Progress Check">
+			
+			<p class="p">Now our app folder content now looks like this:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+tdg/
+  |
+  +-- i18n/
+  |     |
+  |     +-- messageBundle.properties
+  |
+  +-- view/
+  |     |
+  |     +-- App.view.xml
+  |     +-- Detail.view.xml
+  |     +-- Master.controller.js
+  |     +-- Master.view.xml
+  |
+  +-- Component.js
+  +-- index.html
+  +-- MyRouter.html
+</pre></div>
+
+			<p dir="ltr" class="p">We now have something to show that's starting to look like our app!</p>
+
+			<div class="fig fignone"><div class="figcontainer"><img class="image" id="loioa425399ec2fe47a8b9ba9653ab4f6623__image_dyb_22s_4n" src="5bc69bd429794fe695efe30328d29844.image"/></div></div>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Step 8: Master View";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

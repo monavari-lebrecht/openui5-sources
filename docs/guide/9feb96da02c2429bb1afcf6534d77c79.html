@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=912625979137078"/>
+<title>Compatibility Version Information</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio9feb96da02c2429bb1afcf6534d77c79">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Compatibility Version Information</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">Generally, changes to SAPUI5 features are compatible. However, it may in some cases make sense
+			to change the behavior of a feature, for example, to change the default values or to use
+			an optimized implementation and these changes may lead to incompatibilities. To allow
+			applications to react on such changes in a controlled way, SAPUI5 provides compatibility
+			version flags.</p>
+<div class="note note"><span class="notetitle">Note</span> We recommend to adapt to new feature versions as soon as possible.</div>
+<p class="p">The compatibility version configuration works as follows:</p>
+<ul class="ul" id="loio9feb96da02c2429bb1afcf6534d77c79__ul_k41_sf5_pm"><li class="li">A version flag is introduced if a feature change is incompatible.</li>
+<li class="li">
+				<p class="p">The version flag has to be defined in the SAPUI5 bootstrap tag either globally
+						(<samp class="ph codeph">data-sap-ui-compatVersion</samp> or individually for each feature
+					(for example <samp class="ph codeph">data-sap-ui-compatVersion-xyz</samp>):</p>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;script id="sap-ui-bootstrap" 
+        type="text/javascript"
+        src="resources/sap-ui-core.js"
+        data-sap-ui-theme="sap_blue_crystal"
+        data-sap-ui-libs="sap.ui.commons"
+        data-sap-ui-compatVersion="1.18"
+        data-sap-ui-compatVersion-xyz="1.16"
+        &gt;
+    &lt;/script&gt; </pre></div>
+
+			</li>
+<li class="li">If no version is defined, the original behavior of the feature applies.</li>
+<li class="li">If an explicit version is specified, the behavior of the specified version is
+				applied.</li>
+<li class="li">If a version edge is specified, the newest behavior of the feature feature is
+				applied.</li>
+<li class="li">
+				<p class="p">A fallback mechanism is implemented. The following table shows the possible
+					configuration options for feature "xyz":</p>
+
+				<table summary="" id="loio9feb96da02c2429bb1afcf6534d77c79__simpletable_xf5_bg5_pm" border="1" class="simpletable"><tr class="sthead"><th valign="bottom" align="left" id="d990776e47" class="stentry" width="25%">data-sap-ui-compatVersion</th>
+<th valign="bottom" align="left" id="d990776e49" class="stentry" width="25%">data-sap-ui-compatVersion-xyz</th>
+<th valign="bottom" align="left" id="d990776e51" class="stentry" width="25%">Default feature xyz</th>
+<th valign="bottom" align="left" id="d990776e53" class="stentry" width="25%">Resulting compatibility version </th>
+</tr>
+<tr class="strow"><td valign="top" headers="d990776e47" class="stentry">--</td>
+<td valign="top" headers="d990776e49" class="stentry">--</td>
+<td valign="top" headers="d990776e51" class="stentry">1.14</td>
+<td valign="top" headers="d990776e53" class="stentry">1.14</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d990776e47" class="stentry">1.16</td>
+<td valign="top" headers="d990776e49" class="stentry">--</td>
+<td valign="top" headers="d990776e51" class="stentry">1.14</td>
+<td valign="top" headers="d990776e53" class="stentry">1.16</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d990776e47" class="stentry">--</td>
+<td valign="top" headers="d990776e49" class="stentry">1.16</td>
+<td valign="top" headers="d990776e51" class="stentry">1.14</td>
+<td valign="top" headers="d990776e53" class="stentry">1.16</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d990776e47" class="stentry">1.18</td>
+<td valign="top" headers="d990776e49" class="stentry">1.16</td>
+<td valign="top" headers="d990776e51" class="stentry">1.14</td>
+<td valign="top" headers="d990776e53" class="stentry">1.16</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d990776e47" class="stentry">edge</td>
+<td valign="top" headers="d990776e49" class="stentry">..</td>
+<td valign="top" headers="d990776e51" class="stentry">1.14</td>
+<td valign="top" headers="d990776e53" class="stentry">1.18</td>
+</tr>
+</table>
+
+			</li>
+</ul>
+<p class="p">SAPUI5 supports the following compatibility version flags:</p>
+<table summary="" id="loio9feb96da02c2429bb1afcf6534d77c79__simpletable_dj3_gg5_pm" border="1" class="simpletable"><tr class="sthead"><th valign="bottom" align="left" id="d990776e105" class="stentry" width="50%">Flag </th>
+<th valign="bottom" align="left" id="d990776e107" class="stentry" width="50%">Description </th>
+</tr>
+<tr class="strow"><td valign="top" headers="d990776e105" class="stentry"><samp class="ph codeph">data-sap-ui-compatVersion-flexBoxPolyfill</samp></td>
+<td valign="top" headers="d990776e107" class="stentry">
+					<p class="p">The <samp class="ph codeph">flexBoxPolyfill</samp> for Internet Explorer 9 was deprecated
+						in 1.16 due to functional deficencies. When the compatibility version is
+						1.16 or higher, the polyfill is not active at all. Otherwise, the buggy
+						implementation behaves as before, so that it still works in existing
+						applications.</p>
+
+					<p class="p">Default value: 1.14</p>
+
+				</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d990776e105" class="stentry"><samp class="ph codeph">data-sap-ui-compatVersion-sapMeTabContainer</samp></td>
+<td valign="top" headers="d990776e107" class="stentry">
+					<p class="p">The <samp class="ph codeph">TabContainer</samp> was deprecated in 1.15. When the
+						compatibility version is 1.16 or higher, an error is logged to the console
+						indicating that <samp class="ph codeph">sap.m.IconTabBar</samp> should be used
+						instead.</p>
+
+					<p class="p">Default value: 1.14</p>
+
+				</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d990776e105" class="stentry"><samp class="ph codeph">data-sap-ui-compatVersion-sapMeProgessIndicator</samp></td>
+<td valign="top" headers="d990776e107" class="stentry">--</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d990776e105" class="stentry"><samp class="ph codeph">data-sap-ui-compatVersion-sapMGrowingList</samp></td>
+<td valign="top" headers="d990776e107" class="stentry">--</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d990776e105" class="stentry"><samp class="ph codeph">data-sap-ui-compatVersion-sapMListAsTable</samp></td>
+<td valign="top" headers="d990776e107" class="stentry">--</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d990776e105" class="stentry"><samp class="ph codeph">data-sap-ui-compatVersion-sapMDialogWithPadding</samp></td>
+<td valign="top" headers="d990776e107" class="stentry">
+					<p class="p">By default, the content area of <samp class="ph codeph">Dialog</samp> had paddings. To
+						make the padding consistent with other popups, the padding is removed for
+						compatibility versions 1.16 or higher. If the padding is still needed inside
+						the content area of <samp class="ph codeph">Dialog</samp>, add the CSS style class
+							<samp class="ph codeph">sapUiPopupWithPadding</samp> to <samp class="ph codeph">Dialog</samp> by
+						calling the <samp class="ph codeph">addStyleClass</samp> function. </p>
+
+					<p class="p">Default value: 1.14</p>
+
+				</td>
+</tr>
+</table>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="91f087396f4d1014b6dd926db0e91070.html">Compatibility Rules</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Compatibility Version Information";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

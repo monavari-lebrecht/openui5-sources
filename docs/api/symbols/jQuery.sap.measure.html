@@ -1,0 +1,802 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - jQuery.sap.measure</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Namespace jQuery.sap.measure
+					</h1>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>Namespace for the jQuery performance measurement plug-in provided by SAP AG.</p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+		
+
+
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Adds a performance measurement with all data This is usefull to add external measurements (e.g."><a href="../symbols/jQuery.sap.measure.html#add">add</a></b><span class='signature'>(<span title="(string) ID of the measurement">sId</span>, <span title="(string) Info for the measurement">sInfo</span>, <span title="(int) start timestamp">iStart</span>, <span title="(int) end timestamp">iEnd</span>, <span title="(int) time in milliseconds">iTime</span>, <span title="(int) effective time in milliseconds">iDuration</span>)</span>
+									<span class='description'>Adds a performance measurement with all data This is usefull to add external measurements (e.g.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Clears all performance measurements"><a href="../symbols/jQuery.sap.measure.html#clear">clear</a></b><span class='signature'>()</span>
+									<span class='description'>Clears all performance measurements</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Ends a performance measure"><a href="../symbols/jQuery.sap.measure.html#end">end</a></b><span class='signature'>(<span title="(string) ID of the measurement">sId</span>)</span>
+									<span class='description'>Ends a performance measure</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Gets the current state of the perfomance measurement functionality"><a href="../symbols/jQuery.sap.measure.html#getActive">getActive</a></b><span class='signature'>()</span>
+									<span class='description'>Gets the current state of the perfomance measurement functionality</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Gets all performance measurements"><a href="../symbols/jQuery.sap.measure.html#getAllMeasurements">getAllMeasurements</a></b><span class='signature'>()</span>
+									<span class='description'>Gets all performance measurements</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Gets a performance measure"><a href="../symbols/jQuery.sap.measure.html#getMeasurement">getMeasurement</a></b><span class='signature'>(<span title="(string) ID of the measurement">sId</span>)</span>
+									<span class='description'>Gets a performance measure</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Pauses a performance measure"><a href="../symbols/jQuery.sap.measure.html#pause">pause</a></b><span class='signature'>(<span title="(string) ID of the measurement">sId</span>)</span>
+									<span class='description'>Pauses a performance measure</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes a performance measure"><a href="../symbols/jQuery.sap.measure.html#remove">remove</a></b><span class='signature'>(<span title="(string) ID of the measurement">sId</span>)</span>
+									<span class='description'>Removes a performance measure</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Resumes a performance measure"><a href="../symbols/jQuery.sap.measure.html#resume">resume</a></b><span class='signature'>(<span title="(string) ID of the measurement">sId</span>)</span>
+									<span class='description'>Resumes a performance measure</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Activates or deactivates the performance measure functionality"><a href="../symbols/jQuery.sap.measure.html#setActive">setActive</a></b><span class='signature'>(<span title="(boolean) state of the perfomance measurement functionality to set">bOn</span>)</span>
+									<span class='description'>Activates or deactivates the performance measure functionality</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Starts a performance measure"><a href="../symbols/jQuery.sap.measure.html#start">start</a></b><span class='signature'>(<span title="(string) ID of the measurement">sId</span>, <span title="(string) Info for the measurement">sInfo</span>)</span>
+									<span class='description'>Starts a performance measure</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+					
+		
+		
+
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod'>
+										<a name="add"> </a>
+										<div class="itemTitle icon">
+											add<span class="signature">(<span title="(string) ID of the measurement">sId</span>, <span title="(string) Info for the measurement">sInfo</span>, <span title="(int) start timestamp">iStart</span>, <span title="(int) end timestamp">iEnd</span>, <span title="(int) time in milliseconds">iTime</span>, <span title="(int) effective time in milliseconds">iDuration</span>)</span>
+											<span class="light" title="returns object">: object</span>
+										</div>
+										<div class="full-description">
+											Adds a performance measurement with all data 
+This is usefull to add external measurements (e.g. from a backend) to the common measurement UI
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b>
+													</td>
+													<td class="methodItemDesc">
+												    ID of the measurement
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sInfo</b>
+													</td>
+													<td class="methodItemDesc">
+												    Info for the measurement
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iStart</b>
+													</td>
+													<td class="methodItemDesc">
+												    start timestamp
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iEnd</b>
+													</td>
+													<td class="methodItemDesc">
+												    end timestamp
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iTime</b>
+													</td>
+													<td class="methodItemDesc">
+												    time in milliseconds
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iDuration</b>
+													</td>
+													<td class="methodItemDesc">
+												    effective time in milliseconds
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{object}</span> 
+													</td>
+													<td class="methodItemDesc">
+														[] current measurement containing id, info and start-timestamp, end-timestamp, time, duration (false if error)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="clear"> </a>
+										<div class="itemTitle icon">
+											clear<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Clears all performance measurements
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="end"> </a>
+										<div class="itemTitle icon">
+											end<span class="signature">(<span title="(string) ID of the measurement">sId</span>)</span>
+											<span class="light" title="returns object">: object</span>
+										</div>
+										<div class="full-description">
+											Ends a performance measure
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b>
+													</td>
+													<td class="methodItemDesc">
+												    ID of the measurement
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{object}</span> 
+													</td>
+													<td class="methodItemDesc">
+														current measurement containing id, info and start-timestamp, end-timestamp, time, duration (false if error)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getActive"> </a>
+										<div class="itemTitle icon">
+											getActive<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Gets the current state of the perfomance measurement functionality
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														current state of the perfomance measurement functionality
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getAllMeasurements"> </a>
+										<div class="itemTitle icon">
+											getAllMeasurements<span class="signature">()</span>
+											<span class="light" title="returns object">: object</span>
+										</div>
+										<div class="full-description">
+											Gets all performance measurements
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{object}</span> 
+													</td>
+													<td class="methodItemDesc">
+														[] current measurement containing id, info and start-timestamp, end-timestamp, time, duration (false if error)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getMeasurement"> </a>
+										<div class="itemTitle icon">
+											getMeasurement<span class="signature">(<span title="(string) ID of the measurement">sId</span>)</span>
+											<span class="light" title="returns object">: object</span>
+										</div>
+										<div class="full-description">
+											Gets a performance measure
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b>
+													</td>
+													<td class="methodItemDesc">
+												    ID of the measurement
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{object}</span> 
+													</td>
+													<td class="methodItemDesc">
+														current measurement containing id, info and start-timestamp, end-timestamp, time, duration (false if error)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="pause"> </a>
+										<div class="itemTitle icon">
+											pause<span class="signature">(<span title="(string) ID of the measurement">sId</span>)</span>
+											<span class="light" title="returns object">: object</span>
+										</div>
+										<div class="full-description">
+											Pauses a performance measure
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b>
+													</td>
+													<td class="methodItemDesc">
+												    ID of the measurement
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{object}</span> 
+													</td>
+													<td class="methodItemDesc">
+														current measurement containing id, info and start-timestamp, pause-timestamp (false if error)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="remove"> </a>
+										<div class="itemTitle icon">
+											remove<span class="signature">(<span title="(string) ID of the measurement">sId</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Removes a performance measure
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b>
+													</td>
+													<td class="methodItemDesc">
+												    ID of the measurement
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="resume"> </a>
+										<div class="itemTitle icon">
+											resume<span class="signature">(<span title="(string) ID of the measurement">sId</span>)</span>
+											<span class="light" title="returns object">: object</span>
+										</div>
+										<div class="full-description">
+											Resumes a performance measure
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b>
+													</td>
+													<td class="methodItemDesc">
+												    ID of the measurement
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{object}</span> 
+													</td>
+													<td class="methodItemDesc">
+														current measurement containing id, info and start-timestamp, resume-timestamp (false if error)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setActive"> </a>
+										<div class="itemTitle icon">
+											setActive<span class="signature">(<span title="(boolean) state of the perfomance measurement functionality to set">bOn</span>)</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Activates or deactivates the performance measure functionality
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bOn</b>
+													</td>
+													<td class="methodItemDesc">
+												    state of the perfomance measurement functionality to set
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														current state of the perfomance measurement functionality
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="start"> </a>
+										<div class="itemTitle icon">
+											start<span class="signature">(<span title="(string) ID of the measurement">sId</span>, <span title="(string) Info for the measurement">sInfo</span>)</span>
+											<span class="light" title="returns object">: object</span>
+										</div>
+										<div class="full-description">
+											Starts a performance measure
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b>
+													</td>
+													<td class="methodItemDesc">
+												    ID of the measurement
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sInfo</b>
+													</td>
+													<td class="methodItemDesc">
+												    Info for the measurement
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{object}</span> 
+													</td>
+													<td class="methodItemDesc">
+														current measurement containing id, info and start-timestamp (false if error)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

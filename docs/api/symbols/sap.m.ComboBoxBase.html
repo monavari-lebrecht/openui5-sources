@@ -1,0 +1,1681 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.m.ComboBoxBase</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class sap.m.ComboBoxBase
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.m.InputBase" href="../symbols/sap.m.InputBase.html">InputBase</a></div>
+					
+					
+					
+						<div class="classRelation subclasses"><span class="caption">known direct subclasses: </span><a title="sap.m.ComboBox" href="../symbols/sap.m.ComboBox.html">ComboBox</a></div>
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>An abstract class for ComboBoxes.</p>
+						
+						
+						
+						
+						
+						
+							<br />
+							<i>Since: </i>1.22.0.
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="Constructor for a new ComboBoxBase.">new <a href="../symbols/sap.m.ComboBoxBase.html#constructor">sap.m.ComboBoxBase</a></b>
+										<span class='signature'>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)</span>
+										<span class='description'>Constructor for a new ComboBoxBase.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+						
+						
+						
+						
+														
+							
+								<div class="summary section">
+									<div class="sectionTitle">Fields borrowed from class <a href="../symbols/sap.m.InputBase.html">sap.m.InputBase</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.m.InputBase.html#bindToInputEvent">bindToInputEvent</a>, <a href="../symbols/sap.m.InputBase.html#isSpecialKey">isSpecialKey</a>, <a href="../symbols/sap.m.InputBase.html#updateDomValue">updateDomValue</a>
+									</div>
+								</div>
+							
+						
+					
+		
+
+
+					
+						
+						
+				
+						
+						
+						
+							
+								<div class="summary section">
+									<div class="sectionTitle">Events borrowed from class <a href="../symbols/sap.m.InputBase.html">sap.m.InputBase</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.m.InputBase.html#event:change">change</a>
+									</div>
+								</div>
+							
+						
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Creates a new subclass of class sap.m.ComboBoxBase with name sClassName and enriches it with the information contained in oClassInfo."><a href="../symbols/sap.m.ComboBoxBase.html#.extend">sap.m.ComboBoxBase.extend</a></b><span class='signature'>(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Creates a new subclass of class sap.m.ComboBoxBase with name <code>sClassName</code> and enriches it with the information contained in <code>oClassInfo</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Adds some item oItem to the aggregation named items."><a href="../symbols/sap.m.ComboBoxBase.html#addItem">addItem</a></b><span class='signature'>(<span title="(sap.ui.core.Item) The item to add; if empty, nothing is added.">oItem</span>)</span>
+									<span class='description'>Adds some item <code>oItem</code> to the aggregation named <code>items</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Binder for aggregation items."><a href="../symbols/sap.m.ComboBoxBase.html#bindItems">bindItems</a></b><span class='signature'>(<span title="(string) path to a list in the model">sPath</span>, <span title="(sap.ui.core.Element) the control template for this aggregation">oTemplate</span>, <span title="(sap.ui.model.Sorter) the initial sort order (optional)">oSorter</span>, <span title="(array) the predefined filters for this aggregation (optional)">aFilters</span>)</span>
+									<span class='description'>Binder for aggregation <code>items</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Closes the control's picker pop-up."><a href="../symbols/sap.m.ComboBoxBase.html#close">close</a></b><span class='signature'>()</span>
+									<span class='description'>Closes the control's picker pop-up.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Creates a picker."><a href="../symbols/sap.m.ComboBoxBase.html#createPicker">createPicker</a></b><span class='signature'>(<span title="(string) string">sPickerType</span>)</span>
+									<span class='description'>Creates a picker.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Destroys all the items in the aggregation named items."><a href="../symbols/sap.m.ComboBoxBase.html#destroyItems">destroyItems</a></b><span class='signature'>()</span>
+									<span class='description'>Destroys all the items in the aggregation named <code>items</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Retrieves the enabled items from the given array of items or from this control's aggregation named items."><a href="../symbols/sap.m.ComboBoxBase.html#getEnabledItems">getEnabledItems</a></b><span class='signature'>(<span title="(sap.ui.core.Item[]) items to filter">aItems</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Retrieves the enabled items from the given array of items or from this control's aggregation named <code>items</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Retrieves the first item from the aggregation named items."><a href="../symbols/sap.m.ComboBoxBase.html#getFirstItem">getFirstItem</a></b><span class='signature'>()</span>
+									<span class='description'>Retrieves the first item from the aggregation named <code>items</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Retrieves the item from the aggregation named items at the given 0-based index."><a href="../symbols/sap.m.ComboBoxBase.html#getItemAt">getItemAt</a></b><span class='signature'>(<span title="(int) Index of the item to return.">iIndex</span>)</span>
+									<span class='description'>Retrieves the item from the aggregation named <code>items</code> at the given 0-based index.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Retrieves the item with the given key from the aggregation named items."><a href="../symbols/sap.m.ComboBoxBase.html#getItemByKey">getItemByKey</a></b><span class='signature'>(<span title="(string) An item key that specifies the item to retrieve.">sKey</span>)</span>
+									<span class='description'>Retrieves the item with the given key from the aggregation named <code>items</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for aggregation items."><a href="../symbols/sap.m.ComboBoxBase.html#getItems">getItems</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for aggregation <code>items</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Retrieves the last item from the aggregation named items."><a href="../symbols/sap.m.ComboBoxBase.html#getLastItem">getLastItem</a></b><span class='signature'>()</span>
+									<span class='description'>Retrieves the last item from the aggregation named <code>items</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property maxWidth."><a href="../symbols/sap.m.ComboBoxBase.html#getMaxWidth">getMaxWidth</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>maxWidth</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Getter for the control's picker pop-up."><a href="../symbols/sap.m.ComboBoxBase.html#getPicker">getPicker</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for the control's picker pop-up.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Getter for property _sPickerType"><a href="../symbols/sap.m.ComboBoxBase.html#getPickerType">getPickerType</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>_sPickerType</code></span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property value."><a href="../symbols/sap.m.ComboBoxBase.html#getValue">getValue</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>value</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Checks for the provided sap.ui.core.Item in the aggregation named items and returns its index if found or -1 otherwise."><a href="../symbols/sap.m.ComboBoxBase.html#indexOfItem">indexOfItem</a></b><span class='signature'>(<span title="(sap.ui.core.Item) the item whose index is looked for.">oItem</span>)</span>
+									<span class='description'>Checks for the provided <code>sap.ui.core.Item</code> in the aggregation named <code>items</code> and returns its index if found or -1 otherwise.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Inserts an item into the aggregation named items."><a href="../symbols/sap.m.ComboBoxBase.html#insertItem">insertItem</a></b><span class='signature'>(<span title="(sap.ui.core.Item) The item to insert; if empty, nothing is inserted.">oItem</span>, <span title="(int) The 0-based index the item should be inserted at; for a negative value of iIndex, the item is inserted at position 0; for a value greater than the current size of the aggregation, the item is inserted at the last position.">iIndex</span>)</span>
+									<span class='description'>Inserts an item into the aggregation named <code>items</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Whether the control's picker pop-up is open."><a href="../symbols/sap.m.ComboBoxBase.html#isOpen">isOpen</a></b><span class='signature'>()</span>
+									<span class='description'>Whether the control's picker pop-up is open.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes all the controls in the aggregation named items."><a href="../symbols/sap.m.ComboBoxBase.html#removeAllItems">removeAllItems</a></b><span class='signature'>()</span>
+									<span class='description'>Removes all the controls in the aggregation named <code>items</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Removes an item from the aggregation named items."><a href="../symbols/sap.m.ComboBoxBase.html#removeItem">removeItem</a></b><span class='signature'>(<span title="(int | string | sap.ui.core.Item) The item to remove or its index or id.">vItem</span>)</span>
+									<span class='description'>Removes an item from the aggregation named <code>items</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Sets the start and end positions of the current text selection."><a href="../symbols/sap.m.ComboBoxBase.html#selectText">selectText</a></b><span class='signature'>(<span title="(integer) The index into the text at which the first selected character is located.">iSelectionStart</span>, <span title="(integer) The index into the text at which the last selected character is located.">iSelectionEnd</span>)</span>
+									<span class='description'>Sets the start and end positions of the current text selection.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property maxWidth."><a href="../symbols/sap.m.ComboBoxBase.html#setMaxWidth">setMaxWidth</a></b><span class='signature'>(<span title="(sap.ui.core.CSSSize) new value for property maxWidth">sMaxWidth</span>)</span>
+									<span class='description'>Setter for property <code>maxWidth</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Setter for property _sPickerType."><a href="../symbols/sap.m.ComboBoxBase.html#setPickerType">setPickerType</a></b><span class='signature'>(<span title="(string) string">sPickerType</span>)</span>
+									<span class='description'>Setter for property <code>_sPickerType</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Unbinder for aggregation items."><a href="../symbols/sap.m.ComboBoxBase.html#unbindItems">unbindItems</a></b><span class='signature'>()</span>
+									<span class='description'>Unbinder for aggregation <code>items</code>.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.m.InputBase.html">sap.m.InputBase</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.m.InputBase.html#attachChange">attachChange</a>, <a href="../symbols/sap.m.InputBase.html#bindValue">bindValue</a>, <a href="../symbols/sap.m.InputBase.html#detachChange">detachChange</a>, <a href="../symbols/sap.m.InputBase.html#fireChange">fireChange</a>, <a href="../symbols/sap.m.InputBase.html#fireChangeEvent">fireChangeEvent</a>, <a href="../symbols/sap.m.InputBase.html#getEditable">getEditable</a>, <a href="../symbols/sap.m.InputBase.html#getEnabled">getEnabled</a>, <a href="../symbols/sap.m.InputBase.html#getName">getName</a>, <a href="../symbols/sap.m.InputBase.html#getPlaceholder">getPlaceholder</a>, <a href="../symbols/sap.m.InputBase.html#getValueState">getValueState</a>, <a href="../symbols/sap.m.InputBase.html#getVisible">getVisible</a>, <a href="../symbols/sap.m.InputBase.html#getWidth">getWidth</a>, <a href="../symbols/sap.m.InputBase.html#onChange">onChange</a>, <a href="../symbols/sap.m.InputBase.html#setEditable">setEditable</a>, <a href="../symbols/sap.m.InputBase.html#setEnabled">setEnabled</a>, <a href="../symbols/sap.m.InputBase.html#setName">setName</a>, <a href="../symbols/sap.m.InputBase.html#setPlaceholder">setPlaceholder</a>, <a href="../symbols/sap.m.InputBase.html#setValue">setValue</a>, <a href="../symbols/sap.m.InputBase.html#setValueState">setValueState</a>, <a href="../symbols/sap.m.InputBase.html#setVisible">setVisible</a>, <a href="../symbols/sap.m.InputBase.html#setWidth">setWidth</a>, <a href="../symbols/sap.m.InputBase.html#unbindValue">unbindValue</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Control.html#addStyleClass">addStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#allowTextSelection">allowTextSelection</a>, <a href="../symbols/sap.ui.core.Control.html#attachBrowserEvent">attachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#clone">clone</a>, <a href="../symbols/sap.ui.core.Control.html#detachBrowserEvent">detachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#getBusy">getBusy</a>, <a href="../symbols/sap.ui.core.Control.html#getBusyIndicatorDelay">getBusyIndicatorDelay</a>, <a href="../symbols/sap.ui.core.Control.html#getIdForLabel">getIdForLabel</a>, <a href="../symbols/sap.ui.core.Control.html#getRenderer">getRenderer</a>, <a href="../symbols/sap.ui.core.Control.html#hasStyleClass">hasStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#invalidate">invalidate</a>, <a href="../symbols/sap.ui.core.Control.html#isBusy">isBusy</a>, <a href="../symbols/sap.ui.core.Control.html#placeAt">placeAt</a>, <a href="../symbols/sap.ui.core.Control.html#removeStyleClass">removeStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#rerender">rerender</a>, <a href="../symbols/sap.ui.core.Control.html#setBusy">setBusy</a>, <a href="../symbols/sap.ui.core.Control.html#setBusyIndicatorDelay">setBusyIndicatorDelay</a>, <a href="../symbols/sap.ui.core.Control.html#toggleStyleClass">toggleStyleClass</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Element.html#$">$</a>, <a href="../symbols/sap.ui.core.Element.html#addCustomData">addCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#addDependent">addDependent</a>, <a href="../symbols/sap.ui.core.Element.html#addEventDelegate">addEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#applyFocusInfo">applyFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#bindElement">bindElement</a>, <a href="../symbols/sap.ui.core.Element.html#data">data</a>, <a href="../symbols/sap.ui.core.Element.html#destroy">destroy</a>, <a href="../symbols/sap.ui.core.Element.html#destroyCustomData">destroyCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#destroyDependents">destroyDependents</a>, <a href="../symbols/sap.ui.core.Element.html#enhanceAccessibilityState">enhanceAccessibilityState</a>, <a href="../symbols/sap.ui.core.Element.html#findElements">findElements</a>, <a href="../symbols/sap.ui.core.Element.html#fireEvent">fireEvent</a>, <a href="../symbols/sap.ui.core.Element.html#getCustomData">getCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#getDependents">getDependents</a>, <a href="../symbols/sap.ui.core.Element.html#getDomRef">getDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getElementBinding">getElementBinding</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusDomRef">getFocusDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusInfo">getFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#getInterface">getInterface</a>, <a href="../symbols/sap.ui.core.Element.html#getLayoutData">getLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#getMetadata">getMetadata</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip">getTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_AsString">getTooltip_AsString</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_Text">getTooltip_Text</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfCustomData">indexOfCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfDependent">indexOfDependent</a>, <a href="../symbols/sap.ui.core.Element.html#insertCustomData">insertCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#insertDependent">insertDependent</a>, <a href="../symbols/sap.ui.core.Element.html#prop">prop</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllCustomData">removeAllCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllDependents">removeAllDependents</a>, <a href="../symbols/sap.ui.core.Element.html#removeCustomData">removeCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeDependent">removeDependent</a>, <a href="../symbols/sap.ui.core.Element.html#removeEventDelegate">removeEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#setLayoutData">setLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#setTooltip">setTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#toString">toString</a>, <a href="../symbols/sap.ui.core.Element.html#unbindElement">unbindElement</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.ManagedObject.html">sap.ui.base.ManagedObject</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.ManagedObject.html#addAggregation">addAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#addAssociation">addAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#applySettings">applySettings</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindAggregation">bindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindContext">bindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindObject">bindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindProperty">bindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#destroyAggregation">destroyAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#findAggregatedObjects">findAggregatedObjects</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAggregation">getAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAssociation">getAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBinding">getBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingContext">getBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingInfo">getBindingInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingPath">getBindingPath</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getEventingParent">getEventingParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getId">getId</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getModel">getModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getObjectBinding">getObjectBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getOriginInfo">getOriginInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getParent">getParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getProperty">getProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#hasModel">hasModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#indexOfAggregation">indexOfAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#insertAggregation">insertAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isBound">isBound</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isInvalidateSuppressed">isInvalidateSuppressed</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isTreeBinding">isTreeBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAggregation">removeAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAggregation">removeAllAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAssociation">removeAllAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAssociation">removeAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAggregation">setAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAssociation">setAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setBindingContext">setBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setModel">setModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindAggregation">unbindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindContext">unbindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindObject">unbindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindProperty">unbindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateAggregation">validateAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateProperty">validateProperty</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.EventProvider.html#attachEvent">attachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#attachEventOnce">attachEventOnce</a>, <a href="../symbols/sap.ui.base.EventProvider.html#detachEvent">detachEvent</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.m.ComboBoxBase</b>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)
+										</div>
+										
+										<div class="full-description">
+											Constructor for a new ComboBoxBase.
+</p><p>
+Accepts an object literal <code>mSettings</code> that defines initial 
+property values, aggregated and associated objects as well as event handlers. 
+</p><p>
+If the name of a setting is ambiguous (e.g. a property has the same name as an event), 
+then the framework assumes property, aggregation, association, event in that order. 
+To override this automatic resolution, one of the prefixes "aggregation:", "association:" 
+or "event:" can be added to the name of the setting (such a prefixed name must be
+enclosed in single or double quotes).
+</p><p>
+The supported settings are:
+<ul>
+<li>Properties
+<ul>
+<li><a href="#getMaxWidth">maxWidth</a> : sap.ui.core.CSSSize (default: '100%')</li></ul>
+</li>
+<li>Aggregations
+<ul>
+<li><a href="#getItems">items</a> <strong>(default aggregation)</strong> : sap.ui.core.Item[]</li></ul>
+</li>
+<li>Associations
+<ul></ul>
+</li>
+<li>Events
+<ul></ul>
+</li>
+</ul> 
+</p><p>
+</p><p>
+In addition, all settings applicable to the base type <a href="../symbols/sap.m.InputBase.html#constructor">sap.m.InputBase</a>
+can be used as well.
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    id for the new control, generated automatically if no id is given
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mSettings</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    initial settings for the new control
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".extend"> </a>
+										<div class="itemTitle icon">
+											sap.m.ComboBoxBase.extend<span class="signature">(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns function">: function</span>
+										</div>
+										<div class="full-description">
+											Creates a new subclass of class sap.m.ComboBoxBase with name <code>sClassName</code> 
+and enriches it with the information contained in <code>oClassInfo</code>.
+</p><p>
+<code>oClassInfo</code> might contain the same kind of informations as described in <a href="../symbols/sap.ui.core.Element.html#.extend">Element.extend</a>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sClassName</b>
+													</td>
+													<td class="methodItemDesc">
+												    name of the class to be created
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oClassInfo</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    object literal with informations about the class
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>FNMetaImpl</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    constructor function for the metadata object. If not given, it defaults to sap.ui.core.ElementMetadata.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{function}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the created class / constructor function
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="addItem"> </a>
+										<div class="itemTitle icon">
+											addItem<span class="signature">(<span title="(sap.ui.core.Item) The item to add; if empty, nothing is added.">oItem</span>)</span>
+											<span class="light" title="returns sap.m.ComboBoxBase">: <a href="../symbols/sap.m.ComboBoxBase.html">sap.m.ComboBoxBase</a></span>
+										</div>
+										<div class="full-description">
+											Adds some item <code>oItem</code> to the aggregation named <code>items</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Item.html">sap.ui.core.Item</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    The item to add; if empty, nothing is added.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ComboBoxBase.html">sap.m.ComboBoxBase</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="bindItems"> </a>
+										<div class="itemTitle icon">
+											bindItems<span class="signature">(<span title="(string) path to a list in the model">sPath</span>, <span title="(sap.ui.core.Element) the control template for this aggregation">oTemplate</span>, <span title="(sap.ui.model.Sorter) the initial sort order (optional)">oSorter</span>, <span title="(array) the predefined filters for this aggregation (optional)">aFilters</span>)</span>
+											<span class="light" title="returns sap.m.ComboBoxBase">: <a href="../symbols/sap.m.ComboBoxBase.html">sap.m.ComboBoxBase</a></span>
+										</div>
+										<div class="full-description">
+											Binder for aggregation <code>items</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sPath</b>
+													</td>
+													<td class="methodItemDesc">
+												    path to a list in the model
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oTemplate</b>
+													</td>
+													<td class="methodItemDesc">
+												    the control template for this aggregation
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.model.Sorter.html">sap.ui.model.Sorter</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oSorter</b>
+													</td>
+													<td class="methodItemDesc">
+												    the initial sort order (optional)
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{array}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>aFilters</b>
+													</td>
+													<td class="methodItemDesc">
+												    the predefined filters for this aggregation (optional)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ComboBoxBase.html">sap.m.ComboBoxBase</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="close"> </a>
+										<div class="itemTitle icon">
+											close<span class="signature">()</span>
+											<span class="light" title="returns sap.m.ComboBoxBase">: <a href="../symbols/sap.m.ComboBoxBase.html">sap.m.ComboBoxBase</a></span>
+										</div>
+										<div class="full-description">
+											Closes the control's picker pop-up.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ComboBoxBase.html">sap.m.ComboBoxBase</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="createPicker"> </a>
+										<div class="itemTitle icon protected">
+											createPicker<span class="signature">(<span title="(string) string">sPickerType</span>)</span>
+											<span class="light" title="returns sap.m.Popover | sap.m.Dialog">: <a href="../symbols/sap.m.Popover.html">sap.m.Popover</a> | sap.m.Dialog</span>
+										</div>
+										<div class="full-description">
+											Creates a picker.
+To be overwritten by subclasses.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sPickerType</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Popover.html">sap.m.Popover</a> | sap.m.Dialog}</span> 
+													</td>
+													<td class="methodItemDesc">
+														The picker pop-up to be used.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="destroyItems"> </a>
+										<div class="itemTitle icon">
+											destroyItems<span class="signature">()</span>
+											<span class="light" title="returns sap.m.ComboBox">: <a href="../symbols/sap.m.ComboBox.html">sap.m.ComboBox</a></span>
+										</div>
+										<div class="full-description">
+											Destroys all the items in the aggregation named <code>items</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ComboBox.html">sap.m.ComboBox</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getEnabledItems"> </a>
+										<div class="itemTitle icon">
+											getEnabledItems<span class="signature">(<span title="(sap.ui.core.Item[]) items to filter">aItems</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.ui.core.Item[]">: <a href="../symbols/sap.ui.core.Item.html">sap.ui.core.Item</a>[]</span>
+										</div>
+										<div class="full-description">
+											Retrieves the enabled items from the given array of items or from 
+this control's aggregation named <code>items</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Item.html">sap.ui.core.Item</a>[]}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>aItems</b><i class="help" title="Optional parameter">?, Default: getItems()</i>
+													</td>
+													<td class="methodItemDesc">
+												    items to filter
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Item.html">sap.ui.core.Item</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														An array containing the enabled items.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getFirstItem"> </a>
+										<div class="itemTitle icon">
+											getFirstItem<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.Item | null">: <a href="../symbols/sap.ui.core.Item.html">sap.ui.core.Item</a> | null</span>
+										</div>
+										<div class="full-description">
+											Retrieves the first item from the aggregation named <code>items</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Item.html">sap.ui.core.Item</a> | null}</span> 
+													</td>
+													<td class="methodItemDesc">
+														The first item, or null if there are no items.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getItemAt"> </a>
+										<div class="itemTitle icon">
+											getItemAt<span class="signature">(<span title="(int) Index of the item to return.">iIndex</span>)</span>
+											<span class="light" title="returns sap.ui.core.Item | null">: <a href="../symbols/sap.ui.core.Item.html">sap.ui.core.Item</a> | null</span>
+										</div>
+										<div class="full-description">
+											Retrieves the item from the aggregation named <code>items</code> at the given 0-based index.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    Index of the item to return.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Item.html">sap.ui.core.Item</a> | null}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Item at the given index, or null if none.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getItemByKey"> </a>
+										<div class="itemTitle icon">
+											getItemByKey<span class="signature">(<span title="(string) An item key that specifies the item to retrieve.">sKey</span>)</span>
+											<span class="light" title="returns sap.ui.core.Item | null">: <a href="../symbols/sap.ui.core.Item.html">sap.ui.core.Item</a> | null</span>
+										</div>
+										<div class="full-description">
+											Retrieves the item with the given key from the aggregation named <code>items</code>.
+If duplicate keys exists the first item matching the key is returned.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sKey</b>
+													</td>
+													<td class="methodItemDesc">
+												    An item key that specifies the item to retrieve.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Item.html">sap.ui.core.Item</a> | null}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getItems"> </a>
+										<div class="itemTitle icon">
+											getItems<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.Item[]">: <a href="../symbols/sap.ui.core.Item.html">sap.ui.core.Item</a>[]</span>
+										</div>
+										<div class="full-description">
+											Getter for aggregation <code>items</code>.<br/>
+Aggregation of items to be displayed.
+</p><p>
+<strong>Note</strong>: this is the default aggregation for ComboBoxBase.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Item.html">sap.ui.core.Item</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getLastItem"> </a>
+										<div class="itemTitle icon">
+											getLastItem<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.Item | null">: <a href="../symbols/sap.ui.core.Item.html">sap.ui.core.Item</a> | null</span>
+										</div>
+										<div class="full-description">
+											Retrieves the last item from the aggregation named <code>items</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Item.html">sap.ui.core.Item</a> | null}</span> 
+													</td>
+													<td class="methodItemDesc">
+														The last item, or null if there are no items.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getMaxWidth"> </a>
+										<div class="itemTitle icon">
+											getMaxWidth<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.CSSSize">: <a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a></span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>maxWidth</code>.
+Defines the maximum width of the text field. This value can be provided in %, em, px… and all CSS units.
+</p><p>
+Default value is <code>100%</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>maxWidth</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="getPicker"> </a>
+										<div class="itemTitle icon protected">
+											getPicker<span class="signature">()</span>
+											<span class="light" title="returns sap.m.Dialog | sap.m.Popover | null">: <a href="../symbols/sap.m.Dialog.html">sap.m.Dialog</a> | sap.m.Popover | null</span>
+										</div>
+										<div class="full-description">
+											Getter for the control's picker pop-up.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Dialog.html">sap.m.Dialog</a> | sap.m.Popover | null}</span> 
+													</td>
+													<td class="methodItemDesc">
+														The picker, creating it if necessary by calling <code>createPicker()</code> method.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="getPickerType"> </a>
+										<div class="itemTitle icon protected">
+											getPickerType<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>_sPickerType</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getValue"> </a>
+										<div class="itemTitle icon">
+											getValue<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>value</code>.
+Defines the value of the control's input field.
+</p><p>
+Default value is empty/<code>undefined</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>value</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="indexOfItem"> </a>
+										<div class="itemTitle icon">
+											indexOfItem<span class="signature">(<span title="(sap.ui.core.Item) the item whose index is looked for.">oItem</span>)</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Checks for the provided <code>sap.ui.core.Item</code> in the aggregation named <code>items</code> 
+and returns its index if found or -1 otherwise.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Item.html">sap.ui.core.Item</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    the item whose index is looked for.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the index of the provided control in the aggregation if found, or -1 otherwise
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="insertItem"> </a>
+										<div class="itemTitle icon">
+											insertItem<span class="signature">(<span title="(sap.ui.core.Item) The item to insert; if empty, nothing is inserted.">oItem</span>, <span title="(int) The 0-based index the item should be inserted at; for a negative value of iIndex, the item is inserted at position 0; for a value greater than the current size of the aggregation, the item is inserted at the last position.">iIndex</span>)</span>
+											<span class="light" title="returns sap.m.ComboBoxBase">: <a href="../symbols/sap.m.ComboBoxBase.html">sap.m.ComboBoxBase</a></span>
+										</div>
+										<div class="full-description">
+											Inserts an item into the aggregation named <code>items</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Item.html">sap.ui.core.Item</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    The item to insert; if empty, nothing is inserted.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iIndex</b>
+													</td>
+													<td class="methodItemDesc">
+												    The <code>0</code>-based index the item should be inserted at; for
+            a negative value of <code>iIndex</code>, the item is inserted at position 0; for a value
+            greater than the current size of the aggregation, the item is inserted at
+            the last position.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ComboBoxBase.html">sap.m.ComboBoxBase</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="isOpen"> </a>
+										<div class="itemTitle icon">
+											isOpen<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Whether the control's picker pop-up is open. It returns true when the control's picker pop-up is currently open,
+this includes opening and closing animations.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Determines whether the control's picker pop-up is currently open (this includes opening and closing animations).
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeAllItems"> </a>
+										<div class="itemTitle icon">
+											removeAllItems<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.Item[]">: <a href="../symbols/sap.ui.core.Item.html">sap.ui.core.Item</a>[]</span>
+										</div>
+										<div class="full-description">
+											Removes all the controls in the aggregation named <code>items</code>.
+Additionally unregisters them from the hosting UIArea and clears the selection.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Item.html">sap.ui.core.Item</a>[]}</span> 
+													</td>
+													<td class="methodItemDesc">
+														An array of the removed items (might be empty).
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="removeItem"> </a>
+										<div class="itemTitle icon">
+											removeItem<span class="signature">(<span title="(int | string | sap.ui.core.Item) The item to remove or its index or id.">vItem</span>)</span>
+											<span class="light" title="returns sap.ui.core.Item">: <a href="../symbols/sap.ui.core.Item.html">sap.ui.core.Item</a></span>
+										</div>
+										<div class="full-description">
+											Removes an item from the aggregation named <code>items</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int|string|<a href="../symbols/sap.ui.core.Item.html">sap.ui.core.Item</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>vItem</b>
+													</td>
+													<td class="methodItemDesc">
+												    The item to remove or its index or id.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Item.html">sap.ui.core.Item</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														The removed item or null.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="selectText"> </a>
+										<div class="itemTitle icon protected">
+											selectText<span class="signature">(<span title="(integer) The index into the text at which the first selected character is located.">iSelectionStart</span>, <span title="(integer) The index into the text at which the last selected character is located.">iSelectionEnd</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Sets the start and end positions of the current text selection.
+											
+												<p class="fileName itemName"><i>Defined in: </i> <span class="icon">&lt;sap\m\ComboBox.js&gt;.</span></p>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{integer}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iSelectionStart</b>
+													</td>
+													<td class="methodItemDesc">
+												    The index into the text at which the first selected character is located.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{integer}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iSelectionEnd</b>
+													</td>
+													<td class="methodItemDesc">
+												    The index into the text at which the last selected character is located.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.22.1</dd>
+											</dl>
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setMaxWidth"> </a>
+										<div class="itemTitle icon">
+											setMaxWidth<span class="signature">(<span title="(sap.ui.core.CSSSize) new value for property maxWidth">sMaxWidth</span>)</span>
+											<span class="light" title="returns sap.m.ComboBoxBase">: <a href="../symbols/sap.m.ComboBoxBase.html">sap.m.ComboBoxBase</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>maxWidth</code>.
+</p><p>
+Default value is <code>100%</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sMaxWidth</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>maxWidth</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ComboBoxBase.html">sap.m.ComboBoxBase</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="setPickerType"> </a>
+										<div class="itemTitle icon protected">
+											setPickerType<span class="signature">(<span title="(string) string">sPickerType</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Setter for property <code>_sPickerType</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sPickerType</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="unbindItems"> </a>
+										<div class="itemTitle icon">
+											unbindItems<span class="signature">()</span>
+											<span class="light" title="returns sap.m.ComboBoxBase">: <a href="../symbols/sap.m.ComboBoxBase.html">sap.m.ComboBoxBase</a></span>
+										</div>
+										<div class="full-description">
+											Unbinder for aggregation <code>items</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.ComboBoxBase.html">sap.m.ComboBoxBase</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

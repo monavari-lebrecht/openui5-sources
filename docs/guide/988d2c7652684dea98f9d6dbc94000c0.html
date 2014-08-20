@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=7523899342913059"/>
+<title>Getting Started With FlexBox</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio988d2c7652684dea98f9d6dbc94000c0">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Getting Started With FlexBox</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">To use a flexible box layout, create a <samp class="ph codeph">FlexBox</samp> control and add any kind
+			of controls to it, either by using the <samp class="ph codeph">addItem</samp> method (see option 1),
+			or the <samp class="ph codeph">items</samp> aggregration of a configuration object (see option 2).</p>
+<p class="p">Option 1</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oMyFlexbox = new sap.m.FlexBox();
+oMyFlexbox.addItem( new sap.m.Button({text: "Button 1"}) );
+oMyFlexbox.addItem( new sap.m.Button({text: "Button 2"}) ); </pre></div>
+<p class="p">Option 2 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oMyFlexbox = new sap.m.FlexBox({
+  items: [
+    new sap.m.Button({text: "Button 1"}),
+    new sap.m.Button({text: "Button 2"})
+  ]
+});</pre></div>
+<p class="p">The following figure gives an example how the result looks like if used inside a mobile
+			app page. The necessary code is not shown here. </p>
+<img class="image" id="loio988d2c7652684dea98f9d6dbc94000c0__image_vxt_gzj_hj" src="e6a78df297d448fb88f8280e81a50b9a.image" alt="SAPUI5 Mobile FlexBox Buttons" title="SAPUI5 Mobile FlexBox Buttons"/><div class="section" id="loio988d2c7652684dea98f9d6dbc94000c0__section_N1003F_N10011_N10001"><div class="section_title">Layout properties</div><div type="Layout properties"><p class="p">Some
+				properties that affect the layout need to be set in the <samp class="ph codeph">FlexBox</samp>
+				control. Other properties can be attached to the controls which are placed inside
+				the <samp class="ph codeph">FlexBox</samp> by means of the <samp class="ph codeph">layoutData</samp>
+				aggregation. The layout direction, for example is set in the
+					<samp class="ph codeph">FlexBox</samp> as follows:
+				</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oMyFlexbox = new sap.m.FlexBox({
+  items: [
+    new sap.m.Button({text: "Button 1"}),
+    new sap.m.Button({text: "Button 2"})
+  ],
+  direction: "Column"
+});</pre></div>
+<img class="image" id="loio988d2c7652684dea98f9d6dbc94000c0__image_iyh_jzj_hj" src="d37cdf08a6e84172b6499f05512b54ba.image" alt="SAPUI5 Mobile FlexBox Buttons Vertical" title="SAPUI5 Mobile FlexBox Buttons Vertical"/><p class="p">The order is
+				attached to the button inside a <samp class="ph codeph">FlexItemData</samp> object as follows:
+				</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oMyFlexbox = new sap.m.FlexBox({
+  items: [
+    new sap.m.Button({
+      text: "Button 1",
+      layoutData: new FlexItemData({order: 2})
+    }),
+    new sap.m.Button({text: "Button 2"})
+  ]
+});</pre></div>
+<img class="image" id="loio988d2c7652684dea98f9d6dbc94000c0__image_r53_kzj_hj" src="01f751982b8640ea8f1a24bc25589c60.image" alt="SAPUI5 Mobile FlexBox Buttons Ordered" title="SAPUI5 Mobile FlexBox Buttons Ordered"/><div class="p">
+				<div class="note note" id="loio988d2c7652684dea98f9d6dbc94000c0__note_N1007A_N10077_N1003F_N10011_N10001"><span class="notetitle">Note</span> The <samp class="ph codeph">FlexBox</samp>
+					control is a wrapper for the flexible box layout properties in CSS. The control
+					renderer sets the CSS properties (including prefixed versions where necessary)
+					on the appropriate HTML elements. The actual layouting is done by the browser.
+				</div>
+
+			</div>
+<p class="p">The controls that you place in the <samp class="ph codeph">FlexBox</samp> control are each
+				wrapped in a <samp class="ph codeph">DIV</samp> or <samp class="ph codeph">LI</samp> element, depending on the
+					<samp class="ph codeph">renderType</samp> property. All elements are placed inside another
+					<samp class="ph codeph">DIV</samp> or <samp class="ph codeph">UL</samp> container, again depending on the
+					<samp class="ph codeph">renderType</samp>. The outermost element represents the so-called
+					<em class="ph i">flex container</em> while its child elements are <em class="ph i">flex items</em>. The HTML
+				structure resulting from all of the examples above looks as follows:
+					</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;div class="sapMFlexBox"&gt;
+
+       &lt;div class="sapMFlexItem"&gt;
+
+              &lt;button id="__button1"&gt;Button 1&lt;/button&gt;
+
+       &lt;/div&gt;
+
+       &lt;div class="sapMFlexItem"&gt;
+              
+              &lt;button id="__button2"&gt;Button 2&lt;/button&gt;
+
+       &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+<div class="p"><div class="note note" id="loio988d2c7652684dea98f9d6dbc94000c0__note_N100B3_N100B1_N1003F_N10011_N10001"><span class="notetitle">Note</span> The <samp class="ph codeph">layoutData</samp>
+					properties that you can attach to a control are applied to its wrapper element
+					with <em class="ph i">sapMFlexItem</em> class. This is because browsers currently only support
+					these properties on some elements, for example <samp class="ph codeph">DIV</samp>.</div>
+The
+				two additional controls <samp class="ph codeph">HBox</samp> and <samp class="ph codeph">VBox</samp> are
+					<samp class="ph codeph">FlexBoxes</samp> that are fixed to horizontally or vertically layout
+				their children.</div>
+</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Getting Started With FlexBox";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="Mobile apps are often composed of several pages and the user can drill-down to detail pages and go back up again. This is often visualized by horizontal slide animations. SAPUI5 supports this pattern by providing the sap.m.App and sap.m.NavContainer controls, which handle the navigation between the pages."/>
+<meta name="description" content="Mobile apps are often composed of several pages and the user can drill-down to detail pages and go back up again. This is often visualized by horizontal slide animations. SAPUI5 supports this pattern by providing the sap.m.App and sap.m.NavContainer controls, which handle the navigation between the pages."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=057921878737918764"/>
+<title>Handling Navigation and Lifecycle Events</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loioa4afb138acf64a61a038aa5b91a4f082">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Handling Navigation and Lifecycle Events</h1>
+<div class="body conbody"><p class="shortdesc">Mobile apps are often composed of several pages and the user can drill-down to detail
+		pages and go back up again. This is often visualized by horizontal slide animations. SAPUI5
+		supports this pattern by providing the <span class="keyword apiname">sap.m.App</span> and
+			<span class="keyword apiname">sap.m.NavContainer</span> controls, which handle the navigation between the
+		pages.</p>
+<p class="p"><samp class="ph codeph">sap.m.App</samp> inherits the navigation capabilities from the
+				<samp class="ph codeph">sap.m.NavContainer</samp> control. Thus, both controls are equal with
+			regard to navigation and navigation events. The following sections refer to the
+				<samp class="ph codeph">sap.m.NavContainer</samp>, but the same also applies to the
+				<samp class="ph codeph">sap.m.App</samp> control.</p>
+<p class="p">A mobile application can control the navigation flow centrally and directly trigger the
+			initialization or refresh of the pages. To support modularization of the app, however,
+			it may also be beneficial to control the navigation flow non-centrally. In this case,
+			code which constructs a page is also the code that handles, for example, the data load
+			in this page.</p>
+<p class="p">To support this, SAPUI5 provides two types of events: </p>
+<ul class="ul" id="loioa4afb138acf64a61a038aa5b91a4f082__ul_bhf_p3c_2j"><li class="li">
+				<p class="p">Events fired by the App or by the NavContainer whenever it navigates. </p>
+
+			</li>
+<li class="li">
+				<p class="p">Events fired <span class="ph emphasis emphasis">on</span> the pages when they get shown or hidden by navigation. </p>
+
+			</li>
+</ul>
+<div class="section"><div class="section_title">API References</div><div type="API References">
+			
+			<ul class="ul" id="loioa4afb138acf64a61a038aa5b91a4f082__ul_tdv_1zv_xl"><li class="li">
+					<p class="p"><a class="extlink" href="../../docs/api/symbols/sap.m.App.html">sap.m.App<img src="images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></p>
+
+				</li>
+<li class="li">
+					<p class="p"><a class="extlink" href="../../docs/api/symbols/sap.m.NavContainer.html">sap.m.NavContainer<img src="images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></p>
+
+				</li>
+</ul>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="6ec0a7e1d3c64412a673b7dabe28c02b.html" title="When NavContainer.to(…) or NavContainer.back(…) are called, the NavContainer triggers events and the application can register for this events. The navigate event is fired before the transition animation starts, and the afterNavigate event is fired when the animation has been completed.">Events Fired Centrally by the App or the NavContainer</a></div>
+<div><a class="link" href="b6ab31cb81bd443996cde2f91d203072.html">Events fired on the Pages</a></div>
+<div><a class="link" href="cddf7e54277446a4a35c9fd9285da009.html" title="When you use the to(…) and back(…) methods of the NavContainer to trigger navigation, you can also give an optional payload data object.">Passing Data when Navigating</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Handling Navigation and Lifecycle Events";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

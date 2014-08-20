@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=8882776677013908"/>
+<title>Handling Events in Controls</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f1b3856f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Handling Events in Controls</h1>
+<div class="body"><p class="p">The following two event types exist in SAPUI5 applications: </p>
+<ul class="ul"><li class="li">
+			<p class="p">Browser events: These events are fired by the browser; examples for browser events are
+						<samp class="ph codeph">click</samp> and <samp class="ph codeph">blur</samp>.</p>
+
+		</li>
+<li class="li">
+			<p class="p">Control events: These events are fired by SAPUI5 controls. They contain more semantic
+					information than browser events and relate to the control functionality. An
+					example for a control event is a <samp class="ph codeph">click</samp> event on an icon in a
+					panel header that triggers a <samp class="ph codeph">maximize</samp> or
+						<samp class="ph codeph">minimize</samp> event.</p>
+
+		</li>
+</ul>
+<p class="p">To react to a browser event, a control needs to register for the respective event by
+		either explicitely registering for the browser event or by implementing the event
+		handler.</p>
+<p class="p">To register browser events explicitely for certain DOM elements, use either
+				<samp class="ph codeph">jQuery.bind()</samp> or the respective browser methods, such as
+				<samp class="ph codeph">addEventListener</samp> and register the event in the
+				<samp class="ph codeph">onAfterRendering</samp> method of the control. This ensures that the event
+			binding is repeated after the control is rerendered, meaning that new DOM elements are
+			created and old DOM elements are discarded. The event binding must be removed in the
+				<samp class="ph codeph">onBeforeRendering</samp> and <samp class="ph codeph">exit</samp> methods by using
+				<samp class="ph codeph">jQuery.unbind()</samp> to prevent memory leaks. The <samp class="ph codeph">exit</samp>
+			method is called before the control is destroyed.</p>
+<p class="p">The explicit registering for browser events enables you to handle any type of browser
+		event and works exactly the same way as in web pages or jQuery-based web applications.
+		On the other hand side, it requires some coding to do the binding an unbinding of the
+		event handler and registering many event handlers can affect the performance.</p>
+<p class="p">Example for explicit registration of browser events:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"> MyControl.prototype.onAfterRendering = function() {
+
+        this.$().bind("click", jQuery.proxy(this.handleClick, this));  // could also be:  jQuery.sap.byId(this.getId).bind("click", jQuery.proxy(this.handleClick, this));
+     }
+
+     MyControl.prototype.onBeforeRendering = function() {
+        this.$().unbind("click", this.handleClick);
+     }
+
+
+     MyControl.prototype.exit = function() {
+        this.$().unbind("click", this.handleClick);
+     }
+
+
+     MyControl.prototype.handleClick = function(oEvent) {
+        // do something...
+     }</pre></div>
+<p class="p">Instead of explicitely registering for browser events, you can implement the event handler
+			directly for certain common event types by using a naming convention for the handler
+			method. SAPUI5 automatically registers event handlers for a list of commonly used event
+			types on the root element of a complete tree of SAPUI5 controls. If the respective event
+			occurs at any position in the tree and the respective control implements the
+				<samp class="ph codeph">on&lt;eventName&gt;</samp> method, this method is invoked as if it had been
+			registered with <samp class="ph codeph">jQuery.bind()</samp>.</p>
+<p class="p">The event handler implementation requires less code, reduces the number of event handler
+		registrations in the DOM and also reduces the number of event handler registrations and
+		deregistrations that are executes on every rerendering action. On the other hand side,
+		this option is only available for specific events.</p>
+<p class="p"> Example for registering the event handler directly:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">MyControl.prototype.onclick = function(oEvent) {
+   // do something...
+}</pre></div>
+<p class="p">For a list of supported browser events that can be handled by just implementing an
+				<samp class="ph codeph">on&lt;eventName&gt;</samp> method, see <a class="extlink" href="http://help.sap.com/disclaimer?site=https://sapui5.hana.ondemand.com/sdk/%23docs/api/symbols/jQuery.sap.html#.ControlEvents">jQuery.sap.html#ControlEvents<img src="images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a>.</p>
+<p class="p">SAPUI5 also provides so-called pseudo events. Pseudo events are semantically enriched and can be
+			handled by just implementing an <samp class="ph codeph">on&lt;eventName&gt;</samp> method. They can
+				<span class="ph emphasis emphasis">not</span> be used with <samp class="ph codeph">jQuery.bind()</samp>. By using
+			pseudo events, you avoid additional checks for modifier keys in the event handler or for
+			certain keycodes. For a list of Pseudo Events, see <a class="extlink" href="../../docs/api/symbols/jQuery.sap.PseudoEvents.html">jQuery.sap.PseudoEvents<img src="images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a>.</p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Handling Events in Controls";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

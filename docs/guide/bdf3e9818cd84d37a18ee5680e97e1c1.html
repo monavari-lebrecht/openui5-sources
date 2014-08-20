@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=6120787733919859"/>
+<title>Event Handler Methods</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiobdf3e9818cd84d37a18ee5680e97e1c1">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Event Handler Methods</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">Method names starting with <samp class="ph codeph">on</samp> are reserved for event handler methods.</p>
+<p class="p">For common events such as <samp class="ph codeph">click</samp> or <samp class="ph codeph">keydown</samp>, it is sufficient
+			to add a handler method. As SAPUI5 core automatically registers browser event handlers
+			for these methods, they are called automatically. SAPUI5 core also fires events with a
+			richer semantic meaning, so that control developers do not need to check so many
+			keycodes, and so on.</p>
+<p class="p">These events are defined in <samp class="ph codeph">jquery.sap.events.js</samp> and their names start
+			with "sap". An example is the <samp class="ph codeph">sapnext</samp> event, which is triggered by
+			"arrow down" or "arrow right" (or "arrow left" in right-to-left mode). The
+				<samp class="ph codeph">sapnext</samp> event performs all checks that are required to check
+			whether the user wants to navigate to the next item. The <samp class="ph codeph">evt</samp> object
+			that is passed to the handler method contains more information. These methods are
+			private methods and must only be called by SAPUI5 core.</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">onclick: function(evt) {
+
+     alert("Control " + this.getId() + " was clicked.");
+
+  },
+
+
+
+  onsapnext: function(evt) {
+
+     // navigate to next item, an arrow key was pressed
+
+     ...
+
+  }</pre></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Event Handler Methods";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

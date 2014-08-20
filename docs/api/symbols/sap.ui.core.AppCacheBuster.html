@@ -1,0 +1,385 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.core.AppCacheBuster</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Namespace sap.ui.core.AppCacheBuster
+					</h1>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>The AppCacheBuster is used to hook into URL relevant functions in jQuery
+and SAPUI5 and rewrite the URLs with a timestamp segment. The timestamp
+information is fetched from the server and used later on for the URL
+rewriting.</p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+						
+						
+							<div class="summary section">
+								<div class="sectionTitle">Namespaces &amp; Classes</div>
+								<div class="sectionItems">
+								
+									<div class="sectionItem itemName namespace static">
+										<b class="icon" title="Converts the given URL if it matches a URL in the cachebuster index."><a href="../symbols/sap.ui.core.AppCacheBuster.convertURL.html">convertURL</a></b>
+										<span class='description'>Converts the given URL if it matches a URL in the cachebuster index.</span>
+									</div>
+								
+									<div class="sectionItem itemName namespace static">
+										<b class="icon" title="Callback function which can be overwritten to programmatically decide whether to rewrite the given URL or not."><a href="../symbols/sap.ui.core.AppCacheBuster.handleURL.html">handleURL</a></b>
+										<span class='description'>Callback function which can be overwritten to programmatically decide whether to rewrite the given URL or not.</span>
+									</div>
+								
+									<div class="sectionItem itemName namespace static">
+										<b class="icon" title="Normalizes the given URL and make it absolute."><a href="../symbols/sap.ui.core.AppCacheBuster.normalizeURL.html">normalizeURL</a></b>
+										<span class='description'>Normalizes the given URL and make it absolute.</span>
+									</div>
+								
+									<div class="sectionItem itemName namespace static">
+										<b class="icon" title="Registers an application."><a href="../symbols/sap.ui.core.AppCacheBuster.register.html">register</a></b>
+										<span class='description'>Registers an application.</span>
+									</div>
+								
+								</div>
+							</div>
+						
+					
+		
+			
+
+					
+		
+
+
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Converts the given URL if it matches a URL in the cachebuster index."><a href="../symbols/sap.ui.core.AppCacheBuster.convertURL.html">sap.ui.core.AppCacheBuster.convertURL</a></b><span class='signature'>(<span title="(string) any URL">sUrl</span>)</span>
+									<span class='description'>Converts the given URL if it matches a URL in the cachebuster index.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Callback function which can be overwritten to programmatically decide whether to rewrite the given URL or not."><a href="../symbols/sap.ui.core.AppCacheBuster.handleURL.html">sap.ui.core.AppCacheBuster.handleURL</a></b><span class='signature'>(<span title="(string) any URL">sUrl</span>)</span>
+									<span class='description'>Callback function which can be overwritten to programmatically decide whether to rewrite the given URL or not.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Normalizes the given URL and make it absolute."><a href="../symbols/sap.ui.core.AppCacheBuster.normalizeURL.html">sap.ui.core.AppCacheBuster.normalizeURL</a></b><span class='signature'>(<span title="(string) any URL">sUrl</span>)</span>
+									<span class='description'>Normalizes the given URL and make it absolute.</span>
+								</div>
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Registers an application."><a href="../symbols/sap.ui.core.AppCacheBuster.register.html">sap.ui.core.AppCacheBuster.register</a></b><span class='signature'>(<span title="(string) URL of an application providing a cachebuster index file">base</span>)</span>
+									<span class='description'>Registers an application.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+					
+		
+		
+
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".convertURL"> </a>
+										<div class="itemTitle icon">
+											sap.ui.core.AppCacheBuster.convertURL<span class="signature">(<span title="(string) any URL">sUrl</span>)</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Converts the given URL if it matches a URL in the cachebuster index. 
+If not then the same URL will be returned. To prevent URLs from being
+modified by the application cachebuster you can implement the function
+<code>sap.ui.core.AppCacheBuster.handleURL</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sUrl</b>
+													</td>
+													<td class="methodItemDesc">
+												    any URL
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														modified URL when matching the index or unmodified when not
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".handleURL"> </a>
+										<div class="itemTitle icon">
+											sap.ui.core.AppCacheBuster.handleURL<span class="signature">(<span title="(string) any URL">sUrl</span>)</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Callback function which can be overwritten to programmatically decide
+whether to rewrite the given URL or not.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sUrl</b>
+													</td>
+													<td class="methodItemDesc">
+												    any URL
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>true</code> to rewrite or <code>false</code> to ignore
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".normalizeURL"> </a>
+										<div class="itemTitle icon">
+											sap.ui.core.AppCacheBuster.normalizeURL<span class="signature">(<span title="(string) any URL">sUrl</span>)</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Normalizes the given URL and make it absolute.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sUrl</b>
+													</td>
+													<td class="methodItemDesc">
+												    any URL
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														normalized URL
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".register"> </a>
+										<div class="itemTitle icon">
+											sap.ui.core.AppCacheBuster.register<span class="signature">(<span title="(string) URL of an application providing a cachebuster index file">base</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Registers an application. Loads the cachebuster index file from this
+locations. All registered files will be considered by the cachebuster
+and the URLs will be prefixed with the timestamp of the index file.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>base</b>
+													</td>
+													<td class="methodItemDesc">
+												    URL of an application providing a cachebuster index file
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="To test on a Java web server, you can install an Apache Tomcat."/>
+<meta name="description" content="To test on a Java web server, you can install an Apache Tomcat."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=2696480122329743"/>
+<title>Set up Tomcat to test SAPUI5 applications</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiod56826f550d74e02b8d4b32cb264de52">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Set up Tomcat to test SAPUI5 applications</h1>
+<div class="body taskbody"><p class="shortdesc">To test on a Java web server, you can install an Apache Tomcat.</p>
+<div class="section prereq p" id="loiod56826f550d74e02b8d4b32cb264de52__prereq_N10015_N10012_N10001"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div> <p class="p">The recommended versions of Tomcat are 7.0 or higher.</p>
+</div>
+<div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step" id="loiod56826f550d74e02b8d4b32cb264de52__step_N10020_N1001D_N10012_N10001"><span class="ph cmd">Download Tomcat from the respective web site. You can either install the Windows Service
+					Installer, or download and unzip the zip file (you can find the startup script
+					in the bin folder).</span></li>
+<li class="li step" id="loiod56826f550d74e02b8d4b32cb264de52__step_N10029_N1001D_N10012_N10001"><span class="ph cmd">To deploy your application, choose one of the following options: </span><ul class="ul choices" id="loiod56826f550d74e02b8d4b32cb264de52__choices_tq1_nh2_bk"><li class="li choice"><strong class="ph b">Without Eclipse</strong><p class="p">To deploy SAPUI5 on Tomcat without Eclipse, you can set up a
+							Tomcat user with manager privileges (see the Tomcat documentation) and
+							use the tomcat manager application for deployment. We recommend,
+							however, to just move your war file into the <samp class="ph codeph">webapps</samp>
+							folder inside the tomcat directory. Tomcat takes care of the deployment,
+							but a restart may be necessary.</p>
+<p class="p">If you run Tomcat without Eclipse,
+							set the environment variable <samp class="ph codeph">JAVA_HOME</samp> to
+								<kbd class="ph userinput">JDK7</kbd></p>
+</li>
+<li class="li choice"><strong class="ph b">In Eclipse</strong><p class="p">To run web applications in Eclipse, you need to register the Tomcat
+							web server. </p>
+<ol class="ol" type="a" id="loiod56826f550d74e02b8d4b32cb264de52__ol_anx_rh2_bk"><li class="li">Open the Java EE perspective in Eclipse.</li>
+<li class="li">Open the <span class="ph uicontrol">Servers</span> view, for example by pressing <span class="keys"><kbd class="key">CTRL</kbd> + <kbd class="key">3</kbd></span> and then entering <samp class="ph codeph">Servers</samp>.</li>
+<li class="li">To open the <span class="ph uicontrol">New Server</span> wizard, choose <span class="ph menucascade"><img src="images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">New </span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Server</span> <img src="images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> from the context menu.</li>
+<li class="li">Choose <span class="ph menucascade"><img src="images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Apache</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Tomcat 7.0</span> <img src="images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> and add a new server runtime by pointing to the
+								folder in which you have unzipped the Tomcat installation files.
+								Finish the wizard. You should now see Tomcat v7.0 server in the
+									<span class="ph uicontrol">Servers</span> view.</li>
+<li class="li">Open the configuration overview by double clicking the Tomcat v7.0 server in the
+									<span class="ph uicontrol">Servers</span> view. Select the <span class="ph uicontrol">Serve
+									modules without publishing</span> server option.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Set up Tomcat to test SAPUI5 applications";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

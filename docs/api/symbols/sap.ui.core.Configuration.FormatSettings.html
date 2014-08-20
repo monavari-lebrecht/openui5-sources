@@ -1,0 +1,907 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.core.Configuration.FormatSettings</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class sap.ui.core.Configuration.FormatSettings
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.ui.base.Object" href="../symbols/sap.ui.base.Object.html">Object</a></div>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>Encapsulates configuration settings that are related to data formatting/parsing.
+</p><p>
+<b>Note:</b> When format configuration settings are modified through this class, 
+UI5 only ensures that formatter objects created after that point in time will honor
+the modifications. To be on the safe side, applications should do any modifications 
+early in their lifecycle or recreate any model/UI that is locale dependent.</p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="">new <a href="../symbols/sap.ui.core.Configuration.FormatSettings.html#constructor">sap.ui.core.Configuration.FormatSettings</a></b>
+										<span class='signature'>()</span>
+										<span class='description'></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the currently set date pattern or undefined if no pattern has been defined."><a href="../symbols/sap.ui.core.Configuration.FormatSettings.html#getDatePattern">getDatePattern</a></b><span class='signature'>(<span>sStyle</span>)</span>
+									<span class='description'>Returns the currently set date pattern or undefined if no pattern has been defined.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the locale to be used for formatting."><a href="../symbols/sap.ui.core.Configuration.FormatSettings.html#getFormatLocale">getFormatLocale</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the locale to be used for formatting.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the currently set legacy ABAP date format (its id) or undefined if none has been set."><a href="../symbols/sap.ui.core.Configuration.FormatSettings.html#getLegacyDateFormat">getLegacyDateFormat</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the currently set legacy ABAP date format (its id) or undefined if none has been set.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the currently set legacy ABAP number format (its id) or undefined if none has been set."><a href="../symbols/sap.ui.core.Configuration.FormatSettings.html#getLegacyNumberFormat">getLegacyNumberFormat</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the currently set legacy ABAP number format (its id) or undefined if none has been set.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the currently set legacy ABAP time format (its id) or undefined if none has been set."><a href="../symbols/sap.ui.core.Configuration.FormatSettings.html#getLegacyTimeFormat">getLegacyTimeFormat</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the currently set legacy ABAP time format (its id) or undefined if none has been set.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the currently set number symbol of the given type or undefined if no symbol has been defined."><a href="../symbols/sap.ui.core.Configuration.FormatSettings.html#getNumberSymbol">getNumberSymbol</a></b><span class='signature'>(<span>sType</span>)</span>
+									<span class='description'>Returns the currently set number symbol of the given type or undefined if no symbol has been defined.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns the currently set time pattern or undefined if no pattern has been defined."><a href="../symbols/sap.ui.core.Configuration.FormatSettings.html#getTimePattern">getTimePattern</a></b><span class='signature'>(<span>sStyle</span>)</span>
+									<span class='description'>Returns the currently set time pattern or undefined if no pattern has been defined.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Defines the preferred format pattern for the given date format style."><a href="../symbols/sap.ui.core.Configuration.FormatSettings.html#setDatePattern">setDatePattern</a></b><span class='signature'>(<span title="(string) must be one of short, medium, long or full.">sStyle</span>, <span title="(string) the format pattern to be used in LDML syntax.">sPattern</span>)</span>
+									<span class='description'>Defines the preferred format pattern for the given date format style.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Allows to specify one of the legacy ABAP date formats."><a href="../symbols/sap.ui.core.Configuration.FormatSettings.html#setLegacyDateFormat">setLegacyDateFormat</a></b><span class='signature'>(<span title="(string) id of the ABAP data format (one of '1','2','3','4','5','6','7','8','9','A','B','C')">sFormatId</span>)</span>
+									<span class='description'>Allows to specify one of the legacy ABAP date formats.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Allows to specify one of the legacy ABAP number format."><a href="../symbols/sap.ui.core.Configuration.FormatSettings.html#setLegacyNumberFormat">setLegacyNumberFormat</a></b><span class='signature'>(<span title="(string) id of the ABAP number format set (one of ' ','X','Y')">sFormatId</span>)</span>
+									<span class='description'>Allows to specify one of the legacy ABAP number format.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Allows to specify one of the legacy ABAP time formats."><a href="../symbols/sap.ui.core.Configuration.FormatSettings.html#setLegacyTimeFormat">setLegacyTimeFormat</a></b><span class='signature'>(<span title="(string) id of the ABAP time format (one of '0','1','2','3','4')">sFormatId</span>)</span>
+									<span class='description'>Allows to specify one of the legacy ABAP time formats.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Defines the string to be used for the given number symbol."><a href="../symbols/sap.ui.core.Configuration.FormatSettings.html#setNumberSymbol">setNumberSymbol</a></b><span class='signature'>(<span title="(string) must be one of decimal, group, plusSign, minusSign.">sStyle</span>, <span title="(string) will be used to represent the given symbol type">sSymbol</span>)</span>
+									<span class='description'>Defines the string to be used for the given number symbol.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Defines the preferred format pattern for the given time format style."><a href="../symbols/sap.ui.core.Configuration.FormatSettings.html#setTimePattern">setTimePattern</a></b><span class='signature'>(<span title="(string) must be one of short, medium, long or full.">sStyle</span>, <span title="(string) the format pattern to be used in LDML syntax.">sPattern</span>)</span>
+									<span class='description'>Defines the preferred format pattern for the given time format style.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.Object.html">sap.ui.base.Object</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.Object.html#destroy">destroy</a>, <a href="../symbols/sap.ui.base.Object.html#getInterface">getInterface</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.ui.core.Configuration.FormatSettings</b>()
+										</div>
+										
+										<div class="full-description">
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod'>
+										<a name="getDatePattern"> </a>
+										<div class="itemTitle icon">
+											getDatePattern<span class="signature">(<span>sStyle</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Returns the currently set date pattern or undefined if no pattern has been defined.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  
+													</td>
+													<td class="methodItemName">
+													  <b>sStyle</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getFormatLocale"> </a>
+										<div class="itemTitle icon">
+											getFormatLocale<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.Locale">: <a href="../symbols/sap.ui.core.Locale.html">sap.ui.core.Locale</a></span>
+										</div>
+										<div class="full-description">
+											Returns the locale to be used for formatting. 
+</p><p>
+If no such locale has been defined, this method falls back to the language,
+see <a href="../symbols/sap.ui.core.Configuration.html#getLanguage">Configuration.getLanguage()</a>.
+</p><p>
+If any user preferences for date, time or number formatting have been set,
+and if no format locale has been specified, then a special private use subtag
+is added to the locale, indicating to the framework that these user preferences 
+should be applied.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Locale.html">sap.ui.core.Locale</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the format locale
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getLegacyDateFormat"> </a>
+										<div class="itemTitle icon">
+											getLegacyDateFormat<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Returns the currently set legacy ABAP date format (its id) or undefined if none has been set.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getLegacyNumberFormat"> </a>
+										<div class="itemTitle icon">
+											getLegacyNumberFormat<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Returns the currently set legacy ABAP number format (its id) or undefined if none has been set.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getLegacyTimeFormat"> </a>
+										<div class="itemTitle icon">
+											getLegacyTimeFormat<span class="signature">()</span>
+											
+										</div>
+										<div class="full-description">
+											Returns the currently set legacy ABAP time format (its id) or undefined if none has been set.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getNumberSymbol"> </a>
+										<div class="itemTitle icon">
+											getNumberSymbol<span class="signature">(<span>sType</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Returns the currently set number symbol of the given type or undefined if no symbol has been defined.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  
+													</td>
+													<td class="methodItemName">
+													  <b>sType</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getTimePattern"> </a>
+										<div class="itemTitle icon">
+											getTimePattern<span class="signature">(<span>sStyle</span>)</span>
+											
+										</div>
+										<div class="full-description">
+											Returns the currently set time pattern or undefined if no pattern has been defined.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  
+													</td>
+													<td class="methodItemName">
+													  <b>sStyle</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setDatePattern"> </a>
+										<div class="itemTitle icon">
+											setDatePattern<span class="signature">(<span title="(string) must be one of short, medium, long or full.">sStyle</span>, <span title="(string) the format pattern to be used in LDML syntax.">sPattern</span>)</span>
+											<span class="light" title="returns sap.ui.core.Configuration.FormatSettings">: <a href="../symbols/sap.ui.core.Configuration.FormatSettings.html">sap.ui.core.Configuration.FormatSettings</a></span>
+										</div>
+										<div class="full-description">
+											Defines the preferred format pattern for the given date format style. 
+Calling this method with a null or undefined pattern removes a previously set pattern. 
+</p><p>
+If a pattern is defined, it will be preferred over patterns derived from the current locale.
+</p><p>
+See class <a href="../symbols/sap.ui.core.format.DateFormat.html">sap.ui.core.format.DateFormat</a> for details about the pattern syntax.
+</p><p>
+After changing the date pattern, the framework tries to update localization 
+specific parts of the UI. See the documentation of <a href="../symbols/sap.ui.core.Configuration.html#setLanguage">sap.ui.core.Configuration#setLanguage</a> 
+for details and restrictions.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sStyle</b>
+													</td>
+													<td class="methodItemDesc">
+												    must be one of short, medium, long or full.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sPattern</b>
+													</td>
+													<td class="methodItemDesc">
+												    the format pattern to be used in LDML syntax.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Configuration.FormatSettings.html">sap.ui.core.Configuration.FormatSettings</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Returns <code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setLegacyDateFormat"> </a>
+										<div class="itemTitle icon">
+											setLegacyDateFormat<span class="signature">(<span title="(string) id of the ABAP data format (one of '1','2','3','4','5','6','7','8','9','A','B','C')">sFormatId</span>)</span>
+											<span class="light" title="returns sap.ui.core.Configuration.FormatSettings">: <a href="../symbols/sap.ui.core.Configuration.FormatSettings.html">sap.ui.core.Configuration.FormatSettings</a></span>
+										</div>
+										<div class="full-description">
+											Allows to specify one of the legacy ABAP date formats. 
+</p><p>
+This method modifies the date patterns for 'short' and 'medium' style with the corresponding ABAP 
+format. When called with a null or undefined format id, any previously applied format will be removed.
+</p><p>
+After changing the legacy date format, the framework tries to update localization 
+specific parts of the UI. See the documentation of <a href="../symbols/sap.ui.core.Configuration.html#setLanguage">sap.ui.core.Configuration#setLanguage</a> 
+for details and restrictions.
+</p><p>
+Note: those date formats that are not based on the Gregorian calendar (Japanese date formats '7', '8' and '9', 
+Islamic date formats 'A' and 'B' and Iranian date format 'C') are not yet supported by UI5. They are accepted 
+by this method for convenience (user settings from ABAP system can be used without filtering), but they are 
+ignored. Instead, the formats from the current format locale will be used and a warning will be logged.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sFormatId</b>
+													</td>
+													<td class="methodItemDesc">
+												    id of the ABAP data format (one of '1','2','3','4','5','6','7','8','9','A','B','C')
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Configuration.FormatSettings.html">sap.ui.core.Configuration.FormatSettings</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Returns <code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setLegacyNumberFormat"> </a>
+										<div class="itemTitle icon">
+											setLegacyNumberFormat<span class="signature">(<span title="(string) id of the ABAP number format set (one of ' ','X','Y')">sFormatId</span>)</span>
+											<span class="light" title="returns sap.ui.core.Configuration.FormatSettings">: <a href="../symbols/sap.ui.core.Configuration.FormatSettings.html">sap.ui.core.Configuration.FormatSettings</a></span>
+										</div>
+										<div class="full-description">
+											Allows to specify one of the legacy ABAP number format.
+</p><p>
+This method will modify the 'group' and 'decimal' symbols. When called with a null 
+or undefined format id, any previously applied format will be removed.
+</p><p>
+After changing the legacy number format, the framework tries to update localization 
+specific parts of the UI. See the documentation of <a href="../symbols/sap.ui.core.Configuration.html#setLanguage">sap.ui.core.Configuration#setLanguage</a> 
+for details and restrictions.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sFormatId</b>
+													</td>
+													<td class="methodItemDesc">
+												    id of the ABAP number format set (one of ' ','X','Y')
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Configuration.FormatSettings.html">sap.ui.core.Configuration.FormatSettings</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Returns <code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setLegacyTimeFormat"> </a>
+										<div class="itemTitle icon">
+											setLegacyTimeFormat<span class="signature">(<span title="(string) id of the ABAP time format (one of '0','1','2','3','4')">sFormatId</span>)</span>
+											<span class="light" title="returns sap.ui.core.Configuration.FormatSettings">: <a href="../symbols/sap.ui.core.Configuration.FormatSettings.html">sap.ui.core.Configuration.FormatSettings</a></span>
+										</div>
+										<div class="full-description">
+											Allows to specify one of the legacy ABAP time formats.
+</p><p>
+This method sets the time patterns for 'short' and 'medium' style to the corresponding ABAP 
+formats and sets the day period texts to "AM"/"PM" or "am"/"pm" respectively. When called 
+with a null or undefined format id, any previously applied format will be removed.
+</p><p>
+After changing the legacy time format, the framework tries to update localization 
+specific parts of the UI. See the documentation of <a href="../symbols/sap.ui.core.Configuration.html#setLanguage">sap.ui.core.Configuration#setLanguage</a> 
+for details and restrictions.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sFormatId</b>
+													</td>
+													<td class="methodItemDesc">
+												    id of the ABAP time format (one of '0','1','2','3','4')
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Configuration.FormatSettings.html">sap.ui.core.Configuration.FormatSettings</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Returns <code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setNumberSymbol"> </a>
+										<div class="itemTitle icon">
+											setNumberSymbol<span class="signature">(<span title="(string) must be one of decimal, group, plusSign, minusSign.">sStyle</span>, <span title="(string) will be used to represent the given symbol type">sSymbol</span>)</span>
+											<span class="light" title="returns sap.ui.core.Configuration.FormatSettings">: <a href="../symbols/sap.ui.core.Configuration.FormatSettings.html">sap.ui.core.Configuration.FormatSettings</a></span>
+										</div>
+										<div class="full-description">
+											Defines the string to be used for the given number symbol.
+Calling this method with a null or undefined symbol removes a previously set symbol string.
+Note that an empty string is explicitly allowed.  
+</p><p>
+If a symbol is defined, it will be preferred over symbols derived from the current locale.
+</p><p>
+See class <a href="../symbols/sap.ui.core.format.NumberFormat.html">sap.ui.core.format.NumberFormat</a> for details about the symbols.
+</p><p>
+After changing the number symbol, the framework tries to update localization 
+specific parts of the UI. See the documentation of <a href="../symbols/sap.ui.core.Configuration.html#setLanguage">sap.ui.core.Configuration#setLanguage</a> 
+for details and restrictions.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sStyle</b>
+													</td>
+													<td class="methodItemDesc">
+												    must be one of decimal, group, plusSign, minusSign.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sSymbol</b>
+													</td>
+													<td class="methodItemDesc">
+												    will be used to represent the given symbol type
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Configuration.FormatSettings.html">sap.ui.core.Configuration.FormatSettings</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Returns <code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setTimePattern"> </a>
+										<div class="itemTitle icon">
+											setTimePattern<span class="signature">(<span title="(string) must be one of short, medium, long or full.">sStyle</span>, <span title="(string) the format pattern to be used in LDML syntax.">sPattern</span>)</span>
+											<span class="light" title="returns sap.ui.core.Configuration.FormatSettings">: <a href="../symbols/sap.ui.core.Configuration.FormatSettings.html">sap.ui.core.Configuration.FormatSettings</a></span>
+										</div>
+										<div class="full-description">
+											Defines the preferred format pattern for the given time format style.
+Calling this method with a null or undefined pattern removes a previously set pattern. 
+</p><p>
+If a pattern is defined, it will be preferred over patterns derived from the current locale.
+</p><p>
+See class <a href="../symbols/sap.ui.core.format.DateFormat.html">sap.ui.core.format.DateFormat</a> for details about the pattern syntax.
+</p><p>
+After changing the time pattern, the framework tries to update localization 
+specific parts of the UI. See the documentation of <a href="../symbols/sap.ui.core.Configuration.html#setLanguage">sap.ui.core.Configuration#setLanguage</a> 
+for details and restrictions.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sStyle</b>
+													</td>
+													<td class="methodItemDesc">
+												    must be one of short, medium, long or full.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sPattern</b>
+													</td>
+													<td class="methodItemDesc">
+												    the format pattern to be used in LDML syntax.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.Configuration.FormatSettings.html">sap.ui.core.Configuration.FormatSettings</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Returns <code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

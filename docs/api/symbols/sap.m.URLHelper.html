@@ -1,0 +1,754 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.m.URLHelper</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Namespace sap.m.URLHelper
+					</h1>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p><pre>
+URL(Uniform Resource Locator) Helper
+This helper can be used to trigger a native application(e.g email, sms, tel) from Browser.
+That means we are restricted of browser or application implementation. e.g.
+ - Some browsers do not let you to pass more than 2022 characters in URL
+ - MAPI (Outlook) limit is 2083, max. path under Internet Explorer is 2048
+ - Different Internet Explorer versions have different limitation in IE9 approximately 1000 characters
+ - MS mail app under Windows 8 cuts mail links after approximately 100 characters
+ - Safari gets a confirmation from user before opening a native application and can block rest triggers if user cancels it.
+ - Some mail applications(Outlook) do not respect all encodings(e.g. Cyrillic texts are not encoded correctly)
+
+Note: all the given limitation lengths are for encoded text(e.g space character will be encoded to "%20")
+</pre></p>
+						
+						
+						
+						
+						
+						
+							<br />
+							<i>Since: </i>1.10.
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+		
+
+
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Adds an event registration for redirect"><a href="../symbols/sap.m.URLHelper.html#attachRedirect">attachRedirect</a></b><span class='signature'>(<span title="(Function) The function to call, when the event occurs.">fnFunction</span>, <span title="(Object) The object, that wants to be notified, when the event occurs">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Adds an event registration for redirect</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Detach already registered redirect event"><a href="../symbols/sap.m.URLHelper.html#detachRedirect">detachRedirect</a></b><span class='signature'>(<span title="(Function) The function to call, when the event occurs.">fnFunction</span>, <span title="(Object) The object, that wants to be notified, when the event occurs">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Detach already registered redirect event</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Builds Email URI from given parameter."><a href="../symbols/sap.m.URLHelper.html#normalizeEmail">normalizeEmail</a></b><span class='signature'>(<span title="(String) Destination email address.">sEmail</span><i class="help" title="Optional parameter">?</i>, <span title="(String) Subject of the email address.">sSubject</span><i class="help" title="Optional parameter">?</i>, <span title="(String) Default message text.">sBody</span><i class="help" title="Optional parameter">?</i>, <span title="(String) Carbon Copy email address.">sCC</span><i class="help" title="Optional parameter">?</i>, <span title="(String) Blind carbon copy email address.">sBCC</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Builds Email URI from given parameter.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Sanitize the given telephone number and returns SMS URI scheme"><a href="../symbols/sap.m.URLHelper.html#normalizeSms">normalizeSms</a></b><span class='signature'>(<span title="(String) telephone number.">sTel</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Sanitize the given telephone number and returns SMS URI scheme</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Sanitize the given telephone number and returns telephone URI scheme"><a href="../symbols/sap.m.URLHelper.html#normalizeTel">normalizeTel</a></b><span class='signature'>(<span title="(String) telephone number.">sTel</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Sanitize the given telephone number and returns telephone URI scheme</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Redirects to given URL This method fires &quot;redirect&quot; event before open the URL"><a href="../symbols/sap.m.URLHelper.html#redirect">redirect</a></b><span class='signature'>(<span title="(String) Uniform resource locator.">sURL</span>, <span title="(boolean) Opens URL in a new browser window">bNewWindow</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Redirects to given URL This method fires "redirect" event before open the URL</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Trigger email application to send email Trims spaces from email addresses"><a href="../symbols/sap.m.URLHelper.html#triggerEmail">triggerEmail</a></b><span class='signature'>(<span title="(String) Destination email address.">sEmail</span><i class="help" title="Optional parameter">?</i>, <span title="(String) Subject of the email address.">sSubject</span><i class="help" title="Optional parameter">?</i>, <span title="(String) Default message text.">sBody</span><i class="help" title="Optional parameter">?</i>, <span title="(String) Carbon Copy email address.">sCC</span><i class="help" title="Optional parameter">?</i>, <span title="(String) Blind carbon copy email address.">sBCC</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Trigger email application to send email Trims spaces from email addresses</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Trigger SMS application to send SMS to given telephone number"><a href="../symbols/sap.m.URLHelper.html#triggerSms">triggerSms</a></b><span class='signature'>(<span title="(String) telephone number.">sTel</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Trigger SMS application to send SMS to given telephone number</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Trigger telephone to call given telephone number"><a href="../symbols/sap.m.URLHelper.html#triggerTel">triggerTel</a></b><span class='signature'>(<span title="(String) telephone number.">sTel</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Trigger telephone to call given telephone number</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+					
+		
+		
+
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod'>
+										<a name="attachRedirect"> </a>
+										<div class="itemTitle icon">
+											attachRedirect<span class="signature">(<span title="(Function) The function to call, when the event occurs.">fnFunction</span>, <span title="(Object) The object, that wants to be notified, when the event occurs">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns Object">: Object</span>
+										</div>
+										<div class="full-description">
+											Adds an event registration for redirect
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    The object, that wants to be notified, when the event occurs
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{Object}</span> 
+													</td>
+													<td class="methodItemDesc">
+														sap.m.URLHelper instance
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="detachRedirect"> </a>
+										<div class="itemTitle icon">
+											detachRedirect<span class="signature">(<span title="(Function) The function to call, when the event occurs.">fnFunction</span>, <span title="(Object) The object, that wants to be notified, when the event occurs">oListener</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns Object">: Object</span>
+										</div>
+										<div class="full-description">
+											Detach already registered redirect event
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFunction</b>
+													</td>
+													<td class="methodItemDesc">
+												    The function to call, when the event occurs.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{Object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oListener</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    The object, that wants to be notified, when the event occurs
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{Object}</span> 
+													</td>
+													<td class="methodItemDesc">
+														sap.m.URLHelper instance
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="normalizeEmail"> </a>
+										<div class="itemTitle icon">
+											normalizeEmail<span class="signature">(<span title="(String) Destination email address.">sEmail</span><i class="help" title="Optional parameter">?</i>, <span title="(String) Subject of the email address.">sSubject</span><i class="help" title="Optional parameter">?</i>, <span title="(String) Default message text.">sBody</span><i class="help" title="Optional parameter">?</i>, <span title="(String) Carbon Copy email address.">sCC</span><i class="help" title="Optional parameter">?</i>, <span title="(String) Blind carbon copy email address.">sBCC</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns String">: String</span>
+										</div>
+										<div class="full-description">
+											Builds Email URI from given parameter.
+Trims spaces from email addresses
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{String}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sEmail</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Destination email address.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{String}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sSubject</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Subject of the email address.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{String}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sBody</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Default message text.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{String}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sCC</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Carbon Copy email address.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{String}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sBCC</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Blind carbon copy email address.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{String}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Email URI scheme.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="normalizeSms"> </a>
+										<div class="itemTitle icon">
+											normalizeSms<span class="signature">(<span title="(String) telephone number.">sTel</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns String">: String</span>
+										</div>
+										<div class="full-description">
+											Sanitize the given telephone number and returns SMS URI scheme
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{String}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sTel</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    telephone number.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{String}</span> 
+													</td>
+													<td class="methodItemDesc">
+														SMS URI scheme.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="normalizeTel"> </a>
+										<div class="itemTitle icon">
+											normalizeTel<span class="signature">(<span title="(String) telephone number.">sTel</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns String">: String</span>
+										</div>
+										<div class="full-description">
+											Sanitize the given telephone number and returns telephone URI scheme
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{String}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sTel</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    telephone number.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{String}</span> 
+													</td>
+													<td class="methodItemDesc">
+														telephone URI scheme.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="redirect"> </a>
+										<div class="itemTitle icon">
+											redirect<span class="signature">(<span title="(String) Uniform resource locator.">sURL</span>, <span title="(boolean) Opens URL in a new browser window">bNewWindow</span><i class="help" title="Optional parameter">?</i>)</span>
+											
+										</div>
+										<div class="full-description">
+											Redirects to given URL
+This method fires "redirect" event before open the URL
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{String}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sURL</b>
+													</td>
+													<td class="methodItemDesc">
+												    Uniform resource locator.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bNewWindow</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Opens URL in a new browser window
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="triggerEmail"> </a>
+										<div class="itemTitle icon">
+											triggerEmail<span class="signature">(<span title="(String) Destination email address.">sEmail</span><i class="help" title="Optional parameter">?</i>, <span title="(String) Subject of the email address.">sSubject</span><i class="help" title="Optional parameter">?</i>, <span title="(String) Default message text.">sBody</span><i class="help" title="Optional parameter">?</i>, <span title="(String) Carbon Copy email address.">sCC</span><i class="help" title="Optional parameter">?</i>, <span title="(String) Blind carbon copy email address.">sBCC</span><i class="help" title="Optional parameter">?</i>)</span>
+											
+										</div>
+										<div class="full-description">
+											Trigger email application to send email
+Trims spaces from email addresses
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{String}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sEmail</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Destination email address.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{String}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sSubject</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Subject of the email address.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{String}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sBody</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Default message text.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{String}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sCC</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Carbon Copy email address.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{String}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sBCC</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Blind carbon copy email address.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="triggerSms"> </a>
+										<div class="itemTitle icon">
+											triggerSms<span class="signature">(<span title="(String) telephone number.">sTel</span><i class="help" title="Optional parameter">?</i>)</span>
+											
+										</div>
+										<div class="full-description">
+											Trigger SMS application to send SMS to given telephone number
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{String}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sTel</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    telephone number.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="triggerTel"> </a>
+										<div class="itemTitle icon">
+											triggerTel<span class="signature">(<span title="(String) telephone number.">sTel</span><i class="help" title="Optional parameter">?</i>)</span>
+											
+										</div>
+										<div class="full-description">
+											Trigger telephone to call given telephone number
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{String}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sTel</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    telephone number.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

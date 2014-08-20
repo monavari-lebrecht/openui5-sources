@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - jQuery.sap.util.ResourceBundle</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Interface jQuery.sap.util.ResourceBundle
+					</h1>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>Contains locale-specific texts.
+</p><p>
+If you need a locale-specific text within your application, you can use the
+resource bundle to load the locale-specific file from the server and access
+the texts of it.
+</p><p>
+Use <a href="../symbols/jQuery.sap.html#.resources">jQuery.sap.resources</a> to create an instance of jQuery.sap.util.ResourceBundle.
+There you have to specify the URL to the base .properties file of a bundle
+(.properties without any locale information, e.g. "mybundle.properties"), and optionally
+a locale. The locale is defined as a string of the language and an optional country code
+separated by underscore (e.g. "en_GB" or "fr"). If no locale is passed, the default
+locale is "en" if the SAPUI5 framework is not available. Otherwise the default locale is taken from
+the SAPUI5 configuration.
+</p><p>
+With the getText() method of the resource bundle, a locale-specific string value
+for a given key will be returned.
+</p><p>
+With the given locale, the ResourceBundle requests the locale-specific properties file
+(e.g. "mybundle_fr_FR.properties"). If no file is found for the requested locale or if the file
+does not contain a text for the given key, a sequence of fall back locales is tried one by one. 
+First, if the locale contains a region information (fr_FR), then the locale without the region is
+tried (fr). If that also can't be found or doesn't contain the requested text, the english file 
+is used (en - assuming that most development projects contain at least english texts).    
+If that also fails, the file without locale (base URL of the bundle) is tried.
+</p><p>
+If none of the requested files can be found or none of them contains a text for the given key,
+then the key itself is returned as text. 
+</p><p>
+Exception: Fallback for "zh_HK" is "zh_TW" before zh.</p>
+						
+						
+						
+						
+						
+						
+							<br />
+							<i>Since: </i>0.9.0.
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+		
+
+
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Returns a locale-specific string value for the given key sKey."><a href="../symbols/jQuery.sap.util.ResourceBundle.html#getText">getText</a></b><span class='signature'>(<span title="(string) string">sKey</span>, <span title="(string[]) List of parameters which should replace the place holders &quot;{n}&quot; (n is the index) in the found locale-specific string value.">aArgs</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Returns a locale-specific string value for the given key sKey.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+					
+		
+		
+
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod'>
+										<a name="getText"> </a>
+										<div class="itemTitle icon">
+											getText<span class="signature">(<span title="(string) string">sKey</span>, <span title="(string[]) List of parameters which should replace the place holders &quot;{n}&quot; (n is the index) in the found locale-specific string value.">aArgs</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Returns a locale-specific string value for the given key sKey. 
+</p><p>
+The text is searched in this resource bundle according to the fallback chain described in 
+<a href="../symbols/jQuery.sap.util.ResourceBundle.html">jQuery.sap.util.ResourceBundle</a>. If no text could be found, the key itself is used as text.
+</p><p>
+If text parameters are given, then any occurrences of the pattern "{<i>n</i>}" with <i>n</i> being an integer 
+are replaced by the parameter value with index <i>n</i>.  Note: This replacement is also applied if no text had been found (key).
+For more details on this replacement mechanism refer also:
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sKey</b>
+													</td>
+													<td class="methodItemDesc">
+												    
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string[]}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>aArgs</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    List of parameters which should replace the place holders "{n}" (n is the index) in the found locale-specific string value.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														The value belonging to the key, if found; otherwise the key itself.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<div class="heading">See:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemDesc">
+														jQuery.sap#formatMessage
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

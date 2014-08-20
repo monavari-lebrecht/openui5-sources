@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="To develop a SplitApp application, use the sap.m.SplitApp control instead of the sap.m.App control.."/>
+<meta name="description" content="To develop a SplitApp application, use the sap.m.SplitApp control instead of the sap.m.App control.."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=6707659956405828"/>
+<title>The First SplitApp</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiodfadb6b7247e4826b0fcde472b029840">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">The First SplitApp</h1>
+<div class="body"><p class="shortdesc">To develop a <samp class="ph codeph">SplitApp</samp> application, use the
+			<samp class="ph codeph">sap.m.SplitApp</samp> control instead of the <samp class="ph codeph">sap.m.App</samp>
+		control..</p>
+<div class="note note"><span class="notetitle">Note</span> 
+			<p class="p"><strong class="ph b">Running Demo</strong></p>
+
+			<p class="p">This demo app shows how you can automatically adapt your user interface to the available space
+				by using the <span class="keyword apiname">SplitApp</span> control.</p>
+
+			<p class="p">On a mobile phone, pages are stacked on top of each other and linked via navigation. On a
+				tablet with landscape orientation, the pages are shown next to each other in a split
+				view layout whereas in portrait orientation the application can choose whether to
+				always display the master view, to display it in a popover, or to display it when
+				the user swipes from the left. In this Demo App, you can try all three modes. Just
+				open the iPad or Android tablet version in a new window, size it to portrait mode
+				and choose the display mode on the bottom left.</p>
+
+			<p class="p">To launch it, choose <span class="ph uicontrol">SplitApp</span> from here: <a class="extlink" href="../../demoapps.html">Demo Applications<img src="images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a>.</p>
+
+		</div>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oSplitApp = new sap.m.SplitApp("mySplitApp", {});</pre></div>
+<p class="p">You can add pages to the <samp class="ph codeph">SplitApp</samp> control, but you have to decide to which
+			view you want to add them: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">oSplitApp.addDetail() or oSplitApp.addMaster();</pre></div>
+<p class="p">Before you can do this, you need some basic pages, two for the Master and two for the Detail
+			view: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oDetailPage1 = new sap.m.Page("detail1", {
+   title : "Detail 1",
+   content : [ new sap.m.Label({
+                   text : "this is Detail 1"
+               })
+             ]
+});
+
+var oDetailPage2 = new sap.m.Page("detail2", {
+   title : "Detail 2",
+   content : [ new sap.m.Label({
+                   text : "this is Detail 2"
+               }) 
+             ]
+});</pre></div>
+<p class="p">To implement a basic navigation for selection of the Detail view, the two Master view pages
+			need a list. As we only need to navigate or drill down inside the Master view, a simple
+				<samp class="ph codeph">StandardListItem</samp> with type <samp class="ph codeph">Navigation</samp> is
+			sufficient.</p>
+<p class="p">If the user taps on a list item, we navigate to Master view page 2. To do this, call the
+				<samp class="ph codeph">toMaster()</samp> method with the page you want to navigate to. In the
+			example this is <samp class="ph codeph">master2</samp>. </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oMasterPage1 = new sap.m.Page("master1",{
+   title : "Master",
+   content : [ new sap.m.List({
+		        items : [ new sap.m.StandardListItem({
+		            	title : "To Master 2",
+		            	type : "Navigation",
+            			press : function() {
+                				oSplitApp.toMaster("master2");
+            			}
+	       	})]
+	    }) ]
+});</pre></div>
+<p class="p">The second Master view page is the leaving point of the master navigation: Depending on the
+			item the user selects, the Detail view is updated. An example for this is an e-mail
+			application with a list e-mails in the Master view and the content of the e-mail in the
+			Detail view. </p>
+<p class="p">As we do not want to further navigate within the Master view, the list mode is set to
+				<samp class="ph codeph">SingleSelectMaster</samp>.</p>
+<p class="p">To update the Detail view, we have to listen to the list's select events, so we can decide on
+			which detail page to show. Depending on the selected list item, either the
+				<samp class="ph codeph">detail1</samp> page or the <samp class="ph codeph">detail2</samp> page is displayed. The
+			method is called <samp class="ph codeph">toDetail</samp>.</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oMasterPage2 = new sap.m.Page("master2",{
+   title : "Master2",
+   navButtonPress : function() {
+		           oSplitApp.backMaster();
+	              },
+   content : [ new sap.m.List({
+		       mode:"SingleSelectMaster",
+       		select: function(oEv) {
+           			   if(oEv.getParameter("listItem").getId() == "listDetail2") {
+           			      oSplitApp.toDetail("detail2");
+          			}else {
+          			      oSplitApp.toDetail("detail1");
+          			}
+      		},
+      		items : [ new sap.m.StandardListItem("listDetail2",{
+          			      title : "To Detail 2"
+         			}), new sap.m.StandardListItem("listDetail",{
+         			     title : "To Detail 1"
+      		}) ]
+   	}) ]
+});
+</pre></div>
+<p class="p">To enable the <samp class="ph codeph">SplitApp</samp> to run on mobile devices, some additional information
+			needs to be added to the pages. Also, the navigation back to the Master view page has to
+			be available from both Detail view pages.</p>
+<p class="p">In the next step, the pages are put into the <samp class="ph codeph">SplitApp</samp> control:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">//add the master pages to the splitapp control
+oSplitApp.addMasterPage(oMasterPage1).addMasterPage(oMasterPage2);
+
+//add the detail pages to the splitapp control
+oSplitApp.addDetailPage(oDetailPage1).addDetailPage(oDetailPage2);</pre></div>
+<p class="p">Then set the initial Master view and Detail view page:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">oSplitApp.setInitialDetail("detail1");
+oSplitApp.setInitialMaster("master1");</pre></div>
+<p class="p">Define the page transition type you want to use, see <a class="xref" href="a4afb138acf64a61a038aa5b91a4f082.html" title="Mobile apps are often composed of several pages and the user can drill-down to detail pages and go back up again. This is often visualized by horizontal slide animations. SAPUI5 supports this pattern by providing the sap.m.App and sap.m.NavContainer controls, which handle the navigation between the pages.">Handling Navigation and Lifecycle Events</a>. </p>
+<pre class="pre">oSplitApp.setDefaultTransitionNameDetail("fade");</pre>
+<p class="p">Finally, place the <samp class="ph codeph">SplitApp</samp> control in the HTML body tag: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">oSplitApp.placeAt("body");</pre></div>
+<p class="p">To test the other two <samp class="ph codeph">SplitApp</samp> modes, use the <samp class="ph codeph">setMode</samp> method
+			to set them: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">oSplitApp.setMode("PopoverMode");
+//or
+oSplitApp.setMode("StretchCompressMode");
+</pre></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="The First SplitApp";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

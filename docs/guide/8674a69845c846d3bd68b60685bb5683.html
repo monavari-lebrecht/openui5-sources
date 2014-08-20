@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="The XML model supports documents using XML namespaces."/>
+<meta name="description" content="The XML model supports documents using XML namespaces."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=47233509841811505"/>
+<title>XML Namespace Support</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio8674a69845c846d3bd68b60685bb5683">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">XML Namespace Support</h1>
+<div class="body conbody"><p class="shortdesc">The XML model supports documents using XML namespaces. </p>
+<p class="p">For this purpose, you must declare namespaces using the <samp class="ph codeph">setNameSpace</samp>
+			method. The namespace prefixes do not necessarily need to be the same as in the XML
+			document, they only used in the binding paths which are used to address nodes in the
+			document.</p>
+<p class="p">Assumed this sample XML document:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;data xmlns="http://tempuri.org/base" xmlns:ext="http://tempuri.org/ext"&gt;
+     &lt;ext:entry id="1" value="foo" /&gt;
+     &lt;ext:entry id="1" value="foo" /&gt;
+&lt;/data&gt;</pre></div>
+<p class="p">The namespaces must be declared in the JavaScript like this, to be able to bind to
+			them:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oModel = new sap.ui.model.xml.XMLModel(oXMLDoc);
+oModel.setNameSpace("http://tempuri.org/base");
+oModel.setNameSpace("http://tempuri.org/ext", "e"); [...]
+oTable.bindRows("/e:entry");</pre></div>
+<p class="p"/>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="XML Namespace Support";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

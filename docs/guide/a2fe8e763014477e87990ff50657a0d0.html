@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=27157011698408917"/>
+<title>Calculated Fields for Data Binding</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loioa2fe8e763014477e87990ff50657a0d0">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Calculated Fields for Data Binding</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">The calculated fields feature enables the binding of multiple properties in different
+			models to a single property of a control. For example, the value property of a text
+			field may be bound to a property <samp class="ph codeph">firstName</samp> and a property
+				<samp class="ph codeph">lastName</samp> in a model. The application can access these values in a
+			formatter function and can decide how they should be processed or combined together. If
+			no formatter function is specified, the values are joined together by default. You can
+			use the <samp class="ph codeph">useRawValues</samp> property to specify if the parameter values in the
+			formatter function are formatted according to the type of the property or not. </p>
+<p class="p">The multiple property bindings are stored in a <samp class="ph codeph">CompositeBinding</samp> and can
+			be accessed by calling the <samp class="ph codeph">getBindings</samp> function. You can access the
+			composite binding, for example, by using the <samp class="ph codeph">getBinding('value')</samp>
+			function of the control. The composite binding has no path, model, context, and type
+			because it contains multiple property bindings containing the necessary information. A
+			composite binding may, for example, store two property bindings which belong to
+			different models and have different types.</p>
+<p class="p">If you have specified a formatter function, it is also available in the composite
+			binding.</p>
+<div class="p">
+			<div class="note note" id="loioa2fe8e763014477e87990ff50657a0d0__note_N1003B_N10038_N10011_N10001"><span class="notetitle">Note</span> Currently, calculated fields work only from model to view, read only, and the
+				values can be accessed via a formatter function.</div>
+
+		</div>
+<p class="p">There are several options to create multiple bindings for a control. The syntax is very
+			similar to the normal single binding declaration. </p>
+<p class="p">Each binding is created by the specified parts and assigned information. A part must
+			contain the path to the property in the model and may contain additional information for
+			the binding, for example a type. If multiple parts exist, the binding mode is
+			automatically set to one-way binding.</p>
+<div class="section" id="loioa2fe8e763014477e87990ff50657a0d0__section_N10044_N10011_N10001"><div class="section_title">Constructor Declaration</div><div type="Constructor Declaration">
+			
+			<ol class="ol" id="loioa2fe8e763014477e87990ff50657a0d0__ol_zkm_qrp_cj"><li class="li">Use binding objects to add additional parameters, for example the type:
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">oTxt = new sap.ui.commons.TextField({
+    value: {
+        parts: [
+                {path: "/firstName", type: new sap.ui.model.type.String()},
+                {path: "/lastName"},
+                {path: "myModel2&gt;/amount", type: new sap.ui.model.type.Float()} // path to property in another model
+               ]
+          }
+}); </pre></div>
+</li>
+<li class="li"> Use strings which only take the
+					path:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">oTxt = new sap.ui.commons.TextField({
+    value: {
+        parts: [
+                "/firstName",
+                "/lastName",
+                "myModel2&gt;/fraud" // path to property in another model
+               ]
+         }
+}); </pre></div>
+</li>
+</ol>
+
+		</div></div>
+<div class="section" id="loioa2fe8e763014477e87990ff50657a0d0__section_N10062_N10011_N10001"><div class="section_title">Bind Property Declaration</div><div type="Bind Property Declaration">
+			
+			<ol class="ol" id="loioa2fe8e763014477e87990ff50657a0d0__ol_bzv_yrp_cj"><li class="li">Use binding objects to add additional parameters, for example the type:
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">oTxt.bindValue({
+    parts: [
+            {path: "/firstName", type: new sap.ui.model.type.String()},
+            {path: "/lastName"}
+           ]
+}); </pre></div>
+</li>
+<li class="li">Use strings which only take the
+					path:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">oTxt.bindValue({
+    parts: [
+            "/firstName",
+            "/lastName"
+           ]
+}); </pre></div>
+</li>
+</ol>
+
+			<p class="p">These samples also work with a relative binding path, when you use them as a template in an
+				aggregation binding. </p>
+
+			
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Calculated Fields for Data Binding";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

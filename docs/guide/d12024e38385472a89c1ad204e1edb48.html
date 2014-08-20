@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=004163348637603703"/>
+<title>Loading a Module</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiod12024e38385472a89c1ad204e1edb48">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Loading a Module</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">To load a module, use the <samp class="ph codeph">jQuery.sap.require</samp> function. The following code
+			snippet shows an example:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;!-- UI5 bootstrap tag --&gt;
+    &lt;script id="sap-ui-bootstrap" src="./resources/sap-ui-core.js" data-sap-ui-libraries="sap.ui.commons"&gt;&lt;/script&gt;
+
+    &lt;script&gt;
+        jQuery.sap.require("sap.ui.commons.MessageBox");
+
+        function onPressButton() {
+            sap.ui.commons.MessageBox.alert("Hello World!");
+        }
+
+    &lt;/script&gt;</pre></div>
+<p class="p">In a first step, the SAPUI5 framework initializes and loads the
+				<samp class="ph codeph">sap.ui.commons.MessageBox</samp> module. The framework analyzes the module
+			name and derives the module URL from it by replacing all dots ('.') with slashes ('/')
+			and appending the standard suffix '.js':
+				<samp class="ph codeph">./resources/sap/ui/commons/MessageBox.js</samp>. This URL is used to load
+			the module as a text.</p>
+<p class="p">If the loading succeeds, the module is declared with the original module name and then
+			executed in a global context (window). If either the loading of the module or executing
+			the module fails, the module name is internally marked as "failed" and an exception is
+			thrown indicating the cause. Any further tries to load the same module will fail and the
+			same error message is issued.</p>
+<p class="p">This ensures that the required module has been loaded and executet before the execution of the
+			caller continues, unless cyclic dependencies occur.</p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Loading a Module";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

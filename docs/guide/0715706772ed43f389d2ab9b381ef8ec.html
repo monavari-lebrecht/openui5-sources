@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=3496861756844015"/>
+<title>IDs in Declarative XML or HTML Fragments</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio0715706772ed43f389d2ab9b381ef8ec">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">IDs in Declarative XML or HTML Fragments</h1>
+<div class="body conbody"><p class="shortdesc"/>
+<div class="p">When a fragment contains a given control ID and the same fragment is instantiated twice without
+			giving and ID when instantiating the fragment, there will be a duplicate ID error. Given
+			the following XML fragment
+			example:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!xml</samp>
+&lt;HorizontalLayout xmlns="sap.ui.commons"&gt;
+   &lt;Button                    text="Hello World" /&gt;
+   &lt;Button id="btnInFragment" text="Hello World" /&gt;
+&lt;/HorizontalLayout&gt;</pre></div>
+
+		</div>
+<p class="p">The first button will always have a generated ID, as, for instance,
+				<samp class="ph codeph">__button2</samp>. This is regardless of how the fragment is instantiated
+			or whether it resides inside a view. </p>
+<div class="p">The second button will either have the ID <samp class="ph codeph">btnInFragment</samp>, in case the
+			fragment is instantiated without giving an ID. This approach is easy to use, but implies
+			the risk of ID collisions when instantiated multiple times:
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.htmlfragment("my.useful.UiPartZ"); // Button ID will not be prefixed</pre></div>
+</div>
+<div class="p">The other possible ID of the second button is <samp class="ph codeph">myFragment--btnInFragment</samp>, in
+			case the fragment is instantiated giving the ID <samp class="ph codeph">myFragment</samp>. You should
+			not rely on the exact syntax of this prefixing.
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+sap.ui.htmlfragment("myFragment", "my.useful.UiPartZ"); 
+// Button ID will get prefixed by "myFragment"</pre></div>
+</div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="IDs in Declarative XML or HTML Fragments";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

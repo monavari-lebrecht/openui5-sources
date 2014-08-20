@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title>AnalyticalTable - sap.ui.table</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/controls/sap.ui.table.Table.gif">
+
+<!-- ********************************************************************** -->
+<!-- SAPUI5 Bootstrap:                                                     -->
+<!-- Extend the "libs" property if you like to import additional libraries  -->
+<!-- ********************************************************************** -->
+<script id="sap-ui-bootstrap" 
+	type="text/javascript"
+	data-sap-ui-libs="sap.ui.table,sap.m,sap.ui.unified"
+	data-sap-ui-theme="sap_bluecrystal"
+	src="../../../../../resources/sap-ui-core.js"></script>
+
+<script type="text/javascript">
+
+	// basic parameters
+	var sServiceUrl = "https://ldai1e91.wdf.sap.corp:44300/sap/opu/odata/sap/ZMK_FIORI_ALV2_SRV";
+	var aColumns = ["Bukrs", "Gjahr", "Kunnr", "Name1", "Hwaer", "Dmbtr", "Cnt"];
+	var sProxyUrl = "../../../../../proxy/" + sServiceUrl.replace("://", "/");
+	
+	// prepare the AnalyticalTable
+	var oTable = new sap.ui.table.AnalyticalTable({
+		title: new sap.m.Label({text: "E91 LineItems"}),
+		toolbar: new sap.m.Toolbar({
+			content: [new sap.m.Button({
+				text: "Connect to E91",
+				press: function(oEvent) {
+					
+					// create the ODataModel
+					jQuery.sap.require("sap.ui.model.odata.ODataModel");
+					var oModel = new sap.ui.model.odata.ODataModel(sProxyUrl);
+					
+					// connect the model and the table
+					oTable.setModel(oModel);
+					
+					// bind the rows to the "LineItemsSet" 
+					oTable.bindRows("/LineItemsSet");
+					
+					// attach to data loaded events to update total size!
+					oTable.getBinding("rows").attachDataReceived(function() {
+						oTable.getTitle().setText("E91 LineItems (" + oTable.getTotalSize() + ")");
+					});
+					
+				}
+			})]
+		}),
+		visibleRowCount: 20,
+		columnVisibilityMenuSorter: function(a, b) {
+			var fnGetColumnName = function(oColumn) {
+				return oColumn.getName() || (oColumn.getLabel() && oColumn.getLabel().getText ? oColumn.getLabel().getText() : "");
+			};
+			return fnGetColumnName(a).localeCompare(fnGetColumnName(b));
+		}
+	});
+
+	// add columns to the AnalyticalTable 
+	for (var i = 0, l = aColumns.length; i < l; i++) {
+		oTable.addColumn(new sap.ui.table.AnalyticalColumn({
+			template: aColumns[i],
+			leadingProperty: aColumns[i]
+		}));
+	};
+	
+	// place table on screen
+	oTable.placeAt("content");
+	
+</script>
+</head>
+<body class="sapUiBody sapUiSizeCompact" role="application">
+	<h1 id="header">Test Page for <code>sap.ui.table.AnalyticalTable</code></h1>
+	<div id="content"></div>
+	<p>
+</body>
+</html>
+	

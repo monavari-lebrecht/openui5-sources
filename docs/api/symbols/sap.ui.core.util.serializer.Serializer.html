@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.ui.core.util.serializer.Serializer</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class sap.ui.core.util.serializer.Serializer
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.ui.base.EventProvider" href="../symbols/sap.ui.base.EventProvider.html">EventProvider</a></div>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>Serializer class.</p>
+						
+						
+							<p class="tagExperimental"><span class="title">Experimental API:</span><span class="desc">Since 1.15.1. The Serializer is still under construction, so some implementation details can be changed in future.</span></p> 
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="Serializer class.">new <a href="../symbols/sap.ui.core.util.serializer.Serializer.html#constructor">sap.ui.core.util.serializer.Serializer</a></b>
+										<span class='signature'>(<span title="(sap.ui.core.Control|sap.ui.core.UIArea) the root control to serialize">oRootControl</span>, <span title="(object) the serializer delegate.">serializeDelegate</span>, <span title="(boolean) whether to skip the root node or not">bSkipRoot</span>, <span title="(booolean) whether to skip aggregations">fnSkipAggregations</span>)</span>
+										<span class='description'>Serializer class.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+						
+						
+						
+						
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.EventProvider.html#attachEvent">attachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#attachEventOnce">attachEventOnce</a>, <a href="../symbols/sap.ui.base.EventProvider.html#destroy">destroy</a>, <a href="../symbols/sap.ui.base.EventProvider.html#detachEvent">detachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#fireEvent">fireEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#getEventingParent">getEventingParent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#toString">toString</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.Object.html">sap.ui.base.Object</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.Object.html#getInterface">getInterface</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.ui.core.util.serializer.Serializer</b>(<span title="(sap.ui.core.Control|sap.ui.core.UIArea) the root control to serialize">oRootControl</span>, <span title="(object) the serializer delegate.">serializeDelegate</span>, <span title="(boolean) whether to skip the root node or not">bSkipRoot</span>, <span title="(booolean) whether to skip aggregations">fnSkipAggregations</span>)
+										</div>
+										
+										<div class="full-description">
+											Serializer class. Iterates over all controls and call a given serializer delegate.
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a>|sap.ui.core.UIArea}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oRootControl</b>
+													</td>
+													<td class="methodItemDesc">
+												    the root control to serialize
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>serializeDelegate</b>
+													</td>
+													<td class="methodItemDesc">
+												    the serializer delegate. Has to implement start/middle/end methods.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bSkipRoot</b>
+													</td>
+													<td class="methodItemDesc">
+												    whether to skip the root node or not
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{booolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnSkipAggregations</b>
+													</td>
+													<td class="methodItemDesc">
+												    whether to skip aggregations
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+		
+		
+					
+					
+		
+					
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

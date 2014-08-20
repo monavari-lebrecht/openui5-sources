@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="Using a JSON model, all data is available on the client. Sorting and filtering are also implemented in JavaScript."/>
+<meta name="description" content="Using a JSON model, all data is available on the client. Sorting and filtering are also implemented in JavaScript."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=35706463767152274"/>
+<title>Sorting and Filtering in JSON Models</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio4ce11a576ef44bb680c81b36a0462e86">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Sorting and Filtering in JSON Models</h1>
+<div class="body taskbody"><p class="shortdesc">Using a JSON model, all data is available on the client. Sorting and filtering are also
+		implemented in JavaScript.</p>
+<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p"> This allows the usage of custom sorting and filtering methods in the JSONModel. To define
+				custom methods, set the <samp class="ph codeph">fnCompare</samp> method on the Sorter object or
+				the <samp class="ph codeph">fnTest</samp> method on the filter object after creating it. </p>
+
+		</div><div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand"><span class="ph cmd">The <samp class="ph codeph">fnTest</samp> method of the Filter gets the value to test as the only
+					parameter and returns, whether the row with the given value should be filtered
+					or not. </span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oFilter = new sap.ui.model.Filter("property");
+oFilter.fnTest = function(value) {
+    return (value &gt; 100); 
+};</pre></div>
+
+				</li>
+<li class="li step stepexpand"><span class="ph cmd">The <samp class="ph codeph">fnCompare</samp> method of the Sorter gets the two values to
+					compare as parameters and returns -1, 0 or 1, dependent which of the two values
+					should be ordered before the other: </span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oSorter = new sap.ui.model.Sorter("property");
+oSorter.fnCompare = function(value1, value2) {
+    if (value1 &lt; value2) return -1;
+    if (value1 == value2) return 0;
+    if (value1 &gt; value2) return 1;
+};</pre></div>
+
+				</li>
+</ol>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Sorting and Filtering in JSON Models";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

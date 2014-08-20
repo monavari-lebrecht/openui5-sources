@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=929168931927718"/>
+<title>Defining Controls</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f1539c6f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Defining Controls</h1>
+<div class="body"><p class="p">After you have enabled the declarative support,
+		define controls in your HTML document as HTML tags with the following data
+		attribute:
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">data-sap-ui-type="sap.ui.commons.Button"</pre></div>
+<p class="p">This data attribute defines the SAPUI5 control that
+		should be rendered in the HTML tag by using the HTML tag as its UI area.
+		Rendering a button in the body of an HTML document without setting any
+		property, association, event, or aggregation looks as follows: 
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;body&gt;
+  &lt;div data-sap-ui-type="sap.ui.commons.Button"&gt;&lt;/div&gt;
+&lt;/body&gt;</pre></div>
+<div class="note note" id="loio91f1539c6f4d1014b6dd926db0e91070__note_N10023_N10013_N10001"><span class="notetitle">Note</span> Make sure that you close the tags properly.
+		HTML5 does not support self-closing tags. 
+	 </div>
+<div class="note note" id="loio91f1539c6f4d1014b6dd926db0e91070__note_N10027_N10013_N10001"><span class="notetitle">Note</span> All attributes used to define properties,
+		associations, events, or aggregations are data attributes except for attributes
+		that exist in HTML, for example 
+		<samp class="ph codeph">id</samp> or 
+		<samp class="ph codeph">class</samp>. Data attributes
+		are prefixed with 
+		<samp class="ph codeph">data-*</samp>, for example 
+		<samp class="ph codeph">data-text</samp>. 
+	 </div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Defining Controls";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=48311762470219344"/>
+<title>Implementing a Responsive Table</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio38855e06486f4910bfa6f4485f7c2bac">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Implementing a Responsive Table</h1>
+<div class="body conbody"><p class="shortdesc"/>
+<p class="p">One of the biggest challenges in responsive web design (RWD) is presenting tabular data.
+			Large tables with lots of columns don't fit on smaller screens and there isn't a simple
+			way to re-format the table content with CSS and media queries for an acceptable
+			presentation. To address this, our framework offers column based solution (column
+			hiding) and row based solution (pop-ins) for presenting tables responsively and both
+			options are applicable at the same time. I know this sounds a little bit complicated.
+			Let's go trough on an example.</p>
+<p class="p">Suppose that we build such a nice table for desktop.</p>
+<p class="p"><img class="image" id="loio38855e06486f4910bfa6f4485f7c2bac__image_jlg_xld_mn" src="00a056a29baa412ebfebfdaf544b21cd.image"/></p>
+<p class="p">On mobile, we know that we do not have enough space to show all these columns. Now, we
+			should decide which columns are important. Let's say</p>
+<ul class="ul" id="loio38855e06486f4910bfa6f4485f7c2bac__ul_pcb_rtj_ln"><li class="li"><em class="ph i">Name and Status</em> are most important. So they should never be hidden.</li>
+<li class="li"><em class="ph i">Model Number</em> is not important at all. So we can hide this column completely.
+				(column hiding)</li>
+<li class="li"><em class="ph i">Quantity, Unit Price and Final Price</em> these columns can give some hint to user
+				so they can go to on an extra pane(pop-in)</li>
+</ul>
+<p class="p">According to our assumption we should have the following on mobile</p>
+<p class="p"><img class="image" id="loio38855e06486f4910bfa6f4485f7c2bac__image_g3d_3md_mn" src="821268b17c3745b6a2ca581740c51b6d.image"/></p>
+<div class="section"><div class="section_title">RESPONSIVE COLUMN CONTROL</div><div type="RESPONSIVE COLUMN CONTROL">
+			
+			<p class="p">You can control the responsive table design using the API of <samp class="ph codeph">sap.m.Column</samp>.
+				This control provides two properties to handle column hiding and pop-in.</p>
+
+			<ol class="ol" id="loio38855e06486f4910bfa6f4485f7c2bac__ol_bdb_rtj_ln"><li class="li"><strong class="ph b">minScreenWidth</strong> : This value defines the break point for the column visibility. e.g.
+					iPhone5 has 568px x 320px resolution (dip/device-width). So if we assign 400px
+					(or 25em based on 16px) then this column will not be visible for portrait mode
+					(width 320px) but will be visible for landscape mode (width 568px). Instead of
+					px or em you can assign one of the predefined <samp class="ph codeph">sap.m.ScreenSize</samp>
+					types like <em class="ph i">Tablet</em> (for 600px) or <em class="ph i">Desktop</em> (for 1024px). Default
+					value of this property is empty string this means this column will be visible
+					always. </li>
+<li class="li"><strong class="ph b">demandPopin</strong>: Depending on your minScreenWidth the column can be hidden in different
+					screen sizes. Setting this property to true, shows this column as pop-in instead
+					of hiding it. Default value is false. </li>
+</ol>
+
+			<p class="p">That's it! All you need to know is these two variables for responsive table. If we
+				turn back to our example.</p>
+
+			<ul class="ul" id="loio38855e06486f4910bfa6f4485f7c2bac__ul_tdb_rtj_ln"><li class="li"><em class="ph i">Name and Status</em> column should never be hidden. This is the default
+					behavior of column so just let the default values(<em class="ph i">minScreenWidth : "" and
+						demandPopin: false</em>) make their job.</li>
+<li class="li"><em class="ph i">Model Number</em> column should be hidden for small devices so, our break
+					point is <em class="ph i">minScreenWidth : "Small"</em> and <em class="ph i">demandPopin : false</em>(default
+					value).</li>
+<li class="li"><em class="ph i">Quantity, Unit Price and Final Price</em> these columns should go to pop-in,
+					our break point is same <em class="ph i">minScreenWidth : "Small"</em> but now <em class="ph i">demandPopin :
+						true</em> to show column in pop-in.</li>
+<li class="li">For example in tablet we will have more space then we can show <em class="ph i">Final
+						Price</em> for tablet(or wider devices) but goes to pop-in for small device.
+					So our break point should be <em class="ph i">minScreenWidth : "Tablet"</em> and <em class="ph i">demandPopin
+						: true</em>.</li>
+</ul>
+
+		</div></div>
+<div class="section"><div class="section_title">Defining Column Width</div><div type="Defining Column Width">
+			
+			<p class="p">As API of the <strong class="ph b">sap.m.Column</strong> implies <strong class="ph b">width</strong> can be any valid CSS size(e.g
+				100px, 6em, 25%). Default value of the width is empty and this makes the column
+				flexible which means it covers the remaining space. There are two important things
+				that you should to define the width of the column properly.</p>
+
+			<ul class="ul" id="loio38855e06486f4910bfa6f4485f7c2bac__ol_q2b_rtj_ln"><li class="li">While defining the column width you can use percent values but you should be
+					careful with percent values. Because, maybe this value fits to desktop screen
+					well, but maybe not to mobile devices. In this case using absolute width(e.g.
+					200px, 4rem) can be better.</li>
+<li class="li">Leave the most important column's width empty if your table demand pop-in. Let's
+					say you have 100% width table with four columns each has 200px width and
+					viewport is 800px wide. Everything is fine. We resized the viewport to 500px. We
+					can still show two columns nicely with setting the rest two columns to go
+					pop-in. But after two columns go to pop-in total width of two main columns is
+					400px but the viewport is 500px and table is 100%! In that case browser decides
+					how to handle this. Current Chrome version increases the last column width and
+					IE increases the first column width. But if we have Selection or Navigation
+					these are also columns and browser can change the width of these column and that
+					can look strange. So the best solution is leaving the most important column's
+					width empty that it can take the much space as it can. In our example it will be
+					300px and all will be fine.</li>
+</ul>
+
+		</div></div>
+<div class="section"><div class="section_title">Table Design</div><div type="Table Design"><p class="p">There are various Table and Column features that allow
+				customization of the table design.</p>
+<strong class="ph b">POP-IN DESIGN</strong><p class="p">When displaying
+				information in a Pop-in, the information, typically a column header and the column
+				(cell) content, can be displayed in an "Inline" or in a "Block" display style. The
+				difference can be seen in the following
+				example.</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>  var oTable = new sap.m.Table({
+        inset: true,
+        headerText: "Order Items",
+        mode: sap.m.ListMode.SingleSelect,
+        columns: [
+
+            new sap.m.Column({
+                header: new sap.m.Label({ text: "Model" }),
+                minScreenWidth: sap.m.ScreenSize.Small
+            }),
+            new sap.m.Column({ header: new sap.m.Label({ text: "Name" }) }),
+            new sap.m.Column({ header: new sap.m.Label({ text: "Quantity" }),
+                hAlign: "Right",
+                minScreenWidth: sap.m.ScreenSize.Desktop,
+                demandPopin: true,
+                popinDisplay: "Block"
+            }),
+            new sap.m.Column({
+                header: new sap.m.Label({ text: "Unit Price" }),
+                hAlign: "Right",
+                minScreenWidth: sap.m.ScreenSize.Desktop,
+                demandPopin: true,
+                popinDisplay: "Inline"
+            }),
+            new sap.m.Column({
+                header: new sap.m.Label({ text: "Final Price" }),
+                hAlign: "Right",
+                minScreenWidth: sap.m.ScreenSize.Desktop,
+                demandPopin: true,
+                popinDisplay: "Inline"
+            }),
+            new sap.m.Column({ header: new sap.m.Label({ text: "Status" }) }),
+        ],
+    });</pre></div>
+<p class="p">The
+				Quantity, Unit Price and Final Price columns are displayed in a pop-in when the
+				screen size is smaller than a Desktop. The quantity in particular is to be displayed
+				in "Block" mode, with the header and content arranged vertically, whereas the two
+				prices are to be displayed in "Inline" mode, with the header and content arranged
+				next to each other.</p>
+<p class="p"><img class="image" id="loio38855e06486f4910bfa6f4485f7c2bac__image_cvv_qmd_mn" src="33460279b86b4bc381dbfe50267d3d36.image"/></p>
+</div></div>
+<div class="section"><div class="section_title">API References</div><div type="API References">
+			
+			<ul class="ul" id="loio38855e06486f4910bfa6f4485f7c2bac__ul_prd_p5j_ln"><li class="li"><a class="xref" href="../../docs/api/symbols/sap.m.Column.html">sap.m.Column</a></li>
+<li class="li"><a class="xref" href="../../docs/api/symbols/sap.m.ScreenSize.html">sap.m.ScreenSize</a>
+					
+					</li>
+</ul>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Implementing a Responsive Table";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

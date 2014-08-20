@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="When using the SAPUI5 tools, code completion is enabled automatically, without the tools, you need to enable it."/>
+<meta name="description" content="When using the SAPUI5 tools, code completion is enabled automatically, without the tools, you need to enable it."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=8784446873045048"/>
+<title>JavaScript Code Completion</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio85ce1edb55dd4de3beac5b6d24d36d8a">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">JavaScript Code Completion</h1>
+<div class="body conbody"><p class="shortdesc">When using the SAPUI5 tools, code completion is enabled automatically, without the
+		tools, you need to enable it.</p>
+<div class="note note" id="loio85ce1edb55dd4de3beac5b6d24d36d8a__note_N10018_N10011_N10001"><span class="notetitle">Note</span> If your Eclipse installation contains the <em class="ph i">org.eclipse.wst.jsdt.feature</em> feature
+			in Version 1.3.1, we recommend to update it. Invoking the JavaScript code completion in
+			version 1.3.1 may cause Eclipse to crash.</div>
+<div class="section" id="loio85ce1edb55dd4de3beac5b6d24d36d8a__section_N10020_N10011_N10001"><div class="section_title">Automatic Code Completion for SAPUI5 Application Projects</div><div type="Automatic Code Completion for SAPUI5 Application Projects"><p class="p">The Eclipse JavaScript Development Tools (JSDT) provide an editor which parses scripts and offers
+				a code completion functionality.</p>
+
+			<p class="p"><img class="image" id="loio85ce1edb55dd4de3beac5b6d24d36d8a__image_kxk_hjm_3j" src="293b3db8ea0f43b5aa248defa33103d4.image" alt="SAPUI5 ApplTools Code Completion" title="SAPUI5 ApplTools Code Completion"/></p>
+</div></div>
+<div class="section" id="loio85ce1edb55dd4de3beac5b6d24d36d8a__section_N10035_N10012_N10001"><div class="section_title">Code Completion for SAPUI5 Views</div><div type="Code Completion for SAPUI5 Views">
+			
+			<p class="p">For JavaScript views, code completion is available.</p>
+
+			<p class="p"><img class="image" id="loio85ce1edb55dd4de3beac5b6d24d36d8a__image_ow3_rfk_hj" width="960px" src="414d5c3d106041ceb56bf3c63fd34c2f.image" alt="SAPUI5 ApplTools MVC and Code Completion" title="SAPUI5 ApplTools MVC and Code Completion"/></p>
+
+		</div></div>
+<div class="section" id="loio85ce1edb55dd4de3beac5b6d24d36d8a__section_N10030_N10011_N10001"><div class="section_title">Enabling Code Completion for Other Projects</div><div type="Enabling Code Completion for Other Projects"><p class="p">If you are not working
+				with a SAPUI5 application project, you can perform the following preparing steps to
+				add the required SAPUI5 core libraries to the JavaScript include path. </p>
+<p class="p">Ensure
+				that the JavaScript Facet is set and proceed as follows:</p>
+<ol class="ol" id="loio85ce1edb55dd4de3beac5b6d24d36d8a__ol_qjv_qjm_3j"><li class="li">Open <span class="ph menucascade"><img src="images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Project</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Properties</span> <img src="images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</li>
+<li class="li">Select <span class="ph uicontrol">Project Facets</span>.</li>
+<li class="li">If you do not see the list of all possible facets, click the link:
+						<span class="ph uicontrol">Convert to facet form</span> and wait a second to see all
+					available facets.</li>
+<li class="li">Mark JavaScript Facet on the same view.</li>
+<li class="li">Leave the project properties.</li>
+</ol>
+<p class="p">Your project now has the JavaScript facet. Now you can add the SAPUI5 core
+				libraries. Proceed as follows:</p>
+<ul class="ul" id="loio85ce1edb55dd4de3beac5b6d24d36d8a__ul_a44_jjm_3j"><li class="li">Open <span class="ph menucascade"><img src="images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Project</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Properties</span> <img src="images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</li>
+<li class="li">Choose <span class="ph menucascade"><img src="images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">JavaScript</span> <img src="images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Include Path</span> <img src="images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</li>
+<li class="li">Select <span class="ph uicontrol">Add JavaScript Library…</span>.</li>
+<li class="li">Select <span class="ph uicontrol">SAPUI5</span>.</li>
+</ul>
+<p class="p">You should now be able to see the following JavaScript resources in your
+				project:</p>
+<img class="image" id="loio85ce1edb55dd4de3beac5b6d24d36d8a__image_nkf_zjm_3j" src="6754a6c68d8d407c896fc392cb77b6bf.image" alt="SAPUI5 ApplTools Code Completion Libraries" title="SAPUI5 ApplTools Code Completion Libraries"/></div></div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="JavaScript Code Completion";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

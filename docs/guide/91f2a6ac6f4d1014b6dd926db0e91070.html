@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=6513920551916605"/>
+<title>OData Write Support</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f2a6ac6f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">OData Write Support</h1>
+<div class="body conbody"><div class="note note" id="loio91f2a6ac6f4d1014b6dd926db0e91070__note_N10040_N10013_N10001"><span class="notetitle">Note</span> As these features are experimental, changes in future
+			versions of SAPUI5 may occur. Currently, all write operations have to be performed by
+			the application and are triggered synchronously.</div>
+<p class="p">SAPUI5 supports the following operations and features for the OData model: </p>
+<ul class="ul"><li class="li"><samp class="ph codeph">write</samp>
+			</li>
+<li class="li"><samp class="ph codeph">create</samp></li>
+<li class="li"><samp class="ph codeph">remove</samp></li>
+<li class="li"><samp class="ph codeph">update</samp></li>
+<li class="li"><samp class="ph codeph">read</samp></li>
+<li class="li">get metadata service document</li>
+<li class="li">Cross-site request forgery (XSRF) token support for the REST library</li>
+<li class="li"><samp class="ph codeph">refresh</samp></li>
+</ul>
+<p class="p">The default binding mode is <samp class="ph codeph">sap.ui.model.BindingMode.OneWay</samp>. You can
+			also set the binding mode to <samp class="ph codeph">sap.ui.model.BindingMode.TwoWay</samp>. </p>
+<div class="section" id="loio91f2a6ac6f4d1014b6dd926db0e91070__section_B78658FAAB794492855C7F43C18014E0"><div class="section_title">Create Request</div><div type="Create Request">
+			
+			<p class="p">The <samp class="ph codeph">create</samp> function triggers a <samp class="ph codeph">POST</samp> request to an
+				OData service which was specified during creation of the OData model. </p>
+
+			<p class="p">The application has to specify the collection where to create the entry and the entry
+				data payload. </p>
+
+			<p class="p">To get the result of the request, the application can hand over callback handler
+				functions. To recreate and update the bindings, a refresh is triggered automatically
+				after the successful creation. </p>
+
+			<div class="note Example" id="loio91f2a6ac6f4d1014b6dd926db0e91070__note_N1006D_N10051_N10013_N10001"><span class="Exampletitle"/> 
+				<p class="p">The following code triggers a new entry in the <samp class="ph codeph">Products</samp>
+					collection: </p>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oEntry = {};
+oEntry.Name = "IPad";
+oEntry.Price = "499$";
+oModel.create('/Products', oEntry, null, function(){
+ 		alert("Create successful");
+ 	},function(){
+		alert("Create failed");});</pre></div>
+
+			</div>
+
+		</div></div>
+<div class="section" id="loio91f2a6ac6f4d1014b6dd926db0e91070__section_9AA7FC1ECCA748199C6BC3C956E4AE14"><div class="section_title">Delete Request</div><div type="Delete Request">
+			
+			<p class="p">The <samp class="ph codeph">remove</samp> function triggers a <samp class="ph codeph">DELETE</samp> request to an
+				OData service which was specified during creation of the OData model. The
+				application has to specify the path to the entry which should be deleted. To update
+				the bindings in the model, a refresh is triggered automatically after successful
+				deletion. </p>
+
+			<p class="p">A single parameter <samp class="ph codeph">oParameters</samp> can be passed into the function and
+				can carry all optional attributes, such as attributes for success and error handling
+				functions as well as ETag attributes. ETags can be used for concurrency control if
+				the OData service is configured to provide them. For more information, see the
+				section about concurrency control and ETags in the OData documentation.</p>
+
+			<p class="p">If an ETag is specified in <samp class="ph codeph">oParameters</samp>, it will be used inthe
+				If-Match-Header nstead of any ETag found in the metadata of an entry. If not, the
+				ETag is retrieved from the entry's metadata. In fo ETag is found, no If-Match-Header
+				will be used.</p>
+
+			<div class="note Example" id="loio91f2a6ac6f4d1014b6dd926db0e91070__note_N100A5_N10081_N10013_N10001"><span class="Exampletitle"/> 
+				<p class="p">The following code delets the product entry with ID=1 from the
+						<samp class="ph codeph">Products</samp> collection of the data service: </p>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">oModel.remove('/Products(1)', null, function(){
+ 		alert("Delete successful");
+ 	},function(){
+		alert("Delete failed");});</pre></div>
+
+			</div>
+
+		</div></div>
+<div class="section" id="loio91f2a6ac6f4d1014b6dd926db0e91070__section_FC439FA73668445D859490AADF752312"><div class="section_title">Update Request</div><div type="Update Request">
+			
+			<p class="p">The <samp class="ph codeph">update</samp> function triggers a <samp class="ph codeph">PUT</samp> request to an
+				OData service which was specified during creation of the OData model. See the
+				ODataModel API for information about attribute use.</p>
+
+			<p class="p">The application has to specify the path to the entry which should be updated with the
+				specified updated entry. </p>
+
+			<p class="p">After a successful request to update the bindings in the model, a refresh is
+				triggered automatically. </p>
+
+			<div class="note Example" id="loio91f2a6ac6f4d1014b6dd926db0e91070__note_N100D5_N100B9_N10013_N10001"><span class="Exampletitle"/> 
+				<p class="p">The following code updates the price: </p>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oEntry = {};
+oEntry.Price = "599$";
+oModel.update('/Products(1)', oEntry, null, function(){
+ 		alert("Update successful");
+ 	},function(){
+		alert("Update failed");});</pre></div>
+
+			</div>
+
+			<p class="p">The flag <samp class="ph codeph">bMerge</samp> has been introduced to also allow a
+					<samp class="ph codeph">MERGE</samp> request to perform a differential update. </p>
+
+		</div></div>
+<div class="section" id="loio91f2a6ac6f4d1014b6dd926db0e91070__section_E6818DB365C84018BB2A0B5C14D93003"><div class="section_title">Read Request</div><div type="Read Request">
+			
+			<p class="p">The <samp class="ph codeph">read</samp> function triggers a <samp class="ph codeph">GET</samp> request to a
+				specified path which should be retrieved from the OData service which was specified
+				during creation of the OData model. </p>
+
+			<p class="p">The retrieved data is returned in the success callback handler function. </p>
+
+			<div class="note Example" id="loio91f2a6ac6f4d1014b6dd926db0e91070__note_N10109_N100F1_N10013_N10001"><span class="Exampletitle"/> 
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">oModel.read('/Products(1)', null, null, true, function(oData, oResponse){
+ 		alert("Read successful: " + JSON.stringify(oData));
+ 	},function(){
+		alert("Read failed");});</pre></div>
+
+			</div>
+
+		</div></div>
+<div class="section" id="loio91f2a6ac6f4d1014b6dd926db0e91070__section_85CA7719A37247F3965C38197258CF3C"><div class="section_title">Refresh</div><div type="Refresh">
+			
+			<p class="p">The <samp class="ph codeph">Refresh</samp> function triggers a refresh for each binding to check if
+				a value has been updated, or not. For a list binding a new request is triggered to
+				reload the data from the server. </p>
+
+			<p class="p">Additionally, if the XSRF token is not valid any more, a read request is triggered to
+				fetch a new XSRF token from the server. </p>
+
+		</div></div>
+<div class="section" id="loio91f2a6ac6f4d1014b6dd926db0e91070__section_71990E2EE4194F71A123D3FFD38DDC65"><div class="section_title">XSRF Token</div><div type="XSRF Token">
+			
+			<p class="p">To address the challenge of Cross Site Request Forgery an OData service might require
+				XSRF tokens for change requests by the client application for security reasons. In
+				this case the client has to fetch a token from the server and send it with each
+				change request to the server. </p>
+
+			<p class="p">The OData model fetches the XSRF token when reading the metadata and then
+				automatically sends it in each write request header. If the token is not valid any
+				more a new token can be fetched by calling the <samp class="ph codeph">refresh</samp> function on
+				the OData model. </p>
+
+		</div></div>
+<div class="section" id="loio91f2a6ac6f4d1014b6dd926db0e91070__section_CA9B4ECCA7E24905ABCE84DF7166136E"><div class="section_title">Metadata</div><div type="Metadata">
+			
+			<p class="p">The <samp class="ph codeph">getServiceMetadata</samp> function returns the parsed metadata document
+				as a JavaScript object. </p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="OData Write Support";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

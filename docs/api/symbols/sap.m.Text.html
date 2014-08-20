@@ -1,0 +1,1820 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JsDoc Report - SAP UI development Toolkit for HTML5 - API Reference - sap.m.Text</title>
+		<link rel=stylesheet href="../default.css" type="text/css">
+		
+			
+		    
+				  <script type="text/javascript" src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.7.1.js"></script>
+				
+		    
+			
+		    
+				  <script type="text/javascript" src="../../../js/utils.js"></script>
+				
+		    
+			
+		    
+		    
+				  <link rel="stylesheet" href="../../../theme/default.css" />
+				
+			
+				
+	</head>
+
+	<body>
+
+
+		<div id="main">
+			<div id="content">
+
+					<h1 class="classTitle static">
+					
+					Class sap.m.Text
+					</h1>
+					
+						<div class="classRelation extends"><span class="caption">extends </span><a title="sap.ui.core.Control" href="../symbols/sap.ui.core.Control.html">Control</a></div>
+					
+					
+					
+					
+					<hr/>
+
+			
+
+					<div class="full-description">
+						<p>The Text control is used to display some continuous text.</p>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+		
+
+
+					
+		
+			
+
+					
+						<div class="summary section">
+							<div class="sectionTitle">Constructor Summary</div>
+							<div class="sectionItems">
+								<div class="sectionItem classConstructor static">
+									<div class="itemName">
+										<b class="icon" title="Constructor for a new Text.">new <a href="../symbols/sap.m.Text.html#constructor">sap.m.Text</a></b>
+										<span class='signature'>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)</span>
+										<span class='description'>Constructor for a new Text.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Field Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classProperty static protected">
+									<b class="icon protected" title="Defines whether browser supports native line clamp or not"><a href="../symbols/sap.m.Text.html#.hasNativeLineClamp">sap.m.Text.hasNativeLineClamp</a></b>
+									<span class='description'>Defines whether browser supports native line clamp or not</span>
+								</div>
+							
+								<div class="sectionItem classProperty protected">
+									<b class="icon protected" title="Determines per instance whether line height should be cached or not."><a href="../symbols/sap.m.Text.html#cacheLineHeight">cacheLineHeight</a></b>
+									<span class='description'>Determines per instance whether line height should be cached or not.</span>
+								</div>
+							
+								<div class="sectionItem classProperty protected">
+									<b class="icon protected" title="Ellipsis(…) text to indicate more text when clampText function is used."><a href="../symbols/sap.m.Text.html#ellipsis">ellipsis</a></b>
+									<span class='description'>Ellipsis(…) text to indicate more text when clampText function is used.</span>
+								</div>
+							
+								<div class="sectionItem classProperty protected">
+									<b class="icon protected" title="Default line height value as a number when line-height is normal."><a href="../symbols/sap.m.Text.html#normalLineHeight">normalLineHeight</a></b>
+									<span class='description'>Default line height value as a number when line-height is normal.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+					
+		
+
+
+					
+
+
+
+					
+						
+						
+						<div class="summary section">
+							<div class="sectionTitle">Method Summary</div>
+							<div class="sectionItems">
+							
+								<div class="sectionItem classMethod static">
+									<b class="icon" title="Creates a new subclass of class sap.m.Text with name sClassName and enriches it with the information contained in oClassInfo."><a href="../symbols/sap.m.Text.html#.extend">sap.m.Text.extend</a></b><span class='signature'>(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Creates a new subclass of class sap.m.Text with name <code>sClassName</code> and enriches it with the information contained in <code>oClassInfo</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Binder for property text."><a href="../symbols/sap.m.Text.html#bindText">bindText</a></b><span class='signature'>(<span title="(string) path to a property in the model">sPath</span>, <span title="(function) the formatter function">fnFormatter</span><i class="help" title="Optional parameter">?</i>, <span title="(sap.ui.model.BindingMode) the binding mode to be used for this property binding (e.g.">sMode</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Binder for property <code>text</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Decides whether the control can use native line clamp feature or not."><a href="../symbols/sap.m.Text.html#canUseNativeLineClamp">canUseNativeLineClamp</a></b><span class='signature'>()</span>
+									<span class='description'>Decides whether the control can use native line clamp feature or not.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Sets the max-height to support maxLines property"><a href="../symbols/sap.m.Text.html#clampHeight">clampHeight</a></b><span class='signature'>(<span title="(HTMLElement) DOM reference of the text container.">oDomRef</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Sets the max-height to support maxLines property</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Clamps the wrapping text according to max lines and returns the found ellipsis position."><a href="../symbols/sap.m.Text.html#clampText">clampText</a></b><span class='signature'>(<span title="(HTMLElement) DOM reference of the text container.">oDomRef</span><i class="help" title="Optional parameter">?</i>, <span title="(number) Start point of the ellipsis search.">iStartPos</span><i class="help" title="Optional parameter">?</i>, <span title="(number) End point of the ellipsis search.">iEndPos</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Clamps the wrapping text according to max lines and returns the found ellipsis position.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Returns the max height according to max lines and line height calculation."><a href="../symbols/sap.m.Text.html#getClampHeight">getClampHeight</a></b><span class='signature'>(<span title="(HTMLElement) DOM reference of the text container.">oDomRef</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Returns the max height according to max lines and line height calculation.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Caches and returns the computed line height of the text."><a href="../symbols/sap.m.Text.html#getLineHeight">getLineHeight</a></b><span class='signature'>(<span title="(HTMLElement) DOM reference of the text container.">oDomRef</span><i class="help" title="Optional parameter">?</i>)</span>
+									<span class='description'>Caches and returns the computed line height of the text.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property maxLines."><a href="../symbols/sap.m.Text.html#getMaxLines">getMaxLines</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>maxLines</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property text."><a href="../symbols/sap.m.Text.html#getText">getText</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>text</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property textAlign."><a href="../symbols/sap.m.Text.html#getTextAlign">getTextAlign</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>textAlign</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property textDirection."><a href="../symbols/sap.m.Text.html#getTextDirection">getTextDirection</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>textDirection</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Returns the text node container's DOM reference."><a href="../symbols/sap.m.Text.html#getTextDomRef">getTextDomRef</a></b><span class='signature'>()</span>
+									<span class='description'>Returns the text node container's DOM reference.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property visible."><a href="../symbols/sap.m.Text.html#getVisible">getVisible</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>visible</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property width."><a href="../symbols/sap.m.Text.html#getWidth">getWidth</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>width</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Getter for property wrapping."><a href="../symbols/sap.m.Text.html#getWrapping">getWrapping</a></b><span class='signature'>()</span>
+									<span class='description'>Getter for property <code>wrapping</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod protected">
+									<b class="icon protected" title="Determines whether max lines should be rendered or not"><a href="../symbols/sap.m.Text.html#hasMaxLines">hasMaxLines</a></b><span class='signature'>()</span>
+									<span class='description'>Determines whether max lines should be rendered or not</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property maxLines."><a href="../symbols/sap.m.Text.html#setMaxLines">setMaxLines</a></b><span class='signature'>(<span title="(int) new value for property maxLines">iMaxLines</span>)</span>
+									<span class='description'>Setter for property <code>maxLines</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property text."><a href="../symbols/sap.m.Text.html#setText">setText</a></b><span class='signature'>(<span title="(string) new value for property text">sText</span>)</span>
+									<span class='description'>Setter for property <code>text</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property textAlign."><a href="../symbols/sap.m.Text.html#setTextAlign">setTextAlign</a></b><span class='signature'>(<span title="(sap.ui.core.TextAlign) new value for property textAlign">oTextAlign</span>)</span>
+									<span class='description'>Setter for property <code>textAlign</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property textDirection."><a href="../symbols/sap.m.Text.html#setTextDirection">setTextDirection</a></b><span class='signature'>(<span title="(sap.ui.core.TextDirection) new value for property textDirection">oTextDirection</span>)</span>
+									<span class='description'>Setter for property <code>textDirection</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property visible."><a href="../symbols/sap.m.Text.html#setVisible">setVisible</a></b><span class='signature'>(<span title="(boolean) new value for property visible">bVisible</span>)</span>
+									<span class='description'>Setter for property <code>visible</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property width."><a href="../symbols/sap.m.Text.html#setWidth">setWidth</a></b><span class='signature'>(<span title="(sap.ui.core.CSSSize) new value for property width">sWidth</span>)</span>
+									<span class='description'>Setter for property <code>width</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Setter for property wrapping."><a href="../symbols/sap.m.Text.html#setWrapping">setWrapping</a></b><span class='signature'>(<span title="(boolean) new value for property wrapping">bWrapping</span>)</span>
+									<span class='description'>Setter for property <code>wrapping</code>.</span>
+								</div>
+							
+								<div class="sectionItem classMethod">
+									<b class="icon" title="Unbinder for property text."><a href="../symbols/sap.m.Text.html#unbindText">unbindText</a></b><span class='signature'>()</span>
+									<span class='description'>Unbinder for property <code>text</code>.</span>
+								</div>
+							
+							</div>
+						</div>
+						
+						
+						
+							
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Control.html">sap.ui.core.Control</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Control.html#addStyleClass">addStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#allowTextSelection">allowTextSelection</a>, <a href="../symbols/sap.ui.core.Control.html#attachBrowserEvent">attachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#clone">clone</a>, <a href="../symbols/sap.ui.core.Control.html#detachBrowserEvent">detachBrowserEvent</a>, <a href="../symbols/sap.ui.core.Control.html#getBusy">getBusy</a>, <a href="../symbols/sap.ui.core.Control.html#getBusyIndicatorDelay">getBusyIndicatorDelay</a>, <a href="../symbols/sap.ui.core.Control.html#getIdForLabel">getIdForLabel</a>, <a href="../symbols/sap.ui.core.Control.html#getRenderer">getRenderer</a>, <a href="../symbols/sap.ui.core.Control.html#hasStyleClass">hasStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#invalidate">invalidate</a>, <a href="../symbols/sap.ui.core.Control.html#isBusy">isBusy</a>, <a href="../symbols/sap.ui.core.Control.html#onAfterRendering">onAfterRendering</a>, <a href="../symbols/sap.ui.core.Control.html#onBeforeRendering">onBeforeRendering</a>, <a href="../symbols/sap.ui.core.Control.html#placeAt">placeAt</a>, <a href="../symbols/sap.ui.core.Control.html#removeStyleClass">removeStyleClass</a>, <a href="../symbols/sap.ui.core.Control.html#rerender">rerender</a>, <a href="../symbols/sap.ui.core.Control.html#setBusy">setBusy</a>, <a href="../symbols/sap.ui.core.Control.html#setBusyIndicatorDelay">setBusyIndicatorDelay</a>, <a href="../symbols/sap.ui.core.Control.html#toggleStyleClass">toggleStyleClass</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.core.Element.html">sap.ui.core.Element</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.core.Element.html#$">$</a>, <a href="../symbols/sap.ui.core.Element.html#addCustomData">addCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#addDependent">addDependent</a>, <a href="../symbols/sap.ui.core.Element.html#addEventDelegate">addEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#applyFocusInfo">applyFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#bindElement">bindElement</a>, <a href="../symbols/sap.ui.core.Element.html#data">data</a>, <a href="../symbols/sap.ui.core.Element.html#destroy">destroy</a>, <a href="../symbols/sap.ui.core.Element.html#destroyCustomData">destroyCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#destroyDependents">destroyDependents</a>, <a href="../symbols/sap.ui.core.Element.html#enhanceAccessibilityState">enhanceAccessibilityState</a>, <a href="../symbols/sap.ui.core.Element.html#exit">exit</a>, <a href="../symbols/sap.ui.core.Element.html#findElements">findElements</a>, <a href="../symbols/sap.ui.core.Element.html#fireEvent">fireEvent</a>, <a href="../symbols/sap.ui.core.Element.html#getCustomData">getCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#getDependents">getDependents</a>, <a href="../symbols/sap.ui.core.Element.html#getDomRef">getDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getElementBinding">getElementBinding</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusDomRef">getFocusDomRef</a>, <a href="../symbols/sap.ui.core.Element.html#getFocusInfo">getFocusInfo</a>, <a href="../symbols/sap.ui.core.Element.html#getInterface">getInterface</a>, <a href="../symbols/sap.ui.core.Element.html#getLayoutData">getLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#getMetadata">getMetadata</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip">getTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_AsString">getTooltip_AsString</a>, <a href="../symbols/sap.ui.core.Element.html#getTooltip_Text">getTooltip_Text</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfCustomData">indexOfCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#indexOfDependent">indexOfDependent</a>, <a href="../symbols/sap.ui.core.Element.html#init">init</a>, <a href="../symbols/sap.ui.core.Element.html#insertCustomData">insertCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#insertDependent">insertDependent</a>, <a href="../symbols/sap.ui.core.Element.html#prop">prop</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllCustomData">removeAllCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeAllDependents">removeAllDependents</a>, <a href="../symbols/sap.ui.core.Element.html#removeCustomData">removeCustomData</a>, <a href="../symbols/sap.ui.core.Element.html#removeDependent">removeDependent</a>, <a href="../symbols/sap.ui.core.Element.html#removeEventDelegate">removeEventDelegate</a>, <a href="../symbols/sap.ui.core.Element.html#setLayoutData">setLayoutData</a>, <a href="../symbols/sap.ui.core.Element.html#setTooltip">setTooltip</a>, <a href="../symbols/sap.ui.core.Element.html#toString">toString</a>, <a href="../symbols/sap.ui.core.Element.html#unbindElement">unbindElement</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.ManagedObject.html">sap.ui.base.ManagedObject</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.ManagedObject.html#addAggregation">addAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#addAssociation">addAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#applySettings">applySettings</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindAggregation">bindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindContext">bindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindObject">bindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#bindProperty">bindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#destroyAggregation">destroyAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#findAggregatedObjects">findAggregatedObjects</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAggregation">getAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getAssociation">getAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBinding">getBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingContext">getBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingInfo">getBindingInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getBindingPath">getBindingPath</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getEventingParent">getEventingParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getId">getId</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getModel">getModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getObjectBinding">getObjectBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getOriginInfo">getOriginInfo</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getParent">getParent</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#getProperty">getProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#hasModel">hasModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#indexOfAggregation">indexOfAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#insertAggregation">insertAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isBound">isBound</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isInvalidateSuppressed">isInvalidateSuppressed</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#isTreeBinding">isTreeBinding</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAggregation">removeAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAggregation">removeAllAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAllAssociation">removeAllAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#removeAssociation">removeAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAggregation">setAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setAssociation">setAssociation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setBindingContext">setBindingContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setModel">setModel</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#setProperty">setProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindAggregation">unbindAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindContext">unbindContext</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindObject">unbindObject</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#unbindProperty">unbindProperty</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateAggregation">validateAggregation</a>, <a href="../symbols/sap.ui.base.ManagedObject.html#validateProperty">validateProperty</a>
+									</div>
+								</div>
+							
+								<div class="summary section">
+									<div class="sectionTitle">Methods borrowed from class <a href="../symbols/sap.ui.base.EventProvider.html">sap.ui.base.EventProvider</a></div>
+									<div class="sectionItems">
+									<a href="../symbols/sap.ui.base.EventProvider.html#attachEvent">attachEvent</a>, <a href="../symbols/sap.ui.base.EventProvider.html#attachEventOnce">attachEventOnce</a>, <a href="../symbols/sap.ui.base.EventProvider.html#detachEvent">detachEvent</a>
+									</div>
+								</div>
+							
+						
+					
+		
+		
+
+					
+						<div class="section details">
+							<div class="sectionTitle">
+								Constructor Detail
+							</div>
+							<div class="sectionItems">
+								<div class="sectionItem classItem itemName static">
+									<div class="details"><a name="constructor"> </a>
+										
+										<div class="icon">
+											new <b>sap.m.Text</b>(<span title="(string) id for the new control, generated automatically if no id is given">sId</span><i class="help" title="Optional parameter">?</i>, <span title="(object) initial settings for the new control">mSettings</span><i class="help" title="Optional parameter">?</i>)
+										</div>
+										
+										<div class="full-description">
+											Constructor for a new Text.
+</p><p>
+Accepts an object literal <code>mSettings</code> that defines initial 
+property values, aggregated and associated objects as well as event handlers. 
+</p><p>
+If the name of a setting is ambiguous (e.g. a property has the same name as an event), 
+then the framework assumes property, aggregation, association, event in that order. 
+To override this automatic resolution, one of the prefixes "aggregation:", "association:" 
+or "event:" can be added to the name of the setting (such a prefixed name must be
+enclosed in single or double quotes).
+</p><p>
+The supported settings are:
+<ul>
+<li>Properties
+<ul>
+<li><a href="#getText">text</a> : string (default: '')</li>
+<li><a href="#getTextDirection">textDirection</a> : sap.ui.core.TextDirection (default: sap.ui.core.TextDirection.Inherit)</li>
+<li><a href="#getVisible">visible</a> : boolean (default: true)</li>
+<li><a href="#getWrapping">wrapping</a> : boolean (default: true)</li>
+<li><a href="#getTextAlign">textAlign</a> : sap.ui.core.TextAlign (default: sap.ui.core.TextAlign.Begin)</li>
+<li><a href="#getWidth">width</a> : sap.ui.core.CSSSize</li>
+<li><a href="#getMaxLines">maxLines</a> : int</li></ul>
+</li>
+<li>Aggregations
+<ul></ul>
+</li>
+<li>Associations
+<ul></ul>
+</li>
+<li>Events
+<ul></ul>
+</li>
+</ul>
+										</div>
+										
+										
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sId</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    id for the new control, generated automatically if no id is given
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>mSettings</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    initial settings for the new control
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+										
+						
+									</div>
+								</div>
+							</div>
+						</div>
+					
+		
+
+		
+					
+						<div class="section details">
+							<div class="sectionTitle">Field Detail</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classProperty static protected'>
+										<a name=".hasNativeLineClamp"> </a>
+										<div class="itemTitle signature icon protected">
+											sap.m.Text.<b>hasNativeLineClamp</b>
+											<span class="light">: Boolean</span>
+										</div>
+										<div class="full-description">
+											Defines whether browser supports native line clamp or not
+											
+											
+										</div>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading">Since:</dt>
+												<dd>1.13.2</dd>
+											</dl>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty protected'>
+										<a name="cacheLineHeight"> </a>
+										<div class="itemTitle signature icon protected">
+											<b>cacheLineHeight</b>
+											
+										</div>
+										<div class="full-description">
+											Determines per instance whether line height should be cached or not.
+Default value is true.
+											
+											
+										</div>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading">Since:</dt>
+												<dd>1.22</dd>
+											</dl>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty protected'>
+										<a name="ellipsis"> </a>
+										<div class="itemTitle signature icon protected">
+											<b>ellipsis</b>
+											
+										</div>
+										<div class="full-description">
+											Ellipsis(…) text to indicate more text when clampText function is used.
+Can be overwritten with 3dots(...) if fonts do not support this UTF-8 character.
+											
+											
+										</div>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading">Since:</dt>
+												<dd>1.13.2</dd>
+											</dl>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classProperty protected'>
+										<a name="normalLineHeight"> </a>
+										<div class="itemTitle signature icon protected">
+											<b>normalLineHeight</b>
+											
+										</div>
+										<div class="full-description">
+											Default line height value as a number when line-height is normal.
+This value is required during max-height calculation for the browsers that do not support line-clamping.
+It is better to define line-height in CSS instead of "normal" to get consistent maxLines results since normal line-height
+not only vary from browser to browser but they also vary from one font face to another and can also vary within a given face.
+</p><p>
+Default value is 1.2
+											
+											
+										</div>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading">Since:</dt>
+												<dd>1.22</dd>
+											</dl>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+		
+		
+					
+					
+		
+					
+					
+						<div class="details section">
+							<div class="sectionTitle">
+								Method Detail
+							</div>
+							<div class="sectionItems">
+								
+									<div class='sectionItem classMethod static'>
+										<a name=".extend"> </a>
+										<div class="itemTitle icon">
+											sap.m.Text.extend<span class="signature">(<span title="(string) name of the class to be created">sClassName</span>, <span title="(object) object literal with informations about the class">oClassInfo</span><i class="help" title="Optional parameter">?</i>, <span title="(function) constructor function for the metadata object.">FNMetaImpl</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns function">: function</span>
+										</div>
+										<div class="full-description">
+											Creates a new subclass of class sap.m.Text with name <code>sClassName</code> 
+and enriches it with the information contained in <code>oClassInfo</code>.
+</p><p>
+<code>oClassInfo</code> might contain the same kind of informations as described in <a href="../symbols/sap.ui.core.Element.html#.extend">Element.extend</a>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sClassName</b>
+													</td>
+													<td class="methodItemDesc">
+												    name of the class to be created
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{object}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oClassInfo</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    object literal with informations about the class
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>FNMetaImpl</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    constructor function for the metadata object. If not given, it defaults to sap.ui.core.ElementMetadata.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{function}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the created class / constructor function
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="bindText"> </a>
+										<div class="itemTitle icon">
+											bindText<span class="signature">(<span title="(string) path to a property in the model">sPath</span>, <span title="(function) the formatter function">fnFormatter</span><i class="help" title="Optional parameter">?</i>, <span title="(sap.ui.model.BindingMode) the binding mode to be used for this property binding (e.g.">sMode</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns sap.m.Text">: <a href="../symbols/sap.m.Text.html">sap.m.Text</a></span>
+										</div>
+										<div class="full-description">
+											Binder for property <code>text</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sPath</b>
+													</td>
+													<td class="methodItemDesc">
+												    path to a property in the model
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{function}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>fnFormatter</b><i class="help" title="Optional parameter">?, Default: null</i>
+													</td>
+													<td class="methodItemDesc">
+												    the formatter function
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.model.BindingMode.html">sap.ui.model.BindingMode</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sMode</b><i class="help" title="Optional parameter">?, Default: Default</i>
+													</td>
+													<td class="methodItemDesc">
+												    the binding mode to be used for this property binding (e.g. one way)
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Text.html">sap.m.Text</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="canUseNativeLineClamp"> </a>
+										<div class="itemTitle icon protected">
+											canUseNativeLineClamp<span class="signature">()</span>
+											<span class="light" title="returns Boolean">: Boolean</span>
+										</div>
+										<div class="full-description">
+											Decides whether the control can use native line clamp feature or not.
+In RTL mode native line clamp feature is not supported
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.20</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{Boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="clampHeight"> </a>
+										<div class="itemTitle icon protected">
+											clampHeight<span class="signature">(<span title="(HTMLElement) DOM reference of the text container.">oDomRef</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns Number">: Number</span>
+										</div>
+										<div class="full-description">
+											Sets the max-height to support maxLines property
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{HTMLElement}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oDomRef</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    DOM reference of the text container.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.22</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{Number}</span> 
+													</td>
+													<td class="methodItemDesc">
+														calculated max height value
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="clampText"> </a>
+										<div class="itemTitle icon protected">
+											clampText<span class="signature">(<span title="(HTMLElement) DOM reference of the text container.">oDomRef</span><i class="help" title="Optional parameter">?</i>, <span title="(number) Start point of the ellipsis search.">iStartPos</span><i class="help" title="Optional parameter">?</i>, <span title="(number) End point of the ellipsis search.">iEndPos</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns number|undefined">: number|undefined</span>
+										</div>
+										<div class="full-description">
+											Clamps the wrapping text according to max lines and returns the found ellipsis position.
+Parameters can be used for better performance.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{HTMLElement}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oDomRef</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    DOM reference of the text container.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{number}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iStartPos</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    Start point of the ellipsis search.
+													</td>
+												</tr>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{number}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iEndPos</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    End point of the ellipsis search.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.20</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{number|undefined}</span> 
+													</td>
+													<td class="methodItemDesc">
+														Returns found ellipsis position or undefined
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="getClampHeight"> </a>
+										<div class="itemTitle icon protected">
+											getClampHeight<span class="signature">(<span title="(HTMLElement) DOM reference of the text container.">oDomRef</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns Number">: Number</span>
+										</div>
+										<div class="full-description">
+											Returns the max height according to max lines and line height calculation.
+This is not calculated max-height!
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{HTMLElement}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oDomRef</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    DOM reference of the text container.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.22</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{Number}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="getLineHeight"> </a>
+										<div class="itemTitle icon protected">
+											getLineHeight<span class="signature">(<span title="(HTMLElement) DOM reference of the text container.">oDomRef</span><i class="help" title="Optional parameter">?</i>)</span>
+											<span class="light" title="returns Number">: Number</span>
+										</div>
+										<div class="full-description">
+											Caches and returns the computed line height of the text.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{HTMLElement}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oDomRef</b><i class="help" title="Optional parameter">?</i>
+													</td>
+													<td class="methodItemDesc">
+												    DOM reference of the text container.
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.22</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{Number}</span> 
+													</td>
+													<td class="methodItemDesc">
+														returns calculated line-height
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<div class="heading">See:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemDesc">
+														<a href="../symbols/sap.m.Text.html#cacheLineHeight">sap.m.Text#cacheLineHeight</a>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getMaxLines"> </a>
+										<div class="itemTitle icon">
+											getMaxLines<span class="signature">()</span>
+											<span class="light" title="returns int">: int</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>maxLines</code>.
+Limits the number of lines for wrapping texts.
+</p><p>
+Note: The multi-line overflow indicator depends on the browser line clamping support. For such browsers, this will be shown as ellipsis, for the other browsers the overflow will just be hidden.
+</p><p>
+Default value is empty/<code>undefined</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.13.2</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{int}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>maxLines</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getText"> </a>
+										<div class="itemTitle icon">
+											getText<span class="signature">()</span>
+											<span class="light" title="returns string">: string</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>text</code>.
+Text to be displayed.
+</p><p>
+Default value is <code>''</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{string}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>text</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getTextAlign"> </a>
+										<div class="itemTitle icon">
+											getTextAlign<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.TextAlign">: <a href="../symbols/sap.ui.core.TextAlign.html">sap.ui.core.TextAlign</a></span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>textAlign</code>.
+Sets the horizontal alignment of the text.
+</p><p>
+Default value is <code>Begin</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.TextAlign.html">sap.ui.core.TextAlign</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>textAlign</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getTextDirection"> </a>
+										<div class="itemTitle icon">
+											getTextDirection<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.TextDirection">: <a href="../symbols/sap.ui.core.TextDirection.html">sap.ui.core.TextDirection</a></span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>textDirection</code>.
+Available options for the text direction are LTR and RTL. By default the control inherits the text direction from its parent control.
+</p><p>
+Default value is <code>Inherit</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.TextDirection.html">sap.ui.core.TextDirection</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>textDirection</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="getTextDomRef"> </a>
+										<div class="itemTitle icon protected">
+											getTextDomRef<span class="signature">()</span>
+											<span class="light" title="returns HTMLElement|null">: HTMLElement|null</span>
+										</div>
+										<div class="full-description">
+											Returns the text node container's DOM reference.
+This can be different then getDomRef when inner wrapper is needed.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.22</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{HTMLElement|null}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getVisible"> </a>
+										<div class="itemTitle icon">
+											getVisible<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>visible</code>.
+Set this property to false to make the text invisible.
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>visible</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getWidth"> </a>
+										<div class="itemTitle icon">
+											getWidth<span class="signature">()</span>
+											<span class="light" title="returns sap.ui.core.CSSSize">: <a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a></span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>width</code>.
+By default, the Text control uses the full width available. Set this property to restrict the width to a custom value.
+</p><p>
+Default value is empty/<code>undefined</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>width</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="getWrapping"> </a>
+										<div class="itemTitle icon">
+											getWrapping<span class="signature">()</span>
+											<span class="light" title="returns boolean">: boolean</span>
+										</div>
+										<div class="full-description">
+											Getter for property <code>wrapping</code>.
+Set this property to false to disable the automatic text wrapping.
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemDesc">
+														the value of property <code>wrapping</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod protected protected'>
+										<a name="hasMaxLines"> </a>
+										<div class="itemTitle icon protected">
+											hasMaxLines<span class="signature">()</span>
+											<span class="light" title="returns HTMLElement|null">: HTMLElement|null</span>
+										</div>
+										<div class="full-description">
+											Determines whether max lines should be rendered or not
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.22</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{HTMLElement|null}</span> 
+													</td>
+													<td class="methodItemDesc">
+														
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setMaxLines"> </a>
+										<div class="itemTitle icon">
+											setMaxLines<span class="signature">(<span title="(int) new value for property maxLines">iMaxLines</span>)</span>
+											<span class="light" title="returns sap.m.Text">: <a href="../symbols/sap.m.Text.html">sap.m.Text</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>maxLines</code>.
+</p><p>
+Default value is empty/<code>undefined</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{int}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>iMaxLines</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>maxLines</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+											<dl class="detailList since">
+												<dt class="heading since">Since:</dt>
+												<dd>1.13.2</dd>
+											</dl>
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Text.html">sap.m.Text</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setText"> </a>
+										<div class="itemTitle icon">
+											setText<span class="signature">(<span title="(string) new value for property text">sText</span>)</span>
+											<span class="light" title="returns sap.m.Text">: <a href="../symbols/sap.m.Text.html">sap.m.Text</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>text</code>.
+</p><p>
+Default value is <code>''</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{string}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sText</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>text</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Text.html">sap.m.Text</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setTextAlign"> </a>
+										<div class="itemTitle icon">
+											setTextAlign<span class="signature">(<span title="(sap.ui.core.TextAlign) new value for property textAlign">oTextAlign</span>)</span>
+											<span class="light" title="returns sap.m.Text">: <a href="../symbols/sap.m.Text.html">sap.m.Text</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>textAlign</code>.
+</p><p>
+Default value is <code>Begin</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.TextAlign.html">sap.ui.core.TextAlign</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oTextAlign</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>textAlign</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Text.html">sap.m.Text</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setTextDirection"> </a>
+										<div class="itemTitle icon">
+											setTextDirection<span class="signature">(<span title="(sap.ui.core.TextDirection) new value for property textDirection">oTextDirection</span>)</span>
+											<span class="light" title="returns sap.m.Text">: <a href="../symbols/sap.m.Text.html">sap.m.Text</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>textDirection</code>.
+</p><p>
+Default value is <code>Inherit</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.TextDirection.html">sap.ui.core.TextDirection</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>oTextDirection</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>textDirection</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Text.html">sap.m.Text</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setVisible"> </a>
+										<div class="itemTitle icon">
+											setVisible<span class="signature">(<span title="(boolean) new value for property visible">bVisible</span>)</span>
+											<span class="light" title="returns sap.m.Text">: <a href="../symbols/sap.m.Text.html">sap.m.Text</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>visible</code>.
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bVisible</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>visible</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Text.html">sap.m.Text</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setWidth"> </a>
+										<div class="itemTitle icon">
+											setWidth<span class="signature">(<span title="(sap.ui.core.CSSSize) new value for property width">sWidth</span>)</span>
+											<span class="light" title="returns sap.m.Text">: <a href="../symbols/sap.m.Text.html">sap.m.Text</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>width</code>.
+</p><p>
+Default value is empty/<code>undefined</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{<a href="../symbols/sap.ui.core.CSSSize.html">sap.ui.core.CSSSize</a>}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>sWidth</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>width</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Text.html">sap.m.Text</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="setWrapping"> </a>
+										<div class="itemTitle icon">
+											setWrapping<span class="signature">(<span title="(boolean) new value for property wrapping">bWrapping</span>)</span>
+											<span class="light" title="returns sap.m.Text">: <a href="../symbols/sap.m.Text.html">sap.m.Text</a></span>
+										</div>
+										<div class="full-description">
+											Setter for property <code>wrapping</code>.
+</p><p>
+Default value is <code>true</code>
+											
+											
+											
+										
+											
+										</div>
+										
+										
+											<div class="heading">Parameters:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+													  <span class="light">{boolean}</span> 
+													</td>
+													<td class="methodItemName">
+													  <b>bWrapping</b>
+													</td>
+													<td class="methodItemDesc">
+												    new value for property <code>wrapping</code>
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Text.html">sap.m.Text</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+									<div class='sectionItem classMethod'>
+										<a name="unbindText"> </a>
+										<div class="itemTitle icon">
+											unbindText<span class="signature">()</span>
+											<span class="light" title="returns sap.m.Text">: <a href="../symbols/sap.m.Text.html">sap.m.Text</a></span>
+										</div>
+										<div class="full-description">
+											Unbinder for property <code>text</code>.
+											
+											
+											
+										
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<div class="heading">Returns:</div>
+											<table class="methodItem"><tbody>
+											
+												<tr>
+													<td class="methodItemType">
+														<span class="light">{<a href="../symbols/sap.m.Text.html">sap.m.Text</a>}</span> 
+													</td>
+													<td class="methodItemDesc">
+														<code>this</code> to allow method chaining
+													</td>
+												</tr>
+											
+											</tbody></table>
+										
+										
+										
+									</div>
+								
+							</div>
+						</div>
+					
+
+
+		</div>
+	</div>
+
+				
+	</body>
+</html>

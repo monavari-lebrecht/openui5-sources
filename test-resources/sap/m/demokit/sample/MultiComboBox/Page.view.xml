@@ -1,0 +1,60 @@
+<mvc:View height="100%" controllerName="sap.m.sample.MultiComboBox.Page"
+       xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+       xmlns="sap.m">
+       <Page title="Page" class="marginBoxContent">
+             <customHeader>
+                    <Bar>
+                           <contentMiddle>
+                                  <Label text="Title" />
+                           </contentMiddle>
+                           <contentRight>
+                                  <MultiComboBox placeholder="Choose your product" 
+                                        width = "500px"
+                                        items="{
+                                               path: '/ProductCollection',
+                                               sorter: { path: 'Name' }
+                                        }">
+                                        <core:Item key="{ProductId}" text="{Name}" />
+                                  </MultiComboBox>
+                           </contentRight>
+                    </Bar>
+             </customHeader>
+
+             <subHeader>
+                    <Bar>
+                           <contentLeft>
+                                  <MultiComboBox width = "400px"
+                                        items="{
+                                        path: '/ProductCollection',
+                                        sorter: { path: 'Name' }
+                                  }">
+                                        <core:Item key="{ProductId}" text="{Name}" />
+                                  </MultiComboBox>
+                           </contentLeft>
+                           <contentRight>
+                                  <MultiComboBox width = "400px"
+                                        items="{
+                                        path: '/ProductCollection',
+                                        sorter: { path: 'Name' }
+                                  }">
+                                        <core:Item key="{ProductId}" text="{Name}" />
+                                  </MultiComboBox>
+                           </contentRight>
+                    </Bar>
+             </subHeader>
+
+             <content>
+                    <HBox>
+                           <MultiComboBox
+                                  width = "500px"
+                                  items="{
+                                        path: '/ProductCollection',
+                                        sorter: { path: 'Name' }
+                                  }">
+                                  <core:Item key="{ProductId}" text="{Name}" />
+                           </MultiComboBox>
+                    </HBox>
+             </content>
+             
+       </Page>
+</mvc:View>

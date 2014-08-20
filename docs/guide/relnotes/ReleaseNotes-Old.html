@@ -1,0 +1,962 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+  
+
+  
+
+
+  
+
+  <head>
+    <title>
+      Documentation/ReleaseNotes/ReleaseNotes-Old – SAPUI5 Wiki (TIP CORE User Interface)
+    </title>
+        
+        
+        
+        
+        
+        
+        
+      
+    
+    
+    
+    
+    <script src="../../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+    <link rel="stylesheet" type="text/css" href="../css/relnotes.css" />
+  </head>
+  <body>
+    
+    
+    
+    <div id="content" class="wiki">
+      
+      <div class="wikipage searchable">
+        
+          <p>
+</p><p>
+</p>
+<style>
+.topic {
+  color : #e09800;
+  font-weight : bold;
+}
+</style>
+<h1 id="ReleaseNotes">Release Notes</h1>
+<p>
+This page provides an overview of all new features and all corrections in the delivered releases for SAPUI5 Runtime, SAPUI5 Controls and SAPUI5 Tools.
+</p>
+<h2 id="Version1.6.4September2012">Version 1.6.4 (September 2012)</h2>
+<p>
+A patch for the 1.6 code line. It contains the following fixes for the UI5 Core and Controls:
+</p>
+<ul><li> fix dependencies in MenuButton, all-in-one
+</li><li> Toolbar: focus on disabled button not visible
+</li><li> DropdownBox: some special characters can be entered
+</li><li> Table: Header should be truncated gracefully
+</li><li> NumberFormat: int/float parsing accepts wrong chars
+</li><li> Feeder: text copied from MS Word
+</li><li> Table: Fixed the selection behavior.
+</li><li> Feed: fix for default thumbnail not found
+</li><li> RowRepeater: gotoPage crashes when the RR is hidden
+</li><li> NavigationBar: Add aria-checked
+</li><li>Core: Change event of the SelectionModel was fired even on no change!
+</li><li> Table: fixed the selection behavior.
+</li><li> Shell: Handle multiple Overlays
+</li><li> Fix update bindings
+</li><li>Callout/Quickview: fix corrupted tip
+</li><li> ComboBox/DropdownBox: allow set key/value before update items
+</li><li> Feeder: Copy and Paste from MS Word
+</li><li> DatePicker: fix to use legacy date format if set
+</li><li> Panel: Provide translatable tooltip texts
+</li><li> TextArea: fix call of TextFields focus handling
+</li><li>SimpleProxyServlet: Proxy content of arbitrary responses not only 200.
+</li><li> datajs: fix Edm.Time with null values
+</li><li>ODataModel: fix XSRF token refresh
+</li><li> DropdownBox: fix model update brings error
+</li><li> Add latest Core lib translations
+</li><li> Fix Tab Chain in Shell/TI Scenario
+</li><li> Table: fixed  the re-rendering on row selection
+</li><li> Table: prevent Table to grab focus on scrollbar click
+</li><li> Shell: Fix paneWidth
+</li><li> Table: fixed the rows announcement
+</li><li> DatePicker: fix value if entered twice
+</li><li>Model: override getInterface method
+</li><li> Table: Grouping Labels are not rendered.
+</li><li> Table: ACC improvements for rows/cols and row hdr.
+</li><li> Button: Fix Focus on iPad
+</li><li> ComboBox: cloning of bound "items" aggregation fails
+</li></ul><p>
+Tools
+</p>
+<ul><li>ENHANCEMENT: When submitting the deletion of a file with the SAPUI5 ABAP Repository Provider it is checked that the deletion can be performed and transported consistently, to avoid repository inconsistencies.
+</li><li>FIX: When starting the SAPUI5 View Wizard in a workspace in which no SAPUI5 Application project is available, there is no exception anymore but a proper error message is displayed mentioning that first a SAPUI5 Application Project needs to be created.
+</li></ul><h2 id="Version1.7.1September2012">Version 1.7.1 (September 2012)</h2>
+<p>
+<strong>Framework</strong>
+</p>
+<ul><li>The deprecated class <tt>sap.ui.util.Rect</tt> has been deleted.
+</li><li><tt>Numberformat</tt>: Type validation for <tt>Integer</tt> and <tt>Float</tt> values works more restrictive. The format is aligned with the EDM type formats. Example for float: "1.3A" won't be parsed to "1.3" anymore, but will result in a ValidationException. Example for integer: "1.3" won't be parsed to "1" anymore, but will result in a ValidationException.
+</li><li><tt>ODataModel</tt>: additional <tt>sap.ui.model.odata.Filter</tt> enables to AND or OR filters for the same property.
+</li><li>A new <tt>Application Cache Buster</tt> mechanism is introduced to allow caching for application files (like views) like in the runtimes <tt>Cache Buster</tt> mechanism
+</li></ul><p>
+<strong>Controls</strong>
+</p>
+<ul><li>INCOMPATIBLE CHANGE:  ThingInspector: ThingAction IDs not unique. The IDs of the ThingAction instances that came as <tt>action</tt> parameter with the <tt>actionSelected</tt> event are now prefixed with the ThingInspector ID. This is necessary to deal with multiple ThingInspector instances.
+</li><li>CHANGE: <tt>sap.ui.commons.Slider</tt> control has a new property <tt>labels</tt> to allow own labels instead of the numbers. 
+</li><li>CHANGE: <tt>sap.ui.commons.Slider</tt> control has a new property <tt>vertical</tt> and <tt>height</tt> to display the slider in vertical direction.
+</li><li>CHANGE: <tt>sap.ui.ux3.SHell</tt>: Integration of control <tt>sap.ui.ux3.NotificationBar</tt> completed including collapse/expand feature.
+</li><li>NEW: <tt>sap.ui.ux3.NotificationBar</tt> not longer flagged as experimental
+</li><li>CHANGE: Control <tt>sap.ui.ux3.ExactBrowser</tt>:
+<ul><li>New API to set the order of the lists (see JSDoc of <a class="ext-link" href="../../api/symbols/sap.ui.ux3.ExactBrowser.html#setTopListOrder" title="symbols/sap.ui.ux3.ExactBrowser.html#setTopListOrder in Merged JSDoc"><span class="icon"> </span>ExactBrowser</a> and <a class="ext-link" href="../../api/symbols/sap.ui.ux3.ExactAttribute.html#setListOrder" title="symbols/sap.ui.ux3.ExactAttribute.html#setListOrder in Merged JSDoc"><span class="icon"> </span>ExactAttribute</a> 
+</li><li>Fixed keyboard support.
+</li></ul></li></ul><p>
+<strong>Tools</strong>
+</p>
+<ul><li>FEATURE: The SAPUI5 Application Handler for SAPUI5 Repository on ABAP side implements the new <tt>Application Cache Buster</tt> mechanism which is introduced to allow caching for application files (like views) like in the runtimes <tt>Cache Buster</tt> mechanism. 
+</li><li>FEATURE: When sharing a project or submiting files the SAPUI5 ABAP Repository Provider checks whether the SAPUI5 runtime version on the server matches the one which is installed in Eclipse and used for code completion and application preview. If not a warning is raised.
+</li></ul><h2 id="Version1.6.3September2012">Version 1.6.3 (September 2012)</h2>
+<p>
+A patch for the 1.6 code line. It contains the following fixes for the UI5 Core and Controls:
+</p>
+<ul><li> FileUploader: reupload the same file again
+</li><li> Fixed scroll bar on first mouse click
+</li><li> Table - column header not rendered correctly
+</li><li> Shell: Fix pane width
+</li><li> Menu: Close Menu on TAB like on Escape
+</li><li> Fix for Scrollbar in Webkit RTL mode.
+</li><li> SearchField: Allow binding for attributes, esp. value
+</li><li> Panel: Fix title length issue in IE
+</li><li> Table - Fix for memleak in column for indicators.
+</li><li> General: fix more occurrences of the 'ID with dot' issue
+</li><li> Splitter: Ghost Overlay Fix when "." in ID.
+</li><li> ComboBox/DropDown doesn't open with a . in the id.
+</li><li> Callout/QuickView: Fix close issue 
+</li><li> Table, Accessibility: relationship between  table cell and colHdr was missing
+</li><li> Table: setSelectedIndex() does not select a row
+</li><li> Fixed the scrollbar behavior for Webkit RTL.
+</li><li> QuickView.open() results in Table invalidate
+</li><li> Theming: prameters API should not fail if a UI library lacks the json file
+</li><li>JSON/XML Model: change default caching behaviour. No timestamp added anymore. Caching (default) now depends on browser or server configuration.
+</li><li>DropdownBox: no Change event on typeAhead
+</li><li>Table: support two way binding for property 'selectedIndex'
+</li><li>FileUploader: Fix for Chrome with Mac OS.
+</li><li>SegmentedButton: Keyboard navigation issue when used in Toolbar
+</li><li>SearchField+DropdownBox: do not store history in localStorage
+</li><li>SegmentedButton: fix clone
+</li><li>DropdownBox: fix ARIA on keyboard navigation
+</li><li>General: Fixes for Chrome21
+</li><li>Configuration: locale fixes
+</li><li>Callout/QuickView: corrections
+</li><li>Configuration: Support of SAP Portal URL parameters sap-locale sap-accessibility sap-rtl sap-theme
+</li><li>Button,MenuButton: Fix focus problem
+</li><li>Table: added support for RowOnly selection behavior (no row selector)
+</li><li>Column Chart: add missing 'experimental' flag
+</li><li>I18N: Added new resource bundles from B0Y.
+</li></ul><h2 id="Version1.7.0August2012">Version 1.7.0 (August 2012)</h2>
+<p>
+<strong>Framework</strong>
+</p>
+<ul><li>FEATURE: Now the SAP portal URL parameters sap-locale, sap-accessibility, sap-rtl and sap-theme are supported. If the similar sap-ui-* parameter are used in addition, they will be used.
+</li><li>FEATURE: <tt>sap.ui.core.plugin.DeclarativeSupport</tt> and  <tt>sap.ui.core.DeclarativeSupport</tt>:
+<ul><li>Declarative support is not experimental anymore
+</li><li>See deprecation warnings for future changes
+</li></ul></li><li>FEATURE: <tt>sap.ui.model.odata.ODataModel</tt> support for <tt>$select</tt> parameter.
+</li><li>FEATURE: <tt>sap.ui.model.odata.ODataModel</tt> filter URL creation: now reads the metadata for the Edm type for the filter property and then creates the filter URL according to this type: e.g. <tt>Edm.String</tt> will result in the URL as e.g. <tt>?$filter=CustNo eq '112233'</tt> whereas <tt>Edm.Int32</tt> will simply result in the URL as <tt>?$filter=CustNo eq 112233</tt>.
+</li></ul><p>
+<strong>Controls</strong>
+</p>
+<ul><li>NEW: Control <tt>sap.ui.ux3.NotificationBar</tt>:
+<ul><li>New controls <a class="ext-link" href="../../api/symbols/sap.ui.ux3.NotificationBar.html" title="symbols/sap.ui.ux3.NotificationBar.html in Merged JSDoc"><span class="icon"> </span>NotificationBar</a> and <a class="ext-link" href="../../api/symbols/sap.ui.ux3.Notifier.html" title="symbols/sap.ui.ux3.Notifier.html in Merged JSDoc"><span class="icon"> </span>Notifier</a> and new element <a class="ext-link" href="../../api/symbols/sap.ui.core.Message.html" title="symbols/sap.ui.core.Message.html in Merged JSDoc"><span class="icon"> </span>Message</a> introduced.
+</li><li><tt>sap.ui.ux3.NotificationBar</tt> included into <tt>sap.ui.ux3.Shell</tt> (see <a class="ext-link" href="../../api/symbols/sap.ui.ux3.Shell.html#setNotificationBar" title="symbols/sap.ui.ux3.Shell.html#setNotificationBar in Merged JSDoc"><span class="icon"> </span>JSDoc</a>). <strong>Limitation:</strong> The change height feature of the NotificationBar is not yet available within the Shell.
+</li></ul></li><li>CHANGE: Control <tt>sap.ui.ux3.ExactBrowser</tt>:
+<ul><li>Change collapse behavior of the lists.
+</li><li>Improved open animation for inital list rendering
+</li><li>New API to set the widths of the lists (see JSDoc of <a class="ext-link" href="../../api/symbols/sap.ui.ux3.ExactBrowser.html#setTopListWidth" title="symbols/sap.ui.ux3.ExactBrowser.html#setTopListWidth in Merged JSDoc"><span class="icon"> </span>ExactBrowser</a> and <a class="ext-link" href="../../api/symbols/sap.ui.ux3.ExactAttribute.html#setWidth" title="symbols/sap.ui.ux3.ExactAttribute.html#setWidth in Merged JSDoc"><span class="icon"> </span>ExactAttribute</a>)
+</li><li>ARIA Support
+</li><li>New API to hide the first list (see <a class="ext-link" href="../../api/symbols/sap.ui.ux3.ExactBrowser.html#setShowTopList" title="symbols/sap.ui.ux3.ExactBrowser.html#setShowTopList in Merged JSDoc"><span class="icon"> </span>JSDoc</a>)
+</li><li><strong>Limitation:</strong> Due to the changes above the keyboard support does not work completely. This will be corrected with version 1.7.1. 
+</li></ul></li><li>CHANGE: sap.ui.util.Rect was deprecated and will be removed. Use <tt>jQuery(...).rectContains(x,y)</tt> provided by jQuery.sap.dom.js to determine whether a point is contained in the rectangle defined by a DOM element.
+</li></ul><p>
+<strong>Tools</strong>
+</p>
+<ul><li>FEATURE: Tools also run on Eclipse 3.5, i.e. with NWDS. 
+</li></ul><p>
+<strong>Experimental Features</strong>
+</p>
+<ul><li>Includes the full set of experimental features as documented for 1.6.x, with the exception of DeclarativeSupport which is a productive feature now, see above
+</li><li>new experimental feature: Control sap.uiext.inbox.SubstitutionRulesManager: API is not yet finished and might change
+</li></ul><h2 id="ToolsVersion1.6.2August2012">Tools Version 1.6.2 (August 2012)</h2>
+<p>
+<strong>Tools</strong>
+</p>
+<ul><li>Minor bugfixes
+</li></ul><h2 id="RuntimeVersion1.6.1July2012">Runtime Version 1.6.1 (July 2012)</h2>
+<p>
+<strong>Controls</strong>
+</p>
+<ul><li>FIX:  Shell: Labels and Texts not selectable
+</li><li>FIX:  Security Fix for XSS prevention.
+</li><li>FIX:  FacetFilter: Fix declare in Renderer
+</li><li>FIX:  Fix the columnHeaderHeight property of the Table
+</li><li>FIX:  Grouping not working in IE RTL mode.
+</li><li>FIX:  Fix for Paginator focus issues in IE8 
+</li><li>FIX:  Factory function doesn't work as documented
+</li><li>FIX:  Due Date Filter not available Added support from TaskInitial Filter.
+</li><li>FIX:  Due Date Filter Not Available Added Due Date Filter capability in Inbox.
+</li><li>FIX:  QUnit tests are failing for BPMInbox. Qunits falling due to issue in bindTaskTable.
+</li><li>FIX:  Some dropDown filters not working in Inbox
+</li></ul><p>
+<strong>Tools</strong>
+</p>
+<ul><li>FEATURE: The <tt>SimpleProxyServlet</tt> (used for local testing) is now using the standard Java proxy settings (<tt>http.proxyHost</tt>, <tt>http.proxyPort</tt>, <tt>http.noneProxyHosts</tt>, <tt>https.proxyHost</tt>, <tt>https.proxyPort</tt>, <tt>https.noneProxyHosts</tt>) instead of special servlet parameters. This information by default comes from the Eclipse proxy settings. The base remote location is configured via the servlet context parameter <tt>com.sap.ui5.proxy.REMOTE_LOCATION</tt>. 
+</li></ul><h2 id="RuntimeVersion1.6.0duringdevelopment1.5.3-SNAPSHOTJuly2012">Runtime Version 1.6.0 (during development 1.5.3-SNAPSHOT) (July 2012)</h2>
+<p>
+<strong>Framework</strong>
+</p>
+<ul><li>CHANGE: One common package <tt>sap/ui/thirdparty</tt> (incl. sub packages) within the Core library which contains all open source third party libraries:
+<ul><li>The following files were moved from their origin location without replacement: <tt>iscroll.js</tt>, <tt>iscroll-lite.js</tt>, <tt>zyngascroll.js</tt>, <tt>qunit.css</tt>, <tt>jquery-mobile-custom.js</tt>
+</li><li>The following files were moved from their origin location, but a stub for loading the new file was added at the origin location:
+<ul><li><tt>datajs.js</tt>, <tt>qunit.js</tt>, <tt>jquery-ui-core.js</tt>, <tt>jquery-ui-position.js</tt>, <tt>jquery-ui-datepicker.js</tt>
+</li><li>The stub uses the <tt>jQuery.sap.require</tt> functionality and therefore only works when this functionality is available.
+</li><li>Using the stub as fallback causes additional requests and is therefore only intended for an intermediate solution. Applications should adapt their dependencies as soon as possible.
+</li></ul></li><li>The following files were newly added: <tt>d3.js</tt>, <tt>jszip.js</tt>, <tt>less.js</tt>, <tt>caja-html-sanitizer.js</tt>
+</li><li>jQuery UI was upadted to version 1.8.21 and addional jQuery UI plugins were added: <tt>jquery-ui-widget.js</tt>, <tt>jquery-ui-mouse.js</tt>, <tt>jquery-ui-draggable.js</tt>, <tt>jquery-ui-droppable.js</tt>, <tt>jquery-ui-resizable.js</tt>, <tt>jquery-ui-selectable.js</tt>, <tt>jquery-ui-sortable.js</tt>, <tt>jquery-effects-*.js</tt>
+</li><li>The available jQuery versions are kept at the origin location but a copy is added to the new package. The Core uses by default the new location. Future versions of jQuery will only be available at the new location.
+</li><li>Please notice also the corresponding section in the <a class="wiki" href="../../guide/91f087396f4d1014b6dd926db0e91070.html">Compatibility Rules</a>.
+</li></ul></li><li>CHANGE: The theming/styling of controls has been changed to use LESS. Therefore nearly all color parameters had changed. So if custom styling uses the color parameters they must be changed to the new oned to still work.
+</li></ul><ul><li>NEW: <tt>sap.ui.model.json.JSONModel</tt>, <tt>sap.ui.model.xml.XMLModel</tt>, <tt>sap.ui.model.odata.ODataModel</tt> introduce a new method <tt>forceNoCache()</tt>. If set to true it will force requested pages not to be read from the browser cache. For XMLModel and JSONModel the default is set to true, for the ODataModel to false.
+</li><li>NEW: <tt>sap.ui.model.json.JSONTreeBinding</tt> Support for nested arrays.
+</li><li>CHANGE: <tt>sap.ui.model.odata.ODataModel.submitChanges(...)</tt> Does a MERGE request instead of PUT. No deep update possible, therefore associated entries are removed if the data was retrieved via expand.
+</li><li>CHANGE: <tt>sap.ui.model.odata.ODataModel.update(...)</tt> New option to do a MERGE request instead of a PUT request. 
+</li><li>CHANGE: <tt>sap.ui.model.odata.ODataModel.getProperty(...)</tt> New Flag <tt>bIncludeExpandEntries</tt>. If the data was retrieved with expand, the data will be returned as deep structure if <tt>bIncludeExpandEntries</tt> is set to true. If <tt>bIncludeExpandEntries</tt> is set to false the referenced data will not be included.
+</li><li>DEPRECATION: <tt>sap.ui.model.odata.ODataModel.getData(...)</tt> was deprecated. Use <tt>sap.ui.model.odata.ODataModel.getProperty(...)</tt> instead
+</li></ul><p>
+<strong>Controls</strong>
+</p>
+<ul><li>NEW: Various header types for control <tt>sap.ui.ux3.Shell</tt>: Aggregation <a class="ext-link" href="../../api/symbols/sap.ui.ux3.Shell.html#setHeaderType" title="symbols/sap.ui.ux3.Shell.html#setHeaderType in Merged JSDoc"><span class="icon"> </span>headerType</a> of type <a class="ext-link" href="../../api/symbols/sap.ui.ux3.ShellHeaderType.html" title="symbols/sap.ui.ux3.ShellHeaderType.html in Merged JSDoc"><span class="icon"> </span>ShellHeaderType</a>
+</li><li>NEW: Options to hide tool area and side panel in control <tt>sap.ui.ux3.Shell</tt>: Properties <a class="ext-link" href="../../api/symbols/sap.ui.ux3.Shell.html#setShowTools" title="symbols/sap.ui.ux3.Shell.html#setShowTools in Merged JSDoc"><span class="icon"> </span>showTools</a> and <a class="ext-link" href="../../api/symbols/sap.ui.ux3.Shell.html#setShowPane" title="symbols/sap.ui.ux3.Shell.html#setShowPane in Merged JSDoc"><span class="icon"> </span>showPane</a>
+</li><li>CHANGE: Adapations of GoldRelection theme for <tt>sap.ui.ux3.Shell</tt> and <tt>sap.ui.ux3.NavigationBar</tt>
+</li><li>NEW: Base class <tt>sap.ui.core.search.SearchProvider</tt> for search providers introduced.
+</li><li>DEPRECATION: <tt>sap.ui.commons.SearchProvider</tt> was deprecated. Instead <tt>sap.ui.core.search.OpenSearchProvider</tt> (<a class="ext-link" href="../../api/symbols/sap.ui.core.search.OpenSearchProvider.html" title="symbols/sap.ui.core.search.OpenSearchProvider.html in Merged JSDoc"><span class="icon"> </span>OpenSearchProvider API</a>) should be used.
+</li><li>NEW: New property <a class="ext-link" href="../../api/symbols/sap.ui.commons.SearchField.html#setEnableFilterMode" title="symbols/sap.ui.commons.SearchField.html#setEnableFilterMode in Merged JSDoc"><span class="icon"> </span>enableFilterMode</a> on control <tt>sap.ui.commons.SearchField</tt>: When this property is set the search event is also fired when the SearchField is empty or the Clear icon is pressed.
+</li><li>NEW: Added the UI library <tt>sap.ui.richtexteditor</tt> containing the <tt>RichTextEditor</tt> control to provide a proper control to enter formatted text. 
+<ul><li>The RichTextEditor of SAPUI5 version 1.6 contains a third party component TinyMCE provided by Moxiecode Systems AB. The SAP license agreement does not cover development of own applications with RichTextEditor of SAPUI5 version 1.6. To develop own applications with RichTextEditor of SAPUI5 version 1.6 customer/partner has to first obtain an appropriate license from Moxiecode Systems AB. 
+</li><li>Please be aware that the RichTextEditor control of SAPUI5 is going to be changed with the next SAPUI5 release 1.8: the reason is the embedded third party component TinyMCE from Moxiecode Systems AB, which potentially can be used by customers/partners without being aware of the specific license terms. To prevent this accidental usage, the TinyMCE code is going to be removed. More instructions how to manually add TinyMCE code will follow in the release notes of the SAPUI5 release 1.8.
+</li></ul></li><li>NEW: Popup pplacement in <tt>sap.ui.commons.CalloutBase</tt>: a callout control can be now positioned to the left or right of the parent control, in addition. A new method <a class="ext-link" href="../../api/symbols/sap.ui.commons.CalloutBase.html#setPosition" title="symbols/sap.ui.commons.CalloutBase.html#setPosition in Merged JSDoc"><span class="icon"> </span>setPosition</a> is added to simplify positioning. This functionality is available for <tt>sap.ui.commons.Callout</tt> and <tt>sap.ui.ux3.QuickView</tt> controls.
+</li><li>NEW: <tt>sap.ui.table.ColumnMenu</tt> Added new control 
+</li><li>NEW: <tt>sap.ui.table.ColumnMenu</tt> Added visibility submenu
+</li><li>NEW: <tt>sap.ui.table.Table</tt> Added new event "columnVisibility" 
+</li><li>NEW: <tt>sap.ui.table.Table</tt> Enabled zooming on touch devices
+</li><li>NEW: <tt>sap.ui.table.Table</tt> Added new aggregation "menu"
+</li></ul><p>
+<strong>Tools</strong>
+</p>
+<ul><li>NEW: SAPUI5 Tools in Eclipse are new with release 1.6.0 and offer
+</li><li>SAPUI5 Application Development Tool to create applications. It comes with
+</li><li>wizards to create the application project
+</li><li>and its views (with a JavaScript, XML or JSON layout)
+</li><li>JavaScript coding completion and code templates/snippets and a
+</li><li>build-in application preview.
+</li><li>There is a Team Provider functionality to share/retrieve/submit application projects with an ABAP system (NetWeaver UI Extensions AddOn for NetWeaver 7.31) to support development within a team and handle conflicts.
+</li></ul><p>
+<strong>Experimental Features:</strong>
+</p>
+<p>
+<strong>Experimental features</strong> are not part of the officially delivered scope that SAP is going to guarantee for future releases – means experimental Features may be changed by SAP at any time for any reason without notice. The <strong>Experimental features</strong> are <strong>"NOT FOR PRODUCTION USE"</strong>. 
+You may not demonstrate, test, examine, evaluate or otherwise use the Experimental Features in a live operating environment or with data that has not been sufficiently backed up.
+</p>
+<p>
+The purpose of Experimental features is to get feedback at an early point of time allowing customers/partners to influence the future product accordingly. Please use the SCN Developer Center <a class="ext-link" href="http://scn.sap.com/community/developer-center/front-end"><span class="icon"> </span>http://scn.sap.com/community/developer-center/front-end</a> to provide feedback accepting that Intellectual Property rights of the contributions or derivative works shall remain the exclusive property of SAP.
+</p>
+<p>
+For general information about <strong>Experimental features</strong>, please check the <a class="wiki" href="../../guide/91f087396f4d1014b6dd926db0e91070.html">Compatibility Rules</a>, for a detailed list check out the list below:
+</p>
+<ul><li><tt>Mobile Tablet Support:</tt> The controls of the UI libraries sap.ui.core, sap.ui.commons, sap.ui.ux3 and sap.ui.table are not yet optimized or adapted for mobile tablet usage.
+</li><li><tt>OData Write Support:</tt> basic modificator functions for OData and first experiments for two way binding
+</li><li><tt>Module sap.ui.core.plugin.DeclarativeSupport:</tt> Current status is prototype.
+</li><li><tt>Module sap.ui.core.plugin.LessSupport:</tt> Current status is prototype.
+</li><li><tt>Module sap.ui.core.delegate.ScrollEnablement:</tt> Current status is prototype.
+</li><li><tt>Configuration Parameters</tt> with "-xx-" and the corresponding features: e.g. sap-ui-xx-test-mobile
+</li><li><tt>Weinre Server Configuration:</tt> Might change or removed in future releases
+</li><li><tt>Control sap.ui.table.Table:</tt> Current status for Threshold and Column Grouping is prototype.
+</li><li><tt>Deprecated Message Controls in sap.ui.commons:</tt> MessageBar, Message, MessageList, MessageToast - a new messaging concept is planned which will replace these controls.
+</li><li><tt>Control sap.ui.core.HTML:</tt> Support of HTML with multiple root nodes
+</li><li><tt>Control sap.uiext.inbox.Inbox:</tt> API is not yet finished and might change
+</li><li><tt>Control sap.ui.suite.TaskCircle:</tt> API is not yet finished and might change
+</li><li><tt>Control sap.ui.suite.VerticalProgressIndicator:</tt> API is not yet finished and might change
+</li><li><tt>Control sap.ui.ux3.Shell:</tt> Personalization, Color Picker (<tt>Control sap.ui.ux3.ShellColorPicker</tt>) and "Inspect"-Tool
+</li><li><tt>Controls / Types sap.ui.ux3.Feed*:</tt> Open discusses might result in API changes and adaptation. Especially the text presentation (e.g. @-references and formatted text) is not yet clear. Also Feed Model topic still open.
+</li><li><tt>Control sap.ui.ux3.Exact:</tt> Open discussions might result in API changes and adaptation. Especially the Result Area is not final.
+</li><li><tt>Control sap.ui.ux3.ExactArea:</tt> Open discussions might result in API changes and adaptation.
+</li><li><tt>Type sap.ui.ux3.ActionBarSocialActions:</tt> Open discussions might result in API changes and adaptation.
+</li><li><tt>Theme Editor:</tt> This application allows for easy branding of SAPUI5 applications. Currently optimized for the use with Chrome and Firefox. 
+</li><li>Improved performance for touch devices: Mouse events are now fired on their corresponding touch events
+</li></ul><h2 id="RuntimeVersion1.5.2June2012">Runtime Version 1.5.2 (June 2012)</h2>
+<p>
+<strong>Framework</strong>
+</p>
+<ul><li>CHANGE: The <tt>BeforeRendering</tt> Event (optional function <tt>onBeforeRendering</tt> in controls) is now called before <strong>every</strong> (re-)rendering of the control. This affects also the corresponding function in view controllers.
+</li></ul><p>
+<strong>Controls</strong>
+</p>
+<ul><li>CHANGE: <tt>sap.ui.commons.DatePicker</tt> on mobile devices now a native DatePicker is used. Therefore some functionlaity is not available there:
+<ul><li>it is not possible to open the DatePicker via F4. Only the native events open it
+</li><li>The date pattern is used from the device. No pattern set by the application is used. But on the value property the date is provided with the pattern of the defined locale or set by the binding.
+</li><li>Not all mobile devices already support the native DatePicker, on iPad it works. (Here input type=date is used, so the device/browser must support this.) Here we should think about feature detection&hellip;
+</li><li>no direct input of the date possible, only via DatePicker.
+</li><li>no copy &amp; paste possible
+</li></ul></li><li>NEW: <tt>sap.ui.commons.ColorPicker</tt> control has been created
+</li><li>NEW: <tt>sap.ui.commons.SegmentedButton</tt> control has been created
+</li><li>CHANGE: <tt>sap.ui.ux3.DataSet</tt> Toolbar and FilterArea added. View switches are implemented with new SegmentedButton
+<ul><li>there is no build in sorting button anymore. Sorting can be handled via own functions in the new toolbar.
+</li><li>there is no build in filter support anymore. Filtering will be handled e.g. by adding a FacetFilter into the new filter area.
+</li></ul></li><li>CHANGE: <tt>sap.ui.commons.layout.BorderLayout</tt> has been refactored. 
+<ul><li>The specific RTL support of the BorderLayout has been dropped in favor of the standard RTL handling of UI5. Applications that have set the RTL property matching the global RTL configuration don't need to change anything. Only applications that have set the RTL property to a value different from the central configuration might run into issues. UI5 strongly suggests to rely on the central configuration. The value of the RTL property is ignored. 
+</li><li>the animated hide/show of areas is no longer a supported feature. It is still available but applications should consider to remove it or to animate the area on their own.
+</li></ul></li><li>CHANGE: <tt>sap.ui.core.ScrollBar</tt> Added touch support for mobile devices
+</li></ul><h2 id="RuntimeVersion1.4.32012-06-2">Runtime Version 1.4.3 (2012-06-2?)</h2>
+<p>
+A patch for the 1.4 code line. It contains the following fixes:
+</p>
+<ul><li>FIX Demokit: navigation and history fixed, spelling corrections
+</li><li>FIX ODataModel: fix init problem for 1.4
+</li><li>FIX ODataModel: fix refresh data after write
+</li><li>FIX Databinding: setSizeLimit for JSON- and XMLModel
+</li></ul><h2 id="RuntimeVersion1.5.1May2012">Runtime Version 1.5.1 (May 2012)</h2>
+<p>
+<strong>Framework</strong>
+</p>
+<ul><li>CHANGE: the 'preload' feature that loads all JavaScript modules for a library in one request has been made a non-experimental feature and it is activate by default. See <a class="wiki" href="../../guide/91f1cea36f4d1014b6dd926db0e91070.html">Bootstrap documentation</a> for details.
+</li><li>CHANGE: Databinding syntax changed, so that absolute bindings now must have a leading slash. For compatibility reasons, method <a class="ext-link" href="../../api/symbols/sap.ui.model.Model.html#setLegacySyntax" title="symbols/sap.ui.model.Model.html#setLegacySyntax in Merged JSDoc"><span class="icon"> </span>setLegacySyntax()</a> can be used to enable the old binding syntax.
+</li><li>CHANGE: <tt>sap.ui.core.Element</tt> renamed method bindContext to bindElement for better understanding
+</li><li>CHANGE: <tt>sap.ui.core.Element</tt> added support for model specific parameters in bindProperty, bindAggregation and bindElement
+</li><li>CHANGE: <tt>sap.ui.core.Element</tt> extended signature of bindProperty and bindAggregation to accept object literals for binding information
+</li><li>NEW: <tt>sap.ui.model.odata.ODataModel</tt> added support for $expand in createBindingContext and bindList
+</li><li>NEW: <tt>sap.ui.core.Element</tt> added support for factory method instead of template control in bindAggregation
+</li></ul><p>
+ 
+<strong>Controls</strong>
+</p>
+<ul><li>CHANGE: Some properties of the charting controls (<tt>sap.service.visualization.*</tt>) have been renamed for clearer APIs, please check the API Reference. Most important changes are: <tt>measuresAsObjects</tt> has been renamed to <tt>tabularData</tt>, all <tt>''Some''NumberFormat</tt> properties have been renamed to <tt>''Some''FormatString</tt>.
+</li><li>CHANGE: <tt>sap.ui.commons.DatePicker</tt> add keyboard navigation for "+" and "-" keys on input field
+</li><li>CHANGE: <tt>sap.ui.commons.DatePicker</tt> use CLDR texts and locale information to localize DatePicker. This might change some texts and some default patterns!
+</li><li>CHANGE: <tt>sap.ui.commons.DatePicker</tt> if bould to a model using the date type, the format pattern defined in the binding is used
+</li><li>Change: <tt>sap.ui.commons.ComboBox</tt>/<tt>sap.ui.commons.DropdownBox</tt> on mobile devices now a native ComboBox is used. Therefore some functionlaity is not available there:
+<ul><li>it is not possible to open the dropdown list via F4. Only the native events open it
+</li><li>there is no hover or active effect on the expander button
+</li><li>there is no sapui5 specific typeahead function in the open list, only a native one if available on the device
+</li><li>if there is a value entered in the ComboBox that is not in the list this is added as entry to the list (and removed if changed/deleted).
+</li><li>by opening the list, the input field gets a short moment grey on the iPad
+</li><li>on the DropdownBox there is no copy&amp;paste possible
+</li><li>the search help functionality of the DropdownBox is not available for mobile devices
+</li><li>the history function of the DropdownBox is not available on mobile devices
+</li></ul></li><li>Change: The <i>showListExpander</i> feature of <tt>sap.ui.commons.SearchField</tt> is not available on mobile devices.
+</li><li>Deprecation: The <tt>sap.ui.table.DataTable</tt> control is deprecated and should ve replaced by the new table controls (see below).
+</li><li>NEW: <tt>sap.ui.table.Table</tt> control
+</li><li>NEW: <tt>sap.ui.table.TreeTable</tt> control
+</li><li>NEW: Menu item <tt>sap.ui.commons.MenuTextFieldItem</tt>
+</li><li>NEW: <tt>sap.ui.commons.Callout</tt> control
+</li><li>NEW: <tt>sap.ui.ux3.QuickView</tt> control
+</li></ul><h2 id="RuntimeVersion1.5.0April2012">Runtime Version 1.5.0 (April 2012)</h2>
+<p>
+<strong>Framework</strong>
+</p>
+<ul><li>NEW: API for performance measurements: <a class="ext-link" href="../../api/symbols/jQuery.sap.measure.html" title="symbols/jQuery.sap.measure.html in Merged JSDoc"><span class="icon"> </span>jQuery.sap.measure</a>
+</li><li>NEW: API for mobile device detection and page initialization: "jQuery.sap.mobile", defining <a class="ext-link" href="../../api/symbols/jQuery.device.is.html" title="symbols/jQuery.device.is.html in Merged JSDoc"><span class="icon"> </span>jQuery.device.is</a>, <a class="ext-link" href="../../api/symbols/jQuery.device.os.html" title="symbols/jQuery.device.os.html in Merged JSDoc"><span class="icon"> </span>jQuery.device.os</a> and extending jQuery.support.
+</li></ul><p>
+<strong>Controls</strong>
+</p>
+<ul><li>NEW: control <tt>sap.ui.ux3.FacetFilter</tt> has been created. 
+</li><li>NEW: a first version of the CVOM charting library has been added. It contains controls for <a class="ext-link" href="../../api/symbols/sap.service.visualization.chart.Bar.html" title="symbols/sap.service.visualization.chart.Bar.html in Merged JSDoc"><span class="icon"> </span>Bar chart</a>, <a class="ext-link" href="../../api/symbols/sap.service.visualization.chart.Line.html" title="symbols/sap.service.visualization.chart.Line.html in Merged JSDoc"><span class="icon"> </span>Line chart</a>, <a class="ext-link" href="../../api/symbols/sap.service.visualization.chart.Pie.html" title="symbols/sap.service.visualization.chart.Pie.html in Merged JSDoc"><span class="icon"> </span>Pie chart</a> and <a class="ext-link" href="../../api/symbols/sap.service.visualization.chart.Combination.html" title="symbols/sap.service.visualization.chart.Combination.html in Merged JSDoc"><span class="icon"> </span>Combination chart</a>. Code samples can be found in the <a class="ext-link" href="../../../test-resources/sap/service/visualization/"><span class="icon"> </span>testsuite</a>.
+</li></ul><h2 id="RuntimeVersion1.4.22012-05-16">Runtime Version 1.4.2 (2012-05-16)</h2>
+<p>
+A patch for the 1.4 code line. It contains the following fixes:
+</p>
+<ul><li>FIX Logging: allow log level configuration via URL parameter
+</li><li>FIX  Fix preserve DOM
+</li><li>FIX Demokit: remove unnecessary content
+</li><li>FIX ApplicationHeader: fix support for custom style classes
+</li><li>FIX ODataModel: Make collection size limit configurable
+</li><li>FIX Demokit: fix navigation on NetWeaver Java
+</li><li>FIX Configurator WebUI: fix issue with the generation of boostrap files (containing Core)
+</li><li>FIX All-In-One files: fix issue with module order
+</li><li>FIX DropdownBox: Backspace creates invalid entry
+</li><li>FIX Scrollbar: fix for event propagation
+</li><li>FIX ExactList: Fix Positioning of expanded lists in RTL
+</li><li>FIX  ExactList: Optimize performance
+</li><li>FIX Table: Bugfix for typos exit function of Table control
+</li><li>FIX EPM Demo: adaptations to modified oData Fields
+</li></ul><h2 id="RuntimeVersion1.4.12012-04-13">Runtime Version 1.4.1 (2012-04-13)</h2>
+<p>
+A patch for the 1.4 code line. It contains the following fixes:
+</p>
+<ul><li>FIX: ODataModel: Renamed getMetadata to getServiceMetadata, getMetadata is reserved for getting the object metadata (see sap.ui.core.Metadata)
+</li><li>FIX: Control / Element: make deferred placeAt() robust against premature destroy()
+</li><li>FIX: DropdownBox: fixes on history feature
+<ul><li>add maxHistoryItems property to allow to disable history
+</li><li>fix on typeAhead, show all valid history items up to max number
+</li><li>refresh default value if listbox (items) are changed  
+</li></ul></li><li>FIX  ODataModel: Wrong date format in OData filter parameter
+</li><li>FIX  ThingInspector: Avoid assertions for internal aggregations
+</li></ul><h2 id="RuntimeVersion1.4.0duringdevelopment1.3.3-SNAPSHOTApril2012">Runtime Version 1.4.0 (during development 1.3.3-SNAPSHOT) (April 2012)</h2>
+<p>
+<strong>Framework</strong>
+</p>
+<ul><li>NEW: SAPUI5 Support Tool available (Technical Info, Console Log and Control Tree + Properties List) - the shortcut to open the tool is: <tt>CTRL+SHIFT+ALT+S</tt>
+</li><li>NEW: in addition to the locale specific formatting, applications can define their own default formattings for date, time and numeric data. For details check the new <a class="ext-link" href="../../api/symbols/sap.ui.core.Configuration.FormatSettings.html" title="symbols/sap.ui.core.Configuration.FormatSettings.html in Merged JSDoc"><span class="icon"> </span>FormatSettings API</a>
+</li><li>CHANGE: Function <tt>jQuery.sap.log.setLogListener</tt> was removed. Instead the 2 new functions <tt>jQuery.sap.log.addLogListener</tt> and <tt>jQuery.sap.log.removeLogListener</tt> are added.
+</li><li>CHANGE: The proxy servlet <tt>com.sap.ui5.proxy.SimpleProxyServlet</tt> has been restricted for local usage only. 
+</li><li>DELETION: The proxy servlet <tt>com.sap.ui5.proxy.ProxyServlet</tt> is removed from distribution.
+</li><li>DELETION: The deprecated context parameters of the Resource Servlet (<tt>com.sap.phx.*</tt>) have been removed.
+</li></ul><p>
+<strong>Controls</strong>
+</p>
+<ul><li>NEW: Property <tt>title</tt> added to <tt>sap.ui.ux3.Feed</tt> control. Title of the feed can be changed now.
+</li><li>DELETION: The old feed controls <tt>sap.ui.ux3.feed.BaseFeedEntry</tt>, <tt>sap.ui.ux3.feed.CommentEntry</tt>, <tt>sap.ui.ux3.feed.FeedComponent</tt>, <tt>sap.ui.ux3.feed.FeedEntry</tt> and <tt>sap.ui.ux3.feed.Feeder</tt>. Use <tt>sap.ui.ux3.Feed</tt>, <tt>sap.ui.ux3.FeedChunk</tt> and <tt>sap.ui.ux3.Feeder</tt> instead.
+</li><li>DELETION: The deprecated properties <tt>accessibleDescription</tt> and <tt>accessibleName</tt> are deleted from the <tt>sap.ui.commons.TextField</tt> control.
+</li><li>DELETION: The deprecated method <tt>setContent</tt> was deleted from the <tt>sap.ui.commons.layout.MatrixLayoutCell</tt> control.
+</li><li>DEPRECATED: The controls <tt>sap.ui.commons.MessageToast</tt>, <tt>sap.ui.commons.MessageList</tt>, <tt>sap.ui.commons.MessageBar</tt> and <tt>sap.ui.commons.Message</tt> are deprecated. A new messaging concept will be created in future. Therefore these controls might be removed in one of the next versions.
+</li><li>CHANGE: The Fontsize and color for header texts in <tt>sap.ui.commons.TextView</tt> control are adopted to the goldreflection specification.
+</li></ul><p>
+<strong>Experimental Features:</strong>
+</p>
+<ul><li><tt>Mobile Tablet Support:</tt> The controls of the UI libraries sap.ui.core, sap.ui.commons, sap.ui.ux3 and sap.ui.table are not yet optimized or adapted for mobile tablet usage.
+</li><li><tt>Theming:</tt> In future LESS might be introduced. Therefore adaptations in custom themes might be necessary.
+</li><li><tt>OData Write Support:</tt> basic modificator functions for OData and first experiments for two way binding
+</li><li><tt>Module sap.ui.core.plugin.DeclarativeSupport:</tt> Current status is prototype.
+</li><li><tt>Control sap.ui.ux3.Exact:</tt> Open discussions might result in API changes and adaptation. Especially the Result Area is not final. 
+</li><li><tt>Controls sap.ui.ux3.Feed*:</tt> Open discusses might result in API changes and adaptation. Especially the text presentation (e.g. @-references and formatted text) is not yet clear. Also Feed Model topic still open.
+</li><li><tt>Control sap.ui.core.HTML:</tt> Support of HTML with multiple root nodes
+</li><li><tt>Control sap.ui.ux3.Shell:</tt> Personalization, Color Picker and "Inspect"-Tool
+</li><li><tt>Control sap.ui.table.DataTable:</tt> Plan is to deprecate it and to replace with sap.ui.table.Table. The old APIs should be kept and be routed to the new APIs - seamless migration.
+</li><li><tt>Deprecated Message Controls in sap.ui.commons:</tt> MessageBar, Message, MessageList, MessageToast - a new messaging concept is planned which will replace these controls.
+</li><li><tt>Configuration Parameters</tt> with "-xx-" and the corresponding features: e.g. sap-ui-xx-preload
+</li><li><tt>Weinre Server Configuration:</tt> Might change or removed in future releases
+</li></ul><h2 id="RuntimeVersion1.3.21.3.1March2012">Runtime Version 1.3.2/1.3.1 (March 2012)</h2>
+<p>
+<strong>Note:</strong> Version 1.3.2 completely replaces 1.3.1, as 1.3.1 contains an outdated documentation.
+</p>
+<p>
+<strong>Framework</strong>
+</p>
+<ul><li>NEW: a new API for creating controls (or classes in general) has been introduced. See the <a class="wiki" href="../../guide/91f1703b6f4d1014b6dd926db0e91070.html">documentation</a> for details. 
+</li><li>CHANGE: the generation tools for controls have been adapted to the above mentioned new API. Due to this, the <strong>build results of 1.3.2 tools definitly require a 1.3.2 runtime</strong>. The same dependency between tools and runtime existed in older versions, but the impact was not that high. This time, any control build with 1.3.2 will fail on an older runtime!
+</li><li>CHANGE: the whole concept for supporting optimized and unoptimized JavaScript sources in parallel has been revised (see <a class="wiki" href="../../guide/c9b0f8cca852443f9b8d3bf8ba5626ab.html">documentation</a>). It no longer requires server side support, but is handled completely on the client. If an application uses optimized sources and the debug mode is activated (either by specifying the URL parameter <tt>sap-ui-debug=true</tt>, by executing <tt>jQuery.sap.debug(true)</tt> in the console or address field or by opening the technical info with CTRL-SHIFT-ALT-P and using the corresponding check box), then the page will use debug sources from that point in time on. 
+</li><li>CHANGE: the configuration option <tt>debug</tt> has completely changed its meaning. In former releases, it activated the display of a control tree and a list of properties (as in the test suite). Starting from 1.3.2 on, the <tt>debug</tt> option instead toggles between optimized and debug sources. The old behavior still is supported, but with the new <tt>inspect</tt> option. See the <a class="wiki" href="../../guide/91f2d03b6f4d1014b6dd926db0e91070.html">configuration documentation</a> for a complete list of options.
+</li></ul><p>
+<strong>Controls</strong>
+</p>
+<ul><li>CHANGE: Feed: 
+<ul><li>The property <tt>commentChunk</tt> is deprecated because its not longer used. A FeedChunk will be automatically an comment if it's a child of a FeedChunk. 
+</li><li>The properties <tt>feederThumbnailSrc</tt> and <tt>feederSender</tt> of the <tt>FeedChunk</tt> control are now optional if the feedChunk is part of a feed control. In this case the value it taken from the parent. So the properties must only be set once at the feed control
+</li><li>The order of the comments has changed like defined in the UI specification. A new comment is now added at the end. 
+</li><li>Now it is possible to show only the recent comments if all comments are shown before. 
+</li></ul></li><li>CHANGE: the "<tt>worksetItemSelected</tt>" event of the <tt>sap.ui.ux3.Shell</tt> control is now fired <strong>before</strong> the workset item selection has changed. Therefore in the event handler <tt>Shell.getSelectedWorksetItem()</tt> now returns the <i>previous</i> selection! Instead, <tt>oEvent.getParameter("selected...")</tt> needs to be used to get the respective information about the target workset. This change was required to enable "preventDefault" functionality on this event. So the application can actually cancel /disable the switch to another workset item now.
+</li></ul><h2 id="RuntimeVersion1.3.0February2012">Runtime Version 1.3.0 (February 2012)</h2>
+<p>
+<strong>Framework</strong>
+</p>
+<ul><li>NEW: method <tt>Element.data(...)</tt> has been introduced to attach arbitrary data to UI5 controls. In the background this is an aggregation to <tt>sap.ui.core.CustomData</tt> which can also be used in Views and with data binding. See the respective <a class="wiki" href="../../guide/91f0c3ee6f4d1014b6dd926db0e91070.html">documentation</a>.
+</li><li>NEW: Included locale support for the major languages and <tt>sap.ui.core.Locale</tt> to access locale specific data like date formats, number formats, currencies etc. The simple types like <tt>Date</tt>, <tt>Time</tt> <tt>Integer</tt> etc. have been extended to support the formatting and parsing of these locale data. See here how to use it: <a class="ext-link" href="../../../test-resources/sap/ui/core/Locale.html"><span class="icon"> </span>Testpage</a> and <a href="../../guide/91f37e746f4d1014b6dd926db0e91070.html">Documentation</a>.
+</li><li>NEW: new API to <a class="ext-link" href="../../api/symbols/sap.ui.core.Element.html#findElements" title="symbols/sap.ui.core.Element.html#findElements in Merged JSDoc"><span class="icon"> </span>find all child elements / controls</a> of an element
+</li><li>CHANGE: the <strong>jQuery version included in the UI5 core has been upgraded to 1.7.1</strong> (from 1.4.4). You can still also use the UI5 core without jQuery (sap-ui-core-nojQuery.js) and additionally load your jQuery version of choice (1.4.4, 1.5.3, 1.6.4 and 1.7.1 are included as standalone files and supported).
+</li><li>CHANGE: the included parts of jQuery UI (in particular the DatePicker) have been updated to version 1.8.17 (only a minor update)
+</li><li>CHANGE: the support for databinding in the XMLView has been improved: binding of properties that have not a string type now works and list bindings can be used now
+</li><li>CHANGE: the Java resource handler has been improved so that the cachebuster can be used with the CDN version or proxy configurations as well
+</li><li>CHANGE: the handling of resource bundles has been changed so that empty or invalid language configuration doesn't break the application
+</li><li>CHANGE: omit request to (often missing) central configuration file during bootstrap
+</li><li>CHANGE: fix several assertions reg. model, 
+</li></ul><p>
+<strong>Controls</strong>
+</p>
+<ul><li>NEW: control <tt>sap.ui.commons.ValueHelpField</tt> has been created. 
+</li><li>NEW: control <tt>sap.ui.commons.ToggleButton</tt> is ready to be used.
+</li><li>NEW: ExactBrowser: support a reset via API
+</li><li>CHANGE: DataTable: ARIA and keyboard support has been improved
+</li><li>CHANGE: VerticalLayout: some style attributes have been moved to CSS classes to facilitate modifications by using custom style classes
+</li><li>CHANGE: SearchField: Fix updated of suggestion list on BACKSPACE or DEL 
+</li><li>CHANGE: Some minor fixes and enhancements in Shell (rerendering of FacetBars, exception during destroy), MenuButton (redraw when modified while invisible), FileUploader (rendering without IFrame), ListBox (ID of items), DataTable (XSS fix reg. header)
+</li></ul><p>
+<strong>Packaging &amp; Documentation</strong>
+</p>
+<ul><li>NEW: Core and all Controls: texts added in more languages
+</li><li>CHANGE: Control Documentation revised
+</li><li>CHANGE: to avoid misunderstandings reg. the contained functionality, the UI5 deliverable for static web servers has been renamed from sapui5-light to sapui5-static.
+</li></ul><h2 id="RuntimeVersion1.2.0duringdevelopment1.1.2-SNAPSHOTJanuary2012">Runtime Version 1.2.0 (during development 1.1.2-SNAPSHOT) (January 2012)</h2>
+<p>
+<strong>Framework</strong>
+</p>
+<ul><li>CHANGE: <tt>XMLModel</tt>: <tt>XMLTreeBinding</tt> didn't work when using hierarchical models with nested nodes with the same name. This has now been fixed. If your existing application doesn't work anymore (also this might be the case when using <tt>XMLListBinding</tt>), specify an absolute binding path because this behavior has been changed. Instead of <tt>getElementsByTagName</tt> which finds all nodes independently of its positions in the hierarchical tree we now use a <tt>getChildElementsByTagName</tt> internally to find only the nodes of a given parent node. So you have to specify the path to these parent node to get your application working again. &mdash;&gt; e.g. model: &lt;root&gt;&lt;members&gt;&lt;member&gt; x&lt;/member&gt;&lt;/members&gt;&lt;/root&gt;. Old binding was: <tt>oCombo.bindItems("member", oItemTemplate1);</tt>. This needs to be changed to: <tt>oCombo2.bindItems("/members/member", oItemTemplate1);</tt>.
+</li><li>CHANGE: the deprecated methods <tt>sap.ui.core.RenderManager.writeCustomStyleClasses()</tt> and <tt>sap.ui.core.RenderManager.getEscaped()</tt> have been removed
+</li><li>CHANGE: the logging APIs have been revised, logging is now configurable and the default behavior differs for debug sources (verbose) and optimized sources (only errors are logged). See <a class="ext-link" href="../../api//symbols/jQuery.sap.log.html" title="/symbols/jQuery.sap.log.html in Merged JSDoc"><span class="icon"> </span>Logging API documentation</a>.
+</li><li>CHANGE: out of the box support for the long deprecated old view names JsView, JsonView and XmlView have been removed. Please use the long established new names of JSView, JSONView and XMLView instead (all upper case letters for the technology acronyms) or create aliases on your own (oldName = newName)
+</li><li>CHANGE: For associations within declarative Views (JSON, XML), the framework so far did not correctly manage the Ids (e.g. labelFor). As a result, such associations pointed to non-existent or (even worse) to wrong controls. This has been fixed, all associated Ids are prefixed now with the Id of the view. The view does not try to determine whether an id is part of the view or not. Instead it is assumed that views can declare associations reliably only to controls that they contain. Associations to controls outside the view must be established at runtime in controller code.
+</li></ul><p>
+<strong>Controls</strong>
+</p>
+<ul><li>NEW: control <tt>sap.ui.commons.ToggleButton</tt> has been created BUT is not ready to be used yet (only GoldReflection theme is supported and there is no accessibility support), so it has been marked as deprecated. This status will be removed in the next drop (sprint result). 
+</li><li>NEW: Splitter now has a new property <tt>splitterBarVisible</tt> which lets you hide the splitter bar.
+</li><li>NEW: The <tt>sap.ui.ux3.DataSet</tt> control has been created.
+</li><li>CHANGE: The enumeration values of the <tt>Orientation</tt> type (used by the Splitter) were renamed to upper case. Please adapt to these changes. The old versions still work though.
+<ul><li><tt>sap.ui.commons.Orientation.vertical</tt> &mdash;&gt; <tt>sap.ui.commons.Orientation.Vertical</tt>
+</li><li><tt>sap.ui.commons.Orientation.horizontal</tt> &mdash;&gt; <tt>sap.ui.commons.Orientation.Horizontal</tt>
+</li></ul></li><li>NEW: <tt>TreeBinding</tt> now supports filtering so all model implementations can now implement the tree filtering functionality. Tree filtering is implemented for the <tt>JSONModel</tt> and <tt>XMLModel</tt>.
+</li><li>NEW: the <tt>Button</tt> control was enhanced with the following properties:
+<ul><li><tt>styled</tt>: if set to <tt>false</tt> the button is rendered without any CSS styles. So applications can design their own styles more easily.
+</li><li><tt>lite</tt>: if this is active, the button is rendered in a lite style (only specified in goldreflection, in other themes it looks like the toolbar button).
+</li><li><tt>style</tt>: A button can now have different styles like emphasized, accept or reject. For the possible styles a new type <tt>sap.ui.commons/ButtonStyle</tt> was created. 
+</li></ul></li><li>CHANGE: the <tt>Button</tt> control style for Gold Reflection was adopted to implement the visual specification.
+</li><li>CHANGE: <tt>Label</tt> control logic to determine ID of labelled HTML element of labelled control changed. A new function <tt>getIdForLabel</tt> introduced for all controls. By default the control ID is returned. But if the label should point to an inner HTML element it must be overwritten to return the right ID. <tt>Slider</tt> control and <tt>ListBox</tt> control adopted for this. 
+</li><li>CHANGE: <tt>ListBox</tt> control change of FocusDomRef to UL element. 
+</li><li>CHANGE: the long-deprecated method <tt>sap.ui.commons.Dialog.setContent()</tt> has been deleted. Use <tt>addContent()</tt> instead.
+</li><li>CHANGE: the long-deprecated <strong>Web Table </strong> has been removed from the sap.ui.table library. It was never ment to be a productive control, so products must not use it. However, it is still available in our sap.ui.dev library with the name sap.ui.dev.webtable.Table. (remember: sap.ui.dev must not be delivered outside SAP).
+</li><li>FIX: The tooltip for the 'select all' button in a <a class="missing wiki">DataTable?</a> remained active, even when the selection mode had hidden the button itself. This has been fixed.
+</li><li>FIX: The <a class="missing wiki">ApplicationHeader?</a> failed to cleanup all its parts which might have led to duplicateId errors when an <a class="missing wiki">ApplicationHeader?</a> was created again with an older Id. This has been fixed.
+</li><li>CHANGE: Rework of <tt>ExactBrowser</tt> control:
+<ul><li>NEW: Header bar with reset functionality
+</li><li>NEW: Keyboard support
+</li><li>CHANGE: Display mode for lists was changed from a flat to a hierarchical visualization.
+</li><li>DELETION: The internally used control <tt>ExactBrowseAttribute</tt> was removed and replaced by the new (private) control <tt>ExactList</tt>.
+</li></ul></li></ul><h2 id="RuntimeVersion1.1.1December2011">Runtime Version 1.1.1 (December 2011)</h2>
+<ul><li>DEPRECATED: The feed controls in <tt>sap.ui.ux3/feed</tt> folder are deprecated because there is a new set of feed controls direct in the <tt>sap.ui.ux3</tt> root folder. In this takt these new controls have a base functionality and will be enhanced in future. 
+</li><li>NEW: Touch event support in mobile environments for control development ("on&lt;EventName&gt;" functions):
+<ul><li>The basic touch events <strong>touchstart</strong>, <strong>touchmove</strong>, <strong>touchend</strong> and <strong>touchcancel</strong> are added to the SAPUI5 Core event list (only if touch is supported).
+</li><li>To to extend this touch event support parts of the <a class="ext-link" href="http://jquerymobile.com"><span class="icon"> </span>jQuery Mobile 1.0 framework</a> are included into the SAPUI5 Core (only if touch is supported). In detail the following jQuery Mobile plugins are included:
+<ul><li><i>jquery.mobile.media.js</i> + <i>jquery.mobile.support.js</i> to enrich the feature detection (<tt>jQuery.support</tt> object).
+</li><li><i>jquery.mobile.vmouse.js</i> which provides basic event functionality to unify the browser and mobile event world.
+</li><li><i>jquery.mobile.event.js</i> which mainly provides additional touch events, which are derived from the basic touchstart/touchmove/touchend events.
+</li></ul></li><li>Therefore in addition the following jQuery Mobile "touch" events are added to the SAPUI5 Core event list (only if touch is supported): <strong>tap</strong>, <strong>swipe</strong>, <strong>swipeleft</strong>, <strong>swiperight</strong>, <strong>scrollstart</strong>, <strong>scrollstop</strong>
+</li><li>To better support RTL scenarios the SAPUI5 Core provides on top of these jQuery Mobile "touch" events (swipeleft / swiperight) the semantic events <strong>swipebegin</strong> and <strong>swipeend</strong>.
+</li></ul></li><li>NEW: Validation hooks where the application can attach on parse/format/validation error events when these occur upon user input. An application can call <tt>attachParseError</tt>, <tt>attachValidationError</tt>, <tt>attachFormatError</tt>, <tt>attachValidationSuccess</tt> on the core and register a callback function to receive these events and then extract the affected element, its property and error messages out of the event object to react correspondingly. Currently these events are only fired if a binding with a type exists for the element property which input should be verified.
+</li></ul><h2 id="RuntimeVersion1.1.0November2011">Runtime Version 1.1.0 (November 2011)</h2>
+<p>
+<strong>Framework</strong>
+</p>
+<ul><li>NEW: Data Binding: Added new Events <tt>requestSent</tt> and <tt>requestCompleted</tt> which are fired by model implementations when they sent requests to the server to load data. The <tt>requestCompleted</tt> event is fired also when the request failed. In this case a <tt>requestFailed</tt> event is additionally fired. You can attach/detach to these events by calling the corresponding <tt>attach/detach</tt> functions on the model: e.g. <tt>oModel.attachRequestCompleted(this,function(oEvent){alert('request completed')})</tt>. 
+</li><li>CHANGE: datajs 1.2 integrated. This is mostly a maintenance release, so nearly everything should work as before.
+</li><li>CHANGE: jQuery.sap.XML plugin method: <tt>jQuery.sap.parseXML()</tt> behavior changed. Now always a parseError object is appended as property of the returned XML document. To check if a parse error really occurred check if the errorCode property of the parseError object is != 0. This change was necessary because IE8 always has a parseError object attached even if no parse error occurred. In this case the error code is 0.
+</li></ul><p>
+<strong>Controls</strong>
+</p>
+<ul><li>NEW: The <tt>sap.ui.mobile</tt> library has been created, but is not meant for productive use yet! It is supposed to be the home for mobile-specific controls.
+<ul><li>CHANGE: the <tt>MobileApp</tt> and <tt>MobilePage</tt> control from the dev library have been copied into this new library and renamed to <tt>sap.ui.mobile.App</tt> and <tt>sap.ui.mobile.Page</tt>. Both are NOT ready for use. The controls in the dev library have been deprecated.
+</li></ul></li><li>NEW: new event <tt>liveChange</tt> on <tt>TextField</tt>, <tt>TextArea</tt>, <tt>ComboBox</tt> and <tt>DropdownBox</tt> controls. This is fires on keyup and returns the current content. 
+</li><li>NEW: new method <tt>getLiveValue</tt> on <tt>TextField</tt>, <tt>TextArea</tt>, <tt>ComboBox</tt> and <tt>DropdownBox</tt> controls. This returns the current content of the field, e.g. during typing. 
+</li><li>CHANGE: The <tt>sap.ui.table.Table</tt> has been reworked (deprecation has been removed and is re-implemented). The API has been changed. It is an alternative to the <tt>sap.ui.table.DataTable</tt>.
+</li><li>CHANGE: The initialization of the <tt>DropdownBox</tt> has changed. If no valid value is set the first item is used as value. 
+</li><li>CHANGE: The properties <tt>accessibleDescription</tt> and <tt>accessibleName</tt> of the <tt>TextField</tt> control are deprecated because they have no functionality.
+</li></ul><h2 id="RuntimeVersion1.0.0AKA0.20.0-October2011">Runtime Version 1.0.0 (AKA 0.20.0 - October 2011)</h2>
+<p>
+<strong>Framework</strong>
+</p>
+<ul><li>CHANGE: SAPUI5 has changed its versioning scheme: 0.20.x has been renamed to 1.0.x. In Nexus you will find both versions, but only the 1.0.0 line might benefit from patches.
+</li><li>CHANGE: jQuery.sap.getUriParams now properly decodes '+' encodes spaces in URL parameters
+</li><li>NEW: Data binding: New binding mode: One Time (read only from the model once).
+</li><li>NEW: Data binding: New method on <tt>Element</tt>: <tt>hasModel</tt>: To check if a model is set to the element or one of its parents (including the Core).
+</li><li>NEW: Data binding: Introduced SimpleTypes: <tt>Integer</tt>, <tt>Float</tt>, <tt>String</tt>,<tt>Boolean</tt> which can be set to the bindProperty method e.g.: <tt>oText.bindProperty("/clients/0/name",new sap.ui.model.type.String())</tt>. Restrictions, Input parsing and output formatting is then supported: <tt> new sap.ui.model.type.String(null,{ minLength : 3, maxLength : 10})</tt>.
+</li><li>NEW: Data binding: Multi model support: It is now possible to set an additional model to an element/core by specifying a name for the model: e.g. <tt>element.setModel(oModel, "modelname");</tt>.
+When creating property bindings to this model you have to specify its name: <tt>oText.bindValue("modelname&gt;/clients/0/name")</tt>. Note: these "secondary models" currently only support property bindings and not aggregation bindings.
+</li></ul><p>
+<strong>Controls</strong>
+</p>
+<ul><li>CHANGE: the "key" parameter of the "worksetItemSelected" event of the <tt>sap.ui.ux3.Shell</tt> control is now null instead of an empty string if the triggered Item does not have a key. The "paneBarItemSelected" event now contains the same parameters.
+</li><li>CHANGE: the CSS classes written by the BorderLayout have been changed to fit our naming scheme (only relevant when referred to in a selector in some custom CSS used by an application).
+</li><li>CHANGE: the <tt>sap.ui.commons.Dialog</tt> does no longer automatically choose a default Button. You explicitly have to define one if you want a Dialog to forward any "Enter" key press inside the Dialog to a certain Button.
+</li><li>NEW: new properties <tt>selectedKey</tt> and <tt>selectedItemID</tt> on <tt>ComboBox</tt> and <tt>DropdownBox</tt> controls. The value can now be set using the item id or key.
+</li><li>CHANGE: When an XMLView is rerendered, it now preserves its pure HTML (XHTML namespace), only controls are rerendered. Dynamic modifications to the DOM are also preserved.<br />
+LIMITATION: HTML controls as direct children of an XMLView are currently not supported. In most cases you can use XHTML content instead, which should even be easier to use. HTML controls can be used as children of other UI5 controls within an XMLView, but even there using XHTML might be more convenient. Outside of XMLViews, the HTML control is still the only way to embed HTML content into a control hierarchy.
+</li><li>NEW: the <tt>sap.ui.commons.HorizontalLayout</tt> control has been created.
+</li><li>CHANGE: some colors of the "Gold Reflection" theme have changed according to the newest Ux guidelines. You may want to adapt if you hardcoded the old colors:
+<ul><li>The general background from #F7F7F7 to #F2F2F2
+</li><li>The tool icons in the left-hand side of the Shell to a main color of <a class="missing ticket">#8899</a>AA
+</li></ul></li></ul><h2 id="RuntimeVersion0.19.0September2011">Runtime Version 0.19.0 (September 2011)</h2>
+<p>
+<strong>Framework</strong>
+</p>
+<ul><li>CHANGE: The default execution context <tt>this</tt> for control event handlers <tt>attachXYZ</tt> and browser event handlers (<tt>attachBrowserEvent</tt> has been made more consistent. 
+</li></ul><p>
+For control event handlers e.g. <tt>Button.press</tt> the context was <tt>window</tt> before, for browser events (e.g. keydown, mousedown) it was the corresponding <tt>DOMref</tt> before. Code samples and requests from our consumers have shown, that access to the control is needed most of the time. This often resulted in extra code, e.g. using <tt>jQuery.proxy()</tt> at registration time or using <tt>oEvent.getSource()</tt> or <tt>jQuery(oEvent.target).control(0)</tt> in the event handler. 
+</p>
+<p>
+<strong>NOTE:
+Therefore, as of now, all control event handlers are by default called with the corresponding control/element as their context (<tt>this</tt>)</strong>. 
+</p>
+<p>
+This obviously is an incompatible change, but for applications that do not use <tt>this</tt> in event handlers, the existing code should continue to work. The three formentioned workarounds are to be used preferably. They might benefit from the change and remove the workarounds. Applications that do use <tt>this</tt> in the event handler need to modify their code. In control event handlers, they can access <tt>window</tt> directly. In browser event handlers, they can use <tt>oEvent.target</tt>, where <tt>oEvent</tt> is the first argument of the event handler (event object).
+</p>
+<p>
+In addition, the <tt>attachBrowserEvent</tt> method now supports a third parameter (<tt>oListener</tt>) to define a concrete context for the event handler function.
+</p>
+<ul><li>CHANGE: <tt>jQuery.sap.includeScript</tt> can only be used after the document has been initialized since <tt>document.write</tt> does not work for XHTML pages. We recommend to include initial scripts via the <tt>SCRIPT</tt> tag.
+</li><li>CHANGE: Accessibility Mode is activated now by default and can be explicitly switched off using the configuration parameter <tt>sap-ui-accessibility=false</tt>.
+</li><li>NEW: There are several new features available for the data binding:
+<ul><li>New events have been added which are fired when data loading (<tt>requestFailed</tt>) or data parsing (<tt>parseError</tt>) fails.
+</li><li>New method <tt>PropertyBinding.setValue</tt> which updates the value on the binding and also in the model.
+</li><li>Two-Way data binding has been introduced. Per default, all models have the <tt>defaultBindingMode</tt> set to <tt>sap.ui.model.BindingMode.TwoWay</tt> and support the One-Way and Two-Way binding modes. A model implementation can now specify its supported binding modes (e.g. only One-Way). An application can specify the default binding mode to be used for the model instance in the case that the mode is supported by the model. In the <tt>bindProperty</tt> method you can also specify the binding mode which should be used only for this specific property binding. The model needs to support this binding mode. The available binding modes are defined in <tt>sap.ui.model.BindingMode</tt>.
+</li><li>Binding of the <tt>tooltip</tt> property finally also works in the constructor (e.g. {{{&hellip;tooltip: "{comment}", &hellip;})
+</li></ul></li><li>CHANGE: Data Binding for JSON Model: The optional data merge does now behave like <tt>jQuery.extend( [deep], target, object1, [objectN] ))</tt> with <tt>deep=true</tt> (the merge becomes recursive (aka. deep copy).
+</li></ul><p>
+<strong>Controls</strong>
+</p>
+<ul><li>CHANGE: The default value of the HTML control property <tt>preferDOM</tt> has been changed from <tt>false</tt> to <tt>true</tt>. This was a development request, as all use cases we have seen so far used the HTML control to create <span class="underline">and</span> preserve some piece of HTML. Most of the users first had to learn about the property <tt>preferDOM</tt> before they got their use cases working, so we decided to make it easier and to change the default (although this is an incompatible change). If an application really needs the old behavior, it simply can set <tt>preferDOM=false</tt>. Furthermore, the documentation of the contract and the restrictions of the HTML control have been detailed.
+</li><li>NEW: The <tt>sap.ui.commons.TabStrip</tt> control has been enhanced with the tooltip function.
+</li><li>CHANGE: Keyboard navigation improved for <tt>sap.ui.commons.TabStrip</tt> control
+</li><li>CHANGE: <tt>sap.ui.commons.layout.MatrixLayout</tt> now has a property <tt>widths</tt> to set the widths of the colums. So the widths can now be read, not only set. As a result, the <tt>widths</tt> can be used in the XMLViews and JSONViews (MVC) as well.
+</li><li>CHANGE: <tt>sap.ui.commons.DropdownBox</tt> now has the properties <tt>searchHelpEnabled</tt>, <tt>searchHelpText</tt>, <tt>searchHelpAdditionalText</tt> and <tt>searchHelpIcon</tt> to activate the search help functionality. In former releases, the same functionality was available via pure JavaScript APIs. With the current change, the features can be used more easily with the MVC concept, especially with XMLView and JSONView. For applications, this change should be transparent.
+</li><li>DEPRECATION: Control <tt>sap.ui.commons.RoadMap</tt>: Substeps are no longer supported and will be removed in a future version. Therefore, the property <tt>expanded</tt> and the aggregation <tt>substeps</tt> of <tt>sap.ui.commons.RoadMapStep</tt> have been deprecated.
+</li><li>CHANGE: The <tt>sap.ui.commons.layout.AbsoluteLayout</tt> has been reworked. The changes in detail are:
+<ul><li>CHANGE: The aggregation <tt>content</tt> was split into two aggregations, to make it usable in XMLViews:
+<ul><li>The AbsoluteLayout now has an aggregation <tt>positions</tt> which allows to aggregate <tt>sap.ui.commons.layout.PositionContainer</tt> elements. These containers then have an aggregation <tt>control</tt> to aggregate a child control which should be placed in the <tt>!AbsoluteLayout</tt>. 
+</li><li>A <tt>!PositionContainer</tt> which provides attributes to set the position of the child control in the <tt>!AbsoluteLayout</tt>.
+</li><li>The former properties <tt>wrap*</tt> are not longer supported.
+</li><li>For compatibility reasons the accessor functions of the old aggregation <tt>content</tt> (e.g. <tt>addContent</tt>) are kept. The corresponding <tt>!PositionContainers</tt> are maintained automatically in this case.
+</li></ul></li><li>The <tt>!AbsoluteLayout</tt> now allows to center a child control; see properties <tt>centerHorizontally</tt> and <tt>centerVertically</tt> of element <tt>sap.ui.commons.layout.PositionContainer</tt>
+</li><li>The render mechanism of the <tt>!AbsoluteLayout</tt> was optimized. No re-rendering should occur when e.g. changing a position of a child control or when adding or removing a child control.
+</li></ul></li></ul><h2 id="RuntimeVersion0.18.0August2011">Runtime Version 0.18.0 (August 2011)</h2>
+<ul><li>DEPRECATION: The <tt>web.Table</tt> control of library <tt>sap.ui.table</tt> and all its related controls, elements and types are only prototypic. They are now deprecated and might be removed in one of the following releases. In detail the following entities are deprecated:
+<ul><li><tt>sap.ui.table.web.Table</tt>
+</li><li><tt>sap.ui.table.web.Record</tt>
+</li><li><tt>sap.ui.table.web.Cell</tt>
+</li><li><tt>sap.ui.table.web.RecordCell</tt>
+</li><li><tt>sap.ui.table.web.Toolbar</tt>
+</li><li><tt>sap.ui.table.web.ToolbarItem</tt>
+</li><li><tt>sap.ui.table.web.ToolbarItemType</tt>
+</li><li><tt>sap.ui.table.web.ToolbarType</tt>
+</li></ul></li><li>CHANGE: The three view control types that are part of the MVC Model View Controller support, have been renamed. The new names are more consistent with similar names in the SAPUI5 API (XMLModel, JSONModel, CSSSize, HTML(control)).
+</li></ul><blockquote>
+<blockquote>
+<table class="wiki">
+<tr><td><i>New name</i></td><td><i>Old name</i>
+</td></tr><tr><td>sap.ui.core.mvc.<span style="color:blue">JS</span>View</td><td>sap.ui.core.mvc.<span style="color:red">Js</span>View
+</td></tr><tr><td>sap.ui.core.mvc.<span style="color:blue">JSON</span>View</td><td>sap.ui.core.mvc.<span style="color:red">Json</span>View
+</td></tr><tr><td>sap.ui.core.mvc.<span style="color:blue">XML</span>View</td><td>sap.ui.core.mvc.<span style="color:red">Xml</span>View
+</td></tr></table>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>
+For compatibility reasons, the old names still will be supported for one or two minor releases. 
+</p>
+</blockquote>
+</blockquote>
+<p>
+   
+</p>
+<ul><li>CHANGE: The default behavior of the JSON Model methods setData(oData, bMerge) and loadData(sURL, oParameters, async, sType, bMerge) have been changed. By default, they no longer merge the loaded/given data with data already existing in the model, but replace it. The old behavior still can be activated by setting the new, optional parameter <tt>bMerge</tt> to <tt>true</tt>. Applications that rely on the merge behavior need to set that parameter explicitly.
+</li><li>NEW: Both, content and style of the Demo Kit, have been reworked.
+</li></ul><h2 id="RuntimeVersion0.17.0July2011">Runtime Version 0.17.0 (July 2011)</h2>
+<ul><li>CHANGE: <tt>TabStrip</tt> control: Rework of renderer. If a new tab is selected only, the content area is rerendered, but not the complete control. 
+</li><li>CHANGE: <tt>TabStrip</tt> control: Change of standard behaviour by selecting a new tab. Now the new selected tab is selected automatically. No implementation of event <tt>select</tt> is needed anymore. Existing implementations should be adopted. 
+</li><li>NEW: <tt>TabStrip</tt> control: New method <tt>closeTab</tt>. This method should be called in the handler of the <tt>close</tt> event to close the tab. This cannot be done automatically because before the close application dependend logic must be performed. If the tab is closed, the next one is selected. 
+</li><li>CHANGE: <tt>TabStrip</tt> control: Once the control is rendered it is not possible to set the <tt>selectedIndex</tt> to a not existing, not visible or not enabled tab.
+</li><li>DEPRECATION: The property <tt>selected</tt> of the <tt>Tab</tt> control is deprecated because it is not used. To identify the selected Tab of a TabStrip the property <tt>selectedIndex</tt> is used. 
+</li><li>CHANGE: <tt>TextField</tt> control: Some alignment issues fixed for internet explorer.
+</li><li>CHANGE: <tt>MatrixLayout</tt> control: Fix of vertical alignment of cell content in case of <tt>layoutFixed</tt> and defined row height.
+</li><li>CHANGE: The deprecated aggregation <tt>controls</tt> of the <tt>AccordionSection</tt> control has been removed.
+</li><li>CHANGE: Data binding: Datajs 1.0 integrated in oData model. Everything should work as before.
+</li></ul><h2 id="RuntimeVersion0.16.0June2011">Runtime Version 0.16.0 (June 2011)</h2>
+<ul><li>DEPRECATION/NEW: <tt>sap.ui.table.Table</tt> is deprecated now. Use <tt>sap.ui.table.DataTable</tt> instead.
+</li><li>CHANGE: The default value of the SAPUI5 configuration option <tt>noDuplicateIds</tt> has been changed to <tt>true</tt>. That means whenever a control or element is created with an already existing ID, an error will be thrown. This change has been done to avoid hard to find issues with duplicate IDs ("fail early"). When you encounter such a duplicate ID error in your application, you preferably should fix the issue. Either destroy the old control instance, or use a different, unique ID for the new instance or completely omit the ID - SAPUI5 then will create a new, unique one for you. If none of these solutions is possible for some reason, and if you accept the risk of undiscovered errors, then you might set the <tt>noDuplicateIds</tt> option back to <tt>false</tt> in your application. See <a class="ext-link" href="../../api/symbols/sap.ui.core.Configuration.html" title="symbols/sap.ui.core.Configuration.html in Merged JSDoc"><span class="icon"> </span>Configuration</a> for details about the SAPUI5 configuration.
+</li><li>NEW: Data Binding: Introduced new method <tt>bindContext</tt> and <tt>unbindContext</tt> on element to support setting/removing a binding against a specific binding path. This is useful for master/detail scenarios.
+</li><li>NEW: Data Binding: Model, JSONModel, XMLModel, ODataModel: Definition and implementation of the new methods <tt>createBindingContext</tt> and <tt>destroyBindingContext</tt>. These methods are used for master/detail scenarios and are called internally by the element. Only new model implementations need to implement these methods. Applications shouldn't call these methods.
+</li><li>CHANGE: Data Binding: oData Model: Removed <tt>load</tt> method. The loading of additional data is now handled internally.
+</li><li>CHANGE: The deprecated class <tt>sap.ui.ux3.WorksetItem</tt> has been removed. Use <tt>sap.ui.ux3.NavigationItem</tt> instead.
+</li><li>CHANGE: The method <tt>Dialog.setText()</tt> that has anyway not been in the declared API has been removed. Use <tt>setTitle()</tt> to set the Dialog title text.
+</li><li>CHANGE: In the <tt>DatePicker</tt> control there are some corrections to fix some issues.
+</li><li>NEW: A new <tt>VerticalLayout</tt> control was created. With this layout some controls can be aligned one below the other. 
+</li></ul><h2 id="RuntimeVersion0.15.0MayJune2011">Runtime Version 0.15.0 (May/June 2011)</h2>
+<ul><li>CHANGE: The process of loading and initializing a UI Library on the client has been changed. In SAPUI5 up to version 0.14, a library has been loaded by 
+<ol><li>loading the corresponding library.js file (e.g. <tt>sap/ui/commons/library.js</tt>), 
+</li><li>executing it, which in turn 
+</li><li>called back into the Core by calling the <tt>sap.ui.core.Core.initLibrary()</tt> method which 
+</li><li>loaded the <tt>library.properties</tt> file from the same library package (e.g. <tt>sap/ui/commons/library.properties</tt>) and
+</li><li>created convenience placeholders for all controls (AKA 'lazy imports')
+</li></ol></li><li>Starting with version 0.15, the need to load a separate <tt>library.properties</tt> file has been eliminated. All information necessary to execute 
+step 5) is now included in a JSON object provided by <tt>library.js</tt> in the call to <tt>initLibrary()</tt> in step 3. 
+This change reduces the number of requests for each library by 1 and is a prerequisite for future enhancements in this area.
+To make the new JSON object available to <tt>initLibrary()</tt>, a UI Library must have been built with the build tools of version 0.15 (Maven or IDE).
+</li></ul><ul><li>DEPRECATION: For compatibility reasons, older libraries are still supported (<tt>library.properties</tt> is then read as before) and for the same
+reason, the <tt>library.properties</tt> file still exists. Both features will be removed in one of the upcoming releases of SAPUI5. <br />
+<i> <strong>Note:</strong> If you have an urgent need for the <tt>library.properties</tt> file, please let us know.</i>
+</li><li>CHANGE: The escaping functions <tt>jQuery.sap.escapeHTML</tt> and <tt>jQuery.sap.escapeJS</tt> have been reimplemented according to the new XSS Secure Programming Guide. In accordance with that guide, methods for escaping parts of URLs or CSS content have been added as well. <strong>For clarity, all escaping methods have been moved into a separate module <tt> jquery.sap.escape.js </tt></strong> (previously <tt> jquery.sap.strings</tt>). The new module is automatically available to all SAPUI5 applications that use <tt>sap-ui-core.js</tt> (99%). In those rare cases, where applications do not reference <tt>sap-ui-core.js</tt> nor <tt>jquery-sap.js</tt>, but want to use the escaping, they have to include the new module directly via <tt>jQuery.sap.require</tt>("jquery.sap.escape"); }}}. 
+</li><li>CHANGE: The type <tt>sap.ui.ux3.WorksetItem</tt> has been replaced by <tt>sap.ui.ux3.NavigationItem</tt> (offering the same capabilities and to be used instead)
+</li><li>NEW: It is now possible to define 0..n-associations in control APIs
+</li><li>NEW: Elements can now be removed from aggregations not only by index, but also by ID or instance
+</li><li>NEW: New control Ux3 NavigationBar offering tab-like navigation capabilities (limited accessibility as of this sprint)
+</li><li>NEW: Data Binding: New binding syntax to define the binding directly in the control constructor
+</li><li>CHANGE: Tree Data Binding enabled for <tt>sap.ui.commons.Tree</tt> control (see also new test page in test suite)
+</li><li>CHANGE: The deprecated property <tt>Panel.showCollapseArrow</tt> has been removed.
+</li><li>CHANGE: The deprecated property <tt>Panel.showMinimizeButton</tt> has been removed.
+</li><li>CHANGE: The deprecated event <tt>Panel.scroll</tt> has been removed.
+</li><li>CHANGE: The deprecated aggregation <tt>Panel.controls</tt> has been removed.
+</li><li>CHANGE: The deprecated property <tt>Shell.helpButton</tt> has been removed.
+</li><li>CHANGE: The deprecated property <tt>ComboBox.displaySecondaryValue</tt> has been removed.
+</li><li>CHANGE: Complete rework of <a class="ext-link" href="../../api/symbols/sap.ui.commons.RoadMap.html" title="symbols/sap.ui.commons.RoadMap.html in Merged JSDoc"><span class="icon"> </span>RoadMap</a> control
+</li><li>CHANGE: The deprecated aggregation <tt>AbsoluteLayout.children</tt> has been removed.
+</li><li>CHANGE: Rework of <tt>Splitter</tt> keyboard navigation and many bug fixes.
+</li><li>CHANGE: Complete rework of <tt>sap.ui.core.RenderManager</tt>. The changes might affect control development. The changes in detail are:
+<ul><li>CHANGE: Internal code cleanup and rework of rendering algorithm.
+</li><li>DEPRECATION / CHANGE: The <tt>Core.getRenderManager</tt> function always returns a new RenderManager instance (respectively its interface) which can be used exclusivly without influence to the core rerendering. Too provide a proper naming the function <tt>getRenderManager</tt> has been deprecated.
+</li><li>NEW: Function <tt>Core.createRenderManager</tt> is introduced as replacement for <tt>getRenderManager</tt>.
+</li><li>DEPRECATION: The following functions were already or are newly deprecated and might be removed in future versions:
+<ul><li><tt>getHTML</tt>: There will be no equivalent option available anymore in future because creating the HTML of a control and putting it into the DOM manually can result in controls which do not work properly. Use the new function flush as alternative (see description below)
+</li><li><tt>getEscaped</tt>: Not needed any more. Use <tt>writeEscaped</tt>, <tt>writeAttributeEscaped</tt> or directly <tt>jQuery.sap.escapeHTML</tt> instead. 
+</li><li><tt>translate</tt>: Not implemented
+</li><li><tt>writeAcceleratorKey</tt>: Not implemented
+</li><li><tt>writeCustomStyleClasses</tt>: Not needed any more. Use writeClasses instead.
+</li><li><tt>writeAccessibilityState</tt>: This function is only an experimental feature.
+</li><li><tt>getResourceRoot</tt>: Use the more generic <tt>jQuery.sap.getModulePath</tt> instead.
+</li></ul></li></ul></li></ul><ul><li>CHANGE: Stack is used for writing styles and classes to ensure that nested rendering of controls does not lead to side effects.
+</li><li>CHANGE: Removed unnecessary parameter <tt>bReplaceExisting</tt> from the render function. 
+</li><li>NEW: Function destroy to cleanup an exclusive RenderManager instance when it is not needed anymore.
+</li><li>NEW: Function <tt>flush</tt> as an alternative for the deprecated <tt>getHTML</tt> function (see above):
+<ul><li>Example usage:
+<div class="code"><pre>  <span class="c1">// Create a new instance of the RenderManager
+</span>  var rm <span class="o">=</span> sap<span class="o">.</span><span class="na">ui</span><span class="o">.</span><span class="na">getCore</span><span class="o">().</span><span class="na">createRenderManager</span><span class="o">();</span>
+  <span class="c1">// Use the writer API to fill the buffers (e.g. write controls and / or some plain HTML)
+</span>  rm<span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"Hello"</span><span class="o">);</span>
+  rm<span class="o">.</span><span class="na">renderControl</span><span class="o">(</span>oControl<span class="o">);</span>
+  rm<span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"World"</span><span class="o">);</span>
+  <span class="c1">// ...
+</span>  <span class="c1">//Finally flush the buffer into a provided DOM node. The current content is removed.
+</span>  <span class="c1">//After the flush the buffers are cleared and the Rendermanager instance can be reused if needed.
+</span>  rm<span class="o">.</span><span class="na">flush</span><span class="o">(</span>oDomNode<span class="o">);</span>
+  <span class="c1">//If the instance is not needed anymore, destroy it
+</span>  rm<span class="o">.</span><span class="na">destroy</span><span class="o">();</span>
+</pre></div></li><li>This function avoids the problems occuring when putting some control HTML manually into the DOM, e.g. the currently focused control is stored, and the focus is reinitialized again after rendering or the functions <tt>onBeforeRendering</tt> and <tt>onAfterRendering</tt> are called on the rendered controls if needed.
+</li></ul></li><li>CHANGE: The functions <tt>render</tt>, <tt>flush</tt> and <tt>destroy</tt> must not be used within control renderer code. To ensure this, a new interface has been introduced which is provided to the control renderers (see <tt>render</tt> functions of the control renderers). The interface provides all functions of the RenderManager except of the three functions mentioned above.
+</li></ul><ul><li>CHANGE: Control Ux3 !Exact Pattern. The changes are in detail:
+<ul><li>NEW: <tt>Close</tt> icon on attribute list which has the same behavior as when the corresponding attribute would be deselected by the user.
+</li><li>CHANGE: Changed visual appearance of the search field
+</li><li>CHANGE: Changed visual appearance/behaviour of the attribute list expanding
+</li><li>INCOMPATIBLE CHANGE: Attribute <tt>hasValuesIndicator</tt> of <tt>sap.ui.ux3.ExactAttribute</tt> was renamed to <tt>showSubAttributesIndicator</tt>.
+</li><li>INCOMPATIBLE CHANGE: Aggregation <tt>values</tt> of <tt>sap.ui.ux3.ExactAttribute</tt> was renamed to <tt>attributes</tt>.
+</li><li>INCOMPATIBLE CHANGE: The supply function mechanism of sap.ui.ux3.<a class="missing wiki">ExactAttribute?</a> was reworked and the following API changes were done:
+<ul><li>DELETE: The attribute <tt>valuesSupplyFunction</tt> was removed.
+</li><li>NEW: New attribute <tt>supplyActive</tt>
+</li><li>NEW: New attribute <tt>autoActivateSupply</tt>
+</li><li>NEW: New event <tt>supplyAttributes</tt>
+</li><li>CHANGE: Changed meaning of the attribute <tt>showSubAttributesIndicator</tt>
+</li><li>The new supply function mechanism works as follows:
+<ul><li>A supply function is now a handler which is attached to event <tt>supplyAttributes</tt>.
+</li><li>The event is fired when the corresponding <tt>sap.ui.ux3.ExactAttribute</tt> is selected, it was already selected when a handler is attached, or function <tt>getAttributes()</tt> is called.
+</li><li>The event is only fired if the attribute <tt>supplyActive</tt> is <tt>true</tt> (default). After firing the event, the attribute is automatically set to <tt>false</tt>. The idea is that a supply function is only called once when the data is requested. To enable the event again it is possible to manually set the attribute back to <tt>true</tt>.
+</li><li>If you want the supply function to be called on every <tt>select</tt> you can set the attribute <tt>autoActivateSupply</tt> to <tt>true</tt>. In this case, the attribute <tt>supplyActive</tt> is automatically set to <tt>true</tt> on every deselect.
+</li><li>Whether the sub attribute indicator (the little arrow beside an attribute in a list) is necessary is computed automatically (see new function <tt>getShowSubAttributesIndicator_Computed()</tt> of <tt>sap.ui.ux3.ExactAttribute</tt>). Only in case a supply function is attached and the attribute <tt>supplyActive</tt> is <tt>true</tt>, the Exact Pattern needs a hint whether sub-attributes might be available. Only in this case the attribute <tt>showSubAttributesIndicator</tt> is considered and must be maintained. If it is not possible to maintain it correctly (e.g. the backend does not support count-calls) it should be set to <tt>true</tt> (default).
+</li><li>Bug fixing for asynchronous supply function. The corresponding list does not open before the supply function has finished its work.
+</li></ul></li></ul></li><li>NEW: The functionality of the attribute list browsing has been extracted into a separate control: ExactBrowser
+</li><li><strong>CAUTION:</strong> This control is still not entirely finished and discussions with Ux are ongoing, so behavioral, visual and API changes may still happen after version 0.15.0. The pattern is also not yet compliant to all product standards like accessibility. The same is valid for controls which are build as part of the Exact control like ExactAttribute, ExactBrowseAttribute, ExactBrowser and ExactArea.
+</li></ul></li><li>CHANGE: The method <tt>MatrixLayout.setWidths</tt> now accepts real arrays.
+</li></ul><h2 id="RuntimeVersion0.14.0May2011">Runtime Version 0.14.0 (May 2011)</h2>
+<ul><li>CHANGE: The deprecated property <tt>selectionFollowsFocus</tt> of the <tt>ListBox</tt> control has been removed.
+</li><li>CHANGE: The deprecated property <tt>displaySecondaryValue</tt> of the <tt>ListBox</tt> control has been (renamed to <tt>displaySecondaryValues</tt>.
+</li><li>CHANGE: The deprecated event <tt>click</tt> of the <tt>ListBox</tt> control has been removed since the <tt>select</tt> event does the same.
+</li><li>CHANGE: The property <tt>displaySecondaryValue</tt> of the <tt>ComboBox</tt> and <tt>DropdownBox</tt> controls has been deprecated. Instead there is a new property <tt>displaySecondaryValues</tt>.
+</li><li>CHANGE: The deprecated property <tt>valueState</tt> of the <tt>TextView</tt> control has been removed. For changing the text color the parameter <tt>semanticColor</tt> exists.
+</li><li>CHANGE: The <tt>Popup.isOpen()</tt> function does now only return <tt>false</tt> after any closing animation has completed. This affects similar methods like <tt>Dialog.isOpen()</tt> as well.
+</li><li>DEPRECATION: The aggregation <tt>helpButton</tt> of the <tt>sap.ui.ux3.Shell</tt> has been deprecated in favor of a more general <tt>headerItems</tt> aggregation.
+</li><li>DEPRECATION: The <tt>mode</tt> property of the Paginator has been deprecated and will be removed. Only "Full" mode will be available in the future.
+</li><li>NEW: A new event <tt>liveChange</tt> was added to the <tt>Slider</tt> control. This event fires changes of the slider value during the mousemove. 
+</li><li>NEW: A new property <tt>enabled</tt> was added to the <tt>Slider</tt> control. This is to be compatible to the other controls. If the <tt>Slider</tt> is not enabled it can not be changed. In all themes (except platinum) the visualization is like <tt>readonly</tt> because there is no specification for this from UX. This could be changed later if needed. 
+</li></ul><h2 id="RuntimeVersion0.13.0April2011">Runtime Version 0.13.0 (April 2011)</h2>
+<ul><li>NEW: New control library "sap.ui.ux3"
+</li><li>NEW: New theme "sap_goldreflection"
+</li><li>NEW: New control <a class="ext-link" href="../../api/symbols/sap.ui.ux3.Shell.html" title="symbols/sap.ui.ux3.Shell.html in Merged JSDoc"><span class="icon"> </span>Ux3 "Gold Reflection" Shell</a> - CAUTION: This control is not entirely finished and discussions with Ux are ongoing, so behavioral, visual and API changes may still happen after version 0.13.0. The Shell is also not yet compliant to all product standards like accessibility.
+</li><li>NEW: New control Ux3 Exact Pattern; CAUTION: This control is not entirely finished and discussions with Ux are ongoing, so behavioral, visual and API changes may still happen after version 0.13.0. The pattern is also not yet compliant to all product standards like accessibility. The same is valid for controls which are build as part of the Exact control like ExactAttribute], ExactBrowseAttribute and ExactArea
+</li><li>NEW: New control Ux3 Feed Component; CAUTION: This control is not entirely finished and discussions with Ux are ongoing, so behavioral, visual and API changes may still happen after version 0.13.0. The components also not yet compliant to all product standards like accessibility. The same is valid for controls which are build as part of the Feed Component like Feeder, <a class="missing wiki">FeedEntry?</a>, and <a class="missing wiki">CommentEntry?</a>.
+</li><li>NEW: <tt>!ListBox.scrollToIndex()</tt> now also works when called before rendering
+</li><li>NEW: The BusyIndicator control does now inherit from EventProvider and fires <tt>Open</tt> and <tt>Close</tt> events
+</li><li>CHANGE: Data Binding for the Hierarchical Table supported.
+</li><li>CHANGE: Keyboard navigation in the ListBox control now also accesses disabled items
+</li><li>CHANGE: As started in version 0.12.0 for better overall consistency of the API, all container-like controls (controls with a general purpose aggregation accepting any child control(s)) now use the same name <tt>content</tt> and same cardinality (0..n) for their main aggregation. 
+<ul><li>COMPATIBLE: Whenever possible, the old aggregation name and cardinality have been preserved, but deprecated. This is the case now for <a class="ext-link" href="../../api/symbols/sap.ui.commons.AccordionSection.html" title="symbols/sap.ui.commons.AccordionSection.html in Merged JSDoc"><span class="icon"> </span>AccordionSection.controls</a>
+</li><li>INCOMPATIBLE: <a class="ext-link" href="../../api/symbols/sap.ui.commons.Splitter.html" title="symbols/sap.ui.commons.Splitter.html in Merged JSDoc"><span class="icon"> </span>Splitter.first/secondPaneControls</a> is now named <tt>Splitter.first/secondPaneContent</tt>
+</li></ul></li><li>CHANGE: A <a class="ext-link" href="../../api/symbols/sap.ui.core.UIArea.html" title="symbols/sap.ui.core.UIArea.html in Merged JSDoc"><span class="icon"> </span>UIArea</a> can now have several root controls. Therefore the UIArea has an aggregation <tt>content</tt> like all container-like controls which can be accesssed via the standard aggregation functions (e.g. <a class="ext-link" href="../../api/symbols/sap.ui.core.UIArea.html#getContent" title="symbols/sap.ui.core.UIArea.html#getContent in Merged JSDoc"><span class="icon"> </span>getContent</a>). In order of this change the following sub-changes were necessary:
+<ul><li>DEPRECATION: The function <tt>UIArea.setRootControl</tt> is deprecated. Use the accessor functions for the aggregation <tt>content</tt> instead.
+</li><li>CHANGE: The function <tt>Control.placeAt</tt> was extended by a position parameter.
+</li><li>DEPRECATION: The function Core.setRoot is deprecated. Use the function <tt>Control.placeAt</tt> instead.
+</li></ul></li><li>CHANGE: <a class="missing wiki">TextArea?</a> calculation of cursor position changed because of performance issues on long texts. 
+</li></ul><h2 id="RuntimeVersion0.12.0March2011">Runtime Version 0.12.0 (March 2011)</h2>
+<ul><li>NEW: New controls <a class="missing wiki">RadioButtonGroup?</a>, <a class="missing wiki">PasswordField?</a>, <a class="missing wiki">RowRepeater?</a>
+</li></ul><p>
+ 
+</p>
+<ul><li>NEW: When registering a listener for any of the control events or for events from any EventProvider, an additional payload object can be specified (<tt>oData</tt> parameter). When the corresponding event is fired, the payload will be provided to the registered listener function as a second parameter, right after the event object. For details see the generic implementation <tt>EventProvider.attachEvent</tt> or one of the concrete events <tt>Button.attachPress</tt>.
+</li></ul><p>
+ 
+</p>
+<ul><li>CHANGE: For better overall consistency of the API, all container-like controls (controls with a general purpose aggregation accepting any child control(s)) now use the same name <tt>content</tt> and same cardinality (0..n) for their main aggregation. 
+<ul><li>COMPATIBLE: Whenever possible, the old aggregation name and cardinality have been preserved, but deprecated. This is the case for <tt>Panel.controls</tt>, <tt>Tab.controls</tt>, <tt>AbsoluteLayout.children</tt>
+</li><li><img src="alert.png" style="vertical-align: bottom" alt="/!\" /> In two cases, the aggregation name <tt>content</tt> was already used, but with cardinality 0..1. For these controls, the cardinality of the aggregation also has been changed to 0..n, but with the following implementation peculiarities:
+<ul><li>The old setter function <tt>setContent(Control)</tt> has been kept, but deprecated. In future, the new function <tt>addContent(Control)</tt> should be used. <tt>setContent()</tt> has been implemented as <tt>removeAllContent() + addContent()</tt>
+</li><li>The getter function <tt> getContent() </tt> now returns an array instead of <tt>null</tt> or a single control. 
+All code that used the getContent() method so far to retrieve a single control, now must be adapted either to handle multiple controls or to access the first entry of the returned array:
+       <div style='border:1px solid gray;background-color:#ffffe0;padding:10px;'><code>
+          var oCtrl = oLayout.getContent()<span style="color:red;">[0] </span>
+       </code></div>
+</li><li>This affects <a class="ext-link" href="../../api/symbols/sap.ui.commons.layout.MatrixLayoutCell.html" title="symbols/sap.ui.commons.layout.MatrixLayoutCell.html in Merged JSDoc"><span class="icon"> </span>MatrixLayoutCell</a> (<a class="ext-link" href="../../api/symbols/sap.ui.commons.layout.MatrixLayoutCell.html#setContent" title="symbols/sap.ui.commons.layout.MatrixLayoutCell.html#setContent in Merged JSDoc"><span class="icon"> </span>setContent</a>, <a class="ext-link" href="../../api/symbols/sap.ui.commons.layout.MatrixLayoutCell.html#getContent" title="symbols/sap.ui.commons.layout.MatrixLayoutCell.html#getContent in Merged JSDoc"><span class="icon"> </span>getContent</a>) and <a class="ext-link" href="../../api/symbols/sap.ui.commons.Dialog.html" title="symbols/sap.ui.commons.Dialog.html in Merged JSDoc"><span class="icon"> </span>Dialog</a> (<a class="ext-link" href="../../api/symbols/sap.ui.commons.Dialog.html#setContent" title="symbols/sap.ui.commons.Dialog.html#setContent in Merged JSDoc"><span class="icon"> </span>setContent</a>, <a class="ext-link" href="../../api/symbols/sap.ui.commons.Dialog.html#getContent" title="symbols/sap.ui.commons.Dialog.html#getContent in Merged JSDoc"><span class="icon"> </span>getContent</a>).
+</li></ul></li></ul></li></ul><ul><li>CHANGE: Some deprecated methods and internal features have been finally removed:
+<ul><li><tt>sap.ui.require</tt> - The method has been removed, use <tt>jQuery.sap.require</tt> instead.
+</li><li><tt>sap.ui.getClass</tt> - The method has been removed as it was only a special case of the more consistent jQuery.sap.getObject
+</li><li>Parameter <tt>bBypassSetters</tt> of the <tt>Element.applySettings</tt> method has been removed. This parameter was intended for internal use only. As it caused issues with the core functionality of several controls, and with data binding and generic validation of settings in general, it has been discarded now.
+</li><li>Generic support for a 3rd parameter (beside Id and Settings) in the constructors of Elements or Controls has been removed since 0.9.0 support for such a 3rd parameter (aka <tt>oSomething</tt>) had been removed from all SAPUI5 controls already. However, the Element base class still wrote a (deprecation) log entry and called an <tt>init3rd(oSomething)</tt> method when it existed. This functionality has been removed completely.
+</li><li>Support for light controls (without runtime metadata) has been removed. Data binding and other features heavily rely on such runtime metadata. Separating the metadata independent features from the rest would have been too confusing for consumers.
+</li></ul></li></ul><ul><li>CHANGE: Added keyboard navigation feature to the Table Control.
+</li><li>CHANGE: Enhanced vertical scrolling performance of the Table.
+</li><li>CHANGE: Enhanced display of <i>details</i> messages from the Message <a class="missing wiki">Area/Bar?</a>.
+</li></ul><h2 id="RuntimeVersion0.11.0February2011">Runtime Version 0.11.0 (February 2011)</h2>
+<ul><li>CHANGE: The default width of the Panel control is no longer defined by the Panel contents, but always "100%".
+</li><li>CHANGE: The High Contrast Black theme was changed to have a smaller font size, which fits the specification and is also the same font size used in the other themes.
+</li><li>CHANGE: The ListBox HTML was completely changed (which is transparent as long as no code or CSS relies on it)
+</li><li>CHANGE: Enhancements to the Table filtering functions.
+</li><li>CHANGE: Enabled Web Toolkit consumption of the Table.
+</li><li>DEPRECATION: The Panel properties <tt>showCollapseArrow</tt> and <tt>showMinimizeButton</tt> are now deprecated and will be removed in favor of the new property <a class="ext-link" href="../../api/symbols/sap.ui.commons.Panel.html#setShowCollapseIcon" title="symbols/sap.ui.commons.Panel.html#setShowCollapseIcon in Merged JSDoc"><span class="icon"> </span>showCollapseIcon</a> (the theme now defines how the icon is visualized)
+</li><li>NEW: Every control has the new methods <a class="ext-link" href="../../api/symbols/sap.ui.core.Control.html#attachBrowserEvent" title="symbols/sap.ui.core.Control.html#attachBrowserEvent in Merged JSDoc"><span class="icon"> </span>attachBrowserEvent</a> and <a class="ext-link" href="../../api/symbols/sap.ui.core.Control.html#detachBrowserEvent" title="symbols/sap.ui.core.Control.html#detachBrowserEvent in Merged JSDoc"><span class="icon"> </span>detachBrowserEvent</a> which allow handling native browser events in this control
+</li><li>NEW: The <a class="ext-link" href="../../api/symbols/sap.ui.commons.ListBox.html" title="symbols/sap.ui.commons.ListBox.html in Merged JSDoc"><span class="icon"> </span>ListBox</a> has new features like an optional icon column, additional event parameters in the <tt>select</tt> event, new properties like <tt>minWidth</tt>, <tt>maxWidth</tt>, text alignment and the new <tt>scrollToIndex</tt> method.
+</li><li>NEW: New controls MessageBar, Tree and ApplicationHeader.
+</li><li>NEW: Added drag and drop as well as resizing table columns.
+</li></ul><h2 id="RuntimeVersion0.10.0December2010">Runtime Version 0.10.0 (December 2010)</h2>
+<ul><li>CHANGE: MatrixLayout has got a new rendering mode using the CSS property <tt>layout:fixed</tt>. To allow applications to use the old behavior, a new property <tt>!layoutFixed</tt> has been introduced. To enforce the usage of the more performant <tt>layout:fixed</tt> mode, the default of the property is <tt>true</tt>. So applications must explicitly set this property to <tt>false</tt> to get the old behavior.
+</li><li>CHANGE: Due to the previous change, width and height are no longer supported for a <tt>!MatrixLayoutCell</tt>.
+</li><li>CHANGE: Continous improvements to the Table control and its components
+</li><li>CHANGE: Rework of the ComboBox control
+</li><li>NEW: <tt>!AbsoluteLayout</tt>, <tt>!DataBinding</tt>, <tt>!RichTextEditor</tt>, <tt>!ProgressIndicator</tt>, <tt>!HTMLContainer</tt>, <tt>DatePicker</tt>, <tt>MenuButton</tt>, and more
+</li></ul><h2 id="RuntimeVersion0.9.0September2010">Runtime Version 0.9.0 (September 2010)</h2>
+<ul><li>CHANGE: Introduction of jQuery
+</li><li>CHANGE: A lot of APIs have been replaced by jQuery or are now part of our jQuery plugin
+</li><li>CHANGE: <tt>3rd</tt> parameter in constructor of some controls has been removed in favor of more general object literal <tt>mSettings</tt>
+</li><li>CHANGE: File system layout of control libraries has been changed, both at runtime and at design time
+</li><li>CHANGE: Hooks for controls have been changed
+</li><li>CHANGE: Eventing has been changed
+</li><li>CHANGE: Property values are validated, invalid values are reported as exceptions
+</li><li>CHANGE: SAPUI5-cdn contains public libraries (<tt>core</tt>, <tt>commons</tt> and <tt>table</tt>)
+</li><li>CHANGE: Old table control has been moved from <tt>sap.ui.table</tt> to <tt>sap.ui.dev</tt>
+</li><li>NEW: Introduction of new controls: Table, Accordion, Splitter, <a class="missing wiki">RoadMap?</a>, <a class="missing wiki">TextArea?</a>, Slider, and more
+</li><li>NEW: New way of configuring SAPUI5 in addition to attributes of bootstrap tag
+</li><li>NEW: License texts of contributing components added  *
+</li></ul><h2 id="Version0.8.11EndofJune2010">Version 0.8.11 (End of June 2010)</h2>
+<p>
+<strong>SAPUI5 Runtime</strong> 
+</p>
+<ul><li>CHANGE: The name of the common underlying theme which is used as base for all specific themes is no longer <tt>default</tt> but has been changed to <tt>base</tt>. For any existing libraries outside the SAPUI5 Perforce source tree the respective theme folder must be renamed from <tt>default</tt> to <tt>base</tt>, otherwise specific themes will fail to pick up this theme as a base.
+</li></ul><h2 id="Version0.8.10EndofMay2010">Version 0.8.10 (End of May 2010)</h2>
+<p>
+<strong>SAPUI5 Runtime</strong> 
+</p>
+<ul><li>CHANGE: It is now possible to set a <tt>tooltip</tt> for almost any element/control, a description how to implement it can be found in the corresponding control documentation. A tooltip can be a simple text tooltip which is displayed via the HTML <tt>title</tt> attribute and via any subclass of <tt>Tooltip</tt>, for example <tt>RichTooltip</tt>. All previous implementations of tooltips in the different controls have been replaced by this new generic feature. For applications this should be a fully compatible change. Control developers must no longer define properties or aggregations named <tt>tooltip</tt>. Existing properties with that name should either be removed completely if the generic implementation in Element is sufficient or should be renamed. If a control should support simple text tooltips, it is still the responsibility of the control renderer to render the title attribute as the best suitable DOM element can not be determined by the framework. See <tt>Element</tt> for more details, e.g. methods <tt>setTooltip</tt>, <tt>getTooltip_Text</tt>, <tt>getTooltip_AsString</tt>.
+</li><li>CHANGE: Several events of existing SAPUI5 controls contained a parameter <tt>id</tt> that identified the source control firing the event. This parameter has been removed from all event definitions as it was redundant to and less convenient than the always available <tt>event.getSource()</tt>. To be compatible with older releases, the event object delivered to the application still contains the source id, but the parameter is no longer documented and will be removed in one of the next releases.
+</li><li>CHANGE: For some controls, the <tt>id</tt> event parameter did not identify the event source but a different control. For clarity, these parameters have been renamed, see <tt>Toolbar.subItemSelected (itemId)</tt>.
+</li><li>CHANGE: The "High Contrast Black" theme has received a number of changes, including a larger font size and the replacement of styling images by simple characters and CSS borders. This was done to make the theme usable in Windows High Contrast mode.
+</li></ul><h2 id="Version0.8.9May2010">Version 0.8.9 (May 2010)</h2>
+<p>
+<strong>SAPUI5 Runtime</strong> 
+</p>
+<ul><li>NEW: New controls in sap.ui.commons: <tt>Toolbar</tt>, <tt>FileUploader</tt>
+</li><li>NEW: Declared library dependencies are propagated to the runtime and checked/resolved by the framework
+</li><li>CHANGE: The methods <tt>sap.ui.core.Core.attachAnyEvent()</tt> and <tt>sap.ui.core.Core.detachAnyEvent</tt> have been deprecated and will be removed in the next drop. These methods are now available on <tt>sap.ui.core.BrowserEventManager</tt> which can be retrieved using <tt>sap.ui.core.Core.getBrowserEventManager</tt>.
+</li></ul><h2 id="Version0.8.8April2010">Version 0.8.8 (April 2010)</h2>
+<p>
+<strong>SAPUI5 Runtime</strong> 
+</p>
+<ul><li>NEW: New controls in sap.ui.commons: <a class="ext-link" href="../../api/symbols/sap.ui.commons.Dialog.html" title="symbols/sap.ui.commons.Dialog.html in Merged JSDoc"><span class="icon"> </span>Dialog</a>, <a class="ext-link" href="../../api/symbols/sap.ui.commons.MessageBox.html" title="symbols/sap.ui.commons.MessageBox.html in Merged JSDoc"><span class="icon"> </span>MessageBox</a> available
+</li><li>NEW: New controls in sap.ui.table: <a class="ext-link" href="../../api/symbols/sap.ui.table.web.Table.html" title="symbols/sap.ui.table.web.Table.html in Merged JSDoc"><span class="icon"> </span>Web Table</a> available
+</li><li>CHANGE: Improved following controls in sap.ui.commons: <a class="ext-link" href="../../api/symbols/sap.ui.commons.RichTooltip.html" title="symbols/sap.ui.commons.RichTooltip.html in Merged JSDoc"><span class="icon"> </span>RichTooltip</a>, <a class="ext-link" href="../../api/symbols/sap.ui.commons.ComboBox.html" title="symbols/sap.ui.commons.ComboBox.html in Merged JSDoc"><span class="icon"> </span>ComboBox</a>
+</li><li>CHANGE: Internal facility BlockLayer was renamed to BlindLayer to match wording / naming known from Lightspeed implementation.
+</li><li>REMOVE: Internal control PopupListBox was removed. This was an internal entity used in an earlier development phase and became obsolete with new Popup and ComboBox implementation from 0.8.7.
+</li></ul><h2 id="Version0.8.7March2010">Version 0.8.7 (March 2010)</h2>
+<p>
+<strong>SAPUI5 Runtime</strong>
+</p>
+<ul><li>NEW: Two new controls have been added to the sap.ui.commons UI library: A <a class="ext-link" href="../../api/symbols/sap.ui.commons.Panel.html" title="symbols/sap.ui.commons.Panel.html in Merged JSDoc"><span class="icon"> </span>Panel</a> and a <a class="ext-link" href="../../api/symbols/sap.ui.commons.RichTooltip.html" title="symbols/sap.ui.commons.RichTooltip.html in Merged JSDoc"><span class="icon"> </span>RichTooltip</a>.
+</li><li>NEW: A plugin concept has been introduced for the SAPUI5 core.
+</li><li>ENHANCE: The testsuite has been slightly enhanced and now supports log filtering and less initialization issues.
+</li><li>CHANGE: As the new Panel supports all features of the <a class="missing wiki">TitlePanel?</a>, the latter has been abandoned.
+</li><li>CHANGE: Moved the themes "Tradeshow Plus" and "sap_system" out of the core and the control libraries into a separate theme library for each (below src/test). Dependencies to those are now required in order to use these themes. Also moved the <tt>sap_ux</tt> theme library from src/test to src/libraries.
+</li><li>CHANGE: The API of the SAPUI5 core has been revised and several unnecessary methods have been deprecated, or their visibility has been reduced. The changes should not affect applications or control development.
+</li><li>CHANGE: The support for JSP Renderers has been moved out of the core and must be included as a separate script: jsprenderer.js. This leads to a minimized size of the core.
+</li><li>CHANGE: Support for transformed lightspeed controls, and lightspeed facade controls has been moved out of the SAPUI5 core. As the corresponding libraries (sap.ui.legacy and (sap.ui.classic) compensate this change, applications should not notice a difference.
+</li></ul><h2 id="Version0.8.6andPrior">Version 0.8.6 and Prior</h2>
+<p>
+<strong>SAPUI5 Runtime</strong> 
+</p>
+<ul><li>In order to make the SAPUI5 runtime API cleaner and easier to remember, some global methods have been renamed. To avoid waste in this early  development state, the older method names have not been deprecated but have been removed. After release to customer, such incompatible renamings will no longer occur.
+</li></ul><blockquote>
+<blockquote>
+<p>
+List of renamings:
+</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<table class="wiki">
+<tr><td><strong>Old Names</strong></td><td><strong>New Names</strong>
+</td></tr><tr><td><tt>sap.ui._package</tt></td><td><tt>sap.ui.namespace</tt>
+</td></tr><tr><td><tt>sap.ui._import</tt></td><td><tt>sap.ui.require</tt>
+</td></tr><tr><td><tt>sap.ui._lazyImport</tt></td><td><tt>sap.ui.lazyRequire</tt>
+</td></tr><tr><td><tt>sap.ui._includeScript</tt></td><td><tt>sap.ui.includeScript</tt>
+</td></tr><tr><td><tt>sap.ui._includeStyleSheet</tt></td><td><tt>sap.ui.includeStyleSheet</tt>
+</td></tr><tr><td><tt>sap.ui._assert</tt></td><td><tt>sap.ui.assert</tt>
+</td></tr><tr><td><tt>sap.ui._fatal</tt></td><td><tt>sap.ui.fatal</tt>
+</td></tr><tr><td><tt>sap.ui._measure</tt></td><td><tt>sap.ui.measure</tt>
+</td></tr><tr><td><tt>sap.ui._trace</tt></td><td><tt>sap.ui.trace</tt>
+</td></tr></table>
+</blockquote>
+</blockquote>
+<ul><li>For the same reasons as above, some of the generated information for UI Controls and other classes have been modified.
+</li></ul><blockquote>
+<blockquote>
+<table class="wiki">
+<tr><td><tt>&lt;SomeClass&gt;.metadata</tt></td><td><tt>&lt;SomeClass&gt;.getMetadata()</tt>
+</td></tr><tr><td><tt>&lt;SomeClass&gt;.metadata.properties</tt></td><td><tt>&lt;SomeClass&gt;.getMetadata().getProperties()</tt>
+</td></tr><tr><td><tt>&lt;SomeClass&gt;.metadata.aggregations</tt></td><td><tt>&lt;SomeClass&gt;.getMetadata().getAggregations()</tt>
+</td></tr><tr><td><tt>&lt;SomeClass&gt;.metadata.associations</tt></td><td><tt>&lt;SomeClass&gt;.getMetadata().getAssociations()</tt>
+</td></tr><tr><td><tt>&lt;SomeControl&gt;.aPublicMethods</tt></td><td><tt>&lt;SomeControl&gt;.getMetadata().getAllPublicMethods()</tt>
+</td></tr><tr><td><tt>&lt;SomeControl&gt;.getElementName()</tt></td><td><tt>&lt;SomeControl&gt;.getMetadata().getName()</tt>
+</td></tr><tr><td><tt>&lt;SomeControl&gt;.getLibraryName()</tt></td><td><tt>&lt;SomeControl&gt;.getMetadata().getLibraryName()</tt>
+</td></tr></table>
+</blockquote>
+</blockquote>
+<ul><li>The HTML created by several renderers has been changed. Usually this should not be noticable
+</li></ul><ul><li>DOM attributes and IDs created and managed by SAPUI5 have been cleaned up to reduce potential naming conflicts  with other frameworks as well as application code.
+<ul><li>Changes in detail
+<ul><li>Clean up of the suffixes separator for controls (now uses - instead of _).
+</li><li>Switched to ID suffixes with "-" separator
+<ul><li><strong>Note: </strong> Due to interpretation of <tt> &lt;someControlId&gt;-r </tt> as Root-Dom-Node the use of this id is prohibited for inner structures of controls.
+</li></ul></li><li>Adopted the generated IDs to "id-&lt;timestamp&gt;-&lt;counter&gt;" (Script.js)
+</li><li>Moved logger to <tt>sap.ui.Logger</tt>
+</li><li>Switched sapdata to <tt>data-sap-ui</tt>
+</li><li>Prefixed !Test Suite ids, classes and frames with "sap-ui"
+</li><li>Shadow uses custom attribute <tt>data-sap-ui-shadow</tt> now
+</li></ul></li></ul></li><li>New UI controls in sap.ui.commons UI library: TabStrip, ComboBox, Link, Image, RadioButton, ListBox
+</li><li>New UI controls in sap.ui.dev UI library: CvomChart, DatePicker, GoogleMap, PacMan
+</li><li>Extensibility concept of controls: How can existing controls be extended to enrich them with additional functionality
+</li><li>ARIA accessibility attributes rendered for TabStrip, Button, CheckBox, RadioButton.
+</li><li>UI Controls in sap.ui.commons UI library: Button, TextField, TextView, Label, Menu, MatrixLayout, CheckBox
+</li><li>Theming infrastructure for UI controls based on CSS and parametrization
+</li><li>Theme support for sap_platinum, sap_tradeshow_plus, sap_hcb (and some experimental others)
+</li><li>GWT POC: Wrapping SAPUI5 UI controls with GWT widgets
+</li><li>Server-side rendering POC: Providing server-side renderers for SAPUI5 UI controls
+</li><li>Data binding POC
+</li><li>Well-defined SAPUI5 core API and UI control API, provided for JavaScript
+</li><li>SAPUI5 core features like
+<ul><li>UI control library plugin capabilities
+</li><li>Utilities for AJAX requests
+</li><li>Property files and language resource bundles
+</li><li>OpenAjax support
+</li><li>Lazy loading of UI control renderers
+</li></ul></li><li>Unit test environment based on JsUnit
+</li></ul>
+        
+        
+      </div>
+    </div>
+    
+  </body>
+</html>

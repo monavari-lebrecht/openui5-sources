@@ -1,0 +1,55 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.ui.table" xmlns:m="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+    controllerName="view.AnalyticalTableXML">
+
+	<AnalyticalTable id="table" visibleRowCount="20">
+
+		<title>
+			<m:Label text="E91 LineItems"></m:Label>
+		</title>
+		
+		<toolbar>
+			<m:Toolbar>
+				<m:Button text="Connect to E91" press="doConnect"></m:Button>
+			</m:Toolbar>
+		</toolbar>
+		
+		<AnalyticalColumn leadingProperty="Bukrs">
+			<template>
+				<m:Label text="{Bukrs}"></m:Label>
+			</template>
+		</AnalyticalColumn>
+		<AnalyticalColumn leadingProperty="Gjahr">
+			<template>
+				<m:Label text="{Gjahr}"></m:Label>
+			</template>
+		</AnalyticalColumn>
+		<AnalyticalColumn leadingProperty="Kunnr">
+			<template>
+				<m:Label text="{Kunnr}"></m:Label>
+			</template>
+		</AnalyticalColumn>
+		<AnalyticalColumn leadingProperty="Name1">
+			<template>
+				<m:Label text="{Name1}"></m:Label>
+			</template>
+		</AnalyticalColumn>
+		<AnalyticalColumn leadingProperty="Hwaer">
+			<template>
+				<m:Label text="{Hwaer}"></m:Label>
+			</template>
+		</AnalyticalColumn>
+		<AnalyticalColumn leadingProperty="Dmbtr">
+			<template>
+				<m:Label text="{Dmbtr}"></m:Label>
+			</template>
+		</AnalyticalColumn>
+		<AnalyticalColumn leadingProperty="Cnt">
+			<template>
+				<m:Label text="{Cnt}"></m:Label>
+			</template>
+		</AnalyticalColumn>
+		
+	</AnalyticalTable>
+	
+</mvc:View>

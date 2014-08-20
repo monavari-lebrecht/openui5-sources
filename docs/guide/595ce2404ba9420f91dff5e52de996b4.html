@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=17897595361204244"/>
+<title>Prerequisites for Translating Text Elements</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio595ce2404ba9420f91dff5e52de996b4">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Prerequisites for Translating Text Elements</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">The '&lt;name&gt;.properties' file must fulfill certain prerequisites for processing: </p>
+<p class="p">The table entries for the text elements are written if the following prerequisites are
+			met: </p>
+<ul class="ul" id="loio595ce2404ba9420f91dff5e52de996b4__ul_bcw_prf_bj"><li class="li">
+				<p class="p">The file name must end with '.properties'. </p>
+
+			</li>
+<li class="li">
+				<p class="p">The first line in the '&lt;name&gt;.properties' file must contain a certain identifier:
+						<samp class="ph codeph"># SAPUI5 TRANSLATION-KEY &lt;GUID with 32 characters&gt;</samp>. </p>
+
+				<div class="note caution" id="loio595ce2404ba9420f91dff5e52de996b4__note_N10033_N10028_N1001C_N10011_N10001"><span class="cautiontitle">Caution</span> 
+					<p class="p">This GUID serves as a unique identifier for the 'properties' file, therefore
+						it must <strong class="ph b">never</strong> be copied to other '&lt;name&gt;.properties' files and
+						it must <strong class="ph b">never</strong> be changed in this file. The GUID can be created with
+						the ABAP function module 'GUID_CREATE', or the complete line can be
+						generated with the ABAP report /UI5/TEXT_FILE_GEN_TRANS_KEY. </p>
+
+				</div>
+
+			</li>
+<li class="li">
+				<p class="p">The file must <span class="ph emphasis emphasis">not</span> contain any duplicate text elements. </p>
+
+			</li>
+</ul>
+<p class="p">Additionally, transport entries are created in the target ABAP system if: </p>
+<ul class="ul" id="loio595ce2404ba9420f91dff5e52de996b4__ul_ccw_prf_bj"><li class="li">
+				<p class="p">The corresponding SAPUI5 BSP application is not located in a local package
+					($TMP). </p>
+
+			</li>
+<li class="li">
+				<p class="p">A valid transport request is already available.</p>
+
+			</li>
+</ul>
+<p class="p">If the property file is relocated to another folder, application, or package, the file must be
+			submitted again to the SAPUI5 repository. Accidental overwriting of text elements in the
+			SAPUI5 text repository with text from another properties file is prevented. If a
+			duplicate GUID is detected, the properties fle cannot ne synchronized. As a consequence,
+			it is then not possible to rename or relocate a properties file and to submit it once it
+			is contained in the SAPUI5 text repository. If a renaming or relocation of a properties
+			file is required, the text elements have to be removed from the SAPUI5 text repository
+			by using the <samp class="ph codeph">/UI5/TEXT_ENTRIES_DELETE</samp> report.</p>
+<div class="note caution"><span class="cautiontitle">Caution</span> 
+			<p class="p">If you use the deletion report, translated texts will get lost. Only use the report
+				for texts that are not yet translated. After running the deletion report, submit the
+				the renamed or relocated properties file again.</p>
+
+		</div>
+<p class="p">If the BSP application on the ABAP server is reassigned from a local ($TMP) to a non-local
+			package, the file also needs to be resubmitted. All text elements will be generated
+			again with the new creation timestamp.</p>
+<div class="note note" id="loio595ce2404ba9420f91dff5e52de996b4__note_N1006C_N10011_N10001"><span class="notetitle">Note</span> 
+			<p class="p">As the master language of the SAPUI5 repository serves as the master language of the
+				texts, it is important that the same language is used for the creation of the
+				repository as has previously been used for the property files.</p>
+
+			<p class="p">When using the SAPUI5 repository team provider and creating the BSP application
+				manually the correct language has to be chosen on the logon screen. </p>
+
+		</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Prerequisites for Translating Text Elements";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

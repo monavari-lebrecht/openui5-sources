@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=4941340042011836"/>
+<title>Aggregation Binding</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f057786f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Aggregation Binding</h1>
+<div class="body"><p class="p">You can define aggregation binding either in the <samp class="ph codeph">settings</samp> object in the
+			constructor or by calling the <samp class="ph codeph">bindAggregation</samp> method. Aggregation
+			binding requires the definition of a template, which is cloned for each bound entry of
+			the list. For each clone that is created, the binding context is set to the respective
+			list entry, so that all bindings of the template are resolved relative to the entry. The
+			aggregated elements are destroyed and recreated whenever the bound list in the data
+			model is changed. </p>
+<p class="p">Controls for the visualization of large data sets, for example <samp class="ph codeph">Table</samp> or
+				<samp class="ph codeph">RowRepeater</samp>, only create clones for the currently visible entries
+			and not for all list entries by using a custom <samp class="ph codeph">updateAggregation</samp>
+			method. </p>
+<p class="p">To bind an aggregation, you create a template or
+		provide a factory function, which is then passed when defining the aggregation
+		binding itself. In the 
+		<samp class="ph codeph">settings</samp> object, this
+		looks as follows: 
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oItemTemplate = new sap.ui.core.ListItem({text:"{name}"});
+var oComboBox = new sap.ui.commons.ComboBox({
+    items: {
+		path: "/company/contacts", 
+		template: oItemTemplate
+	}
+});</pre></div>
+<p class="p">You can also define the aggregation binding by using the <samp class="ph codeph">bindAggregation</samp> method
+			of a control: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">oComboBox.bindAggregation("items", "/company/contacts", new sap.ui.core.ListItem({text:"{name}"}));</pre></div>
+<p class="p">Some controls have a typed binding method for
+		aggregations that are likely to be bound by the application: 
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">oComboBox.bindItems("/company/contacts", oItemTemplate);</pre></div>
+<p class="p">To remove an aggregation binding, you can use the <samp class="ph codeph">unbindAggregation</samp> method. The
+			aggregation binding is then removed automatically whenever a control is destroyed.</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">oComboBox.unbindAggregation("items");</pre></div>
+<p class="p">For more information, see the API Reference. </p>
+<div class="section" id="loio91f057786f4d1014b6dd926db0e91070__section_13735464F2644F1997A8760907538B50"><div class="section_title">Using Template Controls</div><div type="Using Template Controls"> 
+		 
+		<p class="p">For structured data with list entries with the same
+		  properties using template controls within the aggregation binding is
+		  recommended. A template is not necessarily a single control as in the examples
+		  above, but can be a tree of controls. For each list entry, a deep clone of the
+		  template is created and added to the bound aggregation.
+		</p>
+ 
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oMatrixLayout = new sap.ui.commons.layout.MatrixLayout();
+
+var oRowTemplate = new sap.ui.commons.layout.MatrixLayoutRow({
+	cells: [
+		new sap.ui.commons.layout.MatrixLayoutCell({
+			content: new sap.ui.commons.Label({text:"Name:"})
+		}),
+		new sap.ui.commons.layout.MatrixLayoutCell({
+			content: new sap.ui.commons.TextView({text:"{name}"})
+		})
+	]
+});
+
+oMatrixLayout.bindAggregation("rows", "/company/contacts", oRowTemplate);	</pre></div>
+ 
+	 </div></div>
+<div class="section" id="loio91f057786f4d1014b6dd926db0e91070__section_7E603DAFFE804F73835ADA437A6C2F0B"><div class="section_title">Using Factory Functions</div><div type="Using Factory Functions"> 
+		 
+		<p class="p">The factory function is a more powerful approach for creating controls from model data. The
+				factory function is called for each list entry to create the controls necessary to
+				represent the current entry. The developer can decide, whether it is the same
+				control with different properties or even a completely different control for each
+				entry. </p>
+ 
+		<p class="p">The factory function gets the parameters 
+		  <samp class="ph codeph">sId</samp>. These parameters
+		  must be used as they identify the created control and the context object 
+		  <samp class="ph codeph">oContext</samp>, which allows
+		  accessing data from the list entry. It returns an instance of 
+		  <samp class="ph codeph">sap.ui.core.Element</samp>. 
+		</p>
+ 
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">oContainer.bindAggregation("content", "/company/properties", function(sId, oContext) {
+	var value = oContext.getProperty("value");
+	switch(typeof value) {
+		case "string":
+			return new sap.ui.commons.TextField(sId, {
+				value: {
+					path: "value",
+					type: new sap.ui.model.type.String();
+				}
+			});
+		case "number":
+			return new sap.ui.commons.TextField(sId, {
+				value: {
+					path: "value",
+					type: new sap.ui.model.type.Float();
+				}
+			});
+		case "boolean":
+			return new sap.ui.commons.CheckBox(sId, {
+				checked: {
+					path: "value"
+				}
+			});
+	}
+});	</pre></div>
+ 
+	 </div></div>
+<div class="section" id="loio91f057786f4d1014b6dd926db0e91070__section_606348F7CECC432C9E18DACEFB3127CF"><div class="section_title">Initial Sorting and Filtering for Aggregation Binding</div><div type="Initial Sorting and Filtering for Aggregation Binding"> 
+		 
+		<p class="p">You can provide initial sorting and filtering when
+		  specifying the aggregation binding. Proceed as follows: 
+		</p>
+ 
+		<ul class="ul"><li class="li"> 
+			 <p class="p">Define a sorter and/or filters: 
+			 </p>
+ 
+			 <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oSorter = new sap.ui.model.Sorter("name", true); // sort descending
+var oFilter1 = new sap.ui.model.Filter("name", sap.ui.model.FilterOperator.StartsWith, "M");
+var oFilter2 = new sap.ui.model.Filter("name", sap.ui.model.FilterOperator.Contains, "Paz");
+var oFilter3 = new sap.ui.model.Filter("name", sap.ui.model.FilterOperator.BT, "A","G"); // name between A and G</pre></div>
+ 
+		  </li>
+<li class="li"> 
+			 <p class="p">Hand the sorter and/or filters to the
+				aggregation binding: 
+			 </p>
+ 
+			 <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oComboBox = new sap.ui.commons.ComboBox({
+    items: {path:"/company/contacts", template:oItemTemplate, sorter:oSorter, filters:[oFilter1,oFilter2,oFilter3]}
+});</pre></div>
+ 
+		  </li>
+</ul>
+ 
+		<p class="p">You can also use the other aggregation binding
+		  possibilities (for example 
+		  <samp class="ph codeph">bindAggregation</samp>, 
+		  <samp class="ph codeph">bindItems</samp>) and provide
+		  the sorter and filters as parameters. 
+		</p>
+ 
+	 </div></div>
+<div class="section" id="loio91f057786f4d1014b6dd926db0e91070__section_N100CF_N10013_N10001"><div class="section_title">Manual Sorting and Filtering for Aggregation Binding</div><div type="Manual Sorting and Filtering for Aggregation Binding">
+			
+			<p class="p">To sort/filter data manually after the aggregation binding is complete you can do so
+				by getting the corresponding binding and calling the sort/filter function: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oSorter = new sap.ui.model.Sorter("name", true); // sort descending
+var oFilter1 = new sap.ui.model.Filter("name", sap.ui.model.FilterOperator.StartsWith, "M");
+var oFilter2 = new sap.ui.model.Filter("name", sap.ui.model.FilterOperator.Contains, "Paz");
+var oFilter3 = new sap.ui.model.Filter("name", sap.ui.model.FilterOperator.BT, "A","G"); // name between A and G
+
+// manual sorting
+oTable.getBinding("rows").sort(oSorter);
+
+// manual filtering
+oTable.getBinding("rows").filter([oFilter1,oFilter2,oFilter3]);
+oComboBox.getBinding("items").filter([oFilter1,oFilter2,oFilter3]);</pre></div>
+
+			<p class="p">To get the binding of a control you have to know the name of the aggregation which is
+				for example 'rows' for the table control. </p>
+
+			<p class="p">For more information about the various sorting and filter methods and operators, see the
+				documentation for Filter, Sorter, and Filter operations in the API Reference.</p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Aggregation Binding";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

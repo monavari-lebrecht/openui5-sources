@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="LOIO.FOLDER.IWB_FOLDER_ID" content="1234AC50C238B656E10000000A445394"/>
+<meta name="LOIO.FOLDER.IWB_TECH_NAME" content="HELPX.UI_EXT"/>
+<meta name="LOIO.FOLDER.IWB_FOLDER_GROUP" content="SAPXH"/>
+<meta name="LOIO.FOLDER.IWB_SHH_KEY" content=""/>
+<meta name="LOIO.FOLDER.IWB_TRANSLATION_MEMORY" content=""/>
+<meta name="LOIO.FOLDER.TERM_DOMAIN" content="FF"/>
+<meta name="LOIO.IWB_TYPE" content="ICG"/>
+<meta name="LOIO.IWB_SHH_KEY" content=""/>
+<meta name="LOIO.KW_CONVREF.CLASS" content=""/>
+<meta name="LOIO.KW_CONVREF.OBJID" content=""/>
+<meta name="PHIO.IWB_INDUSTRY" content="SHL"/>
+<meta name="PHIO.RELEASE" content="1.0_2014Q3"/>
+<meta name="PHIO.CREATED_AT" content="20140605161054"/>
+<meta name="PHIO.LAST_CHANGED_AT" content="20140605161054"/>
+<meta name="PHIO.IWB_LEVEL" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=27046284397443776"/>
+<title>Application Configuration</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loioc9da7d53b5c19456e10000000a423f68">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Application Configuration</h1>
+<div class="body"><p class="p">The application configuration file defines static information about the application, such as the name of the application or the location of various files. It is written in JavaScript Object Notation (JSON) format.</p>
+<p class="p">APF loads the configuration file using method <span class="ph sap-technical-name sap-technical-name">loadApplicationConfiguration(<var class="keyword varname">&lt;path&gt;</var>)</span> and provides an API to access the content of the file.</p>
+<p class="p">In addition to the properties described below, you can define further properties as required using method <span class="ph sap-technical-name sap-technical-name">getApplicationConfigurationProperties</span>. For example, you can define default values for fields on the UI.</p>
+<div class="note note"><span class="notetitle">Note</span> <p class="p">Customer modifications may conflict with the SAP namespace and can be overwritten when updates are imported.</p>
+ </div>
+<p class="p">The application configuration file has the following format:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+{
+    "applicationConfiguration" : {
+        "type" : "applicationConfiguration",
+        "appName" : "<var class="keyword varname">&lt;key&gt;</var>",
+        "appTitle" : "<var class="keyword varname">&lt;key&gt;</var> | <var class="keyword varname">&lt;text&gt;</var>",
+        "analyticalConfigurationLocation" : "<var class="keyword varname">&lt;applicationPath&gt;</var>/config/configuration.json",
+        "applicationMessageDefinitionLocation" : "<var class="keyword varname">&lt;applicationPath&gt;</var>/config/applicationMessageDefinition.json",
+        "textResourceLocations" : {
+            "applicationMessageTextBundle" : "<var class="keyword varname">&lt;applicationPath&gt;</var>/resources/i18n/applicationMessages.properties", (deprecated; use applicationUI.properties instead)
+            "applicationUiTextBundle" : "<var class="keyword varname">&lt;applicationPath&gt;</var>/resources/i18n/applicationUi.properties"
+        },
+        "persistence" : {
+            "path" : {    "type" : "persistenceRequest",
+                      "id" : "persistenceRequest",
+                      "service" : "/sap/hba/r/apf/core/odata/apf.xsodata",
+                      "entityType" : "AnalysisPathQueryResults"
+            },
+            "logicalSystem" : {    "type" : "logicalSystemRequest",
+                               "id" : "logicalSystemRequest",
+                               "service" : "<var class="keyword varname">&lt;service root&gt;</var>/<var class="keyword varname">&lt;file name&gt;</var>"
+                               "entityType" : "SAPClientQuery"
+            }
+        }
+    }
+}</pre></div>
+<div class="note note"><span class="notetitle">Note</span> <p class="p"><span class="ph sap-technical-name sap-technical-name"><var class="keyword varname">&lt;applicationPath&gt;</var></span> denotes the location of the Web application on the Web server.</p>
+ </div>
+<p class="p">The properties used in the application configuration file denote the following:</p>
+
+<div class="tablenoborder"><table summary="" class="table" frame="border" border="1" rules="all"><thead class="thead" align="left"><tr class="row"><th class="entry" valign="top" id="d1135689e98"><p class="p">Property</p>
+ </th>
+<th class="entry" valign="top" id="d1135689e102"><p class="p">Description</p>
+ </th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry" valign="top" headers="d1135689e98 d1135689e102 "><p class="p"><span class="ph sap-technical-name sap-technical-name">appName</span></p>
+ </td>
+<td class="entry" valign="top" headers="d1135689e98 d1135689e102 "><p class="p">The name of the application is displayed in the header of the application. It is retrieved from a translatable text property using a text key. Therefore, the value of the property <span class="ph sap-technical-name sap-technical-name">appName</span> must be a text key.</p>
+ </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d1135689e98 d1135689e102 "><p class="p"><span class="ph sap-technical-name sap-technical-name">appTitle</span></p>
+ </td>
+<td class="entry" valign="top" headers="d1135689e98 d1135689e102 "><p class="p">The title is displayed in the title bar of the Web browser. It is optional and can be used to overwrite the <span class="ph sap-technical-name sap-technical-name"><var class="keyword varname">&lt;title&gt;</var></span> tag of the index.html file. The property <span class="ph sap-technical-name sap-technical-name">appTitle</span> can be a text key, but it can also be text that is not translated.</p>
+ </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d1135689e98 d1135689e102 "><p class="p"><span class="ph sap-technical-name sap-technical-name">analyticalConfigurationLocation</span></p>
+ </td>
+<td class="entry" valign="top" headers="d1135689e98 d1135689e102 "><p class="p">The location of analytical content configuration file for APF; for more information, see <a class="xref" href="5a467c53595a6655e10000000a423f68.html">Analytical Content Configuration</a>.</p>
+ </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d1135689e98 d1135689e102 "><p class="p"><span class="ph sap-technical-name sap-technical-name">applicationMessageDefinitionLocation</span></p>
+ </td>
+<td class="entry" valign="top" headers="d1135689e98 d1135689e102 "><p class="p">The location of the message definition file for the application. If the application uses the <span class="ph sap-technical-name sap-technical-name">MessageHandling</span> component of APF, this definition is used to retrieve further information for message handling, such as a text.</p>
+ </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d1135689e98 d1135689e102 "><p class="p"><span class="ph sap-technical-name sap-technical-name">textResourceLocations</span></p>
+ </td>
+<td class="entry" valign="top" headers="d1135689e98 d1135689e102 "><p class="p">The location of the text resource files. Text resource files contain the texts that the text keys used in the code and the message definition files refer to.</p>
+ <p class="p">Text resource files can be of type <span class="ph sap-technical-name sap-technical-name">*.hdbtextbundle</span> or <span class="ph sap-technical-name sap-technical-name">*.properties</span> and contain UI texts and message texts that can be translated.</p>
+ <p class="p">At runtime, a text key is resolved by checking all specified resource files in turn.</p>
+ </td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d1135689e98 d1135689e102 "><p class="p"><span class="ph sap-technical-name sap-technical-name">persistence</span></p>
+ </td>
+<td class="entry" valign="top" headers="d1135689e98 d1135689e102 "><p class="p">Contains two properties:</p>
+ <ul class="ul"><li class="li"><p class="p"><span class="ph sap-technical-name sap-technical-name">path</span></p>
+<p class="p">Specifies the service to create, read, update, and delete analysis paths on the persistence layer. The property <span class="ph sap-technical-name sap-technical-name">service</span> defines the service document.</p>
+ </li>
+<li class="li"><p class="p"><span class="ph sap-technical-name sap-technical-name">logicalSystem</span></p>
+<p class="p">Specifies the service to determine the logical system. The property <span class="ph sap-technical-name sap-technical-name">service</span> defines the service document. If the service is consumed by a HANA XS system, this is an <span class="ph sap-technical-name sap-technical-name">.xsodata</span> file.</p>
+ <p class="p">In most cases, the entity type is <span class="ph sap-technical-name sap-technical-name">SAPClientQuery</span>. If you use a different entity type, ensure that it contains the properties <span class="ph sap-technical-name sap-technical-name">SAPClient</span> and <span class="ph sap-technical-name sap-technical-name">LogicalSystem</span>.</p>
+ </li>
+</ul>
+ </td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Application Configuration";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

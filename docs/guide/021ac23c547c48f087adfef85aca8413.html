@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=32870923383386885"/>
+<title>Examples for Triggering Telephone, Text and E-Mail Applications</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio021ac23c547c48f087adfef85aca8413">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Examples for Triggering Telephone, Text and E-Mail Applications</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">Sample data used in the examples: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var person = {
+    name : "John Smith",
+    tel : "+49 62227
+          747474",
+    sms : "+49 173 123456",
+    email : "john.smith@sap.com",
+    website : "http://www.sap.com"
+};</pre></div>
+<p class="p">You can trigger an external application at any time, but it is usually triggered as a reaction
+			to a UI control throwing an event. The next sections illustrate some of the most typical
+			use cases.</p>
+<div class="section" id="loio021ac23c547c48f087adfef85aca8413__section_N10021_N10011_N10001"><div class="section_title">Click Button To Trigger Phone Call</div><div type="Click Button To Trigger Phone Call">
+            
+            <p class="p">The following button can be used to place a call. </p>
+
+            <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">new sap.m.Button({
+    text : person.tel,
+    icon : "images/action.png", /* Depends where your images are located */
+    tap : function() {
+        sap.m.URLHelper.triggerTel(person.tel);
+    }
+});</pre></div>
+
+        </div></div>
+<div class="section" id="loio021ac23c547c48f087adfef85aca8413__section_N10038_N10011_N10001"><div class="section_title">Click Image To Trigger E-mail</div><div type="Click Image To Trigger E-mail">
+			
+			<p class="p">The following code snippet gives an example for triggering an e-mail application. You can also
+				set the subject and message of the e-mail application:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">new sap.m.Image({
+    src : "images/website.png", /* Depends where your images are located */
+    tap : function() {
+        sap.m.URLHelper.triggerEmail(person.website, "Info", "Dear " + person.name + ",");
+    }
+});</pre></div>
+
+		</div></div>
+<div class="section" id="loio021ac23c547c48f087adfef85aca8413__section_N1004A_N10011_N10001"><div class="section_title">Inside List</div><div type="Inside List">
+            
+            <p class="p"><samp class="ph codeph">DisplayListItem</samp> with active feedback is the most popular use case
+                for the following example.</p>
+
+            <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">new sap.m.DisplayListItem({
+    label : "Sms",
+    value : "( " + person.sms + " )",
+    type : "Active",
+    tap : function() {
+        sap.m.URLHelper.triggerSms(person.sms);
+    }
+});</pre></div>
+
+            <p class="p">To use any other control inside the list, use <samp class="ph codeph">InputListItem</samp>:</p>
+
+            <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">new sap.m.InputListItem({
+    label : "Website",
+    content : new sap.m.Button({
+        text : person.website,
+        tap : function() {
+            sap.m.URLHelper.redirect(person.website);
+        }
+    })
+});</pre></div>
+
+        </div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Examples for Triggering Telephone, Text and E-Mail Applications";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

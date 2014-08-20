@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="The resource model is used as a wrapper for resource bundles. You can, for example, bind texts of a control to language-dependent resource bundle properties."/>
+<meta name="description" content="The resource model is used as a wrapper for resource bundles. You can, for example, bind texts of a control to language-dependent resource bundle properties."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=34598733481991495"/>
+<title>Creating a Resource Model Instance</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f122a36f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Creating a Resource Model Instance</h1>
+<div class="body taskbody"><p class="shortdesc">The resource model is used as a wrapper for resource bundles. You can, for example, bind
+		texts of a control to language-dependent resource bundle properties. </p>
+<div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loio91f122a36f4d1014b6dd926db0e91070__steps_og5_c3g_5k"><li class="li step stepexpand"><span class="ph cmd">With a <samp class="ph codeph">bundleName</samp>, that is, the name of a resource bundle and
+					equals a SAPUI5 module name within the require/declare concept</span></li>
+<li class="li step stepexpand"><span class="ph cmd">With a <samp class="ph codeph">bundleUrl</samp> that points to the resource bundle </span> If you use the bundle name, the file must have the
+						<samp class="ph codeph">.properties</samp> suffix. If you do not specify a
+						<samp class="ph codeph">locale</samp>, the system uses the login
+						language<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oModel = new sap.ui.model.resource.ResourceModel({bundleName:"myBundle",locale:"en"});</pre></div>
+<div class="note note" id="loio91f122a36f4d1014b6dd926db0e91070__note_N10058_N10018_N10013_N10001"><span class="notetitle">Note</span> In this ResourceModel implementation
+						you cannot pass parameters to your texts within the resource bundle. If you
+						have to pass parameters, you must do this on your own. Therefore, you can
+						load the bundle yourself or retrieve it from the model.
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var myBundle = oModel.getResourceBundle();</pre></div>
+</div>
+<div class="itemgroup stepresult">
+					<p class="p">After the instance has been created, you have a model containing the resource
+						bundle texts as data. </p>
+
+				</div></li>
+</ol>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="91f23a736f4d1014b6dd926db0e91070.html">Modularization and Dependency Management</a></div>
+<div><a class="link" href="91f217c46f4d1014b6dd926db0e91070.html" title="The framework concepts for text localization in SAPUI5 are aligned with the general concepts of the Java platform.">Translating SAPUI5 Applications</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Creating a Resource Model Instance";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=2389572437146189"/>
+<title>Events for Facet Filters</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio05c0ffca736f4336ae135ca108a07234">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Events for Facet Filters</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">As the user interacts with the <samp class="ph codeph">FacetFilter</samp> control, the following key events
+			are fired for event handling in the application:</p>
+<ul class="ul" id="loio05c0ffca736f4336ae135ca108a07234__ul_n2c_hw3_qn"><li class="li">
+				<p class="p"><samp class="ph codeph">reset</samp> event  (<samp class="ph codeph">FacetFilter</samp> control)</p>
+
+				<p class="p">The <samp class="ph codeph">reset</samp> event is fired when the user presses the
+						<span class="ph uicontrol">Reset</span> icon on the toolbar or summary bar.  </p>
+
+				<p class="p">You can use the <samp class="ph codeph">showReset</samp> property of the <samp class="ph codeph">FacetFilter</samp>
+					control to disable the <span class="ph uicontrol">Reset</span> icon so that it is no longer
+					displayed. The application is responsible for implementing the reset logic.</p>
+
+				<p class="p">To remove all selected filters from a facet filter list, call
+						<samp class="ph codeph">removeSelections(true)</samp>.</p>
+
+			</li>
+<li class="li">
+				<p class="p"><samp class="ph codeph">listOpen</samp> event (<samp class="ph codeph">FacetFilterList</samp> control)</p>
+
+				<p class="p">The <samp class="ph codeph">listOpen</samp> event is fired when the user selects a facet from
+					the toolbar or when a facet is selected in the dialog.</p>
+
+				<p class="p">You can use this event to load the list with data the first time the user accesses it as
+					opposed to loading all th lists with data when the application is
+					initialized.</p>
+
+			</li>
+<li class="li">
+				<p class="p"><samp class="ph codeph">listClose</samp> event (<samp class="ph codeph">FacetFilterList</samp> control)</p>
+
+				<p class="p">The <samp class="ph codeph">listClose</samp> event is fired when the user closes a popover, navigates back
+					from the filter items page in the dialog, or closes the dialog. You use this
+					event to handle any processing that needs to occur based on facet filter item
+					selections, such as filtering the target data set. </p>
+
+			</li>
+</ul>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Events for Facet Filters";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

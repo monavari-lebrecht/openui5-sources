@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="The SAPUI5 mobile library supports the pull down to refresh functionality that allows users to refresh lists or page content with fresh data from server."/>
+<meta name="description" content="The SAPUI5 mobile library supports the pull down to refresh functionality that allows users to refresh lists or page content with fresh data from server."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=33795041650242874"/>
+<title>Scrolling: Pull to Refresh</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loiofde40159afce478eb488ee4d0f9ebb99">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Scrolling: Pull to Refresh</h1>
+<div class="body conbody"><p class="shortdesc">The SAPUI5 mobile library supports the pull down to refresh functionality that allows
+		users to refresh lists or page content with fresh data from server. </p>
+<p class="p">To implement it, create a <samp class="ph codeph">PullToRefresh</samp> control and put it as the first
+			control into a page or a scroll container that contains the list that needs to be
+			refreshed. </p>
+<p class="p">Example: </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"><samp class="ph codeph">#!js</samp>
+var pullToRefresh = new sap.m.PullToRefresh({ description: getLastUpdatedTime(), refresh: function(){
+    pullToRefresh.setDescription("loading from server..."); 
+  //request new data from server     
+  getNewData({ 
+    // when data comes from server  
+    onSuccess: {
+      pullToRefresh.hide();
+      pullToRefresh.setDescription(getLastUpdatedTime());
+      redrawList(); } }); }; </pre></div>
+<p class="p">The application should request new data on the refresh event and call the hide method
+			when the data is received and the list is refreshed. You can provide a URL to a custom
+			logo image with customIcon or switch display of logo of by setting showIcon to false.
+			The first line of text "Pull to refresh" is standard and cannot be changed. However, you
+			may set an optional description text to display, for example, the last update time. </p>
+<div class="note note"><span class="notetitle">Note</span> 
+			<p class="p"><samp class="ph codeph">PullToRefresh</samp> control is part of the scroll area and therefore its
+				height is reflected in the scroll bar calculation and display. The user can see that
+				the page can be scrolled down to reveal the pull-down area. </p>
+
+		</div>
+<div class="section" id="loiofde40159afce478eb488ee4d0f9ebb99__section_N10030_N10011_N10001"><div class="section_title">Carousel</div><div type="Carousel">
+			
+			<p class="p">Pull to Refresh does not work with a Carousel if both are contained in a page: in order to
+				make Pull to Refresh work, the page has to enable scrolling which leads to problems
+				with the Carousel (Carousel not visible). Suggested Workaround: Add a
+					<samp class="ph codeph">sap.m.PullToRefresh</samp> instance to each page that you add to your
+				Carousel. </p>
+
+		</div></div>
+<div class="section"><div class="section_title">API References</div><div type="API References">
+			
+			<p class="p"><a class="extlink" href="../../docs/api/symbols/sap.m.PullToRefresh.html">sap.m.PullToRefresh<img src="images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Scrolling: Pull to Refresh";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

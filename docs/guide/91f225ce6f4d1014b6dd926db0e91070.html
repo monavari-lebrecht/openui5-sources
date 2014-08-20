@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=9717926147270619"/>
+<title>Resource Bundles</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f225ce6f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Resource Bundles</h1>
+<div class="body"><p class="p">Resource bundles are a collection of 
+		<samp class="ph codeph">*.properties</samp> files. All
+		files are named with the same base name (prefix identifying the resource
+		bundle), an optional suffix that identifies the language contained in each
+		file, and the fixed 
+		<samp class="ph codeph">.properties</samp> extension.
+		The language suffixes are formed according to the older JDK locale syntax. By
+		convention, a file without a language suffix should exist and contain the raw
+		untranslated texts in the developer's language. This file is used if no more
+		suitable language can be found. 
+	 </p>
+<p class="p">A resource bundle file is a Java properties file (as
+		described in the Javadoc of class 
+		<samp class="ph codeph">java.util.Properties</samp>).
+		It contains key/value pairs where the values are the language-dependent texts
+		and the keys are language independent and used by the application to identify
+		and access the corresponding values. 
+	 </p>
+<p class="p">When a localized text is needed, the application uses
+		the SAPUI5 APIs to load the properties file that matches the current language
+		best. The same applies to any other localized data that can be represented as a
+		string, for example, a date formatter string. To retrieve a text from the
+		properties file, the application uses the (language-independent) key. If no
+		text can be found for this key, the next best matching file is loaded and
+		checked for the text. Finally, if no file matches, the raw file is loaded and
+		checked. 
+	 </p>
+<div class="note Example" id="loio91f225ce6f4d1014b6dd926db0e91070__note_N1002A_N10013_N10001"><span class="Exampletitle"/>  
+		<p class="p">The resource bundle 
+		  <samp class="ph codeph">sap.ui.commons.message_bundle</samp> consists
+		  of the following individual files: 
+		</p>
+ 
+		<ul class="ul"><li class="li"><samp class="ph codeph">sap.ui.commons.message_bundle.properties</samp>: Contains the raw texts form the
+					developer, determines the set of keys </li>
+<li class="li"><samp class="ph codeph">sap.ui.commons.message_bundle_en.properties</samp>: Contains English texts (without a
+					specifc country) </li>
+<li class="li"><samp class="ph codeph">sap.ui.commons.message_bundle_en_US.properties</samp>: Contains texts in American
+					English </li>
+<li class="li"><samp class="ph codeph">sap.ui.commons.message_bundle_en_UK.properties</samp>: Contains texts in British
+					English </li>
+</ul>
+ 
+	 </div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Resource Bundles";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

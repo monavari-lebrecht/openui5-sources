@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=9260896521840529"/>
+<title>Loading jQuery.sap.require</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loioae8682948f064305be5801c5aff86b44">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Loading jQuery.sap.require</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">The <samp class="ph codeph">jQuery.sap.require</samp> function is contained in the
+				<samp class="ph codeph">jquery.sap.global</samp> module, which requires jQuery. Both are inlcuded
+			in the SAPUI5 bootstrap files <samp class="ph codeph">sap-ui-core.js</samp> and
+				<samp class="ph codeph">sap-ui-core-lean.js</samp>. The first one also embeds the SAPUI5 core
+			functionality and needs no further modules. The second one only contains the two
+			bootstrap modules and a require statement for the core. For loading modules separately,
+			the <samp class="ph codeph">sap-ui-core-lean.js</samp> bootstrap file It is better suited.</p>
+<p class="p">If you create a new bootstrap file with the configuration UI and decide to include the
+				<samp class="ph codeph">jquery.sap.global</samp> or <samp class="ph codeph">jquery</samp> modules, they are
+			always the first modules in the created file and are always embedded. This ensures the
+			availability of <samp class="ph codeph">jQuery.sap.require</samp>. </p>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Loading jQuery.sap.require";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

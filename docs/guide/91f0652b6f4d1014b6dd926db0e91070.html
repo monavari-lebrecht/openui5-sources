@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=4810674593616261"/>
+<title>Property Binding</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio91f0652b6f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Property Binding</h1>
+<div class="body"><p class="p">To define a property binding on a control, the following two options exist: </p>
+<ul class="ul" id="loio91f0652b6f4d1014b6dd926db0e91070__ul_sg5_zgk_1j"><li class="li">In the <samp class="ph codeph">settings</samp> object in the constructor of a control </li>
+<li class="li">Using the <samp class="ph codeph">bindProperty</samp> method of a control </li>
+</ul>
+<p class="p">Once you have defined the property binding, the
+		property is updated automatically every time the bound model property value is
+		changed.
+	 </p>
+<p class="p">The most convenient way to define a property binding,
+		which is sufficient in most cases, is to include the binding path within curly
+		brackets as a string literal in the 
+		<samp class="ph codeph">settings</samp> object:
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oTextField = new sap.ui.commons.TextField({
+    value: "{/company/name}"
+});</pre></div>
+<p class="p">Alternatively, you can use an extended syntax for
+		property bindings. This extended syntax allows you to define additional binding
+		information to be contained in the 
+		<samp class="ph codeph">settings</samp> object, such as
+		a formatter function. In this case you use a JS object instead of a string
+		literal. This must contain a path property containing the binding path and can
+		contain additional properties: 
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oTextField = new sap.ui.commons.TextField({
+    value: {
+		path: "/company/name", 
+		mode: sap.ui.model.BindingMode.OneWay
+	}
+});</pre></div>
+<p class="p">Depending on the use case, it can be useful to define
+		the binding at a later time, using the 
+		<samp class="ph codeph">bindProperty</samp> method: 
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">oTextField.bindProperty("value", "/company/name");</pre></div>
+<p class="p">This option also allows the use of the same
+		object-literal as in the constructor to define the binding 
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">oTextField.bindProperty("value", {
+	path: "value",
+	type: new sap.ui.model.type.Integer()
+});</pre></div>
+<p class="p">Some controls offer convenience methods for the main properties of a control that are most likely
+			to be bound by an application. </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">oTextField.bindValue("/company/name");</pre></div>
+<p class="p">To remove a property binding, you can use the 
+		<samp class="ph codeph">unbindProperty</samp> method.
+		The property binding is removed automatically whenever a control is destroyed.
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">oTextField.unbindProperty("value");</pre></div>
+<p class="p">For a complete list of supported parameters, see the API Reference. </p>
+<div class="section" id="loio91f0652b6f4d1014b6dd926db0e91070__section_N10078_N10013_N10001"><div class="section_title">Formatting Property Values</div><div type="Formatting Property Values">
+			
+			<p class="p">The values in the data are often represented in some internal format and need to be
+				converted to an external format for visual representation. This is especially
+				necessary for numbers, dates, and times with locale dependent external formats.
+				SAPUI5 provides two different conversion options: Formatter functions allow one-way
+				conversion only, while data types can also be used for two-way binding as they
+				cannot only format, but also parse user input. You can choose freely for each
+				binding, depending on your scenario. </p>
+
+			<p class="p">The formatter function can either be passed as a third parameter to the
+					<samp class="ph codeph">bindProperty</samp> method, or contained in the binding info with the
+				key "formatter". It has a single parameter <samp class="ph codeph">value</samp>, which is the
+				value which needs to be formatted to an external representation, and is executed as
+				a member of the control, so can access additional control properties or model data. </p>
+
+			<pre class="pre">oTextField.bindProperty("value", "/company/title", function(sValue) {
+    return sValue &amp;&amp; sValue.toUpperCase();
+});
+
+oControl = new sap.ui.commons.TextField({
+    value: {
+        path:"/company/revenue",
+        formatter: function(fValue) {
+            if (fValue) {
+                return "&gt; " + Math.floor(fValue/1000000) + "M";
+            }
+            return "0";
+        }
+    }
+}) </pre>
+
+			<p class="p">The formatter function, as it can contain any JavaScript, can not only be used for
+				formatting a value, but can also do type conversion or calculate results from a
+				given value, for example to show a special traffic light image depending on a
+				boolean value: </p>
+
+			<pre class="pre">oImage.bindProperty("src", "/company/trusted", function(bValue) {
+    return bValue ? "green.png" : "red.png";
+}); </pre>
+
+		</div></div>
+<div class="section" id="loio91f0652b6f4d1014b6dd926db0e91070__section_N1009B_N10013_N10001"><div class="section_title">Using Data Types</div><div type="Using Data Types">
+			
+			<p class="p">The type system provides the possibility to format and parse data, as well as
+				validating if the entered data is within defined constraints. You can define a type
+				to be used for a property binding, by passing it as a third parameter in
+					<samp class="ph codeph">bindProperty</samp> or by adding it to the binding information with
+				the key "type". </p>
+
+			<pre class="pre">oTextField.bindProperty("value", "/company/title", new sap.ui.model.type.String());
+
+oControl = new sap.ui.commons.TextField({
+    value: {
+        path:"/company/revenue",
+        type: new sap.ui.model.type.Float({
+            minFractionDigits: 2,
+            maxFractionDigits: 2
+        })
+    }
+}) </pre>
+
+			<p class="p">You can define custom types by inheriting from
+					<samp class="ph codeph">sap.ui.model.SimpleType</samp> and implementing the three methods
+					<samp class="ph codeph">formatValue</samp>, <samp class="ph codeph">parseValue</samp> and
+					<samp class="ph codeph">validateValue. formatValue</samp> will be called whenever the value in
+				the model is changed to convert it to the type of the control property it is bound
+				to and may throw a <samp class="ph codeph">FormatException</samp>. <samp class="ph codeph">parseValue</samp> is
+				called, whenever the user modified a value in the UI and the change is transported
+				back into the model. It may throw a <samp class="ph codeph">ParseException</samp> in case the
+				value cannot be converted. In case of successful parsing
+					<samp class="ph codeph">validateValue</samp> is called to check additional constraints, like
+				minimum or maximum value, and throws a <samp class="ph codeph">ValidateException</samp> in case
+				constraints are violated. </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.model.SimpleType.extend("sap.test.PLZ", {
+    formatValue: function(oValue) {
+        return oValue;
+    },
+    parseValue: function(oValue) {
+        return oValue;
+    },
+    validateValue: function(oValue) {
+       if (!/^(\d{5})?$/.test(oValue)) {
+            throw new sap.ui.model.ValidateException("PLZ must have 5 digits!");
+       }
+    }
+});</pre></div>
+
+			<p class="p">For more information, see <a class="xref" href="91f37e746f4d1014b6dd926db0e91070.html">Using
+					the Data Binding Type System</a>.</p>
+
+		</div></div>
+<div class="section" id="loio91f0652b6f4d1014b6dd926db0e91070__section_N100DE_N10013_N10001"><div class="section_title">Binding Mode</div><div type="Binding Mode">
+			
+			<p class="p">By default, all bindings of a model instance have the default binding mode of the
+				model. You can change this behavior. When creating a
+					<samp class="ph codeph">PropertyBinding</samp>, you can specify a different binding mode,
+				which is then used exclusively for this specific binding. Of course, a binding can
+				only have a supported binding mode of the model. </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">var oModel = new sap.ui.model.json.JSONModel();
+// default binding mode is Two Way
+oModel.setData(myData);
+sap.ui.getCore().setModel(oModel);
+var oText = new sap.ui.commons.TextField();
+// bind value property one way only 
+// propertyname, formatter function, binding mode
+oText.bindValue("/firstName", null, sap.ui.model.BindingMode.OneWay);
+oText.placeAt("target1");
+oText = new sap.ui.commons.TextField();
+// bind value property two way which is the default
+oText.bindValue("/firstName");
+oText.placeAt("target2");
+}</pre></div>
+
+			<p class="p">In the example above, two <samp class="ph codeph">TextFields</samp> are created and their
+					<samp class="ph codeph">value</samp> property is bound to the same property in the model. The
+				first <samp class="ph codeph">TextField</samp> binding has a one-way binding mode, whereas the
+				second <samp class="ph codeph">TextField</samp> has the default binding mode of the model
+				instance, which is two-way. So, when text is entered in the first
+					<samp class="ph codeph">TextField</samp>, the value will not be changed in the model. This
+				happens only if text is entered in the second <samp class="ph codeph">TextField</samp>. Then, of
+				course, the value of the first <samp class="ph codeph">TextField</samp> will be updated as it has
+				a one-way binding, which means from model to view.</p>
+
+			
+		</div></div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Property Binding";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

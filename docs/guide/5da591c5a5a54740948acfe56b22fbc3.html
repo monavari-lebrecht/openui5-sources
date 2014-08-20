@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="You can use a unique ID for a fragment that will be used as prefix for all controls in a fragment instance."/>
+<meta name="description" content="You can use a unique ID for a fragment that will be used as prefix for all controls in a fragment instance."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=8581079859023726"/>
+<title>Unique IDs</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio5da591c5a5a54740948acfe56b22fbc3">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Unique IDs</h1>
+<div class="body conbody"><p class="shortdesc">You can use a unique ID for a fragment that will be used as prefix for all controls in a
+		fragment instance.</p>
+<p class="p">In SAPUI5, IDs are either automatically generated or given as string constants by the
+			application developer.</p>
+<p class="p">In MVC views, another type of reusable components, all IDs which are given as static
+			strings inside the declarative views (XML, HTML, JSON) are automatically prefixed with
+			the view ID. For JSViews and for controls created in the controller code of declarative
+			views, no automated prefixing exists. Instead, we recommend to use the
+				<samp class="ph codeph">View.createId()</samp> method to prefix the ID and ensure there are no ID
+			collisions even when the view is used multiple times within the same page.</p>
+<p class="p">The method <samp class="ph codeph">View.byId()</samp> is used to handle these prefixed IDs.</p>
+<p class="p">Fragments, however, are meant to be a more light-weight concept of separating and re-using UI
+			parts, and in addition there are no fragment instances (in contrast to view instances)
+			which could have IDs and handle ID prefixing helper functions. Therefore, static IDs in
+			fragments are by default used as is, that is, they are not prefixed to make them unique.
+			If no ID is given, it will be generated. However, when a fragment is supposed to be used
+			more than once within one application, the prefixing mechanism can still be used by
+			giving an ID when instantiating the fragment.</p>
+<p class="p">The basic principle is as follows: When a control ID is defined, declarative views add a
+			prefix and the code in views should add a prefix. Fragments also add a prefix if they
+			have a defined ID.</p>
+<p class="p">To get rid of the prefixes, the instance method <samp class="ph codeph">View.byId()</samp> can be used
+			with the static method <samp class="ph codeph">sap.ui.core.Fragment.createID()</samp> if required,
+			that is, if a fragment added a prefix.</p>
+<div class="note note"><span class="notetitle">Note</span> 
+			<p class="p">Do <span class="ph emphasis emphasis">not</span> rely on the specific prefixing syntax because it may
+				change. Always use methods like <samp class="ph codeph">byId()</samp> and
+					<samp class="ph codeph">createId()</samp>. </p>
+
+		</div>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="0715706772ed43f389d2ab9b381ef8ec.html">IDs in Declarative XML or HTML Fragments</a></div>
+<div><a class="link" href="896fa9aae5fb40deb209bc31ead99ba7.html">IDs in JS Fragments</a></div>
+<div><a class="link" href="f10bf709b05f4adea8f8b8ad9a840247.html">IDs of Fragments in Views</a></div>
+</div>
+</div></div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Unique IDs";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

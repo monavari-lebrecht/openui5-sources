@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=2553290895782804"/>
+<title>Defining a Formatter</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio52a5ed0a1b304f788aa6dde684693d62">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Defining a Formatter</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">You can define a formatter or type either globally for the whole application, or in your
+            controller.</p>
+<ul class="ul" id="loio52a5ed0a1b304f788aa6dde684693d62__ul_l1v_j11_zm"><li class="li">
+                <p class="p">Defining a formatter in <samp class="ph codeph">controller.js</samp>:</p>
+
+                <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">myFormatter: function(sName) {
+        return sName.toUpperCase();
+    },
+    
+myGenderFormatter: function(sGender) {
+        var sValue = "Mr.";
+        if (sGender === "female") {
+            sValue = "Mrs.";
+        }
+        return sValue;  
+    }
+</pre></div>
+
+            </li>
+<li class="li">
+                <p class="p">Defining a global formatter in the SAPUI5 application:</p>
+
+                <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;script type="text/javascript"&gt;
+    // define a global formatter function
+    var my = {};
+    my.globalFormatter = function(iDay,iMonth,iYear) {
+          return iDay + "/" + iMonth + "/" + iYear;
+    } 
+          ...
+</pre></div>
+
+            </li>
+</ul>
+</div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Defining a Formatter";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

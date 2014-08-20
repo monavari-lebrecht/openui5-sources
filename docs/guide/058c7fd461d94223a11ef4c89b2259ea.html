@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content="You first create an HTML page and define the meta tags, a script tag to load the SAPUI5 libraries and a placeholder for your mobile app."/>
+<meta name="description" content="You first create an HTML page and define the meta tags, a script tag to load the SAPUI5 libraries and a placeholder for your mobile app."/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=6651505431815982"/>
+<title>Create an HTML Page for Your Mobile App</title>
+<!--[if lte IE 7]><style>
+ .codeblock{overflow:visible;}
+ </style><![endif]-->
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loio058c7fd461d94223a11ef4c89b2259ea">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Create an HTML Page for Your Mobile App</h1>
+<div class="body taskbody"><p class="shortdesc">You first create an HTML page and define the meta tags, a script tag to load the SAPUI5
+		libraries and a placeholder for your mobile app.</p>
+<div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand" id="loio058c7fd461d94223a11ef4c89b2259ea__step_N1009B_N10098_N10011_N10001"><span class="ph cmd">Create an HTML page called <span class="ph filepath">mobile.html</span></span></li>
+<li class="li step stepexpand" id="loio058c7fd461d94223a11ef4c89b2259ea__step_N1002D_N1001E_N10012_N10001"><span class="ph cmd">Add the HTML5 doctype definition: <samp class="ph codeph">&lt;!DOCTYPE html&gt;</samp>" in
+					the first line and the Internet Explorer-specific meta tag :<samp class="ph codeph">&lt;meta
+						http-equiv="X-UA-Compatible" content="IE=edge" /&gt;</samp>" are the
+					beginning of <samp class="ph codeph">&lt;head&gt;</samp> element. </span> This ensures that all browsers use the latest version of their rendering engine.</li>
+<li class="li step stepexpand" id="loio058c7fd461d94223a11ef4c89b2259ea__step_N10046_N1001E_N10012_N10001"><span class="ph cmd">Add a second meta tag: <samp class="ph codeph">&lt;meta http-equiv="Content-Type"
+						content="text/html;charset=UTF-8"/&gt;</samp>. </span> This lets all browsers treat the file as UTF-8 encoded (assuming that you use
+					this encoding when editing/saving the file)</li>
+<li class="li step stepexpand" id="loio058c7fd461d94223a11ef4c89b2259ea__step_N10057_N1001E_N10012_N10001"><span class="ph cmd">In the HTML &lt;body&gt; there needs to be a place where the App HTML will go. Here we add
+					a <samp class="ph codeph">&lt;div&gt;</samp> element to <samp class="ph codeph">&lt;body&gt;</samp> .  The
+						"<samp class="ph codeph">sapUiBody</samp>" class should always be added to the
+						<samp class="ph codeph">&lt;body&gt;</samp> tag to initialize font and colors for the
+					whole page:</span><ul class="ul choices" id="loio058c7fd461d94223a11ef4c89b2259ea__choices_wkb_vx1_qn"><li class="li choice">You can equally use the <samp class="ph codeph">body</samp> itself, omitting the extra
+							<samp class="ph codeph">div</samp>. In this case give the body the id
+							<samp class="ph codeph">content</samp>.</li>
+</ul>
+ 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+&lt;body class="sapUiBody"&gt;
+  &lt;!-- This is where the App will live: --&gt;
+  &lt;div id="content"&gt;&lt;/div&gt;
+&lt;/body&gt;  </pre></div>
+
+				</li>
+<li class="li step stepexpand" id="loio058c7fd461d94223a11ef4c89b2259ea__step_N10082_N1001E_N10012_N10001"><span class="ph cmd">To load the SAPUI5 JavaScript file, that contains the library, add the
+					following script tag in the <samp class="ph codeph">&lt;head&gt;</samp>:</span> 
+					<p class="p">Note that you are only loading the <samp class="ph codeph">sap.m</samp> control library and the
+							<samp class="ph codeph">sap_bluecrystal</samp> theme. </p>
+
+				</li>
+</ol>
+<div class="section result" id="loio058c7fd461d94223a11ef4c89b2259ea__result_N100BD_N10012_N10001"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Results</h2></div>At this point, SAPUI5 including the mobile controls is loaded and ready to
+			use.</div><div class="section postreq" id="loio058c7fd461d94223a11ef4c89b2259ea__postreq_N100C8_N10012_N10001"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div><a class="xref" href="2b5ce162e26044fe88c3f1206f895ba3.html" title="The sap.m library provides a control called App which is meant to be the root control of a mobile application. It provides the initialization of the HTML page, sets some meta tags to ensure an as-native-as-possible look&amp;feel, and can manage different pages and the animations between them.">Initialize the Mobile App</a></div></div>
+<div class="related-links"> 
+
+<div class="familylinks">
+</div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Create an HTML Page for Your Mobile App";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>
