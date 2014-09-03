@@ -11,7 +11,7 @@ jQuery.sap.declare("sap.ui.unified.CurrencyRenderer");
 /**
  * @class Currency renderer.
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @static
  */
 sap.ui.unified.CurrencyRenderer = {

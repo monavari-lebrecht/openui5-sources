@@ -13,7 +13,7 @@
  */
 
 // Provides class ODataModelAdapter
-sap.ui.define(['jquery.sap.global', './AnalyticalBinding', "./TreeBindingAdapter", 'sap/ui/model/odata/ODataModel', 'sap/ui/thirdparty/odata4analytics'],
+sap.ui.define(['jquery.sap.global', './AnalyticalBinding', "./TreeBindingAdapter", 'sap/ui/model/odata/ODataModel', './odata4analytics'],
 	function(jQuery, AnalyticalBinding, TreeBindingAdapter, ODataModel, odata4analytics) {
 	"use strict";
 	
@@ -83,7 +83,7 @@ sap.ui.define(['jquery.sap.global', './AnalyticalBinding', "./TreeBindingAdapter
 	/**
 	 * @name sap.ui.model.odata.ODataModelAdapter#getAnalyticalExtensions
 	 * @function
-	 * @return {com.sap.odata4analytics.Model} Model providing access to analytical
+	 * @return {sap.ui.model.analytics.odata4analytics.Model} Model providing access to analytical
 	 *         extensions of the OData model or null if the services does not
 	 *         include analytical extensions
 	 * @public

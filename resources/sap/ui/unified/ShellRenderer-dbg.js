@@ -104,6 +104,9 @@ sap.ui.unified.ShellRenderer.renderHeaderItems = function(rm, oShell, begin) {
 		if(aItems[i].getStartsSection()){
 			rm.addClass("sapUiUfdShellHeadItmDelim");
 		}
+		if(aItems[i].getShowSeparator()){
+			rm.addClass("sapUiUfdShellHeadItmSep");
+		}
 		if(!aItems[i].getVisible()){
 			rm.addClass("sapUiUfdShellHidden");
 		}

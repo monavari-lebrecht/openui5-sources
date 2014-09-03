@@ -66,7 +66,7 @@ jQuery.sap.require("sap.ui.core.Element");
  * @extends sap.ui.core.Element
  *
  * @author  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -683,19 +683,28 @@ sap.ui.commons.TreeNode.prototype.select = function(bSuppressEvent, bDeselectOth
 
 	//Remove selection elsewhere
 	var oDomSelectedNode = $Tree.find(".sapUiTreeNodeSelected");
-	
-//STS
-	if (bDeselectOtherNodes) {
-		oDomSelectedNode.removeClass("sapUiTreeNodeSelected").removeAttr("aria-selected");
-	} 
-//STS
 
-	$Tree.find(".sapUiTreeNodeSelectedParent").removeClass("sapUiTreeNodeSelectedParent");
+	switch (oTree.getSelectionMode()) {
+	case sap.ui.commons.TreeSelectionMode.Single:
+			oDomSelectedNode.removeClass("sapUiTreeNodeSelected").removeAttr("aria-selected");
+			$Tree.find(".sapUiTreeNodeSelectedParent").removeClass("sapUiTreeNodeSelectedParent");
+		break;
+	case sap.ui.commons.TreeSelectionMode.Multi:
+		if (bDeselectOtherNodes) {
+			oDomSelectedNode.removeClass("sapUiTreeNodeSelected").removeAttr("aria-selected");
+			$Tree.find(".sapUiTreeNodeSelectedParent").removeClass("sapUiTreeNodeSelectedParent");
+		}
+		break;
+	case sap.ui.commons.TreeSelectionMode.None:
+		break;
+	};
 
 	if(oDomSelectedNode.length){
 		//Any Selection found
 		var oSelectedNode = sap.ui.getCore().getControl(oDomSelectedNode[0].id);
-		oSelectedNode.setProperty("isSelected", false, true); //Suppress Re-rendering
+		if (oTree.getSelectionMode() == sap.ui.commons.TreeSelectionMode.Single){
+			oSelectedNode.setProperty("isSelected", false, true); //Suppress Re-rendering
+		}
 	}
 
 	//Set selection on clicked node

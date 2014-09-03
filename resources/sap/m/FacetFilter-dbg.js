@@ -61,7 +61,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -1774,8 +1774,6 @@ sap.m.FacetFilter.prototype._checkOverflow = function() {
 
 		// only do DOM changes if the state changed to avoid periodic application of identical values
 		if ((bScrollForward != this._bPreviousScrollForward) || (bScrollBack != this._bPreviousScrollBack)) {
-			this._bPreviousScrollForward = bScrollForward;
-			this._bPreviousScrollBack = bScrollBack;
 			$bar.toggleClass("sapMFFNoScrollBack", !bScrollBack);
 			$bar.toggleClass("sapMFFNoScrollForward", !bScrollForward);
 		}

@@ -24,7 +24,7 @@ sap.ui.define(['jquery.sap.global', './Interface', './Metadata'],
 	 * @class Base class for all SAPUI5 Objects
 	 * @abstract
 	 * @author Malte Wedel
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @public
 	 * @name sap.ui.base.Object
 	 */

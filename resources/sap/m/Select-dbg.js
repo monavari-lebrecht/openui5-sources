@@ -65,7 +65,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -795,7 +795,7 @@ sap.m.Select.prototype._findLastEnabledItem = function(aItems) {
 sap.m.Select.prototype._setSelectedItem = function(mOptions) {
 	var oListItem;
 
-	if (mOptions.item === this.getSelectedItem()) {
+	if ((mOptions.item === this.getSelectedItem()) && (this.getSelectedKey() === mOptions.key)) {
 		return;
 	}
 

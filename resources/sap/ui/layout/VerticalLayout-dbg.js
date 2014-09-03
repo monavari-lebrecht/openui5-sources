@@ -52,11 +52,11 @@ jQuery.sap.require("sap.ui.core.Control");
  * @param {object} [mSettings] initial settings for the new control
  *
  * @class
- * In this layout the elemnts are orderd one below the other
+ * In this layout the elements are ordered one below the other
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public

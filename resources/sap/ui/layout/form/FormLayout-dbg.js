@@ -53,7 +53,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -632,9 +632,10 @@ jQuery.sap.require("sap.ui.layout.form.Form");
 		while (!oNewDomRef && i < iLength) {
 			var oContainer = aContainers[i];
 			if (oContainer.getExpandable() && bTabOver) {
-				oNewDomRef = oContainer._oExpandButton;
-				return oNewDomRef;
-				break;
+				oNewDomRef = oContainer._oExpandButton.getFocusDomRef();
+				if (oNewDomRef) {
+					break;
+				}
 			}
 			if (!oContainer.getExpandable() || oContainer.getExpanded()) {
 				if (bTabOver == true){
@@ -739,8 +740,9 @@ jQuery.sap.require("sap.ui.layout.form.Form");
 					var oForm = oContainer.getParent();
 					iCurrentIndex = oForm.indexOfFormContainer(oContainer);
 					if (oContainer.getExpandable()) {
-						oNewDomRef = oContainer._oExpandButton;
-					} else {
+						oNewDomRef = oContainer._oExpandButton.getFocusDomRef();
+					}
+					if (!oNewDomRef) {
 						oNewDomRef = this.findLastFieldOfLastElementInPrevContainer(oForm, iCurrentIndex-1, true);
 					}
 				}
@@ -817,9 +819,10 @@ jQuery.sap.require("sap.ui.layout.form.Form");
 		while (!oNewDomRef && i >= 0) {
 			var oContainer = aContainers[i];
 			if (oContainer.getExpandable() && !oContainer.getExpanded() && bTabOver) {
-				oNewDomRef = oContainer._oExpandButton;
-				return oNewDomRef;
-				break;
+				oNewDomRef = oContainer._oExpandButton.getFocusDomRef();
+				if (oNewDomRef) {
+					break;
+				}
 			}
 			if (!oContainer.getExpandable() || oContainer.getExpanded()) {
 				var iLength = oContainer.getFormElements().length;

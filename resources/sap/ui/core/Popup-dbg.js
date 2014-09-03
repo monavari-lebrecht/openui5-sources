@@ -129,10 +129,6 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', 'sap/ui/base/Ob
 
 					if (!bInsidePopup) {
 						this.close();
-						
-						for (var j = 0, l = aChildPopups.length; j < l; j++) {
-							this._closePopup(aChildPopups[j]);
-						}
 					}
 				};
 			}
@@ -144,7 +140,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', 'sap/ui/base/Ob
 			publicMethods : ["open", "close", 
 			                 "setContent", "getContent", 
 			                 "setPosition", 
-			                 "setShadow", "setModal", "setAutoClose", "setAutoCloseAreas", 
+			                 "setShadow", "setModal", "getModal", "setAutoClose", "setAutoCloseAreas", 
 			                 "isOpen", "getAutoClose", "getOpenState", "setAnimations", "setDurations", 
 			                 "attachOpened", "attachClosed", "detachOpened", "detachClosed"],
 			                 
@@ -368,9 +364,10 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', 'sap/ui/base/Ob
 	* @function
 	*/
 	Popup.Layer.prototype.init = function(/** jQuery */oRef, iZIndex) {
-		this._$Ref
-			.css("visibility", "visible")
-			.css("z-index", iZIndex);
+		this._$Ref.css({
+			"visibility" : "visible",
+			"z-index" : iZIndex
+		});
 		this.update(oRef, iZIndex);
 		this._$Ref.insertAfter(oRef).show();
 	};
@@ -382,27 +379,32 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', 'sap/ui/base/Ob
 	*/
 	Popup.Layer.prototype.update = function(/** jQuery */oRef, iZIndex){
 		var oRect = oRef.rect();
-		this._$Ref
-			.css("left", oRect.left)
-			.css("top", oRect.top);
+		this._$Ref.css({
+			"left" : oRect.left,
+			"top" : oRect.top
+		});
 	
 		if(oRef.css("right") != "auto" && oRef.css("right") != "inherit"){
-			this._$Ref
-				.css("right", oRef.css("right"))
-				.css("width", "auto");
-		}else{
-			this._$Ref
-				.css("width", oRect.width)
-				.css("right", "auto");
+			this._$Ref.css({
+				"right" : oRef.css("right"),
+				"width" : "auto"
+			});
+		} else {
+			this._$Ref.css({
+				"width" : oRect.width,
+				"right" : "auto"
+			});
 		}
 		if(oRef.css("bottom") != "auto" && oRef.css("bottom") != "inherit"){
-			this._$Ref
-				.css("bottom", oRef.css("bottom"))
-				.css("height", "auto");
+			this._$Ref.css({
+				"bottom" : oRef.css("bottom"),
+				"height" : "auto"
+			});
 		} else {
-			this._$Ref
-				.css("height", oRect.height)
-				.css("bottom", "auto");
+			this._$Ref.css({
+				"height" : oRect.height,
+				"bottom" : "auto"
+			});
 		}
 	
 		if(typeof(iZIndex) === "number") {
@@ -411,9 +413,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', 'sap/ui/base/Ob
 	};
 	
 	Popup.Layer.prototype.reset = function(){
-		this._$Ref
-			.hide()
-			.css("visibility", "hidden")
+		this._$Ref.hide().css("visibility", "hidden")
 			.appendTo(sap.ui.getCore().getStaticAreaRef());
 	};
 	
@@ -549,7 +549,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', 'sap/ui/base/Ob
 	 * @param {int} [iDuration] animation duration in milliseconds; default is the jQuery preset "fast". For iDuration == 0 the opening happens synchronously without animation.
 	 * @param {sap.ui.core.Popup.Dock} [my=sap.ui.core.Popup.Dock.CenterCenter] the popup content's reference position for docking
 	 * @param {sap.ui.core.Popup.Dock} [at=sap.ui.core.Popup.Dock.CenterCenter] the "of" element's reference point for docking to
-	 * @param {Element|sap.ui.core.Element} [of=document] the DOM Element or UI5 Element to dock to
+	 * @param {string | sap.ui.core.Element | DOMRef | jQuery | jQuery.Event} [of=document] specifies the reference element to which the given content should dock to
 	 * @param {string} [offset='0 0'] the offset relative to the docking point, specified as a string with space-separated pixel values (e.g. "0 10" to move the popup 10 pixels to the right). If the docking of both "my" and "at" are both RTL-sensitive ("begin" or "end"), this offset is automatically mirrored in the RTL case as well.
 	 * @param {string} [collision='flip'] defines how the position of an element should be adjusted in case it overflows the window in some direction.
 	 * @param {boolean} [followOf=false] defines whether the popup should follow the dock reference when the reference changes its position.
@@ -652,7 +652,10 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', 'sap/ui/base/Ob
 		this._iZIndex = this._iZIndex === this.getLastZIndex() ? this._iZIndex : this.getNextZIndex();
 	
 		var oStaticArea = sap.ui.getCore().getStaticAreaRef();
-		$Ref.css("position", "absolute").css("visibility", "hidden");
+		$Ref.css({
+			"position" : "absolute",
+			"visibility" : "hidden"
+		});
 	
 		if(!($Ref[0].parentNode == oStaticArea)) { // do not move in DOM if not required - otherwise this destroys e.g. the RichTextEditor
 			$Ref.appendTo(oStaticArea);
@@ -753,8 +756,8 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', 'sap/ui/base/Ob
 		
 		this.bOpen = true;
 	
-		if (this.isInPopup(of)) {
-			var sParentId = this.getParentPopupId(of);
+		if (this.isInPopup(of) || this.isInPopup(this._oPosition.of)) {
+			var sParentId = this.getParentPopupId(of) ||  this.getParentPopupId(this._oPosition.of);
 			var sChildId = "";
 			
 			var oContent = this.getContent();
@@ -1004,6 +1007,11 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', 'sap/ui/base/Ob
 	
 			// notify users that the popup is now officially closed
 			that.fireClosed();
+
+			var aChildPopups = that.getChildPopups()
+			for (var j = 0, l = aChildPopups.length; j < l; j++) {
+				that.closePopup(aChildPopups[j]);
+			}
 		};
 	
 		if (iRealDuration == 0) { // iRealDuration == 0 means: no animation!
@@ -1114,7 +1122,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', 'sap/ui/base/Ob
 	 *
 	 * @param {sap.ui.core.Popup.Dock} my specifies which point of the given Content should be aligned
 	 * @param {sap.ui.core.Popup.Dock | {left: sap.ui.core.CSSSize, top: sap.ui.core.CSSSize}} at specifies the point of the reference element to which the given Content should be aligned
-	 * @param {string | sap.ui.core.Control | DOMRef | jQuery | jQuery.Event} [of=document] specifies the reference element to which the given content should be aligned as specified in the other parameters
+	 * @param {string | sap.ui.core.Element | DOMRef | jQuery | jQuery.Event} [of=document] specifies the reference element to which the given content should be aligned as specified in the other parameters
 	 * @param {string} [offset='0 0'] the offset relative to the docking point, specified as a string with space-separated pixel values (e.g. "0 10" to move the popup 10 pixels to the right). If the docking of both "my" and "at" are both RTL-sensitive ("begin" or "end"), this offset is automatically mirrored in the RTL case as well.
 	 * @param {string} [collision] defines how the position of an element should be adjusted in case it overflows the window in some direction. The valid values that refer to jQuery-UI's position parameters are "flip", "fit" and "none".
 	 * @return {sap.ui.core.Popup} <code>this</code> to allow method chaining
@@ -1265,16 +1273,28 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', 'sap/ui/base/Ob
 			$Ref.css("display", "block").position(this._resolveReference(this._convertPositionRTL(oPosition, bRtl))); // must be visible, so browsers can calculate its offset!
 			this._fixPositioning(oPosition, bRtl);
 		} else if(sap.ui.core.CSSSize.isValid(oAt.left) && sap.ui.core.CSSSize.isValid(oAt.top)) {
-			$Ref.css("left", oAt.left).css("top", oAt.top);
+			$Ref.css({
+				"left" : oAt.left,
+				"top" : oAt.top
+			});
 		} else if(sap.ui.core.CSSSize.isValid(oAt.right) && sap.ui.core.CSSSize.isValid(oAt.top)) {
-			$Ref.css("right", oAt.right).css("top", oAt.top);
+			$Ref.css({
+				"right" : oAt.right,
+				"top" : oAt.top
+			});
 		} else if(typeof(oAt.left) === "number" && typeof(oAt.top) === "number") {
 			var domRef = $Ref[0];
 			if (domRef && domRef.style.right) { // in some RTL cases leave the Popup attached to the right side of the browser window
 				var width = $Ref.outerWidth();
-				$Ref.css("right", (document.documentElement.clientWidth - (oAt.left + width)) + "px").css("top", oAt.top + "px");
+				$Ref.css({
+					"right" : (document.documentElement.clientWidth - (oAt.left + width)) + "px",
+					"top" : oAt.top + "px"
+				});
 			} else {
-				$Ref.css("left", oAt.left + "px").css("top", oAt.top + "px");
+				$Ref.css({
+					"left" : oAt.left + "px",
+					"top" : oAt.top + "px"
+				});
 			}
 		}
 	
@@ -1286,14 +1306,47 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', 'sap/ui/base/Ob
 	/**
 	 * Calculates the rect information of the given parameter.
 	 * 
-	 * @param {Element|sap.ui.core.Element} oOf the DOM Element or UI Element instance on which the calculation is done
-	 * @returns {object} the rect infomartion which contains the top, left, width, height of the given object
+	 * @param {String| DomNode | jQuery |sap.ui.core.Element | Event | jQuery.Event} oOf the DOM Element, UI Element instance on which the calculation is done
+	 * @returns {object} the rect infomartion which contains the top, left, width, height of the given object. If Event or jQuery.Event type parameter is given, null is returned because there's no way to calculate the rect info based on a event object.
 	 * @private
 	 * @name sap.ui.core.Popup#_calcOfRect
 	 * @function
 	 */
 	Popup.prototype._calcOfRect = function(oOf){
-		return  jQuery(oOf instanceof sap.ui.core.Element ? oOf.getDomRef() : oOf).rect();
+		var oOfDom = this._getOfDom(oOf);
+		
+		if (oOfDom) {
+			return jQuery(oOfDom).rect();
+		}
+
+		return null;
+	};
+
+	/**
+	 * Get the DOM reference of the given parameter. The "of" parameter can be different types. This methods returns the refered DOM reference base on the given parameter. If Event or jQuery.Event type parameter is given, null is returned.
+	 * 
+	 * @param {String| DomNode | jQuery |sap.ui.core.Element | Event | jQuery.Event} oOf the DOM Element, UI Element instance on which the calculation is done
+	 * @returns {DomNode} the DOM reference calculated based on the given parameter. If Event, or jQuery Event type parameter is given, null is returned.
+	 * @private
+	 * @name sap.ui.core.Popup#_getOfDom
+	 * @function
+	 */
+	Popup.prototype._getOfDom = function(oOf) {
+		if ((oOf instanceof Event) || (oOf instanceof jQuery.Event)) {
+			return null;
+		}
+
+		var $Of;
+
+		if (typeof(oOf) === "string") {
+			$Of = jQuery.sap.byId(oOf);
+		} else if (oOf instanceof jQuery) {
+			$Of = oOf;
+		} else {
+			$Of = jQuery(oOf instanceof sap.ui.core.Element ? oOf.getDomRef() : oOf);
+		}
+
+		return $Of[0];
 	};
 	
 	/**
@@ -1394,13 +1447,19 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', 'sap/ui/base/Ob
 			if (bRtl && ((my.indexOf("right") > -1) || (my.indexOf("begin") > -1) || (my.indexOf("center") > -1))) {
 				var $Ref = this._$();
 				var right = jQuery(window).width() - $Ref.outerWidth() - $Ref.offset().left;
-				$Ref.css("right", right + "px").css("left", "");
+				$Ref.css({
+					"right" : right + "px",
+					"left" : ""
+				});
 			} else if ((my.indexOf("right") > -1) || (my.indexOf("end") > -1)) {
 	
 				// LTR
 				var $Ref = this._$();
 				var right = jQuery(window).width() - $Ref.outerWidth() - $Ref.offset().left;
-				$Ref.css("right", right + "px").css("left", "");
+				$Ref.css({
+					"right" : right + "px",
+					"left" : ""
+				});
 			}
 		}
 	};
@@ -1490,6 +1549,18 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', 'sap/ui/base/Ob
 	};
 	
 	/**
+	 * Returns the value if a Popup is of modal type
+	 * 
+	 * @return {boolean] bModal whether the Popup is of modal type
+	 * @public
+	 * @name sap.ui.core.Popup#getModal
+	 * @function
+	 */
+	Popup.prototype.getModal = function() {
+		return this._bModal;
+	}
+	
+	/**
 	 * Used to specify whether the Popup should close as soon as
 	 * - for non-touch environment: the focus leaves
 	 * - for touch environment: user clicks the area which is outside the popup itself, the dom elemnt which popup aligns to (except document),
@@ -1543,8 +1614,9 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', 'sap/ui/base/Ob
 			} else if (typeof aAutoCloseAreas[i] === "string") {
 				sId = aAutoCloseAreas[i];
 			}
-
-			this.addChildPopup(sId);
+			if (jQuery.inArray(sId, this.getChildPopups()) === -1) {
+				this.addChildPopup(sId);
+			}
 		}
 		return this;
 	};
@@ -1772,7 +1844,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', 'sap/ui/base/Ob
 			for (var i = 0, l = aChildPopups.length; i < l; i++) {
 				var oDomRef = jQuery.sap.domById(aChildPopups[i]);
 				if (oDomRef) {
-					jQuery(oDomRef).bind("deactivate", this.fEventHandler);
+					jQuery(oDomRef).bind("deactivate." + this._popupUID, this.fEventHandler);
 				}
 			}
 		}
@@ -1782,7 +1854,13 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', 'sap/ui/base/Ob
 	 * @private
 	 */
 	Popup.prototype._removeFocusEventListeners = function(sChannel, sEvent, oEventData) {
-		var $PopupRoot = this._$();
+		var $PopupRoot = this._$(/* force rendering */false, /* getter only */true);
+
+		// if popup's content isn't rendered yet, focus vent listeners don't need to be removed
+		if (!$PopupRoot.length) {
+			return;
+		}
+
 		var aChildPopups = this.getChildPopups();
 		
 		if(document.removeEventListener && !sap.ui.Device.browser.internet_explorer) { //FF, Safari
@@ -1853,7 +1931,9 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', 'sap/ui/base/Ob
 	 */
 	Popup.prototype._addFocusableArea = function(sChannel, sEvent, oEventData) {
 		var sParentPopupId = this._popupUID; // save for call below
-		this.addChildPopup(oEventData.id);
+		if (jQuery.inArray(oEventData.id, this.getChildPopups()) === -1) {
+			this.addChildPopup(oEventData.id);
+		}
 
 		// Forward the blur event of the child to the parent Popup
 		var $ChildDomRef = jQuery('[data-sap-ui-popup="' + oEventData.id + '"]');
@@ -1929,17 +2009,20 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', 'sap/ui/base/Ob
 	
 	/**
 	 * Returns the jQuery object containing the root of the content of the Popup
+	 * 
+	 * @param {boolean} [bForceReRender] The content will be rendered again regardless of the render status. When it's set to true, the bGetOnly parameter is ignored.
+	 * @param {boolean} [bGetOnly] Only returns the existing content DOM. When content isn't rendered yet, empty jQuery Object is returned.
 	 * @returns {jQuery} the jQuery object containing the root of the content of the Popup
 	 * @private
 	 * @name sap.ui.core.Popup#_$
 	 * @function
 	 */
-	Popup.prototype._$ = function(bForceReRender){
+	Popup.prototype._$ = function(bForceReRender, bGetOnly){
 		var $ContentRef;
-	
+
 		if(this.oContent instanceof Control){
 			$ContentRef = this.oContent.$();
-			if ($ContentRef.length === 0 || bForceReRender) {
+			if (bForceReRender || ($ContentRef.length === 0 && !bGetOnly)) {
 				jQuery.sap.log.info("Rendering of popup content: " + this.oContent.getId());
 				if ($ContentRef.length > 0) {
 					RenderManager.preserveContent($ContentRef[0], /* bPreserveRoot */ true, /* bPreserveNodesWithId */ false);
@@ -1978,7 +2061,10 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', 'sap/ui/base/Ob
 	
 		// push current z-index to stack
 		Popup.blStack.push(this._iZIndex - 2);
-		$BlockRef.css("z-index", this._iZIndex - 2).css("visibility","visible").show();
+		$BlockRef.css({
+			"z-index" : this._iZIndex - 2,
+			"visibility" : "visible"
+		}).show();
 	
 		// prevent HTML page from scrolling
 		jQuery("html").addClass("sapUiBLyBack");
@@ -1994,16 +2080,17 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', 'sap/ui/base/Ob
 		if (Popup.blStack.length > 0) {
 	
 			// set the blocklayer z-index to the last z-index in the stack and show it
-			jQuery("#sap-ui-blocklayer-popup").css("z-index", Popup.blStack[Popup.blStack.length-1]).css("visibility","visible").show();
+			jQuery("#sap-ui-blocklayer-popup").css({
+				"z-index" : Popup.blStack[Popup.blStack.length-1],
+				"visibility" : "visible"
+			}).show();
 		} else {
-	
 			// the last dialog was closed so we can hide the block layer now
 			jQuery("#sap-ui-blocklayer-popup").css("visibility","inherit").hide();
+
+			// Allow scrolling again in HTML page only if there is no BlockLayer left
+			jQuery("html").removeClass("sapUiBLyBack");
 		}
-	
-		// allow scrolling in HTML page
-		jQuery("html").removeClass("sapUiBLyBack");
-	
 	};
 	
 	//****************************************************
@@ -2023,7 +2110,8 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', 'sap/ui/base/Ob
 	
 	Popup.checkDocking = function(){
 		if (this.getOpenState() === sap.ui.core.OpenState.OPEN) {
-			var oCurrentOfRect = jQuery(this._oLastPosition.of instanceof sap.ui.core.Element ? this._oLastPosition.of.getDomRef() : this._oLastPosition.of).rect();
+			var oCurrentOfRef = this._getOfDom(this._oLastPosition.of),
+				oCurrentOfRect = jQuery(oCurrentOfRef).rect();
 			
 			if (!oCurrentOfRect) {
 				// Docking not possibe due to missing opener.
@@ -2034,11 +2122,11 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', 'sap/ui/base/Ob
 			// Check if the current 'of' dom element is removed from the dom tree which indicates that it
 			// was rerendered and all corresponding stuff has to be updated to position the popup
 			// properly again
-			if (!jQuery.sap.containsOrEquals(document, this._oLastPosition.of)) {
-				if (this._oLastPosition.of.id && this._oLastPosition.of.id !== "") {
+			if (!jQuery.sap.containsOrEquals(document.documentElement, oCurrentOfRef)) {
+				if (oCurrentOfRef.id && oCurrentOfRef.id !== "") {
 					// The 'of' was rerendered so the newest DOM-element has to be updated for the corresponding rect-object.
 					// Because the id of the 'of' may be still the same but due to its rerendering the reference changed and has to be updated 
-					var oNewestOf = jQuery.sap.domById(this._oLastPosition.of.id);
+					var oNewestOf = jQuery.sap.domById(oCurrentOfRef.id);
 					var oNewestOfRect = jQuery(oNewestOf).rect();
 					
 					// if there is a newest corresponding DOM-reference and it differs from the current -> use the newest one
@@ -2110,9 +2198,14 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', 'sap/ui/base/Ob
 			return;
 		}
 
-		if (this._iZIndex === this.getLastZIndex()) {
+		/*
+		 *  If this Popup is 'uppermost' and therefore everything is ok.
+		 *  Or if this is a modal Popup - its index has to be the 'uppermost'
+		 *  otherwise there must be another issue with the modal-mode.
+		 */
+		if (this._iZIndex === this.getLastZIndex() || this.getModal()) {
 			return;
-		} // we are 'uppermost' and therefore everything is ok
+		} 
 
 		this._increaseMyZIndex("", "mousedown", oEvent);
 	};
@@ -2193,6 +2286,11 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', 'sap/ui/base/Ob
 		if (this._oBlindLayer) {
 			this._resizeListenerId = sap.ui.core.ResizeHandler.register(this._$().get(0), jQuery.proxy(this.onresize, this));
 		}
+
+		if (this.isOpen() && (this.getModal() || this.getAutoClose())) {
+			// register the focus event listener again after rendering because the content DOM node is changed
+			this._addFocusEventListeners();
+		}
 	};
 	
 	/**
@@ -2206,6 +2304,11 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', 'sap/ui/base/Ob
 		if (this._resizeListenerId) {
 			sap.ui.core.ResizeHandler.deregister(this._resizeListenerId);
 			this._resizeListenerId = null;
+		}
+
+		if (this.isOpen() && (this.getModal() || this.getAutoClose())) {
+			// deregister the focus event listener because the content DOM node is going to be deleted
+			this._removeFocusEventListeners();
 		}
 	};
 	

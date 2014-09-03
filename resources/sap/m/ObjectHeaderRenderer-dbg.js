@@ -544,7 +544,9 @@ sap.m.ObjectHeaderRenderer.renderResponsive = function(oRm, oControl) {
 		bMarkers = this.hasResponsiveMarkers(oControl),
 		bStates = this.hasResponsiveStates(oControl), // TODO: determine whether states need to be rendered or not
 		bTabs = this.hasResponsiveTabs(oControl),
-		oHeaderContainer = oControl.getHeaderContainer();
+		oHeaderContainer = oControl.getHeaderContainer(),
+		// this is a switch for android < 4.4 special case in CSS
+		bSupportCalc = !(sap.ui.Device.os.name === "Android" && sap.ui.Device.os.version < 4.4 && sap.ui.Device.browser.name === "an" && sap.ui.Device.browser.version < 4.4);
 
 	// do not render if control is invisible
 	if (!oControl.getVisible()) {
@@ -563,6 +565,10 @@ sap.m.ObjectHeaderRenderer.renderResponsive = function(oRm, oControl) {
 	oRm.write("<div");
 	oRm.addClass("sapMOH");
 	oRm.addClass("sapMOHR"); // this will allow to make a distinction for responsiveness in CSS
+	if (!bSupportCalc) {
+		oRm.addClass("sapMOHNoCalc");		
+	}
+
 	if (oControl.getHeaderContainer() instanceof sap.m.IconTabBar) {
 		oRm.addClass("sapMOHWithITB");
 	}
@@ -650,6 +656,11 @@ sap.m.ObjectHeaderRenderer.renderResponsiveTitle = function(oRm, oControl, bTitl
 		oRm.addClass("sapMOHTitleDivFull");
 	}
 
+	// TODO: put this in behaviour
+	oControl._titleText.setMaxLines(2);
+
+	this.renderTitleResponsive(oRm, oControl);
+
 	// render the title icon in a separate container
 	if (oControl._hasIcon()) {
 		oRm.write("<div");
@@ -663,10 +674,6 @@ sap.m.ObjectHeaderRenderer.renderResponsiveTitle = function(oRm, oControl, bTitl
 		oRm.write("</div>"); // end icon container
 	}
 
-	// TODO: put this in behaviour
-	oControl._titleText.setMaxLines(2);
-
-	this.renderTitleResponsive(oRm, oControl);
 	this.renderResponsiveNumber(oRm, oControl);
 
 	oRm.write("</div>"); // End Title container
@@ -922,6 +929,9 @@ sap.m.ObjectHeaderRenderer.renderTitleResponsive = function(oRm, oOH) {
 		oRm.write("<div"); // Start Title Text container
 		oRm.writeAttribute("id", oOH.getId() + "-title");
 		oRm.addClass("sapMOHTitle");
+		// CSN# 1385618/2014: title should not break: remove when a better solution is found
+		oRm.addClass("sapMOHRTitleNoWordBreak");
+
 		if (oOH.getTitleActive()) {
 			oRm.addClass("sapMOHTitleActive");
 		}

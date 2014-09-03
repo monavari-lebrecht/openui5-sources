@@ -74,7 +74,7 @@ jQuery.sap.require("sap.m.InputBase");
  * @extends sap.m.InputBase
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -1170,6 +1170,12 @@ sap.m.Input.prototype.exit = function() {
 		this._oSuggestionPopup = null;
 	}
 
+	// CSN# 1404088/2014: list is not destroyed when it has not been attached to the popup yet
+	if (this._oList) {
+		this._oList.destroy();
+		this._oList = null;
+	}
+
 	if (this._oValueHelpIcon) {
 		this._oValueHelpIcon.destroy();
 		this._oValueHelpIcon = null;
@@ -1178,6 +1184,16 @@ sap.m.Input.prototype.exit = function() {
 	if (this._oSuggestionTable) {
 		this._oSuggestionTable.destroy();
 		this._oSuggestionTable = null;
+	}
+
+	if (this._oButtonToolbar) {
+		this._oButtonToolbar.destroy();
+		this._oButtonToolbar = null;
+	}
+
+	if (this._oShowMoreButton) {
+		this._oShowMoreButton.destroy();
+		this._oShowMoreButton = null;
 	}
 };
 
@@ -1369,6 +1385,14 @@ sap.m.Input.prototype._scrollToItem = function(iIndex, sDir) {
 	}
 };
 
+// helper method for keyboard navigation in suggestion items
+sap.m.Input.prototype._isSuggestionItemSelectable = function(oItem) {
+	// CSN# 1390866/2014: The default for ListItemBase type is "Inactive", therefore disabled entries are only supported for single and two-value suggestions
+	// for tabular suggestions: only check visible
+	// for two-value and single suggestions: check also if item is not inactive
+	return oItem.getVisible() && (this._hasTabularSuggestions() || oItem.getType() !== sap.m.ListType.Inactive);
+};
+
 sap.m.Input.prototype._onsaparrowkey = function(oEvent, sDir) {
 	if (!this.getEnabled() || !this.getEditable()) {
 		return;
@@ -1400,9 +1424,9 @@ sap.m.Input.prototype._onsaparrowkey = function(oEvent, sDir) {
 	// always select the first item from top when nothing is selected so far
 	if (iSelectedIndex === -1) {
 		iSelectedIndex = 0;
-		iOldIndex = iSelectedIndex;
-		if (aListItems[iSelectedIndex].getVisible()) {
+		if (this._isSuggestionItemSelectable(aListItems[iSelectedIndex])) {
 			// if first item is visible, don't go into while loop
+			iOldIndex = iSelectedIndex;
 			bFirst = true;
 		} else {
 			// detect first visible item with while loop
@@ -1411,22 +1435,24 @@ sap.m.Input.prototype._onsaparrowkey = function(oEvent, sDir) {
 	}
 
 	if (sDir === "down") {
-		while (iSelectedIndex < aListItems.length - 1 && (!bFirst || aListItems[iSelectedIndex].getVisible() === false)) {
+		while (iSelectedIndex < aListItems.length - 1 && (!bFirst || !this._isSuggestionItemSelectable(aListItems[iSelectedIndex]))) {
 			aListItems[iSelectedIndex].setSelected(false);
 			iSelectedIndex = iSelectedIndex + 1;
 			bFirst = true;
 		}
 	} else {
-		while (iSelectedIndex > 0 && (!bFirst || aListItems[iSelectedIndex].getVisible() === false)) {
+		while (iSelectedIndex > 0 && (!bFirst || !aListItems[iSelectedIndex].getVisible() || !this._isSuggestionItemSelectable(aListItems[iSelectedIndex]))) {
 			aListItems[iSelectedIndex].setSelected(false);
 			iSelectedIndex = iSelectedIndex - 1;
 			bFirst = true;
 		}
 	}
 
-	if (!aListItems[iSelectedIndex].getVisible()) {
+	if (!this._isSuggestionItemSelectable(aListItems[iSelectedIndex])) {
 		// if no further visible item can be found -> do nothing (e.g. set the old item as selected again)
-		aListItems[iOldIndex].setSelected(true);
+		if (iOldIndex >= 0) {
+			aListItems[iOldIndex].setSelected(true);
+		}
 		return;
 	} else {
 		aListItems[iSelectedIndex].setSelected(true);
@@ -1492,17 +1518,25 @@ sap.m.Input.prototype.onsapenter = function(oEvent) {
 		sap.m.InputBase.prototype.onsapenter.apply(this, arguments);
 	}
 
-	if (this._oSuggestionPopup && this._oSuggestionPopup.isOpen() && this._iPopupListSelectedIndex >= 0) {
-		var oSelectedListItem = this._oList.getItems()[this._iPopupListSelectedIndex];
-		this._changeProxy(oEvent);
-		this._oSuggestionPopup.close();
-		this._doSelect();
+	// when enter is pressed before the timeout of suggestion delay, suggest event is cancelled
+	if (this._iSuggestDelay) {
+		jQuery.sap.clearDelayedCall(this._iSuggestDelay);
+		this._iSuggestDelay = null;
+	}
 
-		if (oSelectedListItem) {
-			this._fireSuggestionItemSelectedEvent(oSelectedListItem);
+	if (this._oSuggestionPopup && this._oSuggestionPopup.isOpen()) {
+		if (this._iPopupListSelectedIndex >= 0) {
+			var oSelectedListItem = this._oList.getItems()[this._iPopupListSelectedIndex];
+			this._changeProxy(oEvent);
+			this._doSelect();
+
+			if (oSelectedListItem) {
+				this._fireSuggestionItemSelectedEvent(oSelectedListItem);
+			}
+
+			this._iPopupListSelectedIndex = -1;
 		}
-
-		this._iPopupListSelectedIndex = -1;
+		this._oSuggestionPopup.close();
 	}
 };
 
@@ -1576,7 +1610,8 @@ sap.m.Input.prototype._triggerSuggest = function(sValue) {
 		});
 	} else if (sap.ui.Device.system.phone) {
 		if (this._oList instanceof sap.m.Table) {
-			this._oList.setVisible(false);
+			// CSN# 1421140/2014: hide the table for empty/initial results to not show the table columns
+			this._oList.addStyleClass("sapMInputSuggestionTableHidden");
 		} else {
 			this._oList.destroyItems();
 		}
@@ -1586,8 +1621,9 @@ sap.m.Input.prototype._triggerSuggest = function(sValue) {
 };
 
 (function(){
+
 	sap.m.Input.prototype.setShowSuggestion = function(bValue){
-		this.setProperty("showSuggestion", bValue);
+		this.setProperty("showSuggestion", bValue, true);
 		this._iPopupListSelectedIndex = -1;
 		if (bValue) {
 			this._lazyInitializeSuggestionPopup(this);
@@ -1598,7 +1634,7 @@ sap.m.Input.prototype._triggerSuggest = function(sValue) {
 	};
 	
 	sap.m.Input.prototype.setShowTableSuggestionValueHelp = function(bValue) {
-		this.setProperty("showTableSuggestionValueHelp", bValue);
+		this.setProperty("showTableSuggestionValueHelp", bValue, true);
 
 		if (!this._oSuggestionPopup) {
 			return this;
@@ -1629,6 +1665,7 @@ sap.m.Input.prototype._triggerSuggest = function(sValue) {
 
 	sap.m.Input.prototype._getButtonToolbar = function() {
 		var oShowMoreButton = this._getShowMoreButton();
+
 		return this._oButtonToolbar || (this._oButtonToolbar = new sap.m.Toolbar({
 			content: [
 				new sap.m.ToolbarSpacer(),
@@ -1693,7 +1730,8 @@ sap.m.Input.prototype._triggerSuggest = function(sValue) {
 
 			this._triggerSuggest(value);
 		}
-	};
+
+	}
 
 	sap.m.Input.prototype._refreshItemsDelayed = function() {
 		jQuery.sap.clearDelayedCall(this._iRefreshListTimeout);
@@ -1733,33 +1771,35 @@ sap.m.Input.prototype._triggerSuggest = function(sValue) {
 	};
 
 	sap.m.Input.prototype.addSuggestionRow = function(oItem) {
-		this.addAggregation("suggestionRows", oItem, true);
+		oItem.setType(sap.m.ListType.Active);
+		this.addAggregation("suggestionRows", oItem);
 		this._refreshItemsDelayed();
 		createSuggestionPopupContent(this);
 		return this;
 	};
 
 	sap.m.Input.prototype.insertSuggestionRow = function(oItem, iIndex) {
-		this.insertAggregation("suggestionRows", iIndex, oItem, true);
+		oItem.setType(sap.m.ListType.Active);
+		this.insertAggregation("suggestionRows", iIndex, oItem);
 		this._refreshItemsDelayed();
 		createSuggestionPopupContent(this);
 		return this;
 	};
 
 	sap.m.Input.prototype.removeSuggestionRow = function(oItem) {
-		var res = this.removeAggregation("suggestionRows", oItem, true);
+		var res = this.removeAggregation("suggestionRows", oItem);
 		this._refreshItemsDelayed();
 		return res;
 	};
 
 	sap.m.Input.prototype.removeAllSuggestionRows = function() {
-		var res = this.removeAllAggregation("suggestionRows", true);
+		var res = this.removeAllAggregation("suggestionRows");
 		this._refreshItemsDelayed();
 		return res;
 	};
 
 	sap.m.Input.prototype.destroySuggestionRows = function() {
-		this.destroyAggregation("suggestionRows", true);
+		this.destroyAggregation("suggestionRows");
 		this._refreshItemsDelayed();
 		return this;
 	};
@@ -1856,8 +1896,7 @@ sap.m.Input.prototype._triggerSuggest = function(sValue) {
 								.getValue()));
 				oInput._changeProxy();
 				// only destroy items in simple suggestion mode
-				if (sap.m.Table
-						&& !(oInput._oList instanceof sap.m.Table)) {
+				if (sap.m.Table && !(oInput._oList instanceof sap.m.Table)) {
 					oInput._oList.destroyItems();
 				} else {
 					oInput._oList.removeSelections(true);
@@ -1923,9 +1962,21 @@ sap.m.Input.prototype._triggerSuggest = function(sValue) {
 	}
 
 	function destroySuggestionPopup(oInput) {
+		// if the table is not removed before destroying the popup the table is also destroyed (table needs to stay because we forward the column and row aggregations to the table directly, they would be destroyed as well)
+		if (oInput._oList instanceof sap.m.Table) {
+			oInput._oSuggestionPopup.removeAllContent();
+			// also remove the button/toolbar aggregation
+			oInput._removeShowMoreButton();
+		}
+
 		if (oInput._oSuggestionPopup) {
 			oInput._oSuggestionPopup.destroy();
 			oInput._oSuggestionPopup = null;
+		}
+		// CSN# 1404088/2014: list is not destroyed when it has not been attached to the popup yet
+		if (oInput._oList instanceof sap.m.List) {
+			oInput._oList.destroy();
+			oInput._oList = null;
 		}
 	}
 
@@ -1996,7 +2047,7 @@ sap.m.Input.prototype._triggerSuggest = function(sValue) {
 			} else {
 				// hide table on phone when value is empty
 				if (oInput._hasTabularSuggestions() && oInput._oList) {
-					oInput._oList.setVisible(false);
+					oInput._oList.addStyleClass("sapMInputSuggestionTableHidden");
 				}
 			}
 			return false;
@@ -2006,8 +2057,8 @@ sap.m.Input.prototype._triggerSuggest = function(sValue) {
 
 		if (oInput._hasTabularSuggestions()) {
 			// show list on phone (is hidden when search string is empty)
-			if (sap.ui.Device.system.phone && oInput._oList && !oInput._oList.getVisible()) {
-				oInput._oList.setVisible(true);
+			if (sap.ui.Device.system.phone && oInput._oList) {
+				oInput._oList.removeStyleClass("sapMInputSuggestionTableHidden");
 			}
 
 			// filter tabular items
@@ -2103,7 +2154,7 @@ sap.m.Input.prototype._triggerSuggest = function(sValue) {
 			} else {
 				// hide table on phone when there are no items to display
 				if (oInput._hasTabularSuggestions() && oInput._oList) {
-					oInput._oList.setVisible(false);
+					oInput._oList.addStyleClass("sapMInputSuggestionTableHidden");
 				}
 			}
 		}
@@ -2251,8 +2302,6 @@ sap.m.Input.prototype._getSuggestionsTable = function() {
 			showSeparators: "All",
 			width: "100%",
 			enableBusyIndicator: false,
-			// set table to invisible by default on phone to hide columns and preloaded rows
-			visible: (sap.ui.Device.system.phone ? false : true),
 			selectionChange: function (oEvent) {
 				var oSelectedListItem = oEvent.getParameter("listItem"),
 					// for tabular suggestions we call a result filter function
@@ -2275,6 +2324,10 @@ sap.m.Input.prototype._getSuggestionsTable = function() {
 				});
 			}
 		});
+		// initially hide the table on phone
+		if (sap.ui.Device.system.phone) {
+			this._oSuggestionTable.addStyleClass("sapMInputSuggestionTableHidden");
+		}
 
 		this._oSuggestionTable.updateItems = function() {
 			sap.m.Table.prototype.updateItems.apply(this, arguments);

@@ -78,7 +78,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @implements sap.ui.core.PopupInterface
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -1109,7 +1109,8 @@ jQuery.sap.require("sap.ui.core.theming.Parameters");
 /* =========================================================== */
 sap.m.Popover._bOneDesign = (sap.ui.core.theming.Parameters.get("sapMPlatformDependent") !== 'true');
 sap.m.Popover._bIE9 = (sap.ui.Device.browser.internet_explorer && sap.ui.Device.browser.version < 10);
-sap.m.Popover._bIOS7 = sap.ui.Device.os.ios && sap.ui.Device.os.version >= 7 && sap.ui.Device.os.version < 8 && sap.ui.Device.browser.name === "sf";
+sap.m.Popover._bIOS7 = sap.ui.Device.os.ios && sap.ui.Device.os.version >= 7 && sap.ui.Device.os.version < 8 && sap.ui.Device.browser.name === "sf"; 
+
 /**
  * Initializes the popover control
  * @private
@@ -1171,6 +1172,19 @@ sap.m.Popover.prototype.init = function(){
 	//closed when a containing scroll container is scrolled, be it via scrollbar or using the
 	//mousewheel.
 	this.setFollowOf(true);
+
+	this._oRestoreFocusDelegate = {
+		onBeforeRendering: function(){
+			var $ActiveElement = jQuery(document.activeElement),
+				oActiveControl = $ActiveElement.control(0);
+			this._sFocusControlId = oActiveControl && oActiveControl.getId();
+		},
+		onAfterRendering: function(){
+			if (this._sFocusControlId && !jQuery.sap.containsOrEquals(this.getDomRef(), document.activeElement)) {
+				sap.ui.getCore().byId(this._sFocusControlId).focus();
+			}
+		}
+	};
 
 	var that = this;
 	this.oPopup._applyPosition = function(oPosition, bFromResize){
@@ -1237,6 +1251,7 @@ sap.m.Popover.prototype.init = function(){
 
 		that._deregisterContentResizeHandler();
 		sap.ui.core.Popup.prototype.close.apply(this, Array.prototype.slice.call(arguments, 1));
+		that.removeDelegate(that._oRestoreFocusDelegate);
 	};
 };
 
@@ -1314,10 +1329,6 @@ sap.m.Popover.prototype.onAfterRendering = function(){
 			this._marginTopInit = true;
 		}
 	}
-	
-	if(this.isOpen()){
-		this._restoreFocus();
-	}
 };
 
 /**
@@ -1330,6 +1341,9 @@ sap.m.Popover.prototype.exit = function(){
 	sap.ui.Device.resize.detachHandler(this._fnOrientationChange);
 
 	sap.m.InstanceManager.removePopoverInstance(this);
+
+	this.removeDelegate(this._oRestoreFocusDelegate);
+	this._oRestoreFocusDelegate = null;
 
 	if(this.oPopup){
 		this.oPopup.detachClosed(this._handleClosed, this);
@@ -1437,11 +1451,17 @@ sap.m.Popover.prototype.openBy = function(oControl, bSkipInstanceManager){
 		var that = this;
 		var fCheckAndOpen = function(){
 			if(oPopup.getOpenState() === sap.ui.core.OpenState.CLOSING){
-				setTimeout(fCheckAndOpen, 150);
+				if (that._sOpenTimeout) {
+					clearTimeout(that._sOpenTimeout);
+					that._sOpenTimeout = null;
+				}
+				that._sOpenTimeout = setTimeout(fCheckAndOpen, 150);
 			}else{
 				// Save current focused element to restore the focus after closing the dialog
 				that._oPreviousFocus = sap.ui.core.Popup.getCurrentFocusInfo();
 				oPopup.open();
+				// delegate must be added after calling open on popup because popup should position the content first and then focus can be reset
+				that.addDelegate(that._oRestoreFocusDelegate, that);
 				//if popover shouldn't be managed by Instance Manager
 				//e.g. SplitContainer in PopoverMode, the popover which contains the master area should be managed by the SplitContainer control
 				if(!bSkipInstanceManager){
@@ -1473,14 +1493,16 @@ sap.m.Popover.prototype.close = function(){
 	// beforeCloseEvent is already fired here, the parameter true needs to be passed into the popup's close method.
 	this.oPopup.close(true);
 
-	// if the current focused control/element is the same as the focused control/element before popover is open, no need to restore focus.
-	bSameFocusElement = (this._oPreviousFocus.sFocusId === sap.ui.getCore().getCurrentFocusedControlId()) ||
-							(this._oPreviousFocus.sFocusId === document.activeElement.id);
+	if (this._oPreviousFocus) {
+		// if the current focused control/element is the same as the focused control/element before popover is open, no need to restore focus.
+		bSameFocusElement = (this._oPreviousFocus.sFocusId === sap.ui.getCore().getCurrentFocusedControlId()) ||
+								(this._oPreviousFocus.sFocusId === document.activeElement.id);
 
-	// restore previous focus, if the current control isn't the same control as
-	if(!bSameFocusElement && this.oPopup.restoreFocus && this._oPreviousFocus){
-		sap.ui.core.Popup.applyFocusInfo(this._oPreviousFocus);
-		this._oPreviousFocus = null;
+		// restore previous focus, if the current control isn't the same control as
+		if(!bSameFocusElement && this.oPopup.restoreFocus){
+			sap.ui.core.Popup.applyFocusInfo(this._oPreviousFocus);
+			this._oPreviousFocus = null;
+		}
 	}
 
 	return this;
@@ -1955,11 +1977,48 @@ sap.m.Popover.prototype._calcBestPos = function() {
 		}
 	}
 };
+
+/**
+ * Return width of the element, for IE specific return the float number of width
+ * @protected
+*/
+sap.m.Popover.width = function(oElement) {
+	if (sap.ui.Device.browser.msie) {
+		var sWidth = window.getComputedStyle(oElement,null).getPropertyValue("width");
+		return Math.ceil(parseFloat(sWidth));
+	} else {
+		return jQuery(oElement).width();
+	}
+	
+};
+
+/**
+ * calculate outerWidth of the element, for IE specific return the float number of width
+ * @protected
+*/
+sap.m.Popover.outerWidth = function(oElement, bIncludeMargin) {
+	var iWidth = sap.m.Popover.width(oElement),
+		iPaddingLeft = parseInt(jQuery(oElement).css("padding-left"), 10),
+		iPaddingRight = parseInt(jQuery(oElement).css("padding-right"), 10),
+		iBorderLeftWidth = parseInt(jQuery(oElement).css("border-left-width"), 10),
+		iBorderRightWidth = parseInt(jQuery(oElement).css("border-right-width"), 10);
+		
+	var iOuterWidth = iWidth + iPaddingLeft + iPaddingRight + iBorderLeftWidth + iBorderRightWidth;
+	
+	if(bIncludeMargin){
+		var iMarginLeft = parseInt(jQuery(oElement).css("margin-left"), 10),
+			iMarginRight = parseInt(jQuery(oElement).css("margin-right"), 10);
+		iOuterWidth = iOuterWidth + iMarginLeft + iMarginRight;
+	}
+	return iOuterWidth;
+};
+
 /**
  * Rearrange the arrow and the popover position.
  * @private
  */
 sap.m.Popover.prototype._setArrowPosition = function() {
+	var oPopoverClass = sap.m.Popover;
 	var ePopupState = this.oPopup.getOpenState();
 	if(!(ePopupState === sap.ui.core.OpenState.OPEN || ePopupState === sap.ui.core.OpenState.OPENING)){
 		return;
@@ -1979,7 +2038,7 @@ sap.m.Popover.prototype._setArrowPosition = function() {
 		$offset = $this.offset(),
 		iOffsetX = this._getOffsetX(),
 		iOffsetY = this._getOffsetY(),
-		iWidth = $this.outerWidth(),
+		iWidth = oPopoverClass.outerWidth($this[0]),
 		iHeight = $this.outerHeight(),
 		$content = this.$("cont"),
 		$scrollArea = $content.children(".sapMPopoverScroll"),
@@ -2006,7 +2065,7 @@ sap.m.Popover.prototype._setArrowPosition = function() {
 	var iWindowLeft = this._$window.scrollLeft(),
 		iWindowTop = this._$window.scrollTop(),
 		iWindowRight = this._$window.width(),
-		iWindowBottom = (sap.m.Popover._bIOS7 && sap.ui.Device.orientation.landscape && window.innerHeight) ? window.innerHeight : this._$window.height(),
+		iWindowBottom = (oPopoverClass._bIOS7 && sap.ui.Device.orientation.landscape && window.innerHeight) ? window.innerHeight : this._$window.height(),
 		iDocumentWidth = iWindowLeft + iWindowRight,
 		iDocumentHeight = iWindowTop + iWindowBottom;
 	
@@ -2022,7 +2081,7 @@ sap.m.Popover.prototype._setArrowPosition = function() {
 	switch(sPlacement){
 		case sap.m.PlacementType.Left:
 			if (bRtl){
-				iMarginLeft = $parent.offset().left + $parent.outerWidth() + this._arrowOffset + iOffsetX;
+				iMarginLeft = $parent.offset().left + oPopoverClass.outerWidth($parent[0], false) + this._arrowOffset + iOffsetX;
 			} else {
 				iMarginRight = iDocumentWidth - $parent.offset().left + this._arrowOffset - iOffsetX;
 			}
@@ -2031,7 +2090,7 @@ sap.m.Popover.prototype._setArrowPosition = function() {
 			if (bRtl){
 				iMarginRight = iDocumentWidth - $parent.offset().left + this._arrowOffset - iOffsetX;
 			} else {
-				iMarginLeft = $parent.offset().left + $parent.outerWidth() + this._arrowOffset + iOffsetX;
+				iMarginLeft = $parent.offset().left + oPopoverClass.outerWidth($parent[0], false) + this._arrowOffset + iOffsetX;
 			}
 			break;
 		case sap.m.PlacementType.Top:
@@ -2097,11 +2156,11 @@ sap.m.Popover.prototype._setArrowPosition = function() {
 	});
 	
 	//update size of the popover for arrow position calculation
-	iWidth = $this.outerWidth();
+	iWidth = oPopoverClass.outerWidth( $this[0]);
 	iHeight = $this.outerHeight();
 	
 	//adapt the width to screen
-	if(sPlacement === sap.m.PlacementType.Left){
+	if(sPlacement === (bRtl ? sap.m.PlacementType.Right : sap.m.PlacementType.Left)){
 		iMaxWidth = $this.offset().left + iWidth - this._marginLeft;
 	}else{
 		iMaxWidth = iDocumentWidth - $this.offset().left - this._marginRight;
@@ -2131,7 +2190,7 @@ sap.m.Popover.prototype._setArrowPosition = function() {
 	$content.css(oCSS);
 
 	//disable the horizontal scrolling when content inside can fit the container.
-	if($scrollArea.outerWidth(true) <= $content.width()){
+	if(oPopoverClass.outerWidth($scrollArea[0] ,true) <= oPopoverClass.width($content[0])){
 		$scrollArea.css("display", "block");
 	}
 	
@@ -2143,14 +2202,14 @@ sap.m.Popover.prototype._setArrowPosition = function() {
 		$arrow.css("top", iPosArrow);
 	}else if(sPlacement === sap.m.PlacementType.Top || sPlacement === sap.m.PlacementType.Bottom){
 		if(bRtl){
-			iPosArrow =  $this.offset().left + $this.outerWidth(false) - ($parent.offset().left + $parent.outerWidth(false)) + iPopoverBorderRight + iOffsetX + 0.5 * ($parent.outerWidth(false) - $arrow.outerWidth(false));
+			iPosArrow =  $this.offset().left + oPopoverClass.outerWidth($this[0], false) - ($parent.offset().left + oPopoverClass.outerWidth($parent[0], false)) + iPopoverBorderRight + iOffsetX + 0.5 * (oPopoverClass.outerWidth($parent[0], false) - oPopoverClass.outerWidth($arrow[0], false));
 			iPosArrow = Math.max(iPosArrow, this._arrowOffsetThreshold);
-			iPosArrow = Math.min(iPosArrow, iWidth - this._arrowOffsetThreshold - $arrow.outerWidth());
+			iPosArrow = Math.min(iPosArrow, iWidth - this._arrowOffsetThreshold - oPopoverClass.outerWidth($arrow[0], false));
 			$arrow.css("right", iPosArrow);
 		} else {
-			iPosArrow = $parent.offset().left - $this.offset().left - iPopoverBorderLeft + iOffsetX + 0.5 * ($parent.outerWidth(false) - $arrow.outerWidth(false));
+			iPosArrow = $parent.offset().left - $this.offset().left - iPopoverBorderLeft + iOffsetX + 0.5 * (oPopoverClass.outerWidth($parent[0], false) - oPopoverClass.outerWidth($arrow[0], false));
 			iPosArrow = Math.max(iPosArrow, this._arrowOffsetThreshold);
-			iPosArrow = Math.min(iPosArrow, iWidth - this._arrowOffsetThreshold - $arrow.outerWidth());
+			iPosArrow = Math.min(iPosArrow, iWidth - this._arrowOffsetThreshold - oPopoverClass.outerWidth($arrow[0], false));
 			$arrow.css("left", iPosArrow);
 		}
 	}
@@ -2387,11 +2446,13 @@ sap.m.Popover.prototype._getOpenByDomRef = function() {
 
 	// attach popup to:
 	// - the given DOM element or
-	// - to the inner element of the Button, ToggleButton if inner element exists otherwise focusDomRef (for example Buttons in SegmentedButton) 
-	// - to focusDomRef of all other controls (Input control returns inner element from getFocusDomRef)
-	return (this._oOpenBy instanceof sap.ui.core.Element) ?
-			((this._oOpenBy instanceof sap.m.Button) ? (this._oOpenBy.getDomRef("inner") || this._oOpenBy.getFocusDomRef()) : this._oOpenBy.getFocusDomRef())
-			: this._oOpenBy;
+	// - the specified anchor DOM reference provided by function getPopupAnchorDomRef
+	// - focusDomRef when getPopupAnchorDomRef isn't implemented
+	if (this._oOpenBy instanceof sap.ui.core.Element) {
+		return (this._oOpenBy.getPopupAnchorDomRef && this._oOpenBy.getPopupAnchorDomRef()) || this._oOpenBy.getFocusDomRef();
+	} else {
+		return this._oOpenBy;
+	}
 };
 
 /**
@@ -2708,11 +2769,10 @@ sap.m.Popover.prototype.destroyAggregation = function(sAggregationName, bSuppres
 };
 
 sap.m.Popover.prototype.invalidate = function(oOrigin){
-	if(this.isOpen()){
-		//when popover is invalidated while is open, the content of popover is rendered manually in order to keep
-		//the autoclose function of non modal popver still working.
-		sap.m.PopoverRenderer.rerenderContentOnly(this);
+	if (this.isOpen()) {
+		sap.ui.core.Control.prototype.invalidate.apply(this, arguments);
 	}
+	return this;
 };
 
 sap.m.Popover.prototype.addAggregation = function(sAggregationName, oObject, bSuppressInvalidate){

@@ -59,7 +59,7 @@ jQuery.sap.require("sap.ui.table.Table");
  * @extends sap.ui.table.Table
  *
  * @author  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -302,6 +302,22 @@ sap.ui.table.AnalyticalTable.prototype._bindAggregation = function(sName, sPath,
 	return sap.ui.table.Table.prototype._bindAggregation.apply(this, arguments);
 };
 
+/**
+ * handler for change events of the binding
+ * @param {sap.ui.base.Event} oEvent change event
+ * @private
+ */
+sap.ui.table.AnalyticalTable.prototype._onBindingChange = function(oEvent) {
+	sap.ui.table.Table.prototype._onBindingChange.apply(this, arguments);
+	// the column menus have to be invalidated when the amount
+	// of data changes in the Table; this happens on normal changes
+	// of the Table as well as when filtering  
+	var sReason = typeof(oEvent) === "object" ? oEvent.getParameter("reason") : oEvent;
+	if (sReason !== "sort") {
+		this._invalidateColumnMenus(); 
+	}
+};
+
 sap.ui.table.AnalyticalTable.prototype.bindRows = function(oBindingInfo) {
 	var sPath,
 		oTemplate,
@@ -341,6 +357,25 @@ sap.ui.table.AnalyticalTable.prototype.bindRows = function(oBindingInfo) {
 	this._bSupressRefresh = true;
 	this._updateColumns();
 	this._bSupressRefresh = false;
+	
+	var oBinding = this.getBinding("rows");
+	var that = this;
+	oBinding.attachContextChange(function(oEvent) {
+		if (!that._oSelection) {
+			return;
+		}
+		var oParameters = oEvent.getParameters(),
+			sType = oParameters.type,
+			iIndex = oParameters.index,
+			iLength = oParameters.length;
+		
+		if (sType === "remove") {
+			that._oSelection.sliceSelectionInterval(iIndex, Math.max(iIndex, iIndex + iLength - 1));
+		} else {
+			that._oSelection.moveSelectionInterval(iIndex, iLength);
+		}
+	});
+	
 	return vReturn;
 };
 
@@ -411,17 +446,23 @@ sap.ui.table.AnalyticalTable.prototype._updateTableContent = function() {
 			$ths = $ths.not(":nth-child(1)");
 		}
 		var iOffset = $ths.get(0).getBoundingClientRect().left;
-		var iMaxGroupHeaderWidth = 32 + $ths.get(this._getFirstMeasureColumnIndex()).getBoundingClientRect().left - iOffset;
-		sMaxGroupHeaderWidth = iMaxGroupHeaderWidth + "px";
+		var $FirstMeasureColumn = $ths.get(this._getFirstMeasureColumnIndex());
+		if ($FirstMeasureColumn) {
+			var iMaxGroupHeaderWidth = 32 + $FirstMeasureColumn.getBoundingClientRect().left - iOffset;
+			sMaxGroupHeaderWidth = iMaxGroupHeaderWidth + "px";
+		} else {
+			sMaxGroupHeaderWidth = "none";
+		}
 	} else {
 		sMaxGroupHeaderWidth = "none";
 	}
 
-	for (var iRow = 0; iRow < iCount; iRow++) {
+	var aRows = this.getRows();
+	for (var iRow = 0, l = Math.min(iCount, aRows.length); iRow < l; iRow++) {
 		var bIsFixedRow = iRow > (iCount - iFixedBottomRowCount - 1) && oBinding.getLength() > iCount,
 			iRowIndex = bIsFixedRow ? (oBinding.getLength() - 1 - (iCount - 1 - iRow)) : iFirstRow + iRow,
 			oContextInfo = this.getContextInfoByIndex(iRowIndex),
-			oRow = this.getRows()[iRow],
+			oRow = aRows[iRow],
 			$row = oRow.$(),
 			$fixedRow = oRow.$("fixed"),
 			$rowHdr = this.$().find("div[data-sap-ui-rowindex=" + $row.attr("data-sap-ui-rowindex") + "]"),
@@ -522,12 +563,7 @@ sap.ui.table.AnalyticalTable.prototype.onsapselect = function(oEvent) {
 			$TargetDIV = $Target.closest('div.sapUiTableRowHdr');
 		if ($TargetDIV.hasClass('sapUiTableGroupHeader') && $TargetDIV.hasClass('sapUiTableRowHdr')) {
 			var iRowIndex = this.getFirstVisibleRow() + parseInt($TargetDIV.attr("data-sap-ui-rowindex"), 10);
-			var oBinding = this.getBinding("rows"),
-				oContextInfo = oBinding.getContextInfo(iRowIndex);
-			
-			if (oContextInfo.childCount > 0) {
-				this._oSelection.sliceSelectionInterval(iRowIndex + 1, Math.max(iRowIndex + 1, iRowIndex + oContextInfo.childCount));
-			}
+			var oBinding = this.getBinding("rows");
 			oBinding.toggleIndex(iRowIndex);
 			this.updateRows();
 			return;
@@ -543,12 +579,7 @@ sap.ui.table.AnalyticalTable.prototype._onNodeSelect = function(oEvent) {
 	var $parent = jQuery(oEvent.target).parent();
 	if ($parent.length > 0) {
 		var iRowIndex = this.getFirstVisibleRow() + parseInt($parent.attr("data-sap-ui-rowindex"), 10);
-		var oBinding = this.getBinding("rows"),
-			oContextInfo = oBinding.getContextInfo(iRowIndex);
-		
-		if (oContextInfo.childCount > 0) {
-			this._oSelection.sliceSelectionInterval(iRowIndex + 1, Math.max(iRowIndex + 1, iRowIndex + oContextInfo.childCount));
-		}
+		var oBinding = this.getBinding("rows");
 		oBinding.toggleIndex(iRowIndex);
 		this.updateRows();
 	}
@@ -578,24 +609,21 @@ sap.ui.table.AnalyticalTable.prototype._getGroupHeaderMenu = function() {
 
 	var that = this;
 	function getGroupColumnInfo() {
-		var aColumns = that.getColumns(),
-			iFoundGroups = 0,
-			oColumn;
-
-		for (var i=0; i<aColumns.length; i++) {
-			oColumn = aColumns[i];
-			if (oColumn.getGrouped()) {
-				iFoundGroups++;
-				if (iFoundGroups == that._iGroupedLevel) {
-					return {
-						column: oColumn,
-						index: i
-					};
+		var iIndex = that._iGroupedLevel - 1;
+		if(that._aGroupedColumns[iIndex]) {
+			var oColumn = that.getColumns().filter(function(oColumn){
+				if(that._aGroupedColumns[iIndex] === oColumn.getId()) {
+					return true;
 				}
-			}
+			})[0];
+
+			return {
+				column: oColumn,
+				index: jQuery.inArray(oColumn, that.getColumns()) + 1
+			};
+		}else {
+			return undefined;
 		}
-		
-		return undefined;
 	}
 
 	if (!this._oGroupHeaderMenu) {
@@ -778,10 +806,6 @@ sap.ui.table.AnalyticalTable.prototype.collapse = function(iRowIndex) {
 	var oBinding = this.getBinding("rows");
 	if (oBinding) {
 		var oContext = this.getContextByIndex(iRowIndex);
-		var oContextInfo = oBinding.getContextInfo(iRowIndex);
-		if (oContextInfo.childCount > 0) {
-			this._oSelection.sliceSelectionInterval(iRowIndex + 1, iRowIndex + 1 + oContextInfo.childCount);
-		}
 		oBinding.collapse(oContext);
 		this.updateRows();
 	}
@@ -794,6 +818,26 @@ sap.ui.table.AnalyticalTable.prototype.isExpanded = function(iRowIndex) {
 		return oBinding.isExpanded(oContext);
 	}
 	return false;
+};
+
+sap.ui.table.AnalyticalTable.prototype.selectAll = function() {
+	sap.ui.table.Table.prototype.selectAll.apply(this);
+	var oSelMode = this.getSelectionMode();
+	if (!this.getEnableSelectAll() || (oSelMode != "Multi" && oSelMode != "MultiToggle")) {
+		return this;
+	}
+	var oBinding = this.getBinding("rows");
+	if (oBinding) {
+		var iLength = (oBinding.getLength() || 0);
+		for (var i=0; i<iLength; i++) {
+			var oContextInfo = this.getContextInfoByIndex(i);
+			if (oContextInfo.sum || oBinding.indexHasChildren(i)) {
+				this._oSelection.removeSelectionInterval(i,i);
+			}
+		}
+		this.$("selall").attr('title',this._oResBundle.getText("TBL_DESELECT_ALL")).removeClass("sapUiTableSelAll");
+	}
+	return this;
 };
 
 sap.ui.table.AnalyticalTable.prototype.getContextInfoByIndex = function(iIndex) {
@@ -809,7 +853,7 @@ sap.ui.table.AnalyticalTable.prototype._onColumnMoved = function(oEvent) {
 sap.ui.table.AnalyticalTable.prototype.addColumn = function(vColumn, bSuppressInvalidate) {
 	var oColumn = this._getColumn(vColumn);
 	if (oColumn.getGrouped()) {
-		this._aGroupedColumns.push(oColumn.getId());
+		this._addGroupedColumn(oColumn.getId());
 	}
 	return sap.ui.table.Table.prototype.addColumn.call(this, oColumn, bSuppressInvalidate);
 };
@@ -817,7 +861,7 @@ sap.ui.table.AnalyticalTable.prototype.addColumn = function(vColumn, bSuppressIn
 sap.ui.table.AnalyticalTable.prototype.insertColumn = function(vColumn, iIndex, bSuppressInvalidate) {
 	var oColumn = this._getColumn(vColumn);
 	if (oColumn.getGrouped()) {
-		this._aGroupedColumns.push(oColumn.getId());
+		this._addGroupedColumn(oColumn.getId());
 	}
 	return sap.ui.table.Table.prototype.insertColumn.call(this, oColumn, iIndex, bSuppressInvalidate);
 };
@@ -964,63 +1008,80 @@ sap.ui.table.AnalyticalTable.prototype._updateTableColumnDetails = function() {
 
 	if (oResult) {
 		var aColumns = this.getColumns(),
-			iColCount = aColumns.length,
-			bLastAndGroupedFound = false,
 			aGroupedDimensions = [],
-			iGroupedColumns = 0,
-			iGroupableColumns = 0,
+			aUngroupedDimensions = [],
+			aDimensions = [],
+			oDimensionIndex = {},
 			oColumn,
-			oDimension,
-			iDimensionIndex;
+			oDimension;
 
-		for (var i=iColCount-1; i>=0; i--) {
+		// calculate an index of all dimensions and their columns. Grouping is done per dimension.
+		for(var i = 0; i < aColumns.length; i++) {
 			oColumn = aColumns[i];
 			oColumn._isLastGroupableLeft = false;
 			oColumn._bLastGroupAndGrouped = false;
 			oColumn._bDependendGrouped = false;
 			
+			// ignore invisible columns
 			if (!oColumn.getVisible()) {
 				continue;
 			}
-			
-			oDimension = oResult.findDimensionByPropertyName(oColumn.getLeadingProperty());
-			
-			if (oDimension) {
-				iGroupableColumns++;
-				if (oColumn.getGrouped()) {
-					aGroupedDimensions[i] = oDimension;
-					iGroupedColumns++;
+
+			var sLeadingProperty = oColumn.getLeadingProperty();
+			oDimension = oResult.findDimensionByPropertyName(sLeadingProperty);
+
+			if(oDimension) {
+				var sDimensionName = oDimension.getName();
+				if(!oDimensionIndex[sDimensionName]) {
+					oDimensionIndex[sDimensionName] = {dimension: oDimension, columns: [oColumn]};
+				}
+				else {
+					oDimensionIndex[sDimensionName].columns.push(oColumn);
+				}
+
+				// if one column of a dimension is grouped, the dimension is considered as grouped.
+				// all columns which are not explicitly grouped will be flagged as dependendGrouped in the next step
+				if(oColumn.getGrouped() && jQuery.inArray(sDimensionName, aGroupedDimensions) == -1) {
+					aGroupedDimensions.push(sDimensionName);
+				}
+
+				if(jQuery.inArray(sDimensionName, aDimensions) == -1) {
+					aDimensions.push(sDimensionName);
 				}
 			}
-			
-			if (!bLastAndGroupedFound && oDimension) {
-				if (oColumn.getGrouped()) {
-					oColumn._bLastGroupAndGrouped = true;
-				}
-				bLastAndGroupedFound = true;
-			}
-			
 		}
-		
-		for (var i=iColCount-1; i>=0; i--) {
-			oColumn = aColumns[i];
-			
-			if (!oColumn.getVisible()) {
-				continue;
-			}
-			
-			oDimension = oResult.findDimensionByPropertyName(oColumn.getLeadingProperty());
-			iDimensionIndex = jQuery.inArray(oDimension, aGroupedDimensions);
-			
-			if (iDimensionIndex > -1 && iDimensionIndex != i && !oColumn._bLastGroupAndGrouped) {
-				oColumn._bDependendGrouped = true;
-			}
-			
-			if (oDimension && !oColumn.getGrouped() && oColumn.getVisible() && iGroupedColumns + 1 == iGroupableColumns) {
-				oColumn._isLastGroupableLeft = true;
-			}
+
+		aUngroupedDimensions = jQuery.grep(aDimensions, function (s) {
+			return (jQuery.inArray(s, aGroupedDimensions) == -1);
+		});
+
+		// for all grouped dimensions
+		if(aGroupedDimensions.length > 0) {
+			// calculate and flag the dependendly grouped columns of the dimension
+			jQuery.each(aGroupedDimensions, function(i, s) {
+				jQuery.each(oDimensionIndex[s].columns, function(j, o) {
+					if(!o.getGrouped()) {
+						o._bDependendGrouped = true;
+					}
+				});
+			});
+
+			// if there is only one dimension left, their columns must remain visible even though they are grouped. 
+			// this behavior is controlled by the flag _bLastGroupAndGrouped
+			if(aGroupedDimensions.length == aDimensions.length) {
+				oDimension = oResult.findDimensionByPropertyName(sap.ui.getCore().byId(this._aGroupedColumns[this._aGroupedColumns.length - 1]).getLeadingProperty());
+				var aGroupedDimensionColumns = oDimensionIndex[oDimension.getName()].columns;
+				jQuery.each(aGroupedDimensionColumns, function(i, o) {
+					o._bLastGroupAndGrouped = true;
+				});
+			} 
 		}
-		
+
+		if(aUngroupedDimensions.length == 1) {
+			jQuery.each(oDimensionIndex[aUngroupedDimensions[0]].columns, function(j, o) {
+				o._isLastGroupableLeft = true;
+			});
+		}
 	}
 };
 
@@ -1051,15 +1112,32 @@ sap.ui.table.AnalyticalTable.prototype.getTotalSize = function() {
 	return 0;
 };
 
+sap.ui.table.AnalyticalTable.prototype._hasData = function() {
+	var oBinding = this.getBinding("rows"),
+		iLength = oBinding && (oBinding.getLength() || 0),
+		bHasTotal = oBinding && oBinding.hasGrandTotalDisplayed();
+	
+	if (!oBinding || (bHasTotal && iLength < 2) || (!bHasTotal && iLength === 0)) {
+		return false;
+	}
+	return true;
+};
+
 sap.ui.table.AnalyticalTable.prototype._onPersoApplied = function() {
 	sap.ui.table.Table.prototype._onPersoApplied.apply(this, arguments);
 	this._aGroupedColumns = [];
 	var aColumns = this.getColumns();
 	for (var i = 0, l = aColumns.length; i < l; i++) {
 		if (aColumns[i].getGrouped()) {
-			this._aGroupedColumns.push(aColumns[i].getId());
+			this._addGroupedColumn(aColumns[i].getId());
 		}
 	}
 	this._updateTableColumnDetails();
 	this.updateAnalyticalInfo();
+};
+
+sap.ui.table.AnalyticalTable.prototype._addGroupedColumn = function(sColumn) {
+	if(jQuery.inArray(sColumn, this._aGroupedColumns) < 0) {
+		this._aGroupedColumns.push(sColumn);
+	}
 };

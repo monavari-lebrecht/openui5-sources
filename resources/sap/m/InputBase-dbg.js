@@ -61,7 +61,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -403,6 +403,19 @@ jQuery.sap.require("sap.ui.core.IconPool");
 sap.ui.core.EnabledPropagator.call(sap.m.InputBase.prototype);
 sap.ui.core.IconPool.insertFontFaceStyle();
 
+/* Android browser does not scroll a focused input into the view correctly */
+if (sap.ui.Device.os.android && sap.ui.Device.os.version >= 4){
+	jQuery(window).on("resize", function(){
+		var active = document.activeElement;
+		if(active.tagName == "INPUT" && active.classList.contains("sapMInputBaseInner")){
+			window.setTimeout(function(){
+				active.scrollIntoViewIfNeeded();
+			}, 0);
+		}
+	});
+}
+
+
 /* =========================================================== */
 /* Private methods and properties                              */
 /* =========================================================== */
@@ -430,10 +443,10 @@ sap.m.InputBase.prototype._bShowLabelAsPlaceholder = (function(oDevice) {
 
 	// we exclude not right alignable placeholders
 	// check test page : http://jsfiddle.net/89FhB/
-	if (oDevice.os.android && oDevice.os.android.version < 4.4) {
+	if (oDevice.os.android && oDevice.os.version < 4.4) {
 		return true;
 	}
-	
+
 }(sap.ui.Device));
 
 /* ----------------------------------------------------------- */
@@ -632,6 +645,9 @@ sap.m.InputBase.prototype.onChange = function(oEvent) {
 		// save the value on change
 		this.setValue(sValue);
 
+		// get the value back maybe formatted
+		sValue = this.getValue();
+
 		// remember the last value on change
 		this._lastValue = sValue;
 
@@ -790,31 +806,6 @@ sap.m.InputBase.prototype.oncut = function(oEvent) {
 sap.m.InputBase.prototype.selectText = function(iSelectionStart, iSelectionEnd) {
 	jQuery(this.getFocusDomRef()).selectText(iSelectionStart, iSelectionEnd);
 	return this;
-};
-
-/**
- * Detect whether the key pressed is a "special" key.
- *
- * @param {jQuery.Event} oEvent The event fired on the input field.
- * @returns {boolean}
- * @protected
- * @since 1.22.1
- * @name sap.m.InputBase#isSpecialKey
- * @static
- */
-sap.m.InputBase.isSpecialKey = function(oEvent) {
-	var mKeyCodes = jQuery.sap.KeyCodes,
-		iKeyCode = oEvent.which;	// jQuery oEvent.which normalizes oEvent.keyCode and oEvent.charCode
-
-	return (oEvent.type === "keypress" && oEvent.ctrlKey) ||
-			(iKeyCode >= 16 && iKeyCode <= 20) || 	// SHIFT, CONTROL, ALT, BREAK, CAPS_LOCK
-			(iKeyCode >= 33 && iKeyCode <= 40) || 	// PAGE_UP, PAGE_DOWN, END, HOME, ARROW_LEFT, ARROW_UP, ARROW_RIGHT, ARROW_DOWN
-			(iKeyCode >= 44 && iKeyCode <= 46) || 	// PRINT, INSERT, DELETE
-			(iKeyCode >= 112 && iKeyCode <= 123) ||	// F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12
-			(iKeyCode === mKeyCodes.BACKSPACE) || 	// BACKSPACE
-			(iKeyCode === mKeyCodes.TAB) ||			// TAB
-			(iKeyCode === mKeyCodes.ENTER) ||		// ENTER
-			(iKeyCode === mKeyCodes.ESCAPE);		// ESCAPE
 };
 
 /**

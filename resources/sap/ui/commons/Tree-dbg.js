@@ -63,7 +63,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -590,11 +590,10 @@ sap.ui.commons.Tree.prototype.init = function(){
    this.oSelectedNode = null;
    this.oSelectedContext = null;
 
-//STS
    this.oSelectedNodeMap = {};
    this.oSelectedContextMap = {}; 
-//STS
-      
+
+
    this.iOldScrollTop = null;
 
    //Create Buttons for Header
@@ -887,10 +886,12 @@ sap.ui.commons.Tree.prototype.adjustFocus = function(){
 		var aDomVisiblePrecedingNodes = aDomPrecedingNodes.filter(":visible");
 		var oNewFocusNode		= aDomVisiblePrecedingNodes[aDomVisiblePrecedingNodes.length-1];
 
-		oNewFocusNode.setAttribute("tabindex", "0");
+		if(oNewFocusNode) {
+			oNewFocusNode.setAttribute("tabindex", "0");
 
-		if( jQuery(".sapUiTreeNode:focus").is(":not(:visible)")){
-			oNewFocusNode.focus();
+			if( jQuery(".sapUiTreeNode:focus").is(":not(:visible)")){
+				oNewFocusNode.focus();
+			}
 		}
 
 	}
@@ -1093,7 +1094,7 @@ sap.ui.commons.Tree.prototype.onBeforeRendering = function() {
 	this.iOldScrollTop = this.$("TreeCont").scrollTop();
 };
 
-// STS
+
 sap.ui.commons.Tree.prototype._setSelectedNode = function(oNode, bSuppressEvent) {
 	var bDoSelect = true;
 	if (!bSuppressEvent) {
@@ -1149,4 +1150,4 @@ sap.ui.commons.Tree.prototype._setSelectedNodeMap = function(oNode, bSuppressEve
 	}
 
 };
-// STS
+

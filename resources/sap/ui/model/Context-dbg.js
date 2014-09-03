@@ -20,7 +20,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/EventProvider'],
 	 * Context elements are created either by the ListBinding for each list entry
 	 * or by using createBindingContext.
 	 *
-	 * @param {sap.ui.model.Model} the model
+	 * @param {sap.ui.model.Model} oModel the model
 	 * @param {String} sPath the path
 	 * @param {Object} oContext the context object
 	 * @abstract

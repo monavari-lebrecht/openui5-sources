@@ -56,7 +56,7 @@ sap.ui.define(['sap/ui/core/library','./SearchProvider','jquery.sap.encoder'], f
  * @extends sap.ui.core.search.SearchProvider
  *
  * @author  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public

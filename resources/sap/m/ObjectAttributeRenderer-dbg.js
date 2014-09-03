@@ -26,9 +26,12 @@ sap.m.ObjectAttributeRenderer.render = function(oRm, oOA) {
 		oRm.addClass("sapMObjectAttributeDiv"); 
 		if(oOA.getActive()){
 			oRm.addClass("sapMObjectAttributeActive");
+			oRm.writeAttribute("tabindex", "0");
+		} else {
+			oRm.writeAttribute("tabindex", "-1");
 		}
 		oRm.writeClasses();
-		
+
 		var sTooltip = oOA.getTooltip_AsString();
 		if (sTooltip) {
 			oRm.writeAttributeEscaped("title", sTooltip);

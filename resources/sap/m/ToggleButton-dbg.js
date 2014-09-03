@@ -56,7 +56,7 @@ jQuery.sap.require("sap.m.Button");
  * @extends sap.m.Button
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public

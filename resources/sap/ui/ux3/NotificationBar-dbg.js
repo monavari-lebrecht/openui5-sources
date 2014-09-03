@@ -59,7 +59,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -1357,7 +1357,7 @@ sap.ui.core.Control.extend("sap.ui.ux3.NotificationBar.MessageView", {
 
 			// create key for description text
 			var iCount = oMN.getMessages().length;
-			var sKey = "NOTIBAR_MESSAGE_NOTIFIER_DESC_LEVEL_" + (sLvl.toUpperCase() + iCount === 1 ? "SING" : "PL");
+			var sKey = "NOTIBAR_MESSAGE_NOTIFIER_DESC_LEVEL_" + sLvl.toUpperCase() + (iCount === 1 ? "_SING" : "_PL");
 
 			// set description (i.e. "3 messages available: Highest severity
 			// "Error")

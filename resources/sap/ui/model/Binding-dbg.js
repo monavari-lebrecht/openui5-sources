@@ -282,6 +282,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/EventProvider', './ChangeReason
 	 */
 	Binding.prototype.initialize = function() {
 		this.checkUpdate(true);
+		return this;
 	};
 	
 	/**

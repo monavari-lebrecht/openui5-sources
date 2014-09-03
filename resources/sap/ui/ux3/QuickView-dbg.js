@@ -78,7 +78,7 @@ jQuery.sap.require("sap.ui.commons.CalloutBase");
  * @extends sap.ui.commons.CalloutBase
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public

@@ -109,7 +109,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', './Element', 'j
 	 *
 	 * @extends sap.ui.base.ManagedObject
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @param {sap.ui.Core} oCore internal API of the <core>Core</code> that manages this UIArea
 	 * @param {object} [oRootNode] reference to the Dom Node that should be 'hosting' the UI Area.
 	 * @public

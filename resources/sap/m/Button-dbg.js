@@ -63,7 +63,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -842,27 +842,6 @@ sap.m.Button.prototype.setText = function(sText) {
 
 
 // Overwrite of generated function
-/** Property setter for enabled
- *
- * @param bEnabled
- * @return {sap.m.Button}
- * @public
- */
-sap.m.Button.prototype.setEnabled = function(bEnabled) {
-
-	if (this.getEnabled() !== bEnabled) {
-		this.setProperty("enabled", bEnabled, true);
-		this.$().prop("disabled", !bEnabled);
-		this.$("inner")
-			.toggleClass("sapMBtnDisabled", !bEnabled)
-			.toggleClass("sapMFocusable", bEnabled && sap.ui.Device.system.desktop);
-	}
-
-	return this;
-};
-
-
-// Overwrite of generated function
 /** Property setter for the icon
  *
 <<<<<<< rel-1.22
@@ -1049,4 +1028,14 @@ sap.m.Button.prototype._addTextPadding = function( bIconFirst) {
 			}
 		}
 	}
+};
+
+/**
+ * Defines to which DOM reference the Popup should be docked
+ * 
+ * @protected
+ * @returns {DomNode} the DOM reference that Popup should dock to
+ */
+sap.m.Button.prototype.getPopupAnchorDomRef = function() {
+	return this.getDomRef("inner");
 };

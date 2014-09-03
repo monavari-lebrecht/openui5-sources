@@ -52,7 +52,7 @@ sap.ui.define(['jquery.sap.global', './ExportType'],
 	 * @extends sap.ui.core.util.ExportType
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 1.22.0
 	 *
 	 * @constructor
@@ -143,7 +143,7 @@ sap.ui.define(['jquery.sap.global', './ExportType'],
 	 * @function
 	 */
 	CSV.prototype.escapeContent = function(sVal) {
-		if (sVal && sVal.indexOf(this.getSeparatorChar()) > -1 || sVal.indexOf('\r\n') > -1) {
+		if (sVal && (sVal.indexOf(this.getSeparatorChar()) > -1 || sVal.indexOf('\r\n') > -1)) {
 			sVal = sVal.replace(/"/g, '""');
 			sVal = '"' + sVal + '"';
 		}

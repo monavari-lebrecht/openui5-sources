@@ -67,7 +67,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -1030,25 +1030,15 @@ sap.m.Carousel.prototype.setActivePage = function (vPage) {
 		var iPageNr = this._getPageNumber(sPageId);
 		
 		if(!isNaN(iPageNr)) {
-			bPageFound = true;
 			if(this._oMobifyCarousel) {
 				//mobify carousel's move function is '1' based
 				this._oMobifyCarousel.move(iPageNr + 1);
-				this._changePage(iPageNr + 1);
 			}
 			// if oMobifyCarousel is not present yet, move takes place
 			// 'onAfterRendering', when oMobifyCarousel is created
 		} 
 	} 
-	
-	if(bPageFound) {
-		//active page shall only be set, if vPage has been 
-		//found amongst the carousel's pages
-		this.setAssociation("activePage", sPageId, true);
-	} else {
-		jQuery.sap.log.warning("sap.m.Carousel.prototype.setActivePage: Cannot set active page " + 
-	 	"because it is neither of type 'string' nor a 'sap.ui.core.Control'");
-	}
+	this.setAssociation("activePage", sPageId, true);
 	
 	return this;
 };

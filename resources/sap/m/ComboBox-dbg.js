@@ -59,7 +59,7 @@ jQuery.sap.require("sap.m.ComboBoxBase");
  * @extends sap.m.ComboBoxBase
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -286,7 +286,12 @@ sap.m.ComboBox.prototype._synchronizeSelection = function() {
 			// "selectedKey" property.
 			this.setAssociation("selectedItem", vItem, true);	// suppress re-rendering
 			this.setProperty("selectedItemId", vItem.getId(), true);	// suppress re-rendering
-			this.setValue(vItem.getText());
+
+			// update the value if it has not changed
+			if (this._sValue === this.getValue()) {
+				this.setValue(vItem.getText());
+			}
+
 			return;
 		}
 
@@ -749,6 +754,9 @@ sap.m.ComboBox.prototype.onsapescape = function(oEvent) {
 		// mark the event for components that needs to know if the event was handled
 		oEvent.setMarked();
 
+		// note: fix for Firefox
+		oEvent.preventDefault();
+
 		this.close();
 	} else {	// the picker is closed
 
@@ -769,7 +777,8 @@ sap.m.ComboBox.prototype.onsapenter = function(oEvent) {
 	// mark the event for components that needs to know if the event was handled
 	oEvent.setMarked();
 
-	if (!this.isOpen() || !this.getEnabled() || !this.getEditable()) {
+	// a non editable or disabled ComboBox, the selection cannot be modified
+	if (!this.getEnabled() || !this.getEditable()) {
 		return;
 	}
 
@@ -779,7 +788,9 @@ sap.m.ComboBox.prototype.onsapenter = function(oEvent) {
 	// no text selection
 	this.selectText(sValue.length, sValue.length);
 
-	this.close();
+	if (this.isOpen()) {
+		this.close();
+	}
 };
 
 /**
@@ -1376,8 +1387,9 @@ sap.m.ComboBox.prototype.setSelectedKey = function(sKey) {
 	}
 
 	// note: setSelectedKey() method sometimes is called
-	// before the items are added, in this case the "selectedItem" association
-	// and "selectedItemId" property need to be updated in onBeforeRendering()
+	// before the items are added, in this case the "selectedItem" association,
+	// "selectedItemId" and the "value" properties need to be updated in onBeforeRendering()
+	this._sValue = this.getValue();
 	return this.setProperty("selectedKey", sKey);	// update "selectedKey" property, re-rendering is needed
 };
 

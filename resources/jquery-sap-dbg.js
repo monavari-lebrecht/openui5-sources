@@ -8,7 +8,7 @@
 /** 
  * Device and Feature Detection API of the SAP UI5 Library.
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @namespace
  * @name sap.ui.Device
  * @public
@@ -31,7 +31,7 @@ if(typeof window.sap.ui !== "object"){
 
 	//Skip initialization if API is already available
 	if(typeof window.sap.ui.Device === "object" || typeof window.sap.ui.Device === "function" ){
-		var apiVersion = "1.22.4";
+		var apiVersion = "1.22.8";
 		window.sap.ui.Device._checkAPIVersion(apiVersion);
 		return;
 	}
@@ -85,7 +85,7 @@ if(typeof window.sap.ui !== "object"){
 	
 	//Only used internal to make clear when Device API is loaded in wrong version
 	device._checkAPIVersion = function(sVersion){
-		var v = "1.22.4";
+		var v = "1.22.8";
 		if(v != sVersion){
 			logger.log(WARNING, "Device API version differs: "+v+" <-> "+sVersion);
 		}
@@ -3585,7 +3585,7 @@ return URI;
 	 * @class Represents a version consisting of major, minor, patch version and suffix, e.g. '1.2.7-SNAPSHOT'.
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @constructor
 	 * @public
 	 * @since 1.15.0
@@ -3978,7 +3978,7 @@ return URI;
 	/**
 	 * Root Namespace for the jQuery plug-in provided by SAP AG.
 	 *
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @namespace
 	 * @public
 	 * @static
@@ -5151,7 +5151,7 @@ return URI;
 		function execModule(sModuleName) {
 			
 			var oModule = mModules[sModuleName],
-				sOldPrefix, oUri, sAbsoluteUrl;
+				sOldPrefix, sScript;
 			
 			if ( oModule && oModule.state === LOADED && typeof oModule.data !== "undefined" ) {
 				try {
@@ -5167,20 +5167,30 @@ return URI;
 					_execStack.push(sModuleName);
 					if ( typeof oModule.data === "function" ) {
 						oModule.data.apply(window);
-					} else if (_window.execScript && (!oModule.data || oModule.data.length < MAX_EXEC_SCRIPT_LENGTH) ) { 
-						try {
-							oModule.data && _window.execScript(oModule.data); // execScript fails if data is empty
-						} catch (e) {
-							_execStack.pop();
-							// eval again with different approach - should fail with a more informative exception
-							jQuery.sap.globalEval(oModule.data);
-							throw e; // rethrow err in case globalEval succeeded unexpectedly
-						}
 					} else {
-						// make URL absolute so Chrome displays the file tree correctly
-						oUri = URI(oModule.url);
-						sAbsoluteUrl = oUri.absoluteTo(sDocumentLocation);
-						_window.eval(oModule.data + "\r\n//# sourceURL=" + sAbsoluteUrl); // Firebug, Chrome and Safari debugging help, appending the string seems to cost ZERO performance
+
+						sScript = oModule.data;
+
+						// sourceURL: Firebug, Chrome, Safari and IE11 debugging help, appending the string seems to cost ZERO performance
+						// Note: IE11 supports sourceURL even when running in IE9 or IE10 mode
+						// Note: make URL absolute so Chrome displays the file tree correctly
+						// Note: do not append if there is already a sourceURL / sourceMappingURL
+						if (sScript && !sScript.match(/\/\/[#@] source(Mapping)?URL=.*$/)) {
+							sScript += "\n//# sourceURL=" + URI(oModule.url).absoluteTo(sDocumentLocation);
+						}
+
+						if (_window.execScript && (!oModule.data || oModule.data.length < MAX_EXEC_SCRIPT_LENGTH) ) { 
+							try {
+								oModule.data && _window.execScript(sScript); // execScript fails if data is empty
+							} catch (e) {
+								_execStack.pop();
+								// eval again with different approach - should fail with a more informative exception
+								jQuery.sap.globalEval(oModule.data);
+								throw e; // rethrow err in case globalEval succeeded unexpectedly
+							}
+						} else {
+							_window.eval(sScript);
+						}
 					}
 					_execStack.pop();
 					oModule.state = READY;
@@ -9103,6 +9113,8 @@ sap.ui.define("jquery.sap.events",['jquery.sap.global', 'jquery.sap.keycodes'],
 					oNewEvent.ctrlKey = oMappedEvent.ctrlKey;
 					oNewEvent.altKey = oMappedEvent.altKey;
 					oNewEvent.shiftKey = oMappedEvent.shiftKey;
+					// The simulated mouse event should always be clicked by the left key of the mouse
+					oNewEvent.button = (sap.ui.Device.browser.msie && sap.ui.Device.browser.version <= 8 ? 1 : 0);
 
 					bEventHandledByUIArea = oNewEvent.isMarked("handledByUIArea");
 
@@ -9349,6 +9361,123 @@ sap.ui.define("jquery.sap.events",['jquery.sap.global', 'jquery.sap.keycodes'],
 		return isMouseEnterLeave;
 	};
 
+	/*
+	 * Detect whether the pressed key is:
+	 * SHIFT, CONTROL, ALT, BREAK, CAPS_LOCK,
+	 * PAGE_UP, PAGE_DOWN, END, HOME, ARROW_LEFT, ARROW_UP, ARROW_RIGHT, ARROW_DOWN,
+	 * PRINT, INSERT, DELETE, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12,
+	 * BACKSPACE, TAB, ENTER, ESCAPE
+	 *
+	 * @param {jQuery.Event} oEvent The event object of the <code>keydown</code>, <code>keyup</code> or <code>keypress</code> events.
+	 * @static
+	 * @returns {boolean}
+	 * @protected
+	 * @since 1.24.0
+	 * @experimental Since 1.24.0 Implementation might change.
+	 */
+	jQuery.sap.isSpecialKey = function(oEvent) {
+		var mKeyCodes = jQuery.sap.KeyCodes,
+			iKeyCode = oEvent.which,	// jQuery oEvent.which normalizes oEvent.keyCode and oEvent.charCode
+			bSpecialKey = 	isModifierKey(oEvent) ||
+							isArrowKey(oEvent) ||
+							(iKeyCode >= 33 && iKeyCode <= 36) ||	// PAGE_UP, PAGE_DOWN, END, HOME
+							(iKeyCode >= 44 && iKeyCode <= 46) ||	// PRINT, INSERT, DELETE
+							(iKeyCode >= 112 && iKeyCode <= 123) ||	// F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12
+							(iKeyCode === mKeyCodes.BREAK) ||
+							(iKeyCode === mKeyCodes.BACKSPACE) ||
+							(iKeyCode === mKeyCodes.TAB) ||
+							(iKeyCode === mKeyCodes.ENTER) ||
+							(iKeyCode === mKeyCodes.ESCAPE) ||
+							(iKeyCode === mKeyCodes.SCROLL_LOCK);
+
+		switch (oEvent.type) {
+			case "keydown":
+			case "keyup":
+				return bSpecialKey;
+
+			// note: the keypress event should be fired only when a character key is pressed,
+			// unfortunately some browsers fire the keypress event for other keys. e.g.:
+			//
+			// Firefox fire it for:
+			// BREAK, ARROW_LEFT, ARROW_RIGHT, INSERT, DELETE,
+			// F1, F2, F3, F5, F6, F7, F8, F9, F10, F11, F12
+			// BACKSPACE, ESCAPE
+			//
+			// Internet Explorer fire it for:
+			// ESCAPE
+			case "keypress":
+
+				// note: in Firefox, almost all noncharacter keys that fire the keypress event have a key code of 0,
+				// with the exception of BACKSPACE (key code of 8).
+				// note: in IE the ESCAPE key is also fired for the the keypress event
+				return (iKeyCode === 0 ||	// in Firefox, almost all noncharacter keys that fire the keypress event have a key code of 0, with the exception of BACKSPACE (key code of 8)
+						iKeyCode === mKeyCodes.BACKSPACE ||
+						iKeyCode === mKeyCodes.ESCAPE ||
+						iKeyCode === mKeyCodes.ENTER /* all browsers */) || false;
+
+			default:
+				return false;
+		}
+	};
+
+	/**
+	 * Detect whether the pressed key is a modifier.
+	 *
+	 * Modifier keys are considered:
+	 * SHIFT, CONTROL, ALT, CAPS_LOCK, NUM_LOCK
+	 * These keys don't send characters, but modify the characters sent by other keys.
+	 *
+	 * @param {jQuery.Event} oEvent The event object of the <code>keydown</code>, <code>keyup</code> or <code>keypress</code> events.
+	 * @static
+	 * @returns {boolean}
+	 * @since 1.24.0
+	 */
+	function isModifierKey(oEvent) {
+		var mKeyCodes = jQuery.sap.KeyCodes,
+			iKeyCode = oEvent.which;	// jQuery oEvent.which normalizes oEvent.keyCode and oEvent.charCode
+
+		return (iKeyCode === mKeyCodes.SHIFT) ||
+				(iKeyCode === mKeyCodes.CONTROL) ||
+				(iKeyCode === mKeyCodes.ALT) ||
+				(iKeyCode === mKeyCodes.CAPS_LOCK) ||
+				(iKeyCode === mKeyCodes.NUM_LOCK);
+	}
+
+	/**
+	 * Detect whether the pressed key is a navigation key.
+	 *
+	 * Navigation keys are considered:
+	 * ARROW_LEFT, ARROW_UP, ARROW_RIGHT, ARROW_DOWN
+	 *
+	 * @param {jQuery.Event} oEvent The event object of the <code>keydown</code>, <code>keyup</code> or <code>keypress</code> events.
+	 * @static
+	 * @returns {boolean}
+	 * @since 1.24.0
+	 */
+	function isArrowKey(oEvent) {
+		var iKeyCode = oEvent.which,	// jQuery oEvent.which normalizes oEvent.keyCode and oEvent.charCode
+			bArrowKey = (iKeyCode >= 37 && iKeyCode <= 40);	// ARROW_LEFT, ARROW_UP, ARROW_RIGHT, ARROW_DOWN
+
+		switch (oEvent.type) {
+			case "keydown":
+			case "keyup":
+				return bArrowKey;
+
+			// note: the keypress event should be fired only when a character key is pressed,
+			// unfortunately some browsers fire the keypress event for other keys. e.g.:
+			//
+			// Firefox fire it for:
+			// ARROW_LEFT, ARROW_RIGHT
+			case "keypress":
+
+				// in Firefox, almost all noncharacter keys that fire the keypress event have a key code of 0
+				return iKeyCode === 0;
+
+			default:
+				return false;
+		}
+	}
+
 	/**
 	 * Constructor for a jQuery.Event object.<br/>
 	 * @see "http://www.jquery.com" and "http://api.jquery.com/category/events/event-object/".
@@ -9474,6 +9603,7 @@ sap.ui.define("jquery.sap.events",['jquery.sap.global', 'jquery.sap.keycodes'],
 	return jQuery;
 
 }, /* bExport= */ false);
+
 }; // end of jquery.sap.events.js
 if ( !jQuery.sap.isDeclared('jquery.sap.mobile') ) {
 /*!
@@ -10206,7 +10336,7 @@ sap.ui.define("jquery.sap.properties",['jquery.sap.global', 'jquery.sap.sjax'],
 	 * currently in the list.
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 0.9.0
 	 * @name jQuery.sap.util.Properties
 	 * @public
@@ -10805,7 +10935,7 @@ sap.ui.define("jquery.sap.resources",['jquery.sap.global', 'jquery.sap.propertie
 	 * Exception: Fallback for "zh_HK" is "zh_TW" before zh.
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 0.9.0
 	 * @name jQuery.sap.util.ResourceBundle
 	 * @public
@@ -11307,7 +11437,7 @@ sap.ui.define("jquery.sap.script",['jquery.sap.global'],
 	 * Use {@link jQuery.sap.getUriParameters} to create an instance of jQuery.sap.util.UriParameters.
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 0.9.0
 	 * @name jQuery.sap.util.UriParameters
 	 * @public

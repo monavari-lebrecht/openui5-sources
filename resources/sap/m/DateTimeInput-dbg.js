@@ -61,7 +61,7 @@ jQuery.sap.require("sap.m.InputBase");
  * @extends sap.m.InputBase
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public

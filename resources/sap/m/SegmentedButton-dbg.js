@@ -58,7 +58,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -271,7 +271,8 @@ sap.m.SegmentedButton.M_EVENTS = {'select':'select'};
 
 
 /**
- * Pointer to the selected button of a SegmentedButton control.
+ * A reference to the currently selected button control. By default or if the association is set to a falsy value (null, undefined, "", false), the first button will be selected.
+ * If the association is set to an invalid value (e.g. an ID of a button that does not exist) the selection on the SegmentedButton will be removed.
  *
  * @return {string} Id of the element which is the current target of the <code>selectedButton</code> association, or null
  * @public
@@ -280,7 +281,8 @@ sap.m.SegmentedButton.M_EVENTS = {'select':'select'};
  */
 
 /**
- * Pointer to the selected button of a SegmentedButton control.
+ * A reference to the currently selected button control. By default or if the association is set to a falsy value (null, undefined, "", false), the first button will be selected.
+ * If the association is set to an invalid value (e.g. an ID of a button that does not exist) the selection on the SegmentedButton will be removed.
  *
  * @param {string | sap.m.Button} vSelectedButton 
  *    Id of an element which becomes the new target of this <code>selectedButton</code> association.
@@ -458,6 +460,10 @@ sap.m.SegmentedButton.prototype.onBeforeRendering = function() {
 	if(jQuery("#segMtBtn_calc").length == 0) {
 		oStatiAreaDom.appendChild(this._oGhostButton[0]);
 	}
+
+	if (!this.getSelectedButton()) {
+		this._selectDefaultButton();
+	}
 };
 
 sap.m.SegmentedButton.prototype.onAfterRendering = function() {
@@ -529,11 +535,18 @@ sap.m.SegmentedButton.prototype._fCalcBtnWidth = function() {
 		$this = this.$(),
 		iParentWidth = 0,
 		iCntOutWidth = $this.outerWidth(true) - $this.width(),
+		iBarContainerPadding = $this.closest('.sapMBarContainer').outerWidth() - $this.closest('.sapMBarContainer').width(),
 		iInnerWidth = $this.children('#' + this.getButtons()[0].getId()).outerWidth(true)-$this.children('#' + this.getButtons()[0].getId()).width();
 		// If parent width is bigger than actual screen width set parent width to screen width => android 2.3
 		iParentWidth = (jQuery(window).width() < $this.parent().outerWidth())
 							? jQuery(window).width() :
 								(this._bInsideBar ? $this.closest('.sapMBar').width() : $this.parent().width());
+
+	// fix: in 1.22 a padding was added to the bar container, we have to take this into account for the size calculations here
+	if (this._bInsideBar && iBarContainerPadding > 0) {
+		iParentWidth -= iBarContainerPadding;
+	}
+
 	if(this.getWidth() && this.getWidth().indexOf("%") === -1) {
 		iMaxWidth = parseInt(this.getWidth());
 		var iCustomBtnWidths = iItm; 
@@ -575,6 +588,7 @@ sap.m.SegmentedButton.prototype._fCalcBtnWidth = function() {
 		}
 	}
 };
+
 /**
  * The orientationchange event listener
 */
@@ -705,36 +719,73 @@ sap.m.SegmentedButton.prototype.removeAllButtons = function() {
 	
 };
 
-sap.m.SegmentedButton.prototype._buttonPressed = function(oEvent) {
-	var sLastSelBtnId = this.getSelectedButton(),
-		oControl = oEvent.getSource();
-	
-	if (sLastSelBtnId !== oControl.getId()) {
-		oControl.$().addClass("sapMSegBBtnSel");
-		sap.ui.getCore().byId(sLastSelBtnId).$().removeClass("sapMSegBBtnSel");
-		
-		this.setAssociation('selectedButton', oControl, true);
-		this.fireSelect({button:oControl, id: oControl.getId()});
-	}
-};
+/** event handler for the internal button press events
+ * @private
+ */
+sap.m.SegmentedButton.prototype._buttonPressed = function (oEvent) {
+	var oButtonPressed = oEvent.getSource();
 
-sap.m.SegmentedButton.prototype.setSelectedButton = function(vButton) {
-	var sOldSelectedButton = this.getSelectedButton();
-
-	this.setAssociation("selectedButton", vButton, true);
-
-	// CSN# 1143859/2014: update selection state in DOM when calling API method to change the selection
-	if (sOldSelectedButton !== this.getSelectedButton()) {
-		if (typeof vButton === "string") {
-			vButton = sap.ui.getCore().byId(vButton);
-		}
+	if (this.getSelectedButton() !== oButtonPressed.getId()) {
+		// CSN# 0001429454/2014: remove class for all other items
 		this.getButtons().forEach(function (oButton) {
 			oButton.$().removeClass("sapMSegBBtnSel");
 		});
-		if (vButton) {
-			vButton.$().addClass("sapMSegBBtnSel");
+		oButtonPressed.$().addClass("sapMSegBBtnSel");
+
+		this.setAssociation('selectedButton', oButtonPressed, true);
+		this.fireSelect({
+			button: oButtonPressed,
+			id: oButtonPressed.getId()
+		});
+	}
+};
+
+/**
+ * Internal helper function that sets the association <code>selectedButton</code> to the first button.
+ * @private
+ */
+sap.m.SegmentedButton.prototype._selectDefaultButton = function () {
+	var aButtons = this.getButtons();
+
+	// CSN# 0001429454/2014: when the id evaluates to false (null, undefined, "") the first button should be selected
+	if (aButtons.length > 0) {
+		this.setAssociation('selectedButton', aButtons[0], true);
+	}
+};
+
+/**
+ * Setter for association <code>selectedButton</code>.
+ *
+ * @param {string | sap.m.Button | null | undefined} vButton new value for association <code>setSelectedButton</code>
+ *    An sap.m.Button instance which becomes the new target of this <code>selectedButton</code> association.
+ *    Alternatively, the id of an sap.m.Button instance may be given as a string.
+ *    If the value of null, undefined, or an empty string is provided the first item will be selected.
+ * @returns {sap.m.SegmentedButton} <code>this</code> this pointer for chaining
+ * @public
+ */
+sap.m.SegmentedButton.prototype.setSelectedButton = function (vButton) {
+	var sSelectedButtonBefore = this.getSelectedButton(),
+		oSelectedButton;
+
+	// set the new value
+	this.setAssociation("selectedButton", vButton, true);
+
+	// CSN# 1143859/2014: update selection state in DOM when calling API method to change the selection
+	if (sSelectedButtonBefore !== this.getSelectedButton()) {
+		// CSN# 0001429454/2014: only update DOM when control is already rendered (otherwise it will be done in onBeforeRendering)
+		if (this.$().length) {
+			if (!this.getSelectedButton()) {
+				this._selectDefaultButton();
+			}
+			oSelectedButton = sap.ui.getCore().byId(this.getSelectedButton());
+			this.getButtons().forEach(function (oButton) {
+				oButton.$().removeClass("sapMSegBBtnSel");
+			});
+			if (oSelectedButton) {
+				oSelectedButton.$().addClass("sapMSegBBtnSel");
+			}
+			this._focusSelectedButton();
 		}
-		this._focusSelectedButton();
 	}
 };
 

@@ -60,7 +60,7 @@ jQuery.sap.require("sap.ui.table.Column");
  * @extends sap.ui.table.Column
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -247,7 +247,7 @@ sap.ui.table.AnalyticalColumn.prototype.setGrouped = function(bGrouped) {
 	var that = this;
 	if (oParent && oParent instanceof sap.ui.table.AnalyticalTable) {
 		if (bGrouped) {
-			oParent._aGroupedColumns.push(this.getId());
+			oParent._addGroupedColumn(this.getId());
 		} else {
 			oParent._aGroupedColumns = jQuery.grep(oParent._aGroupedColumns, function(value) {
 				return value != that.getId();
@@ -326,5 +326,5 @@ sap.ui.table.AnalyticalColumn.prototype.shouldRender = function() {
 	if (!this.getVisible()) {
 		return false;
 	}
-	return (!this.getGrouped() || this._bLastGroupAndGrouped || this.getShowIfGrouped()) && !this._bDependendGrouped;
+	return (!this.getGrouped() || this._bLastGroupAndGrouped || this.getShowIfGrouped()) && (!this._bDependendGrouped || this._bLastGroupAndGrouped);
 };

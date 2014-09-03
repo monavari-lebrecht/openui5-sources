@@ -79,7 +79,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -1185,12 +1185,22 @@ sap.m.ObjectHeader.prototype.init = function() {
 		visible : false
 	});
 		
-	var oTitleArrowIconUri = sap.ui.core.IconPool.getIconURI("slim-arrow-down");	
+	var oTitleArrowIconUri = sap.ui.core.IconPool.getIconURI("slim-arrow-down"),
+		that = this;
 	this._oTitleArrowIcon = sap.ui.core.IconPool.createControlByURI({
 		id : this.getId() + "-titleArrow",
 		src : oTitleArrowIconUri,
-		visible : false
+		decorative: false,
+		visible : false,
+		press : function(oEvent) {
+			that.fireTitleSelectorPress({
+				domRef : this.getDomRef()	 
+			});
+		}
 	});
+	
+
+	
 
 	this._titleText = new sap.m.Text(this.getId() + "-titleText");
 	this._titleText.setMaxLines(3);
@@ -1275,10 +1285,6 @@ sap.m.ObjectHeader.prototype.ontap = function(oEvent) {
 	} else if (this.getIconActive() && (sourceId === this.getId() + "-img" || sourceId === this.getId() + "-icon")) {
 		this.fireIconPress({
 			domRef : jQuery.sap.domById(sourceId)
-		});
-	} else if (sourceId === this.getId() + "-titleArrow") {		
-		this.fireTitleSelectorPress({
-			domRef : jQuery.sap.domById(sourceId)	 
 		});
 	} 
 };

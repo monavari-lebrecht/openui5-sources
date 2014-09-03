@@ -19,7 +19,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/format/NumberFormat', 'sap/ui/m
 	 * @extends sap.ui.model.SimpleType
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 *
 	 * @constructor
 	 * @public

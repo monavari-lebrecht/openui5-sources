@@ -12,7 +12,7 @@ jQuery.sap.declare("sap.ui.unified.MenuRenderer");
  * @class Menu renderer.
  * @author SAP - TD Core UI&AM UI Infra
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @static
  */
 sap.ui.unified.MenuRenderer = {
@@ -27,9 +27,7 @@ sap.ui.unified.MenuRenderer = {
  * @param {sap.ui.core.Control}
  *            oMenu An object representation of the control that should be rendered
  */
-sap.ui.unified.MenuRenderer.render = function(oRenderManager,oMenu) {
-	var aItems = oMenu.getItems();
-	var rm = oRenderManager;
+sap.ui.unified.MenuRenderer.render = function(rm, oMenu) {
 	var colCount = 8;
 	
 	if(oMenu.oHoveredItem && oMenu.indexOfItem(oMenu.oHoveredItem) < 0){
@@ -70,7 +68,16 @@ sap.ui.unified.MenuRenderer.render = function(oRenderManager,oMenu) {
 	}
 	rm.writeClasses();
 	rm.writeControlData(oMenu);
-	rm.write("><ul class=\"sapUiMnuLst");
+	rm.write(">");
+	sap.ui.unified.MenuRenderer.renderItems(rm, oMenu);
+	rm.write("</div>");
+};
+
+sap.ui.unified.MenuRenderer.renderItems = function(rm, oMenu) {
+	var aItems = oMenu.getItems();
+	var bAccessible = sap.ui.getCore().getConfiguration().getAccessibility();
+	
+	rm.write("<ul class=\"sapUiMnuLst");
 
 	var bHasIcons = false;
 	var bHasSubMenus = false;
@@ -118,5 +125,5 @@ sap.ui.unified.MenuRenderer.render = function(oRenderManager,oMenu) {
 		}
 	}
 
-	rm.write("</ul></div>");
+	rm.write("</ul>");	
 };

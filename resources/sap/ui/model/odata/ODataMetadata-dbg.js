@@ -26,7 +26,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/EventProvider'],
 	 * Implementation to access oData metadata
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 *
 	 * @constructor
 	 * @public
@@ -45,6 +45,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/EventProvider'],
 			this.bAsync = mParams.async;
 			this.sUser = mParams.user;
 			this.sPassword = mParams.password;
+			this.mHeaders = mParams.headers;
 			this.oLoadEvent = null;
 			this.oFailedEvent = null;
 			this.oMetadata = null;
@@ -796,10 +797,12 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/EventProvider'],
 	 */
 	sap.ui.model.odata.ODataMetadata.prototype._createRequest = function(sUrl) {
 
-		var oLangHeader = {"Accept-Language" : sap.ui.getCore().getConfiguration().getLanguage()};
+		var oHeaders = {}, oLangHeader = {"Accept-Language" : sap.ui.getCore().getConfiguration().getLanguage()};
+		
+		jQuery.extend(oHeaders, this.mHeaders, oLangHeader);
 		
 		var oRequest = {
-				headers : oLangHeader,
+				headers : oHeaders,
 				requestUri : sUrl,
 				method : 'GET',
 				user: this.sUser,

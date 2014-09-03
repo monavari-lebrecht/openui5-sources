@@ -1,1 +1,0 @@
-jQuery.sap.declare("sap.ui.demokit.explored.util.ObjectSearch");sap.ui.demokit.explored.util.ObjectSearch={getEntityPath:function(d,I){if(!d.entities){return null}var r=null;jQuery.each(d.entities,function(i,e){if(e.id===I){r="/entities/"+i+"/";return false}});return r}};

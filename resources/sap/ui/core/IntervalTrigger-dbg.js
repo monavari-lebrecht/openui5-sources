@@ -25,7 +25,7 @@ sap.ui.define(['jquery.sap.global', './EventBus'],
 		 * 
 		 * @extends sap.ui.base.Object
 		 * @author SAP AG
-		 * @version 1.22.4
+		 * @version 1.22.8
 		 * @constructor
 		 * @public
 		 * @since 1.11.0

@@ -37,7 +37,7 @@ sap.ui.define(['jquery.sap.global', './CustomStyleClassSupport', './Element'],
 	 * @extends sap.ui.core.Element
 	 * @abstract
 	 * @author Martin Schaus, Daniel Brinkmann
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @name sap.ui.core.Control
 	 */
 	var Control = Element.extend("sap.ui.core.Control", /* @lends sap.ui.core.Control */ {

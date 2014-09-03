@@ -10,7 +10,7 @@
  * ----------------------------------------------------------------------------------- */
 
 /**
- * Initialization Code and shared classes of library sap.ui.suite (1.22.4)
+ * Initialization Code and shared classes of library sap.ui.suite (1.22.8)
  */
 jQuery.sap.declare("sap.ui.suite.library");
 jQuery.sap.require("sap.ui.core.Core");
@@ -39,7 +39,7 @@ sap.ui.getCore().initLibrary({
     "sap.ui.suite.VerticalProgressIndicator"
   ],
   elements: [],
-  version: "1.22.4"});
+  version: "1.22.8"});
 
 /*!
  * SAP UI development toolkit for HTML5 (SAPUI5/OpenUI5)
@@ -59,7 +59,7 @@ jQuery.sap.declare("sap.ui.suite.TaskCircleColor");
 /**
  * @class Defined color values for the Task Circle Control
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @static
  * @public
  */

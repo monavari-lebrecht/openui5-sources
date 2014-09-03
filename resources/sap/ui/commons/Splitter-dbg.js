@@ -63,7 +63,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -638,7 +638,7 @@ sap.ui.commons.Splitter.prototype.resizeSplitterElements = function() {
 
 	// fix height if splitterdiv height is 0 we set it to 100 px to show something at least
 	// further resizing should then work correctly
-	if (jQuery(this.splitterDIV).height() == 0){
+	if (jQuery(this.splitterDIV).height() == 0 && !this.splitterDIV.style.height){
 		jQuery(this.splitterDIV).css("height", "100px");
 		jQuery(this.splitterBar).css("height", "100px");
 	}

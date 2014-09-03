@@ -32,6 +32,7 @@ jQuery.sap.require("sap.ui.core.Element");
  * <li>Properties
  * <ul>
  * <li>{@link #getStartsSection startsSection} : boolean (default: false)</li>
+ * <li>{@link #getShowSeparator showSeparator} : boolean (default: true)</li>
  * <li>{@link #getSelected selected} : boolean (default: false)</li>
  * <li>{@link #getShowMarker showMarker} : boolean (default: false)</li>
  * <li>{@link #getIcon icon} : sap.ui.core.URI</li>
@@ -61,7 +62,7 @@ jQuery.sap.require("sap.ui.core.Element");
  * @extends sap.ui.core.Element
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -76,6 +77,7 @@ sap.ui.core.Element.extend("sap.ui.unified.ShellHeadItem", { metadata : {
 	library : "sap.ui.unified",
 	properties : {
 		"startsSection" : {type : "boolean", group : "Appearance", defaultValue : false, deprecated: true},
+		"showSeparator" : {type : "boolean", group : "Appearance", defaultValue : true},
 		"selected" : {type : "boolean", group : "Appearance", defaultValue : false},
 		"showMarker" : {type : "boolean", group : "Appearance", defaultValue : false, deprecated: true},
 		"icon" : {type : "sap.ui.core.URI", group : "Appearance", defaultValue : null},
@@ -131,6 +133,33 @@ sap.ui.unified.ShellHeadItem.M_EVENTS = {'press':'press'};
  * @deprecated Since version 1.18. 
  * Dividers are not supported anymore.
  * @name sap.ui.unified.ShellHeadItem#setStartsSection
+ * @function
+ */
+
+
+/**
+ * Getter for property <code>showSeparator</code>.
+ * If set to true, a separator is displayed after the item.
+ *
+ * Default value is <code>true</code>
+ *
+ * @return {boolean} the value of property <code>showSeparator</code>
+ * @public
+ * @since 1.22.5
+ * @name sap.ui.unified.ShellHeadItem#getShowSeparator
+ * @function
+ */
+
+/**
+ * Setter for property <code>showSeparator</code>.
+ *
+ * Default value is <code>true</code> 
+ *
+ * @param {boolean} bShowSeparator  new value for property <code>showSeparator</code>
+ * @return {sap.ui.unified.ShellHeadItem} <code>this</code> to allow method chaining
+ * @public
+ * @since 1.22.5
+ * @name sap.ui.unified.ShellHeadItem#setShowSeparator
  * @function
  */
 
@@ -311,6 +340,14 @@ sap.ui.unified.ShellHeadItem.prototype.setStartsSection = function(bStartsSectio
 	bStartsSection = !!bStartsSection;
 	this.setProperty("startsSection", bStartsSection, true);
 	this.$().toggleClass("sapUiUfdShellHeadItmDelim", bStartsSection);
+	return this;
+};
+
+
+sap.ui.unified.ShellHeadItem.prototype.setShowSeparator = function(bShowSeparator){
+	bShowSeparator = !!bShowSeparator;
+	this.setProperty("showSeparator", bShowSeparator, true);
+	this.$().toggleClass("sapUiUfdShellHeadItmSep", bShowSeparator);
 	return this;
 };
 

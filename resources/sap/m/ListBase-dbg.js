@@ -87,7 +87,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -2213,7 +2213,7 @@ sap.m.ListBase.prototype._showBusyIndicator = function() {
 sap.m.ListBase.prototype._hideBusyIndicator = function() {
 	if (this._bBusy) {
 		// revert busy state
-		this.setBusy(false);
+		this.setBusy(false, "listUl");
 
 		// revert no data texts when necessary
 		jQuery.sap.clearDelayedCall(this._sBusyTimer);
@@ -2599,6 +2599,11 @@ sap.m.ListBase.prototype.removeGroupHeaders = function(bSuppressInvalidate) {
 
 /* Keyboard Handling */
 sap.m.ListBase.prototype._startItemNavigation = function() {
+	// no item navigation for old android that breaks focus handling
+	if (sap.ui.Device.os.android && sap.ui.Device.os.version < 4.1) {
+		return;
+	}
+
 	if (!this.getItems().length) {
 		this._destroyItemNavigation();
 		return;
@@ -2635,6 +2640,7 @@ sap.m.ListBase.prototype._startItemNavigation = function() {
 /**
  * Returns ItemNavigation for controls uses List
  * @since 1.16.5
+ * @returns {sap.ui.core.delegate.ItemNavigation|undefined}
  * @protected
  */
 sap.m.ListBase.prototype.getItemNavigation = function() {

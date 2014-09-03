@@ -81,6 +81,7 @@ sap.ui.layout.form.GridLayoutRenderer.renderForm = function(rm, oLayout, oForm){
 	var i = 0;
 	while (i < iContainerLength) {
 		var oContainer = aContainers[i];
+		oContainer._checkProperties();
 		if (oContainer.getVisible()) {
 			var oContainerData = this.getContainerData(oLayout, oContainer);
 			if (oContainerData && oContainerData.getHalfGrid() && !bSingleColumn) {
@@ -90,6 +91,7 @@ sap.ui.layout.form.GridLayoutRenderer.renderForm = function(rm, oLayout, oForm){
 					oContainerData2 = this.getContainerData(oLayout, oContainer2);
 				}
 				if (oContainerData2 && oContainerData2.getHalfGrid()) {
+					oContainer2._checkProperties();
 					this.renderContainerHalfSize(rm, oLayout, oContainer, oContainer2, iColumns);
 					i++;
 				}else{

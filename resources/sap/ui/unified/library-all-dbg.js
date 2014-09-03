@@ -404,7 +404,7 @@ jQuery.sap.declare("sap.ui.unified.CurrencyRenderer");
 /**
  * @class Currency renderer.
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @static
  */
 sap.ui.unified.CurrencyRenderer = {
@@ -551,7 +551,7 @@ jQuery.sap.declare("sap.ui.unified.MenuRenderer");
  * @class Menu renderer.
  * @author SAP - TD Core UI&AM UI Infra
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @static
  */
 sap.ui.unified.MenuRenderer = {
@@ -566,9 +566,7 @@ sap.ui.unified.MenuRenderer = {
  * @param {sap.ui.core.Control}
  *            oMenu An object representation of the control that should be rendered
  */
-sap.ui.unified.MenuRenderer.render = function(oRenderManager,oMenu) {
-	var aItems = oMenu.getItems();
-	var rm = oRenderManager;
+sap.ui.unified.MenuRenderer.render = function(rm, oMenu) {
 	var colCount = 8;
 	
 	if(oMenu.oHoveredItem && oMenu.indexOfItem(oMenu.oHoveredItem) < 0){
@@ -609,7 +607,16 @@ sap.ui.unified.MenuRenderer.render = function(oRenderManager,oMenu) {
 	}
 	rm.writeClasses();
 	rm.writeControlData(oMenu);
-	rm.write("><ul class=\"sapUiMnuLst");
+	rm.write(">");
+	sap.ui.unified.MenuRenderer.renderItems(rm, oMenu);
+	rm.write("</div>");
+};
+
+sap.ui.unified.MenuRenderer.renderItems = function(rm, oMenu) {
+	var aItems = oMenu.getItems();
+	var bAccessible = sap.ui.getCore().getConfiguration().getAccessibility();
+	
+	rm.write("<ul class=\"sapUiMnuLst");
 
 	var bHasIcons = false;
 	var bHasSubMenus = false;
@@ -657,7 +664,7 @@ sap.ui.unified.MenuRenderer.render = function(oRenderManager,oMenu) {
 		}
 	}
 
-	rm.write("</ul></div>");
+	rm.write("</ul>");	
 };
 }; // end of sap/ui/unified/MenuRenderer.js
 if ( !jQuery.sap.isDeclared('sap.ui.unified.ShellOverlayRenderer') ) {
@@ -847,6 +854,9 @@ sap.ui.unified.ShellRenderer.renderHeaderItems = function(rm, oShell, begin) {
 		if(aItems[i].getStartsSection()){
 			rm.addClass("sapUiUfdShellHeadItmDelim");
 		}
+		if(aItems[i].getShowSeparator()){
+			rm.addClass("sapUiUfdShellHeadItmSep");
+		}
 		if(!aItems[i].getVisible()){
 			rm.addClass("sapUiUfdShellHidden");
 		}
@@ -993,7 +1003,7 @@ if ( !jQuery.sap.isDeclared('sap.ui.unified.library') ) {
  * ----------------------------------------------------------------------------------- */
 
 /**
- * Initialization Code and shared classes of library sap.ui.unified (1.22.4)
+ * Initialization Code and shared classes of library sap.ui.unified (1.22.8)
  */
 jQuery.sap.declare("sap.ui.unified.library");
 jQuery.sap.require('sap.ui.core.Core'); // unlisted dependency retained
@@ -1038,7 +1048,7 @@ sap.ui.getCore().initLibrary({
     "sap.ui.unified.ShellHeadItem",
     "sap.ui.unified.ShellHeadUserItem"
   ],
-  version: "1.22.4"});
+  version: "1.22.8"});
 
 /*!
  * SAP UI development toolkit for HTML5 (SAPUI5/OpenUI5)
@@ -1058,7 +1068,7 @@ jQuery.sap.declare("sap.ui.unified.ContentSwitcherAnimation");
 /**
  * @class Predefined animations for the ContentSwitcher
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @static
  * @public
  * @since 1.16.0
@@ -1244,7 +1254,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -2798,7 +2808,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -3232,7 +3242,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -3500,7 +3510,7 @@ jQuery.sap.require('sap.ui.core.Element'); // unlisted dependency retained
  * @extends sap.ui.core.Element
  *
  * @author  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -3690,7 +3700,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -4012,7 +4022,8 @@ sap.ui.unified.FileUploader.M_EVENTS = {'change':'change','uploadComplete':'uplo
 
 /**
  * Getter for property <code>fileType</code>.
- * The chosen files will be checked against an array of file types. This property can be defined as a array of file endings to be checked against. If at least one file does not fit the file type restriction the upload is prevented. Example: fileType: "jpg,png,txt".
+ * The chosen files will be checked against an array of file types. If at least one file does not fit the file type restriction the upload is prevented.
+ * Example: ["jpg", "png", "bmp"].
  *
  * Default value is empty/<code>undefined</code>
  *
@@ -4087,7 +4098,8 @@ sap.ui.unified.FileUploader.M_EVENTS = {'change':'change','uploadComplete':'uplo
 
 /**
  * Getter for property <code>mimeType</code>.
- * The chosen files will be checked against an array of mime types. This property can be defined as a array of mime types to be checked against. If at least one file does not fit the mime type restriction the upload is prevented. This property is not supported by Internet Explorer 8 and 9. Example: fileType: "image,text". It is also possible to be more specific and set "image/png".
+ * The chosen files will be checked against an array of mime types. If at least one file does not fit the mime type restriction the upload is prevented. This property is not supported by Internet Explorer 8 and 9.
+ * Example: mimeType ["image/png", "image/jpeg"].
  *
  * Default value is empty/<code>undefined</code>
  *
@@ -4743,31 +4755,29 @@ sap.ui.unified.FileUploader.M_EVENTS = {'change':'change','uploadComplete':'uplo
  */
 sap.ui.unified.FileUploader.prototype.init = function(){
 
+	// Instantiate browser-specific UI-Elements (IE8 only): 
 	// works fine with applySettings() after init() - most things are done in onAfterRendering
 	// IE8 should render a native file uploader and the SAPUI5 controls should be exactly behind
 	if (!!sap.ui.Device.browser.internet_explorer && sap.ui.Device.browser.version == 8) {
 		this.oFilePath = new sap.ui.commons.TextField(this.getId() + "-fu_input",
 													{width: "225px"});
-	} else {
-		this.oFilePath = sap.ui.unified.FileUploaderHelper.createTextField(this.getId() + "-fu_input");
-	}
-	this.oFilePath.setParent(this);
-	if (this.getButtonText()) {
-		var sButtonText = this.getButtonText();
-	} else {
-		var sButtonText = this.getBrowseText();
-	}
-
-	if (!!sap.ui.Device.browser.internet_explorer && sap.ui.Device.browser.version == 8) {
+		
 		this.oBrowse = new sap.ui.commons.Button({enabled : this.getEnabled(),
-													text: sButtonText,
-													width: "0px",
-													height: "0px"});
+			text: "Browse..",
+			width: "0px",
+			height: "0px"});
 	} else {
+		//all other browsers will load the respective UI-Elements from the FileUploaderHelper
+		this.oFilePath = sap.ui.unified.FileUploaderHelper.createTextField(this.getId() + "-fu_input");
 		this.oBrowse = sap.ui.unified.FileUploaderHelper.createButton();
 	}
+	this.oFilePath.setParent(this);
 	this.oBrowse.setParent(this);
+
 	this.oFileUpload = null;
+
+	//retrieving the default browse button text from the resource bundle
+	this.oBrowse.setText(this.getBrowseText());
 
 //	var that = this;
 //	var oDelegate = {
@@ -4783,8 +4793,44 @@ sap.ui.unified.FileUploader.prototype.init = function(){
 
 };
 
+sap.ui.unified.FileUploader.prototype.setButtonText = function(sText) {
+	this.oBrowse.setText(sText || this.getBrowseText());
+	this.setProperty("buttonText", sText, false);
+	return this;
+};
+
 sap.ui.unified.FileUploader.prototype.getIdForLabel = function () {
 	return this.oBrowse.getId();
+};
+
+sap.ui.unified.FileUploader.prototype.setFileType = function(vTypes) {
+	// Compatibility issue: converting the given types to an array in case it is a string
+	var aTypes = this._convertTypesToArray(vTypes);
+	this.setProperty("fileType", aTypes, false);
+	return this;
+};
+
+sap.ui.unified.FileUploader.prototype.setMimeType = function(vTypes) {
+	// Compatibility issue: converting the given types to an array in case it is a string
+	var aTypes = this._convertTypesToArray(vTypes);
+	this.setProperty("mimeType", aTypes, false);
+	return this;
+};
+
+/**
+ * Helper to ensure, that the types (file or mime) are inside an array.
+ * The FUP also accepts comma-separated strings for its fileType and mimeType property. 
+ * @private
+ */
+sap.ui.unified.FileUploader.prototype._convertTypesToArray = function (vTypes) {
+	if (typeof vTypes === "string") {
+		if(vTypes === ""){
+			return [];
+		} else {
+			return vTypes.split(",");
+		}
+	}
+	return vTypes;
 };
 
 /**
@@ -4811,14 +4857,6 @@ sap.ui.unified.FileUploader.prototype.exit = function(){
  * @private
  */
 sap.ui.unified.FileUploader.prototype.onBeforeRendering = function() {
-
-	this._runOnce = false;
-
-	if (this.getButtonText()) {
-		this.oBrowse.setText(this.getButtonText());
-	} else {
-		this.oBrowse.setText(this.getBrowseText());
-	}
 
 	// store the file uploader outside in the static area
 	var oStaticArea = sap.ui.getCore().getStaticAreaRef();
@@ -4857,24 +4895,21 @@ sap.ui.unified.FileUploader.prototype.onAfterRendering = function() {
 		if ((!!sap.ui.Device.browser.internet_explorer && sap.ui.Device.browser.version == 9)) {
 			this.oBrowse.$().attr("tabindex", "-1");
 		}
-		// calculation of the width of the overlay for the original file upload
-		// !!!sap.ui.Device.browser.internet_explorer check: only for non IE browsers since there we need
-		// the button in front of the fileuploader
-		if (this.getWidth()) {
+		jQuery.sap.delayedCall(0, this, this._recalculateWidth);
+	}
+	
+};
 
-			if (!this._runOnce) {
-				this._runOnce = true;
-				jQuery.sap.delayedCall(50, this, function(){
-					this.onAfterRendering();
-				});
-			} else {
-				if(this.getButtonOnly()) {
-					this.oBrowse.getDomRef().style.width = this.getWidth();
-				} else {
-					// Recalculate the textfield width...
-					this._resizeDomElements();
-				}
-			}
+sap.ui.unified.FileUploader.prototype._recalculateWidth = function() {
+	// calculation of the width of the overlay for the original file upload
+	// !!!sap.ui.Device.browser.internet_explorer check: only for non IE browsers since there we need
+	// the button in front of the fileuploader
+	if (this.getWidth()) {
+		if(this.getButtonOnly()) {
+			this.oBrowse.getDomRef().style.width = this.getWidth();
+		} else {
+			// Recalculate the textfield width...
+			this._resizeDomElements();
 		}
 	}
 };
@@ -4923,11 +4958,11 @@ sap.ui.unified.FileUploader.prototype._resizeDomElements = function() {
 }
 
 sap.ui.unified.FileUploader.prototype.onresize = function() {
-	this.onAfterRendering();
+	this._recalculateWidth();
 }
 
 sap.ui.unified.FileUploader.prototype.onThemeChanged = function() {
-	this.onAfterRendering();
+	this._recalculateWidth();
 }
 
 sap.ui.unified.FileUploader.prototype.setEnabled = function(bEnabled){
@@ -4983,11 +5018,18 @@ sap.ui.unified.FileUploader.prototype.setValue = function(sValue, bFireEvent) {
 				this.oFilePath.getFocusDomRef().focus();
 			}
 		}
-		if (this.oFileUpload && !sValue) {
+		var oForm = this.getDomRef("fu_form");
+		if (this.oFileUpload && /* is visible: */ oForm && !sValue) {
 			// some browsers do not allow to clear the value of the fileuploader control
 			// therefore we utilize the form and reset the values inside this form and
 			// apply the additionalData again afterwards
-			this.getDomRef("fu_form").reset();
+			oForm.reset();
+			if (sap.ui.Device.browser.chrome) {
+				// Chrome needs the value to be cleared this way since the form reset leads
+				// to showing the old value while nothing is uploaded. This specifically 
+				// happens when the focus changes due to the change event in between.
+				this.getDomRef("fu_input").value = "";
+			}
 			this.$("fu_data").val(this.getAdditionalData());
 		}
 		// only fire event when triggered by user interaction
@@ -5145,8 +5187,10 @@ sap.ui.unified.FileUploader.prototype.handlechange = function(oEvent) {
 	if (this.oFileUpload && this.getEnabled()) {
 
 		var fMaxSize = this.getMaximumFileSize();
-		var sFileType = this.getFileType();
-		var sMimeType = this.getMimeType();
+
+		var aFileTypes = this.getFileType();
+		var aMimeTypes = this.getMimeType();
+		
 		var sFileString = '';
 
 		if (window.File) {
@@ -5168,16 +5212,16 @@ sap.ui.unified.FileUploader.prototype.handlechange = function(oEvent) {
 					});
 					return;
 				}
-				if (sMimeType) {
+				//check allowed mime-types for potential mismatches
+				if (aMimeTypes && aMimeTypes.length > 0) {
 					var bWrongMime = true;
-					var aMimeCheck = sMimeType.split(",");
-					for (var j = 0; j < aMimeCheck.length; j++) {
-						if (sType.match(aMimeCheck[j])) {
+					for (var j = 0; j < aMimeTypes.length; j++) {
+						if (sType.match(aMimeTypes[j])) {
 							bWrongMime = false;
 						}
 					}
 					if (bWrongMime) {
-						jQuery.sap.log.info("File: " + sName + " is of type " + sType + " .Allowed types are: "  + sMimeType + ".");
+						jQuery.sap.log.info("File: " + sName + " is of type " + sType + ". Allowed types are: "  + aMimeTypes + ".");
 						this.fireTypeMissmatch({
 							fileName:sName,
 							fileType:sType
@@ -5185,18 +5229,18 @@ sap.ui.unified.FileUploader.prototype.handlechange = function(oEvent) {
 						return;
 					}
 				}
-				if (sFileType) {
+				//check allowed file-types for potential mismatches
+				if (aFileTypes && aFileTypes.length > 0) {
 					var bWrongType = true;
-					var aTypeCheck = sFileType.split(",");
 					var iIdx = sName.lastIndexOf(".");
 					var sFileEnding = sName.substring(iIdx + 1);
-					for (var k = 0; k < aTypeCheck.length; k++) {
-						if (sFileEnding == aTypeCheck[k]) {
+					for (var k = 0; k < aFileTypes.length; k++) {
+						if (sFileEnding == aFileTypes[k]) {
 							bWrongType = false;
 						}
 					}
 					if (bWrongType) {
-						jQuery.sap.log.info("File: " + sName + " is of type " + sFileEnding + " .Allowed types are: "  + sFileType + ".");
+						jQuery.sap.log.info("File: " + sName + " is of type " + sFileEnding + ". Allowed types are: "  + aFileTypes + ".");
 						this.fireTypeMissmatch({
 							fileName:sName,
 							fileType:sFileEnding
@@ -5209,19 +5253,20 @@ sap.ui.unified.FileUploader.prototype.handlechange = function(oEvent) {
 			if (sFileString) {
 				this.fireFileAllowed();
 			}
-		} else if (sFileType) {
+		} else if (aFileTypes && aFileTypes.length > 0) {
+			// This else case is executed if the File-API is not supported by the browser (especially IE8/9).
+			// Check if allowed file types match the chosen file from the oFileUpload IFrame Workaround.
 			var bWrongType = true;
-			var aTypeCheck = sFileType.split(",");
 			var sName = this.oFileUpload.value || "";
 			var iIdx = sName.lastIndexOf(".");
 			var sFileEnding = sName.substring(iIdx + 1);
-			for (var k = 0; k < aTypeCheck.length; k++) {
-				if (sFileEnding == aTypeCheck[k]) {
+			for (var k = 0; k < aFileTypes.length; k++) {
+				if (sFileEnding == aFileTypes[k]) {
 					bWrongType = false;
 				}
 			}
 			if (bWrongType) {
-				jQuery.sap.log.info("File: " + sName + " is of type " + sFileEnding + " .Allowed types are: "  + sFileType + ".");
+				jQuery.sap.log.info("File: " + sName + " is of type " + sFileEnding + ". Allowed types are: "  + aFileTypes + ".");
 				this.fireTypeMissmatch({
 					fileName:sName,
 					fileType:sFileEnding
@@ -5255,6 +5300,7 @@ sap.ui.unified.FileUploader.prototype.handlechange = function(oEvent) {
 //
 //	Private
 //
+
 /**
  * Helper to retrieve the I18N texts for a button
  * @private
@@ -5374,6 +5420,7 @@ sap.ui.unified.FileUploader.prototype.prepareFileUploadAndIFrame = function() {
 
 	}
 };
+
 }; // end of sap/ui/unified/FileUploader.js
 if ( !jQuery.sap.isDeclared('sap.ui.unified.FileUploaderParameter') ) {
 /*!
@@ -5436,7 +5483,7 @@ jQuery.sap.require('sap.ui.core.Element'); // unlisted dependency retained
  * @extends sap.ui.core.Element
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -5593,7 +5640,7 @@ jQuery.sap.require('sap.ui.core.Element'); // unlisted dependency retained
  * @extends sap.ui.core.Element
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -5937,7 +5984,7 @@ jQuery.sap.declare("sap.ui.unified.MenuTextFieldItem");
  * @extends sap.ui.unified.MenuItemBase
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -6358,6 +6405,7 @@ jQuery.sap.require('sap.ui.core.Element'); // unlisted dependency retained
  * <li>Properties
  * <ul>
  * <li>{@link #getStartsSection startsSection} : boolean (default: false)</li>
+ * <li>{@link #getShowSeparator showSeparator} : boolean (default: true)</li>
  * <li>{@link #getSelected selected} : boolean (default: false)</li>
  * <li>{@link #getShowMarker showMarker} : boolean (default: false)</li>
  * <li>{@link #getIcon icon} : sap.ui.core.URI</li>
@@ -6387,7 +6435,7 @@ jQuery.sap.require('sap.ui.core.Element'); // unlisted dependency retained
  * @extends sap.ui.core.Element
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -6402,6 +6450,7 @@ sap.ui.core.Element.extend("sap.ui.unified.ShellHeadItem", { metadata : {
 	library : "sap.ui.unified",
 	properties : {
 		"startsSection" : {type : "boolean", group : "Appearance", defaultValue : false, deprecated: true},
+		"showSeparator" : {type : "boolean", group : "Appearance", defaultValue : true},
 		"selected" : {type : "boolean", group : "Appearance", defaultValue : false},
 		"showMarker" : {type : "boolean", group : "Appearance", defaultValue : false, deprecated: true},
 		"icon" : {type : "sap.ui.core.URI", group : "Appearance", defaultValue : null},
@@ -6457,6 +6506,33 @@ sap.ui.unified.ShellHeadItem.M_EVENTS = {'press':'press'};
  * @deprecated Since version 1.18. 
  * Dividers are not supported anymore.
  * @name sap.ui.unified.ShellHeadItem#setStartsSection
+ * @function
+ */
+
+
+/**
+ * Getter for property <code>showSeparator</code>.
+ * If set to true, a separator is displayed after the item.
+ *
+ * Default value is <code>true</code>
+ *
+ * @return {boolean} the value of property <code>showSeparator</code>
+ * @public
+ * @since 1.22.5
+ * @name sap.ui.unified.ShellHeadItem#getShowSeparator
+ * @function
+ */
+
+/**
+ * Setter for property <code>showSeparator</code>.
+ *
+ * Default value is <code>true</code> 
+ *
+ * @param {boolean} bShowSeparator  new value for property <code>showSeparator</code>
+ * @return {sap.ui.unified.ShellHeadItem} <code>this</code> to allow method chaining
+ * @public
+ * @since 1.22.5
+ * @name sap.ui.unified.ShellHeadItem#setShowSeparator
  * @function
  */
 
@@ -6642,6 +6718,14 @@ sap.ui.unified.ShellHeadItem.prototype.setStartsSection = function(bStartsSectio
 };
 
 
+sap.ui.unified.ShellHeadItem.prototype.setShowSeparator = function(bShowSeparator){
+	bShowSeparator = !!bShowSeparator;
+	this.setProperty("showSeparator", bShowSeparator, true);
+	this.$().toggleClass("sapUiUfdShellHeadItmSep", bShowSeparator);
+	return this;
+};
+
+
 sap.ui.unified.ShellHeadItem.prototype.setSelected = function(bSelected){
 	bSelected = !!bSelected;
 	this.setProperty("selected", bSelected, true);
@@ -6752,7 +6836,7 @@ jQuery.sap.require('sap.ui.core.Element'); // unlisted dependency retained
  * @extends sap.ui.core.Element
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -7021,7 +7105,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -7672,7 +7756,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -8023,6 +8107,8 @@ sap.ui.unified.Menu.M_EVENTS = {'itemSelect':'itemSelect'};
 
 jQuery.sap.require('sap.ui.core.Popup'); // unlisted dependency retained
 
+jQuery.sap.require('jquery.sap.script'); // unlisted dependency retained
+
 
 sap.ui.unified.Menu.prototype.init = function(){
 	var that = this;
@@ -8065,10 +8151,19 @@ sap.ui.unified.Menu.prototype.exit = function(){
 		this._bOrientationChangeBound = false;
 	}
 	
-	// Cleanup resize event registration
-	if(this.sResizeListenerId){
-		sap.ui.core.ResizeHandler.deregister(this.sResizeListenerId);
-		this.sResizeListenerId = null;
+	// Cleanup
+	this._resetDelayedRerenderItems();
+};
+
+/**
+ * Called when the control or its children are changed.
+ * @private
+ */
+sap.ui.unified.Menu.prototype.invalidate = function(oOrigin){
+	if(oOrigin instanceof sap.ui.unified.MenuItemBase && this.getDomRef()){
+		this._delayedRerenderItems();
+	}else{
+		sap.ui.core.Control.prototype.invalidate.apply(this, arguments);
 	}
 };
 
@@ -8077,11 +8172,7 @@ sap.ui.unified.Menu.prototype.exit = function(){
  * @private
  */
 sap.ui.unified.Menu.prototype.onBeforeRendering = function() {
-	// Cleanup resize event registration before re-rendering
-	if(this.sResizeListenerId){
-		sap.ui.core.ResizeHandler.deregister(this.sResizeListenerId);
-		this.sResizeListenerId = null;
-	}
+	this._resetDelayedRerenderItems();
 };
 
 /**
@@ -8112,26 +8203,67 @@ sap.ui.unified.Menu.prototype.onAfterRendering = function() {
 	if(this.$().outerHeight(true) > iMaxHeight){
 		this.$().css("max-height", iMaxHeight+"px").toggleClass("sapUiMnuScroll", true);
 	}
-	
-	//Might be in the end not a good idea to listen for resizing the body / window because the body might change its size
-	//during a menu is opened (which then closes the menu again):
-
-	//Listen to resizing of the document
-	//if(this.getRootMenu() == this)
-	//	this.sResizeListenerId = sap.ui.core.ResizeHandler.register(!!sap.ui.Device.browser.internet_explorer ? window : jQuery("body").get(0), jQuery.proxy(this.onresize, this));
 };
-
-///**
-// * Called when the control is resized
-// * @private
-// */
-//sap.ui.unified.Menu.prototype.onresize = function(oEvent) {
-//	if(!this.bOpen) return;
-//	this.close();
-//};
 
 
 //****** API Methods ******
+
+sap.ui.unified.Menu.prototype.addItem = function(oItem){
+	this.addAggregation("items", oItem, !!this.getDomRef());
+	this._delayedRerenderItems();
+	return this;
+};
+
+sap.ui.unified.Menu.prototype.insertItem = function(oItem, idx){
+	this.insertAggregation("items", oItem, idx, !!this.getDomRef());
+	this._delayedRerenderItems();
+	return this;
+};
+
+sap.ui.unified.Menu.prototype.removeItem = function(oItem){
+	this.removeAggregation("items", oItem, !!this.getDomRef());
+	this._delayedRerenderItems();
+	return this;
+};
+
+sap.ui.unified.Menu.prototype.removeAllItems = function(){
+	var oRes = this.removeAllAggregation("items", !!this.getDomRef());
+	this._delayedRerenderItems();
+	return oRes;
+};
+
+sap.ui.unified.Menu.prototype.destroyItems = function(){
+	this.destroyAggregation("items", !!this.getDomRef());
+	this._delayedRerenderItems();
+	return this;
+};
+
+sap.ui.unified.Menu.prototype._delayedRerenderItems = function(){
+	if(!this.getDomRef()){
+		return;
+	}
+	this._resetDelayedRerenderItems();
+	
+	this._itemRerenderTimer = jQuery.sap.delayedCall(0, this, function(){
+		var oDomRef = this.getDomRef();
+		if(oDomRef){
+			var oRm = sap.ui.getCore().createRenderManager();
+			sap.ui.unified.MenuRenderer.renderItems(oRm, this);
+			oRm.flush(oDomRef);
+			oRm.destroy();
+			this.onAfterRendering();
+			this.getPopup()._applyPosition(this.getPopup()._oLastPosition);
+		}
+	});
+};
+
+sap.ui.unified.Menu.prototype._resetDelayedRerenderItems = function(){
+	if(this._itemRerenderTimer){
+		jQuery.sap.clearDelayedCall(this._itemRerenderTimer);
+		delete this._itemRerenderTimer;
+	}
+};
+
 
 sap.ui.unified.Menu.prototype.open = function(bWithKeyboard, oOpenerRef, my, at, of, offset, collision){
 	if(this.bOpen) {
@@ -8204,7 +8336,7 @@ sap.ui.unified.Menu.prototype.close = function() {
 	this.getPopup().close(0);
 
 	//Remove the Menus DOM after it is closed
-	this.onBeforeRendering();
+	this._resetDelayedRerenderItems();
 	this.$().remove();
 	this.bOutput = false;
 
@@ -8548,7 +8680,7 @@ sap.ui.unified.Menu.prototype.openSubmenu = function(oItem, bWithKeyboard, bWith
 sap.ui.unified.Menu.prototype._bringToFront = function() {
 	// This is a hack. We "simulate" a mouse-down-event on the submenu so that it brings itself
 	// to the front.
-	this.getPopup().onmousedown();
+	jQuery.sap.byId(this.getPopup().getId()).mousedown();
 };
 
 sap.ui.unified.Menu.prototype.checkEnabled = function(oItem){
@@ -8944,7 +9076,7 @@ jQuery.sap.declare("sap.ui.unified.MenuItem");
  * @extends sap.ui.unified.MenuItemBase
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -9170,7 +9302,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -10654,7 +10786,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public

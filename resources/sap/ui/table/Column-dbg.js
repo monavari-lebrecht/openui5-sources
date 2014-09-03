@@ -78,7 +78,7 @@ jQuery.sap.require("sap.ui.core.Element");
  * @extends sap.ui.core.Element
  *
  * @author  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -1112,6 +1112,7 @@ sap.ui.table.Column.prototype.sort = function(bDescending, bAdd) {
 						aCols[i].setProperty("sorted", false, true);
 						aCols[i].setProperty("sortOrder", sap.ui.table.SortOrder.Ascending, true);
 						aCols[i]._renderSortIcon();
+						delete aCols[i]._oSorter;
 					}
 				}
 				// set the sort property of the current column

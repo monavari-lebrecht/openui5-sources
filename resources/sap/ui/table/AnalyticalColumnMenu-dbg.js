@@ -55,7 +55,7 @@ jQuery.sap.require("sap.ui.table.ColumnMenu");
  * @extends sap.ui.table.ColumnMenu
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -114,8 +114,10 @@ sap.ui.table.AnalyticalColumnMenu.prototype._addGroupMenuItem = function() {
 		oTable = this._oTable,
 		oBinding = oTable.getBinding("rows"),
 		oResultSet = oBinding && oBinding.getAnalyticalQueryResult();
-	
-	if (oTable && oResultSet && oResultSet.findDimensionByPropertyName(oColumn.getLeadingProperty())) {
+
+	if (oTable && oResultSet && oResultSet.findDimensionByPropertyName(oColumn.getLeadingProperty()) 
+			&& jQuery.inArray(oColumn.getLeadingProperty(), oBinding.getSortablePropertyNames()) > -1
+			&& jQuery.inArray(oColumn.getLeadingProperty(), oBinding.getFilterablePropertyNames()) > -1) {
 		this._oGroupIcon = this._createMenuItem(
 			"group",
 			"TBL_GROUP",

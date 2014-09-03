@@ -66,7 +66,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @implements sap.ui.ux3.DataSetView
  *
  * @author  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -575,7 +575,7 @@ sap.ui.ux3.DataSetSimpleView.prototype.updateView = function(aDiff) {
 			rm.flush(this.$()[0], false, iIndex);
 			this.items.splice(iIndex, 0, oItem);
 		} else {
-			this.items.slice(iIndex, 1);
+			this.items.splice(iIndex, 1);
 			oItem.$().remove();
 			oItem.destroy();
 		}

@@ -212,28 +212,35 @@ sap.ui.define(['jquery.sap.global', './EppLib'],
 		                  alert(xmlHttpPost.responseText);
 	                  } else {
 	                      // alternatively allow upload via form
-		                  var xmlWindow = window.open('', '', 'width=800,height=150');
-		                  xmlWindow.document.write("<script>");
-		                  xmlWindow.document.write("function postXml() {");
-		                  xmlWindow.document.write("var smdUrl = document.getElementsByName('smdUrl')[0].value;");
-		                  xmlWindow.document.write("var postbody = document.getElementById('myPostDataTextarea').value;");
-		                  xmlWindow.document.write("var xmlHttpPost = new window.XMLHttpRequest();");
-		                  xmlWindow.document.write("xmlHttpPost.open('POST', smdUrl+'/E2EClientTraceUploadW/UploadForm.jsp', false);");
-		                  xmlWindow.document.write("xmlHttpPost.setRequestHeader('Content-type', 'multipart/form-data; boundary=" + boundary + "');");
-		                  xmlWindow.document.write("xmlHttpPost.send(postbody);");
-		                  //xmlWindow.document.write("document.write('<p>xmlHttpPost.responseText</p>');");
-		                  //xmlWindow.document.write("alert(xmlHttpPost.responseText);");
-		                  xmlWindow.document.write("document.getElementById('myUploadResult').innerHTML=xmlHttpPost.responseText;");
-		                  xmlWindow.document.write("}</script>");
 
-		                  xmlWindow.document.write("<div id='myUploadResult'></div>");
-		                  xmlWindow.document.write("<div>");
-		                  xmlWindow.document.write("SMD url: <input name='smdUrl' ltype='text' value='http://<host>:<port>' />");
-		                  xmlWindow.document.write("<button onclick='postXml()'>Submit</button>");
-		                  xmlWindow.document.write("<textarea id='myPostDataTextarea' style='width:100%;height:100px;'>" + postBody.replace(/\r\n/g,"&#13;\n") + "</textarea>");
-		                  xmlWindow.document.write("</div>");
+	                  	try {
 
-		                  //xmlWindow.document.write("<textarea cols=150 rows=55>" + busTrxXml + "</textarea>");
+		                  	var xmlWindow = window.open('', '', 'width=800,height=150');
+			                  xmlWindow.document.write("<script>");
+			                  xmlWindow.document.write("function postXml() {");
+			                  xmlWindow.document.write("var smdUrl = document.getElementsByName('smdUrl')[0].value;");
+			                  xmlWindow.document.write("var postbody = document.getElementById('myPostDataTextarea').value;");
+			                  xmlWindow.document.write("var xmlHttpPost = new window.XMLHttpRequest();");
+			                  xmlWindow.document.write("xmlHttpPost.open('POST', smdUrl+'/E2EClientTraceUploadW/UploadForm.jsp', false);");
+			                  xmlWindow.document.write("xmlHttpPost.setRequestHeader('Content-type', 'multipart/form-data; boundary=" + boundary + "');");
+			                  xmlWindow.document.write("xmlHttpPost.send(postbody);");
+			                  //xmlWindow.document.write("document.write('<p>xmlHttpPost.responseText</p>');");
+			                  //xmlWindow.document.write("alert(xmlHttpPost.responseText);");
+			                  xmlWindow.document.write("document.getElementById('myUploadResult').innerHTML=xmlHttpPost.responseText;");
+			                  xmlWindow.document.write("}</script>");
+
+			                  xmlWindow.document.write("<div id='myUploadResult'></div>");
+			                  xmlWindow.document.write("<div>");
+			                  xmlWindow.document.write("SMD url: <input name='smdUrl' ltype='text' value='http://<host>:<port>' />");
+			                  xmlWindow.document.write("<button onclick='postXml()'>Submit</button>");
+			                  xmlWindow.document.write("<textarea id='myPostDataTextarea' style='width:100%;height:100px;'>" + postBody.replace(/\r\n/g,"&#13;\n") + "</textarea>");
+			                  xmlWindow.document.write("</div>");
+
+			                  //xmlWindow.document.write("<textarea cols=150 rows=55>" + busTrxXml + "</textarea>");
+	                  	} catch(ex) {
+	                  		// exception caused by popup blocker
+	                  		jQuery.sap.log.error("E2E Trace result popup could not be opened (maybe caused by a popup blocker)", "", "sap.ui.core.support.trace.E2eTraceLib");
+	                  	}
 	                  }
 
 	                })();

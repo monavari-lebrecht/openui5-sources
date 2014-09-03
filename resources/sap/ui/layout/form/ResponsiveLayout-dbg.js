@@ -55,7 +55,7 @@ jQuery.sap.require("sap.ui.layout.form.FormLayout");
  * @extends sap.ui.layout.form.FormLayout
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -184,6 +184,11 @@ sap.ui.core.Control.extend("sap.ui.layout.form.ResponsiveLayoutPanel", {
 		var oContainer = sap.ui.getCore().byId(oPanel.getContainer());
 		var oLayout    = sap.ui.getCore().byId(oPanel.getLayout());
 		var oContent   = oPanel.getContent();
+
+		if (!oContainer || !oLayout) {
+			// Container might be removed, but ResponsiveFlowLayout still calls a rerendering with old content
+			return;
+		}
 
 		var bExpandable = oContainer.getExpandable();
 		var sTooltip = oContainer.getTooltip_AsString();
@@ -335,6 +340,7 @@ sap.ui.core.Control.extend("sap.ui.layout.form.ResponsiveLayoutPanel", {
 		var iVisibleContainers = 0;
 		for ( var i = 0; i < iLength; i++) {
 			var oContainer = aContainers[i];
+			oContainer._checkProperties();
 			if (oContainer.getVisible()) {
 				iVisibleContainers++;
 				var sContainerId = oContainer.getId();

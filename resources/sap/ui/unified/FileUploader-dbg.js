@@ -78,7 +78,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -400,7 +400,8 @@ sap.ui.unified.FileUploader.M_EVENTS = {'change':'change','uploadComplete':'uplo
 
 /**
  * Getter for property <code>fileType</code>.
- * The chosen files will be checked against an array of file types. This property can be defined as a array of file endings to be checked against. If at least one file does not fit the file type restriction the upload is prevented. Example: fileType: "jpg,png,txt".
+ * The chosen files will be checked against an array of file types. If at least one file does not fit the file type restriction the upload is prevented.
+ * Example: ["jpg", "png", "bmp"].
  *
  * Default value is empty/<code>undefined</code>
  *
@@ -475,7 +476,8 @@ sap.ui.unified.FileUploader.M_EVENTS = {'change':'change','uploadComplete':'uplo
 
 /**
  * Getter for property <code>mimeType</code>.
- * The chosen files will be checked against an array of mime types. This property can be defined as a array of mime types to be checked against. If at least one file does not fit the mime type restriction the upload is prevented. This property is not supported by Internet Explorer 8 and 9. Example: fileType: "image,text". It is also possible to be more specific and set "image/png".
+ * The chosen files will be checked against an array of mime types. If at least one file does not fit the mime type restriction the upload is prevented. This property is not supported by Internet Explorer 8 and 9.
+ * Example: mimeType ["image/png", "image/jpeg"].
  *
  * Default value is empty/<code>undefined</code>
  *
@@ -1131,31 +1133,29 @@ sap.ui.unified.FileUploader.M_EVENTS = {'change':'change','uploadComplete':'uplo
  */
 sap.ui.unified.FileUploader.prototype.init = function(){
 
+	// Instantiate browser-specific UI-Elements (IE8 only): 
 	// works fine with applySettings() after init() - most things are done in onAfterRendering
 	// IE8 should render a native file uploader and the SAPUI5 controls should be exactly behind
 	if (!!sap.ui.Device.browser.internet_explorer && sap.ui.Device.browser.version == 8) {
 		this.oFilePath = new sap.ui.commons.TextField(this.getId() + "-fu_input",
 													{width: "225px"});
-	} else {
-		this.oFilePath = sap.ui.unified.FileUploaderHelper.createTextField(this.getId() + "-fu_input");
-	}
-	this.oFilePath.setParent(this);
-	if (this.getButtonText()) {
-		var sButtonText = this.getButtonText();
-	} else {
-		var sButtonText = this.getBrowseText();
-	}
-
-	if (!!sap.ui.Device.browser.internet_explorer && sap.ui.Device.browser.version == 8) {
+		
 		this.oBrowse = new sap.ui.commons.Button({enabled : this.getEnabled(),
-													text: sButtonText,
-													width: "0px",
-													height: "0px"});
+			text: "Browse..",
+			width: "0px",
+			height: "0px"});
 	} else {
+		//all other browsers will load the respective UI-Elements from the FileUploaderHelper
+		this.oFilePath = sap.ui.unified.FileUploaderHelper.createTextField(this.getId() + "-fu_input");
 		this.oBrowse = sap.ui.unified.FileUploaderHelper.createButton();
 	}
+	this.oFilePath.setParent(this);
 	this.oBrowse.setParent(this);
+
 	this.oFileUpload = null;
+
+	//retrieving the default browse button text from the resource bundle
+	this.oBrowse.setText(this.getBrowseText());
 
 //	var that = this;
 //	var oDelegate = {
@@ -1171,8 +1171,44 @@ sap.ui.unified.FileUploader.prototype.init = function(){
 
 };
 
+sap.ui.unified.FileUploader.prototype.setButtonText = function(sText) {
+	this.oBrowse.setText(sText || this.getBrowseText());
+	this.setProperty("buttonText", sText, false);
+	return this;
+};
+
 sap.ui.unified.FileUploader.prototype.getIdForLabel = function () {
 	return this.oBrowse.getId();
+};
+
+sap.ui.unified.FileUploader.prototype.setFileType = function(vTypes) {
+	// Compatibility issue: converting the given types to an array in case it is a string
+	var aTypes = this._convertTypesToArray(vTypes);
+	this.setProperty("fileType", aTypes, false);
+	return this;
+};
+
+sap.ui.unified.FileUploader.prototype.setMimeType = function(vTypes) {
+	// Compatibility issue: converting the given types to an array in case it is a string
+	var aTypes = this._convertTypesToArray(vTypes);
+	this.setProperty("mimeType", aTypes, false);
+	return this;
+};
+
+/**
+ * Helper to ensure, that the types (file or mime) are inside an array.
+ * The FUP also accepts comma-separated strings for its fileType and mimeType property. 
+ * @private
+ */
+sap.ui.unified.FileUploader.prototype._convertTypesToArray = function (vTypes) {
+	if (typeof vTypes === "string") {
+		if(vTypes === ""){
+			return [];
+		} else {
+			return vTypes.split(",");
+		}
+	}
+	return vTypes;
 };
 
 /**
@@ -1199,14 +1235,6 @@ sap.ui.unified.FileUploader.prototype.exit = function(){
  * @private
  */
 sap.ui.unified.FileUploader.prototype.onBeforeRendering = function() {
-
-	this._runOnce = false;
-
-	if (this.getButtonText()) {
-		this.oBrowse.setText(this.getButtonText());
-	} else {
-		this.oBrowse.setText(this.getBrowseText());
-	}
 
 	// store the file uploader outside in the static area
 	var oStaticArea = sap.ui.getCore().getStaticAreaRef();
@@ -1245,24 +1273,21 @@ sap.ui.unified.FileUploader.prototype.onAfterRendering = function() {
 		if ((!!sap.ui.Device.browser.internet_explorer && sap.ui.Device.browser.version == 9)) {
 			this.oBrowse.$().attr("tabindex", "-1");
 		}
-		// calculation of the width of the overlay for the original file upload
-		// !!!sap.ui.Device.browser.internet_explorer check: only for non IE browsers since there we need
-		// the button in front of the fileuploader
-		if (this.getWidth()) {
+		jQuery.sap.delayedCall(0, this, this._recalculateWidth);
+	}
+	
+};
 
-			if (!this._runOnce) {
-				this._runOnce = true;
-				jQuery.sap.delayedCall(50, this, function(){
-					this.onAfterRendering();
-				});
-			} else {
-				if(this.getButtonOnly()) {
-					this.oBrowse.getDomRef().style.width = this.getWidth();
-				} else {
-					// Recalculate the textfield width...
-					this._resizeDomElements();
-				}
-			}
+sap.ui.unified.FileUploader.prototype._recalculateWidth = function() {
+	// calculation of the width of the overlay for the original file upload
+	// !!!sap.ui.Device.browser.internet_explorer check: only for non IE browsers since there we need
+	// the button in front of the fileuploader
+	if (this.getWidth()) {
+		if(this.getButtonOnly()) {
+			this.oBrowse.getDomRef().style.width = this.getWidth();
+		} else {
+			// Recalculate the textfield width...
+			this._resizeDomElements();
 		}
 	}
 };
@@ -1311,11 +1336,11 @@ sap.ui.unified.FileUploader.prototype._resizeDomElements = function() {
 }
 
 sap.ui.unified.FileUploader.prototype.onresize = function() {
-	this.onAfterRendering();
+	this._recalculateWidth();
 }
 
 sap.ui.unified.FileUploader.prototype.onThemeChanged = function() {
-	this.onAfterRendering();
+	this._recalculateWidth();
 }
 
 sap.ui.unified.FileUploader.prototype.setEnabled = function(bEnabled){
@@ -1371,11 +1396,18 @@ sap.ui.unified.FileUploader.prototype.setValue = function(sValue, bFireEvent) {
 				this.oFilePath.getFocusDomRef().focus();
 			}
 		}
-		if (this.oFileUpload && !sValue) {
+		var oForm = this.getDomRef("fu_form");
+		if (this.oFileUpload && /* is visible: */ oForm && !sValue) {
 			// some browsers do not allow to clear the value of the fileuploader control
 			// therefore we utilize the form and reset the values inside this form and
 			// apply the additionalData again afterwards
-			this.getDomRef("fu_form").reset();
+			oForm.reset();
+			if (sap.ui.Device.browser.chrome) {
+				// Chrome needs the value to be cleared this way since the form reset leads
+				// to showing the old value while nothing is uploaded. This specifically 
+				// happens when the focus changes due to the change event in between.
+				this.getDomRef("fu_input").value = "";
+			}
 			this.$("fu_data").val(this.getAdditionalData());
 		}
 		// only fire event when triggered by user interaction
@@ -1533,8 +1565,10 @@ sap.ui.unified.FileUploader.prototype.handlechange = function(oEvent) {
 	if (this.oFileUpload && this.getEnabled()) {
 
 		var fMaxSize = this.getMaximumFileSize();
-		var sFileType = this.getFileType();
-		var sMimeType = this.getMimeType();
+
+		var aFileTypes = this.getFileType();
+		var aMimeTypes = this.getMimeType();
+		
 		var sFileString = '';
 
 		if (window.File) {
@@ -1556,16 +1590,16 @@ sap.ui.unified.FileUploader.prototype.handlechange = function(oEvent) {
 					});
 					return;
 				}
-				if (sMimeType) {
+				//check allowed mime-types for potential mismatches
+				if (aMimeTypes && aMimeTypes.length > 0) {
 					var bWrongMime = true;
-					var aMimeCheck = sMimeType.split(",");
-					for (var j = 0; j < aMimeCheck.length; j++) {
-						if (sType.match(aMimeCheck[j])) {
+					for (var j = 0; j < aMimeTypes.length; j++) {
+						if (sType.match(aMimeTypes[j])) {
 							bWrongMime = false;
 						}
 					}
 					if (bWrongMime) {
-						jQuery.sap.log.info("File: " + sName + " is of type " + sType + " .Allowed types are: "  + sMimeType + ".");
+						jQuery.sap.log.info("File: " + sName + " is of type " + sType + ". Allowed types are: "  + aMimeTypes + ".");
 						this.fireTypeMissmatch({
 							fileName:sName,
 							fileType:sType
@@ -1573,18 +1607,18 @@ sap.ui.unified.FileUploader.prototype.handlechange = function(oEvent) {
 						return;
 					}
 				}
-				if (sFileType) {
+				//check allowed file-types for potential mismatches
+				if (aFileTypes && aFileTypes.length > 0) {
 					var bWrongType = true;
-					var aTypeCheck = sFileType.split(",");
 					var iIdx = sName.lastIndexOf(".");
 					var sFileEnding = sName.substring(iIdx + 1);
-					for (var k = 0; k < aTypeCheck.length; k++) {
-						if (sFileEnding == aTypeCheck[k]) {
+					for (var k = 0; k < aFileTypes.length; k++) {
+						if (sFileEnding == aFileTypes[k]) {
 							bWrongType = false;
 						}
 					}
 					if (bWrongType) {
-						jQuery.sap.log.info("File: " + sName + " is of type " + sFileEnding + " .Allowed types are: "  + sFileType + ".");
+						jQuery.sap.log.info("File: " + sName + " is of type " + sFileEnding + ". Allowed types are: "  + aFileTypes + ".");
 						this.fireTypeMissmatch({
 							fileName:sName,
 							fileType:sFileEnding
@@ -1597,19 +1631,20 @@ sap.ui.unified.FileUploader.prototype.handlechange = function(oEvent) {
 			if (sFileString) {
 				this.fireFileAllowed();
 			}
-		} else if (sFileType) {
+		} else if (aFileTypes && aFileTypes.length > 0) {
+			// This else case is executed if the File-API is not supported by the browser (especially IE8/9).
+			// Check if allowed file types match the chosen file from the oFileUpload IFrame Workaround.
 			var bWrongType = true;
-			var aTypeCheck = sFileType.split(",");
 			var sName = this.oFileUpload.value || "";
 			var iIdx = sName.lastIndexOf(".");
 			var sFileEnding = sName.substring(iIdx + 1);
-			for (var k = 0; k < aTypeCheck.length; k++) {
-				if (sFileEnding == aTypeCheck[k]) {
+			for (var k = 0; k < aFileTypes.length; k++) {
+				if (sFileEnding == aFileTypes[k]) {
 					bWrongType = false;
 				}
 			}
 			if (bWrongType) {
-				jQuery.sap.log.info("File: " + sName + " is of type " + sFileEnding + " .Allowed types are: "  + sFileType + ".");
+				jQuery.sap.log.info("File: " + sName + " is of type " + sFileEnding + ". Allowed types are: "  + aFileTypes + ".");
 				this.fireTypeMissmatch({
 					fileName:sName,
 					fileType:sFileEnding
@@ -1643,6 +1678,7 @@ sap.ui.unified.FileUploader.prototype.handlechange = function(oEvent) {
 //
 //	Private
 //
+
 /**
  * Helper to retrieve the I18N texts for a button
  * @private

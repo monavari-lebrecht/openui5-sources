@@ -66,7 +66,7 @@ sap.ui.define(['./library','./Control','./IconPool'], function() {
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -493,6 +493,9 @@ sap.ui.core.Icon.M_EVENTS = {'press':'press'};
 sap.ui.core.Icon.prototype.onAfterRendering = function() {
 	var $Icon = this.$();
 
+	if (this.hasListeners("press")) {
+		$Icon.css("cursor", "pointer");
+	}
 	// This is to check if no cursor property inherited from parent DOM.
 	// If the current value is auto, set it to default.
 	// This is to fix the cursor: auto interpreted as text cursor in firefox and IE.
@@ -773,7 +776,7 @@ sap.ui.core.Icon.prototype.setHoverBackgroundColor = function(sColor) {
 sap.ui.core.Icon.prototype.attachPress = function() {
 	var aMyArgs = Array.prototype.slice.apply(arguments);
 	aMyArgs.splice(0, 0, "press");
-	this.addStyleClass("sapUiIconPointer");
+	this.$().css("cursor", "pointer");
 	return sap.ui.core.Control.prototype.attachEvent.apply(this, aMyArgs);
 };
 
@@ -782,7 +785,7 @@ sap.ui.core.Icon.prototype.detachPress = function() {
 	aMyArgs.splice(0, 0, "press");
 	sap.ui.core.Control.prototype.detachEvent.apply(this, aMyArgs);
 	if (!this.hasListeners("press")) {
-		this.removeStyleClass("sapUiIconPointer");
+		this.$().css("cursor", "default");
 	}
 	return this;
 };

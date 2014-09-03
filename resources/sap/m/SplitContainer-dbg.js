@@ -75,7 +75,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -1924,8 +1924,6 @@ sap.m.SplitContainer.prototype.backToTopDetail = function(backData, oTransitionP
 };
 
 sap.m.SplitContainer.prototype.addMasterPage = function(oPage) {
-	var oRealPage = this._getRealPage(oPage);
-
 	if(this._hasPageInArray(this._aMasterPages, oPage)) {
 		return;
 	}
@@ -1992,13 +1990,16 @@ sap.m.SplitContainer.prototype.addDetailPage = function(oPage) {
 		oRealPage.addDelegate({
 			//before rendering is used in order to avoid invalidate in renderer (set button to the header in page)
 			onBeforeRendering: function(){
-				if(!sap.ui.Device.system.phone) {
+				// Maintain the masterButton only when the page is still the current page in detail NavContainer.
+				// If the rerendering occurs after the page navigation, it's not needed to maintain the master button anymore.
+				// This check is needed otherwise it may cause endless rerendering of the last page and the current page.
+				if(!sap.ui.Device.system.phone && (oSplitContainer._oDetailNav.getCurrentPage() === oRealPage)) {
 					if(oSplitContainer._portraitHide() || oSplitContainer._hideMode()) {
 						if(!oSplitContainer._bMasterisOpen || oSplitContainer._bMasterClosing){
-							oSplitContainer._setMasterButton(oRealPage);
+							oSplitContainer._setMasterButton(oRealPage, true);
 						}
 					}else if(oSplitContainer._portraitPopover()) {
-						oSplitContainer._setMasterButton(oRealPage);
+						oSplitContainer._setMasterButton(oRealPage, true);
 					}else {
 						oSplitContainer._removeMasterButton(oRealPage);
 					}
@@ -2037,7 +2038,7 @@ sap.m.SplitContainer.prototype.indexOfDetailPage = function(oPage) {
 };
 
 sap.m.SplitContainer.prototype.insertMasterPage = function(oPage, iIndex, bSuppressInvalidate) {
-	return this._insertPage(this._aMasterPages, "masterPages", oPage, iIndex, bSuppressInvalidate)
+	return this._insertPage(this._aMasterPages, "masterPages", oPage, iIndex, bSuppressInvalidate);
 };
 
 sap.m.SplitContainer.prototype.removeMasterPage = function(oPage, bSuppressInvalidate) {
@@ -2050,7 +2051,7 @@ sap.m.SplitContainer.prototype.removeAllMasterPages = function(bSuppressInvalida
 };
 
 sap.m.SplitContainer.prototype.insertDetailPage = function(oPage, iIndex, bSuppressInvalidate) {
-	return this._insertPage(this._aDetailPages, "detailPages", oPage, iIndex, bSuppressInvalidate)
+	return this._insertPage(this._aDetailPages, "detailPages", oPage, iIndex, bSuppressInvalidate);
 };
 
 sap.m.SplitContainer.prototype.removeDetailPage = function(oPage, bSuppressInvalidate) {
@@ -2073,20 +2074,21 @@ sap.m.SplitContainer.prototype.addPage = function(oPage, bMaster){
 sap.m.SplitContainer.prototype.showMaster = function() {
 	var _this$ = this._oMasterNav.$(),
 		that = this,
+		fnAnimationEnd = jQuery.proxy(this._afterShowMasterAnimation, this),
 		_curPage = this._getRealPage(this._oDetailNav.getCurrentPage());
 	if(this._portraitPopover()) {
-        if(!this._oPopOver.isOpen()){
-        	function afterPopoverOpen(){
-        		this._oPopOver.detachAfterOpen(afterPopoverOpen, this);
-        		this._bMasterOpening = false;
-        		this._bMasterisOpen = true;
-        		this.fireAfterMasterOpen();
-        	}
-        	this._oPopOver.attachAfterOpen(afterPopoverOpen, this);
-        	this.fireBeforeMasterOpen();
-        	this._oPopOver.openBy(this._oShowMasterBtn, true);
-        	this._bMasterOpening = true;
-        }
+		if(!this._oPopOver.isOpen()){
+			function afterPopoverOpen(){
+				this._oPopOver.detachAfterOpen(afterPopoverOpen, this);
+				this._bMasterOpening = false;
+				this._bMasterisOpen = true;
+				this.fireAfterMasterOpen();
+			}
+			this._oPopOver.attachAfterOpen(afterPopoverOpen, this);
+			this.fireBeforeMasterOpen();
+			this._oPopOver.openBy(this._oShowMasterBtn, true);
+			this._bMasterOpening = true;
+		}
 	}else{
 		if((this._portraitHide() || this._hideMode()) 
 			&& (!this._bMasterisOpen || this._bMasterClosing)) {
@@ -2095,24 +2097,21 @@ sap.m.SplitContainer.prototype.showMaster = function() {
 				_this$.animate({
 					left: "+=320"
 				}, {
-					duration: 300
+					duration: 300,
+					complete: fnAnimationEnd
 				});
 				this._bMasterisOpen = true;
 				that._bMasterOpening = false;
 				this._removeMasterButton(_curPage, jQuery.proxy(this._setTitleVisibility, this));
+			} else {
+				_this$.bind((sap.ui.Device.os.ios || !this._isPlatformDependent) ? "webkitTransitionEnd transitionend" : "webkitAnimationEnd animationend", fnAnimationEnd);
 			}
-			_this$.bind((sap.ui.Device.os.ios || !this._isPlatformDependent) ? "webkitTransitionEnd transitionend" : "webkitAnimationEnd animationend", function(){
-				jQuery(this).unbind("webkitTransitionEnd transitionend");
-				jQuery(this).unbind("webkitAnimationEnd animationend");
-				that._bMasterOpening = false;
-				that._bMasterisOpen = true;
-				that._removeMasterButton(_curPage, jQuery.proxy(that._setTitleVisibility, that));
-				that.fireAfterMasterOpen();
-			});
+			
 			this.fireBeforeMasterOpen();
 			_this$.toggleClass("sapMSplitContainerMasterVisible", true);
 			_this$.toggleClass("sapMSplitContainerMasterHidden", false);
 			this._bMasterOpening = true;
+			that._removeMasterButton(_curPage);
 			
 			// workaround for bug in current webkit versions: in slided-in elements the z-order may be wrong and will be corrected once a re-layout is enforced 
 			// see http://code.google.com/p/chromium/issues/detail?id=246965
@@ -2132,8 +2131,7 @@ sap.m.SplitContainer.prototype.showMaster = function() {
 
 sap.m.SplitContainer.prototype.hideMaster = function() {
 	var _this$ = this._oMasterNav.$(),
-		that = this,
-		_curPage = that._getRealPage(that._oDetailNav.getCurrentPage());
+		fnAnimationEnd = jQuery.proxy(this._afterHideMasterAnimation, this);
 	if (this._portraitPopover()) {
 		if (this._oPopOver.isOpen()) {
 			this._oPopOver.close();
@@ -2146,10 +2144,10 @@ sap.m.SplitContainer.prototype.hideMaster = function() {
 					left: "-=320"
 				}, {
 					duration: 300,
-					complete: jQuery.proxy(this._afterHideMasterAnimation, this)
+					complete: fnAnimationEnd
 				});
 			} else {
-				_this$.bind((sap.ui.Device.os.ios || !this._isPlatformDependent) ? "webkitTransitionEnd transitionend" : "webkitAnimationEnd animationend", jQuery.proxy(this._afterHideMasterAnimation, this));
+				_this$.bind((sap.ui.Device.os.ios || !this._isPlatformDependent) ? "webkitTransitionEnd transitionend" : "webkitAnimationEnd animationend", fnAnimationEnd);
 			}
 
 			this.fireBeforeMasterClose();
@@ -2159,6 +2157,19 @@ sap.m.SplitContainer.prototype.hideMaster = function() {
 		}
 	}
 	return this;
+};
+
+sap.m.SplitContainer.prototype._afterShowMasterAnimation = function() {
+	if (this._portraitHide() || this._hideMode()) {
+		if (!this._isMie9) {
+			var $MasterNav = this._oMasterNav.$();
+			$MasterNav.unbind("webkitTransitionEnd transitionend", this._afterShowMasterAnimation);
+			$MasterNav.unbind("webkitAnimationEnd animationend", this._afterShowMasterAnimation);
+		}
+		this._bMasterOpening = false;
+		this._bMasterisOpen = true;
+		this.fireAfterMasterOpen();
+	}
 };
 
 sap.m.SplitContainer.prototype._afterHideMasterAnimation = function() {
@@ -2621,11 +2632,16 @@ sap.m.SplitContainer.prototype._createShowMasterButton = function() {
 	}).addStyleClass("sapMSplitContainerMasterBtn");
 };
 
-sap.m.SplitContainer.prototype._setMasterButton = function(oPage, fnCallBack) {
+sap.m.SplitContainer.prototype._setMasterButton = function(oPage, fnCallBack, bSuppressRerendering) {
 	if(!oPage){
 		return;
 	}
-	
+
+	if (typeof fnCallBack === 'boolean') {
+		bSuppressRerendering = fnCallBack;
+		fnCallBack = undefined;
+	}
+
 	oPage = this._getRealPage(oPage);
 	var aHeaderContent = oPage._getAnyHeader().getContentLeft();
 	for(var i=0; i < aHeaderContent.length; i++) {
@@ -2665,7 +2681,7 @@ sap.m.SplitContainer.prototype._setMasterButton = function(oPage, fnCallBack) {
 				if(!sap.ui.Device.os.ios && this._isPlatformDependent && oContentLeft.length === 0) {
 					oPage._titleIndex = 1;
 				}
-				oPageHeader.insertContentLeft(this._oShowMasterBtn, 0);
+				oPageHeader.insertAggregation("contentLeft", this._oShowMasterBtn, 0, bSuppressRerendering);
 			}
 		} else {
 			if(this._isMie9) {
@@ -2828,9 +2844,9 @@ sap.m.SplitContainer.prototype._hasPageInArray= function (array, oPage) {
 		if(oPage === oArrayEntry) {
 			bFound = true;
 		}
-	})
+	});
 	return bFound;
-}
+};
 
 /**************************************************************
 * END - Static methods

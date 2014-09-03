@@ -18,7 +18,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/DataType', 'sap/ui/base/EventPr
 	 *
 	 * @extends sap.ui.base.EventProvider
 	 * @author Martin Schaus
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 *
 	 * @param {sap.ui.core.Core}
 	 *            oCore the core instance to use for analysis

@@ -60,7 +60,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -357,7 +357,6 @@ jQuery.sap.require("sap.ui.core.theming.Parameters");
 jQuery.sap.require("sap.ui.core.IconPool");
 jQuery.sap.require("sap.m.SwitchRenderer");
 sap.ui.core.IconPool.insertFontFaceStyle();
-
 sap.ui.core.EnabledPropagator.apply(sap.m.Switch.prototype, [true]);
 
 /* =========================================================== */
@@ -378,7 +377,7 @@ sap.m.Switch.prototype._slide = function(iPosition) {
 	}
 
 	this._iCurrentPosition = iPosition;
-	this._$SwitchInner[0].style[sap.m.Switch._bRtl ? "right" : "left"] = iPosition + "px";
+	this._$SwitchInner[0].style[sap.ui.getCore().getConfiguration().getRTL() ? "right" : "left"] = iPosition + "px";
 	this._setTempState(Math.abs(iPosition) < sap.m.Switch._SWAPPOINT);
 };
 
@@ -409,8 +408,6 @@ sap.m.Switch._getCssParameter = function(sParameter) {
 	sap.m.Switch._TRANSITIONTIME = Number(sTransitionTime) || 0;
 }());
 
-sap.m.Switch._bRtl  = sap.ui.getCore().getConfiguration().getRTL();
-
 // the position of the inner HTML element whether the switch is "ON"
 sap.m.Switch._ONPOSITION = Number(sap.m.Switch._getCssParameter("sapMSwitch-ONPOSITION"));
 
@@ -437,10 +434,6 @@ sap.m.Switch.prototype.onBeforeRendering = function() {
 
 	this._sOn = this.getCustomTextOn() || Swt._oRb.getText("SWITCH_ON");
 	this._sOff = this.getCustomTextOff() || Swt._oRb.getText("SWITCH_OFF");
-
-	// flags
-	this._bDisabled = !this.getEnabled();
-	this._bCheckboxRendered = this.getName();
 };
 
 /**
@@ -485,21 +478,31 @@ sap.m.Switch.prototype.ontouchstart = function(oEvent) {
 	// mark the event for components that needs to know if the event was handled by the Switch
 	oEvent.setMarked();
 
-	// Process only single touches, if there is already a touch happening
-	// or two simultaneous touches, then ignore them.
-	if (sap.m.touch.countContained(oEvent.touches, this.getId()) > 1 || this._bDisabled) {
+	// only process single touches (only the first active touch point)
+	if (sap.m.touch.countContained(oEvent.touches, this.getId()) > 1 ||
+		!this.getEnabled() ||
+
+		// detect which mouse button caused the event and only process the standard click
+		// (this is usually the left button, oEvent.button === 0 for standard click)
+		// note: if the current event is a touch event oEvent.button property will be not defined
+		oEvent.button) {
+
 		return;
 	}
 
+	// track the id of the first active touch point
+	this._iActiveTouchId = oTargetTouch.identifier;
 	jQuery.sap.delayedCall(0, this._$Switch[0], "focus");
 
+	// add active state
 	this._$Switch.addClass(CSS_CLASS + "Pressed")
 				.removeClass(CSS_CLASS + "Trans");
 
-	this._iActiveTouch = oTargetTouch.identifier;
 	this._bTempState = this.getState();
 	this._iStartPressPosX = oTargetTouch.pageX;
 	this._iPosition = this._$SwitchInner.position().left;
+
+	// track movement to determine if the interaction was a click or a tap
 	this._bDragging = false;
 };
 
@@ -521,30 +524,41 @@ sap.m.Switch.prototype.ontouchmove = function(oEvent) {
 		iPosition,
 		fnTouch = sap.m.touch;
 
-	if (this._bDisabled) {
+	if (!this.getEnabled() ||
+
+		// detect which mouse button caused the event and only process the standard click
+		// (this is usually the left button, oEvent.button === 0 for standard click)
+		// note: if the current event is a touch event oEvent.button property will be not defined
+		oEvent.button) {
+
 		return;
 	}
 
+	// only process single touches (only the first active touch point),
 	// the active touch has to be in the list of touches
-	jQuery.sap.assert(fnTouch.find(oEvent.touches, this._iActiveTouch), "missing touchend");
+	jQuery.sap.assert(fnTouch.find(oEvent.touches, this._iActiveTouchId), "missing touchend");
 
-	// find the active touch
-	oTouch = fnTouch.find(oEvent.changedTouches, this._iActiveTouch);
+	// find the active touch point
+	oTouch = fnTouch.find(oEvent.changedTouches, this._iActiveTouchId);
 
-	// only respond to the active touch
+	// only process the active touch
 	if (!oTouch ||
 
-		// Note: do not rely on a specific granularity of the touchmove event.
+		// note: do not rely on a specific granularity of the touchmove event.
 		// On windows 8 surfaces, the touchmove events are dispatched even if
 		// the user doesn’t move the touch point along the surface.
 		oTouch.pageX === this._iStartPressPosX) {
+
 		return;
 	}
 
+	// interaction was not a click or a tap
 	this._bDragging = true;
+
 	iPosition = ((this._iStartPressPosX - oTouch.pageX) * -1) + this._iPosition;
 
-	if (sap.m.Switch._bRtl) {
+	// RTL mirror
+	if (sap.ui.getCore().getConfiguration().getRTL()) {
 		iPosition = -iPosition;
 	}
 
@@ -562,32 +576,38 @@ sap.m.Switch.prototype.ontouchend = function(oEvent) {
 	// mark the event for components that needs to know if the event was handled by the Switch
 	oEvent.setMarked();
 
-	var fnTouch = sap.m.touch,
+	var oTouch,
+		fnTouch = sap.m.touch,
 		assert = jQuery.sap.assert;
 
-	if (this._bDisabled) {
+	if (!this.getEnabled() ||
+
+		// detect which mouse button caused the event and only process the standard click
+		// (this is usually the left button, oEvent.button === 0 for standard click)
+		// note: if the current event is a touch event oEvent.button property will be not defined
+		oEvent.button) {
+
 		return;
 	}
 
-	assert(this._iActiveTouch !== undefined, "expect to already be touching");
+	// only process single touches (only the first active touch)
+	assert(this._iActiveTouchId !== undefined, "expect to already be touching");
 
-	// if the touch we're tracking isn't changing here, ignore this event
-	if (!fnTouch.find(oEvent.changedTouches, this._iActiveTouch)) {
+	// find the active touch point
+	oTouch = fnTouch.find(oEvent.changedTouches, this._iActiveTouchId);
 
-		// In most cases, our active touch will be in the touches collection,
-		// but we can't assert that because occasionally two touch end events can
-		// occur at almost the same time with both having empty touches lists.
-		return;
+	// process this event only if the touch we're tracking has changed
+	if (oTouch) {
+
+		// the touchend for the touch we're monitoring
+		assert(!fnTouch.find(oEvent.touches, this._iActiveTouchId), "touchend still active");
+
+		// remove active state
+		this._$Switch.removeClass(sap.m.SwitchRenderer.CSS_CLASS + "Pressed");
+
+		// change the state
+		this.setState(this._bDragging ? this._bTempState : !this._bTempState, true);
 	}
-
-	// the touchend for the touch we're monitoring
-	assert(!fnTouch.find(oEvent.touches, this._iActiveTouch), "touch ended also still active");
-
-	// remove active state
-	this._$Switch.removeClass(sap.m.SwitchRenderer.CSS_CLASS + "Pressed");
-
-	// change the state
-	this.setState(this._bDragging ? this._bTempState : !this._bTempState, true);
 };
 
 /**
@@ -612,7 +632,7 @@ sap.m.Switch.prototype.onsapselect = function(oEvent) {
 	// note: prevent document scrolling when space keys is pressed
 	oEvent.preventDefault();
 
-	this.setState(!this.getState());
+	this.setState(!this.getState(), true);
 };
 
 /* =========================================================== */
@@ -636,7 +656,7 @@ sap.m.Switch.prototype.setState = function(bState, bTriggerEvent) {
 		Swt = sap.m.Switch,
 		CSS_CLASS = sap.m.SwitchRenderer.CSS_CLASS;
 
-	if (this._bDisabled && bTriggerEvent) {
+	if (!this.getEnabled() && bTriggerEvent) {
 		return this;
 	}
 
@@ -656,7 +676,7 @@ sap.m.Switch.prototype.setState = function(bState, bTriggerEvent) {
 	if (bNewState) {
 		this._$Handle[0].setAttribute("data-sap-ui-swt", sState);
 
-		if (this._bCheckboxRendered) {
+		if (this.getName()) {
 			this._$Checkbox[0].setAttribute("checked", bState);
 			this._$Checkbox[0].setAttribute("value", sState);
 		}

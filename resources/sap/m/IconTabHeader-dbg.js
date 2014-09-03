@@ -57,7 +57,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -506,6 +506,15 @@ sap.m.IconTabHeader.prototype.setSelectedItem = function(oItem, bAPIchange) {
 		return this;
 	}
 
+	//if the old selected tab and the new selected tab both have no own content, which means they both use the same content from the icontabbar
+	//there is no need to rerender the content
+	//fix for xml views css: 0120061532 0001427250 2014
+	var bIsContentTheSame = false;
+	if (oItem.getContent().length === 0  && this.oSelectedItem && this.oSelectedItem.getContent().length === 0) {
+		bIsContentTheSame = true;
+	}
+
+
 	if (this.oSelectedItem && this.oSelectedItem.getVisible() && (this.getParent() instanceof sap.m.IconTabBar && this.getParent().getExpandable() || this.oSelectedItem !== oItem )) {
 		this.oSelectedItem.$().removeClass("sapMITBSelected");
 	}
@@ -523,26 +532,28 @@ sap.m.IconTabHeader.prototype.setSelectedItem = function(oItem, bAPIchange) {
 			this.oSelectedItem = oItem;
 			this.setProperty("selectedKey", this.oSelectedItem.getKey(), true);
 
-			// add selected styles
-			this.oSelectedItem.$().addClass("sapMITBSelected");
-
-			//if item has own content, this content is shown
-			var oSelectedItemContent = this.oSelectedItem.getContent();
-			if (oSelectedItemContent.length > 0) {
-				if (this.getParent() instanceof sap.m.IconTabBar) {
+			//if the IconTabBar is not expandable and the content not expanded (which means content can never be expanded), we do not need
+			//to visualize the selection and we do not need to render the content
+			if (this.getParent() instanceof sap.m.IconTabBar && (this.getParent().getExpandable() || this.getParent().getExpanded())) {
+				// add selected styles
+				this.oSelectedItem.$().addClass("sapMITBSelected");
+	
+				//if item has own content, this content is shown
+				var oSelectedItemContent = this.oSelectedItem.getContent();
+				if (oSelectedItemContent.length > 0) {
 					this.getParent()._rerenderContent(oSelectedItemContent);
+				//if item has not own content, general content of the icontabbar is shown
+				} else {
+					//if the general content was already shown there is no need to rerender
+					if (!bIsContentTheSame) {
+						this.getParent()._rerenderContent(this.getParent().getContent());
+					}
 				}
-			//if item has not own content, general content of the icontabbar is shown
-			} else {
-				if (this.getParent() instanceof sap.m.IconTabBar) {
-					this.getParent()._rerenderContent(this.getParent().getContent());
+				//if content is not expanded, content will be expanded (first click on item always leads to expanding the right content)
+				if (this.getParent().getExpandable() && !this.getParent().getExpanded()) {
+					this.getParent()._toggleExpandCollapse(true);
 				}
 			}
-			//if content is not expanded, content will be expanded (first click on item always leads to expanding the right content)
-			if (this.getParent() instanceof sap.m.IconTabBar && this.getParent().getExpandable() && !this.getParent().getExpanded()) {
-				this.getParent()._toggleExpandCollapse(true);
-			}
-			this._adjustArrow();
 		}
 
 		// scroll to item if out of viewport
@@ -577,92 +588,6 @@ sap.m.IconTabHeader.prototype.setSelectedItem = function(oItem, bAPIchange) {
 		}
 	}
 	return this;
-};
-
-/**
- * Adjusts the arrow position.
- * @private
- */
-sap.m.IconTabHeader.prototype._adjustArrow = function(){
-	var $arrow,
-		$head = this.$("head"),
-		$item;
-
-	if (this.getParent() instanceof sap.m.IconTabBar) {
-		if (this.getParent().getExpanded() === false) {
-			return this; // no need of an arrow in this case
-		}
-		$arrow = this.getParent().$("contentArrow");		
-	} else {
-		// not in icon tabbar: we don't have an arrow
-		return this;
-	}
-
-	if (this.oSelectedItem) {
-		$item = this.oSelectedItem.$();
-		if ($item.length > 0) {
-			//for scrolling we need to check if the new position is possible, if not, we hide the arrow but still show the old content
-				if (this._bRtl){
-					var iPossibleLeft = $head[0].offsetLeft;
-					var iPossibleRight = document.width - iPossibleLeft - $arrow.width() / 2;
-					var iRight = 0;
-					var oDomRef = this.getDomRef("head");
-					var iScrollRight = jQuery(oDomRef).scrollRightRTL();
-					if (this.oSelectedItem.getDesign() === sap.m.IconTabFilterDesign.Vertical) {
-						iRight = $arrow.parent().width() - $item[0].offsetLeft - $arrow.width() / 2 - $item.outerWidth() / 2 - $head[0].offsetLeft - iScrollRight;
-					} else { //horizontal layout needs different arrow calculation
-						iRight = $arrow.parent().width() - $item[0].offsetLeft - $arrow.width() / 2 - $item.outerWidth() + this.oSelectedItem.$("tab").outerWidth() / 2 - $head[0].offsetLeft - iScrollRight;
-					}
-					if (this._oScroller) {
-						iRight += this._oScroller.getScrollLeft();
-					}
-					var aItems = this.getItems();
-					if (((this.$("head").hasClass("sapMITBNoText") || this.oSelectedItem.$().hasClass("sapMITBHorizontal")) && ((this.oSelectedItem === aItems[0])))) {
-						//first tab has less padding arrow would not point to the middle
-						iRight -= 8;
-					}
-					$arrow.css("right", iRight + "px");
-					$arrow.toggleClass("sapMITBNoContentArrow", iRight < iPossibleLeft || iRight > iPossibleRight);
-				} else {
-					var iPossibleLeft = $head[0].offsetLeft;
-					var iPossibleRight = document.width - iPossibleLeft - $arrow.width() / 2;
-					var oDomRef = this.getDomRef("head");
-					var iLeft = 0;
-					var iScrollLeft = oDomRef.scrollLeft;
-					if (this.oSelectedItem.getDesign() === sap.m.IconTabFilterDesign.Vertical) {
-						iLeft = $item[0].offsetLeft + $item.outerWidth() / 2 - $arrow.width() / 2 + $head[0].offsetLeft - iScrollLeft;
-					} else { //horizontal layout needs different arrow calculation
-						iLeft = $item[0].offsetLeft + this.oSelectedItem.$("tab").outerWidth() / 2- $arrow.width() / 2 + $head[0].offsetLeft - iScrollLeft;
-					}
-					if (this._oScroller) {
-						iLeft -= this._oScroller.getScrollLeft();
-					}
-					var aItems = this.getItems();
-					var oFirstVisibleItem = this._getFirstVisibleItem(aItems);
-					if (((this.$("head").hasClass("sapMITBNoText") || this.oSelectedItem.$().hasClass("sapMITBHorizontal")) && ((this.oSelectedItem === oFirstVisibleItem)))
-							|| ((aItems.length > 0) && (this.oSelectedItem === aItems[aItems.length-1])) && this._bDoScroll && !this.oSelectedItem.$().hasClass("sapMITBHorizontal")) {
-						//first tab has less padding, last tab has more padding arrow would not point to the middle
-						iLeft -= 8;
-					}
-					if (this.oSelectedItem.$().hasClass("sapMITBHorizontal")) {
-						iLeft += 8;
-					}
-					if ( this._bDoScroll && !this.$("head").hasClass("sapMITBNoText")) {
-						if (this.oSelectedItem === aItems[0]) {
-							iLeft -= 2;
-						} else if (this.oSelectedItem === aItems[aItems.length-1]) {
-							iLeft += 2;
-						}
-					}
-					// fix for iconTabBar in ObjectHeader: position is set to relative
-					if (this.$().css("position") === "relative") {
-						iLeft += this.$().offset().left;
-					}
-					$arrow.css("left", iLeft + "px");
-					$arrow.toggleClass("sapMITBNoContentArrow", iLeft < iPossibleLeft || iLeft > iPossibleRight);
-				}
-		}
-	}
 };
 
 /**
@@ -747,7 +672,6 @@ sap.m.IconTabHeader.prototype.onAfterRendering = function() {
 	//listen to resize
 	this._sResizeListenerId = sap.ui.core.ResizeHandler.register(this.getDomRef(),  jQuery.proxy(this._fnResize, this));
 
-	this._adjustArrow();
 };
 
 /**
@@ -801,13 +725,6 @@ sap.m.IconTabHeader.prototype.removeItem = function(oItem) {
 	return oItem;
 };
 
-/**
- * Called after the theme has been switched, required for new width calc
- * @private
- */
-sap.m.IconTabHeader.prototype.onThemeChanged = function(oEvent){
-	this._adjustArrow();
-};
 
 /**
  * Checks if all tabs are textOnly version.
@@ -1032,7 +949,7 @@ sap.m.IconTabHeader.prototype._handleActivation = function(oEvent) {
 				// should be one of the items - select it
 				if (oControl instanceof sap.ui.core.Icon || oControl instanceof sap.m.Image) { 
 					// click on icon: fetch filter instead
-					sControlId = oEvent.srcControl.getId().replace("-icon", "");
+					sControlId = oEvent.srcControl.getId().replace(/-icon$/, "");
 					oControl = sap.ui.getCore().byId(sControlId);
 					if (!(oControl instanceof sap.m.IconTabSeparator)) {
 						this.setSelectedItem(oControl);
@@ -1146,7 +1063,6 @@ sap.m.IconTabHeader.prototype._scroll = function(iDelta, iDuration) {
  * @private
  */
 sap.m.IconTabHeader.prototype._adjustAndShowArrow = function() {
-	this._adjustArrow();
 	this._$bar && this._$bar.toggleClass("sapMITBScrolling", false);
 	this._$bar = null;
 	//update the arrows on desktop
@@ -1182,7 +1098,6 @@ sap.m.IconTabHeader.prototype._afterIscroll = function() {
 sap.m.IconTabHeader.prototype._fnResize = function() {
 	var oHead = this.getDomRef("head");
 	this._checkOverflow(oHead, this.$());
-	this._adjustArrow();
 };
 
 /** 

@@ -10,7 +10,7 @@
  * ----------------------------------------------------------------------------------- */
 
 /**
- * Initialization Code and shared classes of library sap.ui.layout (1.22.4)
+ * Initialization Code and shared classes of library sap.ui.layout (1.22.8)
  */
 jQuery.sap.declare("sap.ui.layout.library");
 jQuery.sap.require("sap.ui.core.Core");
@@ -60,7 +60,7 @@ sap.ui.getCore().initLibrary({
     "sap.ui.layout.form.GridContainerData",
     "sap.ui.layout.form.GridElementData"
   ],
-  version: "1.22.4"});
+  version: "1.22.8"});
 
 /*!
  * SAP UI development toolkit for HTML5 (SAPUI5/OpenUI5)
@@ -111,7 +111,7 @@ jQuery.sap.declare("sap.ui.layout.GridPosition");
 /**
  * @class Position of the Grid. Can be "Left", "Center" or "Right". "Left" is default.
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @static
  * @public
  */
@@ -215,7 +215,7 @@ jQuery.sap.declare("sap.ui.layout.form.SimpleFormLayout");
 /**
  * @class Available FormLayouts used for the SimpleForm.
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @static
  * @public
  * @since 1.16.0

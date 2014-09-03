@@ -38,7 +38,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/format/DateFormat', 'sap/ui/mod
 			this.iStartIndex = 0;
 			this.bPendingChange = false;
 			this.aKeys = [];
-			this.bInitialized = false;
+			this.bInitial = true;
 			this.sCountMode = (mParameters && mParameters.countMode) || this.oModel.sDefaultCountMode;
 			this.bRefresh = false;
 			this.bNeedsUpdate = false;
@@ -48,11 +48,13 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/format/DateFormat', 'sap/ui/mod
 			if (!this.oModel.getServiceMetadata()) {
 				var that = this,
 				fnCallback = function(oEvent) {
+					that.bInitial = false;
 					that._initSortersFilters();
 					that.oModel.detachMetadataLoaded(fnCallback);
 				}
 				this.oModel.attachMetadataLoaded(this, fnCallback);
 			} else {
+				this.bInitial = false;
 				this._initSortersFilters();
 			}
 	
@@ -60,6 +62,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/format/DateFormat', 'sap/ui/mod
 			// use the data and don't send additional requests
 			// TODO: what if nested list is not complete, because it was too large?
 			var oRef = this.oModel._getObject(this.sPath, this.oContext);
+			this.aExpandRefs = oRef;
 			if (jQuery.isArray(oRef) && !aSorters && !aFilters) {
 				this.aKeys = oRef;
 				this.iLength = oRef.length;
@@ -114,7 +117,9 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/format/DateFormat', 'sap/ui/mod
 	 */
 	ODataListBinding.prototype.getContexts = function(iStartIndex, iLength, iThreshold) {	
 	
-		this.bInitialized = true;
+		if (this.bInitial) {
+			return [];
+		}
 		this.iLastLength = iLength;
 		this.iLastStartIndex = iStartIndex;
 		this.iLastThreshold = iThreshold;
@@ -322,11 +327,12 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/format/DateFormat', 'sap/ui/mod
 				// get new entity type with new context and init filters now correctly
 				this._initSortersFilters();
 	
-				if (this.bInitialized){
+				if (!this.bInitial){
 					// if nested list is already available, use the data and don't send additional requests
 					// TODO: what if nested list is not complete, because it was too large?
 					var oRef = this.oModel._getObject(this.sPath, this.oContext);
-					if (jQuery.isArray(oRef)) {
+					this.aExpandRefs = oRef;
+					if (jQuery.isArray(oRef) && !this.aSorters.length > 0 && !this.aFilters.length > 0) {
 						this.aKeys = oRef;
 						this.iLength = oRef.length;
 						this.bLengthFinal = true;
@@ -587,8 +593,10 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/format/DateFormat', 'sap/ui/mod
 	 * @function
 	 */
 	ODataListBinding.prototype._fireRefresh = function(mArguments) {
-		this.bRefresh = true;
-		this.fireEvent("refresh", mArguments);
+		if (this.oModel.resolve(this.sPath, this.oContext)){
+			this.bRefresh = true;
+			this.fireEvent("refresh", mArguments);
+		}
 	};
 	
 	/**
@@ -605,7 +613,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/format/DateFormat', 'sap/ui/mod
 			if (this.bDataAvailable) {
 				this._fireChange({reason: sap.ui.model.ChangeReason.Change});
 			} else {
-				this._fireRefresh({reason: sap.ui.model.ChangeReason.Refresh});
+					this._fireRefresh({reason: sap.ui.model.ChangeReason.Refresh});
 			}
 		}
 	};
@@ -623,11 +631,30 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/format/DateFormat', 'sap/ui/mod
 		var bChangeReason = this.sChangeReason ? this.sChangeReason : sap.ui.model.ChangeReason.Change,
 			bChangeDetected = false, 
 			oLastData, oCurrentData,
-			that = this;
+			that = this,
+			oRef, 
+			bRefChanged;
 		
 		if (!bForceUpdate && !this.bNeedsUpdate) {
-			//TODO: check if we can loop only the last requested contexts
-			if (mChangedEntities) {
+			
+			// check if data in listbinding contains data loaded via expand
+			// if yes and there was a change detected we:
+			// - set the new keys if there are no sortes/filters set
+			// - trigger a refresh if there are sorters/filters set
+			oRef = this.oModel._getObject(this.sPath, this.oContext); 
+			bRefChanged = jQuery.isArray(oRef) && !jQuery.sap.equal(oRef,this.aExpandRefs);
+			this.aExpandRefs = oRef;
+			if (bRefChanged) {
+				if (this.aSorters.length > 0 || this.aFilters.length > 0) {
+					this.refresh();
+					return;
+				} else {
+					this.aKeys = oRef;
+					this.iLength = oRef.length;
+					this.bLengthFinal = true;
+					bChangeDetected = true;
+				}
+			} else if (mChangedEntities) {
 				jQuery.each(this.aKeys, function(i, sKey) {
 					if (sKey in mChangedEntities) {
 						bChangeDetected = true;
@@ -640,6 +667,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/format/DateFormat', 'sap/ui/mod
 			if (bChangeDetected && this.aLastContexts) {
 				// Reset bChangeDetected and compare actual data of entries
 				bChangeDetected = false;
+				
 				//Get contexts for visible area and compare with stored contexts
 				var aContexts = this._getContexts(this.iLastStartIndex, this.iLastLength, this.iLastThreshold);
 				if (this.aLastContexts.length != aContexts.length) {
@@ -713,7 +741,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/format/DateFormat', 'sap/ui/mod
 	 * @function
 	 */
 	ODataListBinding.prototype.sort = function(aSorters) {
-	
+			
 		if (aSorters instanceof sap.ui.model.Sorter) {
 			aSorters = [aSorters];
 		}
@@ -725,7 +753,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/format/DateFormat', 'sap/ui/mod
 		this.abortPendingRequest();
 		this.aKeys = [];
 	
-		if (this.bInitialized) {
+		if (!this.bInitial) {
 			if (this.oRequestHandle) {
 				this.oRequestHandle.abort();
 				this.oRequestHandle = null;
@@ -788,7 +816,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/format/DateFormat', 'sap/ui/mod
 		this.abortPendingRequest();
 		this.resetData();
 		
-		if (this.bInitialized) {
+		if (!this.bInitial) {
 			if (this.oRequestHandle) {
 				this.oRequestHandle.abort();
 				this.oRequestHandle = null;

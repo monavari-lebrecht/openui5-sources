@@ -48,7 +48,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/Model', './ODataUtils', './Cou
 	 * @extends sap.ui.model.Model
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 *
 	 * @constructor
 	 * @public
@@ -160,7 +160,8 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/Model', './ODataUtils', './Cou
 
 			if (!this.oServiceData.oMetadata) {
 				//create Metadata object
-				this.oMetadata = new sap.ui.model.odata.ODataMetadata(this._createRequestUrl("$metadata"), { async: this.bLoadMetadataAsync, user: this.sUser, password: this.sPassword, namespaces: mMetadataNamespaces});
+				this.oMetadata = new sap.ui.model.odata.ODataMetadata(this._createRequestUrl("$metadata"), 
+						{ async: this.bLoadMetadataAsync, user: this.sUser, password: this.sPassword, headers: this.mCustomHeaders, namespaces: mMetadataNamespaces});
 				that.oServiceData.oMetadata = that.oMetadata;
 			} else {
 				this.oMetadata = this.oServiceData.oMetadata;
@@ -169,6 +170,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/Model', './ODataUtils', './Cou
 			if(!this.oMetadata.isLoaded()) {
 				this.oMetadata.attachLoaded(function(oEvent){
 					that._initializeMetadata();
+					that.initialize();
 				}, this);
 				this.oMetadata.attachFailed(this.fireMetadataFailed, this);
 			}
@@ -288,15 +290,12 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/Model', './ODataUtils', './Cou
 	ODataModel.prototype._initializeMetadata = function(bDelayEvent) {
 		var that = this;
 		this.bUseBatch = this.bUseBatch || this.oMetadata.getUseBatch();
-		var doFire = function(bInitialize, bDelay){
-			if(!!bDelay){
-				that.metadataLoadEvent = jQuery.sap.delayedCall(0, that, doFire, [that.bLoadMetadataAsync]);
+		var doFire = function(bDelay){
+			if (!!bDelay) {
+				that.metadataLoadEvent = jQuery.sap.delayedCall(0, that, doFire);
 			} else {
 				that.fireMetadataLoaded({metadata: that.oMetadata});
 				jQuery.sap.log.debug("ODataModel fired metadataloaded");
-				if(bInitialize){
-					that.initialize();
-				}
 			}
 		};
 
@@ -305,17 +304,17 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/Model', './ODataUtils', './Cou
 			// This is also tested in the fireMetadataLoaded-method and no event is fired in case
 			// of joined loading.
 			if (this.oAnnotations && this.oAnnotations.bInitialized) {
-				doFire(true);
+				doFire();
 			} else {
 				this.oAnnotations.attachLoaded(function() {
 					// Now metadata was loaded and the annotations have been parsed
-					doFire(true);
+					doFire();
 				}, this);
 			}
 		} else {
 			// In case of synchronous or asynchronous non-joined loading, or if no annotations are
 			// loaded at all, the events are fired individually
-				doFire(this.bLoadMetadataAsync, bDelayEvent);
+				doFire(bDelayEvent);
 		}
 	};
 
@@ -2561,6 +2560,10 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/Model', './ODataUtils', './Cou
 	
 			oRequest = this._createRequest(this.sChangeKey, "MERGE", true, oPayload, sETag);
 			
+			  if (this.sUrlParams) {
+				  oRequest.requestUri += "?" + this.sUrlParams;
+			  }
+			
 			//get entry from model. If entry exists get key for update bindings
 			oRequest.keys = {};
 			if (oStoredEntry) {
@@ -2570,22 +2573,40 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/Model', './ODataUtils', './Cou
 			
 			this.oRequestQueue[this.sChangeKey] = oRequest;
 		}
+		
+		if (jQuery.isEmptyObject(this.oRequestQueue)) {
+			return undefined;
+		}
 	
 		if (this.bUseBatch) {
 			var aChangeRequests = [];
 			jQuery.each(this.oRequestQueue, function(sKey, oCurrentRequest){
-				oCurrentRequest.requestUri = oCurrentRequest.requestUri.replace(that.sServiceUrl + '/','');
-				oCurrentRequest.data._bCreate ? delete oCurrentRequest.data._bCreate : false;
-				aChangeRequests.push(oCurrentRequest);
+				delete oCurrentRequest._oRef;
+				var oReqClone = jQuery.extend(true, {}, oCurrentRequest);
+				oCurrentRequest._oRef = oReqClone;
+				
+				oReqClone.requestUri = oReqClone.requestUri.replace(that.sServiceUrl + '/','');
+				oReqClone.data._bCreate ? delete oReqClone.data._bCreate : false;
+				aChangeRequests.push(oReqClone);
 			});
+			
 			oRequest = this._createBatchRequest([{__changeRequests:aChangeRequests}], true)
 			this._submitRequest(oRequest, this.bUseBatch, fnSuccess, fnError, true);
 		} else {
 			//loop request queue
 			jQuery.each(this.oRequestQueue, function(sKey, oCurrentRequest){
+				// clone request and store the clone as reference to compare it in updateRequestQueue. 
+				// We send the cloned request which will be modified by datajs but we want to keep the original request stored
+				// because it may fail and we need to send the request again.
+				delete oCurrentRequest._oRef;
+				var oReqClone = jQuery.extend(true, {}, oCurrentRequest);
+				oCurrentRequest._oRef = oReqClone;
 				//remove create flag
-				oCurrentRequest.data._bCreate ? delete oCurrentRequest.data._bCreate : false;
-				that._submitRequest(oCurrentRequest, this.bUseBatch, fnSuccess, fnError, true);
+				 if (oReqClone.data && oReqClone.data._bCreate) {
+					 delete oReqClone.data._bCreate;
+				 }
+
+				that._submitRequest(oReqClone, this.bUseBatch, fnSuccess, fnError, true);
 			});
 		}
 		return undefined;
@@ -2613,7 +2634,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/Model', './ODataUtils', './Cou
 						for(var j = 0; j < aChangeRequests.length; j++){
 							oChangeRequest = aChangeRequests[j];
 							jQuery.each(this.oRequestQueue, function(sKey,oCurrentRequest) {
-								if (oCurrentRequest === oChangeRequest && sKey !== that.sChangeKey) {
+								if (oCurrentRequest._oRef === oChangeRequest && sKey !== that.sChangeKey) {
 									delete that.oRequestQueue[sKey];
 									delete that.oData[sKey];
 									delete that.mContexts["/" + sKey];
@@ -2628,7 +2649,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/Model', './ODataUtils', './Cou
 			}
 		} else {
 			jQuery.each(this.oRequestQueue, function(sKey,oCurrentRequest) {
-				if (oCurrentRequest === oRequest && sKey !== that.sChangeKey) {
+				if (oCurrentRequest._oRef === oRequest && sKey !== that.sChangeKey) {
 					delete that.oRequestQueue[sKey];
 					delete that.oData[sKey];
 					delete that.mContexts["/" + sKey];

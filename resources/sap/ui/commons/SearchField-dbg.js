@@ -75,7 +75,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @implements sap.ui.commons.ToolbarItem
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -937,14 +937,20 @@ sap.ui.commons.SearchField.prototype.oncut = sap.ui.commons.SearchField.prototyp
 
 sap.ui.commons.SearchField.prototype.fireSearch = function(mArguments) {
 	var sVal = jQuery(this._ctrl.getInputDomRef()).val();
-	if((!sVal && !this.getEnableFilterMode()) || !this.getEditable() || !this.getEnabled()) {
+	if(!this.getEditable() || !this.getEnabled()) {
 		return this;
 	}
+	
+	this.setValue(sVal);
+	
+	if(!sVal && !this.getEnableFilterMode()){
+		return this;
+	}
+	
 	if(!mArguments) {
 		mArguments = {};
 	}
-
-	this.setValue(sVal);
+	
 	if(!mArguments.noFocus){
 		sVal = this.getValue();
 		this.focus();

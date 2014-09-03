@@ -21,16 +21,20 @@ sap.m.SegmentedButtonRenderer = {
  * @param {sap.ui.core.Control} oControl an object representation of the control that should be rendered
  */
 sap.m.SegmentedButtonRenderer.render = function(rm, oControl){ 
+	var aButtons = oControl.getButtons(),
+		sSelectedButton = oControl.getSelectedButton(),
+		oItem,
+		sTooltip,
+		sButtonWidth,
+		i = 0;
+
+	
 	// return immediately if control is invisible
 	if (!oControl.getVisible()) {
 		return;
 	}
 
-	var aItems = oControl.getButtons(),
-	aItemsLength = aItems.length;
-	if(!oControl.getVisible()) {
-		return;
-	}
+
 	// write the HTML into the render manager
 	rm.write("<ul");
 	rm.addClass("sapMSegB");
@@ -47,33 +51,29 @@ sap.m.SegmentedButtonRenderer.render = function(rm, oControl){
 		rm.writeAttributeEscaped("title", sTooltip);
 	}
 	rm.write(">");
-	
-	if(!oControl.getSelectedButton()) {
-		if(aItems.length > 0)
-			oControl.setSelectedButton(aItems[0].getId(), true);
-	}
-	
-	for (var i = 0; i < aItemsLength; i++) {
-		var oItem = aItems[i];
-		
+
+	for (; i < aButtons.length; i++) {
+		oItem = aButtons[i];
+
+		// instead of the button API we render a li element but with the id of the button
 		rm.write("<li");
 		rm.writeControlData(oItem);
 		rm.addClass("sapMSegBBtn");
-		if(oControl.getSelectedButton() === oItem.getId()) {
+		if(sSelectedButton === oItem.getId()) {
 			rm.addClass("sapMSegBBtnSel");
 		}
-		if(!oItem.getEnabled()) {
+		if (!oItem.getEnabled()) {
 			rm.addClass("sapMSegBBtnDis");
 		}
-		var tooltip = oItem.getTooltip_AsString();
-		if (tooltip) {
-			rm.writeAttributeEscaped("title", tooltip);
+		sTooltip = oItem.getTooltip_AsString();
+		if (sTooltip) {
+			rm.writeAttributeEscaped("title", sTooltip);
 		}
 		rm.writeAttribute("tabindex", oItem.getEnabled() ? "0" : "-1");
 		rm.writeClasses();
-		var buttonWidth = oItem.getWidth();
-		if(buttonWidth){
-			rm.addStyle('width', buttonWidth);
+		var sButtonWidth = oItem.getWidth();
+		if(sButtonWidth){
+			rm.addStyle('width', sButtonWidth);
 			rm.writeStyles();
 		}
 		rm.write('>');
@@ -86,14 +86,13 @@ sap.m.SegmentedButtonRenderer.render = function(rm, oControl){
 				window.setTimeout(function() {
 					oControl._fCalcBtnWidth();
 				},20);
-			}
+			};
 			rm.renderControl(oImage);	
 
-		} else if(oItem.getIcon() !== '' && oItem.getText() !== '' ){
+		} else if (oItem.getIcon() !== '' && oItem.getText() !== '' ){
 			jQuery.sap.log.error("SEGMENTED: "+oItem.getId()+": Icon and Label is not allowed");
 		}
 		rm.write("</li>");
 	}
 	rm.write("</ul>");
-	
 };

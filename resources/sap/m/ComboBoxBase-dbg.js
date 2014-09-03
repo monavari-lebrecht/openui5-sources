@@ -57,7 +57,7 @@ jQuery.sap.require("sap.m.InputBase");
  * @extends sap.m.InputBase
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -565,6 +565,9 @@ sap.m.ComboBoxBase.prototype.ontap = function(oEvent) {
 
 	if (this.isOpenArea(oEvent.target)) {
 
+		// select all text
+		this.selectText(0, this.getValue().length);
+
 		if (this.isOpen()) {
 			this.close();
 			this.removeStyleClass(CSS_CLASS + "Pressed");
@@ -612,6 +615,9 @@ sap.m.ComboBoxBase.prototype.onsapshow = function(oEvent) {
 		this.close();
 		return;
 	}
+
+	// select all text
+	this.selectText(0, this.getValue().length);
 
 	if (this.hasContent()) {
 		this.open();

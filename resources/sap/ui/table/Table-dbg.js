@@ -98,7 +98,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -3437,6 +3437,17 @@ sap.ui.table.Table.prototype._updateCellBindingContext = function(oCell, oContex
 		}
 };
 
+/**
+ * check if data is available in the table
+ * @private
+ */
+sap.ui.table.Table.prototype._hasData = function() {
+	var oBinding = this.getBinding("rows");
+	if (!oBinding || (oBinding.getLength() || 0) === 0) {
+		return false;
+	}
+	return true;
+};
 
 /**
  * show or hide the no data container
@@ -3446,7 +3457,7 @@ sap.ui.table.Table.prototype._updateNoData = function() {
 	// no data?
 	if (this.getShowNoData()) {
 		var oBinding = this.getBinding("rows");
-		if (!oBinding || (oBinding.getLength() || 0) === 0) {
+		if (!this._hasData()) {
 			if (!this.$().hasClass("sapUiTableEmpty")) {
 				this.$().addClass("sapUiTableEmpty");
 			}
@@ -3476,16 +3487,28 @@ sap.ui.table.Table.prototype._determineVisibleCols = function() {
 
 	if ($this.hasClass("sapUiTableHScr")) {
 
+		var bRtl = this._bRtlMode;
+
 		// calculate the view port
 		var iScrollLeft = this._oHSb.getNativeScrollPosition();
+		if(bRtl && sap.ui.Device.browser.firefox && iScrollLeft < 0) {
+			// Firefox deals with negative scrollPosition in RTL mode
+			iScrollLeft = iScrollLeft * -1;
+		}
 		var iScrollRight = iScrollLeft + this._getScrollWidth();
 
 		// has the view port changed?
 		if (this._iOldScrollLeft !== iScrollLeft || this._iOldScrollRight !== iScrollRight || this._bForceVisibleColCalc) {
 
 			// calculate the first and last visible column
-			var bRtl = this._bRtlMode;
 			var iLeft = bRtl ? $this.find(".sapUiTableCtrlScroll").width() : 0;
+
+			if((sap.ui.Device.browser.internet_explorer || sap.ui.Device.browser.firefox) && bRtl) {
+				// Assume ScrollWidth=100px, Scroll to the very left in RTL mode
+				// IE has reverse scroll position (Chrome = 0, IE = 100, FF = -100)
+				iLeft = 0;
+			}
+
 			this._aVisibleColumns = [];
 			for (var i = 0, l = this.getFixedColumnCount(); i < l; i++) {
 				this._aVisibleColumns.push(i);
@@ -3493,13 +3516,13 @@ sap.ui.table.Table.prototype._determineVisibleCols = function() {
 			var $ths = $this.find(".sapUiTableCtrl.sapUiTableCtrlScroll .sapUiTableCtrlFirstCol > th[data-sap-ui-headcolindex]");
 			$ths.each(function(iIndex, oElement) {
 				var iWidth = jQuery(oElement).width();
-				if (bRtl) {
+				if (bRtl && sap.ui.Device.browser.chrome) {
 					iLeft -= iWidth;
 				}
 				if (iLeft + iWidth >= iScrollLeft && iLeft <= iScrollRight) {
 					that._aVisibleColumns.push(parseInt(jQuery(oElement).data('sap-ui-headcolindex'),10));
 				}
-				if (!bRtl) {
+				if (!bRtl || (sap.ui.Device.browser.internet_explorer || sap.ui.Device.browser.firefox)) {
 					iLeft += iWidth;
 				}
 			});
@@ -3509,7 +3532,6 @@ sap.ui.table.Table.prototype._determineVisibleCols = function() {
 			this._iOldScrollRight = iScrollRight;
 			this._bForceVisibleColCalc = false;
 		}
-
 	} else {
 		this._aVisibleColumns = [];
 		var aCols = this.getColumns();
@@ -3835,8 +3857,8 @@ sap.ui.table.Table.prototype._updateColumnHeader = function(bUpdateResizeHandler
 		$ths.each(function(iIndex, oElement) {
 			// apply the width of the column
 			var iWidth = (oElement.getBoundingClientRect().right - oElement.getBoundingClientRect().left), //get real width (with decimal values),
-				vHeaderSpan = aCols[iIndex].getHeaderSpan(),
-				vHeaderSpan = (vHeaderSpan + iIndex > aCols.length) ? iIndex + vHeaderSpan - aCols.length : vHeaderSpan,
+				vHeaderSpan = aCols[iIndex] ? aCols[iIndex].getHeaderSpan() : 1,
+				vHeaderSpan = Math.max((vHeaderSpan + iIndex > aCols.length) ? Math.min(vHeaderSpan, aCols.length -iIndex) : vHeaderSpan, 1),
 				aHeaderWidths = [],
 				aSpans = vHeaderSpan ? jQuery.isArray(vHeaderSpan) ? vHeaderSpan : [vHeaderSpan] : [1];
 
@@ -4202,7 +4224,7 @@ sap.ui.table.Table.prototype._oncellcontextmenu = function(mParams) {
 		} 
 	
 		// does the column support filtering?
-		var oColumn = this.getColumns()[mParams.columnIndex];
+		var oColumn = this._getVisibleColumns()[mParams.columnIndex];
 		var sProperty = oColumn.getFilterProperty();
 		if (sProperty) {
 			
@@ -4372,7 +4394,7 @@ sap.ui.table.Table.prototype._onSelect = function(oEvent) {
 
 	// select all?
 	if (jQuery.sap.containsOrEquals(this.getDomRef("selall"), oEvent.target)) {
-		if (this._getRowCount() === this.getSelectedIndices().length) {
+		if (!jQuery(this.getDomRef("selall")).hasClass("sapUiTableSelAll")) {
 			this.clearSelection();
 		} else {
 			this.selectAll();
@@ -4784,30 +4806,30 @@ sap.ui.table.Table.prototype._onColumnResizeStart = function(oEvent) {
  * @private
  */
 sap.ui.table.Table.prototype._onColumnResize = function(oEvent) {
-	
+
 	if (this._iColumnResizeStart && oEvent.pageX < this._iColumnResizeStart + 3 && oEvent.pageX > this._iColumnResizeStart - 3) {
 		return;
 	}
-	
+
 	this._$colResize.addClass("sapUiTableColRszActive");
 	this._iColumnResizeStart = null;
-	
+
 	var $this = this.$();
 
 	var bRtl = this._bRtlMode;
 	var iColIndex = parseInt(this._$colResize.attr("data-sap-ui-colindex"), 10);
 	var oColumn = this.getColumns()[iColIndex];
 	var $col = $this.find(".sapUiTableCtrlFirstCol > th[data-sap-ui-headcolindex='" + iColIndex + "']");
-	
+
 	// get the left position of the column to calculate the new width
 	// relative to the parent container (sapUiTableCnt)!
 	var iColLeft = $col.position().left;
-	
+
 	var iWidth;
 	if (!bRtl) {
 		// find the total left offset from the document (required for pageX info)
 		var iOffsetLeft = $this.find(".sapUiTableCtrlFirstCol > th:first").offset().left;
-		
+
 		// relative left position within the table scroll container
 		var iRelLeft = oEvent.pageX - iOffsetLeft;
 
@@ -4815,9 +4837,19 @@ sap.ui.table.Table.prototype._onColumnResize = function(oEvent) {
 		iWidth = iRelLeft - iColLeft;
 	} else {
 		var $ScrollArea = $this.find('.sapUiTableCtrlScr');
-		
+		var iScrollAreaScrollLeft = $ScrollArea.scrollLeft();
+
+		if(sap.ui.Device.browser.internet_explorer) {
+			// Assume ScrollWidth=100px, Scroll to the very left in RTL mode
+			// IE has reverse scroll position (Chrome = 0, IE = 100, FF = -100)
+			iScrollAreaScrollLeft = $ScrollArea[0].scrollWidth - iScrollAreaScrollLeft - $ScrollArea[0].clientWidth;
+		}else if(sap.ui.Device.browser.firefox) {
+			// FF has negative reverse scroll position (Chrome = 0, IE = 100, FF = -100)
+			iScrollAreaScrollLeft = iScrollAreaScrollLeft + $ScrollArea[0].scrollWidth - $ScrollArea[0].clientWidth;
+		}
+
 		//get the difference between where mouse was released and left side of the table
-		var iDiff = iColLeft - $ScrollArea.scrollLeft() - oEvent.pageX + $ScrollArea.offset().left;
+		var iDiff = iColLeft - iScrollAreaScrollLeft - oEvent.pageX + $ScrollArea.offset().left;
 		iWidth = $col.outerWidth() + iDiff;
 	}
 
@@ -4832,7 +4864,6 @@ sap.ui.table.Table.prototype._onColumnResize = function(oEvent) {
 
 	// store the width of the column to apply later
 	oColumn._iNewWidth = iWidth;
-
 };
 
 /**
@@ -5014,6 +5045,7 @@ sap.ui.table.Table.prototype._updateColumnWidth = function(oColumn, sWidth) {
 	// set the width of the column (when not cancelled)
 	if (bExecuteDefault) {
 		oColumn.setProperty("width", sWidth, true);
+		this.$().find('th[aria-owns="' + oColumn.getId() + '"]').css('width', sWidth);
 	}
 };
 
@@ -6050,11 +6082,13 @@ sap.ui.table.Table.prototype.exportData = function(mSettings) {
 		var oBinding = this.getBinding("rows"),
 			oBindingInfo = this.getBindingInfo("rows");
 
+		var aFilters = oBinding.aFilters.concat(oBinding.aApplicationFilters);
+
 		mSettings.rows = {
 			path: oBindingInfo.path,
 			model: oBindingInfo.model,
 			sorter: oBinding.aSorters,
-			filters: oBinding.aFilters,
+			filters: aFilters,
 			parameters: oBindingInfo.parameters
 		};
 	}

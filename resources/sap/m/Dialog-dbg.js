@@ -77,7 +77,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @implements sap.ui.core.PopupInterface
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -1408,13 +1408,18 @@ sap.m.Dialog.prototype.onfocusin = function(oEvent){
 
 	//Check if the invisible FIRST focusable element (suffix '-firstfe') has gained focus
 	if (oSourceDomRef.id === this.getId() + "-firstfe") {
-		// Get the last focusable DOM element within Dialog
-		var oLastFocusableDomref = this.$().lastFocusableDomRef();
-		jQuery.sap.focus(oLastFocusableDomref);
+		//Check if buttons are available
+		var oLastFocusableDomRef = this.$("footer").lastFocusableDomRef() || this.$("cont").lastFocusableDomRef() || this.$("header").lastFocusableDomRef();
+		if (oLastFocusableDomRef) {
+			jQuery.sap.focus(oLastFocusableDomRef);
+		}
 	} else if (oSourceDomRef.id === this.getId() + "-lastfe") {
-		// Get the first focusable DOM element within Dialog
-		var oFirstFocusableDomref = this.$().firstFocusableDomRef();
-		jQuery.sap.focus(oFirstFocusableDomref);
+		//Check if the invisible LAST focusable element (suffix '-lastfe') has gained focus
+		//First check if header content is available
+		var oFirstFocusableDomRef = this.$("header").firstFocusableDomRef() || this.$("cont").firstFocusableDomRef() || this.$("footer").firstFocusableDomRef();
+		if (oFirstFocusableDomRef) {
+			jQuery.sap.focus(oFirstFocusableDomRef);
+		}
 	}
 };
 
@@ -1718,6 +1723,11 @@ sap.m.Dialog.prototype._adjustScrollingPane = function(){
 };
 
 sap.m.Dialog.prototype._reposition = function() {
+	// this method is called within a 0 timeout, and in between the dialog can be already destroyed
+	if (this.bIsDestroyed) {
+		return;
+	}
+
 	var that = this, 
 		ePopupState = this.oPopup.getOpenState();
 	
@@ -2079,7 +2089,7 @@ sap.m.Dialog.prototype._registerResizeHandler = function(){
 sap.m.Dialog.prototype._getToolbar = function() {
 	if (!this._oToolbar) {
 		var that = this;
-		this._oToolbar = new sap.m.Toolbar({
+		this._oToolbar = new sap.m.Toolbar(this.getId() + "-footer", {
 			content: [
 				new sap.m.ToolbarSpacer()
 			]
@@ -2406,6 +2416,8 @@ sap.m.Dialog.prototype.destroyAggregation = function(sAggregationName, bSuppress
 				this[sButtonName].destroy();
 				this[sButtonName] = null;
 			}
+		} else {
+			sap.ui.core.Control.prototype.destroyAggregation.apply(this, arguments);
 		}
 		return this;
 	} else if (sAggregationName === "buttons") {

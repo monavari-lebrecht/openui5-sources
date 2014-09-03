@@ -60,7 +60,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -414,7 +414,7 @@ sap.ui.commons.TabStrip.M_EVENTS = {'select':'select','close':'close'};
 
 
 /**
- * This method closes a atb. If the tab is selecte thenext one will be selected. (If it's the last the previous one will be selected,)
+ * This method closes a tab. If the tab is selecte thenext one will be selected. (If it's the last the previous one will be selected,)
  * This method should be called if the close event is fired. It can not be called automatically because the consumer might need to run some logic before the tab is closed.
  *
  * @name sap.ui.commons.TabStrip.prototype.closeTab

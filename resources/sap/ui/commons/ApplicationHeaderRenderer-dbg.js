@@ -56,7 +56,16 @@ sap.ui.commons.ApplicationHeaderRenderer.render = function(oRenderManager, oAppH
 sap.ui.commons.ApplicationHeaderRenderer.renderLogoArea = function(oRenderManager, oAppHeader){
 
 	//Add the logo, but first set the source to the right path
-	oAppHeader.getLogoSrc() != "" ? oAppHeader.oLogo.setSrc(oAppHeader.getLogoSrc()) : oAppHeader.oLogo.setSrc(sap.ui.resource("sap.ui.commons", "themes/" + sap.ui.getCore().getConfiguration().getTheme() + "/img/applicationheader/SAPLogo.png"));
+	var sSrc = oAppHeader.getLogoSrc();
+	if(!sSrc){
+		jQuery.sap.require("sap.ui.core.theming.Parameters");
+		sSrc = sap.ui.core.theming.Parameters._getThemeImage(); // theme logo
+	}
+	if(!sSrc){
+		sSrc = sap.ui.resource("sap.ui.commons", "themes/" + sap.ui.getCore().getConfiguration().getTheme() + "/img/applicationheader/SAPLogo.png");
+	}
+	
+	oAppHeader.oLogo.setSrc(sSrc);
 	oRenderManager.renderControl(oAppHeader.oLogo);
 
 	//Insert the logo text if any provided by application

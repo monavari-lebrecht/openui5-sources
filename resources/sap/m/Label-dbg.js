@@ -61,7 +61,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @implements sap.ui.core.Label
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -325,6 +325,15 @@ sap.m.Label.prototype.setText = function(sText) {
 	if (sValue != sText) {
 		this.setProperty("text", sText, true);
 		this.$().html(jQuery.sap.encodeHTML(this.getProperty("text")));
+	}
+	return this;
+};
+
+sap.m.Label.prototype.setTooltip = function(oTooltip) {
+	var oValue = this.getTooltip();
+	if (oValue !== oTooltip) {
+		this.setAggregation("tooltip", oTooltip, true);
+		this.$().attr("title", this.getTooltip());
 	}
 	return this;
 };

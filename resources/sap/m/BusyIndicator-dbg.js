@@ -62,7 +62,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -438,7 +438,7 @@ sap.m.BusyIndicator.prototype._animateCanvas = function(){
 	var clientWidth = this.oCanvas.clientWidth,
 		clientHeight = this.oCanvas.clientHeight;
 	
-	if(!clientWidth || !clientHeight){
+	if(!this.getVisible() || !clientWidth || !clientHeight){
 			// if the indicator becomes invisible, client width and height are set to 0. 
 			// Stop animation
 			this._animationId = undefined;

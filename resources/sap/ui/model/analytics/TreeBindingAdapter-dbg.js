@@ -45,12 +45,20 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', './AnalyticalBin
 	};
 	
 	TreeBindingAdapter.prototype._updateContexts = function(iPosition, aContexts, aContextInfos, bReplace) {
+		var iInitialPosition = iPosition;
 		for ( var i = 0; i < aContexts.length; i++) {
 			var oContext = aContexts[i];
 			var oContextInfo = aContextInfos[i];
 			this._aContexts.splice(iPosition, bReplace ? 1 : 0, oContext);
 			this._aContextInfos.splice(iPosition, bReplace ? 1 : 0, oContextInfo);
 			iPosition++;
+		}
+		if (!bReplace) {
+			this._fireContextChange({
+				type: "insert",
+				index: iInitialPosition,
+				length: aContexts.length
+			});
 		}
 	
 		return aContextInfos;
@@ -387,6 +395,12 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', './AnalyticalBin
 			for (var j=iRemovePosition; j<this._aContextInfos.length; j++) {
 				this._aContextInfos[j].position += iDecrease;
 			}
+			
+			this._fireContextChange({
+				type: "remove",
+				index: iRemovePosition,
+				length: Math.abs(iDecrease)
+			});
 		}
 	
 		// node is collapse now => notifiy control
@@ -469,6 +483,41 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', './AnalyticalBin
 			}
 		}
 
+	};
+	
+	/**
+	 * Attach event-handler <code>fnFunction</code> to the 'contextChange' event of this <code>sap.ui.model.analytics.TreeBindingAdapter</code>.<br/>
+	 * @param {function} fnFunction The function to call, when the event occurs.
+	 * @param {object} [oListener] object on which to call the given function.
+	 * @protected
+	 * @name sap.ui.model.analytics.TreeBindingAdapter#attachContextChange
+	 * @function
+	 */
+	TreeBindingAdapter.prototype.attachContextChange = function(fnFunction, oListener) {
+		this.attachEvent("contextChange", fnFunction, oListener);
+	};
+	
+	/**
+	 * Detach event-handler <code>fnFunction</code> from the 'contextChange' event of this <code>sap.ui.model.analytics.TreeBindingAdapter</code>.<br/>
+	 * @param {function} fnFunction The function to call, when the event occurs.
+	 * @param {object} [oListener] object on which to call the given function.
+	 * @protected
+	 * @name sap.ui.model.analytics.TreeBindingAdapter#detachContextChange
+	 * @function
+	 */
+	TreeBindingAdapter.prototype.detachContextChange = function(fnFunction, oListener) {
+		this.detachEvent("contextChange", fnFunction, oListener);
+	};
+	
+	/**
+	 * Fire event contextChange to attached listeners.
+	 * @param {Map} [mArguments] the arguments to pass along with the event.
+	 * @private
+	 * @name sap.ui.model.analytics.TreeBindingAdapter#_fireContextChange
+	 * @function
+	 */
+	TreeBindingAdapter.prototype._fireContextChange = function(mArguments) {
+		this.fireEvent("contextChange", mArguments);
 	};
 
 	return TreeBindingAdapter;

@@ -60,7 +60,7 @@ jQuery.sap.require("sap.m.InputBase");
  * @extends sap.m.InputBase
  *
  * @author SAP AG  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -1941,7 +1941,7 @@ sap.m.MultiComboBox.prototype.onpaste = function(oEvent) {
  *          oEvent
  */
 sap.m.MultiComboBox.prototype.onkeypress = function(oEvent) {
-	if (sap.m.InputBase.isSpecialKey(oEvent)) {
+	if (jQuery.sap.isSpecialKey(oEvent)) {
 		oEvent.preventDefault();
 		return null;
 	}

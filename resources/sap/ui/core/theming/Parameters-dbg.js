@@ -155,7 +155,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Core'],
 				var match = /url[\s]*\('?"?([^\'")]*)'?"?\)/.exec(logo);
 				if(match){
 					logo = match[1];
-				}else if(logo === "''"){
+				}else if(logo === "''" || logo === "none"){
 					logo = null;
 				}
 			}

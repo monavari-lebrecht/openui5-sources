@@ -159,7 +159,7 @@ sap.m.DialogRenderer.render = function(oRm, oControl) {
 	if (sap.m.Dialog._bOneDesign && oControl._oToolbar && oControl._oToolbar.getContent().length > 1) {
 		oRm.renderControl(oControl._oToolbar);
 	} else if ((sap.m.Dialog._bOneDesign || !sap.ui.Device.os.ios || bMessage) && (oLeftButton || oRightButton)) {
-		oRm.write('<footer class="sapMDialogActions sapMBar-CTX sapMFooter-CTX sapMIBar-CTX">');
+		oRm.write('<footer id="' + id + '-footer" class="sapMDialogActions sapMBar-CTX sapMFooter-CTX sapMIBar-CTX">');
 		// Render actions
 		if (oLeftButton) {
 			oRm.write('<div class="sapMDialogAction">');

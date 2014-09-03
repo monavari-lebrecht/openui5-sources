@@ -3472,6 +3472,18 @@ L  0.78125% =  8px / 1024px
 	position: relative;
 }
 
+/* Internet Explorer  does not support "text-align: start"!
+Therefore the title needs to be positioned separately for RTL and LTR mode */
+[data-sap-ui-browser^=ie] .sapUiGrid th > .sapUiFormTitle,
+[data-sap-ui-browser^=ie] .sapUiGrid td > .sapUiFormTitle{ 
+	text-align: left;
+}
+
+html[dir=rtl][data-sap-ui-browser^=ie] .sapUiGrid th > .sapUiFormTitle,
+html[dir=rtl][data-sap-ui-browser^=ie] .sapUiGrid td > .sapUiFormTitle{ 
+	text-align: right;
+}
+
 /*
 .sapUiGrid td[colspan="8"] > .sapUiFormTitle{
 	border-color: @sapUiMediumBorder;
@@ -3767,6 +3779,13 @@ HTML[data-sap-ui-browser*='ie'] .sapUiRFL {
 .sapUiRespGridMedia-Std-Tablet.sapUiFormResGridCont > .sapUiFormResGridLbl.sapUiRespGridSpanM12,
 .sapUiRespGridMedia-Std-Desktop.sapUiFormResGridCont > .sapUiFormResGridLbl.sapUiRespGridSpanL12{
 	padding-bottom: 0.125rem;
+}
+
+/* on last row no padding-bottom on container content */
+.sapUiRespGridMedia-Std-Phone > .sapUiFormResGridLastRowM:last-child > .sapUiRGLContainer > .sapUiRGLContainerCont,
+.sapUiRespGridMedia-Std-Tablet > .sapUiFormResGridLastRowM > .sapUiRGLContainer > .sapUiRGLContainerCont,
+.sapUiRespGridMedia-Std-Desktop > .sapUiFormResGridLastRowL > .sapUiRGLContainer > .sapUiRGLContainerCont{
+	padding-bottom: 0;
 }
 
 /* ============================ */
@@ -4104,6 +4123,7 @@ html[data-sap-ui-browser^="ff"] .sapUiSizeCompact .sapUiFormEdit.sapUiFormM .sap
 .sapUiLoSplitter.sapUiLoSplitterH > .sapUiLoSplitterBar.sapUiLoSplitterNoResize,
 .sapUiLoSplitter.sapUiLoSplitterV > .sapUiLoSplitterBar.sapUiLoSplitterNoResize {
 	cursor: default;
+	visibility: hidden;
 }
 
 .sapUiLoSplitter > .sapUiLoSplitterBar.sapUiLoSplitterNoResize > *,
@@ -4127,10 +4147,6 @@ html[data-sap-ui-browser^="ff"] .sapUiSizeCompact .sapUiFormEdit.sapUiFormM .sap
 
 /******************************************* Horizontal *******************************************/
 
-.sapUiLoSplitterH {
-	white-space: nowrap;
-}
-
 .sapUiLoSplitterH > .sapUiLoSplitterBar,
 .sapUiLoSplitterH > .sapUiLoSplitterContent,
 .sapUiLoSplitterH > .sapUiLoSplitterOverlay > .sapUiLoSplitterOverlayBar {
@@ -4139,14 +4155,16 @@ html[data-sap-ui-browser^="ff"] .sapUiSizeCompact .sapUiFormEdit.sapUiFormM .sap
 	height: 100%;
 }
 
-.sapUiLoSplitterH .sapUiLoSplitterBarIcon {
+.sapUiLoSplitterH > .sapUiLoSplitterBar > .sapUiLoSplitterBarIcon,
+.sapUiLoSplitterH > .sapUiLoSplitterOverlay > .sapUiLoSplitterOverlayBar > .sapUiIcon.sapUiLoSplitterBarIcon {
 	font-size: 16px;
 	line-height: 16px;
 	height: 16px;
 	top: ~"calc(50% - 12px)";
 }
 
-.sapUiLoSplitterH .sapUiIcon.sapUiLoSplitterBarIcon::before {
+.sapUiLoSplitterH > .sapUiLoSplitterBar > .sapUiIcon.sapUiLoSplitterBarIcon::before,
+.sapUiLoSplitterH > .sapUiLoSplitterOverlay > .sapUiLoSplitterOverlayBar > .sapUiIcon.sapUiLoSplitterBarIcon::before {
 	content: "\e1fa";
 }
 
@@ -4170,7 +4188,8 @@ html[data-sap-ui-browser^="ff"] .sapUiSizeCompact .sapUiFormEdit.sapUiFormM .sap
 	width: 100%;
 }
 
-.sapUiLoSplitterV .sapUiLoSplitterBarIcon {
+.sapUiLoSplitterV > .sapUiLoSplitterBar > .sapUiLoSplitterBarIcon,
+.sapUiLoSplitterV > .sapUiLoSplitterOverlay > .sapUiLoSplitterOverlayBar > .sapUiIcon.sapUiLoSplitterBarIcon {
 	font-size: 16px;
 	line-height: 16px;
 	width: 16px;
@@ -4178,7 +4197,8 @@ html[data-sap-ui-browser^="ff"] .sapUiSizeCompact .sapUiFormEdit.sapUiFormM .sap
 	top: -5px;
 }
 
-.sapUiLoSplitterV .sapUiIcon.sapUiLoSplitterBarIcon::before {
+.sapUiLoSplitterV > .sapUiLoSplitterBar > .sapUiIcon.sapUiLoSplitterBarIcon::before,
+.sapUiLoSplitterV > .sapUiLoSplitterOverlay > .sapUiLoSplitterOverlayBar > .sapUiIcon.sapUiLoSplitterBarIcon::before {
 	content: "\e1fb";
 }
 

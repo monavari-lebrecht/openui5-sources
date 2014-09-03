@@ -73,7 +73,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @implements sap.ui.commons.ToolbarItem
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -974,6 +974,15 @@ sap.ui.commons.TextField.prototype.onsapescape = function(oEvent) {
 
 };
 
+sap.ui.commons.TextField.prototype.onkeydown = function(oEvent) {
+
+	if (oEvent.which == jQuery.sap.KeyCodes.Z && oEvent.ctrlKey) {
+		// prevent browsers standard history logic because different in different browsers
+		oEvent.preventDefault();
+	}
+
+};
+
 /*
  * Event handler for keypress
  * in Firefox the escape value must be reseted here
@@ -1237,13 +1246,15 @@ sap.ui.commons.TextField.prototype.setValue = function(sValue) {
 			if (newValue) {
 				this.$().removeClass('sapUiTfPlace');
 				oInput.value = newValue;
-			} else {
+			} else if (document.activeElement !== oInput){
 				this.$().addClass('sapUiTfPlace');
 				var sPlaceholder = this.getPlaceholder();
 				if (this.getRenderer().convertPlaceholder) {
 					sPlaceholder = this.getRenderer().convertPlaceholder(this);
 				}
 				oInput.value = sPlaceholder;
+			} else {
+				oInput.value = "";
 			}
 		}else {
 			oInput.value =  newValue;

@@ -55,7 +55,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -1097,63 +1097,54 @@ sap.ui.commons.ColorPicker.prototype._updateCursorPosition = function(){
  */
 sap.ui.commons.ColorPicker.prototype._calculateRGB = function( hue, sat, val){
 
-	//	easy case: value = 0
-	if (val == 0 ){
-		this.RGB.r = Math.round(sat*2.55);
-		this.RGB.g = Math.round(sat*2.55);
-		this.RGB.b = Math.round(sat*2.55);
-
-		// calculate values
-	} else {
-		hue = hue / 60;
-		//hue value is cyclic, so 360 = 0
-		if (hue == 6) {
-			hue = 0;
-		}
-		sat = sat / 100;
-		val = val / 100;
-		var redValue, greenValue, blueValue;
-		var i = Math.floor(hue);
-		var f = hue - i;
-		var p = val * (1 - sat);
-		var q = val * (1 - sat * f);
-		var t = val * (1 - sat * (1 - f));
-		switch (i) {
+	//hue value is cyclic, so 360 = 0
+	if (hue == 360) {
+		hue = 0;
+	}
+	hue /= 60;
+	sat /= 100;
+	val /= 100;
+	
+	
+	//Formula taken from http://www.rapidtables.com/convert/color/hsv-to-rgb.htm
+	var c = val * sat;
+	var x = c * (1 - Math.abs(hue % 2 - 1));
+	var m = val - c;
+	
+	// calculate values
+	var redValue = 0, greenValue = 0, blueValue = 0;
+	var i = Math.floor(hue);
+	
+	switch (i) {
 		case 0:
-			redValue   = val;
-			greenValue = t;
-			blueValue  = p;
+			redValue   = c;
+			greenValue = x;
 			break;
 		case 1:
-			redValue   = q;
-			greenValue = val;
-			blueValue  = p;
+			redValue   = x;
+			greenValue = c;
 			break;
 		case 2:
-			redValue   = p;
-			greenValue = val;
-			blueValue  = t;
+			greenValue = c;
+			blueValue  = x;
 			break;
 		case 3:
-			redValue   = p;
-			greenValue = q;
-			blueValue  = val;
+			greenValue = x;
+			blueValue  = c;
 			break;
 		case 4:
-			redValue   = t;
-			greenValue = p;
-			blueValue  = val;
+			redValue   = x;
+			blueValue  = c;
 			break;
-		default:
-			redValue   = val;
-		greenValue = p;
-		blueValue  = q;
-		break;
-		}
-		this.RGB.r = Math.round(redValue*255);
-		this.RGB.g = Math.round(greenValue*255);
-		this.RGB.b = Math.round(blueValue*255);
+		case 5:
+			redValue   = c;
+			blueValue  = x;
+			break;
 	}
+	
+	this.RGB.r = Math.floor((redValue + m) * 255);
+	this.RGB.g = Math.floor((greenValue + m) * 255);
+	this.RGB.b = Math.floor((blueValue + m) * 255);
 }
 
 

@@ -62,7 +62,7 @@ jQuery.sap.require("sap.ui.commons.ComboBox");
  * @extends sap.ui.commons.ComboBox
  *
  * @author  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public

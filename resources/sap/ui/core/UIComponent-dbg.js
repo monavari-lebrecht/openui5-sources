@@ -31,7 +31,7 @@ sap.ui.define(['jquery.sap.global', './Component', './UIComponentMetadata', './m
 	 * @extends sap.ui.core.Component
 	 * @abstract
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @name sap.ui.core.UIComponent
 	 * @since 1.9.2
 	 */

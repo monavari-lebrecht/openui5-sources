@@ -22,6 +22,7 @@ sap.ui.layout.form.SimpleFormRenderer = {
  */
 sap.ui.layout.form.SimpleFormRenderer.render = function(oRm, oControl){
 
+	oControl._bChangedByMe = true;
 	// write the HTML into the render manager
 	oRm.write("<div");
 	oRm.writeControlData(oControl);
@@ -31,5 +32,6 @@ sap.ui.layout.form.SimpleFormRenderer.render = function(oRm, oControl){
 	var oForm = oControl.getAggregation("form");
 	oRm.renderControl(oForm);
 	oRm.write("</div>");
+	oControl._bChangedByMe = false;
 
 };

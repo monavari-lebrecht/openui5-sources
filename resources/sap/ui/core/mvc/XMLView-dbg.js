@@ -54,7 +54,7 @@ sap.ui.define(['sap/ui/core/library','./View','jquery.sap.xml','sap/ui/base/Data
  * @extends sap.ui.core.mvc.View
  *
  * @author  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -217,6 +217,10 @@ sap.ui.core.mvc.View.extend("sap.ui.core.mvc.XMLView", { metadata : {
 			var aChildren = this.getAggregation("content");
 			if ( aChildren ) {
 				for(var i=0; i<aChildren.length; i++) {
+					if (aChildren[i].getDomRef() === null) {
+						// Do not replace if there is no dom to replace it with...
+						continue;
+					}
 					var $childDOM = aChildren[i].$();
 					// jQuery.sap.log.debug("replacing placeholder for " + aChildren[i] + " with content");
 					jQuery.sap.byId("sap-ui-dummy-" + aChildren[i].getId(), this._$oldContent).replaceWith($childDOM);

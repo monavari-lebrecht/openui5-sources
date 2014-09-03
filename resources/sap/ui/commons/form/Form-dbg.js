@@ -57,7 +57,7 @@ jQuery.sap.require("sap.ui.layout.form.Form");
  * @extends sap.ui.layout.form.Form
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public

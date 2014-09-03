@@ -64,7 +64,7 @@ jQuery.sap.require("sap.m.ListItemBase");
  * @extends sap.m.ListItemBase
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -134,7 +134,7 @@ sap.m.ListItemBase.extend("sap.m.StandardListItem", { metadata : {
 
 /**
  * Getter for property <code>description</code>.
- * Description
+ * Description gets only visible when the title property is not empty.
  *
  * Default value is empty/<code>undefined</code>
  *

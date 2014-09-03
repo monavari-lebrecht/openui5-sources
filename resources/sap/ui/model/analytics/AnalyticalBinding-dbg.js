@@ -5,7 +5,7 @@
  */
 
 // Provides class sap.ui.model.odata.ODataListBinding
-sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/ChangeReason', 'sap/ui/model/Sorter', 'sap/ui/model/FilterOperator', 'sap/ui/thirdparty/odata4analytics'],
+sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/ChangeReason', 'sap/ui/model/Sorter', 'sap/ui/model/FilterOperator', './odata4analytics'],
 	function(jQuery, TreeBinding, ChangeReason, Sorter, FilterOperator, odata4analytics) {
 	"use strict";
 	
@@ -165,6 +165,10 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 			break;
 		}
 		return bHasMeasures;
+	};
+	
+	AnalyticalBinding.prototype.hasGrandTotalDisplayed = function() {
+		return this.bProvideGrandTotals;
 	};
 	
 	/**

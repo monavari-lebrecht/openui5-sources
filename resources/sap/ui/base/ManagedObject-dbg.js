@@ -52,7 +52,7 @@ sap.ui.define(['jquery.sap.global', './BindingParser', './DataType', './EventPro
 	 * @class Base Class for managed objects.
 	 * @extends sap.ui.base.EventProvider
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @public
 	 * @name sap.ui.base.ManagedObject
 	 * @experimental Since 1.11.2. ManagedObject as such is public and usable. Only the support for the optional parameter 
@@ -1901,8 +1901,8 @@ sap.ui.define(['jquery.sap.global', './BindingParser', './DataType', './EventPro
 				oPart.model = oPart.path.substr(0, iSeparatorPos);
 				oPart.path = oPart.path.substr(iSeparatorPos + 1);
 			}
-			// if we have multiple bindings the binding mode can be one way only
-			if (oBindingInfo.parts.length > 1) {
+			// if a formatter exists or we have multiple bindings the binding mode can be one way only 
+			if (oBindingInfo.formatter || oBindingInfo.parts.length > 1) {
 				oPart.mode = sap.ui.model.BindingMode.OneWay;
 			}
 			
@@ -2052,6 +2052,7 @@ sap.ui.define(['jquery.sap.global', './BindingParser', './DataType', './EventPro
 			this[oPropertyInfo._sMutator](oValue);
 			oBindingInfo.skipModelUpdate = false;
 		} catch (oException) {
+			oBindingInfo.skipModelUpdate = false;
 			if (oException instanceof sap.ui.model.FormatException) {
 				this.fireFormatError({
 					element : this,
@@ -2110,6 +2111,7 @@ sap.ui.define(['jquery.sap.global', './BindingParser', './DataType', './EventPro
 						}, false, true); // bAllowPreventDefault, bEnableEventBubbling
 					}
 				} catch (oException) {
+					oBindingInfo.skipPropertyUpdate = false;
 					if (oException instanceof sap.ui.model.ParseException) {
 						this.fireParseError({
 							element : this,

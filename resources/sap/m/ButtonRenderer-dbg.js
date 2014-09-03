@@ -55,6 +55,9 @@ sap.m.ButtonRenderer.render = function(oRm, oButton) {
 
 	// check if the button is disabled
 	if (!bEnabled) {
+		if (!oButton._isUnstyled()) {
+			oRm.addClass("sapMBtnDisabled");
+		}
 		oRm.writeAttribute("disabled", "disabled");
 	} else {
 		switch (sType) {
@@ -63,6 +66,11 @@ sap.m.ButtonRenderer.render = function(oRm, oButton) {
 			case sap.m.ButtonType.Emphasized:
 				oRm.addClass("sapMBtnInverted");
 		}
+	}
+
+	// add tooltip if available
+	if (sTooltip) {
+		oRm.writeAttributeEscaped("title", sTooltip);
 	}
 
 	oRm.writeClasses();
@@ -90,14 +98,9 @@ sap.m.ButtonRenderer.render = function(oRm, oButton) {
 		oRm.addClass("sapMBtnHoverable");
 	}
 
-	// check if button is disabled
-	if (!bEnabled) {
-		if (!oButton._isUnstyled()) {
-			oRm.addClass("sapMBtnDisabled");
-		}
-	} else if (sap.ui.Device.system.desktop) {
+	// check if button is focusable (not disabled)
+	if (bEnabled) {
 		oRm.addClass("sapMFocusable");
-		
 	}
 
 	//get render attributes of depended buttons (e.g. ToggleButton) 
@@ -134,11 +137,6 @@ sap.m.ButtonRenderer.render = function(oRm, oButton) {
 
 	// add all classes to inner button tag
 	oRm.writeClasses();
-
-	// add tooltip if available
-	if (sTooltip) {
-		oRm.writeAttributeEscaped("title", sTooltip);
-	}
 
 	// close inner button tag
 	oRm.write(">");

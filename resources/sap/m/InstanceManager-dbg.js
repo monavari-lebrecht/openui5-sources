@@ -31,7 +31,7 @@ sap.m.InstanceManager = {};
 		sDialogCategoryId = "_DIALOG_";
 
 	/**
-	 * Adds an instance to the given category.
+	 * Adds an instance to the given category. If the instance is already added to the same category, it won't be added again.
 	 *
 	 * @param {string} sCategoryId The category's id.
 	 * @param {object} oInstance The instance that will be added to the given category.
@@ -47,7 +47,9 @@ sap.m.InstanceManager = {};
 			mRegistry[sCategoryId] = [];
 		}
 
-		mRegistry[sCategoryId].push(oInstance);
+		if (mRegistry[sCategoryId].indexOf(oInstance) === -1) {
+			mRegistry[sCategoryId].push(oInstance);
+		}
 
 		return this;
 	};

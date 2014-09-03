@@ -608,29 +608,29 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/LocaleData'],
 				case "weekYear":
 					if (oPart.iDigits == 1) {
 						sPart = findNumbers(4);
-						iIndex += sPart.length;
 					}
 					else if (oPart.iDigits == 2) {
 						sPart = findNumbers(2);
-						if (sPart.length == 2) {
-							iYear = parseInt(sPart, 10);
-							if (iYear < 90) {
-								sPart = "20" + sPart;
-							} else {
-								sPart = "19" + sPart;
-							}
-							iIndex +=2;
-						}
-						else {
-							iIndex += sPart.length;
-						}
 					}
 					else {
 						sPart = findNumbers(oPart.iDigits);
-						iIndex += sPart.length;
 					}
+					iIndex += sPart.length;
 					checkValid(oPart.sType, sPart === "");
 					iYear = parseInt(sPart, 10);
+					// Find the right century for two-digit years
+					if (sPart.length <= 2) {
+						var iCurrentYear = new Date().getFullYear(),
+							iCurrentCentury = Math.floor(iCurrentYear/100),
+							iYearDiff = iCurrentCentury * 100 + iYear - iCurrentYear;
+						if (iYearDiff < -70) {
+							iYear += (iCurrentCentury + 1) * 100;
+						} else if (iYearDiff < 30 ){
+							iYear += iCurrentCentury * 100;
+						} else {
+							iYear += (iCurrentCentury - 1) * 100;
+						}
+					}
 					break;
 				case "weekInYear":
 					// TODO
@@ -681,8 +681,8 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/LocaleData'],
 					break;
 				case "millisecond":
 					sPart = findNumbers(Math.max(oPart.iDigits, 3));
-					sPart = jQuery.sap.padRight(sPart, "0", 3);
 					iIndex += sPart.length;
+					sPart = jQuery.sap.padRight(sPart, "0", 3);
 					iMilliseconds = parseInt(sPart, 10);
 					break;
 				case "amPmMarker":
@@ -772,7 +772,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/LocaleData'],
 		
 		if (!this.bIsFallback) {
 			jQuery.each(this.aFallbackFormats, function(i, oFallbackFormat) {
-				oDate = oFallbackFormat.parse(oValue);
+				oDate = oFallbackFormat.parse(oValue, bUTC);
 				if (oDate) {
 					return false;
 				}

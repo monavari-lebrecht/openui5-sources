@@ -79,7 +79,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @implements sap.ui.core.PopupInterface
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -1515,7 +1515,7 @@ sap.ui.ux3.ToolPopup.prototype.open = function(my, at) {
 
 	// the opener is needed for the intelligent arrow positioning
 	fnCheckOpener(this);
-	
+
 	// function(iDuration, my, at, of, offset, collision /*empty to avoid any override*/, followOf /*true*/)
 	this.oPopup.open(this.getOpenDuration(), this._my, this._at, $OpenerRef, this.sOffset, "", true);
 	fnSetArrow(this);

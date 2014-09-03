@@ -8,7 +8,7 @@
 /** 
  * Device and Feature Detection API of the SAP UI5 Library.
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @namespace
  * @name sap.ui.Device
  * @public
@@ -31,7 +31,7 @@ if(typeof window.sap.ui !== "object"){
 
 	//Skip initialization if API is already available
 	if(typeof window.sap.ui.Device === "object" || typeof window.sap.ui.Device === "function" ){
-		var apiVersion = "1.22.4";
+		var apiVersion = "1.22.8";
 		window.sap.ui.Device._checkAPIVersion(apiVersion);
 		return;
 	}
@@ -85,7 +85,7 @@ if(typeof window.sap.ui !== "object"){
 	
 	//Only used internal to make clear when Device API is loaded in wrong version
 	device._checkAPIVersion = function(sVersion){
-		var v = "1.22.4";
+		var v = "1.22.8";
 		if(v != sVersion){
 			logger.log(WARNING, "Device API version differs: "+v+" <-> "+sVersion);
 		}
@@ -16456,7 +16456,7 @@ $.ui.position = {
 	 * @class Represents a version consisting of major, minor, patch version and suffix, e.g. '1.2.7-SNAPSHOT'.
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @constructor
 	 * @public
 	 * @since 1.15.0
@@ -16849,7 +16849,7 @@ $.ui.position = {
 	/**
 	 * Root Namespace for the jQuery plug-in provided by SAP AG.
 	 *
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @namespace
 	 * @public
 	 * @static
@@ -18022,7 +18022,7 @@ $.ui.position = {
 		function execModule(sModuleName) {
 			
 			var oModule = mModules[sModuleName],
-				sOldPrefix, oUri, sAbsoluteUrl;
+				sOldPrefix, sScript;
 			
 			if ( oModule && oModule.state === LOADED && typeof oModule.data !== "undefined" ) {
 				try {
@@ -18038,20 +18038,30 @@ $.ui.position = {
 					_execStack.push(sModuleName);
 					if ( typeof oModule.data === "function" ) {
 						oModule.data.apply(window);
-					} else if (_window.execScript && (!oModule.data || oModule.data.length < MAX_EXEC_SCRIPT_LENGTH) ) { 
-						try {
-							oModule.data && _window.execScript(oModule.data); // execScript fails if data is empty
-						} catch (e) {
-							_execStack.pop();
-							// eval again with different approach - should fail with a more informative exception
-							jQuery.sap.globalEval(oModule.data);
-							throw e; // rethrow err in case globalEval succeeded unexpectedly
-						}
 					} else {
-						// make URL absolute so Chrome displays the file tree correctly
-						oUri = URI(oModule.url);
-						sAbsoluteUrl = oUri.absoluteTo(sDocumentLocation);
-						_window.eval(oModule.data + "\r\n//# sourceURL=" + sAbsoluteUrl); // Firebug, Chrome and Safari debugging help, appending the string seems to cost ZERO performance
+
+						sScript = oModule.data;
+
+						// sourceURL: Firebug, Chrome, Safari and IE11 debugging help, appending the string seems to cost ZERO performance
+						// Note: IE11 supports sourceURL even when running in IE9 or IE10 mode
+						// Note: make URL absolute so Chrome displays the file tree correctly
+						// Note: do not append if there is already a sourceURL / sourceMappingURL
+						if (sScript && !sScript.match(/\/\/[#@] source(Mapping)?URL=.*$/)) {
+							sScript += "\n//# sourceURL=" + URI(oModule.url).absoluteTo(sDocumentLocation);
+						}
+
+						if (_window.execScript && (!oModule.data || oModule.data.length < MAX_EXEC_SCRIPT_LENGTH) ) { 
+							try {
+								oModule.data && _window.execScript(sScript); // execScript fails if data is empty
+							} catch (e) {
+								_execStack.pop();
+								// eval again with different approach - should fail with a more informative exception
+								jQuery.sap.globalEval(oModule.data);
+								throw e; // rethrow err in case globalEval succeeded unexpectedly
+							}
+						} else {
+							_window.eval(sScript);
+						}
 					}
 					_execStack.pop();
 					oModule.state = READY;
@@ -22315,7 +22325,7 @@ sap.ui.define("jquery.sap.script",['jquery.sap.global'],
 	 * Use {@link jQuery.sap.getUriParameters} to create an instance of jQuery.sap.util.UriParameters.
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 0.9.0
 	 * @name jQuery.sap.util.UriParameters
 	 * @public
@@ -23321,7 +23331,7 @@ sap.ui.define("jquery.sap.storage",['jquery.sap.global'],
 	 * should be deleted the method {@link #removeAll} should be used.
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 0.11.0
 	 * @public
 	 * @name jQuery.sap.storage.Storage
@@ -23537,7 +23547,7 @@ sap.ui.define("jquery.sap.storage",['jquery.sap.global'],
 	 * @param {string} [sIdPrefix] Prefix used for the Ids. If not set a default prefix is used.    
 	 * @returns {jQuery.sap.storage.Storage}
 	 * 
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 0.11.0
 	 * @namespace
 	 * @public
@@ -23575,7 +23585,7 @@ sap.ui.define("jquery.sap.storage",['jquery.sap.global'],
 	 * @class
 	 * @static
 	 * @public
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 0.11.0
 	 */
 	jQuery.sap.storage.Type = {
@@ -24753,7 +24763,7 @@ sap.ui.define("sap/ui/base/Interface",['jquery.sap.global'],
 	 *        only the defined functions will be visible, no internals of the class can be accessed.
 	 *
 	 * @author Malte Wedel, Daniel Brinkmann
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @param {sap.ui.base.Object}
 	 *            oObject the instance that needs an interface created
 	 * @param {string[]}
@@ -24824,7 +24834,7 @@ sap.ui.define("sap/ui/base/Metadata",['jquery.sap.global', 'jquery.sap.script'],
 	 *
 	 * @class Metadata for a class.
 	 * @author Frank Weigel
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 0.8.6
 	 * @public
 	 * @name sap.ui.base.Metadata
@@ -25202,7 +25212,7 @@ sap.ui.define("sap/ui/base/Object",['jquery.sap.global', './Interface', './Metad
 	 * @class Base class for all SAPUI5 Objects
 	 * @abstract
 	 * @author Malte Wedel
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @public
 	 * @name sap.ui.base.Object
 	 */
@@ -25406,7 +25416,7 @@ sap.ui.define("sap/ui/base/ObjectPool",['jquery.sap.global', './Object'],
 	 *
 	 * @extends sap.ui.base.Object
 	 * @author Malte Wedel
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @constructor
 	 * @name sap.ui.base.ObjectPool
 	 * @public
@@ -25604,7 +25614,7 @@ sap.ui.define("sap/ui/core/DeclarativeSupport",['jquery.sap.global'],
 	 * @class Static class for enabling declarative UI support.  
 	 *
 	 * @author Peter Muessig, Tino Butz
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 1.7.0
 	 * @public
 	 * @name sap.ui.core.DeclarativeSupport
@@ -26249,7 +26259,7 @@ sap.ui.define("sap/ui/core/History",['jquery.sap.global', 'sap/ui/base/Object'],
 	 *
 	 * @extends sap.ui.base.Object
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @constructor
 	 * @name sap.ui.core.History
 	 * @protected
@@ -26915,7 +26925,7 @@ sap.ui.define("sap/ui/core/Locale",['jquery.sap.global', 'sap/ui/base/Object'],
 		 *
 		 * @extends sap.ui.base.Object
 		 * @author SAP AG
-		 * @version 1.22.4
+		 * @version 1.22.8
 		 * @constructor
 		 * @public
 		 * @name sap.ui.core.Locale
@@ -27214,7 +27224,7 @@ sap.ui.define("sap/ui/core/Renderer",['jquery.sap.global'],
 	 * @class Base Class for Renderer.
 	 *
 	 * @author Martin Schaus, Daniel Brinkmann
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @static
 	 * @public
 	 * @name sap.ui.core.Renderer
@@ -27499,6 +27509,8 @@ if ( !jQuery.sap.isDeclared('sap.ui.core.ThemeCheck') ) {
  * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
  */
 
+/*global URI*/// declare unusual global vars for JSLint/SAPUI5 validation
+
 // Provides class sap.ui.core.ThemeCheck
 jQuery.sap.declare('sap.ui.core.ThemeCheck'); // unresolved dependency added by SAPUI5 'AllInOne' Builder
 sap.ui.define("sap/ui/core/ThemeCheck",['jquery.sap.global', 'sap/ui/Device', 'sap/ui/base/Object', 'jquery.sap.script'],
@@ -27605,7 +27617,7 @@ sap.ui.define("sap/ui/core/ThemeCheck",['jquery.sap.global', 'sap/ui/Device', 's
 		if (!!oThemeCheck._customCSSAdded && oThemeCheck._themeCheckedForCustom === sThemeName){
 			// include custom style sheet here because it has already been added using jQuery.sap.includeStyleSheet
 			// hence, needs to be checked for successful inclusion, too
-			mLibs["sap-ui-theme-"+oThemeCheck._CUSTOMID] = {};
+			mLibs[oThemeCheck._CUSTOMID] = {};
 		}
 
 		function checkLib(lib) {
@@ -27641,12 +27653,24 @@ sap.ui.define("sap/ui/core/ThemeCheck",['jquery.sap.global', 'sap/ui/Device', 's
 							} else {
 								oBaseStyleSheet = oStyle;
 							}
+							// parse original href
+							var oHref = new URI(oBaseStyleSheet.getAttribute("href"));
+							var sSuffix = oHref.suffix();
+							// get filename without suffix
+							var sFileName = oHref.filename();
+							if (sSuffix.length > 0) {
+								sSuffix = "." + sSuffix;
+								sFileName = sFileName.slice(0, - sSuffix.length);
+							}
+							// change filename only (to keep URI parameters)
+							oHref.filename(sFileName + "_" + sAdditionalLibSuffix + sSuffix);
+							// build final href
+							var sHref = oHref.toString();
 							// create the new link element
 							var oLink = document.createElement("link");
 							oLink.type = "text/css";
 							oLink.rel = "stylesheet";
-							oLink.href = oBaseStyleSheet.getAttribute("href").substr(0, oBaseStyleSheet.getAttribute("href").length - 4 /* length of .css */) +
-								"_" + sAdditionalLibSuffix + ".css";
+							oLink.href = sHref;
 							oLink.id = sLinkId;
 
 							jQuery(oLink)
@@ -27668,7 +27692,7 @@ sap.ui.define("sap/ui/core/ThemeCheck",['jquery.sap.global', 'sap/ui/Device', 's
 				if(oThemeCheck._themeCheckedForCustom != sThemeName){
 					if (checkCustom(oThemeCheck, lib)){
 							//load custom css available at sap/ui/core/themename/library.css
-						jQuery.sap.includeStyleSheet(sPath,  oThemeCheck._CUSTOMID);
+						jQuery.sap.includeStyleSheet(sPath, oThemeCheck._CUSTOMID);
 						oThemeCheck._customCSSAdded = true;
 						jQuery.sap.log.warning("ThemeCheck delivered custom CSS needs to be loaded, Theme not yet applied");
 						oThemeCheck._themeCheckedForCustom = sThemeName;
@@ -27704,27 +27728,27 @@ sap.ui.define("sap/ui/core/ThemeCheck",['jquery.sap.global', 'sap/ui/Device', 's
 	 */
 	function checkCustom (oThemeCheck, lib){
 		var ruleName = null,
-		bSuccess = false;
-	 var lib = new RegExp(lib);
-		//get the core styles
-		jQuery.each(document.styleSheets, function(iIndex, oStyleSheet) {
-				if (!!oStyleSheet.ownerNode && lib.test(oStyleSheet.ownerNode.id) && oStyleSheet.cssRules && oStyleSheet.cssRules.length > 0){
-					ruleName = oStyleSheet.cssRules[0].selectorText;
-					if(oThemeCheck._CUSTOMCSSCHECK.test(ruleName)){
-						bSuccess = true;
-						return false;
-					}
-				}
-				else if(!!oStyleSheet.owningElement && lib.test(oStyleSheet.owningElement.id) && oStyleSheet.rules && oStyleSheet.rules.length > 0){
-						//ie8 doesn't know ownerNode
-					ruleName = oStyleSheet.rules[0].selectorText;
-					if(oThemeCheck._CUSTOMCSSCHECK.test(ruleName)){
-						bSuccess = true;
-						return false;
-					}
-				}
-		});
+			bSuccess = false,
+			aRules = Array();
+		if (jQuery.sap.domById("sap-ui-theme-"+lib)){
+			var cssFile = jQuery.sap.domById("sap-ui-theme-"+lib);
+			if (cssFile.sheet){
+				aRules = cssFile.sheet.cssRules;
+			} else if (cssFile.styleSheet){
+				//we're in an old IE version
+				aRules = cssFile.styleSheet.rules;
+			}
+		}
+		if(aRules.length > 0){
+			ruleName = aRules[0].selectorText;
+		} else {
+			jQuery.sap.log.warning("Custom check: Failed retrieving a CSS rule from stylesheet " + lib);
+			return false;
+		}
 		// we should now have some rule name ==> try to match against custom check
+		if(oThemeCheck._CUSTOMCSSCHECK.test(ruleName)){
+			bSuccess = true;
+		}
 		return bSuccess;
 	}
 	
@@ -28477,7 +28501,7 @@ sap.ui.define("sap/ui/core/delegate/ScrollEnablement",['jquery.sap.global', 'sap
 			 * @param {boolean} [oConfig.preventDefault=false] If set, the default of touchmove is prevented
 			 * @param {boolean} [oConfig.nonTouchScrolling=false] If true, the delegate will also be active to allow touch like scrolling with the mouse on non-touch platforms; if set to "scrollbar", there will be normal scrolling with scrollbars and no touch-like scrolling where the content is dragged
 			 *
-			 * @version 1.22.4
+			 * @version 1.22.8
 			 * @constructor
 			 * @protected
 			 */
@@ -29795,7 +29819,7 @@ sap.ui.define("sap/ui/core/util/File",['jquery.sap.global', 'sap/ui/Device'],
 	 *
 	 * @class Utility class to handle files
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @static
 	 *
 	 * @public
@@ -29935,7 +29959,7 @@ sap.ui.define("sap/ui/core/util/LibraryInfo",['jquery.sap.global', 'sap/ui/base/
 	 *
 	 * @extends sap.ui.base.Object
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @constructor
 	 * @private
 	 * @name sap.ui.core.util.LibraryInfo
@@ -30090,7 +30114,7 @@ sap.ui.define("sap/ui/core/ws/ReadyState",['jquery.sap.global'],
 	/**
 	 * @class Defines the different ready states for a WebSocket connection.
 	 *
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @static
 	 * @public
 	 * @name sap.ui.core.ws.ReadyState
@@ -30559,7 +30583,7 @@ sap.ui.define("sap/ui/model/Type",['jquery.sap.global', 'sap/ui/base/Object'],
 	 * @extends sap.ui.base.Object
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 *
 	 * @constructor
 	 * @public
@@ -30651,6 +30675,5258 @@ sap.ui.define("sap/ui/model/ValidateException",['jquery.sap.global', 'sap/ui/bas
 }, /* bExport= */ true);
 
 }; // end of sap/ui/model/ValidateException.js
+if ( !jQuery.sap.isDeclared('sap.ui.model.analytics.odata4analytics') ) {
+/*!
+ * SAP UI development toolkit for HTML5 (SAPUI5/OpenUI5)
+ * (c) Copyright 2009-2014 SAP AG or an SAP affiliate company. 
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+
+// Provides API for analytical extensions in OData service metadata
+jQuery.sap.declare('sap.ui.model.analytics.odata4analytics'); // unresolved dependency added by SAPUI5 'AllInOne' Builder
+sap.ui.define("sap/ui/model/analytics/odata4analytics",['jquery.sap.global'],
+	function(jQuery) {
+	"use strict";
+
+	/**
+	 * The OData4Analytics API is purely experimental, not yet functionally complete
+	 * and not meant for productive usage. At present, its only purpose is to
+	 * demonstrate how easy analytical extensions of OData4SAP can be consumed. 
+	 * 
+	 * <em>USE OBJECTS VIA METHODS ONLY - DO NOT ACCESS JAVASCRIPT OBJECT PROPERTIES DIRECTLY !</em>
+	 * 
+	 * Lazy initialization of attributes will cause unexpected values when you
+	 * access object attributes directly. 
+	 * 
+	 * @author SAP SE
+	 * @experimental This module is only for experimental use!
+	 * @namespace
+	 * @name sap.ui.model.analytics.odata4analytics
+	 * @protected
+	 */
+	var odata4analytics = odata4analytics || {};
+	
+	odata4analytics.constants = {};
+	odata4analytics.constants["SAP_NAMESPACE"] = "http://www.sap.com/Protocols/SAPData";
+	odata4analytics.constants["VERSION"] = "0.7";
+	
+	odata4analytics.helper = {
+			/*
+			 * Old helpers that got replaced by robust functions provided by the UI5 ODataModel
+			 */ 
+/*
+		renderPropertyKeyValue : function(sKeyValue, sPropertyEDMTypeName) {
+			if (typeof sKeyValue == "string" && sKeyValue.charAt(0) == "'")
+				throw "Illegal property value starting with a quote";
+			switch (sPropertyEDMTypeName) {
+			case 'Edm.String':
+				return "'" + sKeyValue + "'";
+			case 'Edm.DateTime':
+				return "datetime'" + sKeyValue + "'";
+			case 'Edm.Guid':
+				return "guid'" + sKeyValue + "'";
+			case 'Edm.Time':
+				return "time'" + sKeyValue + "'";
+			case 'Edm.DateTimeOffset':
+				return "datetimeoffset'" + sKeyValue + "'";
+			default:
+				return sKeyValue;
+			}
+		},
+
+		renderPropertyFilterValue : function(sFilterValue, sPropertyEDMTypeName) {
+			if (typeof sFilterValue == "string" && sFilterValue.charAt(0) == "'")
+				throw "Illegal property value starting with a quote";
+			switch (sPropertyEDMTypeName) {
+			case 'Edm.String':
+				return "'" + sFilterValue + "'";
+			case 'Edm.DateTime':
+				return "datetime'" + sFilterValue + "'";
+			case 'Edm.Guid':
+				return "guid'" + sFilterValue + "'";
+			case 'Edm.Time':
+				return "time'" + sFilterValue + "'";
+			case 'Edm.DateTimeOffset':
+				return "datetimeoffset'" + sFilterValue + "'";
+			default:
+				return sFilterValue;
+			}
+		}, 
+*/
+		tokenizeNametoLabelText : function(sName) {
+			var sLabel = "";
+	
+			// remove leading 'P_' often used for parameter properties on HANA
+			sLabel = sName.replace(/^P_(.*)/, "$1");
+			// split UpperCamelCase in words (treat numbers and _ as upper case)
+			sLabel = sLabel.replace(/([^A-Z0-9_]+)([A-Z0-9_])/g, "$1 $2");
+			// split acronyms in words
+			sLabel = sLabel.replace(/([A-Z0-9_]{2,})([A-Z0-9_])([^A-Z0-9_]+)/g, "$1 $2$3");
+			// remove trailing _E
+			sLabel = sLabel.replace(/(.*) _E$/, "$1");
+			// remove underscores that were identified as upper case
+			sLabel = sLabel.replace(/(.*) _(.*)/g, "$1 $2");
+			return sLabel;
+		}
+	};
+	
+	/**
+	 * Create a representation of the analytical semantics of OData service metadata
+	 * 
+	 * @param {object}
+	 *            oModelReference An instance of ReferenceByURI, ReferenceByModel or
+	 *            ReferenceWithWorkaround for locating the OData service.
+	 * @param {object}
+	 * 	          mParameter? Additional parameters for controlling the model construction. Currently supported are:
+	 *            <li> sAnnotationJSONDoc - A JSON document providing extra annotations to the elements of the 
+	 *                 structure of the given service</li>
+	 * @constructor
+	 * 
+	 * @class Representation of an OData model with analytical annotations defined
+	 *        by OData4SAP.
+	 * @name sap.ui.model.analytics.odata4analytics.Model
+	 * @public
+	 */
+	
+	odata4analytics.Model = function(oModelReference, mParameter) {
+		this._init(oModelReference, mParameter);
+	};
+	
+	/**
+	 * Create a reference to an OData model by the URI of the related OData service.
+	 * 
+	 * @param {string}
+	 *            sURI holding the URI.
+	 * @constructor
+	 * 
+	 * @class Handle to an OData model by the URI pointing to it.
+	 * @name sap.ui.model.analytics.odata4analytics.Model.ReferenceByURI
+	 * @public
+	 */
+	odata4analytics.Model.ReferenceByURI = function(sURI) {
+		return {
+			sServiceURI : sURI
+		};
+	};
+	
+	/**
+	 * Create a reference to an OData model already loaded elsewhere with the help
+	 * of SAP UI5.
+	 * 
+	 * @param {object}
+	 *            oModel holding the OData model.
+	 * @constructor
+	 * 
+	 * @class Handle to an already instantiated SAP UI5 OData model.
+	 * @name sap.ui.model.analytics.odata4analytics.Model.ReferenceByModel
+	 * @public
+	 */
+	odata4analytics.Model.ReferenceByModel = function(oModel) {
+		return {
+			oModel : oModel
+		};
+	};
+	
+	/**
+	 * Create a reference to an OData model having certain workarounds activated. A
+	 * workaround is an implementation that changes the standard behavior of the API
+	 * to overcome some gap or limitation in the OData provider. The workaround
+	 * implementation can be conditionally activated by passing the identifier in
+	 * the contructor.
+	 * 
+	 * Known workaround identifiers are:
+	 * 
+	 * <li>"CreateLabelsFromTechnicalNames" - If a property has no label text, it
+	 * gets generated from the property name.</li>
+	 * 
+	 * <li>"IdentifyTextPropertiesByName" -If a dimension property has no text and
+	 * another property with the same name and an appended "Name", "Text" etc.
+	 * exists, they are linked via annotation.</li>
+	 * 
+	 * 
+	 * @param {object}
+	 *            oModel holding a reference to the OData model, obtained
+	 *            by odata4analytics.Model.ReferenceByModel or by
+	 *            sap.odata4analytics.Model.ReferenceByURI.
+	 * @param {string[]}
+	 *            aWorkaroundID listing all workarounds to be applied.
+	 * @constructor
+	 * 
+	 * @class Handle to an already instantiated SAP UI5 OData model.
+	 * @name sap.ui.model.analytics.odata4analytics.Model.ReferenceWithWorkaround
+	 * @public
+	 */
+	odata4analytics.Model.ReferenceWithWorkaround = function(oModel, aWorkaroundID) {
+		return {
+			oModelReference : oModel,
+			aWorkaroundID : aWorkaroundID
+		};
+	};
+	
+	odata4analytics.Model.prototype = {
+	
+		/**
+		 * initialize a new object
+		 * 
+		 * @private
+		 */
+		_init : function(oModelReference, mParameter) {
+			if (typeof mParameter == "string") {
+				throw "Deprecated second argument: Adjust your invocation by passing an object with a property sAnnotationJSONDoc as a second argument instead"
+			}
+			this._mParameter= mParameter;
+			
+			/*
+			 * get access to OData model
+			 */
+	
+			this._oActivatedWorkarounds = new Object();
+	
+			if (oModelReference && oModelReference.aWorkaroundID) {
+				for (var i = -1, sID; sID = oModelReference.aWorkaroundID[++i];) {
+					this._oActivatedWorkarounds[sID] = true;
+				}
+				oModelReference = oModelReference.oModelReference;
+			}
+	
+			// check proper usage
+			if (!oModelReference || (!oModelReference.sServiceURI && !oModelReference.oModel)) {
+				throw "Usage with oModelReference being an instance of Model.ReferenceByURI or Model.ReferenceByModel";
+			}
+	
+			if (oModelReference.oModel)
+				this._oModel = oModelReference.oModel;
+			else
+				this._oModel = new sap.ui.model.odata.ODataModel(oModelReference.sServiceURI);
+	
+			if (this._oModel.getServiceMetadata().dataServices == undefined) {
+				throw "Model could not be loaded";
+			}
+	
+			/*
+			 * add extra annotations if provided
+			 */
+			if (mParameter && mParameter.sAnnotationJSONDoc) this.mergeV2Annotations(mParameter.sAnnotationJSONDoc);
+	
+			/*
+			 * parse OData model for analytic queries
+			 */
+	
+			this._oQueryResultSet = new Object();
+			this._oParameterizationSet = new Object();
+			this._oEntityTypeSet = new Object();
+			this._oEntitySetSet = new Object();
+			this._oEntityTypeNameToEntitySetMap = new Object();
+	
+			// loop over all schemas and entity containers
+			// TODO: extend this implementation to support many schemas
+			var oSchema = this._oModel.getServiceMetadata().dataServices.schema[0];
+	
+			// remember default container
+			for (var i = -1, oContainer; oContainer = oSchema.entityContainer[++i];) {
+				if (oContainer.isDefaultEntityContainer == "true") {
+					this._oDefaultEntityContainer = oContainer;
+					break;
+				}
+			}
+	
+			var aEntityType = oSchema.entityType;
+	
+			// A. preparation
+	
+			// A.1 collect all relevant OData entity types representing query
+			// results, parameters
+			var aQueryResultEntityTypes = [], aParameterEntityTypes = [], aUnsortedEntityTypes = [];
+	
+			for (var i = -1, oType; oType = aEntityType[++i];) {
+				var bProcessed = false;
+	
+				if (oType.extensions != undefined) {
+					for (var j = -1, oExtension; oExtension = oType.extensions[++j];) {
+						if (oExtension.namespace == odata4analytics.constants.SAP_NAMESPACE
+								&& oExtension.name == "semantics") {
+							bProcessed = true;
+							switch (oExtension.value) {
+							case "aggregate":
+								aQueryResultEntityTypes.push(oType);
+								break;
+							case "parameters":
+								aParameterEntityTypes.push(oType);
+								break;
+							default:
+								aUnsortedEntityTypes.push(oType);
+							}
+						}
+						if (bProcessed)
+							continue;
+					}
+					if (!bProcessed)
+						aUnsortedEntityTypes.push(oType);
+				} else
+					aUnsortedEntityTypes.push(oType);
+			}
+			// A.2 create entity type representations for the unsorted types
+			for (var i = -1, oType; oType = aUnsortedEntityTypes[++i];) {
+				var oEntityType = new odata4analytics.EntityType(this._oModel.getServiceMetadata(), oSchema, oType);
+				this._oEntityTypeSet[oEntityType.getQName()] = oEntityType;
+				var aEntitySet = this._getEntitySetsOfType(oSchema, oEntityType.getQName());
+				if (aEntitySet.length == 0)
+					throw "Invalid consumption model: No entity set for entity type " + oEntityType.getQName() + " found";
+				if (aEntitySet.length > 1)
+					throw "Unsupported consumption model: More than one entity set for entity type " + oEntityType.getQName()
+							+ " found";
+				var oEntitySet = new odata4analytics.EntitySet(this._oModel.getServiceMetadata(), oSchema,
+						aEntitySet[0][0], aEntitySet[0][1], oEntityType);
+				this._oEntitySetSet[oEntitySet.getQName()] = oEntitySet;
+				this._oEntityTypeNameToEntitySetMap[oEntityType.getQName()] = oEntitySet;
+			}
+	
+			// B. create objects for the analytical extensions of these entity types
+			// B.1 create parameters
+	
+			// temporary storage for lookup of entity *types* annotated with
+			// parameters semantics
+			var oParameterizationEntityTypeSet = {};
+	
+			for (var i = -1, oType; oType = aParameterEntityTypes[++i];) {
+				// B.1.1 create object for OData entity type
+				var oEntityType = new odata4analytics.EntityType(this._oModel.getServiceMetadata(), oSchema, oType);
+				this._oEntityTypeSet[oEntityType.getQName()] = oEntityType;
+				// B.1.2 get sets with this type
+				var aEntitySet = this._getEntitySetsOfType(oSchema, oEntityType.getQName());
+				if (aEntitySet.length == 0)
+					throw "Invalid consumption model: No entity set for parameter entity type " + oEntityType.getQName() + " found";
+				if (aEntitySet.length > 1)
+					throw "Unsupported consumption model: More than one entity set for parameter entity type "
+							+ oEntityType.getQName() + " found";
+	
+				// B.1.3 create object for OData entity set
+				var oEntitySet = new odata4analytics.EntitySet(this._oModel.getServiceMetadata(), oSchema,
+						aEntitySet[0][0], aEntitySet[0][1], oEntityType);
+				this._oEntitySetSet[oEntitySet.getQName()] = oEntitySet;
+				this._oEntityTypeNameToEntitySetMap[oEntityType.getQName()] = oEntitySet;
+	
+				// B.1.4 create object for parameters and related OData entity
+				var oParameterization = new odata4analytics.Parameterization(oEntityType, oEntitySet);
+				this._oParameterizationSet[oParameterization.getName()] = oParameterization;
+				oParameterizationEntityTypeSet[oEntityType.getQName()] = oParameterization;
+	
+				// B.1.5 recognize all available parameter value helps
+				var sParameterizationEntityTypeQTypeName = oEntityType.getQName();
+	
+				if (oSchema.association != undefined) {
+					for (var j = -1, oAssoc; oAssoc = oSchema.association[++j];) {
+						// value help always established by a referential constraint
+						// on an association
+						if (oAssoc.referentialConstraint == undefined)
+							continue;
+	
+						var sParameterValueHelpEntityTypeQTypeName = null;
+	
+						// B.1.5.1 relevant only if one end has same type as the
+						// given parameterization entity type
+						if (oAssoc.end[0].type == sParameterizationEntityTypeQTypeName && oAssoc.end[0].multiplicity == "*"
+								&& oAssoc.end[1].multiplicity == "1") {
+							sParameterValueHelpEntityTypeQTypeName = oAssoc.end[1].type;
+	
+						} else if (oAssoc.end[1].type == sParameterizationEntityTypeQTypeName && oAssoc.end[1].multiplicity == "*"
+								&& oAssoc.end[0].multiplicity == "1") {
+							sParameterValueHelpEntityTypeQTypeName = oAssoc.end[0].type;
+						}
+						if (!sParameterValueHelpEntityTypeQTypeName)
+							continue;
+	
+						// B.1.5.2 check if the referential constraint declares a
+						// parameter property as dependent
+						if (oAssoc.referentialConstraint.dependent.propertyRef.length != 1)
+							continue;
+						var oParameter = oParameterization
+								.findParameterByName(oAssoc.referentialConstraint.dependent.propertyRef[0].name);
+						if (oParameter == null)
+							continue;
+	
+						// B.1.5.3 Register the recognized parameter value help
+						// entity type and set and link them to the parameter
+						var oValueListEntityType = this._oEntityTypeSet[sParameterValueHelpEntityTypeQTypeName];
+						var oValueListEntitySet = this._oEntityTypeNameToEntitySetMap[sParameterValueHelpEntityTypeQTypeName];
+						oParameter.setValueSetEntity(oValueListEntityType, oValueListEntitySet);
+					}
+				}
+			}
+	
+			// B.2
+			// B.2 create analytic queries
+			for (var i = -1, oType; oType = aQueryResultEntityTypes[++i];) {
+	
+				// B.2.1 create object for OData entity
+				var oEntityType = new odata4analytics.EntityType(this._oModel.getServiceMetadata(), oSchema, oType);
+				this._oEntityTypeSet[oEntityType.getQName()] = oEntityType;
+				var sQueryResultEntityTypeQTypeName = oEntityType.getQName();
+	
+				// B.2.2 find assocs to parameter entity types
+				var oParameterization = null;
+				var oAssocFromParamsToResult = null;
+	
+				if (oSchema.association != undefined) {
+					for (var j = -1, oAssoc; oAssoc = oSchema.association[++j];) {
+						var sParameterEntityTypeQTypeName = null;
+						if (oAssoc.end[0].type == sQueryResultEntityTypeQTypeName)
+							sParameterEntityTypeQTypeName = oAssoc.end[1].type;
+						else if (oAssoc.end[1].type == sQueryResultEntityTypeQTypeName)
+							sParameterEntityTypeQTypeName = oAssoc.end[0].type;
+						else
+							continue;
+	
+						// B.2.2.2 fetch Parameterization object if any
+						var oMatchingParameterization = null;
+	
+						oMatchingParameterization = oParameterizationEntityTypeSet[sParameterEntityTypeQTypeName];
+						if (oMatchingParameterization != null)
+							if (oParameterization != null) {
+								// TODO: extend this implementation to support more
+								// than one related parameter entity type
+								throw "LIMITATION: Unable to handle multiple parameter entity types of query entity "
+										+ oEntityType.name;
+							} else {
+								oParameterization = oMatchingParameterization;
+								oAssocFromParamsToResult = oAssoc;
+							}
+					}
+				}
+	
+				// B.2.3 get sets with this type
+				var aEntitySet = this._getEntitySetsOfType(oSchema, oEntityType.getQName());
+				if (aEntitySet.length != 1)
+					throw "Invalid consumption model: There must be exactly one entity set for an entity type annotated with aggregating semantics";
+	
+				// B.2.4 create object for OData entity set of analytic query result
+				var oEntitySet = new odata4analytics.EntitySet(this._oModel.getServiceMetadata(), oSchema,
+						aEntitySet[0][0], aEntitySet[0][1], oEntityType);
+				this._oEntitySetSet[oEntitySet.getQName()] = oEntitySet;
+				this._oEntityTypeNameToEntitySetMap[oEntityType.getQName()] = oEntitySet;
+	
+				// B.2.5 create object for analytic query result, related OData
+				// entity type and set and (if any) related parameters
+				// object
+				var oQueryResult = new odata4analytics.QueryResult(this, oEntityType, oEntitySet, oParameterization);
+				this._oQueryResultSet[oQueryResult.getName()] = oQueryResult;
+	
+				// B.2.6 set target result for found parameterization
+				if (oParameterization)
+					oParameterization.setTargetQueryResult(oQueryResult, oAssocFromParamsToResult);
+	
+				// B.2.7 recognize all available dimension value helps
+				if (oSchema.association != undefined) {
+					for (var j = -1, oAssoc; oAssoc = oSchema.association[++j];) {
+						// value help always established by a referential constraint
+						// on an association
+						if (oAssoc.referentialConstraint == undefined)
+							continue;
+	
+						var sDimensionValueHelpEntityTypeQTypeName = null;
+	
+						// B.2.7.1 relevant only if one end has same type as the
+						// given query result entity type
+						if (oAssoc.end[0].type == sQueryResultEntityTypeQTypeName && oAssoc.end[0].multiplicity == "*"
+								&& oAssoc.end[1].multiplicity == "1") {
+							sDimensionValueHelpEntityTypeQTypeName = oAssoc.end[1].type;
+	
+						} else if (oAssoc.end[1].type == sQueryResultEntityTypeQTypeName && oAssoc.end[1].multiplicity == "*"
+								&& oAssoc.end[0].multiplicity == "1") {
+							sDimensionValueHelpEntityTypeQTypeName = oAssoc.end[0].type;
+						}
+						if (!sDimensionValueHelpEntityTypeQTypeName)
+							continue;
+	
+						// B.2.7.2 check if the referential constraint declares a
+						// dimension property as dependent
+						if (oAssoc.referentialConstraint.dependent.propertyRef.length != 1)
+							continue;
+						var oDimension = oQueryResult
+								.findDimensionByName(oAssoc.referentialConstraint.dependent.propertyRef[0].name);
+						if (oDimension == null)
+							continue;
+	
+						// B.2.7.3 Register the recognized dimension value help
+						// entity set and link it to the dimension
+						var oDimensionMembersEntitySet = this._oEntityTypeNameToEntitySetMap[sDimensionValueHelpEntityTypeQTypeName];
+						oDimension.setMembersEntitySet(oDimensionMembersEntitySet);
+					}
+				}
+	
+			}
+	
+		},
+	
+		/*
+		 * Control data for adding extra annotations to service metadata
+		 * 
+		 * @private
+		 */
+		oUI5ODataModelAnnotatableObject : {
+			objectName : "schema",
+			keyPropName : "namespace",
+			extensions : true,
+			aSubObject : [ {
+				objectName : "entityType",
+				keyPropName : "name",
+				extensions : true,
+				aSubObject : [ {
+					objectName : "property",
+					keyPropName : "name",
+					aSubObject : [],
+					extensions : true
+				} ]
+			}, {
+				objectName : "entityContainer",
+				keyPropName : "name",
+				extensions : false,
+				aSubObject : [ {
+					objectName : "entitySet",
+					keyPropName : "name",
+					extensions : true,
+					aSubObject : []
+				} ]
+			} ]
+		},
+	
+		/*
+		 * merging extra annotations with provided service metadata
+		 * 
+		 * @private
+		 */
+		mergeV2Annotations : function(sAnnotationJSONDoc) {
+			var oAnnotation = null;
+			try {
+				oAnnotation = JSON.parse(sAnnotationJSONDoc);
+			} catch (exception) {
+				return;
+			}
+	
+			var oMetadata;
+			try {
+				oMetadata = this._oModel.getServiceMetadata().dataServices;
+			} catch (exception) {
+				return;
+			}
+	
+			// find "schema" entry in annotation document
+			for ( var propName in oAnnotation) {
+				if (!(this.oUI5ODataModelAnnotatableObject.objectName == propName))
+					continue;
+				if (!(oAnnotation[propName] instanceof Array)) {
+					continue;
+				}
+				this.mergeV2AnnotationLevel(oMetadata[this.oUI5ODataModelAnnotatableObject.objectName],
+						oAnnotation[this.oUI5ODataModelAnnotatableObject.objectName], this.oUI5ODataModelAnnotatableObject);
+				break;
+			}
+	
+			return;
+		},
+	
+		/*
+		 * merging extra annotations with a given service metadata object
+		 * 
+		 * @private
+		 */
+	
+		mergeV2AnnotationLevel : function(aMetadata, aAnnotation, oUI5ODataModelAnnotatableObject) {
+	
+			for (var i = -1, oAnnotation; oAnnotation = aAnnotation[++i];) {
+				for (var j = -1, oMetadata; oMetadata = aMetadata[++j];) {
+	
+					if (!(oAnnotation[oUI5ODataModelAnnotatableObject.keyPropName] == oMetadata[oUI5ODataModelAnnotatableObject.keyPropName]))
+						continue;
+					// found match: apply extensions from oAnnotation object to
+					// oMetadata object
+					if (oAnnotation["extensions"] != undefined) {
+						if (oMetadata["extensions"] == undefined)
+							oMetadata["extensions"] = new Array();
+	
+						for (var l = -1, oAnnotationExtension; oAnnotationExtension = oAnnotation["extensions"][++l];) {
+							var bFound = false;
+							for (var m = -1, oMetadataExtension; oMetadataExtension = oMetadata["extensions"][++m];) {
+								if (oAnnotationExtension.name == oMetadataExtension.name
+										&& oAnnotationExtension.namespace == oMetadataExtension.namespace) {
+									oMetadataExtension.value = oAnnotationExtension.value;
+									bFound = true;
+									break;
+								}
+							}
+							if (!bFound)
+								oMetadata["extensions"].push(oAnnotationExtension);
+						}
+					}
+					// walk down to sub objects
+					for (var k = -1, oUI5ODataModelAnnotatableSubObject; oUI5ODataModelAnnotatableSubObject = oUI5ODataModelAnnotatableObject.aSubObject[++k];) {
+	
+						for ( var propName in oAnnotation) {
+							if (!(oUI5ODataModelAnnotatableSubObject.objectName == propName))
+								continue;
+							if (!(oAnnotation[oUI5ODataModelAnnotatableSubObject.objectName] instanceof Array))
+								continue;
+							if ((oMetadata[oUI5ODataModelAnnotatableSubObject.objectName] == undefined)
+									|| (!(oMetadata[oUI5ODataModelAnnotatableSubObject.objectName] instanceof Array)))
+								continue;
+							this.mergeV2AnnotationLevel(oMetadata[oUI5ODataModelAnnotatableSubObject.objectName],
+									oAnnotation[oUI5ODataModelAnnotatableSubObject.objectName], oUI5ODataModelAnnotatableSubObject);
+							break;
+						}
+					}
+				}
+			}
+			return;
+		},
+	
+		/**
+		 * Find analytic query result by name
+		 * 
+		 * @param {string}
+		 *            sName Fully qualified name of query result entity set
+		 * @returns {sap.ui.model.analytics.odata4analytics.QueryResult} The query result object
+		 *          with this name or null if it does not exist
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Model#findQueryResultByName
+		 */
+		findQueryResultByName : function(sName) {
+			var oQueryResult = this._oQueryResultSet[sName];
+	
+			// Everybody should have a second chance:
+			// If the name was not fully qualified, check if it is in the default
+			// container
+			if (!oQueryResult && this._oDefaultEntityContainer) {
+				var sQName = this._oDefaultEntityContainer.name + "." + sName;
+	
+				oQueryResult = this._oQueryResultSet[sQName];
+			}
+			return oQueryResult;
+		},
+	
+		/**
+		 * Get the names of all query results (entity sets) offered by the model
+		 * 
+		 * @returns {array(string)} List of all query result names
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Model#getAllQueryResultNames
+		 */
+		getAllQueryResultNames : function() {
+			if (this._aQueryResultNames)
+				return this._aQueryResultNames;
+	
+			this._aQueryResultNames = new Array(0);
+	
+			for ( var sName in this._oQueryResultSet)
+				this._aQueryResultNames.push(this._oQueryResultSet[sName].getName());
+	
+			return this._aQueryResultNames;
+		},
+	
+		/**
+		 * Get all query results offered by the model
+		 * 
+		 * @returns {object} An object with individual JS properties for each query
+		 *          result included in the model. The JS object properties all are
+		 *          objects of type odata4analytics.QueryResult. The names
+		 *          of the JS object properties are given by the entity set names
+		 *          representing the query results.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Model#getAllQueryResults
+		 */
+		getAllQueryResults : function() {
+			return this._oQueryResultSet;
+		},
+	
+		/**
+		 * Get underlying OData model provided by SAP UI5
+		 * 
+		 * @returns {object} The SAP UI5 representation of the model.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Model#getODataModel
+		 */
+		getODataModel : function() {
+			return this._oModel;
+		},
+		/**
+		 * Private methods
+		 */
+	
+		/**
+		 * Find entity sets of a given type
+		 * 
+		 * @private
+		 */
+		_getEntitySetsOfType : function(oSchema, sQTypeName) {
+			var aEntitySet = [];
+	
+			for (var i = -1, oEntityContainer; oEntityContainer = oSchema.entityContainer[++i];) {
+				for (var j = -1, oEntitySet; oEntitySet = oEntityContainer.entitySet[++j];) {
+					if (oEntitySet.entityType == sQTypeName)
+						aEntitySet.push([ oEntityContainer, oEntitySet ]);
+				}
+			}
+	
+			return aEntitySet;
+		},
+	
+		/**
+		 * Private member attributes
+		 */
+		_mParameter : null,
+		_oModel : null,
+		_oDefaultEntityContainer : null,
+	
+		_aQueryResultNames : null,
+		_oQueryResultSet : null,
+		_oParameterizationSet : null,
+		_oEntityTypeSet : null,
+		_oEntitySetSet : null,
+		_oEntityTypeNameToEntitySetMap : null,
+	
+		_oActivatedWorkarounds : null
+	};
+	
+	/** ******************************************************************** */
+	
+	/**
+	 * Create a representation of an analytic query. Do not create your own instances.
+	 * 
+	 * @param {sap.ui.model.analytics.odata4analytics.Model}
+	 *            oModel The analytical model containing this query result entity
+	 *            set
+	 * @param {sap.ui.model.analytics.odata4analytics.EntityType}
+	 *            oEntityType The OData entity type for this query
+	 * @param {sap.ui.model.analytics.odata4analytics.EntitySet}
+	 *            oEntitySet The OData entity set for this query offered by the
+	 *            OData service
+	 * @param {sap.ui.model.analytics.odata4analytics.Parameterization}
+	 *            oParameterization The parameterization of this query, if any
+	 * 
+	 * @constructor
+	 * @this (QueryResult)
+	 * 
+	 * @class Representation of an entity type annotated with
+	 *        sap:semantics="aggregate".
+	 * @name sap.ui.model.analytics.odata4analytics.QueryResult
+	 * @public
+	 */
+	odata4analytics.QueryResult = function(oModel, oEntityType, oEntitySet, oParameterization) {
+		this._init(oModel, oEntityType, oEntitySet, oParameterization);
+	};
+	
+	odata4analytics.QueryResult.prototype = {
+	
+		/**
+		 * initialize new object
+		 * 
+		 * @private
+		 */
+		_init : function(oModel, oEntityType, oEntitySet, oParameterization, oAssocFromParamsToResult) {
+			this._oModel = oModel;
+			this._oEntityType = oEntityType;
+			this._oEntitySet = oEntitySet;
+			this._oParameterization = oParameterization;
+	
+			this._oDimensionSet = new Object();
+			this._oMeasureSet = new Object();
+	
+			// parse entity type for analytic semantics described by annotations
+			var aProperty = oEntityType.getTypeDescription().property;
+			var oAttributeForPropertySet = {};
+			for (var i = -1, oProperty; oProperty = aProperty[++i];) {
+				if (oProperty.extensions == undefined)
+					continue;
+				for (var j = -1, oExtension; oExtension = oProperty.extensions[++j];) {
+	
+					if (!oExtension.namespace == odata4analytics.constants.SAP_NAMESPACE)
+						continue;
+	
+					switch (oExtension.name) {
+					case "aggregation-role":
+						switch (oExtension.value) {
+						case "dimension":
+							var oDimension = new odata4analytics.Dimension(this, oProperty);
+							this._oDimensionSet[oDimension.getName()] = oDimension;
+							break;
+						case "measure":
+							var oMeasure = new odata4analytics.Measure(this, oProperty);
+							this._oMeasureSet[oMeasure.getName()] = oMeasure;
+							break;
+						case "totaled-properties-list":
+							this._oTotaledPropertyListProperty = oProperty;
+							break;
+						}
+						break;
+					case "attribute-for":
+						var oDimensionAttribute = new odata4analytics.DimensionAttribute(this, oProperty);
+						oAttributeForPropertySet[oDimensionAttribute.getKeyProperty()] = oDimensionAttribute;
+						break;
+					}
+				}
+			}
+	
+			// assign dimension attributes to the respective dimension objects
+			for ( var sDimensionAttributeName in oAttributeForPropertySet) {
+				var oDimensionAttribute = oAttributeForPropertySet[sDimensionAttributeName];
+				oDimensionAttribute.getDimension().addAttribute(oDimensionAttribute);
+			}
+	
+			// apply workaround for missing text properties if requested
+			if (oModel._oActivatedWorkarounds.IdentifyTextPropertiesByName) {
+				var aMatchedTextPropertyName = new Array();
+				for ( var oDimName in this._oDimensionSet) {
+					var oDimension = this._oDimensionSet[oDimName];
+					if (!oDimension.getTextProperty()) {
+						var oTextProperty = null; // order of matching is
+						// significant!
+						oTextProperty = oEntityType.findPropertyByName(oDimName + "Name");
+						if (!oTextProperty)
+							oTextProperty = oEntityType.findPropertyByName(oDimName + "Text");
+						if (!oTextProperty)
+							oTextProperty = oEntityType.findPropertyByName(oDimName + "Desc");
+						if (!oTextProperty)
+							oTextProperty = oEntityType.findPropertyByName(oDimName + "Description");
+						if (oTextProperty) { // any match?
+							oDimension.setTextProperty(oTextProperty); // link
+							// dimension
+							// with text
+							// property
+							aMatchedTextPropertyName.push(oTextProperty.name);
+						}
+					}
+				}
+				// make sure that any matched text property is not exposed as
+				// dimension (according to spec)
+				for (var i = -1, sPropertyName; sPropertyName = aMatchedTextPropertyName[++i];) {
+					delete this._oDimensionSet[sPropertyName];
+				}
+			}
+		},
+	
+		/**
+		 * Get the name of the query result
+		 * 
+		 * @returns {string} The fully qualified name of the query result, which is
+		 *          identical with the name of the entity set representing the query
+		 *          result in the OData service
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResult#getName
+		 */
+		getName : function() {
+			return this.getEntitySet().getQName();
+		},
+	
+		/**
+		 * Get the parameterization of this query result
+		 * 
+		 * @returns {sap.ui.model.analytics.odata4analytics.Parameterization} The object for the
+		 *          parameterization or null if the query result is not
+		 *          parameterized
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResult#getParameterization
+		 */
+		getParameterization : function() {
+			return this._oParameterization;
+		},
+	
+		/**
+		 * Get the names of all dimensions included in the query result
+		 * 
+		 * @returns {array(string)} List of all dimension names
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResult#getAllDimensionNames
+		 */
+		getAllDimensionNames : function() {
+			if (this._aDimensionNames)
+				return this._aDimensionNames;
+	
+			this._aDimensionNames = [];
+	
+			for ( var sName in this._oDimensionSet)
+				this._aDimensionNames.push(this._oDimensionSet[sName].getName());
+	
+			return this._aDimensionNames;
+		},
+	
+		/**
+		 * Get all dimensions included in this query result
+		 * 
+		 * @returns {object} An object with individual JS properties for each
+		 *          dimension included in the query result. The JS object properties
+		 *          all are objects of type odata4analytics.Dimension. The
+		 *          names of the JS object properties are given by the OData entity
+		 *          type property names representing the dimension keys.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResult#getAllDimensions
+		 */
+		getAllDimensions : function() {
+			return this._oDimensionSet;
+		},
+	
+		/**
+		 * Get the names of all measures included in the query result
+		 * 
+		 * @returns {array(string)} List of all measure names
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResult#getAllMeasureNames
+		 */
+		getAllMeasureNames : function() {
+			if (this._aMeasureNames)
+				return this._aMeasureNames;
+	
+			this._aMeasureNames = [];
+	
+			for ( var sName in this._oMeasureSet)
+				this._aMeasureNames.push(this._oMeasureSet[sName].getName());
+	
+			return this._aMeasureNames;
+		},
+	
+		/**
+		 * Get all measures included in this query result
+		 * 
+		 * @returns {object} An object with individual JS properties for each
+		 *          measure included in the query result. The JS object properties
+		 *          all are objects of type odata4analytics.Measure. The
+		 *          names of the JS object properties are given by the OData entity
+		 *          type property names representing the measure raw values.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResult#getAllMeasures
+		 */
+		getAllMeasures : function() {
+			return this._oMeasureSet;
+		},
+	
+		/**
+		 * Find dimension by name
+		 * 
+		 * @param {string}
+		 *            sName Dimension name
+		 * @returns {sap.ui.model.analytics.odata4analytics.Dimension} The dimension object with
+		 *          this name or null if it does not exist
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResult#findDimensionByName
+		 */
+		findDimensionByName : function(sName) {
+			return this._oDimensionSet[sName];
+		},
+	
+		/**
+		 * Find dimension by property name
+		 * 
+		 * @param {string}
+		 *            sName Property name
+		 * @returns {sap.ui.model.analytics.odata4analytics.Dimension} The dimension object to
+		 *          which the given property name is related, because the property
+		 *          holds the dimension key, its text, or is an attribute of this
+		 *          dimension. If no such dimension exists, null is returned.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResult#findDimensionByPropertyName
+		 */
+		findDimensionByPropertyName : function(sName) {
+			if (this._oDimensionSet[sName]) // the easy case
+				return this._oDimensionSet[sName];
+	
+			for ( var sDimensionName in this._oDimensionSet) {
+				var oDimension = this._oDimensionSet[sDimensionName];
+				var oTextProperty = oDimension.getTextProperty();
+				if (oTextProperty && oTextProperty.name == sName)
+					return oDimension;
+				if (oDimension.findAttributeByName(sName))
+					return oDimension;
+			}
+			return null;
+		},
+	
+		/**
+		 * Get property holding the totaled property list
+		 * 
+		 * @returns {object} The DataJS object representing this property
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResult#getTotaledPropertiesListProperty
+		 */
+		getTotaledPropertiesListProperty : function() {
+			return this._oTotaledPropertyListProperty;
+		},
+	
+		/**
+		 * Find measure by name
+		 * 
+		 * @param {string}
+		 *            sName Measure name
+		 * @returns {sap.ui.model.analytics.odata4analytics.Measure} The measure object with this
+		 *          name or null if it does not exist
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResult#findMeasureByName
+		 */
+		findMeasureByName : function(sName) {
+			return this._oMeasureSet[sName];
+		},
+	
+		/**
+		 * Find measure by property name
+		 * 
+		 * @param {string}
+		 *            sName Property name
+		 * @returns {sap.ui.model.analytics.odata4analytics.Measure} The measure object to which
+		 *          the given property name is related, because the property holds
+		 *          the raw measure value or its formatted value. If no such measure
+		 *          exists, null is returned.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResult#findMeasureByPropertyName
+		 */
+		findMeasureByPropertyName : function(sName) {
+			if (this._oMeasureSet[sName]) // the easy case
+				return this._oMeasureSet[sName];
+	
+			for ( var sMeasureName in this._oMeasureSet) {
+				var oMeasure = this._oMeasureSet[sMeasureName];
+				var oFormattedValueProperty = oMeasure.getFormattedValueProperty();
+				if (oFormattedValueProperty && oFormattedValueProperty.name == sName)
+					return oMeasure;
+			}
+			return null;
+		},
+	
+		/**
+		 * Get the analytical model containing the entity set for this query result
+		 * 
+		 * @returns {object} The analytical representation of the OData model
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResult#getModel
+		 */
+		getModel : function() {
+			return this._oModel;
+		},
+	
+		/**
+		 * Get the entity type defining the type of this query result in the OData
+		 * model
+		 * 
+		 * @returns {sap.ui.model.analytics.odata4analytics.EntityType} The OData entity type for
+		 *          this query result
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResult#getEntityType
+		 */
+		getEntityType : function() {
+			return this._oEntityType;
+		},
+	
+		/**
+		 * Get the entity set representing this query result in the OData model
+		 * 
+		 * @returns {sap.ui.model.analytics.odata4analytics.EntitySet} The OData entity set
+		 *          representing this query result
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResult#getEntitySet
+		 */
+		getEntitySet : function() {
+			return this._oEntitySet;
+		},
+	
+		/**
+		 * Private member attributes
+		 */
+	
+		_oModel : null,
+		_oEntityType : null,
+		_oEntitySet : null,
+		_oParameterization : null,
+		_aDimensionNames : null,
+		_oDimensionSet : null,
+		_aMeasureNames : null,
+		_oMeasureSet : null,
+		_oTotaledPropertyListProperty : null
+	};
+	
+	/** ******************************************************************** */
+	
+	/**
+	 * Create a representation of a parameterization for an analytic query. Do not create your own instances.
+	 * 
+	 * @param {sap.ui.model.analytics.odata4analytics.EntityType}
+	 *            oEntityType The OData entity type for this parameterization
+	 * @param {sap.ui.model.analytics.odata4analytics.EntitySet}
+	 *            oEntitySet The OData entity set for this parameterization offered
+	 *            by the OData service
+	 * 
+	 * @class Representation of an entity type annotated with
+	 *        sap:semantics="parameters".
+	 * @name sap.ui.model.analytics.odata4analytics.Parameterization
+	 * @public
+	 */
+	odata4analytics.Parameterization = function(oEntityType, oEntitySet) {
+		this._init(oEntityType, oEntitySet);
+	};
+	
+	odata4analytics.Parameterization.prototype = {
+		/**
+		 * @private
+		 */
+		_init : function(oEntityType, oEntitySet) {
+			this._oEntityType = oEntityType;
+			this._oEntitySet = oEntitySet;
+	
+			this._oParameterSet = new Object();
+	
+			// parse entity type for analytic semantics described by annotations
+			var aProperty = oEntityType.getTypeDescription().property;
+			for (var i = -1, oProperty; oProperty = aProperty[++i];) {
+				if (oProperty.extensions == undefined)
+					continue;
+	
+				for (var j = -1, oExtension; oExtension = oProperty.extensions[++j];) {
+	
+					if (!oExtension.namespace == odata4analytics.constants.SAP_NAMESPACE)
+						continue;
+	
+					switch (oExtension.name) {
+					// process parameter semantics
+					case "parameter":
+						var oParameter = new odata4analytics.Parameter(this, oProperty);
+						this._oParameterSet[oParameter.getName()] = oParameter;
+	
+						break;
+					}
+				}
+			}
+	
+		},
+	
+		// to be called only by Model objects
+		setTargetQueryResult : function(oQueryResult, oAssociation) {
+			this._oQueryResult = oQueryResult;
+			var sQAssocName = this._oEntityType.getSchema().namespace + "." + oAssociation.name;
+			var aNavProp = this._oEntityType.getTypeDescription().navigationProperty;
+			if (!aNavProp)
+				throw "Invalid consumption model: Parameters entity type lacks navigation property for association to query result entity type";
+			for (var i = -1, oNavProp; oNavProp = aNavProp[++i];) {
+				if (oNavProp.relationship == sQAssocName)
+					this._oNavPropToQueryResult = oNavProp.name;
+			}
+			if (!this._oNavPropToQueryResult)
+				throw "Invalid consumption model: Parameters entity type lacks navigation property for association to query result entity type";
+		},
+		
+		getTargetQueryResult : function() {
+			if (! this._oQueryResult) 
+				throw "No target query result set";
+			return this._oQueryResult;
+		},
+	
+		/**
+		 * Get the name of the parameter
+		 * 
+		 * @returns {string} The name of the parameterization, which is identical
+		 *          with the name of the entity set representing the
+		 *          parameterization in the OData service
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Parameterization#getName
+		 */
+		getName : function() {
+			return this.getEntitySet().getQName();
+		},
+	
+		/**
+		 * Get the names of all parameters part of the parameterization
+		 * 
+		 * @returns {array(string)} List of all parameter names
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Parameterization#getAllParameterNames
+		 */
+		getAllParameterNames : function() {
+			if (this._aParameterNames)
+				return this._aParameterNames;
+	
+			this._aParameterNames = [];
+	
+			for ( var sName in this._oParameterSet)
+				this._aParameterNames.push(this._oParameterSet[sName].getName());
+	
+			return this._aParameterNames;
+		},
+	
+		/**
+		 * Get all parameters included in this parameterization
+		 * 
+		 * @returns {object} An object with individual JS properties for each
+		 *          parameter included in the query result. The JS object properties
+		 *          all are objects of type odata4analytics.Parameter. The
+		 *          names of the JS object properties are given by the OData entity
+		 *          type property names representing the parameter keys.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Parameterization#getAllParameters
+		 */
+		getAllParameters : function() {
+			return this._oParameterSet;
+		},
+	
+		/**
+		 * Find parameter by name
+		 * 
+		 * @param {string}
+		 *            sName Parameter name
+		 * @returns {sap.ui.model.analytics.odata4analytics.Parameter} The parameter object with
+		 *          this name or null if it does not exist
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Parameterization#findParameterByName
+		 */
+		findParameterByName : function(sName) {
+			return this._oParameterSet[sName];
+		},
+	
+		/**
+		 * Get navigation property to query result
+		 * 
+		 * @returns {sap.ui.model.analytics.odata4analytics.QueryResult} The parameter object with
+		 *          this name or null if it does not exist
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Parameterization#getNavigationPropertyToQueryResult
+		 */
+		getNavigationPropertyToQueryResult : function() {
+			return this._oNavPropToQueryResult;
+		},
+	
+		/**
+		 * Get the entity type defining the type of this query result in the OData
+		 * model
+		 * 
+		 * @returns {sap.ui.model.analytics.odata4analytics.EntityType} The OData entity type for
+		 *          this query result
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Parameterization#getEntityType
+		 */
+		getEntityType : function() {
+			return this._oEntityType;
+		},
+	
+		/**
+		 * Get the entity set representing this query result in the OData model
+		 * 
+		 * @returns {sap.ui.model.analytics.odata4analytics.EntitySet} The OData entity set
+		 *          representing this query result
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Parameterization#getEntitySet
+		 */
+		getEntitySet : function() {
+			return this._oEntitySet;
+		},
+	
+		/**
+		 * Private member attributes
+		 */
+		_oEntityType : null,
+		_oEntitySet : null,
+		_oQueryResult : null,
+		_oNavPropToQueryResult : null,
+		_aParameterNames : null,
+		_oParameterSet : null
+	};
+	
+	/** ******************************************************************** */
+	
+	/**
+	 * Create a representation of a single parameter contained in a parameterization. Do not create your own instances.
+	 * 
+	 * @param {sap.ui.model.analytics.odata4analytics.Parameterization}
+	 *            oParameterization The parameterization containing this parameter
+	 * @param {object}
+	 *            oProperty The DataJS object object representing the text property
+	 * 
+	 * @constructor
+	 * 
+	 * @class Representation of a property annotated with sap:parameter.
+	 * @name sap.ui.model.analytics.odata4analytics.Parameter
+	 * @public
+	 */
+	odata4analytics.Parameter = function(oParameterization, oProperty) {
+		this._init(oParameterization, oProperty);
+	};
+	
+	odata4analytics.Parameter.prototype = {
+		/**
+		 * @private
+		 */
+		_init : function(oParameterization, oProperty) {
+			this._oParameterization = oParameterization;
+			this._oProperty = oProperty;
+	
+			var oEntityType = oParameterization.getEntityType();
+	
+			if (oProperty.extensions != undefined) {
+				for (var i = -1, oExtension; oExtension = oProperty.extensions[++i];) {
+	
+					if (!oExtension.namespace == odata4analytics.constants.SAP_NAMESPACE)
+						continue;
+	
+					switch (oExtension.name) {
+					case "parameter":
+						switch (oExtension.value) {
+						case "mandatory":
+							this._bRequired = true;
+							break;
+						case "optional":
+							this._bRequired = false;
+							break;
+						default:
+							throw "Invalid annotation value for parameter property";
+						}
+						break;
+					case "label":
+						this._sLabelText = oExtension.value;
+						break;
+					case "text":
+						this._oTextProperty = oEntityType.findPropertyByName(oExtension.value);
+						break;
+					case "upper-boundary":
+						this._bIntervalBoundaryParameter = true;
+						this._oUpperIntervalBoundaryParameterProperty = oEntityType.findPropertyByName(oExtension.value);
+						break;
+					case "lower-boundary":
+						this._bIntervalBoundaryParameter = true;
+						this._oLowerIntervalBoundaryParameterProperty = oEntityType.findPropertyByName(oExtension.value);
+						break;
+					}
+				}
+			}
+			if (!this._sLabelText)
+				this._sLabelText = "";
+		},
+	
+		// to be called only by Model objects
+		setValueSetEntity : function(oEntityType, oEntitySet) {
+			this._oValueSetEntityType = oEntityType;
+			this._oValueSetEntitySet = oEntitySet;
+		},
+	
+		/**
+		 * Get text property related to this parameter
+		 * 
+		 * @returns {object} The DataJS object representing the text property or
+		 *          null if it does not exist
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Parameter#getTextProperty
+		 */
+		getTextProperty : function() {
+			return this._oTextProperty;
+		},
+	
+		/**
+		 * Get label
+		 * 
+		 * @returns {string} The (possibly language-dependent) label text for this
+		 *          parameter
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Parameter#getLabelText
+		 */
+		getLabelText : function() {
+			if (!this._sLabelText
+					&& this._oParameterization._oQueryResult._oModel._oActivatedWorkarounds.CreateLabelsFromTechnicalNames)
+				this._sLabelText = odata4analytics.helper.tokenizeNametoLabelText(this.getName());
+			return this._sLabelText;
+		},
+	
+		/**
+		 * Get indicator whether or not the parameter is optional
+		 * 
+		 * @returns {boolean} True iff the parameter is optional
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Parameter#isOptional
+		 */
+		isOptional : function() {
+			return (!this._bRequired);
+		},
+	
+		/**
+		 * Get indicator if the parameter represents an interval boundary
+		 * 
+		 * @returns {boolean} True iff it represents an interval boundary, otherwise
+		 *          false
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Parameter#isIntervalBoundary
+		 */
+		isIntervalBoundary : function() {
+			return this._bIntervalBoundaryParameter;
+		},
+	
+		/**
+		 * Get indicator if the parameter represents the lower boundary of an
+		 * interval
+		 * 
+		 * @returns {boolean} True iff it represents the lower boundary of an
+		 *          interval, otherwise false
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Parameter#isLowerIntervalBoundary
+		 */
+		isLowerIntervalBoundary : function() {
+			return (this._oUpperIntervalBoundaryParameterProperty ? true : false);
+		},
+	
+		/**
+		 * Get property for the parameter representing the peer boundary of the same
+		 * interval
+		 * 
+		 * @returns {sap.ui.model.analytics.odata4analytics.Parameter} The parameter representing
+		 *          the peer boundary of the same interval. This means that if
+		 *          *this* parameter is a lower boundary, the returned object
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Parameter#getPeerIntervalBoundaryParameter
+		 */
+		getPeerIntervalBoundaryParameter : function() {
+			var sPeerParamPropName = null;
+			if (this._oLowerIntervalBoundaryParameterProperty)
+				sPeerParamPropName = this._oLowerIntervalBoundaryParameterProperty.name;
+			else
+				sPeerParamPropName = this._oUpperIntervalBoundaryParameterProperty.name;
+			if (!sPeerParamPropName)
+				throw "Parameter is not an interval boundary";
+			return this._oParameterization.findParameterByName(sPeerParamPropName);
+		},
+	
+		/**
+		 * Get indicator if a set of values is available for this parameter.
+		 * Typically, this is true for parameters with a finite set of known values
+		 * such as products, business partners in different roles, organization
+		 * units, and false for integer or date parameters
+		 * 
+		 * @returns {boolean} True iff a value set is available, otherwise false
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Parameter#isValueSetAvailable
+		 */
+		isValueSetAvailable : function() {
+			return (this._oValueSetEntityType ? true : false);
+		},
+	
+		/**
+		 * Get the name of the parameter
+		 * 
+		 * @returns {string} The name of the parameter, which is identical with the
+		 *          name of the property representing the parameter in the
+		 *          parameterization entity type
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Parameter#getName
+		 */
+		getName : function() {
+			return this._oProperty.name;
+		},
+	
+		/**
+		 * Get property
+		 * 
+		 * @returns {object} The DataJS object representing the property of this
+		 *          parameter
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Parameter#getProperty
+		 */
+		getProperty : function() {
+			return this._oProperty;
+		},
+	
+		/**
+		 * Get parameterization containing this parameter
+		 * 
+		 * @return {sap.ui.model.analytics.odata4analytics.Parameterization} The parameterization
+		 *         object
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Parameter#getContainingParameterization
+		 */
+		getContainingParameterization : function() {
+			return this._oParameterization;
+		},
+	
+		/**
+		 * Get the URI to locate the entity set holding the value set, if it is
+		 * available.
+		 * 
+		 * @param {String}
+		 *            sServiceRootURI (optional) Identifies the root of the OData
+		 *            service
+		 * @returns The resource path of the URI pointing to the entity set. It is a
+		 *          relative URI unless a service root is given, which would then
+		 *          prefixed in order to return a complete URL.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Parameter#getURIToValueEntitySet
+		 */
+		getURIToValueEntitySet : function(sServiceRootURI) {
+			var sURI = null;
+			sURI = (sServiceRootURI ? sServiceRootURI : "") + "/" + this._oValueSetEntitySet.getQName();
+			return sURI;
+		},
+	
+		/**
+		 * Private member attributes
+		 */
+		_oParameterization : null,
+		_oProperty : null,
+		_sLabelText : null,
+		_oTextProperty : null,
+		_bRequired : false,
+		_bIntervalBoundaryParameter : false,
+		_oLowerIntervalBoundaryParameterProperty : null,
+		_oUpperIntervalBoundaryParameterProperty : null,
+	
+		_oValueSetEntityType : null,
+		_oValueSetEntitySet : null
+	};
+	
+	/** ******************************************************************** */
+	
+	/**
+	 * Create a representation of a dimension provided by an analytic query. Do not create your own instances.
+	 * 
+	 * @param {sap.ui.model.analytics.odata4analytics.QueryResult}
+	 *            oQueryResult The query result containing this dimension
+	 * @param {object}
+	 *            oProperty The DataJS object object representing the dimension
+	 * 
+	 * @constructor
+	 * 
+	 * @class Representation of a property annotated with
+	 *        sap:aggregation-role="dimension".
+	 * @name sap.ui.model.analytics.odata4analytics.Dimension
+	 * @public
+	 */
+	odata4analytics.Dimension = function(oQueryResult, oProperty) {
+		this._init(oQueryResult, oProperty);
+	};
+	
+	odata4analytics.Dimension.prototype = {
+		_init : function(oQueryResult, oProperty) {
+			this._oQueryResult = oQueryResult;
+			this._oProperty = oProperty;
+	
+			this._oAttributeSet = new Object();
+		},
+	
+		// to be called only by Model objects
+		setMembersEntitySet : function(oEntitySet) {
+			this._oMembersEntitySet = oEntitySet;
+		},
+	
+		/**
+		 * Get the name of the dimension
+		 * 
+		 * @returns {string} The name of this dimension, which is identical to the
+		 *          name of the dimension key property in the entity type
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Dimension#getName
+		 */
+		getName : function() {
+			return this._oProperty.name;
+		},
+	
+		/**
+		 * Get the key property
+		 * 
+		 * @returns {object} The DataJS object representing the property for the
+		 *          dimension key
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Dimension#getKeyProperty
+		 */
+		getKeyProperty : function() {
+			return this._oProperty;
+		},
+	
+		/**
+		 * Get text property related to this dimension
+		 * 
+		 * @returns {object} The DataJS object representing the text property or
+		 *          null if it does not exist
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Dimension#getTextProperty
+		 */
+		getTextProperty : function() {
+			if (!this._oTextProperty)
+				this._oTextProperty = this._oQueryResult.getEntityType().getTextPropertyOfProperty(this.getName());
+			return this._oTextProperty;
+		},
+	
+		/**
+		 * Set text property Relevant for workaround w/ID
+		 * IdentifyTextPropertiesByName
+		 * 
+		 * @private
+		 */
+		setTextProperty : function(oTextProperty) {
+			this._oTextProperty = oTextProperty;
+		},
+	
+		/**
+		 * Get label
+		 * 
+		 * @returns {string} The (possibly language-dependent) label text for this
+		 *          dimension
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Dimension#getLabelText
+		 */
+		getLabelText : function() {
+			if (!this._sLabelText)
+				this._sLabelText = this._oQueryResult.getEntityType().getLabelOfProperty(this.getName());
+			if (!this._sLabelText && this._oQueryResult._oModel._oActivatedWorkarounds.CreateLabelsFromTechnicalNames)
+				this._sLabelText = odata4analytics.helper.tokenizeNametoLabelText(this.getName());
+			return (this._sLabelText == null ? "" : this._sLabelText);
+		},
+	
+		/**
+		 * Get super-ordinate dimension
+		 * 
+		 * @returns {object} The super-ordinate dimension or null if there is none
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Dimension#getSuperOrdinateDimension
+		 */
+		getSuperOrdinateDimension : function() {
+			if (!this._sSuperOrdinateDimension) {
+				var sSuperOrdPropName = this._oQueryResult.getEntityType().getSuperOrdinatePropertyOfProperty(this.getName()).name;
+				this._sSuperOrdinateDimension = this._oQueryResult.findDimensionByName(sSuperOrdPropName);
+			}
+			return this._sSuperOrdinateDimension;
+		},
+	
+		/**
+		 * Get associated hierarchy
+		 * 
+		 * @returns {object} The hierarchy object or null if there is none. It can
+		 *          be an instance of class
+		 *          odata4analytics.RecursiveHierarchy (TODO later: or a
+		 *          leveled hierarchy). Use methods isLeveledHierarchy and
+		 *          isRecursiveHierarchy to determine object type.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Dimension#getHierarchy
+		 */
+		getHierarchy : function() {
+			// set associated hierarchy if any
+			if (!this._oHierarchy)
+				this._oHierarchy = this._oQueryResult.getEntityType().getHierarchy(this._oProperty.name);
+	
+			return this._oHierarchy;
+		},
+	
+		/**
+		 * Get the names of all attributes included in this dimension
+		 * 
+		 * @returns {array(string)} List of all attribute names
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Dimension#getAllAttributeNames
+		 */
+		getAllAttributeNames : function() {
+			if (this._aAttributeNames)
+				return this._aAttributeNames;
+	
+			this._aAttributeNames = [];
+	
+			for ( var sName in this._oAttributeSet)
+				this._aAttributeNames.push(this._oAttributeSet[sName].getName());
+	
+			return this._aAttributeNames;
+		},
+	
+		/**
+		 * Get all attributes of this dimension
+		 * 
+		 * @returns {object} An object with individual JS properties for each
+		 *          attribute of this dimension. The JS object properties all are
+		 *          objects of type odata4analytics.DimensionAttribute. The
+		 *          names of the JS object properties are given by the OData entity
+		 *          type property names representing the dimension attribute keys.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Dimension#getAllAttributes
+		 */
+		getAllAttributes : function() {
+			return this._oAttributeSet;
+		},
+	
+		/**
+		 * Find attribute by name
+		 * 
+		 * @param {string}
+		 *            sName Attribute name
+		 * @returns {sap.ui.model.analytics.odata4analytics.Dimension} The dimension attribute
+		 *          object with this name or null if it does not exist
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Dimension#findAttributeByName
+		 */
+		findAttributeByName : function(sName) {
+			return this._oAttributeSet[sName];
+		},
+	
+		// to be called only by QueryResult objects
+		addAttribute : function(oDimensionAttribute) {
+			this._oAttributeSet[oDimensionAttribute.getName()] = oDimensionAttribute;
+		},
+	
+		/**
+		 * Get query result containing this dimension
+		 * 
+		 * @return {sap.ui.model.analytics.odata4analytics.QueryResult} The query result object
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Dimension#getContainingQueryResult
+		 */
+		getContainingQueryResult : function() {
+			return this._oQueryResult;
+		},
+	
+		/**
+		 * Get indicator whether or not master data is available for this dimension
+		 * 
+		 * @returns {boolean} True iff master data is available
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Dimension#hasMasterData
+		 */
+		hasMasterData : function() {
+			return this._oMembersEntitySet != null ? true : false;
+		},
+	
+		/**
+		 * Get master data entity set for this dimension
+		 * 
+		 * @return {sap.ui.model.analytics.odata4analytics.EntitySet} The master data entity set
+		 *         for this dimension, or null, if it does not exist
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Dimension#getMasterDataEntitySet
+		 */
+		getMasterDataEntitySet : function() {
+			return this._oMembersEntitySet;
+		},
+	
+		/**
+		 * Private member attributes
+		 */
+		_oQueryResult : null,
+		_oProperty : null,
+	
+		_oTextProperty : null,
+		_sLabelText : null,
+		_sSuperOrdinateDimension : null,
+		_aAttributeNames : null,
+		_oAttributeSet : null,
+	
+		_oMembersEntitySet : null,
+	
+		_oHierarchy : null
+	};
+	
+	/** ******************************************************************** */
+	
+	/**
+	 * Create a representation of a dimension attribute provided by an analytic
+	 * query. Do not create your own instances.
+	 * 
+	 * @param {sap.ui.model.analytics.odata4analytics.QueryResult}
+	 *            oQueryResult The query result containing this dimension attribute
+	 * @param {object}
+	 *            oProperty The DataJS object object representing the dimension
+	 *            attribute
+	 * 
+	 * @constructor
+	 * 
+	 * @class Representation of a dimension attribute.
+	 * @name sap.ui.model.analytics.odata4analytics.DimensionAttribute
+	 * @public
+	 */
+	odata4analytics.DimensionAttribute = function(oQueryResult, oProperty) {
+		this._init(oQueryResult, oProperty);
+	};
+	
+	odata4analytics.DimensionAttribute.prototype = {
+		/**
+		 * @private
+		 */
+		_init : function(oQueryResult, oProperty) {
+			this._oQueryResult = oQueryResult;
+			this._oProperty = oProperty;
+	
+			if (oProperty.extensions != undefined) {
+	
+				for (var i = -1, oExtension; oExtension = oProperty.extensions[++i];) {
+	
+					if (!oExtension.namespace == odata4analytics.constants.SAP_NAMESPACE)
+						continue;
+	
+					switch (oExtension.name) {
+					case "attribute-for":
+						this._sDimensionName = oExtension.value;
+						break;
+					case "label":
+						this._sLabelText = oExtension.value;
+						break;
+					case "text":
+						this._oTextProperty = oQueryResult.getEntityType().findPropertyByName(oExtension.value);
+						break;
+					}
+				}
+			}
+		},
+	
+		/**
+		 * Get the name of the dimension attribute
+		 * 
+		 * @returns {string} The name of the dimension attribute, which is identical
+		 *          to the name of the property in the entity type holding the
+		 *          attribute value
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.DimensionAttribute#getName
+		 */
+		getName : function() {
+			return this._oProperty.name;
+		},
+	
+		/**
+		 * Get the key property
+		 * 
+		 * @returns {object} The DataJS object representing the property for the key
+		 *          of this dimension attribute
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.DimensionAttribute#getKeyProperty
+		 */
+		getKeyProperty : function() {
+			return this._oProperty;
+		},
+	
+		/**
+		 * Get text property related to this dimension attribute
+		 * 
+		 * @returns {object} The DataJS object representing the text property or
+		 *          null if it does not exist
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.DimensionAttribute#getTextProperty
+		 */
+		getTextProperty : function() {
+			return this._oTextProperty;
+		},
+	
+		/**
+		 * Get label
+		 * 
+		 * @returns {string} The (possibly language-dependent) label text for this
+		 *          dimension attribute
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.DimensionAttribute#getLabelText
+		 */
+		getLabelText : function() {
+			if (!this._sLabelText && this._oQueryResult._oModel._oActivatedWorkarounds.CreateLabelsFromTechnicalNames)
+				this._sLabelText = odata4analytics.helper.tokenizeNametoLabelText(this.getName());
+			return this._sLabelText;
+		},
+	
+		/**
+		 * Get dimension
+		 * 
+		 * @returns {sap.ui.model.analytics.odata4analytics.Dimension} The dimension object
+		 *          containing this attribute
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.DimensionAttribute#getDimension
+		 */
+		getDimension : function() {
+			return this._oQueryResult.findDimensionByName(this._sDimensionName);
+		},
+	
+		/**
+		 * Private member attributes
+		 */
+		_oQueryResult : null,
+		_oProperty : null,
+	
+		_oTextProperty : null,
+		_sLabelText : null,
+		_sDimensionName : null
+	};
+	
+	/** ******************************************************************** */
+	
+	/**
+	 * Create a representation of a measure provided by an analytic query. Do not create your own instances.
+	 * 
+	 * @param {sap.ui.model.analytics.odata4analytics.QueryResult}
+	 *            oQueryResult The query result containing this measure
+	 * @param {object}
+	 *            oProperty The DataJS object object representing the measure
+	 * 
+	 * @constructor
+	 * 
+	 * @class Representation of a property annotated with
+	 *        sap:aggregation-role="measure".
+	 * @name sap.ui.model.analytics.odata4analytics.Measure
+	 * @public
+	 */
+	odata4analytics.Measure = function(oQueryResult, oProperty) {
+		this._init(oQueryResult, oProperty);
+	};
+	
+	odata4analytics.Measure.prototype = {
+		/**
+		 * @private
+		 */
+		_init : function(oQueryResult, oProperty) {
+			this._oQueryResult = oQueryResult;
+			this._oProperty = oProperty;
+	
+			if (oProperty.extensions != undefined) {
+	
+				for (var i = -1, oExtension; oExtension = oProperty.extensions[++i];) {
+	
+					if (!oExtension.namespace == odata4analytics.constants.SAP_NAMESPACE)
+						continue;
+	
+					switch (oExtension.name) {
+					case "label":
+						this._sLabelText = oExtension.value;
+						break;
+					case "text":
+						this._oTextProperty = oQueryResult.getEntityType().findPropertyByName(oExtension.value);
+						break;
+					case "unit":
+						this._oUnitProperty = oQueryResult.getEntityType().findPropertyByName(oExtension.value);
+						break;
+					}
+				}
+			}
+			if (!this._sLabelText)
+				this._sLabelText = "";
+		},
+	
+		/**
+		 * Get the name of the measure
+		 * 
+		 * @returns {string} The name of the measure, which is identical to the name
+		 *          of the measure raw value property in the entity type
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Measure#getName
+		 */
+		getName : function() {
+			return this._oProperty.name;
+		},
+	
+		/**
+		 * Get the raw value property
+		 * 
+		 * @returns {object} The DataJS object representing the property holding the
+		 *          raw value of this measure
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Measure#getRawValueProperty
+		 */
+		getRawValueProperty : function() {
+			return this._oProperty;
+		},
+	
+		/**
+		 * Get the text property associated to the raw value property holding the
+		 * formatted value related to this measure
+		 * 
+		 * @returns {object} The DataJS object representing the property holding the
+		 *          formatted value text of this measure or null if this measure
+		 *          does not have a unit
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Measure#getFormattedValueProperty
+		 */
+		getFormattedValueProperty : function() {
+			return this._oTextProperty;
+		},
+	
+		/**
+		 * Get the unit property related to this measure
+		 * 
+		 * @returns {object} The DataJS object representing the unit property or
+		 *          null if this measure does not have a unit
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Measure#getUnitProperty
+		 */
+		getUnitProperty : function() {
+			return this._oUnitProperty;
+		},
+	
+		/**
+		 * Get label
+		 * 
+		 * @returns {string} The (possibly language-dependent) label text for this
+		 *          measure
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Measure#getLabelText
+		 */
+		getLabelText : function() {
+			if (!this._sLabelText && this._oQueryResult._oModel._oActivatedWorkarounds.CreateLabelsFromTechnicalNames)
+				this._sLabelText = odata4analytics.helper.tokenizeNametoLabelText(this.getName());
+			return this._sLabelText;
+		},
+	
+		/**
+		 * Get indicator whether or not the measure is updatable
+		 * 
+		 * @returns {boolean} True iff the measure is updatable
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.Measure#isUpdatable
+		 */
+		isUpdatable : function() {
+			if (this._bIsUpdatable != null)
+				return this._bIsUpdatable;
+			var oUpdatablePropertyNameSet = this._oQueryResult.getEntitySet().getUpdatablePropertyNameSet();
+	
+			return (oUpdatablePropertyNameSet[this.getName()] != undefined);
+		},
+	
+		/**
+		 * Private member attributes
+		 */
+		_oQueryResult : null,
+		_oProperty : null,
+	
+		_oTextProperty : null,
+		_sLabelText : null,
+		_oUnitProperty : null,
+	
+		_bIsUpdatable : null
+	};
+	
+	/** ******************************************************************** */
+	
+	/**
+	 * Create a representation of an OData entity set in the context of an analytic
+	 * query. Do not create your own instances.
+	 * 
+	 * @param {object}
+	 *            oModel DataJS object for the OData model containing this entity
+	 *            set
+	 * @param {object}
+	 *            oSchema DataJS object for the schema surrounding the container of
+	 *            this entity set
+	 * @param {object}
+	 *            oContainer DataJS object for the container holding this entity set
+	 * @param {object}
+	 *            oEntitySet DataJS object for the entity set
+	 * @param {object}
+	 *            oEntityType DataJS object for the entity type
+	 * 
+	 * @constructor
+	 * 
+	 * @class Representation of a OData entity set.
+	 * @name sap.ui.model.analytics.odata4analytics.EntitySet
+	 * @public
+	 */
+	odata4analytics.EntitySet = function(oModel, oSchema, oContainer, oEntitySet, oEntityType) {
+		this._init(oModel, oSchema, oContainer, oEntitySet, oEntityType);
+	};
+	
+	odata4analytics.EntitySet.prototype = {
+		/**
+		 * @private
+		 */
+		_init : function(oModel, oSchema, oContainer, oEntitySet, oEntityType) {
+			this._oEntityType = oEntityType;
+			this._oEntitySet = oEntitySet;
+			this._oContainer = oContainer;
+			this._oSchema = oSchema;
+			this._oModel = oModel;
+	
+			if (oSchema.entityContainer.length > 1)
+				this._sQName = oContainer.name + "." + oEntitySet.name;
+			else
+				// no need to disambiguate this for the simple case
+				this._sQName = oEntitySet.name;
+		},
+	
+		/**
+		 * Get the fully qualified name for this entity type
+		 * 
+		 * @returns {string} The fully qualified name
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.EntitySet#getQName
+		 */
+		getQName : function() {
+			return this._sQName;
+		},
+	
+		/**
+		 * Get full description for this entity set
+		 * 
+		 * @returns {object} The DataJS object representing the entity set
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.EntitySet#getSetDescription
+		 */
+		getSetDescription : function() {
+			return this._oEntitySet;
+		},
+	
+		/**
+		 * Get entity type used for this entity set
+		 * 
+		 * @returns {object} The DataJS object representing the entity type
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.EntitySet#getEntityType
+		 */
+		getEntityType : function() {
+			return this._oEntityType;
+		},
+	
+		getSchema : function() {
+			return this._oSchema;
+		},
+	
+		getModel : function() {
+			return this._oModel;
+		},
+	
+		/**
+		 * Get names of properties in this entity set that can be updated
+		 * 
+		 * @returns {object} An object with individual JS properties for each
+		 *          updatable property. For testing whether propertyName is the name
+		 *          of an updatable property, use
+		 *          <code>getUpdatablePropertyNameSet()[propertyName]</code>. The
+		 *          included JS object properties are all set to true.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.EntitySet#getUpdatablePropertyNameSet
+		 */
+		getUpdatablePropertyNameSet : function() {
+			if (this._oUpdatablePropertyNames)
+				return this._oUpdatablePropertyNames;
+	
+			this._oUpdatablePropertyNames = new Object();
+			var bSetIsUpdatable = true;
+			if (this._oEntitySet.extensions != undefined) {
+				for (var j = -1, oExtension; oExtension = this._oEntitySet.extensions[++j];) {
+					if (oExtension.namespace == odata4analytics.constants.SAP_NAMESPACE && oExtension.name == "updatable") {
+						if (oExtension.value == "false") {
+							bSetIsUpdatable = false;
+							break;
+						}
+					}
+				}
+			}
+			if (!bSetIsUpdatable) { // set not updatable cascades to all properties
+				return this._oUpdatablePropertyNames;
+			}
+	
+			var aProperty = this._oEntityType.getTypeDescription().property;
+			for (var i = -1, oProperty; oProperty = aProperty[++i];) {
+				var bPropertyIsUpdatable = true;
+	
+				if (oProperty.extensions == undefined)
+					continue;
+				for (var j = -1, oExtension; oExtension = oProperty.extensions[++j];) {
+					if (oExtension.namespace != odata4analytics.constants.SAP_NAMESPACE)
+						continue;
+	
+					if (oExtension.name == "updatable") {
+						if (oExtension.value == "false") {
+							bPropertyIsUpdatable = false;
+							break;
+						}
+					}
+				}
+				if (bPropertyIsUpdatable)
+					this._oUpdatablePropertyNames[oProperty.name] = true;
+			}
+			return this._oUpdatablePropertyNames;
+		},
+	
+		/**
+		 * Private member attributes
+		 */
+	
+		_oEntityType : null,
+		_oEntitySet : null,
+		_oContainer : null,
+		_oSchema : null,
+		_oModel : null,
+		_sQName : null,
+		_oUpdatablePropertyNames : null
+	};
+	
+	/** ******************************************************************** */
+	
+	/**
+	 * Create a representation of an OData entity type in the context of an analytic
+	 * query. Do not create your own instances.
+	 * 
+	 * @param {object}
+	 *            oModel DataJS object for the OData model containing this entity
+	 *            type
+	 * @param {object}
+	 *            oSchema DataJS object for the schema containing this entity type
+	 * @param {object}
+	 *            oEntityType DataJS object for the entity type
+	 * 
+	 * @constructor
+	 * 
+	 * @class Representation of a OData entity type.
+	 * @name sap.ui.model.analytics.odata4analytics.EntityType
+	 * @public
+	 */
+	odata4analytics.EntityType = function(oModel, oSchema, oEntityType) {
+		this._init(oModel, oSchema, oEntityType);
+	};
+	
+	odata4analytics.EntityType.propertyFilterRestriction = {
+		SINGLE_VALUE : "single-value",
+		MULTI_VALUE : "multi-value",
+		INTERVAL : "interval"
+	};
+	
+	odata4analytics.EntityType.prototype = {
+		/**
+		 * @private
+		 */
+		_init : function(oModel, oSchema, oEntityType) {
+			this._oEntityType = oEntityType;
+			this._oSchema = oSchema;
+			this._oModel = oModel;
+	
+			this._aKeyProperties = [];
+			this._oPropertySet = new Object();
+			this._aFilterablePropertyNames = [];
+			this._aSortablePropertyNames = [];
+			this._aRequiredFilterPropertyNames = [];
+			this._oPropertyFilterRestrictionSet = new Object();
+	
+			this._oPropertyHeadingsSet = {};
+			this._oPropertyQuickInfosSet = {};
+			
+			this._sQName = oSchema.namespace + "." + oEntityType.name;
+	
+			/*
+			 * collect all hierarchies defined in this entity type
+			 */
+			var oRecursiveHierarchies = {}; // temp for collecting all properties participating in hierarchies
+			var oRecursiveHierarchy = null;
+	
+			for (var i = -1, oPropertyRef; oPropertyRef = oEntityType.key.propertyRef[++i];) {
+				this._aKeyProperties.push(oPropertyRef.name);
+			}
+	
+			for (var i = -1, oProperty; oProperty = oEntityType.property[++i];) {
+	
+				// store property references for faster lookup
+				this._oPropertySet[oProperty.name] = oProperty;
+
+				// by default, every property can be filtered
+				this._aFilterablePropertyNames.push(oProperty.name);
+	
+				// by default, every property can be sorted
+				this._aSortablePropertyNames.push(oProperty.name);
+	
+				if (oProperty.extensions == undefined)
+					continue;
+				for (var j = -1, oExtension; oExtension = oProperty.extensions[++j];) {
+	
+					if (!oExtension.namespace == odata4analytics.constants.SAP_NAMESPACE)
+						continue;
+	
+					switch (oExtension.name) {
+					case "filterable":
+						if (oExtension.value == "false")
+							this._aFilterablePropertyNames.pop(oProperty.name);
+						break;
+					case "sortable":
+						if (oExtension.value == "false")
+							this._aSortablePropertyNames.pop(oProperty.name);
+						break;
+					case "required-in-filter":
+						if (oExtension.value == "true")
+							this._aRequiredFilterPropertyNames.push(oProperty.name);
+						break;
+					case "filter-restriction":
+						if (oExtension.value == odata4analytics.EntityType.propertyFilterRestriction.SINGLE_VALUE
+								|| oExtension.value == odata4analytics.EntityType.propertyFilterRestriction.MULTI_VALUE
+								|| oExtension.value == odata4analytics.EntityType.propertyFilterRestriction.INTERVAL)
+							this._oPropertyFilterRestrictionSet[oProperty.name] = oExtension.value;
+						break;
+	
+					// hierarchy annotations: build temporary set of
+					// hierarchy-node-id properties with relevant attributes
+					case "hierarchy-node-for":
+						if (!(oRecursiveHierarchy = oRecursiveHierarchies[oProperty.name]))
+							oRecursiveHierarchy = oRecursiveHierarchies[oProperty.name] = new Object();
+						oRecursiveHierarchy.dimensionName = oExtension.value;
+						break;
+					case "hierarchy-parent-node-for":
+					case "hierarchy-parent-nod": // TODO workaround for GW bug
+						if (!(oRecursiveHierarchy = oRecursiveHierarchies[oExtension.value]))
+							oRecursiveHierarchy = oRecursiveHierarchies[oExtension.value] = new Object();
+						oRecursiveHierarchy.parentNodeIDProperty = oProperty;
+						break;
+					case "hierarchy-level-for":
+						if (!(oRecursiveHierarchy = oRecursiveHierarchies[oExtension.value]))
+							oRecursiveHierarchy = oRecursiveHierarchies[oExtension.value] = new Object();
+						oRecursiveHierarchy.levelProperty = oProperty;
+						break;
+					case "hierarchy-drill-state-for":
+					case "hierarchy-drill-stat": // TODO workaround for GW bug
+						if (!(oRecursiveHierarchy = oRecursiveHierarchies[oExtension.value]))
+							oRecursiveHierarchy = oRecursiveHierarchies[oExtension.value] = new Object();
+						oRecursiveHierarchy.drillStateProperty = oProperty;
+						break;
+					}
+				}
+			}
+	
+			// post processing: set up hierarchy objects
+			this._oRecursiveHierarchySet = new Object();
+			for ( var hierNodeIDPropertyName in oRecursiveHierarchies) {
+				var oHierarchy = oRecursiveHierarchies[hierNodeIDPropertyName];
+				var oHierarchyNodeIDProperty = this._oPropertySet[hierNodeIDPropertyName];
+				var oDimensionProperty = this._oPropertySet[oHierarchy.dimensionName];
+				if (oDimensionProperty == null) {
+					// TODO temporary workaround for BW provider, which does not
+					// return it: let dimension coincide with hierarchy
+					// node ID
+					oDimensionProperty = oHierarchyNodeIDProperty;
+				}
+				this._oRecursiveHierarchySet[oDimensionProperty.name] = new odata4analytics.RecursiveHierarchy(oEntityType,
+						oHierarchyNodeIDProperty, oHierarchy.parentNodeIDProperty, oHierarchy.levelProperty, oDimensionProperty);
+			}
+	
+		},
+	
+		/**
+		 * Get all properties
+		 * 
+		 * @return {object} Object with (JavaScript) properties, one for each (OData
+		 *         entity type) property. These (JavaScript) properties hold the
+		 *         DataJS object representing the property
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.EntityType#getProperties
+		 */
+		getProperties : function() {
+			return this._oPropertySet;
+		},
+	
+		/**
+		 * Find property by name
+		 * 
+		 * @param {string}
+		 *            sPropertyName Property name
+		 * @returns {object} The DataJS object representing the property or null if
+		 *          it does not exist
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.EntityType#findPropertyByName
+		 */
+		findPropertyByName : function(sPropertyName) {
+			return this._oPropertySet[sPropertyName];
+		},
+	
+		/**
+		 * Get key properties of this type
+		 * 
+		 * @returns {array(string)} The list of key property names
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.EntityType#getKeyProperties
+		 */
+		getKeyProperties : function() {
+			return this._aKeyProperties;
+		},
+	
+		/**
+		 * Get label of the property with specified name (identified by property
+		 * metadata annotation sap:label)
+		 * 
+		 * @param {string}
+		 *            sPropertyName Property name
+		 * @returns {string} The label string
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.EntityType#getLabelOfProperty
+		 */
+		getLabelOfProperty : function(sPropertyName) {
+			var oProperty = this._oPropertySet[sPropertyName];
+			if (oProperty == null)
+				throw "no such property with name " + sPropertyName;
+	
+			if (oProperty.extensions != undefined) {
+				for (var i = -1, oExtension; oExtension = oProperty.extensions[++i];) {
+					if (!oExtension.namespace == odata4analytics.constants.SAP_NAMESPACE)
+						continue;
+					if (oExtension.name == "label")
+						return oExtension.value;
+				}
+			}
+			return null;
+		},
+	
+		/**
+		 * Get heading of the property with specified name (identified by property
+		 * metadata annotation sap:heading)
+		 * 
+		 * @param {string}
+		 *            sPropertyName Property name
+		 * @returns {string} The heading string
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.EntityType#getHeadingOfProperty
+		 */
+		getHeadingOfProperty : function(sPropertyName) {
+			var oProperty = this._oPropertySet[sPropertyName];
+			if (oProperty == null)
+				throw "no such property with name " + sPropertyName;
+	
+			if (oProperty.extensions != undefined) {
+				var sPropertyLabel = null;
+				for (var i = -1, oExtension; oExtension = oProperty.extensions[++i];) {
+					if (!oExtension.namespace == odata4analytics.constants.SAP_NAMESPACE)
+						continue;
+					if (oExtension.name == "heading")
+						return oExtension.value;
+					if (oExtension.name == "label")
+						sPropertyLabel = oExtension.value;
+				}
+			}
+			// no heading found, so return property label
+			return sPropertyLabel;
+		},
+	
+		/**
+		 * Get quick info of the property with specified name (identified by property
+		 * metadata annotation sap:quickinfo)
+		 * 
+		 * @param {string}
+		 *            sPropertyName Property name
+		 * @returns {string} The quick info string
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.EntityType#getQuickInfoOfProperty
+		 */
+		getQuickInfoOfProperty : function(sPropertyName) {
+			var oProperty = this._oPropertySet[sPropertyName];
+			if (oProperty == null)
+				throw "no such property with name " + sPropertyName;
+	
+			if (oProperty.extensions != undefined) {
+				var sPropertyLabel = null;
+				for (var i = -1, oExtension; oExtension = oProperty.extensions[++i];) {
+					if (!oExtension.namespace == odata4analytics.constants.SAP_NAMESPACE)
+						continue;
+					if (oExtension.name == "quickinfo")
+						return oExtension.value;
+					if (oExtension.name == "label")
+						sPropertyLabel = oExtension.value;
+				}
+			}
+			// no quick info found, so return property label
+			return sPropertyLabel;
+		},
+	
+		/**
+		 * Get the text property related to the property with specified name
+		 * (identified by property metadata annotation sap:text)
+		 * 
+		 * @param {string}
+		 *            sPropertyName Property name
+		 * @returns {object} The DataJS object representing the text property or
+		 *          null if it does not exist
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.EntityType#getTextPropertyOfProperty
+		 */
+		getTextPropertyOfProperty : function(sPropertyName) {
+			var oProperty = this._oPropertySet[sPropertyName];
+			if (oProperty == null)
+				throw "no such property with name " + sPropertyName;
+	
+			if (oProperty.extensions != undefined) {
+				for (var i = -1, oExtension; oExtension = oProperty.extensions[++i];) {
+					if (oExtension.name == "text")
+						return this.findPropertyByName(oExtension.value);
+				}
+			}
+			return null;
+		},
+	
+		/**
+		 * Get the super-ordinate property related to the property with specified
+		 * name (identified by property metadata annotation sap:super-ordinate)
+		 * 
+		 * @param {string}
+		 *            sPropertyName Property name
+		 * @returns {object} The DataJS object representing the super-ordinate
+		 *          property or null if it does not exist
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.EntityType#getSuperOrdinatePropertyOfProperty
+		 */
+		getSuperOrdinatePropertyOfProperty : function(sPropertyName) {
+			var oProperty = this._oPropertySet[sPropertyName];
+			if (oProperty == null)
+				throw "no such property with name " + sPropertyName;
+	
+			if (oProperty.extensions != undefined) {
+				for (var i = -1, oExtension; oExtension = oProperty.extensions[++i];) {
+					if (oExtension.name == "super-ordinate")
+						return this.findPropertyByName(oExtension.value);
+				}
+			}
+			return null;
+		},
+	
+		/**
+		 * Get names of properties that can be filtered, that is they can be used in
+		 * $filter expressions
+		 * 
+		 * @returns {array(string)} Array with names of properties that can be
+		 *          filtered.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.EntityType#getFilterablePropertyNames
+		 */
+		getFilterablePropertyNames : function() {
+			return this._aFilterablePropertyNames;
+		},
+	
+		/**
+		 * Get names of properties that can be sorted, that is they can be used in
+		 * $orderby expressions
+		 * 
+		 * @returns {array(string)} Array with names of properties that can be
+		 *          sorted.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.EntityType#getSortablePropertyNames
+		 */
+		getSortablePropertyNames : function() {
+			return this._aSortablePropertyNames;
+		},
+	
+		/**
+		 * Get names of properties that must be filtered, that is they must appear
+		 * in every $filter expression
+		 * 
+		 * @returns {array(string)} Array with names of properties that must be
+		 *          filtered.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.EntityType#getRequiredFilterPropertyNames
+		 */
+		getRequiredFilterPropertyNames : function() {
+			return this._aRequiredFilterPropertyNames;
+		},
+	
+		/**
+		 * Get properties for which filter restrictions have been specified
+		 * 
+		 * @returns {object} Object with (JavaScript) properties, one for each
+		 *          (OData entity type) property. The property value is from
+		 *          odata4analytics.EntityType.propertyFilterRestriction and
+		 *          indicates the filter restriction for this property.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.EntityType#getPropertiesWithFilterRestrictions
+		 */
+		getPropertiesWithFilterRestrictions : function() {
+			return this._oPropertyFilterRestrictionSet;
+		},
+	
+		/**
+		 * Get the names of all properties with an associated hierarchy
+		 * 
+		 * @returns {array(string)} List of all property names
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.EntityType#getAllHierarchyPropertyNames
+		 */
+		getAllHierarchyPropertyNames : function() {
+			if (this._aHierarchyPropertyNames)
+				return this._aHierarchyPropertyNames;
+	
+			this._aHierarchyPropertyNames = [];
+	
+			for ( var sName in this._oRecursiveHierarchySet)
+				this._aHierarchyPropertyNames.push(this._oRecursiveHierarchySet[sName].getNodeValueProperty().name);
+	
+			return this._aHierarchyPropertyNames;
+		},
+	
+		/**
+		 * Get the hierarchy associated to a given property Based on the current
+		 * specification, hierarchies are always recursive. TODO: Extend behavior
+		 * when leveled hierarchies get in scope
+		 * 
+		 * @param {string}
+		 *            sName Parameter name
+		 * @returns {sap.ui.model.analytics.odata4analytics.RecursiveHierarchy} The hierarchy
+		 *          object or null if it does not exist
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.EntityType#getHierarchy
+		 */
+		getHierarchy : function(sName) {
+			if (this._oRecursiveHierarchySet[sName] == undefined)
+				return null;
+			return this._oRecursiveHierarchySet[sName];
+		},
+	
+		/**
+		 * Get the fully qualified name for this entity type
+		 * 
+		 * @returns {string} The fully qualified name
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.EntityType#getQName
+		 */
+		getQName : function() {
+			return this._sQName;
+		},
+	
+		/**
+		 * Get full description for this entity type
+		 * 
+		 * @returns {object} The DataJS object representing the entity type
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.EntityType#getTypeDescription
+		 */
+		getTypeDescription : function() {
+			return this._oEntityType;
+		},
+	
+		getSchema : function() {
+			return this._oSchema;
+		},
+	
+		getModel : function() {
+			return this._oModel;
+		},
+	
+		/**
+		 * Private member attributes
+		 */
+	
+		_oEntityType : null,
+		_oSchema : null,
+		_oModel : null,
+		_sQName : null,
+	
+		_aKeyProperties : null,
+	
+		_oPropertySet : null,
+		_aFilterablePropertyNames : null,
+		_aRequiredFilterPropertyNames : null,
+		_oPropertyFilterRestrictionSet : null,
+	
+		_aHierarchyPropertyNames : null,
+		_oRecursiveHierarchySet : null
+	};
+	
+	/** ******************************************************************** */
+	
+	/**
+	 * Create a representation of a recursive hierarchy defined on one multiple
+	 * properties in an OData entity type query. Do not create your own instances.
+	 * 
+	 * @param {EntityType}
+	 *            oEntityType object for the entity type
+	 * @param {object}
+	 *            oNodeIDProperty DataJS object for the property holding the
+	 *            hierarchy node ID identifying the hierarchy node to which the
+	 *            OData entry belongs
+	 * @param {object}
+	 *            oParentNodeIDProperty DataJS object for the property holding the
+	 *            node ID of the parent of the hierarchy node pointed to by the
+	 *            value of oNodeIDProperty
+	 * @param {object}
+	 *            oNodeLevelProperty DataJS object for the property holding the
+	 *            level number for the of the hierarchy node pointed to by the value
+	 *            of oNodeIDProperty
+	 * @param {object}
+	 *            oNodeValueProperty DataJS object for the property holding the data
+	 *            value for the of the hierarchy node pointed to by the value of
+	 *            oNodeIDProperty
+	 * 
+	 * @constructor
+	 * 
+	 * @class Representation of a recursive hierarchy.
+	 * @name sap.ui.model.analytics.odata4analytics.RecursiveHierarchy
+	 * @public
+	 */
+	odata4analytics.RecursiveHierarchy = function(oEntityType, oNodeIDProperty, oParentNodeIDProperty, oNodeLevelProperty,
+			oNodeValueProperty) {
+		this._init(oEntityType, oNodeIDProperty, oParentNodeIDProperty, oNodeLevelProperty, oNodeValueProperty);
+	};
+	
+	odata4analytics.RecursiveHierarchy.prototype = {
+		/**
+		 * @private
+		 */
+		_init : function(oEntityType, oNodeIDProperty, oParentNodeIDProperty, oNodeLevelProperty, oNodeValueProperty) {
+			this._oEntityType = oEntityType;
+	
+			this._oNodeIDProperty = oNodeIDProperty;
+			this._oParentNodeIDProperty = oParentNodeIDProperty;
+			this._oNodeLevelProperty = oNodeLevelProperty;
+			this._oNodeValueProperty = oNodeValueProperty;
+	
+		},
+	
+		/**
+		 * Get indicator if this is a recursive hierarchy
+		 * 
+		 * @returns {boolean} True
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.RecursiveHierarchy#isRecursiveHierarchy
+		 */
+		isRecursiveHierarchy : function() {
+			return true;
+		},
+	
+		/**
+		 * Get indicator if this is a leveled hierarchy
+		 * 
+		 * @returns {boolean} False
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.RecursiveHierarchy#isLeveledHierarchy
+		 */
+		isLeveledHierarchy : function() {
+			return false;
+		},
+	
+		/**
+		 * Get the property holding the node ID of the hierarchy node
+		 * 
+		 * @returns {object} The DataJS object representing this property
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.RecursiveHierarchy#getNodeIDProperty
+		 */
+		getNodeIDProperty : function() {
+			return this._oNodeIDProperty;
+		},
+	
+		/**
+		 * Get the property holding the parent node ID of the hierarchy node
+		 * 
+		 * @returns {object} The DataJS object representing this property
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.RecursiveHierarchy#getParentNodeIDProperty
+		 */
+		getParentNodeIDProperty : function() {
+			return this._oParentNodeIDProperty;
+		},
+	
+		/**
+		 * Get the property holding the level of the hierarchy node
+		 * 
+		 * @returns {object} The DataJS object representing this property
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.RecursiveHierarchy#getNodeLevelProperty
+		 */
+		getNodeLevelProperty : function() {
+			return this._oNodeLevelProperty;
+		},
+	
+		/**
+		 * Get the property holding the value that is structurally organized by the
+		 * hierarchy
+		 * 
+		 * @returns {object} The DataJS object representing this property
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.RecursiveHierarchy#getNodeValueProperty
+		 */
+		getNodeValueProperty : function() {
+			return this._oNodeValueProperty;
+		},
+	
+		/**
+		 * Private member attributes
+		 */
+	
+		_oNodeIDProperty : null,
+		_oParentNodeIDProperty : null,
+		_oNodeLevelProperty : null,
+		_oNodeValueProperty : null
+	
+	};
+	
+	/** ******************************************************************** */
+	
+	/**
+	 * Create a representation of a filter expression for a given entity type. It can be rendered as value for the $filter system
+	 * query option.
+	 * 
+	 * @param {object}
+	 *            oModel DataJS object for the OData model containing this entity type
+	 * @param {object}
+	 *            oSchema DataJS object for the schema containing this entity type
+	 * @param {sap.ui.model.analytics.odata4analytics.EntityType}
+	 *            oEntityType object for the entity type
+	 * 
+	 * @constructor
+	 * 
+	 * @class Representation of a $filter expression for an OData entity type.
+	 * @name sap.ui.model.analytics.odata4analytics.FilterExpression
+	 * @public
+	 */
+	odata4analytics.FilterExpression = function(oModel, oSchema, oEntityType) {
+	    this._init(oModel, oSchema, oEntityType);
+	};
+
+	odata4analytics.FilterExpression.prototype = {
+	    /**
+	     * @private
+	     */
+	    _init : function(oModel, oSchema, oEntityType) {
+	        this._oEntityType = oEntityType;
+	        this._oSchema = oSchema;
+	        this._oModel = oModel;
+
+	        this._aConditionUI5Filter = new Array();
+	        this._aUI5FilterArray = new Array();
+	    },
+
+	    /**
+	     * @private
+	     */
+		_renderPropertyFilterValue : function(sFilterValue, sPropertyEDMTypeName) {
+			// initial implementation called odata4analytics.helper.renderPropertyFilterValue, which had problems with locale-specific input values
+			// this is handled in the ODataModel
+			return  jQuery.sap.encodeURL(
+					this._oModel.getODataModel().formatValue(sFilterValue, sPropertyEDMTypeName));
+		},
+
+	    /**
+	     * Clear expression from any conditions that may have been set previously
+	     * 
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.FilterExpression#clear
+	     */
+	    clear : function() {
+	        this._aConditionUI5Filter = new Array();
+	        this._aUI5FilterArray = new Array();
+	    },
+
+	    /**
+	     * @private
+	     */
+	    _addCondition : function(sProperty, sOperator, oValue1, oValue2) {
+	        // make sure that the condition is new
+	        for ( var i = -1, oUI5Filter; oUI5Filter = this._aConditionUI5Filter[++i];) {
+	            if (oUI5Filter.sPath == sProperty && oUI5Filter.sOperator == sOperator && oUI5Filter.oValue1 == oValue1
+	                    && oUI5Filter.oValue2 == oValue2)
+	                return;
+	        }
+	        this._aConditionUI5Filter.push(new sap.ui.model.Filter(sProperty, sOperator, oValue1, oValue2));
+	    },
+
+	    /**
+	     * @private
+	     */
+	    _addUI5FilterArray : function(aUI5Filter) {
+	        this._aUI5FilterArray.push(aUI5Filter);
+	    },
+
+	    /**
+	     * Add a condition to the filter expression.
+	     * 
+	     * Multiple conditions on the same property are combined with a logical OR first, and in a second step conditions for
+	     * different properties are combined with a logical AND.
+	     * 
+	     * @param {string}
+	     *            sPropertyName The name of the property bound in the condition
+	     * @param {sap.ui.model.FilterOperator}
+	     *            sOperator operator used for the condition
+	     * @param {object}
+	     *            oValue value to be used for this condition
+	     * @param {object}
+	     *            oValue2 (optional) as second value to be used for this condition
+	     * @throws Exception
+	     *             if the property is unknown or not filterable
+	     * @returns {sap.ui.model.analytics.odata4analytics.FilterExpression} This object for method chaining
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.FilterExpression#addCondition
+	     */
+	    addCondition : function(sPropertyName, sOperator, oValue, oValue2) {
+	        var oProperty = this._oEntityType.findPropertyByName(sPropertyName);
+	        if (oProperty == null) {
+	            throw "Cannot add filter condition for unknown property name " + sPropertyName; // TODO
+	        }
+	        var aFilterablePropertyNames = this._oEntityType.getFilterablePropertyNames();
+	        if (aFilterablePropertyNames.indexOf(sPropertyName) === -1) {
+	            throw "Cannot add filter condition for not filterable property name " + sPropertyName; // TODO
+	        }
+	        this._addCondition(sPropertyName, sOperator, oValue, oValue2);
+	        return this;
+	    },
+
+	    /**
+	     * Add a set condition to the filter expression.
+	     * 
+	     * A set condition tests if the value of a property is included in a set of given values. It is a convenience method for
+	     * this particular use case eliminating the need for multiple API calls.
+	     * 
+	     * @param {string}
+	     *            sPropertyName The name of the property bound in the condition
+	     * @param {array}
+	     *            aValues values defining the set
+	     * @throws Exception
+	     *             if the property is unknown or not filterable
+	     * @returns {sap.ui.model.analytics.odata4analytics.FilterExpression} This object for method chaining
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.FilterExpression#addSetCondition
+	     */
+	    addSetCondition : function(sPropertyName, aValues) {
+	        var oProperty = this._oEntityType.findPropertyByName(sPropertyName);
+	        if (oProperty == null) {
+	            throw "Cannot add filter condition for unknown property name " + sPropertyName; // TODO
+	        }
+	        var aFilterablePropertyNames = this._oEntityType.getFilterablePropertyNames();
+	        if (aFilterablePropertyNames.indexOf(sPropertyName) === -1) {
+	            throw "Cannot add filter condition for not filterable property name " + sPropertyName; // TODO
+	        }
+	        for ( var i = -1, oValue; oValue = aValues[++i];)
+	            this._addCondition(sPropertyName, sap.ui.model.FilterOperator.EQ, oValue);
+	        return this;
+	    },
+
+	    /**
+	     * Add an array of UI5 filter conditions to the filter expression.
+	     * 
+	     * The UI5 filter condition is combined with the other given conditions using a logical AND. This method
+	     * is particularly useful for passing forward already created UI5 filter arrays.  
+	     * 
+	     * @param {array(sap.ui.model.Filter)}
+	     *            aUI5Filter Array of UI5 filter objects
+	     * @returns {sap.ui.model.analytics.odata4analytics.FilterExpression} This object for method chaining
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.FilterExpression#addUI5FilterConditions
+	     */
+	    addUI5FilterConditions : function(aUI5Filter) {
+	        if (! Array.isArray(aUI5Filter))
+	            throw "Argument is not an array";
+	        if (aUI5Filter.length == 0) return this;
+	        
+	        // check if a multi filter is included; otherwise every element simply represents a single condition
+	        var bHasMultiFilter = false;
+	        for (var i = 0; i < aUI5Filter.length; i++) {
+	        	if (aUI5Filter[i].aFilters != undefined) {
+	        		bHasMultiFilter = true;
+	        		break;
+	        	}
+	        }
+	        if (bHasMultiFilter) this._addUI5FilterArray(aUI5Filter);
+	        else {
+		        for (var i = 0; i < aUI5Filter.length; i++) {
+		        	this.addCondition(aUI5Filter[i].sPath, aUI5Filter[i].sOperator, aUI5Filter[i].oValue1, aUI5Filter[i].oValue2)
+		        }	        	
+	        }
+	        return this;
+	    },
+
+	        
+	    /**
+	     * Get an array of SAPUI5 Filter objects corresponding to this expression.
+	     * 
+	     * @returns {array(sap.ui.model.Filter)} List of filter objects representing this expression
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.FilterExpression#getExpressionAsUI5FilterArray
+	     */
+	    getExpressionAsUI5FilterArray : function() {
+	        var aFilterObjects = this._aConditionUI5Filter.concat([]);
+
+	        for ( var i = -1, aFilter; aFilter = this._aUI5FilterArray[++i];) {
+	            for ( var j = -1, oFilter; oFilter = aFilter[++j];) {
+	                aFilterObjects.push(oFilter);
+	            }
+	        }
+	        return aFilterObjects;
+	    },
+
+
+	    /*
+	     * @private
+	     */
+	    getPropertiesReferencedByUI5FilterArray : function(aUI5Filter, oReferencedProperties) {
+	        for ( var i = -1, oUI5Filter; oUI5Filter = aUI5Filter[++i];) {
+	            if (oUI5Filter.aFilters != undefined) 
+	                this.getPropertiesReferencedByUI5FilterArray(oUI5Filter.aFilters, oReferencedProperties);
+	            else { 
+	                if (oReferencedProperties[oUI5Filter.sPath] == undefined)
+	                    oReferencedProperties[oUI5Filter.sPath] = [];
+	                oReferencedProperties[oUI5Filter.sPath].push(oUI5Filter);
+	            }                    
+	        }
+	    },
+	    
+
+	    /**
+	     * Get the properties referenced by the filter expression.
+	     * 
+	     * @returns {object} Object containing (JavaScript) properties for all (OData entity type)
+	     *          properties referenced in the filter expression. The value for each of these properties is an array holding all used UI5 filters referencing them. 
+	     * @private
+	     */
+	    getReferencedProperties : function() {
+	        var oReferencedProperties = new Object();
+
+	        for ( var i = -1, oUI5Filter; oUI5Filter = this._aConditionUI5Filter[++i];) {
+	            if (oReferencedProperties[oUI5Filter.sPath] == undefined)
+	                oReferencedProperties[oUI5Filter.sPath] = [];
+	            oReferencedProperties[oUI5Filter.sPath].push(oUI5Filter);
+	        }
+	        
+	        for ( var i = -1, aUI5Filter; aUI5Filter = this._aUI5FilterArray[++i];) {
+	            this.getPropertiesReferencedByUI5FilterArray(aUI5Filter, oReferencedProperties);
+	        }
+	        return oReferencedProperties;
+	    },
+
+	    /**
+	     * Render a UI5 Filter as OData condition.
+	     * 
+	     * @param {string} oUI5Filter The filter object to render (must not be a multi filter)
+	     * @returns {string} The $filter value for the given UI5 filter 
+	     * @private
+	     */
+	    renderUI5Filter : function(oUI5Filter) {
+	        var oProperty = this._oEntityType.findPropertyByName(oUI5Filter.sPath);
+	        if (oProperty == null) {
+	            throw "Cannot add filter condition for unknown property name " + oUI5Filter.sPath; // TODO
+	        }
+	        
+	        var sFilterExpression = null;
+	        switch (oUI5Filter.sOperator) {
+	        case sap.ui.model.FilterOperator.BT:
+	            sFilterExpression = "(" + oUI5Filter.sPath + " "
+	                    + sap.ui.model.FilterOperator.GE.toLowerCase() + " "
+	                    + this._renderPropertyFilterValue(oUI5Filter.oValue1, oProperty.type)
+	                    + " and " + oUI5Filter.sPath + " " + sap.ui.model.FilterOperator.LE.toLowerCase() + " "
+	                    + this._renderPropertyFilterValue(oUI5Filter.oValue2, oProperty.type)
+	                    + ")";
+	            break;
+	        case sap.ui.model.FilterOperator.Contains:
+	            sFilterExpression = "substringof(" 
+	            	+ this._renderPropertyFilterValue(oUI5Filter.oValue1, "Edm.String") + "," +  oUI5Filter.sPath + ")";
+	            break;
+	        case sap.ui.model.FilterOperator.StartsWith:
+	        case sap.ui.model.FilterOperator.EndsWith:
+	            sFilterExpression = oUI5Filter.sOperator.toLowerCase() + "("
+	                    + oUI5Filter.sPath + "," 
+	                    + this._renderPropertyFilterValue(oUI5Filter.oValue1, "Edm.String") + ")";
+	            break;
+	        default:
+	            sFilterExpression = oUI5Filter.sPath + " " + oUI5Filter.sOperator.toLowerCase() + " "
+	                    + this._renderPropertyFilterValue(oUI5Filter.oValue1, oProperty.type);
+	        }
+	        
+	        return sFilterExpression;
+	    },
+	    
+	    /*
+	     * @private
+	     */
+	    renderUI5MultiFilter : function(oUI5MultiFilter) {
+	        var aUI5MultiFilter = new Array();
+
+	        var sOptionString = "";
+	        var sLogicalMultiOperator = oUI5MultiFilter.bAnd == true ? " and " : " or ";
+	        
+	        for (var i = -1, oUI5Filter; oUI5Filter = oUI5MultiFilter.aFilters[++i];) {
+	            if (oUI5Filter.aFilters != undefined) { // defer processing to the end 
+	                aUI5MultiFilter.push(oUI5Filter);
+	                continue;
+	            }
+
+	            sOptionString += (sOptionString == "" ? "" : sLogicalMultiOperator) + "(" + this.renderUI5Filter(oUI5Filter) + ")";
+	        }
+	        // process multi filters if any
+	        if (aUI5MultiFilter.length > 0) {
+	            for (var i = -1, oMultiFilter; oMultiFilter = aUI5MultiFilter[++i];) {
+	                sOptionString += (sOptionString == "" ? "" : sLogicalMultiOperator) + "(" + this.renderUI5MultiFilter(oMultiFilter) + ")";      
+	            }
+	        }
+	        return sOptionString;
+	    },
+	    
+	    /*
+	     * @private
+	     */
+	    renderUI5FilterArray : function(aUI5Filter) {
+	        if (aUI5Filter.length == 0)
+	            return "";
+
+	        var sOptionString = "";
+	        // 1. Process conditions
+	        aUI5Filter.sort(function(a, b) {
+	            if (a.sPath == b.sPath)
+	                return 0;
+	            if (a.sPath > b.sPath)
+	                return 1;
+	            else
+	                return -1;
+	        });
+
+	        var sPropertyName = aUI5Filter[0].sPath;
+	        var sSubExpression = "";
+	        var aNEFilter = new Array(), aUI5MultiFilter = new Array();
+	        for ( var i = -1, oUI5Filter; oUI5Filter = aUI5Filter[++i];) {
+	            if (oUI5Filter.aFilters != undefined) { // defer processing to the end
+	                aUI5MultiFilter.push(oUI5Filter);
+	                continue;
+	            }
+	            if (sPropertyName != oUI5Filter.sPath) {
+	            	if (sSubExpression != "") sOptionString += (sOptionString == "" ? "" : " and ") + "(" + sSubExpression + ")";
+	                sSubExpression = "";
+	                if (aNEFilter.length > 0) { // handle negated comparisons
+	                    for (var j = -1, oNEFilter; oNEFilter = aNEFilter[++j];) {
+	                        sSubExpression += (sSubExpression == "" ? "" : " and ") + this.renderUI5Filter(oNEFilter);                        
+	                    }
+	                    sOptionString += (sOptionString == "" ? "" : " and ") + "(" + sSubExpression + ")";
+	                    sSubExpression = "";
+	                }
+	                sPropertyName = oUI5Filter.sPath;
+	                aNEFilter = new Array();
+	            }
+	            if (oUI5Filter.sOperator == sap.ui.model.FilterOperator.NE) {
+	                aNEFilter.push(oUI5Filter);
+	                continue;
+	            }
+	            sSubExpression += (sSubExpression == "" ? "" : " or ") + this.renderUI5Filter(oUI5Filter);
+	        }
+	        
+	        // add last sub expression
+	        if (sSubExpression != "") sOptionString += (sOptionString == "" ? "" : " and ") + "(" + sSubExpression + ")";
+	        if (aNEFilter.length > 0) { // handle negated comparisons
+                sSubExpression = "";
+	            for (var j = -1, oNEFilter; oNEFilter = aNEFilter[++j];) {
+	                sSubExpression += (sSubExpression == "" ? "" : " and ") + this.renderUI5Filter(oNEFilter);                        
+	            }
+	            sOptionString += (sOptionString == "" ? "" : " and ") + "(" + sSubExpression + ")";
+	        }
+	        
+	        // process multi filters if any
+	        if (aUI5MultiFilter.length > 0) {
+	            for (var j = -1, oMultiFilter; oMultiFilter = aUI5MultiFilter[++j];) {
+	                sOptionString += (sOptionString == "" ? "" : " and ") + "(" + this.renderUI5MultiFilter(oMultiFilter) + ")";      
+	            }
+	        }
+	        return sOptionString;
+	    },
+
+	    /**
+	     * Get the value for the OData system query option $filter corresponding to this expression.
+	     * 
+	     * @returns {string} The $filter value for the filter expression
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.FilterExpression#getURIFilterOptionValue
+	     */
+	    getURIFilterOptionValue : function() {
+	        var sOptionString = this.renderUI5FilterArray(this._aConditionUI5Filter);
+	        for(var i = -1, aUI5Filter; aUI5Filter = this._aUI5FilterArray[++i]; ) {
+	            sOptionString += (sOptionString == "" ? "" : " and ") + "(" + this.renderUI5FilterArray(aUI5Filter) + ")";
+	        }
+	        return sOptionString;
+	    },
+
+	    /**
+	     * Check if request is compliant with basic filter constraints expressed in metadata:
+	     * 
+	     * (a) all properties required in the filter expression have been referenced (b) the single-value filter restrictions have been obeyed
+	     * 
+	     * @returns {boolean} The value true. In case the expression violates some of the rules, an exception with some explanatory
+	     *          message is thrown
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.FilterExpression#isValid
+	     */
+	    isValid : function() {
+	        // (a) all properties required in the filter expression have been referenced
+	        var aRequiredFilterPropertyNames = this._oEntityType.getRequiredFilterPropertyNames();
+	        var oPropertiesInFilterExpression = this.getReferencedProperties();
+	        for ( var i = -1, sPropertyName; sPropertyName = aRequiredFilterPropertyNames[++i];) {
+	            if (oPropertiesInFilterExpression[sPropertyName] == undefined)
+	                throw "filter expression does not contain required property " + sPropertyName; // TODO
+	        }
+	        // (b) basic filter restrictions have been obeyed
+	        var oPropertyFilterRestrictionSet = this._oEntityType.getPropertiesWithFilterRestrictions();
+	        for ( var sPropertyName in oPropertyFilterRestrictionSet) {
+	            var sFilterRestriction = oPropertyFilterRestrictionSet[sPropertyName];
+	            var iConditionCount = 0;
+
+	            if (sFilterRestriction == odata4analytics.EntityType.propertyFilterRestriction.SINGLE_VALUE) {
+	                if (oPropertiesInFilterExpression[sPropertyName] != undefined) {
+	                    if (oPropertiesInFilterExpression[sPropertyName].length > 1 
+	                            || oPropertiesInFilterExpression[sPropertyName][0].sOperator != sap.ui.model.FilterOperator.EQ)
+	                        throw "filter expression may use " + sPropertyName + " only with a single EQ condition"; // TODO
+	                }
+	            }
+	        }
+	        return true;
+	    },
+
+	    /**
+	     * Get description for this entity type
+	     * 
+	     * @returns {sap.ui.model.analytics.odata4analytics.EntityType} The object representing the entity type
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.FilterExpression#getEntityType
+	     */
+	    getEntityType : function() {
+	        return this._oEntityType;
+	    },
+
+	    getSchema : function() {
+	        return this._oSchema;
+	    },
+
+	    getModel : function() {
+	        return this._oModel;
+	    },
+
+	    /**
+	     * Private member attributes
+	     */
+
+	    _oEntityType : null,
+	    _oSchema : null,
+	    _oModel : null,
+
+	    _aFilterCondition : null
+	};
+
+	/** ******************************************************************** */
+	
+	/**
+	 * @class Sort order of a property
+	 * @name sap.ui.model.analytics.odata4analytics.SortOrder
+	 * 
+	 * @static
+	 * @public
+	 */
+	odata4analytics.SortOrder = {
+	
+		/**
+		 * Sort Order: ascending.
+		 * 
+		 * @public
+		 */
+		Ascending : "asc",
+	
+		/**
+		 * Sort Order: descending.
+		 * 
+		 * @public
+		 */
+		Descending : "desc"
+	
+	};
+	
+	/** ******************************************************************** */
+	
+	/**
+	 * Create a representation of an order by expression for a given entity type. It
+	 * can be rendered as value for the $orderby system query option.
+	 * 
+	 * @param {object}
+	 *            oModel DataJS object for the OData model containing this entity
+	 *            type
+	 * @param {object}
+	 *            oSchema DataJS object for the schema containing this entity type
+	 * @param {sap.ui.model.analytics.odata4analytics.EntityType}
+	 *            oEntityType object for the entity type
+	 * 
+	 * @constructor
+	 * 
+	 * @class Representation of a $orderby expression for an OData entity type.
+	 * @name sap.ui.model.analytics.odata4analytics.SortExpression
+	 * @public
+	 */
+	odata4analytics.SortExpression = function(oModel, oSchema, oEntityType) {
+		this._init(oModel, oSchema, oEntityType);
+	};
+	
+	odata4analytics.SortExpression.prototype = {
+		/**
+		 * @private
+		 */
+		_init : function(oModel, oSchema, oEntityType) {
+			this._oEntityType = oEntityType;
+			this._oSchema = oSchema;
+			this._oModel = oModel;
+	
+			this._aSortCondition = [];
+		},
+	
+		/**
+		 * Checks if an order by expression for the given property is already
+		 * defined and returns a reference to an object with property sorter and
+		 * index of the object or null if the property is not yet defined in an
+		 * order by expression.
+		 * 
+		 * @private
+		 */
+		_containsSorter : function(sPropertyName) {
+			var oResult = null;
+			for (var i = -1, oCurrentSorter; oCurrentSorter = this._aSortCondition[++i];) {
+				if (oCurrentSorter.property.name === sPropertyName) {
+					oResult = {
+						sorter : oCurrentSorter,
+						index : i
+					};
+					break;
+				}
+			}
+			return oResult;
+		},
+	
+		/**
+		 * TODO helper method to remove elements from array
+		 * 
+		 * @private
+		 */
+		_removeFromArray : function(array, from, to) {
+			var rest = array.slice((to || from) + 1 || array.length);
+			array.length = from < 0 ? array.length + from : from;
+			return array.push.apply(array, rest);
+		},
+	
+		/**
+		 * Clear expression from any sort conditions that may have been set
+		 * previously
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.SortExpression#clear
+		 */
+		clear : function() {
+			this._aSortCondition = [];
+		},
+	
+		/**
+		 * Add a condition to the order by expression. Multiple conditions on the
+		 * same property will throw an exception, e.g. you cannot order by ascending
+		 * and descending at the same time on the same property.
+		 * 
+		 * @param {string}
+		 *            sPropertyName The name of the property bound in the condition
+		 * @param {sap.ui.model.analytics.odata4analytics.SortOrder}
+		 *            sSortOrder sorting order used for the condition
+		 * @throws Exception
+		 *             if the property is unknown, not sortable or already added as
+		 *             sorter
+		 * @returns {sap.ui.model.analytics.odata4analytics.SortExpression} This object for method
+		 *          chaining
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.SortExpression#addSorter
+		 */
+		addSorter : function(sPropertyName, sSortOrder) {
+			var oProperty = this._oEntityType.findPropertyByName(sPropertyName);
+			if (oProperty == null) {
+				throw "Cannot add sort condition for unknown property name " + sPropertyName; // TODO
+			}
+			var oExistingSorterEntry = this._containsSorter(sPropertyName);
+			if (oExistingSorterEntry != null) {
+				oExistingSorterEntry.sorter.order = sSortOrder;
+				return this;
+			}
+			var aSortablePropertyNames = this._oEntityType.getSortablePropertyNames();
+			if (aSortablePropertyNames.indexOf(sPropertyName) === -1) {
+				throw "Cannot add sort condition for not sortable property name " + sPropertyName; // TODO
+			}
+	
+			this._aSortCondition.push({
+				property : oProperty,
+				order : sSortOrder
+			});
+			return this;
+		},
+	
+		/**
+		 * Removes the order by expression for the given property name from the list
+		 * of order by expression. If no order by expression with this property name
+		 * exists the method does nothing.
+		 * 
+		 * @param {string}
+		 *            sPropertyName The name of the property to be removed from the
+		 *            condition
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.SortExpression#removeSorter
+		 */
+		removeSorter : function(sPropertyName) {
+			if (!sPropertyName)
+				return;
+	
+			var oSorter = this._containsSorter(sPropertyName);
+			if (oSorter) {
+				this._removeFromArray(this._aSortCondition, oSorter.index);
+			}
+		},
+	
+		/**
+		 * Get an array of SAPUI5 Sorter objects corresponding to this expression.
+		 * 
+		 * @returns {array(sap.ui.model.Sorter)} List of sorter objects representing
+		 *          this expression
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.SortExpression#getExpressionsAsUI5SorterArray
+		 */
+		getExpressionsAsUI5SorterArray : function() {
+			var aSorterObjects = [];
+	
+			for (var i = -1, oCondition; oCondition = this._aSortCondition[++i];) {
+				aSorterObjects.push(new sap.ui.model.Sorter(oCondition.property.name,
+						oCondition.order == odata4analytics.SortOrder.Descending));
+			}
+	
+			return aSorterObjects;
+		},
+	
+		/**
+		 * Get the first SAPUI5 Sorter object.
+		 * 
+		 * @returns {sap.ui.model.Sorter} first sorter object or null if empty
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.SortExpression#getExpressionAsUI5Sorter
+		 */
+		getExpressionAsUI5Sorter : function() {
+			var aSortArray = this.getExpressionsAsUI5SorterArray();
+			if (aSortArray.length == 0) {
+				return null;
+			} else {
+				return aSortArray[0];
+			}
+		},
+	
+		/**
+		 * Get the value for the OData system query option $orderby corresponding to
+		 * this expression.
+		 * 
+		 * @param {object} oSelectedPropertyNames Object with properties requested for $select 
+		 * 
+		 * @returns {string} The $orderby value for the sort expressions
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.SortExpression#getURIOrderByOptionValue
+		 */
+		getURIOrderByOptionValue : function(oSelectedPropertyNames) {
+			if (this._aSortCondition.length == 0)
+				return "";
+	
+			var sOrderByOptionString = "";
+			for (var i = -1, oCondition; oCondition = this._aSortCondition[++i];) {
+				if (! oSelectedPropertyNames[oCondition.property.name]) 
+					continue; // sorting of aggregated entities is meaningful only if the sorted property is also selected
+				sOrderByOptionString += (sOrderByOptionString == "" ? "" : ",") + oCondition.property.name + " " + oCondition.order;
+			}
+	
+			return sOrderByOptionString;
+		},
+	
+		/**
+		 * Get description for this entity type
+		 * 
+		 * @returns {sap.ui.model.analytics.odata4analytics.EntityType} The object representing the
+		 *          entity type
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.SortExpression#getEntityType
+		 */
+		getEntityType : function() {
+			return this._oEntityType;
+		},
+	
+		getSchema : function() {
+			return this._oSchema;
+		},
+	
+		getModel : function() {
+			return this._oModel;
+		},
+	
+		/**
+		 * Private member attributes
+		 */
+	
+		_oEntityType : null,
+		_oSchema : null,
+		_oModel : null,
+	
+		_aSortCondition : null
+	};
+	
+	/** ******************************************************************** */
+	
+	/**
+	 * Create a request object for interaction with a query parameterization.
+	 * 
+	 * @param {sap.ui.model.analytics.odata4analytics.Parameterization}
+	 *            oParameterization Description of a query parameterization
+	 * 
+	 * @constructor
+	 * 
+	 * @class Creation of URIs for query parameterizations.
+	 * @name sap.ui.model.analytics.odata4analytics.ParameterizationRequest
+	 * @public
+	 */
+	odata4analytics.ParameterizationRequest = function(oParameterization) {
+		this._init(oParameterization);
+	};
+	
+	odata4analytics.ParameterizationRequest.prototype = {
+		/**
+		 * @private
+		 */
+		_init : function(oParameterization) {
+			if (!oParameterization)
+				throw "No parameterization given"; // TODO
+			this._oParameterization = oParameterization;
+			this._oParameterValueAssignment = new Array();
+		},
+	
+	    /**
+	     * @private
+	     */
+		_renderParameterKeyValue : function(sKeyValue, sPropertyEDMTypeName) {
+			// initial implementation called odata4analytics.helper.renderPropertyKeyValue, which had problems with locale-specific input values
+			// this is handled in the ODataModel
+			
+			// TODO refactor with corresponding method FilterExpression._renderPropertyFilterValue
+			return  jQuery.sap.encodeURL(
+					this._oModel.getODataModel().formatValue(sKeyValue, sPropertyEDMTypeName));
+		},
+
+		/**
+		 * Get the description of the parameterization on which this request
+		 * operates on
+		 * 
+		 * @returns {sap.ui.model.analytics.odata4analytics.Parameterization} Description of a
+		 *          query parameterization
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.ParameterizationRequest#getParameterization
+		 */
+		getParameterization : function() {
+			return this._oParameterization;
+		},
+	
+		/**
+		 * Assign a value to a parameter
+		 * 
+		 * @param {String}
+		 *            sParameterName Name of the parameter. In case of a range
+		 *            value, provide the name of the lower boundary parameter.
+		 * @param {String}
+		 *            sValue Assigned value. Pass null to remove a value assignment.
+		 * @param {String}
+		 *            sToValue Omit it or set it to null for single values. If set,
+		 *            it will be assigned to the upper boundary parameter
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.ParameterizationRequest#setParameterValue
+		 */
+		setParameterValue : function(sParameterName, sValue, sToValue) {
+			var oParameter = this._oParameterization.findParameterByName(sParameterName);
+			if (!oParameter)
+				throw "Invalid parameter name " + sParameterName; // TODO improve
+			// error handling
+			if (sToValue != null) {
+				if (!oParameter.isIntervalBoundary())
+					// TODO improve error handling
+					throw "Range value cannot be applied to parameter " + sParameterName + " accepting only single values"; // TODO
+				if (!oParameter.isLowerIntervalBoundary())
+					// TODO improve error handling
+					throw "Range value given, but parameter " + sParameterName + " does not hold the lower boundary"; // TODO
+			}
+			if (!oParameter.isIntervalBoundary()) {
+				if (sValue == null)
+					delete this._oParameterValueAssignment[sParameterName];
+				else
+					this._oParameterValueAssignment[sParameterName] = sValue;
+			} else {
+				if (sValue == null && sToValue != null)
+					throw "Parameter " + sParameterName + ": An upper boundary cannot be given without the lower boundary"; // TODO
+				if (sValue == null) {
+					delete this._oParameterValueAssignment[sParameterName];
+					sToValue = null;
+				} else
+					this._oParameterValueAssignment[sParameterName] = sValue;
+				var oUpperBoundaryParameter = oParameter.getPeerIntervalBoundaryParameter();
+				if (sToValue == null)
+					sToValue = sValue;
+				if (sValue == null)
+					delete this._oParameterValueAssignment[oUpperBoundaryParameter.getName()];
+				else
+					this._oParameterValueAssignment[oUpperBoundaryParameter.getName()] = sToValue;
+			}
+			return;
+		},
+	
+		/**
+		 * Get the URI to locate the entity set for the query parameterization.
+		 * 
+		 * @param {String}
+		 *            sServiceRootURI (optional) Identifies the root of the OData
+		 *            service
+		 * @returns The resource path of the URI pointing to the entity set. It is a
+		 *          relative URI unless a service root is given, which would then
+		 *          prefixed in order to return a complete URL.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.ParameterizationRequest#getURIToParameterizationEntitySet
+		 */
+		getURIToParameterizationEntitySet : function(sServiceRootURI) {
+			return (sServiceRootURI ? sServiceRootURI : "") + "/" + this._oParameterization.getEntitySet().getQName();
+		},
+	
+		/**
+		 * Get the URI to locate the parameterization entity for the values assigned
+		 * to all parameters beforehand. Notice that a value must be supplied for
+		 * every parameter including those marked as optional. For optional
+		 * parameters, assign the special value that the service provider uses as an
+		 * "omitted" value. For example, for services based on BW Easy Queries, this
+		 * would be an empty string.
+		 * 
+		 * @param {String}
+		 *            sServiceRootURI (optional) Identifies the root of the OData
+		 *            service
+		 * @returns The resource path of the URI pointing to the entity set. It is a
+		 *          relative URI unless a service root is given, which would then
+		 *          prefixed in order to return a complete URL.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.ParameterizationRequest#getURIToParameterizationEntry
+		 */
+		getURIToParameterizationEntry : function(sServiceRootURI) {
+			var oDefinedParameters = this._oParameterization.getAllParameters();
+			for ( var sDefinedParameterName in oDefinedParameters) {
+				// check that all parameters have a value assigned. This is also
+				// true for those marked as optional, because the
+				// omitted value is conveyed by some default value, e.g. as empty
+				// string.
+				if (this._oParameterValueAssignment[sDefinedParameterName] == undefined)
+					throw "Parameter " + sDefinedParameterName + " has no value assigned"; // TODO
+			}
+			var sKeyIdentification = "", bFirst = true;
+			for ( var sParameterName in this._oParameterValueAssignment) {
+				sKeyIdentification += (bFirst ? "" : ",")
+						+ sParameterName
+						+ "="
+						+ this._renderParameterKeyValue(this._oParameterValueAssignment[sParameterName],
+								oDefinedParameters[sParameterName].getProperty().type);
+				bFirst = false;
+			}
+	
+			return (sServiceRootURI ? sServiceRootURI : "") + "/" + this._oParameterization.getEntitySet().getQName() + "("
+					+ sKeyIdentification + ")";
+		},
+	
+		/**
+		 * Private member attributes
+		 */
+		_oParameterization : null,
+		_oParameterValueAssignment : null
+	
+	};
+	
+	/** ******************************************************************** */
+	
+	/**
+	 * Create a request object for interaction with a query result.
+	 * 
+	 * @param {sap.ui.model.analytics.odata4analytics.QueryResult}
+	 *            oQueryResult Description of a query parameterization
+	 * @param {sap.ui.model.analytics.odata4analytics.ParameterizationRequest}
+	 *            [oParameterizationRequest] Request object for
+	 *            interactions with the parameterization of this query. Only
+	 *            required if the query service includes parameters.
+	 * 
+	 * @constructor
+	 * 
+	 * @class Creation of URIs for fetching query results.
+	 * @name sap.ui.model.analytics.odata4analytics.QueryResultRequest
+	 * @public
+	 */
+	odata4analytics.QueryResultRequest = function(oQueryResult, oParameterizationRequest) {
+		this._init(oQueryResult);
+	};
+	
+	odata4analytics.QueryResultRequest.prototype = {
+		/**
+		 * @private
+		 */
+		_init : function(oQueryResult, oParameterizationRequest) {
+			this._oQueryResult = oQueryResult;
+			this._oParameterizationRequest = oParameterizationRequest;
+			this._oAggregationLevel = new Object();
+			this._oMeasures = new Object();
+			this._bIncludeEntityKey = false;
+			this._oFilterExpression = null;
+			this._oSortExpression = null;
+			this._oSelectedPropertyNames = null;
+		},
+	
+		/**
+		 * Set the parameterization request required for interactions with the query
+		 * result of parameterized queries. This method provides an alternative way
+		 * to assign a parameterization request to a query result request.
+		 * 
+		 * @param oParameterizationRequest
+		 *            Request object for interactions with the parameterization of
+		 *            this query
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResultRequest#setParameterizationRequest
+		 */
+		setParameterizationRequest : function(oParameterizationRequest) {
+			this._oParameterizationRequest = oParameterizationRequest;
+		},
+	
+		/**
+		 * Set the resource path to be considered for the OData request URI of this
+		 * query request object. This method provides an alternative way to assign a
+		 * path comprising a parameterization. If a path is provided, it overwrites
+		 * any parameterization object that might have been specified separately.
+		 * 
+		 * @param sResourcePath
+		 *            Resource path pointing to the entity set of the query result.
+		 *            Must include a valid parameterization if query contains
+		 *            parameters.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResultRequest#setResourcePath
+		 */
+		setResourcePath : function(sResourcePath) {
+			this._sResourcePath = sResourcePath;
+			if (this._sResourcePath.indexOf("/") != 0)
+				throw "Missing leading / (slash) for resource path";
+			if (this._oQueryResult.getParameterization()) {
+				var iLastPathSep = sResourcePath.lastIndexOf("/");
+				if (iLastPathSep == -1)
+					throw "Missing navigation from parameter entity set to query result in resource path";
+				var sNavPropName = sResourcePath.substring(iLastPathSep + 1);
+				if (sNavPropName != this._oQueryResult.getParameterization().getNavigationPropertyToQueryResult())
+					throw "Invalid navigation property from parameter entity set to query result in resource path";
+			}
+		},
+	
+		/**
+		 * Retrieves the current parametrization request
+		 * 
+		 * @returns {sap.ui.model.analytics.odata4analytics.ParametrizationRequest}
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResultRequest#getParameterizationRequest
+		 */
+		getParameterizationRequest : function() {
+			return this._oParameterizationRequest;
+		},
+	
+		/**
+		 * Get the description of the query result on which this request operates on
+		 * 
+		 * @returns {sap.ui.model.analytics.odata4analytics.QueryResult} Description of a query
+		 *          result
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResultRequest#getQueryResult
+		 */
+		getQueryResult : function() {
+			return this._oQueryResult;
+		},
+	
+		/**
+		 * Set the aggregation level for the query result request. By default, the
+		 * query result will include the properties holding the keys of the given
+		 * dimensions. This setting can be changed using
+		 * includeDimensionKeyTextAttributes.
+		 * 
+		 * @param aDimensionName
+		 *            Array of dimension names to be part of the aggregation level.
+		 *            If null, the aggregation level includes all dimensions, if
+		 *            empty, no dimension is included.
+		 * 
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResultRequest#setAggregationLevel
+		 */
+		setAggregationLevel : function(aDimensionName) {
+			this._oAggregationLevel = new Object();
+			if (!aDimensionName) {
+				aDimensionName = this._oQueryResult.getAllDimensionNames();
+			}
+			this.addToAggregationLevel(aDimensionName);
+			this._oSelectedPropertyNames = null; // reset previously compiled list of selected properties
+		},
+	
+		/**
+		 * Add one or more dimensions to the aggregation level
+		 * 
+		 * @param aDimensionName
+		 *            Array of dimension names to be added to the already defined
+		 *            aggregation level.
+		 * 
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResultRequest#addToAggregationLevel
+		 */
+		addToAggregationLevel : function(aDimensionName) {
+			if (!aDimensionName)
+				return;
+	
+			this._oSelectedPropertyNames = null; // reset previously compiled list of selected properties
+			
+			for (var i = -1, sDimName; sDimName = aDimensionName[++i];) {
+				if (!this._oQueryResult.findDimensionByName(sDimName))
+					throw sDimName + " is not a valid dimension name"; // TODO
+				this._oAggregationLevel[sDimName] = {
+					key : true,
+					text : false,
+					attributes : null
+				};
+			}
+		},
+	
+		/**
+		 * Remove one or more dimensions from the aggregation level. The method also
+		 * removed a potential sort expression on the dimension.
+		 * 
+		 * @param aDimensionName
+		 *            Array of dimension names to be removed from the already
+		 *            defined aggregation level.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResultRequest#removeFromAggregationLevel
+		 */
+		removeFromAggregationLevel : function(aDimensionName) {
+			if (!aDimensionName) {
+				return;
+			}
+			this._oSelectedPropertyNames = null; // reset previously compiled list of selected properties
+			
+			for (var i = -1, sDimName; sDimName = aDimensionName[++i];) {
+				if (!this._oQueryResult.findDimensionByName(sDimName)) {
+					throw sDimName + " is not a valid dimension name"; // TODO
+				}
+				if (this._oAggregationLevel[sDimName] != undefined) {
+					delete this._oAggregationLevel[sDimName];
+	
+					// remove potential sort expression on this dimension
+					this.getSortExpression().removeSorter(sDimName);
+				}
+			}
+		},
+	
+		/**
+		 * Get the names of the dimensions included in the aggregation level
+		 * 
+		 * @returns {Array} The dimension names included in the aggregation level
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResultRequest#getAggregationLevel
+		 */
+		getAggregationLevel : function() {
+			var aDimName = new Array();
+			for ( var sDimName in this._oAggregationLevel) {
+				aDimName.push(sDimName);
+			}
+			return aDimName;
+		},
+	
+		/**
+		 * Get details about a dimensions included in the aggregation level
+		 * 
+		 * @param sDImensionName
+		 *            Name of a dimension included in the aggregation level of this
+		 *            request, for which details shall be returned
+		 * 
+		 * @returns {object} An object with three properties named key and text,
+		 *          both with Boolean values indicating whether the key and text of
+		 *          this dimension are included in this request. The third property
+		 *          named attributes is an array of attribute names of this
+		 *          dimension included in this request, or null, if there are none.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResultRequest#getAggregationLevelDetails
+		 */
+		getAggregationLevelDetails : function(sDimensionName) {
+			if (this._oAggregationLevel[sDimensionName] == undefined)
+				throw "Aggregation level does not include dimension " + sDimensionName;
+			return this._oAggregationLevel[sDimensionName];
+		},
+	
+		/**
+		 * Set the measures to be included in the query result request. By default,
+		 * the query result will include the properties holding the raw values of
+		 * the given measures. This setting can be changed using
+		 * includeMeasureRawFormattedValueUnit.
+		 * 
+		 * @param aMeasureName
+		 *            Array of measure names to be part of the query result request.
+		 *            If null, the request includes all measures, if empty, no
+		 *            measure is included.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResultRequest#setMeasures
+		 */
+		setMeasures : function(aMeasureName) {
+			if (!aMeasureName) {
+				aMeasureName = this._oQueryResult.getAllMeasureNames();
+			}
+			this._oSelectedPropertyNames = null; // reset previously compiled list of selected properties
+			
+			this._oMeasures = new Object();
+			for (var i = -1, sMeasName; sMeasName = aMeasureName[++i];) {
+				if (!this._oQueryResult.findMeasureByName(sMeasName))
+					throw sMeasName + " is not a valid measure name"; // TODO
+	
+				this._oMeasures[sMeasName] = {
+					value : true,
+					text : false,
+					unit : false
+				};
+			}
+		},
+	
+		/**
+		 * Get the names of the measures included in the query result request
+		 * 
+		 * @returns {Array} The measure names included in the query result request
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResultRequest#getMeasureNames
+		 */
+		getMeasureNames : function() {
+			var aMeasName = new Array();
+			for ( var sMeasName in this._oMeasures) {
+				aMeasName.push(sMeasName);
+			}
+			return aMeasName;
+		},
+	
+		/**
+		 * Specify which dimension components shall be included in the query result.
+		 * The settings get applied to the currently defined aggregation level.
+		 * 
+		 * @param sDimensionName
+		 *            Name of the dimension for which the settings get applied.
+		 *            Specify null to apply the settings to all dimensions in the
+		 *            aggregation level.
+		 * @param bIncludeKey
+		 *            Indicator whether or not to include the dimension key in the
+		 *            query result. Pass null to keep current setting.
+		 * @param bIncludeText
+		 *            Indicator whether or not to include the dimension text (if
+		 *            available) in the query result. Pass null to keep current
+		 *            setting.
+		 * @param aAttributeName
+		 *            Array of dimension attribute names to be included in the
+		 *            result. Pass null to keep current setting. This argument is
+		 *            ignored if sDimensionName is null.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResultRequest#includeDimensionKeyTextAttributes
+		 */
+		includeDimensionKeyTextAttributes : function(sDimensionName, bIncludeKey, bIncludeText, aAttributeName) {
+			this._oSelectedPropertyNames = null; // reset previously compiled list of selected properties
+	
+			var aDimName = new Array();
+			if (sDimensionName) {
+				if (this._oAggregationLevel[sDimensionName] == undefined)
+					throw sDimensionName + " is not included in the aggregation level";
+				aDimName.push(sDimensionName);
+			} else {
+				for ( var sName in this._oAggregationLevel) {
+					aDimName.push(sName);
+				}
+				aAttributeName = null;
+			}
+			for (var i = -1, sDimName; sDimName = aDimName[++i];) {
+				if (bIncludeKey != null)
+					this._oAggregationLevel[sDimName].key = bIncludeKey;
+				if (bIncludeText != null)
+					this._oAggregationLevel[sDimName].text = bIncludeText;
+				if (aAttributeName != null)
+					this._oAggregationLevel[sDimName].attributes = aAttributeName;
+			}
+		},
+	
+		/**
+		 * Specify which measure components shall be included in the query result.
+		 * The settings get applied to the currently set measures.
+		 * 
+		 * @param sMeasureName
+		 *            Name of the measure for which the settings get applied.
+		 *            Specify null to apply the settings to all currently set
+		 *            measures.
+		 * @param bIncludeRawValue
+		 *            Indicator whether or not to include the raw value in the query
+		 *            result. Pass null to keep current setting.
+		 * @param bIncludeFormattedValue
+		 *            Indicator whether or not to include the formatted value (if
+		 *            available) in the query result. Pass null to keep current
+		 *            setting.
+		 * @param bIncludeUnit
+		 *            Indicator whether or not to include the unit (if available) in
+		 *            the query result. Pass null to keep current setting.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResultRequest#includeMeasureRawFormattedValueUnit
+		 */
+		includeMeasureRawFormattedValueUnit : function(sMeasureName, bIncludeRawValue, bIncludeFormattedValue, bIncludeUnit) {
+			this._oSelectedPropertyNames = null; // reset previously compiled list of selected properties
+	
+			var aMeasName = new Array();
+			if (sMeasureName) {
+				if (this._oMeasures[sMeasureName] == undefined)
+					throw sMeasureName + " is not part of the query result";
+				aMeasName.push(sMeasureName);
+			} else {
+				for ( var sName in this._oMeasures) {
+					aMeasName.push(sName);
+				}
+			}
+			for (var i = -1, sMeasName; sMeasName = aMeasName[++i];) {
+				if (bIncludeRawValue != null)
+					this._oMeasures[sMeasName].value = bIncludeRawValue;
+				if (bIncludeFormattedValue != null)
+					this._oMeasures[sMeasName].text = bIncludeFormattedValue;
+				if (bIncludeUnit != null)
+					this._oMeasures[sMeasName].unit = bIncludeUnit;
+			}
+		},
+	
+		/**
+		 * Get the filter expression for this request.
+		 * 
+		 * Expressions are represented by separate objects. If none exists so far, a
+		 * new expression object gets created.
+		 * 
+		 * @returns {sap.ui.model.analytics.odata4analytics.FilterExpression} The filter object
+		 *          associated to this request.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResultRequest#getFilterExpression
+		 */
+		getFilterExpression : function() {
+			if (this._oFilterExpression == null) {
+				var oEntityType = this._oQueryResult.getEntityType();
+				this._oFilterExpression = new odata4analytics.FilterExpression(this._oQueryResult.getModel(), oEntityType
+						.getSchema(), oEntityType);
+			}
+			return this._oFilterExpression;
+		},
+	
+		/**
+		 * Set the filter expression for this request.
+		 * 
+		 * Expressions are represented by separate objects. Calling this method
+		 * replaces the filter object maintained by this request.
+		 * 
+		 * @param {sap.ui.model.analytics.odata4analytics.FilterExpression}
+		 *            oFilter The filter object to be associated with this request.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResultRequest#setFilterExpression
+		 */
+		setFilterExpression : function(oFilter) {
+			this._oFilterExpression = oFilter;
+		},
+	
+		/**
+		 * Get the sort expression for this request.
+		 * 
+		 * Expressions are represented by separate objects. If none exists so far, a
+		 * new expression object gets created.
+		 * 
+		 * @returns {sap.ui.model.analytics.odata4analytics.SortExpression} The sort object
+		 *          associated to this request.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResultRequest#getSortExpression
+		 */
+		getSortExpression : function() {
+			if (this._oSortExpression == null) {
+				var oEntityType = this._oQueryResult.getEntityType();
+				this._oSortExpression = new odata4analytics.SortExpression(oEntityType.getModel(), oEntityType.getSchema(),
+						oEntityType);
+			}
+			return this._oSortExpression;
+		},
+	
+		/**
+		 * Set the sort expression for this request.
+		 * 
+		 * Expressions are represented by separate objects. Calling this method
+		 * replaces the sort object maintained by this request.
+		 * 
+		 * @param {sap.ui.model.analytics.odata4analytics.SortExpression}
+		 *            oSorter The sort object to be associated with this request.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResultRequest#setSortExpression
+		 */
+		setSortExpression : function(oSorter) {
+			this._oSortExpression = oSorter;
+		},
+	
+		/**
+		 * Set further options to be applied for the OData request to fetch the
+		 * query result
+		 * 
+		 * @param {Boolean}
+		 *            bIncludeEntityKey Indicates whether or not the entity key
+		 *            should be returned for every entry in the query result.
+		 *            Default is not to include it. Pass null to keep current
+		 *            setting.
+		 * @param {Boolean}
+		 *            bIncludeCount Indicates whether or not the result shall
+		 *            include a count for the returned entities. Default is not to
+		 *            include it. Pass null to keep current setting.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResultRequest#setRequestOptions
+		 */
+		setRequestOptions : function(bIncludeEntityKey, bIncludeCount) {
+			if (bIncludeEntityKey != null)
+				this._bIncludeEntityKey = bIncludeEntityKey;
+			if (bIncludeCount != null)
+				this._bIncludeCount = bIncludeCount;
+		},
+	
+		/**
+		 * Specify that only a page of the query result shall be returned. A page is
+		 * described by its boundaries, that are row numbers for the first and last
+		 * rows in the query result to be returned.
+		 * 
+		 * @param {Number}
+		 *            start The first row of the query result to be returned.
+		 *            Numbering starts at 1. Passing null is equivalent to start
+		 *            with the first row.
+		 * @param {Number}
+		 *            end The last row of the query result to be returned. Passing
+		 *            null is equivalent to get all rows up to the end of the query
+		 *            result.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResultRequest#setResultPageBoundaries
+		 */
+		setResultPageBoundaries : function(start, end) {
+			if (start != null && typeof start !== "number") {
+				throw "Start value must be null or numeric"; // TODO
+			}
+			if (end !== null && typeof end !== "number") {
+				throw "End value must be null or numeric"; // TODO
+			}
+	
+			if (start == null)
+				start = 1;
+	
+			if (start < 1 || start > (end == null ? start : end)) {
+				throw "Invalid values for requested page boundaries"; // TODO
+			}
+	
+			this._iSkipRequestOption = (start > 1) ? start - 1 : null;
+			this._iTopRequestOption = (end != null) ? (end - start + 1) : null;
+		},
+	
+		/**
+		 * Returns the current page boundaries as object with properties
+		 * <code>start</code> and <code>end</code>. If the end of the page is
+		 * unbounded, <code>end</code> is null.
+		 * 
+		 * @returns {Object} the current page boundaries as object
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResultRequest#getResultPageBoundaries
+		 */
+		getResultPageBoundaries : function() {
+			return {
+				start : (this._iSkipRequestOption == null) ? 1 : this._iSkipRequestOption,
+				end : (this._iTopRequestOption != null) ? (this._iSkipRequestOption == null) ? 1 : this._iSkipRequestOption
+						+ this._iTopRequestOption : null
+			};
+		},
+	
+		/**
+		 * Get the URI to locate the entity set for the query result.
+		 * 
+		 * @param {String}
+		 *            sServiceRootURI (optional) Identifies the root of the OData
+		 *            service
+		 * 
+		 * @returns {String} The resource path of the URI pointing to the entity
+		 *          set. It is a relative URI unless a service root is given, which
+		 *          would then prefixed in order to return a complete URL.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResultRequest#getURIToQueryResultEntitySet
+		 */
+		getURIToQueryResultEntitySet : function(sServiceRootURI) {
+			var sURI = null;
+			if (this._sResourcePath != null) {
+				sURI = (sServiceRootURI ? sServiceRootURI : "") + this._sResourcePath;
+			} else {
+				if (this._oQueryResult.getParameterization()) {
+					if (!this._oParameterizationRequest)
+						throw "Missing parameterization request";
+					else
+						sURI = this._oParameterizationRequest.getURIToParameterizationEntry(sServiceRootURI) + "/"
+								+ this._oQueryResult.getParameterization().getNavigationPropertyToQueryResult();
+				} else
+					sURI = (sServiceRootURI ? sServiceRootURI : "") + "/" + this._oQueryResult.getEntitySet().getQName();
+			}
+			return sURI;
+		},
+	
+		/**
+		 * Get the value of an query option for the OData request URI corresponding
+		 * to this request.
+		 * 
+		 * @param {String}
+		 *            sQueryOptionName Identifies the query option: $select,
+		 *            $filter,$orderby ... or any custom query option
+		 * 
+		 * @returns {String} The value of the requested query option or null, if
+		 *          this option is not used for the OData request.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResultRequest#getURIQueryOptionValue
+		 */
+		getURIQueryOptionValue : function(sQueryOptionName) {
+			var sQueryOptionValue = null;
+	
+			switch (sQueryOptionName) {
+			case "$select": {
+				var sSelectOption = "";
+				this._oSelectedPropertyNames = new Object();
+				var sDimensionPropertyName = null;
+				for ( var sDimName in this._oAggregationLevel) {
+					var oDim = this._oQueryResult.findDimensionByName(sDimName);
+					var oDimSelect = this._oAggregationLevel[sDimName];
+					if (oDimSelect.key == true) {
+						sDimensionPropertyName = oDim.getKeyProperty().name;
+						if (this._oSelectedPropertyNames[sDimensionPropertyName] == undefined) {
+							sSelectOption += (sSelectOption == "" ? "" : ",") + sDimensionPropertyName;
+							this._oSelectedPropertyNames[sDimensionPropertyName] = true;
+						}
+					}
+					if (oDimSelect.text == true && oDim.getTextProperty()) {
+						sDimensionPropertyName = oDim.getTextProperty().name;
+						if (this._oSelectedPropertyNames[sDimensionPropertyName] == undefined) {
+							sSelectOption += (sSelectOption == "" ? "" : ",") + sDimensionPropertyName;
+							this._oSelectedPropertyNames[sDimensionPropertyName] = true;
+						}
+					}
+					if (oDimSelect.attributes) {
+						for (var i = -1, sAttrName; sAttrName = oDimSelect.attributes[++i];) {
+							sDimensionPropertyName = oDim.findAttributeByName(sAttrName).getName();
+							if (this._oSelectedPropertyNames[sDimensionPropertyName] == undefined) {
+								sSelectOption += (sSelectOption == "" ? "" : ",") + sDimensionPropertyName;
+								this._oSelectedPropertyNames[sDimensionPropertyName] = true;
+							}
+						}
+					}
+				}
+	
+				var sMeasurePropertyName;
+				for ( var sMeasName in this._oMeasures) {
+					var oMeas = this._oQueryResult.findMeasureByName(sMeasName);
+					var oMeasSelect = this._oMeasures[sMeasName];
+					if (oMeasSelect.value == true) {
+						sMeasurePropertyName = oMeas.getRawValueProperty().name;
+						if (this._oSelectedPropertyNames[sMeasurePropertyName] == undefined) {
+							sSelectOption += (sSelectOption == "" ? "" : ",") + sMeasurePropertyName;
+							this._oSelectedPropertyNames[sMeasurePropertyName] = true;
+						}
+					}
+					if (oMeasSelect.text == true && oMeas.getFormattedValueProperty()) {
+						sMeasurePropertyName = oMeas.getFormattedValueProperty().name;
+						if (this._oSelectedPropertyNames[sMeasurePropertyName] == undefined) {
+							sSelectOption += (sSelectOption == "" ? "" : ",") + sMeasurePropertyName;
+							this._oSelectedPropertyNames[sMeasurePropertyName] = true;
+						}
+					}
+					if (oMeasSelect.unit == true && oMeas.getUnitProperty()) {
+						sMeasurePropertyName = oMeas.getUnitProperty().name;
+						if (this._oSelectedPropertyNames[sMeasurePropertyName] == undefined) {
+							sSelectOption += (sSelectOption == "" ? "" : ",") + sMeasurePropertyName;
+							this._oSelectedPropertyNames[sMeasurePropertyName] = true;
+						}
+					}
+				}
+	
+				if (this._bIncludeEntityKey) {
+					var aKeyPropRef = this._oQueryResult.getEntityType().getTypeDescription().key.propertyRef;
+					for (var i = -1, oKeyProp; oKeyProp = aKeyPropRef[++i];) {
+						sSelectOption += (sSelectOption == "" ? "" : ",") + oKeyProp.name;
+					}
+				}
+				sQueryOptionValue = (sSelectOption ? sSelectOption : null);
+				break;
+			}
+			case "$filter": {
+				var sFilterOption = null;
+				if (this._oFilterExpression)
+					sFilterOption = this._oFilterExpression.getURIFilterOptionValue();
+				sQueryOptionValue = (sFilterOption ? sFilterOption : null);
+				break;
+			}
+			case "$orderby": {
+				var sSortOption = null;
+				if (this._oSortExpression)
+					sSortOption = this._oSortExpression.getURIOrderByOptionValue(this._oSelectedPropertyNames);
+				sQueryOptionValue = (sSortOption ? sSortOption : null);
+				break;
+			}
+			case "$top": {
+				if (this._iTopRequestOption !== null) {
+					sQueryOptionValue = this._iTopRequestOption;
+				}
+				break;
+			}
+			case "$skip": {
+				sQueryOptionValue = this._iSkipRequestOption;
+				break;
+			}
+			case "$inlinecount": {
+				sQueryOptionValue = (this._bIncludeCount == true ? "allpages" : null);
+				break;
+			}
+			default:
+				break;
+			}
+			return sQueryOptionValue;
+		},
+	
+		/**
+		 * Get the unescaped URI to fetch the query result.
+		 * 
+		 * @param {String}
+		 *            sServiceRootURI (optional) Identifies the root of the OData
+		 *            service
+		 * @param {String}
+		 *            sResourcePath (optional) OData resource path to be considered.
+		 *            If provided, it overwrites any parameterization object that
+		 *            might have been specified separately.
+		 * 
+		 * @returns {String} The unescaped URI that contains the OData resource path
+		 *          and OData system query options to express the aggregation level,
+		 *          filter expression and further options.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.QueryResultRequest#getURIToQueryResultEntries
+		 */
+		getURIToQueryResultEntries : function(sServiceRootURI, sResourcePath) {
+	
+			// construct resource path
+			var sResourcePath = this.getURIToQueryResultEntitySet(sServiceRootURI);
+	
+			// check if request is compliant with filter constraints expressed in
+			// metadata
+			this.getFilterExpression().isValid();
+	
+			// construct query options
+			var sSelectOption = this.getURIQueryOptionValue("$select");
+			var sFilterOption = this.getURIQueryOptionValue("$filter");
+			var sSortOption = this.getURIQueryOptionValue("$orderby");
+			var sTopOption = this.getURIQueryOptionValue("$top");
+			var sSkipOption = this.getURIQueryOptionValue("$skip");
+			var sInlineCountOption = this.getURIQueryOptionValue("$inlinecount");
+	
+			var sURI = sResourcePath;
+			var bQuestionmark = false;
+	
+			if (sSelectOption) {
+				sURI += "?$select=" + sSelectOption;
+				bQuestionmark = true;
+			}
+			if (this._oFilterExpression && sFilterOption) {
+				if (!bQuestionmark) {
+					sURI += "?";
+					bQuestionmark = true;
+				} else {
+					sURI += "&";
+				}
+				sURI += "$filter=" + sFilterOption;
+			}
+			if (this._oSortExpression && sSortOption) {
+				if (!bQuestionmark) {
+					sURI += "?";
+					bQuestionmark = true;
+				} else {
+					sURI += "&";
+				}
+				sURI += "$orderby=" + sSortOption;
+			}
+	
+			if (this._iTopRequestOption && sTopOption) {
+				if (!bQuestionmark) {
+					sURI += "?";
+					bQuestionmark = true;
+				} else {
+					sURI += "&";
+				}
+				sURI += "$top=" + sTopOption;
+			}
+			if (this._iSkipRequestOption && sSkipOption) {
+				if (!bQuestionmark) {
+					sURI += "?";
+					bQuestionmark = true;
+				} else {
+					sURI += "&";
+				}
+				sURI += "$skip=" + sSkipOption;
+			}
+			if (this._bIncludeCount && sInlineCountOption) {
+				if (!bQuestionmark) {
+					sURI += "?";
+					bQuestionmark = true;
+				} else {
+					sURI += "&";
+				}
+				sURI += "$inlinecount=" + sInlineCountOption;
+			}
+			return sURI;
+		},
+	
+		/**
+		 * Private member attributes
+		 */
+		_oQueryResult : null,
+		_oParameterizationRequest : null,
+		_sResourcePath : null,
+		_oAggregationLevel : null,
+		_oMeasures : null,
+		_bIncludeEntityKey : null,
+		_bIncludeCount : null,
+		_oFilterExpression : null,
+		_oSortExpression : null,
+		_iSkipRequestOption : 0,
+		_iTopRequestOption : null
+	};
+	
+	/** ******************************************************************** */
+	
+	/**
+	 * Create a request object for interaction with a query parameter value help.
+	 * 
+	 * @param {sap.ui.model.analytics.odata4analytics.Parameter}
+	 *            oParameter Description of a query parameter
+	 * 
+	 * @constructor
+	 * 
+	 * @class Creation of URIs for fetching a query parameter value set.
+	 * @name sap.ui.model.analytics.odata4analytics.ParameterValueSetRequest
+	 * @public
+	 */
+	odata4analytics.ParameterValueSetRequest = function(oParameter) {
+		this._init(oParameter);
+	};
+	
+	odata4analytics.ParameterValueSetRequest.prototype = {
+		/**
+		 * @private
+		 */
+		_init : function(oParameter) {
+			this._oParameter = oParameter;
+			this._oValueSetResult = new Object();
+			this._oFilterExpression = null;
+			this._oSortExpression = null;
+		},
+	
+		/**
+		 * Specify which components of the parameter shall be included in the value
+		 * set.
+		 * 
+		 * @param bIncludeText
+		 *            Indicator whether or not to include the parameter text (if
+		 *            available) in the value set. Pass null to keep current
+		 *            setting.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.ParameterValueSetRequest#includeParameterText
+		 */
+		includeParameterText : function(bIncludeText) {
+			if (bIncludeText != null)
+				this._oValueSetResult.text = bIncludeText;
+		},
+	
+		/**
+		 * Get the filter expression for this request.
+		 * 
+		 * Expressions are represented by separate objects. If none exists so far, a
+		 * new expression object gets created.
+		 * 
+		 * @returns {sap.ui.model.analytics.odata4analytics.FilterExpression} The filter object
+		 *          associated to this request.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.ParameterValueSetRequest#getFilterExpression
+		 */
+		getFilterExpression : function() {
+			if (this._oFilterExpression == null) {
+				var oEntityType = this._oParameter.getContainingParameterization().getEntityType();
+				var oModel = this._oParameter.getContainingParameterization().getTargetQueryResult().getModel();
+				this._oFilterExpression = new odata4analytics.FilterExpression(oModel, oEntityType
+						.getSchema(), oEntityType);
+			}
+			return this._oFilterExpression;
+		},
+	
+		/**
+		 * Set the filter expression for this request.
+		 * 
+		 * Expressions are represented by separate objects. Calling this method
+		 * replaces the filter object maintained by this request.
+		 * 
+		 * @param {sap.ui.model.analytics.odata4analytics.FilterExpression}
+		 *            oFilter The filter object to be associated with this request.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.ParameterValueSetRequest#setFilterExpression
+		 */
+		setFilterExpression : function(oFilter) {
+			this._oFilterExpression = oFilter;
+		},
+	
+		/**
+		 * Get the sort expression for this request.
+		 * 
+		 * Expressions are represented by separate objects. If none exists so far, a
+		 * new expression object gets created.
+		 * 
+		 * @returns {sap.ui.model.analytics.odata4analytics.SortExpression} The sort object
+		 *          associated to this request.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.ParameterValueSetRequest#getSortExpression
+		 */
+		getSortExpression : function() {
+			if (this._oSortExpression == null) {
+				var oEntityType = this._oParameter.getContainingParameterization().getEntityType();
+				this._oSortExpression = new odata4analytics.SortExpression(oEntityType.getModel(), oEntityType.getSchema(),
+						oEntityType);
+			}
+			return this._oSortExpression;
+		},
+	
+		/**
+		 * Set the sort expression for this request.
+		 * 
+		 * Expressions are represented by separate objects. Calling this method
+		 * replaces the sort object maintained by this request.
+		 * 
+		 * @param {sap.ui.model.analytics.odata4analytics.SortExpression}
+		 *            oSorter The sort object to be associated with this request.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.ParameterValueSetRequest#setSortExpression
+		 */
+		setSortExpression : function(oSorter) {
+			this._oSortExpression = oSorter;
+		},
+	
+		/**
+		 * Get the value of an query option for the OData request URI corresponding
+		 * to this request.
+		 * 
+		 * @param {String}
+		 *            sQueryOptionName Identifies the query option: $select,
+		 *            $filter,... or any custom query option
+		 * 
+		 * @returns {String} The value of the requested query option or null, if
+		 *          this option is not used for the OData request.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.ParameterValueSetRequest#getURIQueryOptionValue
+		 */
+		getURIQueryOptionValue : function(sQueryOptionName) {
+			var sQueryOptionValue = null;
+	
+			switch (sQueryOptionName) {
+			case "$select": {
+				var sSelectOption = "";
+				sSelectOption += (sSelectOption == "" ? "" : ",") + this._oParameter.getProperty().name;
+				if (this._oValueSetResult.text == true && this._oParameter.getTextProperty())
+					sSelectOption += (sSelectOption == "" ? "" : ",") + this._oParameter.getTextProperty().name;
+				sQueryOptionValue = (sSelectOption ? sSelectOption : null);
+				break;
+			}
+			case "$filter": {
+				var sFilterOption = null;
+				if (this._oFilterExpression)
+					sFilterOption = this._oFilterExpression.getURIFilterOptionValue();
+				sQueryOptionValue = (sFilterOption ? sFilterOption : null);
+				break;
+			}
+			case "$orderby": {
+				var sSortOption = null;
+				if (this._oSortExpression)
+					sSortOption = this._oSortExpression.getURIOrderByOptionValue();
+				sQueryOptionValue = (sSortOption ? sSortOption : null);
+				break;
+			}
+			default:
+				break;
+			}
+	
+			return sQueryOptionValue;
+		},
+	
+		/**
+		 * Get the unescaped URI to fetch the parameter value set.
+		 * 
+		 * @param {String}
+		 *            sServiceRootURI (optional) Identifies the root of the OData
+		 *            service
+		 * @returns {String} The unescaped URI that contains the OData resource path
+		 *          and OData system query options to express the request for the
+		 *          parameter value set..
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.ParameterValueSetRequest#getURIToParameterValueSetEntries
+		 */
+		getURIToParameterValueSetEntries : function(sServiceRootURI) {
+	
+			// construct resource path
+			var sResourcePath = null;
+	
+			sResourcePath = (sServiceRootURI ? sServiceRootURI : "") + "/"
+					+ this._oParameter.getContainingParameterization().getEntitySet().getQName();
+	
+			// check if request is compliant with filter constraints expressed in
+			// metadata
+			this.getFilterExpression().isValid();
+	
+			// construct query options
+			var sSelectOption = this.getURIQueryOptionValue("$select");
+			var sFilterOption = this.getURIQueryOptionValue("$filter");
+			var sSortOption = this.getURIQueryOptionValue("$orderby");
+	
+			var sURI = sResourcePath;
+			var bQuestionmark = false;
+	
+			if (sSelectOption) {
+				sURI += "?$select=" + sSelectOption;
+				bQuestionmark = true;
+			}
+			if (this._oFilterExpression && sFilterOption) {
+				if (!bQuestionmark) {
+					sURI += "?";
+					bQuestionmark = true;
+				} else
+					sURI += "&";
+				sURI += "$filter=" + sFilterOption;
+			}
+			if (this._oSortExpression && sSortOption) {
+				if (!bQuestionmark) {
+					sURI += "?";
+					bQuestionmark = true;
+				} else
+					sURI += "&";
+				sURI += "$orderby=" + sSortOption;
+			}
+			return sURI;
+		},
+	
+		/**
+		 * Private member attributes
+		 */
+		_oParameter : null,
+		_oFilterExpression : null,
+		_oSortExpression : null,
+		_oValueSetResult : null
+	};
+	
+	/** ******************************************************************** */
+	
+	/**
+	 * Create a request object for interaction with a dimension value help. Such a
+	 * value help is served by either the query result entity set, in which case the
+	 * returned dimension members are limited to those also used in the query result
+	 * data. Or, the value help is populated by a master data entity set, if made
+	 * available by the service. In this case, the result will include all valid
+	 * members for that dimension.
+	 * 
+	 * @param {sap.ui.model.analytics.odata4analytics.Dimension}
+	 *            oDimension Description of a dimension
+	 * @param {sap.ui.model.analytics.odata4analytics.ParameterizationRequest}
+	 *            oParameterizationRequest (optional) Request object for
+	 *            interactions with the parameterization of the query result or (not
+	 *            yet supported) master data entity set Such an object is required
+	 *            if the entity set holding the dimension members includes
+	 *            parameters.
+	 * @param {boolean}
+	 *            bUseMasterData (optional) Indicates use of master data for
+	 *            determining the dimension members.
+	 * 
+	 * @constructor
+	 * 
+	 * @class Creation of URIs for fetching a query dimension value set.
+	 * @name sap.ui.model.analytics.odata4analytics.DimensionMemberSetRequest
+	 * @public
+	 */
+	odata4analytics.DimensionMemberSetRequest = function(oDimension, oParameterizationRequest, bUseMasterData) {
+		this._init(oDimension, oParameterizationRequest, bUseMasterData);
+	};
+	
+	odata4analytics.DimensionMemberSetRequest.prototype = {
+		/**
+		 * @private
+		 */
+		_init : function(oDimension, oParameterizationRequest, bUseMasterData) {
+			this._oDimension = oDimension;
+			this._oParameterizationRequest = oParameterizationRequest;
+			this._bUseMasterData = bUseMasterData;
+			this._oValueSetResult = new Object();
+			this._oFilterExpression = null;
+			this._oSortExpression = null;
+	
+			if (this._oParameterizationRequest != null && this._bUseMasterData == true)
+				throw "LIMITATION: parameterized master data entity sets are not yet implemented";
+			if (this._bUseMasterData) {
+				this._oEntitySet = this._oDimension.getMasterDataEntitySet();
+			} else {
+				this._oEntitySet = this._oDimension.getContainingQueryResult().getEntitySet();
+				if (this._oDimension.getContainingQueryResult().getParameterization() && !this._oParameterizationRequest)
+					throw "Missing parameterization request";
+			}
+		},
+	
+		/**
+		 * Set the parameterization request required for retrieving dimension
+		 * members directly from the query result, if it is parameterized.
+		 * 
+		 * @param oParameterizationRequest
+		 *            Request object for interactions with the parameterization of
+		 *            this query result
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.DimensionMemberSetRequest#setParameterizationRequest
+		 */
+		setParameterizationRequest : function(oParameterizationRequest) {
+			this._oParameterizationRequest = oParameterizationRequest;
+		},
+	
+		/**
+		 * Specify which components of the dimension shall be included in the value
+		 * set.
+		 * 
+		 * @param bIncludeText
+		 *            Indicator whether or not to include the dimension text (if
+		 *            available) in the value set.
+		 * @param bIncludeAttributes
+		 *            Indicator whether or not to include all dimension attributes
+		 *            (if available) in the value set.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.includeDimensionTextAttributes
+		 */
+		includeDimensionTextAttributes : function(bIncludeText, bIncludeAttributes) {
+			this._oValueSetResult.text = {
+				text : false,
+				attributes : false
+			};
+			if (bIncludeText == true)
+				this._oValueSetResult.text = true;
+			if (bIncludeAttributes == true)
+				this._oValueSetResult.attributes = true;
+		},
+	
+		/**
+		 * Get the filter expression for this request.
+		 * 
+		 * Expressions are represented by separate objects. If none exists so far, a
+		 * new expression object gets created.
+		 * 
+		 * @returns {sap.ui.model.analytics.odata4analytics.FilterExpression} The filter object
+		 *          associated to this request.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.DimensionMemberSetRequest#getFilterExpression
+		 */
+		getFilterExpression : function() {
+			if (this._oFilterExpression == null) {
+				var oEntityType = this._oEntitySet.getEntityType();
+				var oModel = this._oDimension.getContainingQueryResult().getModel();
+				this._oFilterExpression = new odata4analytics.FilterExpression(oModel, oEntityType
+						.getSchema(), oEntityType);
+			}
+			return this._oFilterExpression;
+		},
+	
+		/**
+		 * Set the filter expression for this request.
+		 * 
+		 * Expressions are represented by separate objects. Calling this method
+		 * replaces the filter object maintained by this request.
+		 * 
+		 * @param {sap.ui.model.analytics.odata4analytics.FilterExpression}
+		 *            oFilter The filter object to be associated with this request.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.DimensionMemberSetRequest#setFilterExpression
+		 */
+		setFilterExpression : function(oFilter) {
+			this._oFilterExpression = oFilter;
+		},
+	
+		/**
+		 * Get the sort expression for this request.
+		 * 
+		 * Expressions are represented by separate objects. If none exists so far, a
+		 * new expression object gets created.
+		 * 
+		 * @returns {sap.ui.model.analytics.odata4analytics.SortExpression} The sort object
+		 *          associated to this request.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.DimensionMemberSetRequest#getSortExpression
+		 */
+		getSortExpression : function() {
+			if (this._oSortExpression == null) {
+				this._oSortExpression = new odata4analytics.SortExpression(this._oEntityType.getModel(), this._oEntityType
+						.getSchema(), this._oEntityType);
+			}
+			return this._oSortExpression;
+		},
+	
+		/**
+		 * Set the sort expression for this request.
+		 * 
+		 * Expressions are represented by separate objects. Calling this method
+		 * replaces the sort object maintained by this request.
+		 * 
+		 * @param {sap.ui.model.analytics.odata4analytics.SortExpression}
+		 *            oSorter The sort object to be associated with this request.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.DimensionMemberSetRequest#setSortExpression
+		 */
+		setSortExpression : function(oSorter) {
+			this._oSortExpression = oSorter;
+		},
+	
+		/**
+		 * Set further options to be applied for the OData request
+		 * 
+		 * @param {Boolean}
+		 *            bIncludeCount Indicates whether or not the result shall
+		 *            include a count for the returned entities. Default is not to
+		 *            include it. Pass null to keep current setting.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.DimensionMemberSetRequest#setRequestOptions
+		 */
+		setRequestOptions : function(bIncludeCount) {
+			if (bIncludeCount != null)
+				this._bIncludeCount = bIncludeCount;
+		},
+	
+		/**
+		 * Specify that only a page of the query result shall be returned. A page is
+		 * described by its boundaries, that are row numbers for the first and last
+		 * rows in the query result to be returned.
+		 * 
+		 * @param {Number}
+		 *            start The first row of the query result to be returned.
+		 *            Numbering starts at 1. Passing null is equivalent to start
+		 *            with the first row.
+		 * @param {Number}
+		 *            end The last row of the query result to be returned. Passing
+		 *            null is equivalent to get all rows up to the end of the query
+		 *            result.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.DimensionMemberSetRequest#setResultPageBoundaries
+		 */
+		setResultPageBoundaries : function(start, end) {
+			if (start != null && typeof start !== "number") {
+				throw "Start value must be null or numeric"; // TODO
+			}
+			if (end !== null && typeof end !== "number") {
+				throw "End value must be null or numeric"; // TODO
+			}
+	
+			if (start == null)
+				start = 1;
+	
+			if (start < 1 || start > (end == null ? start : end)) {
+				throw "Invalid values for requested page boundaries"; // TODO
+			}
+	
+			this._iSkipRequestOption = (start > 1) ? start - 1 : null;
+			this._iTopRequestOption = (end != null) ? (end - start + 1) : null;
+		},
+	
+		/**
+		 * Returns the current page boundaries as object with properties
+		 * <code>start</code> and <code>end</code>. If the end of the page is
+		 * unbounded, <code>end</code> is null.
+		 * 
+		 * @returns {Object} the current page boundaries as object
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.DimensionMemberSetRequest#getResultPageBoundaries
+		 */
+		getResultPageBoundaries : function() {
+			return {
+				start : (this._iSkipRequestOption == null) ? 1 : this._iSkipRequestOption,
+				end : (this._iTopRequestOption != null) ? (this._iSkipRequestOption == null) ? 1 : this._iSkipRequestOption
+						+ this._iTopRequestOption : null
+			};
+		},
+		
+		/**
+		 * Get the value of an query option for the OData request URI corresponding
+		 * to this request.
+		 * 
+		 * @param {String}
+		 *            sQueryOptionName Identifies the query option: $select,
+		 *            $filter,... or any custom query option
+		 * 
+		 * @returns {String} The value of the requested query option or null, if
+		 *          this option is not used for the OData request.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.DimensionMemberSetRequest#getURIQueryOptionValue
+		 */
+		getURIQueryOptionValue : function(sQueryOptionName) {
+			var sQueryOptionValue = null;
+	
+			switch (sQueryOptionName) {
+			case "$select": {
+				var sSelectOption = "";
+				var oEntityType = this._oEntitySet.getEntityType();
+				var aKeyPropName = oEntityType.getKeyProperties();
+				var aKeyTextPropName = [];
+				// add key properties and, if requested, their text properties
+				if (this._bUseMasterData) {
+					for (var i = -1, sKeyPropName; sKeyPropName = aKeyPropName[++i];) {
+						sSelectOption += (sSelectOption == "" ? "" : ",") + sKeyPropName;
+						var oKeyTextProperty = oEntityType.getTextPropertyOfProperty(sKeyPropName);
+						if (oKeyTextProperty) {
+							if (this._oValueSetResult.text == true)
+								sSelectOption += "," + oKeyTextProperty.name;
+							aKeyTextPropName.push(oKeyTextProperty.name);
+						}
+					}
+				} else { // use query result
+					sSelectOption += (sSelectOption == "" ? "" : ",") + this._oDimension.getKeyProperty().name;
+					if (this._oValueSetResult.text == true && this._oDimension.getTextProperty())
+						sSelectOption += (sSelectOption == "" ? "" : ",") + this._oDimension.getTextProperty().name;
+				}
+				// add further attributes, if requested
+				if (this._oValueSetResult.attributes) {
+					if (this._bUseMasterData) {
+						// do not require sap:attribute-for annotations, but simply
+						// add all further
+						// properties
+						var oAllPropertiesSet = oEntityType.getProperties();
+						for ( var sPropName in oAllPropertiesSet) {
+							var bIsKeyOrKeyText = false;
+							for (var i = -1, sKeyPropName; sKeyPropName = aKeyPropName[++i];) {
+								if (sPropName == sKeyPropName) {
+									bIsKeyOrKeyText = true;
+									break;
+								}
+							}
+							if (bIsKeyOrKeyText)
+								continue;
+							for (var i = -1, sKeyTextPropName; sKeyTextPropName = aKeyTextPropName[++i];) {
+								if (sPropName == sKeyTextPropName) {
+									bIsKeyOrKeyText = true;
+									break;
+								}
+							}
+							if (!bIsKeyOrKeyText)
+								sSelectOption += "," + sPropName;
+						}
+					} else { // use query result, hence include known dimension
+						// attributes
+						var aAttributeName = this._oDimension.getAllAttributeNames();
+						for (var i = -1, sAttrName; sAttrName = aAttributeName[++i];) {
+							sSelectOption += (sSelectOption == "" ? "" : ",")
+									+ this._oDimension.findAttributeByName(sAttrName).getName();
+						}
+					}
+				}
+	
+				sQueryOptionValue = (sSelectOption ? sSelectOption : null);
+				break;
+			}
+			case "$filter": {
+				var sFilterOption = null;
+				if (this._oFilterExpression)
+					sFilterOption = this._oFilterExpression.getURIFilterOptionValue();
+				sQueryOptionValue = (sFilterOption ? sFilterOption : null);
+				break;
+			}
+			case "$orderby": {
+				var sSortOption = null;
+				if (this._oSortExpression)
+					sSortOption = this._oSortExpression.getURIOrderByOptionValue();
+				sQueryOptionValue = (sSortOption ? sSortOption : null);
+				break;
+			}
+			case "$top": {
+				if (this._iTopRequestOption !== null) {
+					sQueryOptionValue = this._iTopRequestOption;
+				}
+				break;
+			}
+			case "$skip": {
+				sQueryOptionValue = this._iSkipRequestOption;
+				break;
+			}
+			case "$inlinecount": {
+				sQueryOptionValue = (this._bIncludeCount == true ? "allpages" : null);
+				break;
+			}
+			default:
+				break;
+			}
+	
+			return sQueryOptionValue;
+		},
+	
+		/**
+		 * Get the URI to locate the entity set for the dimension memebers.
+		 * 
+		 * @param {String}
+		 *            sServiceRootURI (optional) Identifies the root of the OData
+		 *            service
+		 * @returns {String} The resource path of the URI pointing to the entity
+		 *          set. It is a relative URI unless a service root is given, which
+		 *          would then prefixed in order to return a complete URL.
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.DimensionMemberSetRequest#getURIToDimensionMemberEntitySet
+		 */
+		getURIToDimensionMemberEntitySet : function(sServiceRootURI) {
+			var sResourcePath = null;
+			if (!this._bUseMasterData && this._oParameterizationRequest) {
+				sResourcePath = this._oParameterizationRequest.getURIToParameterizationEntry(sServiceRootURI) + "/"
+						+ this._oDimension.getContainingQueryResult().getParameterization().getNavigationPropertyToQueryResult();
+			} else {
+				sResourcePath = (sServiceRootURI ? sServiceRootURI : "") + "/" + this._oEntitySet.getQName();
+			}
+			return sResourcePath;
+		},
+	
+		/**
+		 * Get the unescaped URI to fetch the dimension members, optionally
+		 * augmented by text and attributes.
+		 * 
+		 * @param {String}
+		 *            sServiceRootURI (optional) Identifies the root of the OData
+		 *            service
+		 * @returns {String} The unescaped URI that contains the OData resource path
+		 *          and OData system query options to express the request for the
+		 *          parameter value set..
+		 * @public
+		 * @function
+		 * @name sap.ui.model.analytics.odata4analytics.DimensionMemberSetRequest#getURIToDimensionMemberEntries
+		 */
+		getURIToDimensionMemberEntries : function(sServiceRootURI) {
+	
+			// construct resource path
+			var sResourcePath = this.getURIToDimensionMemberEntitySet(sServiceRootURI);
+	
+			// check if request is compliant with filter constraints expressed in
+			// metadata
+			this.getFilterExpression().isValid();
+	
+			// construct query options
+			var sSelectOption = this.getURIQueryOptionValue("$select");
+			var sFilterOption = this.getURIQueryOptionValue("$filter");
+			var sSortOption = this.getURIQueryOptionValue("$orderby");
+			var sTopOption = this.getURIQueryOptionValue("$top");
+			var sSkipOption = this.getURIQueryOptionValue("$skip");
+			var sInlineCountOption = this.getURIQueryOptionValue("$inlinecount");
+	
+			var sURI = sResourcePath;
+			var bQuestionmark = false;
+	
+			if (sSelectOption) {
+				sURI += "?$select=" + sSelectOption;
+				bQuestionmark = true;
+			}
+			if (this._oFilterExpression && sFilterOption) {
+				if (!bQuestionmark) {
+					sURI += "?";
+					bQuestionmark = true;
+				} else
+					sURI += "&";
+				sURI += "$filter=" + sFilterOption;
+			}
+			if (this._oSortExpression && sSortOption) {
+				if (!bQuestionmark) {
+					sURI += "?";
+					bQuestionmark = true;
+				} else
+					sURI += "&";
+				sURI += "$orderby=" + sSortOption;
+			}
+			if (this._iTopRequestOption && sTopOption) {
+				if (!bQuestionmark) {
+					sURI += "?";
+					bQuestionmark = true;
+				} else {
+					sURI += "&";
+				}
+				sURI += "$top=" + sTopOption;
+			}
+			if (this._iSkipRequestOption && sSkipOption) {
+				if (!bQuestionmark) {
+					sURI += "?";
+					bQuestionmark = true;
+				} else {
+					sURI += "&";
+				}
+				sURI += "$skip=" + sSkipOption;
+			}
+			if (this._bIncludeCount && sInlineCountOption) {
+				if (!bQuestionmark) {
+					sURI += "?";
+					bQuestionmark = true;
+				} else {
+					sURI += "&";
+				}
+				sURI += "$inlinecount=" + sInlineCountOption;
+			}
+			return sURI;
+		},
+	
+		/**
+		 * Private member attributes
+		 */
+		_oDimension : null,
+		_oParameterizationRequest : null,
+		_oEntitySet : null, // points to query result entity set or master data
+		// entity set
+		_bUseMasterData : false,
+	
+		_oFilterExpression : null,
+		_oSortExpression : null,
+		_oValueSetResult : null,
+		
+		_bIncludeCount : null,
+		_iSkipRequestOption : 0,
+		_iTopRequestOption : null
+		
+	};
+	
+	//
+	// Desirable extensions:
+	//
+	// OBSOLETE due to DimensionMemberSetRequest against master data - Another class
+	// for representing value help entities to
+	// specifiy text properties, attribute properties (with association to
+	// odata4analytics.Parameter and odata4analytics.Dimension)
+	//
+	// - ParameterValueSetRequest: Add option to read values from separate entity
+	// set (odata4analytics.ParameterValueSetRequest)
+	// 
+	// DONE - DimensionMemberSetRequest: Add option to read values from separate
+	// master
+	// data entity
+	// set (odata4analytics.DimensionMemberSetRequest)
+	//
+	// DONE - value rendering: Add support for types other than string
+	// (odata4analytics.helper.renderPropertyKeyValue)
+	//
+	// DONE - filter expressions are validated against filter restriction
+	// annotations
+	// (odata4analytics.FilterExpression)
+	//
+	// DONE workaround - Implemenentation of filter expressions shall use SAPUI5
+	// class
+	// sap.ui.model.Filter. Problem:
+	// This class does not provide accessor methods for object attributes.
+	// (odata4analytics.FilterExpression)
+	//
+	// - Shield API implementation from direct access to object properties.
+	// Introduce closures for this purpose.
+	/*
+	 * Pattern: odata4analytics.QueryResult = (function ($){ var _init =
+	 * func
+	 * 
+	 * var class = function(oEntityType, oEntitySet, oParameterization) {
+	 * _init(oEntityType, oEntitySet, oParameterization); }; }; return class;
+	 * })(jQuery);
+	 * 
+	 */
+	
+	return odata4analytics;
+
+}, /* bExport= */ true);	
+
+}; // end of sap/ui/model/analytics/odata4analytics.js
 if ( !jQuery.sap.isDeclared('sap.ui.model.odata.CountMode') ) {
 /*!
  * SAP UI development toolkit for HTML5 (SAPUI5/OpenUI5)
@@ -34291,4701 +39567,6 @@ if (typeof window !== 'undefined') {
 jQuery.sap.declare('sap.ui.thirdparty.caja-html-sanitizer');
 
 }; // end of sap/ui/thirdparty/caja-html-sanitizer.js
-if ( !jQuery.sap.isDeclared('sap.ui.thirdparty.odata4analytics') ) {
-/*!
- * SAP UI development toolkit for HTML5 (SAPUI5/OpenUI5)
- * (c) Copyright 2009-2014 SAP AG or an SAP affiliate company. 
- * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
- */
-
-// Provides API for analytical extensions in OData service metadata
-jQuery.sap.declare('sap.ui.thirdparty.odata4analytics'); // unresolved dependency added by SAPUI5 'AllInOne' Builder
-sap.ui.define("sap/ui/thirdparty/odata4analytics",['jquery.sap.global'],
-	function(jQuery) {
-	"use strict";
-
-	/**
-	 * The OData4Analytics API is purely experimental, not yet functionally complete
-	 * and not meant for productive usage. At present, its only purpose is to
-	 * demonstrate how easy analytical extensions of OData4SAP can be consumed. 
-	 * 
-	 * <em>USE OBJECTS VIA METHODS ONLY - DO NOT ACCESS JAVASCRIPT OBJECT PROPERTIES DIRECTLY !</em>
-	 * 
-	 * Lazy initialization of attributes will cause unexpected values when you
-	 * access object attributes directly. 
-	 * 
-	 * @author SAP AG
-	 * @experimental This module is only for experimental use!
-	 * @private
-	 */
-	var odata4analytics = odata4analytics || {};
-	
-	odata4analytics.constants = {};
-	odata4analytics.constants["SAP_NAMESPACE"] = "http://www.sap.com/Protocols/SAPData";
-	odata4analytics.constants["VERSION"] = "0.7";
-	
-	odata4analytics.helper = {
-		renderPropertyKeyValue : function(sKeyValue, sPropertyEDMTypeName) {
-			if (typeof sKeyValue == "string" && sKeyValue.charAt(0) == "'")
-				throw "Illegal property value starting with a quote";
-			switch (sPropertyEDMTypeName) {
-			case 'Edm.String':
-				return "'" + sKeyValue + "'";
-			case 'Edm.DateTime':
-				return "datetime'" + sKeyValue + "'";
-			case 'Edm.Guid':
-				return "guid'" + sKeyValue + "'";
-			case 'Edm.Time':
-				return "time'" + sKeyValue + "'";
-			case 'Edm.DateTimeOffset':
-				return "datetimeoffset'" + sKeyValue + "'";
-			default:
-				return sKeyValue;
-			}
-		},
-		renderPropertyFilterValue : function(sFilterValue, sPropertyEDMTypeName) {
-			if (typeof sFilterValue == "string" && sFilterValue.charAt(0) == "'")
-				throw "Illegal property value starting with a quote";
-			switch (sPropertyEDMTypeName) {
-			case 'Edm.String':
-				return "'" + sFilterValue + "'";
-			case 'Edm.DateTime':
-				return "datetime'" + sFilterValue + "'";
-			case 'Edm.Guid':
-				return "guid'" + sFilterValue + "'";
-			case 'Edm.Time':
-				return "time'" + sFilterValue + "'";
-			case 'Edm.DateTimeOffset':
-				return "datetimeoffset'" + sFilterValue + "'";
-			default:
-				return sFilterValue;
-			}
-		},
-		tokenizeNametoLabelText : function(sName) {
-			var sLabel = "";
-	
-			// remove leading 'P_' often used for parameter properties on HANA
-			sLabel = sName.replace(/^P_(.*)/, "$1");
-			// split UpperCamelCase in words (treat numbers and _ as upper case)
-			sLabel = sLabel.replace(/([^A-Z0-9_]+)([A-Z0-9_])/g, "$1 $2");
-			// split acronyms in words
-			sLabel = sLabel.replace(/([A-Z0-9_]{2,})([A-Z0-9_])([^A-Z0-9_]+)/g, "$1 $2$3");
-			// remove trailing _E
-			sLabel = sLabel.replace(/(.*) _E$/, "$1");
-			// remove underscores that were identified as upper case
-			sLabel = sLabel.replace(/(.*) _(.*)/g, "$1 $2");
-			return sLabel;
-		}
-	};
-	
-	/**
-	 * Create a representation of the analytical semantics of OData service metadata
-	 * 
-	 * @param {object}
-	 *            oModelReference An instance of ReferenceByURI, ReferenceByModel or
-	 *            ReferenceWithWorkaround for locating the OData service.
-	 * @param {string}
-	 *            sAnnotationJSONDoc A JSON document providing extra annotations to
-	 *            the elements of the structure of the given service
-	 * @constructor
-	 * 
-	 * @class Representation of an OData model with analytical annotations defined
-	 *        by OData4SAP.
-	 * @protected
-	 */
-	
-	odata4analytics.Model = function(oModelReference, sAnnotationJSONDoc) {
-		this._init(oModelReference, sAnnotationJSONDoc);
-	};
-	
-	/**
-	 * Create a reference to an OData model by the URI of the related OData service.
-	 * 
-	 * @param {string}
-	 *            sURI holding the URI.
-	 * @constructor
-	 * 
-	 * @class Handle to an OData model by the URI pointing to it.
-	 * @protected
-	 */
-	odata4analytics.Model.ReferenceByURI = function(sURI) {
-		return {
-			sServiceURI : sURI
-		};
-	};
-	
-	/**
-	 * Create a reference to an OData model already loaded elsewhere with the help
-	 * of SAP UI5.
-	 * 
-	 * @param {object}
-	 *            oModel holding the OData model.
-	 * @constructor
-	 * 
-	 * @class Handle to an already instantiated SAP UI5 OData model.
-	 * @protected
-	 */
-	odata4analytics.Model.ReferenceByModel = function(oModel) {
-		return {
-			oModel : oModel
-		};
-	};
-	
-	/**
-	 * Create a reference to an OData model having certain workarounds activated. A
-	 * workaround is an implementation that changes the standard behavior of the API
-	 * to overcome some gap or limitation in the OData provider. The workaround
-	 * implementation can be conditionally activated by passing the identifier in
-	 * the contructor.
-	 * 
-	 * Known workaround identifiers are:
-	 * 
-	 * <li>"CreateLabelsFromTechnicalNames" - If a property has no label text, it
-	 * gets generated from the property name.</li>
-	 * 
-	 * <li>"IdentifyTextPropertiesByName" -If a dimension property has no text and
-	 * another property with the same name and an appended "Name", "Text" etc.
-	 * exists, they are linked via annotation.</li>
-	 * 
-	 * 
-	 * @param {object}
-	 *            oModelReference holding a reference to the OData model, obtained
-	 *            by odata4analytics.Model.ReferenceByModel or by
-	 *            sap.odata4analytics.Model.ReferenceByURI.
-	 * @param {array(string)}
-	 *            aWorkaroundID listing all workarounds to be applied.
-	 * @constructor
-	 * 
-	 * @class Handle to an already instantiated SAP UI5 OData model.
-	 * @protected
-	 */
-	odata4analytics.Model.ReferenceWithWorkaround = function(oModel, aWorkaroundID) {
-		return {
-			oModelReference : oModel,
-			aWorkaroundID : aWorkaroundID
-		};
-	};
-	
-	odata4analytics.Model.prototype = {
-	
-		/**
-		 * initialize a new object
-		 * 
-		 * @private
-		 */
-		_init : function(oModelReference, sAnnotationJSONDoc) {
-	
-			/*
-			 * get access to OData model
-			 */
-	
-			this._oActivatedWorkarounds = new Object();
-	
-			if (oModelReference && oModelReference.aWorkaroundID) {
-				for (var i = -1, sID; sID = oModelReference.aWorkaroundID[++i];) {
-					this._oActivatedWorkarounds[sID] = true;
-				}
-				oModelReference = oModelReference.oModelReference;
-			}
-	
-			// check proper usage
-			if (!oModelReference || (!oModelReference.sServiceURI && !oModelReference.oModel)) {
-				throw "Usage with oModelReference being an instance of Model.ReferenceByURI or Model.ReferenceByModel";
-			}
-	
-			if (oModelReference.oModel)
-				this._oModel = oModelReference.oModel;
-			else
-				this._oModel = new sap.ui.model.odata.ODataModel(oModelReference.sServiceURI);
-	
-			if (this._oModel.getServiceMetadata().dataServices == undefined) {
-				throw "Model could not be loaded";
-			}
-	
-			/*
-			 * add extra annotations if provided
-			 */
-			this.mergeV2Annotations(sAnnotationJSONDoc);
-	
-			/*
-			 * parse OData model for analytic queries
-			 */
-	
-			this._oQueryResultSet = new Object();
-			this._oParameterizationSet = new Object();
-			this._oEntityTypeSet = new Object();
-			this._oEntitySetSet = new Object();
-			this._oEntityTypeNameToEntitySetMap = new Object();
-	
-			// loop over all schemas and entity containers
-			// TODO: extend this implementation to support many schemas
-			var oSchema = this._oModel.getServiceMetadata().dataServices.schema[0];
-	
-			// remember default container
-			for (var i = -1, oContainer; oContainer = oSchema.entityContainer[++i];) {
-				if (oContainer.isDefaultEntityContainer == "true") {
-					this._oDefaultEntityContainer = oContainer;
-					break;
-				}
-			}
-	
-			var aEntityType = oSchema.entityType;
-	
-			// A. preparation
-	
-			// A.1 collect all relevant OData entity types representing query
-			// results, parameters
-			var aQueryResultEntityTypes = [], aParameterEntityTypes = [], aUnsortedEntityTypes = [];
-	
-			for (var i = -1, oType; oType = aEntityType[++i];) {
-				var bProcessed = false;
-	
-				if (oType.extensions != undefined) {
-					for (var j = -1, oExtension; oExtension = oType.extensions[++j];) {
-						if (oExtension.namespace == odata4analytics.constants.SAP_NAMESPACE
-								&& oExtension.name == "semantics") {
-							bProcessed = true;
-							switch (oExtension.value) {
-							case "aggregate":
-								aQueryResultEntityTypes.push(oType);
-								break;
-							case "parameters":
-								aParameterEntityTypes.push(oType);
-								break;
-							default:
-								aUnsortedEntityTypes.push(oType);
-							}
-						}
-						if (bProcessed)
-							continue;
-					}
-					if (!bProcessed)
-						aUnsortedEntityTypes.push(oType);
-				} else
-					aUnsortedEntityTypes.push(oType);
-			}
-			// A.2 create entity type representations for the unsorted types
-			for (var i = -1, oType; oType = aUnsortedEntityTypes[++i];) {
-				var oEntityType = new odata4analytics.EntityType(this._oModel.getServiceMetadata(), oSchema, oType);
-				this._oEntityTypeSet[oEntityType.getQName()] = oEntityType;
-				var aEntitySet = this._getEntitySetsOfType(oSchema, oEntityType.getQName());
-				if (aEntitySet.length == 0)
-					throw "Invalid consumption model: No entity set for entity type " + oEntityType.getQName() + " found";
-				if (aEntitySet.length > 1)
-					throw "Unsupported consumption model: More than one entity set for entity type " + oEntityType.getQName()
-							+ " found";
-				var oEntitySet = new odata4analytics.EntitySet(this._oModel.getServiceMetadata(), oSchema,
-						aEntitySet[0][0], aEntitySet[0][1], oEntityType);
-				this._oEntitySetSet[oEntitySet.getQName()] = oEntitySet;
-				this._oEntityTypeNameToEntitySetMap[oEntityType.getQName()] = oEntitySet;
-			}
-	
-			// B. create objects for the analytical extensions of these entity types
-			// B.1 create parameters
-	
-			// temporary storage for lookup of entity *types* annotated with
-			// parameters semantics
-			var oParameterizationEntityTypeSet = {};
-	
-			for (var i = -1, oType; oType = aParameterEntityTypes[++i];) {
-				// B.1.1 create object for OData entity type
-				var oEntityType = new odata4analytics.EntityType(this._oModel.getServiceMetadata(), oSchema, oType);
-				this._oEntityTypeSet[oEntityType.getQName()] = oEntityType;
-				// B.1.2 get sets with this type
-				var aEntitySet = this._getEntitySetsOfType(oSchema, oEntityType.getQName());
-				if (aEntitySet.length == 0)
-					throw "Invalid consumption model: No entity set for parameter entity type " + oEntityType.getQName() + " found";
-				if (aEntitySet.length > 1)
-					throw "Unsupported consumption model: More than one entity set for parameter entity type "
-							+ oEntityType.getQName() + " found";
-	
-				// B.1.3 create object for OData entity set
-				var oEntitySet = new odata4analytics.EntitySet(this._oModel.getServiceMetadata(), oSchema,
-						aEntitySet[0][0], aEntitySet[0][1], oEntityType);
-				this._oEntitySetSet[oEntitySet.getQName()] = oEntitySet;
-				this._oEntityTypeNameToEntitySetMap[oEntityType.getQName()] = oEntitySet;
-	
-				// B.1.4 create object for parameters and related OData entity
-				var oParameterization = new odata4analytics.Parameterization(oEntityType, oEntitySet);
-				this._oParameterizationSet[oParameterization.getName()] = oParameterization;
-				oParameterizationEntityTypeSet[oEntityType.getQName()] = oParameterization;
-	
-				// B.1.5 recognize all available parameter value helps
-				var sParameterizationEntityTypeQTypeName = oEntityType.getQName();
-	
-				if (oSchema.association != undefined) {
-					for (var j = -1, oAssoc; oAssoc = oSchema.association[++j];) {
-						// value help always established by a referential constraint
-						// on an association
-						if (oAssoc.referentialConstraint == undefined)
-							continue;
-	
-						var sParameterValueHelpEntityTypeQTypeName = null;
-	
-						// B.1.5.1 relevant only if one end has same type as the
-						// given parameterization entity type
-						if (oAssoc.end[0].type == sParameterizationEntityTypeQTypeName && oAssoc.end[0].multiplicity == "*"
-								&& oAssoc.end[1].multiplicity == "1") {
-							sParameterValueHelpEntityTypeQTypeName = oAssoc.end[1].type;
-	
-						} else if (oAssoc.end[1].type == sParameterizationEntityTypeQTypeName && oAssoc.end[1].multiplicity == "*"
-								&& oAssoc.end[0].multiplicity == "1") {
-							sParameterValueHelpEntityTypeQTypeName = oAssoc.end[0].type;
-						}
-						if (!sParameterValueHelpEntityTypeQTypeName)
-							continue;
-	
-						// B.1.5.2 check if the referential constraint declares a
-						// parameter property as dependent
-						if (oAssoc.referentialConstraint.dependent.propertyRef.length != 1)
-							continue;
-						var oParameter = oParameterization
-								.findParameterByName(oAssoc.referentialConstraint.dependent.propertyRef[0].name);
-						if (oParameter == null)
-							continue;
-	
-						// B.1.5.3 Register the recognized parameter value help
-						// entity type and set and link them to the parameter
-						var oValueListEntityType = this._oEntityTypeSet[sParameterValueHelpEntityTypeQTypeName];
-						var oValueListEntitySet = this._oEntityTypeNameToEntitySetMap[sParameterValueHelpEntityTypeQTypeName];
-						oParameter.setValueSetEntity(oValueListEntityType, oValueListEntitySet);
-					}
-				}
-			}
-	
-			// B.2
-			// B.2 create analytic queries
-			for (var i = -1, oType; oType = aQueryResultEntityTypes[++i];) {
-	
-				// B.2.1 create object for OData entity
-				var oEntityType = new odata4analytics.EntityType(this._oModel.getServiceMetadata(), oSchema, oType);
-				this._oEntityTypeSet[oEntityType.getQName()] = oEntityType;
-				var sQueryResultEntityTypeQTypeName = oEntityType.getQName();
-	
-				// B.2.2 find assocs to parameter entity types
-				var oParameterization = null;
-				var oAssocFromParamsToResult = null;
-	
-				if (oSchema.association != undefined) {
-					for (var j = -1, oAssoc; oAssoc = oSchema.association[++j];) {
-						var sParameterEntityTypeQTypeName = null;
-						if (oAssoc.end[0].type == sQueryResultEntityTypeQTypeName)
-							sParameterEntityTypeQTypeName = oAssoc.end[1].type;
-						else if (oAssoc.end[1].type == sQueryResultEntityTypeQTypeName)
-							sParameterEntityTypeQTypeName = oAssoc.end[0].type;
-						else
-							continue;
-	
-						// B.2.2.2 fetch Parameterization object if any
-						var oMatchingParameterization = null;
-	
-						oMatchingParameterization = oParameterizationEntityTypeSet[sParameterEntityTypeQTypeName];
-						if (oMatchingParameterization != null)
-							if (oParameterization != null) {
-								// TODO: extend this implementation to support more
-								// than one related parameter entity type
-								throw "LIMITATION: Unable to handle multiple parameter entity types of query entity "
-										+ oEntityType.name;
-							} else {
-								oParameterization = oMatchingParameterization;
-								oAssocFromParamsToResult = oAssoc;
-							}
-					}
-				}
-	
-				// B.2.3 get sets with this type
-				var aEntitySet = this._getEntitySetsOfType(oSchema, oEntityType.getQName());
-				if (aEntitySet.length != 1)
-					throw "Invalid consumption model: There must be exactly one entity set for an entity type annotated with aggregating semantics";
-	
-				// B.2.4 create object for OData entity set of analytic query result
-				var oEntitySet = new odata4analytics.EntitySet(this._oModel.getServiceMetadata(), oSchema,
-						aEntitySet[0][0], aEntitySet[0][1], oEntityType);
-				this._oEntitySetSet[oEntitySet.getQName()] = oEntitySet;
-				this._oEntityTypeNameToEntitySetMap[oEntityType.getQName()] = oEntitySet;
-	
-				// B.2.5 create object for analytic query result, related OData
-				// entity type and set and (if any) related parameters
-				// object
-				var oQueryResult = new odata4analytics.QueryResult(this, oEntityType, oEntitySet, oParameterization);
-				this._oQueryResultSet[oQueryResult.getName()] = oQueryResult;
-	
-				// B.2.6 set target result for found parameterization
-				if (oParameterization)
-					oParameterization.setTargetQueryResult(oQueryResult, oAssocFromParamsToResult);
-	
-				// B.2.7 recognize all available dimension value helps
-				if (oSchema.association != undefined) {
-					for (var j = -1, oAssoc; oAssoc = oSchema.association[++j];) {
-						// value help always established by a referential constraint
-						// on an association
-						if (oAssoc.referentialConstraint == undefined)
-							continue;
-	
-						var sDimensionValueHelpEntityTypeQTypeName = null;
-	
-						// B.2.7.1 relevant only if one end has same type as the
-						// given query result entity type
-						if (oAssoc.end[0].type == sQueryResultEntityTypeQTypeName && oAssoc.end[0].multiplicity == "*"
-								&& oAssoc.end[1].multiplicity == "1") {
-							sDimensionValueHelpEntityTypeQTypeName = oAssoc.end[1].type;
-	
-						} else if (oAssoc.end[1].type == sQueryResultEntityTypeQTypeName && oAssoc.end[1].multiplicity == "*"
-								&& oAssoc.end[0].multiplicity == "1") {
-							sDimensionValueHelpEntityTypeQTypeName = oAssoc.end[0].type;
-						}
-						if (!sDimensionValueHelpEntityTypeQTypeName)
-							continue;
-	
-						// B.2.7.2 check if the referential constraint declares a
-						// dimension property as dependent
-						if (oAssoc.referentialConstraint.dependent.propertyRef.length != 1)
-							continue;
-						var oDimension = oQueryResult
-								.findDimensionByName(oAssoc.referentialConstraint.dependent.propertyRef[0].name);
-						if (oDimension == null)
-							continue;
-	
-						// B.2.7.3 Register the recognized dimension value help
-						// entity set and link it to the dimension
-						var oDimensionMembersEntitySet = this._oEntityTypeNameToEntitySetMap[sDimensionValueHelpEntityTypeQTypeName];
-						oDimension.setMembersEntitySet(oDimensionMembersEntitySet);
-					}
-				}
-	
-			}
-	
-		},
-	
-		/*
-		 * Control data for adding extra annotations to service metadata
-		 * 
-		 * @private
-		 */
-		oUI5ODataModelAnnotatableObject : {
-			objectName : "schema",
-			keyPropName : "namespace",
-			extensions : true,
-			aSubObject : [ {
-				objectName : "entityType",
-				keyPropName : "name",
-				extensions : true,
-				aSubObject : [ {
-					objectName : "property",
-					keyPropName : "name",
-					aSubObject : [],
-					extensions : true
-				} ]
-			}, {
-				objectName : "entityContainer",
-				keyPropName : "name",
-				extensions : false,
-				aSubObject : [ {
-					objectName : "entitySet",
-					keyPropName : "name",
-					extensions : true,
-					aSubObject : []
-				} ]
-			} ]
-		},
-	
-		/*
-		 * merging extra annotations with provided service metadata
-		 * 
-		 * @private
-		 */
-		mergeV2Annotations : function(sAnnotationJSONDoc) {
-			var oAnnotation = null;
-			try {
-				oAnnotation = JSON.parse(sAnnotationJSONDoc);
-			} catch (exception) {
-				return;
-			}
-	
-			var oMetadata;
-			try {
-				oMetadata = this._oModel.getServiceMetadata().dataServices;
-			} catch (exception) {
-				return;
-			}
-	
-			// find "schema" entry in annotation document
-			for ( var propName in oAnnotation) {
-				if (!(this.oUI5ODataModelAnnotatableObject.objectName == propName))
-					continue;
-				if (!(oAnnotation[propName] instanceof Array)) {
-					continue;
-				}
-				this.mergeV2AnnotationLevel(oMetadata[this.oUI5ODataModelAnnotatableObject.objectName],
-						oAnnotation[this.oUI5ODataModelAnnotatableObject.objectName], this.oUI5ODataModelAnnotatableObject);
-				break;
-			}
-	
-			return;
-		},
-	
-		/*
-		 * merging extra annotations with a given service metadata object
-		 * 
-		 * @private
-		 */
-	
-		mergeV2AnnotationLevel : function(aMetadata, aAnnotation, oUI5ODataModelAnnotatableObject) {
-	
-			for (var i = -1, oAnnotation; oAnnotation = aAnnotation[++i];) {
-				for (var j = -1, oMetadata; oMetadata = aMetadata[++j];) {
-	
-					if (!(oAnnotation[oUI5ODataModelAnnotatableObject.keyPropName] == oMetadata[oUI5ODataModelAnnotatableObject.keyPropName]))
-						continue;
-					// found match: apply extensions from oAnnotation object to
-					// oMetadata object
-					if (oAnnotation["extensions"] != undefined) {
-						if (oMetadata["extensions"] == undefined)
-							oMetadata["extensions"] = new Array();
-	
-						for (var l = -1, oAnnotationExtension; oAnnotationExtension = oAnnotation["extensions"][++l];) {
-							var bFound = false;
-							for (var m = -1, oMetadataExtension; oMetadataExtension = oMetadata["extensions"][++m];) {
-								if (oAnnotationExtension.name == oMetadataExtension.name
-										&& oAnnotationExtension.namespace == oMetadataExtension.namespace) {
-									oMetadataExtension.value = oAnnotationExtension.value;
-									bFound = true;
-									break;
-								}
-							}
-							if (!bFound)
-								oMetadata["extensions"].push(oAnnotationExtension);
-						}
-					}
-					// walk down to sub objects
-					for (var k = -1, oUI5ODataModelAnnotatableSubObject; oUI5ODataModelAnnotatableSubObject = oUI5ODataModelAnnotatableObject.aSubObject[++k];) {
-	
-						for ( var propName in oAnnotation) {
-							if (!(oUI5ODataModelAnnotatableSubObject.objectName == propName))
-								continue;
-							if (!(oAnnotation[oUI5ODataModelAnnotatableSubObject.objectName] instanceof Array))
-								continue;
-							if ((oMetadata[oUI5ODataModelAnnotatableSubObject.objectName] == undefined)
-									|| (!(oMetadata[oUI5ODataModelAnnotatableSubObject.objectName] instanceof Array)))
-								continue;
-							this.mergeV2AnnotationLevel(oMetadata[oUI5ODataModelAnnotatableSubObject.objectName],
-									oAnnotation[oUI5ODataModelAnnotatableSubObject.objectName], oUI5ODataModelAnnotatableSubObject);
-							break;
-						}
-					}
-				}
-			}
-			return;
-		},
-	
-		/**
-		 * Find analytic query result by name
-		 * 
-		 * @param {string}
-		 *            sName Fully qualified name of query result entity set
-		 * @returns {odata4analytics.QueryResult} The query result object
-		 *          with this name or null if it does not exist
-		 */
-		findQueryResultByName : function(sName) {
-			var oQueryResult = this._oQueryResultSet[sName];
-	
-			// Everybody should have a second chance:
-			// If the name was not fully qualified, check if it is in the default
-			// container
-			if (!oQueryResult && this._oDefaultEntityContainer) {
-				var sQName = this._oDefaultEntityContainer.name + "." + sName;
-	
-				oQueryResult = this._oQueryResultSet[sQName];
-			}
-			return oQueryResult;
-		},
-	
-		/**
-		 * Get the names of all query results (entity sets) offered by the model
-		 * 
-		 * @returns {array(string)} List of all query result names
-		 */
-		getAllQueryResultNames : function() {
-			if (this._aQueryResultNames)
-				return this._aQueryResultNames;
-	
-			this._aQueryResultNames = new Array(0);
-	
-			for ( var sName in this._oQueryResultSet)
-				this._aQueryResultNames.push(this._oQueryResultSet[sName].getName());
-	
-			return this._aQueryResultNames;
-		},
-	
-		/**
-		 * Get all query results offered by the model
-		 * 
-		 * @returns {object} An object with individual JS properties for each query
-		 *          result included in the model. The JS object properties all are
-		 *          objects of type odata4analytics.QueryResult. The names
-		 *          of the JS object properties are given by the entity set names
-		 *          representing the query results.
-		 */
-		getAllQueryResults : function() {
-			return this._oQueryResultSet;
-		},
-	
-		/**
-		 * Get underlying OData model provided by SAP UI5
-		 * 
-		 * @returns {object} The SAP UI5 representation of the model.
-		 */
-		getODataModel : function() {
-			return this._oModel;
-		},
-		/**
-		 * Private methods
-		 */
-	
-		/**
-		 * Find entity sets of a given type
-		 * 
-		 * @private
-		 */
-		_getEntitySetsOfType : function(oSchema, sQTypeName) {
-			var aEntitySet = [];
-	
-			for (var i = -1, oEntityContainer; oEntityContainer = oSchema.entityContainer[++i];) {
-				for (var j = -1, oEntitySet; oEntitySet = oEntityContainer.entitySet[++j];) {
-					if (oEntitySet.entityType == sQTypeName)
-						aEntitySet.push([ oEntityContainer, oEntitySet ]);
-				}
-			}
-	
-			return aEntitySet;
-		},
-	
-		/**
-		 * Private member attributes
-		 */
-		_oModel : null,
-		_oDefaultEntityContainer : null,
-	
-		_aQueryResultNames : null,
-		_oQueryResultSet : null,
-		_oParameterizationSet : null,
-		_oEntityTypeSet : null,
-		_oEntitySetSet : null,
-		_oEntityTypeNameToEntitySetMap : null,
-	
-		_oActivatedWorkarounds : null
-	};
-	
-	/** ******************************************************************** */
-	
-	/**
-	 * Create a representation of an analytic query
-	 * 
-	 * @param {odata4analytics.Model}
-	 *            oModel The analytical model containing this query result entity
-	 *            set
-	 * @param {odata4analytics.EntityType}
-	 *            oEntityType The OData entity type for this query
-	 * @param {odata4analytics.EntitySet}
-	 *            oEntitySet The OData entity set for this query offered by the
-	 *            OData service
-	 * @param {odata4analytics.Parameterization}
-	 *            oParameterization The parameterization of this query, if any
-	 * 
-	 * @constructor
-	 * @this (QueryResult)
-	 * 
-	 * @class Representation of an entity type annotated with
-	 *        sap:semantics="aggregate".
-	 * @protected
-	 */
-	odata4analytics.QueryResult = function(oModel, oEntityType, oEntitySet, oParameterization) {
-		this._init(oModel, oEntityType, oEntitySet, oParameterization);
-	};
-	
-	odata4analytics.QueryResult.prototype = {
-	
-		/**
-		 * initialize new object
-		 * 
-		 * @private
-		 */
-		_init : function(oModel, oEntityType, oEntitySet, oParameterization, oAssocFromParamsToResult) {
-			this._oModel = oModel;
-			this._oEntityType = oEntityType;
-			this._oEntitySet = oEntitySet;
-			this._oParameterization = oParameterization;
-	
-			this._oDimensionSet = new Object();
-			this._oMeasureSet = new Object();
-	
-			// parse entity type for analytic semantics described by annotations
-			var aProperty = oEntityType.getTypeDescription().property;
-			var oAttributeForPropertySet = {};
-			for (var i = -1, oProperty; oProperty = aProperty[++i];) {
-				if (oProperty.extensions == undefined)
-					continue;
-				for (var j = -1, oExtension; oExtension = oProperty.extensions[++j];) {
-	
-					if (!oExtension.namespace == odata4analytics.constants.SAP_NAMESPACE)
-						continue;
-	
-					switch (oExtension.name) {
-					case "aggregation-role":
-						switch (oExtension.value) {
-						case "dimension":
-							var oDimension = new odata4analytics.Dimension(this, oProperty);
-							this._oDimensionSet[oDimension.getName()] = oDimension;
-							break;
-						case "measure":
-							var oMeasure = new odata4analytics.Measure(this, oProperty);
-							this._oMeasureSet[oMeasure.getName()] = oMeasure;
-							break;
-						case "totaled-properties-list":
-							this._oTotaledPropertyListProperty = oProperty;
-							break;
-						}
-						break;
-					case "attribute-for":
-						var oDimensionAttribute = new odata4analytics.DimensionAttribute(this, oProperty);
-						oAttributeForPropertySet[oDimensionAttribute.getKeyProperty()] = oDimensionAttribute;
-						break;
-					}
-				}
-			}
-	
-			// assign dimension attributes to the respective dimension objects
-			for ( var sDimensionAttributeName in oAttributeForPropertySet) {
-				var oDimensionAttribute = oAttributeForPropertySet[sDimensionAttributeName];
-				oDimensionAttribute.getDimension().addAttribute(oDimensionAttribute);
-			}
-	
-			// apply workaround for missing text properties if requested
-			if (oModel._oActivatedWorkarounds.IdentifyTextPropertiesByName) {
-				var aMatchedTextPropertyName = new Array();
-				for ( var oDimName in this._oDimensionSet) {
-					var oDimension = this._oDimensionSet[oDimName];
-					if (!oDimension.getTextProperty()) {
-						var oTextProperty = null; // order of matching is
-						// significant!
-						oTextProperty = oEntityType.findPropertyByName(oDimName + "Name");
-						if (!oTextProperty)
-							oTextProperty = oEntityType.findPropertyByName(oDimName + "Text");
-						if (!oTextProperty)
-							oTextProperty = oEntityType.findPropertyByName(oDimName + "Desc");
-						if (!oTextProperty)
-							oTextProperty = oEntityType.findPropertyByName(oDimName + "Description");
-						if (oTextProperty) { // any match?
-							oDimension.setTextProperty(oTextProperty); // link
-							// dimension
-							// with text
-							// property
-							aMatchedTextPropertyName.push(oTextProperty.name);
-						}
-					}
-				}
-				// make sure that any matched text property is not exposed as
-				// dimension (according to spec)
-				for (var i = -1, sPropertyName; sPropertyName = aMatchedTextPropertyName[++i];) {
-					delete this._oDimensionSet[sPropertyName];
-				}
-			}
-		},
-	
-		/**
-		 * Get the name of the query result
-		 * 
-		 * @returns {string} The fully qualified name of the query result, which is
-		 *          identical with the name of the entity set representing the query
-		 *          result in the OData service
-		 */
-		getName : function() {
-			return this.getEntitySet().getQName();
-		},
-	
-		/**
-		 * Get the parameterization of this query result
-		 * 
-		 * @returns {odata4analytics.Parameterization} The object for the
-		 *          parameterization or null if the query result is not
-		 *          parameterized
-		 */
-		getParameterization : function() {
-			return this._oParameterization;
-		},
-	
-		/**
-		 * Get the names of all dimensions included in the query result
-		 * 
-		 * @returns {array(string)} List of all dimension names
-		 */
-		getAllDimensionNames : function() {
-			if (this._aDimensionNames)
-				return this._aDimensionNames;
-	
-			this._aDimensionNames = [];
-	
-			for ( var sName in this._oDimensionSet)
-				this._aDimensionNames.push(this._oDimensionSet[sName].getName());
-	
-			return this._aDimensionNames;
-		},
-	
-		/**
-		 * Get all dimensions included in this query result
-		 * 
-		 * @returns {object} An object with individual JS properties for each
-		 *          dimension included in the query result. The JS object properties
-		 *          all are objects of type odata4analytics.Dimension. The
-		 *          names of the JS object properties are given by the OData entity
-		 *          type property names representing the dimension keys.
-		 */
-		getAllDimensions : function() {
-			return this._oDimensionSet;
-		},
-	
-		/**
-		 * Get the names of all measures included in the query result
-		 * 
-		 * @returns {array(string)} List of all measure names
-		 */
-		getAllMeasureNames : function() {
-			if (this._aMeasureNames)
-				return this._aMeasureNames;
-	
-			this._aMeasureNames = [];
-	
-			for ( var sName in this._oMeasureSet)
-				this._aMeasureNames.push(this._oMeasureSet[sName].getName());
-	
-			return this._aMeasureNames;
-		},
-	
-		/**
-		 * Get all measures included in this query result
-		 * 
-		 * @returns {object} An object with individual JS properties for each
-		 *          measure included in the query result. The JS object properties
-		 *          all are objects of type odata4analytics.Measure. The
-		 *          names of the JS object properties are given by the OData entity
-		 *          type property names representing the measure raw values.
-		 */
-		getAllMeasures : function() {
-			return this._oMeasureSet;
-		},
-	
-		/**
-		 * Find dimension by name
-		 * 
-		 * @param {string}
-		 *            sName Dimension name
-		 * @returns {odata4analytics.Dimension} The dimension object with
-		 *          this name or null if it does not exist
-		 */
-		findDimensionByName : function(sName) {
-			return this._oDimensionSet[sName];
-		},
-	
-		/**
-		 * Find dimension by property name
-		 * 
-		 * @param {string}
-		 *            sName Property name
-		 * @returns {odata4analytics.Dimension} The dimension object to
-		 *          which the given property name is related, because the property
-		 *          holds the dimension key, its text, or is an attribute of this
-		 *          dimension. If no such dimension exists, null is returned.
-		 */
-		findDimensionByPropertyName : function(sName) {
-			if (this._oDimensionSet[sName]) // the easy case
-				return this._oDimensionSet[sName];
-	
-			for ( var sDimensionName in this._oDimensionSet) {
-				var oDimension = this._oDimensionSet[sDimensionName];
-				var oTextProperty = oDimension.getTextProperty();
-				if (oTextProperty && oTextProperty.name == sName)
-					return oDimension;
-				if (oDimension.findAttributeByName(sName))
-					return oDimension;
-			}
-			return null;
-		},
-	
-		/**
-		 * Get property holding the totaled property list
-		 * 
-		 * @returns {object} The DataJS object representing this property
-		 */
-		getTotaledPropertiesListProperty : function() {
-			return this._oTotaledPropertyListProperty;
-		},
-	
-		/**
-		 * Find measure by name
-		 * 
-		 * @param {string}
-		 *            sName Measure name
-		 * @returns {odata4analytics.Measure} The measure object with this
-		 *          name or null if it does not exist
-		 */
-		findMeasureByName : function(sName) {
-			return this._oMeasureSet[sName];
-		},
-	
-		/**
-		 * Find measure by property name
-		 * 
-		 * @param {string}
-		 *            sName Property name
-		 * @returns {odata4analytics.Measure} The measure object to which
-		 *          the given property name is related, because the property holds
-		 *          the raw measure value or its formatted value. If no such measure
-		 *          exists, null is returned.
-		 */
-		findMeasureByPropertyName : function(sName) {
-			if (this._oMeasureSet[sName]) // the easy case
-				return this._oMeasureSet[sName];
-	
-			for ( var sMeasureName in this._oMeasureSet) {
-				var oMeasure = this._oMeasureSet[sMeasureName];
-				var oFormattedValueProperty = oMeasure.getFormattedValueProperty();
-				if (oFormattedValueProperty && oFormattedValueProperty.name == sName)
-					return oMeasure;
-			}
-			return null;
-		},
-	
-		/**
-		 * Get the analytical model containing the entity set for this query result
-		 * 
-		 * @returns {object} The analytical representation of the OData model
-		 */
-		getModel : function() {
-			return this._oModel;
-		},
-	
-		/**
-		 * Get the entity type defining the type of this query result in the OData
-		 * model
-		 * 
-		 * @returns {odata4analytics.EntityType} The OData entity type for
-		 *          this query result
-		 */
-		getEntityType : function() {
-			return this._oEntityType;
-		},
-	
-		/**
-		 * Get the entity set representing this query result in the OData model
-		 * 
-		 * @returns {odata4analytics.EntitySet} The OData entity set
-		 *          representing this query result
-		 */
-		getEntitySet : function() {
-			return this._oEntitySet;
-		},
-	
-		/**
-		 * Private member attributes
-		 */
-	
-		_oModel : null,
-		_oEntityType : null,
-		_oEntitySet : null,
-		_oParameterization : null,
-		_aDimensionNames : null,
-		_oDimensionSet : null,
-		_aMeasureNames : null,
-		_oMeasureSet : null,
-		_oTotaledPropertyListProperty : null
-	};
-	
-	/** ******************************************************************** */
-	
-	/**
-	 * Create a representation of a parameterization for an analytic query
-	 * 
-	 * @param {odata4analytics.EntityType}
-	 *            oEntityType The OData entity type for this parameterization
-	 * @param {odata4analytics.EntitySet}
-	 *            oEntitySet The OData entity set for this parameterization offered
-	 *            by the OData service
-	 * 
-	 * @class Representation of an entity type annotated with
-	 *        sap:semantics="parameters".
-	 * @protected
-	 */
-	odata4analytics.Parameterization = function(oEntityType, oEntitySet) {
-		this._init(oEntityType, oEntitySet);
-	};
-	
-	odata4analytics.Parameterization.prototype = {
-		/**
-		 * @private
-		 */
-		_init : function(oEntityType, oEntitySet) {
-			this._oEntityType = oEntityType;
-			this._oEntitySet = oEntitySet;
-	
-			this._oParameterSet = new Object();
-	
-			// parse entity type for analytic semantics described by annotations
-			var aProperty = oEntityType.getTypeDescription().property;
-			for (var i = -1, oProperty; oProperty = aProperty[++i];) {
-				if (oProperty.extensions == undefined)
-					continue;
-	
-				for (var j = -1, oExtension; oExtension = oProperty.extensions[++j];) {
-	
-					if (!oExtension.namespace == odata4analytics.constants.SAP_NAMESPACE)
-						continue;
-	
-					switch (oExtension.name) {
-					// process parameter semantics
-					case "parameter":
-						var oParameter = new odata4analytics.Parameter(this, oProperty);
-						this._oParameterSet[oParameter.getName()] = oParameter;
-	
-						break;
-					}
-				}
-			}
-	
-		},
-	
-		// to be called only by Model objects
-		setTargetQueryResult : function(oQueryResult, oAssociation) {
-			this._oQueryResult = oQueryResult;
-			var sQAssocName = this._oEntityType.getSchema().namespace + "." + oAssociation.name;
-			var aNavProp = this._oEntityType.getTypeDescription().navigationProperty;
-			if (!aNavProp)
-				throw "Invalid consumption model: Parameters entity type lacks navigation property for association to query result entity type";
-			for (var i = -1, oNavProp; oNavProp = aNavProp[++i];) {
-				if (oNavProp.relationship == sQAssocName)
-					this._oNavPropToQueryResult = oNavProp.name;
-			}
-			if (!this._oNavPropToQueryResult)
-				throw "Invalid consumption model: Parameters entity type lacks navigation property for association to query result entity type";
-		},
-		
-		getTargetQueryResult : function() {
-			if (! this._oQueryResult) 
-				throw "No target query result set";
-			return this._oQueryResult;
-		},
-	
-		/**
-		 * Get the name of the parameter
-		 * 
-		 * @returns {string} The name of the parameterization, which is identical
-		 *          with the name of the entity set representing the
-		 *          parameterization in the OData service
-		 */
-		getName : function() {
-			return this.getEntitySet().getQName();
-		},
-	
-		/**
-		 * Get the names of all parameters part of the parameterization
-		 * 
-		 * @returns {array(string)} List of all parameter names
-		 */
-		getAllParameterNames : function() {
-			if (this._aParameterNames)
-				return this._aParameterNames;
-	
-			this._aParameterNames = [];
-	
-			for ( var sName in this._oParameterSet)
-				this._aParameterNames.push(this._oParameterSet[sName].getName());
-	
-			return this._aParameterNames;
-		},
-	
-		/**
-		 * Get all parameters included in this parameterization
-		 * 
-		 * @returns {object} An object with individual JS properties for each
-		 *          parameter included in the query result. The JS object properties
-		 *          all are objects of type odata4analytics.Parameter. The
-		 *          names of the JS object properties are given by the OData entity
-		 *          type property names representing the parameter keys.
-		 */
-		getAllParameters : function() {
-			return this._oParameterSet;
-		},
-	
-		/**
-		 * Find parameter by name
-		 * 
-		 * @param {string}
-		 *            sName Parameter name
-		 * @returns {odata4analytics.Parameter} The parameter object with
-		 *          this name or null if it does not exist
-		 */
-		findParameterByName : function(sName) {
-			return this._oParameterSet[sName];
-		},
-	
-		/**
-		 * Get navigation property to query result
-		 * 
-		 * @returns {odata4analytics.QueryResult} The parameter object with
-		 *          this name or null if it does not exist
-		 */
-		getNavigationPropertyToQueryResult : function() {
-			return this._oNavPropToQueryResult;
-		},
-	
-		/**
-		 * Get the entity type defining the type of this query result in the OData
-		 * model
-		 * 
-		 * @returns {odata4analytics.EntityType} The OData entity type for
-		 *          this query result
-		 */
-		getEntityType : function() {
-			return this._oEntityType;
-		},
-	
-		/**
-		 * Get the entity set representing this query result in the OData model
-		 * 
-		 * @returns {odata4analytics.EntitySet} The OData entity set
-		 *          representing this query result
-		 */
-		getEntitySet : function() {
-			return this._oEntitySet;
-		},
-	
-		/**
-		 * Private member attributes
-		 */
-		_oEntityType : null,
-		_oEntitySet : null,
-		_oQueryResult : null,
-		_oNavPropToQueryResult : null,
-		_aParameterNames : null,
-		_oParameterSet : null
-	};
-	
-	/** ******************************************************************** */
-	
-	/**
-	 * Create a representation of a single parameter contained in a parameterization
-	 * 
-	 * @param {odata4analytics.Parameterization}
-	 *            oParameterization The parameterization containing this parameter
-	 * @param {object}
-	 *            oProperty The DataJS object object representing the text property
-	 * 
-	 * @constructor
-	 * 
-	 * @class Representation of a property annotated with sap:parameter.
-	 * @protected
-	 */
-	odata4analytics.Parameter = function(oParameterization, oProperty) {
-		this._init(oParameterization, oProperty);
-	};
-	
-	odata4analytics.Parameter.prototype = {
-		/**
-		 * @private
-		 */
-		_init : function(oParameterization, oProperty) {
-			this._oParameterization = oParameterization;
-			this._oProperty = oProperty;
-	
-			var oEntityType = oParameterization.getEntityType();
-	
-			if (oProperty.extensions != undefined) {
-				for (var i = -1, oExtension; oExtension = oProperty.extensions[++i];) {
-	
-					if (!oExtension.namespace == odata4analytics.constants.SAP_NAMESPACE)
-						continue;
-	
-					switch (oExtension.name) {
-					case "parameter":
-						switch (oExtension.value) {
-						case "mandatory":
-							this._bRequired = true;
-							break;
-						case "optional":
-							this._bRequired = false;
-							break;
-						default:
-							throw "Invalid annotation value for parameter property";
-						}
-						break;
-					case "label":
-						this._sLabelText = oExtension.value;
-						break;
-					case "text":
-						this._oTextProperty = oEntityType.findPropertyByName(oExtension.value);
-						break;
-					case "upper-boundary":
-						this._bIntervalBoundaryParameter = true;
-						this._oUpperIntervalBoundaryParameterProperty = oEntityType.findPropertyByName(oExtension.value);
-						break;
-					case "lower-boundary":
-						this._bIntervalBoundaryParameter = true;
-						this._oLowerIntervalBoundaryParameterProperty = oEntityType.findPropertyByName(oExtension.value);
-						break;
-					}
-				}
-			}
-			if (!this._sLabelText)
-				this._sLabelText = "";
-		},
-	
-		// to be called only by Model objects
-		setValueSetEntity : function(oEntityType, oEntitySet) {
-			this._oValueSetEntityType = oEntityType;
-			this._oValueSetEntitySet = oEntitySet;
-		},
-	
-		/**
-		 * Get text property related to this parameter
-		 * 
-		 * @returns {object} The DataJS object representing the text property or
-		 *          null if it does not exist
-		 */
-		getTextProperty : function() {
-			return this._oTextProperty;
-		},
-	
-		/**
-		 * Get label
-		 * 
-		 * @returns {string} The (possibly language-dependent) label text for this
-		 *          parameter
-		 */
-		getLabelText : function() {
-			if (!this._sLabelText
-					&& this._oParameterization._oQueryResult._oModel._oActivatedWorkarounds.CreateLabelsFromTechnicalNames)
-				this._sLabelText = odata4analytics.helper.tokenizeNametoLabelText(this.getName());
-			return this._sLabelText;
-		},
-	
-		/**
-		 * Get indicator whether or not the parameter is optional
-		 * 
-		 * @returns {boolean} True iff the parameter is optional
-		 */
-		isOptional : function() {
-			return (!this._bRequired);
-		},
-	
-		/**
-		 * Get indicator if the parameter represents an interval boundary
-		 * 
-		 * @returns {boolean} True iff it represents an interval boundary, otherwise
-		 *          false
-		 */
-		isIntervalBoundary : function() {
-			return this._bIntervalBoundaryParameter;
-		},
-	
-		/**
-		 * Get indicator if the parameter represents the lower boundary of an
-		 * interval
-		 * 
-		 * @returns {boolean} True iff it represents the lower boundary of an
-		 *          interval, otherwise false
-		 */
-		isLowerIntervalBoundary : function() {
-			return (this._oUpperIntervalBoundaryParameterProperty ? true : false);
-		},
-	
-		/**
-		 * Get property for the parameter representing the peer boundary of the same
-		 * interval
-		 * 
-		 * @returns {odata4analytics.Parameter} The parameter representing
-		 *          the peer boundary of the same interval. This means that if
-		 *          *this* parameter is a lower boundary, the returned object
-		 */
-		getPeerIntervalBoundaryParameter : function() {
-			var sPeerParamPropName = null;
-			if (this._oLowerIntervalBoundaryParameterProperty)
-				sPeerParamPropName = this._oLowerIntervalBoundaryParameterProperty.name;
-			else
-				sPeerParamPropName = this._oUpperIntervalBoundaryParameterProperty.name;
-			if (!sPeerParamPropName)
-				throw "Parameter is not an interval boundary";
-			return this._oParameterization.findParameterByName(sPeerParamPropName);
-		},
-	
-		/**
-		 * Get indicator if a set of values is available for this parameter.
-		 * Typically, this is true for parameters with a finite set of known values
-		 * such as products, business partners in different roles, organization
-		 * units, and false for integer or date parameters
-		 * 
-		 * @returns {boolean} True iff a value set is available, otherwise false
-		 */
-		isValueSetAvailable : function() {
-			return (this._oValueSetEntityType ? true : false);
-		},
-	
-		/**
-		 * Get the name of the parameter
-		 * 
-		 * @returns {string} The name of the parameter, which is identical with the
-		 *          name of the property representing the parameter in the
-		 *          parameterization entity type
-		 */
-		getName : function() {
-			return this._oProperty.name;
-		},
-	
-		/**
-		 * Get property
-		 * 
-		 * @returns {object} The DataJS object representing the property of this
-		 *          parameter
-		 */
-		getProperty : function() {
-			return this._oProperty;
-		},
-	
-		/**
-		 * Get parameterization containing this parameter
-		 * 
-		 * @return {odata4analytics.Parameterization} The parameterization
-		 *         object
-		 */
-		getContainingParameterization : function() {
-			return this._oParameterization;
-		},
-	
-		/**
-		 * Get the URI to locate the entity set holding the value set, if it is
-		 * available.
-		 * 
-		 * @param {String}
-		 *            sServiceRootURI (optional) Identifies the root of the OData
-		 *            service
-		 * @returns The resource path of the URI pointing to the entity set. It is a
-		 *          relative URI unless a service root is given, which would then
-		 *          prefixed in order to return a complete URL.
-		 */
-		getURIToValueEntitySet : function(sServiceRootURI) {
-			var sURI = null;
-			sURI = (sServiceRootURI ? sServiceRootURI : "") + "/" + this._oValueSetEntitySet.getQName();
-			return sURI;
-		},
-	
-		/**
-		 * Private member attributes
-		 */
-		_oParameterization : null,
-		_oProperty : null,
-		_sLabelText : null,
-		_oTextProperty : null,
-		_bRequired : false,
-		_bIntervalBoundaryParameter : false,
-		_oLowerIntervalBoundaryParameterProperty : null,
-		_oUpperIntervalBoundaryParameterProperty : null,
-	
-		_oValueSetEntityType : null,
-		_oValueSetEntitySet : null
-	};
-	
-	/** ******************************************************************** */
-	
-	/**
-	 * Create a representation of a dimension provided by an analytic query
-	 * 
-	 * @param {odata4analytics.QueryResult}
-	 *            oQueryResult The query result containing this dimension
-	 * @param {object}
-	 *            oProperty The DataJS object object representing the dimension
-	 * 
-	 * @constructor
-	 * 
-	 * @class Representation of a property annotated with
-	 *        sap:aggregation-role="dimension".
-	 * @protected
-	 */
-	odata4analytics.Dimension = function(oQueryResult, oProperty) {
-		this._init(oQueryResult, oProperty);
-	};
-	
-	odata4analytics.Dimension.prototype = {
-		_init : function(oQueryResult, oProperty) {
-			this._oQueryResult = oQueryResult;
-			this._oProperty = oProperty;
-	
-			this._oAttributeSet = new Object();
-		},
-	
-		// to be called only by Model objects
-		setMembersEntitySet : function(oEntitySet) {
-			this._oMembersEntitySet = oEntitySet;
-		},
-	
-		/**
-		 * Get the name of the dimension
-		 * 
-		 * @returns {string} The name of this dimension, which is identical to the
-		 *          name of the dimension key property in the entity type
-		 */
-		getName : function() {
-			return this._oProperty.name;
-		},
-	
-		/**
-		 * Get the key property
-		 * 
-		 * @returns {object} The DataJS object representing the property for the
-		 *          dimension key
-		 */
-		getKeyProperty : function() {
-			return this._oProperty;
-		},
-	
-		/**
-		 * Get text property related to this dimension
-		 * 
-		 * @returns {object} The DataJS object representing the text property or
-		 *          null if it does not exist
-		 */
-		getTextProperty : function() {
-			if (!this._oTextProperty)
-				this._oTextProperty = this._oQueryResult.getEntityType().getTextPropertyOfProperty(this.getName());
-			return this._oTextProperty;
-		},
-	
-		/**
-		 * Set text property Relevant for workaround w/ID
-		 * IdentifyTextPropertiesByName
-		 * 
-		 * @private
-		 */
-		setTextProperty : function(oTextProperty) {
-			this._oTextProperty = oTextProperty;
-		},
-	
-		/**
-		 * Get label
-		 * 
-		 * @returns {string} The (possibly language-dependent) label text for this
-		 *          dimension
-		 */
-		getLabelText : function() {
-			if (!this._sLabelText)
-				this._sLabelText = this._oQueryResult.getEntityType().getLabelOfProperty(this.getName());
-			if (!this._sLabelText && this._oQueryResult._oModel._oActivatedWorkarounds.CreateLabelsFromTechnicalNames)
-				this._sLabelText = odata4analytics.helper.tokenizeNametoLabelText(this.getName());
-			return (this._sLabelText == null ? "" : this._sLabelText);
-		},
-	
-		/**
-		 * Get super-ordinate dimension
-		 * 
-		 * @returns {object} The super-ordinate dimension or null if there is none
-		 */
-		getSuperOrdinateDimension : function() {
-			if (!this._sSuperOrdinateDimension) {
-				var sSuperOrdPropName = this._oQueryResult.getEntityType().getSuperOrdinatePropertyOfProperty(this.getName()).name;
-				this._sSuperOrdinateDimension = this._oQueryResult.findDimensionByName(sSuperOrdPropName);
-			}
-			return this._sSuperOrdinateDimension;
-		},
-	
-		/**
-		 * Get associated hierarchy
-		 * 
-		 * @returns {object} The hierarchy object or null if there is none. It can
-		 *          be an instance of class
-		 *          odata4analytics.RecursiveHierarchy (TODO later: or a
-		 *          leveled hierarchy). Use methods isLeveledHierarchy and
-		 *          isRecursiveHierarchy to determine object type.
-		 */
-		getHierarchy : function() {
-			// set associated hierarchy if any
-			if (!this._oHierarchy)
-				this._oHierarchy = this._oQueryResult.getEntityType().getHierarchy(this._oProperty.name);
-	
-			return this._oHierarchy;
-		},
-	
-		/**
-		 * Get the names of all attributes included in this dimension
-		 * 
-		 * @returns {array(string)} List of all attribute names
-		 */
-		getAllAttributeNames : function() {
-			if (this._aAttributeNames)
-				return this._aAttributeNames;
-	
-			this._aAttributeNames = [];
-	
-			for ( var sName in this._oAttributeSet)
-				this._aAttributeNames.push(this._oAttributeSet[sName].getName());
-	
-			return this._aAttributeNames;
-		},
-	
-		/**
-		 * Get all attributes of this dimension
-		 * 
-		 * @returns {object} An object with individual JS properties for each
-		 *          attribute of this dimension. The JS object properties all are
-		 *          objects of type odata4analytics.DimensionAttribute. The
-		 *          names of the JS object properties are given by the OData entity
-		 *          type property names representing the dimension attribute keys.
-		 */
-		getAllAttributes : function() {
-			return this._oAttributeSet;
-		},
-	
-		/**
-		 * Find attribute by name
-		 * 
-		 * @param {string}
-		 *            sName Attribute name
-		 * @returns {odata4analytics.Dimension} The dimension attribute
-		 *          object with this name or null if it does not exist
-		 */
-		findAttributeByName : function(sName) {
-			return this._oAttributeSet[sName];
-		},
-	
-		// to be called only by QueryResult objects
-		addAttribute : function(oDimensionAttribute) {
-			this._oAttributeSet[oDimensionAttribute.getName()] = oDimensionAttribute;
-		},
-	
-		/**
-		 * Get query result containing this dimension
-		 * 
-		 * @return {odata4analytics.QueryResult} The query result object
-		 */
-		getContainingQueryResult : function() {
-			return this._oQueryResult;
-		},
-	
-		/**
-		 * Get indicator whether or not master data is available for this dimension
-		 * 
-		 * @returns {boolean} True iff master data is available
-		 */
-		hasMasterData : function() {
-			return this._oMembersEntitySet != null ? true : false;
-		},
-	
-		/**
-		 * Get master data entity set for this dimension
-		 * 
-		 * @return {odata4analytics.EntitySet} The master data entity set
-		 *         for this dimension, or null, if it does not exist
-		 */
-		getMasterDataEntitySet : function() {
-			return this._oMembersEntitySet;
-		},
-	
-		/**
-		 * Private member attributes
-		 */
-		_oQueryResult : null,
-		_oProperty : null,
-	
-		_oTextProperty : null,
-		_sLabelText : null,
-		_sSuperOrdinateDimension : null,
-		_aAttributeNames : null,
-		_oAttributeSet : null,
-	
-		_oMembersEntitySet : null,
-	
-		_oHierarchy : null
-	};
-	
-	/** ******************************************************************** */
-	
-	/**
-	 * Create a representation of a dimension attribute provided by an analytic
-	 * query
-	 * 
-	 * @param {odata4analytics.QueryResult}
-	 *            oQueryResult The query result containing this dimension attribute
-	 * @param {object}
-	 *            oProperty The DataJS object object representing the dimension
-	 *            attribute
-	 * 
-	 * @constructor
-	 * 
-	 * @class Representation of a dimension attribute.
-	 * @protected
-	 */
-	odata4analytics.DimensionAttribute = function(oQueryResult, oProperty) {
-		this._init(oQueryResult, oProperty);
-	};
-	
-	odata4analytics.DimensionAttribute.prototype = {
-		/**
-		 * @private
-		 */
-		_init : function(oQueryResult, oProperty) {
-			this._oQueryResult = oQueryResult;
-			this._oProperty = oProperty;
-	
-			if (oProperty.extensions != undefined) {
-	
-				for (var i = -1, oExtension; oExtension = oProperty.extensions[++i];) {
-	
-					if (!oExtension.namespace == odata4analytics.constants.SAP_NAMESPACE)
-						continue;
-	
-					switch (oExtension.name) {
-					case "attribute-for":
-						this._sDimensionName = oExtension.value;
-						break;
-					case "label":
-						this._sLabelText = oExtension.value;
-						break;
-					case "text":
-						this._oTextProperty = oQueryResult.getEntityType().findPropertyByName(oExtension.value);
-						break;
-					}
-				}
-			}
-		},
-	
-		/**
-		 * Get the name of the dimension attribute
-		 * 
-		 * @returns {string} The name of the dimension attribute, which is identical
-		 *          to the name of the property in the entity type holding the
-		 *          attribute value
-		 */
-		getName : function() {
-			return this._oProperty.name;
-		},
-	
-		/**
-		 * Get the key property
-		 * 
-		 * @returns {object} The DataJS object representing the property for the key
-		 *          of this dimension attribute
-		 */
-		getKeyProperty : function() {
-			return this._oProperty;
-		},
-	
-		/**
-		 * Get text property related to this dimension attribute
-		 * 
-		 * @returns {object} The DataJS object representing the text property or
-		 *          null if it does not exist
-		 */
-		getTextProperty : function() {
-			return this._oTextProperty;
-		},
-	
-		/**
-		 * Get label
-		 * 
-		 * @returns {string} The (possibly language-dependent) label text for this
-		 *          dimension attribute
-		 */
-		getLabelText : function() {
-			if (!this._sLabelText && this._oQueryResult._oModel._oActivatedWorkarounds.CreateLabelsFromTechnicalNames)
-				this._sLabelText = odata4analytics.helper.tokenizeNametoLabelText(this.getName());
-			return this._sLabelText;
-		},
-	
-		/**
-		 * Get dimension
-		 * 
-		 * @returns {odata4analytics.Dimension} The dimension object
-		 *          containing this attribute
-		 */
-		getDimension : function() {
-			return this._oQueryResult.findDimensionByName(this._sDimensionName);
-		},
-	
-		/**
-		 * Private member attributes
-		 */
-		_oQueryResult : null,
-		_oProperty : null,
-	
-		_oTextProperty : null,
-		_sLabelText : null,
-		_sDimensionName : null
-	};
-	
-	/** ******************************************************************** */
-	
-	/**
-	 * Create a representation of a measure provided by an analytic query
-	 * 
-	 * @param {odata4analytics.QueryResult}
-	 *            oQueryResult The query result containing this measure
-	 * @param {object}
-	 *            oProperty The DataJS object object representing the measure
-	 * 
-	 * @constructor
-	 * 
-	 * @class Representation of a property annotated with
-	 *        sap:aggregation-role="measure".
-	 * @protected
-	 */
-	odata4analytics.Measure = function(oQueryResult, oProperty) {
-		this._init(oQueryResult, oProperty);
-	};
-	
-	odata4analytics.Measure.prototype = {
-		/**
-		 * @private
-		 */
-		_init : function(oQueryResult, oProperty) {
-			this._oQueryResult = oQueryResult;
-			this._oProperty = oProperty;
-	
-			if (oProperty.extensions != undefined) {
-	
-				for (var i = -1, oExtension; oExtension = oProperty.extensions[++i];) {
-	
-					if (!oExtension.namespace == odata4analytics.constants.SAP_NAMESPACE)
-						continue;
-	
-					switch (oExtension.name) {
-					case "label":
-						this._sLabelText = oExtension.value;
-						break;
-					case "text":
-						this._oTextProperty = oQueryResult.getEntityType().findPropertyByName(oExtension.value);
-						break;
-					case "unit":
-						this._oUnitProperty = oQueryResult.getEntityType().findPropertyByName(oExtension.value);
-						break;
-					}
-				}
-			}
-			if (!this._sLabelText)
-				this._sLabelText = "";
-		},
-	
-		/**
-		 * Get the name of the measure
-		 * 
-		 * @returns {string} The name of the measure, which is identical to the name
-		 *          of the measure raw value property in the entity type
-		 */
-		getName : function() {
-			return this._oProperty.name;
-		},
-	
-		/**
-		 * Get the raw value property
-		 * 
-		 * @returns {object} The DataJS object representing the property holding the
-		 *          raw value of this measure
-		 */
-		getRawValueProperty : function() {
-			return this._oProperty;
-		},
-	
-		/**
-		 * Get the text property associated to the raw value property holding the
-		 * formatted value related to this measure
-		 * 
-		 * @returns {object} The DataJS object representing the property holding the
-		 *          formatted value text of this measure or null if this measure
-		 *          does not have a unit
-		 */
-		getFormattedValueProperty : function() {
-			return this._oTextProperty;
-		},
-	
-		/**
-		 * Get the unit property related to this measure
-		 * 
-		 * @returns {object} The DataJS object representing the unit property or
-		 *          null if this measure does not have a unit
-		 */
-		getUnitProperty : function() {
-			return this._oUnitProperty;
-		},
-	
-		/**
-		 * Get label
-		 * 
-		 * @returns {string} The (possibly language-dependent) label text for this
-		 *          measure
-		 */
-		getLabelText : function() {
-			if (!this._sLabelText && this._oQueryResult._oModel._oActivatedWorkarounds.CreateLabelsFromTechnicalNames)
-				this._sLabelText = odata4analytics.helper.tokenizeNametoLabelText(this.getName());
-			return this._sLabelText;
-		},
-	
-		/**
-		 * Get indicator whether or not the measure is updatable
-		 * 
-		 * @returns {boolean} True iff the measure is updatable
-		 */
-		isUpdatable : function() {
-			if (this._bIsUpdatable != null)
-				return this._bIsUpdatable;
-			var oUpdatablePropertyNameSet = this._oQueryResult.getEntitySet().getUpdatablePropertyNameSet();
-	
-			return (oUpdatablePropertyNameSet[this.getName()] != undefined);
-		},
-	
-		/**
-		 * Private member attributes
-		 */
-		_oQueryResult : null,
-		_oProperty : null,
-	
-		_oTextProperty : null,
-		_sLabelText : null,
-		_oUnitProperty : null,
-	
-		_bIsUpdatable : null
-	};
-	
-	/** ******************************************************************** */
-	
-	/**
-	 * Create a representation of an OData entity set in the context of an analytic
-	 * query
-	 * 
-	 * @param {object}
-	 *            oModel DataJS object for the OData model containing this entity
-	 *            set
-	 * @param {object}
-	 *            oSchema DataJS object for the schema surrounding the container of
-	 *            this entity set
-	 * @param {object}
-	 *            oContainer DataJS object for the container holding this entity set
-	 * @param {object}
-	 *            oEntitySet DataJS object for the entity set
-	 * @param {object}
-	 *            oEntityType DataJS object for the entity type
-	 * 
-	 * @constructor
-	 * 
-	 * @class Representation of a OData entity set.
-	 * @protected
-	 */
-	odata4analytics.EntitySet = function(oModel, oSchema, oContainer, oEntitySet, oEntityType) {
-		this._init(oModel, oSchema, oContainer, oEntitySet, oEntityType);
-	};
-	
-	odata4analytics.EntitySet.prototype = {
-		/**
-		 * @private
-		 */
-		_init : function(oModel, oSchema, oContainer, oEntitySet, oEntityType) {
-			this._oEntityType = oEntityType;
-			this._oEntitySet = oEntitySet;
-			this._oContainer = oContainer;
-			this._oSchema = oSchema;
-			this._oModel = oModel;
-	
-			if (oSchema.entityContainer.length > 1)
-				this._sQName = oContainer.name + "." + oEntitySet.name;
-			else
-				// no need to disambiguate this for the simple case
-				this._sQName = oEntitySet.name;
-		},
-	
-		/**
-		 * Get the fully qualified name for this entity type
-		 * 
-		 * @returns {string} The fully qualified name
-		 */
-		getQName : function() {
-			return this._sQName;
-		},
-	
-		/**
-		 * Get full description for this entity set
-		 * 
-		 * @returns {object} The DataJS object representing the entity set
-		 */
-		getSetDescription : function() {
-			return this._oEntitySet;
-		},
-	
-		/**
-		 * Get entity type used for this entity set
-		 * 
-		 * @returns {object} The DataJS object representing the entity type
-		 */
-		getEntityType : function() {
-			return this._oEntityType;
-		},
-	
-		getSchema : function() {
-			return this._oSchema;
-		},
-	
-		getModel : function() {
-			return this._oModel;
-		},
-	
-		/**
-		 * Get names of properties in this entity set that can be updated
-		 * 
-		 * @returns {object} An object with individual JS properties for each
-		 *          updatable property. For testing whether propertyName is the name
-		 *          of an updatable property, use
-		 *          <code>getUpdatablePropertyNameSet()[propertyName]</code>. The
-		 *          included JS object properties are all set to true.
-		 */
-		getUpdatablePropertyNameSet : function() {
-			if (this._oUpdatablePropertyNames)
-				return this._oUpdatablePropertyNames;
-	
-			this._oUpdatablePropertyNames = new Object();
-			var bSetIsUpdatable = true;
-			if (this._oEntitySet.extensions != undefined) {
-				for (var j = -1, oExtension; oExtension = this._oEntitySet.extensions[++j];) {
-					if (oExtension.namespace == odata4analytics.constants.SAP_NAMESPACE && oExtension.name == "updatable") {
-						if (oExtension.value == "false") {
-							bSetIsUpdatable = false;
-							break;
-						}
-					}
-				}
-			}
-			if (!bSetIsUpdatable) { // set not updatable cascades to all properties
-				return this._oUpdatablePropertyNames;
-			}
-	
-			var aProperty = this._oEntityType.getTypeDescription().property;
-			for (var i = -1, oProperty; oProperty = aProperty[++i];) {
-				var bPropertyIsUpdatable = true;
-	
-				if (oProperty.extensions == undefined)
-					continue;
-				for (var j = -1, oExtension; oExtension = oProperty.extensions[++j];) {
-					if (oExtension.namespace != odata4analytics.constants.SAP_NAMESPACE)
-						continue;
-	
-					if (oExtension.name == "updatable") {
-						if (oExtension.value == "false") {
-							bPropertyIsUpdatable = false;
-							break;
-						}
-					}
-				}
-				if (bPropertyIsUpdatable)
-					this._oUpdatablePropertyNames[oProperty.name] = true;
-			}
-			return this._oUpdatablePropertyNames;
-		},
-	
-		/**
-		 * Private member attributes
-		 */
-	
-		_oEntityType : null,
-		_oEntitySet : null,
-		_oContainer : null,
-		_oSchema : null,
-		_oModel : null,
-		_sQName : null,
-		_oUpdatablePropertyNames : null
-	};
-	
-	/** ******************************************************************** */
-	
-	/**
-	 * Create a representation of an OData entity type in the context of an analytic
-	 * query
-	 * 
-	 * @param {object}
-	 *            oModel DataJS object for the OData model containing this entity
-	 *            type
-	 * @param {object}
-	 *            oSchema DataJS object for the schema containing this entity type
-	 * @param {object}
-	 *            oEntityType DataJS object for the entity type
-	 * 
-	 * @constructor
-	 * 
-	 * @class Representation of a OData entity type.
-	 * @protected
-	 */
-	odata4analytics.EntityType = function(oModel, oSchema, oEntityType) {
-		this._init(oModel, oSchema, oEntityType);
-	};
-	
-	odata4analytics.EntityType.propertyFilterRestriction = {
-		SINGLE_VALUE : "single-value",
-		MULTI_VALUE : "multi-value",
-		INTERVAL : "interval"
-	};
-	
-	odata4analytics.EntityType.prototype = {
-		/**
-		 * @private
-		 */
-		_init : function(oModel, oSchema, oEntityType) {
-			this._oEntityType = oEntityType;
-			this._oSchema = oSchema;
-			this._oModel = oModel;
-	
-			this._aKeyProperties = [];
-			this._oPropertySet = new Object();
-			this._aFilterablePropertyNames = [];
-			this._aSortablePropertyNames = [];
-			this._aRequiredFilterPropertyNames = [];
-			this._oPropertyFilterRestrictionSet = new Object();
-	
-			this._sQName = oSchema.namespace + "." + oEntityType.name;
-	
-			/*
-			 * collect all hierarchies defined in this entity type
-			 */
-			var oRecursiveHierarchies = {}; // temp for collecting all properties
-			// participating in hierarchies
-			var oRecursiveHierarchy = null;
-	
-			for (var i = -1, oPropertyRef; oPropertyRef = oEntityType.key.propertyRef[++i];) {
-				this._aKeyProperties.push(oPropertyRef.name);
-			}
-	
-			for (var i = -1, oProperty; oProperty = oEntityType.property[++i];) {
-	
-				// store property references for faster lookup
-				this._oPropertySet[oProperty.name] = oProperty;
-
-				// by default, every property can be filtered
-				this._aFilterablePropertyNames.push(oProperty.name);
-	
-				// by default, every property can be sorted
-				this._aSortablePropertyNames.push(oProperty.name);
-	
-				if (oProperty.extensions == undefined)
-					continue;
-				for (var j = -1, oExtension; oExtension = oProperty.extensions[++j];) {
-	
-					if (!oExtension.namespace == odata4analytics.constants.SAP_NAMESPACE)
-						continue;
-	
-					switch (oExtension.name) {
-					case "filterable":
-						if (oExtension.value == "false")
-							this._aFilterablePropertyNames.pop(oProperty.name);
-						break;
-					case "sortable":
-						if (oExtension.value == "false")
-							this._aSortablePropertyNames.pop(oProperty.name);
-						break;
-					case "required-in-filter":
-						if (oExtension.value == "true")
-							this._aRequiredFilterPropertyNames.push(oProperty.name);
-						break;
-					case "filter-restriction":
-						if (oExtension.value == odata4analytics.EntityType.propertyFilterRestriction.SINGLE_VALUE
-								|| oExtension.value == odata4analytics.EntityType.propertyFilterRestriction.MULTI_VALUE
-								|| oExtension.value == odata4analytics.EntityType.propertyFilterRestriction.INTERVAL)
-							this._oPropertyFilterRestrictionSet[oProperty.name] = oExtension.value;
-						break;
-	
-					// hierarchy annotations: build temporary set of
-					// hierarchy-node-id properties with relevant attributes
-					case "hierarchy-node-for":
-						if (!(oRecursiveHierarchy = oRecursiveHierarchies[oProperty.name]))
-							oRecursiveHierarchy = oRecursiveHierarchies[oProperty.name] = new Object();
-						oRecursiveHierarchy.dimensionName = oExtension.value;
-						break;
-					case "hierarchy-parent-node-for":
-					case "hierarchy-parent-nod": // TODO workaround for GW bug
-						if (!(oRecursiveHierarchy = oRecursiveHierarchies[oExtension.value]))
-							oRecursiveHierarchy = oRecursiveHierarchies[oExtension.value] = new Object();
-						oRecursiveHierarchy.parentNodeIDProperty = oProperty;
-						break;
-					case "hierarchy-level-for":
-						if (!(oRecursiveHierarchy = oRecursiveHierarchies[oExtension.value]))
-							oRecursiveHierarchy = oRecursiveHierarchies[oExtension.value] = new Object();
-						oRecursiveHierarchy.levelProperty = oProperty;
-						break;
-					case "hierarchy-drill-state-for":
-					case "hierarchy-drill-stat": // TODO workaround for GW bug
-						if (!(oRecursiveHierarchy = oRecursiveHierarchies[oExtension.value]))
-							oRecursiveHierarchy = oRecursiveHierarchies[oExtension.value] = new Object();
-						oRecursiveHierarchy.drillStateProperty = oProperty;
-						break;
-	
-					}
-				}
-			}
-	
-			// post processing: set up hierarchy objects
-			this._oRecursiveHierarchySet = new Object();
-			for ( var hierNodeIDPropertyName in oRecursiveHierarchies) {
-				var oHierarchy = oRecursiveHierarchies[hierNodeIDPropertyName];
-				var oHierarchyNodeIDProperty = this._oPropertySet[hierNodeIDPropertyName];
-				var oDimensionProperty = this._oPropertySet[oHierarchy.dimensionName];
-				if (oDimensionProperty == null) {
-					// TODO temporary workaround for BW provider, which does not
-					// return it: let dimension coincide with hierarchy
-					// node ID
-					oDimensionProperty = oHierarchyNodeIDProperty;
-				}
-				this._oRecursiveHierarchySet[oDimensionProperty.name] = new odata4analytics.RecursiveHierarchy(oEntityType,
-						oHierarchyNodeIDProperty, oHierarchy.parentNodeIDProperty, oHierarchy.levelProperty, oDimensionProperty);
-			}
-	
-		},
-	
-		/**
-		 * Get all properties
-		 * 
-		 * @return {object} Object with (JavaScript) properties, one for each (OData
-		 *         entity type) property. These (JavaScript) properties hold the
-		 *         DataJS object representing the property
-		 */
-		getProperties : function() {
-			return this._oPropertySet;
-		},
-	
-		/**
-		 * Find property by name
-		 * 
-		 * @param {string}
-		 *            sPropertyName Property name
-		 * @returns {object} The DataJS object representing the property or null if
-		 *          it does not exist
-		 */
-		findPropertyByName : function(sPropertyName) {
-			return this._oPropertySet[sPropertyName];
-		},
-	
-		/**
-		 * Get key properties of this type
-		 * 
-		 * @returns {array(string)} The list of key property names
-		 */
-		getKeyProperties : function() {
-			return this._aKeyProperties;
-		},
-	
-		/**
-		 * Get label of the property with specified name (identified by property
-		 * metadata annotation sap:label)
-		 * 
-		 * @param {string}
-		 *            sPropertyName Property name
-		 * @returns {string} The label string
-		 */
-		getLabelOfProperty : function(sPropertyName) {
-			var oProperty = this._oPropertySet[sPropertyName];
-			if (oProperty == null)
-				throw "no such property with name " + sPropertyName;
-	
-			if (oProperty.extensions != undefined) {
-				for (var i = -1, oExtension; oExtension = oProperty.extensions[++i];) {
-					if (!oExtension.namespace == odata4analytics.constants.SAP_NAMESPACE)
-						continue;
-					if (oExtension.name == "label")
-						return oExtension.value;
-				}
-			}
-			return null;
-		},
-	
-		/**
-		 * Get the text property related to the property with specified name
-		 * (identified by property metadata annotation sap:text)
-		 * 
-		 * @param {string}
-		 *            sPropertyName Property name
-		 * @returns {object} The DataJS object representing the text property or
-		 *          null if it does not exist
-		 */
-		getTextPropertyOfProperty : function(sPropertyName) {
-			var oProperty = this._oPropertySet[sPropertyName];
-			if (oProperty == null)
-				throw "no such property with name " + sPropertyName;
-	
-			if (oProperty.extensions != undefined) {
-				for (var i = -1, oExtension; oExtension = oProperty.extensions[++i];) {
-					if (oExtension.name == "text")
-						return this.findPropertyByName(oExtension.value);
-				}
-			}
-			return null;
-		},
-	
-		/**
-		 * Get the super-ordinate property related to the property with specified
-		 * name (identified by property metadata annotation sap:super-ordinate)
-		 * 
-		 * @param {string}
-		 *            sPropertyName Property name
-		 * @returns {object} The DataJS object representing the super-ordinate
-		 *          property or null if it does not exist
-		 */
-		getSuperOrdinatePropertyOfProperty : function(sPropertyName) {
-			var oProperty = this._oPropertySet[sPropertyName];
-			if (oProperty == null)
-				throw "no such property with name " + sPropertyName;
-	
-			if (oProperty.extensions != undefined) {
-				for (var i = -1, oExtension; oExtension = oProperty.extensions[++i];) {
-					if (oExtension.name == "super-ordinate")
-						return this.findPropertyByName(oExtension.value);
-				}
-			}
-			return null;
-		},
-	
-		/**
-		 * Get names of properties that can be filtered, that is they can be used in
-		 * $filter expressions
-		 * 
-		 * @returns {array(string)} Array with names of properties that can be
-		 *          filtered.
-		 */
-		getFilterablePropertyNames : function() {
-			return this._aFilterablePropertyNames;
-		},
-	
-		/**
-		 * Get names of properties that can be sorted, that is they can be used in
-		 * $orderby expressions
-		 * 
-		 * @returns {array(string)} Array with names of properties that can be
-		 *          sorted.
-		 */
-		getSortablePropertyNames : function() {
-			return this._aSortablePropertyNames;
-		},
-	
-		/**
-		 * Get names of properties that must be filtered, that is they must appear
-		 * in every $filter expression
-		 * 
-		 * @returns {array(string)} Array with names of properties that must be
-		 *          filtered.
-		 */
-		getRequiredFilterPropertyNames : function() {
-			return this._aRequiredFilterPropertyNames;
-		},
-	
-		/**
-		 * Get properties for which filter restrictions have been specified
-		 * 
-		 * @returns {object} Object with (JavaScript) properties, one for each
-		 *          (OData entity type) property. The property value is from
-		 *          odata4analytics.EntityType.propertyFilterRestriction and
-		 *          indicates the filter restriction for this property.
-		 */
-		getPropertiesWithFilterRestrictions : function() {
-			return this._oPropertyFilterRestrictionSet;
-		},
-	
-		/**
-		 * Get the names of all properties with an associated hierarchy
-		 * 
-		 * @returns {array(string)} List of all property names
-		 */
-		getAllHierarchyPropertyNames : function() {
-			if (this._aHierarchyPropertyNames)
-				return this._aHierarchyPropertyNames;
-	
-			this._aHierarchyPropertyNames = [];
-	
-			for ( var sName in this._oRecursiveHierarchySet)
-				this._aHierarchyPropertyNames.push(this._oRecursiveHierarchySet[sName].getNodeValueProperty().name);
-	
-			return this._aHierarchyPropertyNames;
-		},
-	
-		/**
-		 * Get the hierarchy associated to a given property Based on the current
-		 * specification, hierarchies are always recursive. TODO: Extend behavior
-		 * when leveled hierarchies get in scope
-		 * 
-		 * @param {string}
-		 *            sName Parameter name
-		 * @returns {odata4analytics.RecursiveHierarchy} The hierarchy
-		 *          object or null if it does not exist
-		 */
-		getHierarchy : function(sName) {
-			if (this._oRecursiveHierarchySet[sName] == undefined)
-				return null;
-			return this._oRecursiveHierarchySet[sName];
-		},
-	
-		/**
-		 * Get the fully qualified name for this entity type
-		 * 
-		 * @returns {string} The fully qualified name
-		 */
-		getQName : function() {
-			return this._sQName;
-		},
-	
-		/**
-		 * Get full description for this entity type
-		 * 
-		 * @returns {object} The DataJS object representing the entity type
-		 */
-		getTypeDescription : function() {
-			return this._oEntityType;
-		},
-	
-		getSchema : function() {
-			return this._oSchema;
-		},
-	
-		getModel : function() {
-			return this._oModel;
-		},
-	
-		/**
-		 * Private member attributes
-		 */
-	
-		_oEntityType : null,
-		_oSchema : null,
-		_oModel : null,
-		_sQName : null,
-	
-		_aKeyProperties : null,
-	
-		_oPropertySet : null,
-		_aFilterablePropertyNames : null,
-		_aRequiredFilterPropertyNames : null,
-		_oPropertyFilterRestrictionSet : null,
-	
-		_aHierarchyPropertyNames : null,
-		_oRecursiveHierarchySet : null
-	};
-	
-	/** ******************************************************************** */
-	
-	/**
-	 * Create a representation of a recursive hierarchy defined on one multiple
-	 * properties in an OData entity type query
-	 * 
-	 * @param {EntityType}
-	 *            oEntityType object for the entity type
-	 * @param {object}
-	 *            oNodeIDProperty DataJS object for the property holding the
-	 *            hierarchy node ID identifying the hierarchy node to which the
-	 *            OData entry belongs
-	 * @param {object}
-	 *            oParentNodeIDProperty DataJS object for the property holding the
-	 *            node ID of the parent of the hierarchy node pointed to by the
-	 *            value of oNodeIDProperty
-	 * @param {object}
-	 *            oNodeLevelProperty DataJS object for the property holding the
-	 *            level number for the of the hierarchy node pointed to by the value
-	 *            of oNodeIDProperty
-	 * @param {object}
-	 *            oNodeValueProperty DataJS object for the property holding the data
-	 *            value for the of the hierarchy node pointed to by the value of
-	 *            oNodeIDProperty
-	 * 
-	 * @constructor
-	 * 
-	 * @class Representation of a recursive hierarchy.
-	 * @protected
-	 */
-	odata4analytics.RecursiveHierarchy = function(oEntityType, oNodeIDProperty, oParentNodeIDProperty, oNodeLevelProperty,
-			oNodeValueProperty) {
-		this._init(oEntityType, oNodeIDProperty, oParentNodeIDProperty, oNodeLevelProperty, oNodeValueProperty);
-	};
-	
-	odata4analytics.RecursiveHierarchy.prototype = {
-		/**
-		 * @private
-		 */
-		_init : function(oEntityType, oNodeIDProperty, oParentNodeIDProperty, oNodeLevelProperty, oNodeValueProperty) {
-			this._oEntityType = oEntityType;
-	
-			this._oNodeIDProperty = oNodeIDProperty;
-			this._oParentNodeIDProperty = oParentNodeIDProperty;
-			this._oNodeLevelProperty = oNodeLevelProperty;
-			this._oNodeValueProperty = oNodeValueProperty;
-	
-		},
-	
-		/**
-		 * Get indicator if this is a recursive hierarchy
-		 * 
-		 * @returns {boolean} True
-		 */
-		isRecursiveHierarchy : function() {
-			return true;
-		},
-	
-		/**
-		 * Get indicator if this is a leveled hierarchy
-		 * 
-		 * @returns {boolean} False
-		 */
-		isLeveledHierarchy : function() {
-			return false;
-		},
-	
-		/**
-		 * Get the property holding the node ID of the hierarchy node
-		 * 
-		 * @returns {object} The DataJS object representing this property
-		 */
-		getNodeIDProperty : function() {
-			return this._oNodeIDProperty;
-		},
-	
-		/**
-		 * Get the property holding the parent node ID of the hierarchy node
-		 * 
-		 * @returns {object} The DataJS object representing this property
-		 */
-		getParentNodeIDProperty : function() {
-			return this._oParentNodeIDProperty;
-		},
-	
-		/**
-		 * Get the property holding the level of the hierarchy node
-		 * 
-		 * @returns {object} The DataJS object representing this property
-		 */
-		getNodeLevelProperty : function() {
-			return this._oNodeLevelProperty;
-		},
-	
-		/**
-		 * Get the property holding the value that is structurally organized by the
-		 * hierarchy
-		 * 
-		 * @returns {object} The DataJS object representing this property
-		 */
-		getNodeValueProperty : function() {
-			return this._oNodeValueProperty;
-		},
-	
-		/**
-		 * Private member attributes
-		 */
-	
-		_oNodeIDProperty : null,
-		_oParentNodeIDProperty : null,
-		_oNodeLevelProperty : null,
-		_oNodeValueProperty : null
-	
-	};
-	
-	/** ******************************************************************** */
-	
-	/**
-	 * Create a representation of a filter expression for a given entity type. It can be rendered as value for the $filter system
-	 * query option.
-	 * 
-	 * @param {object}
-	 *            oModel DataJS object for the OData model containing this entity type
-	 * @param {object}
-	 *            oSchema DataJS object for the schema containing this entity type
-	 * @param {com.sap.odata4analytics.EntityType}
-	 *            oEntityType object for the entity type
-	 * 
-	 * @constructor
-	 * 
-	 * @class Representation of a $filter expression for an OData entity type.
-	 */
-	odata4analytics.FilterExpression = function(oModel, oSchema, oEntityType) {
-	    this._init(oModel, oSchema, oEntityType);
-	};
-
-	odata4analytics.FilterExpression.prototype = {
-	    /**
-	     * @private
-	     */
-	    _init : function(oModel, oSchema, oEntityType) {
-	        this._oEntityType = oEntityType;
-	        this._oSchema = oSchema;
-	        this._oModel = oModel;
-
-	        this._aConditionUI5Filter = new Array();
-	        this._aUI5FilterArray = new Array();
-	    },
-
-	    /**
-	     * @private
-	     */
-		_renderPropertyFilterValue : function(sFilterValue, sPropertyEDMTypeName) {
-			// initial implementation called odata4analytics.helper.renderPropertyFilterValue, which had problems with locale-specific input values
-			// this is handled in the ODataModel
-			return this._oModel.getODataModel().formatValue(sFilterValue, sPropertyEDMTypeName);
-		},
-
-	    /**
-	     * Clear expression from any conditions that may have been set previously
-	     * 
-	     */
-	    clear : function() {
-	        this._aConditionUI5Filter = new Array();
-	        this._aUI5FilterArray = new Array();
-	    },
-
-	    /**
-	     * @private
-	     */
-	    _addCondition : function(sProperty, sOperator, oValue1, oValue2) {
-	        // make sure that the condition is new
-	        for ( var i = -1, oUI5Filter; oUI5Filter = this._aConditionUI5Filter[++i];) {
-	            if (oUI5Filter.sPath == sProperty && oUI5Filter.sOperator == sOperator && oUI5Filter.oValue1 == oValue1
-	                    && oUI5Filter.oValue2 == oValue2)
-	                return;
-	        }
-	        this._aConditionUI5Filter.push(new sap.ui.model.Filter(sProperty, sOperator, oValue1, oValue2));
-	    },
-
-	    /**
-	     * @private
-	     */
-	    _addUI5FilterArray : function(aUI5Filter) {
-	        this._aUI5FilterArray.push(aUI5Filter);
-	    },
-
-	    /**
-	     * Add a condition to the filter expression.
-	     * 
-	     * Multiple conditions on the same property are combined with a logical OR first, and in a second step conditions for
-	     * different properties are combined with a logical AND.
-	     * 
-	     * @param {string}
-	     *            sPropertyName The name of the property bound in the condition
-	     * @param {sap.ui.model.FilterOperator}
-	     *            sOperator operator used for the condition
-	     * @param {object}
-	     *            oValue value to be used for this condition
-	     * @param {object}
-	     *            oValue2 (optional) as second value to be used for this condition
-	     * @throws Exception
-	     *             if the property is unknown or not filterable
-	     * @returns {com.sap.odata4analytics.FilterExpression} This object for method chaining
-	     */
-	    addCondition : function(sPropertyName, sOperator, oValue, oValue2) {
-	        var oProperty = this._oEntityType.findPropertyByName(sPropertyName);
-	        if (oProperty == null) {
-	            throw "Cannot add filter condition for unknown property name " + sPropertyName; // TODO
-	        }
-	        var aFilterablePropertyNames = this._oEntityType.getFilterablePropertyNames();
-	        if (aFilterablePropertyNames.indexOf(sPropertyName) === -1) {
-	            throw "Cannot add filter condition for not filterable property name " + sPropertyName; // TODO
-	        }
-	        this._addCondition(sPropertyName, sOperator, oValue, oValue2);
-	        return this;
-	    },
-
-	    /**
-	     * Add a set condition to the filter expression.
-	     * 
-	     * A set condition tests if the value of a property is included in a set of given values. It is a convenience method for
-	     * this particular use case eliminating the need for multiple API calls.
-	     * 
-	     * @param {string}
-	     *            sPropertyName The name of the property bound in the condition
-	     * @param {array}
-	     *            aValues values defining the set
-	     * @throws Exception
-	     *             if the property is unknown or not filterable
-	     * @returns {com.sap.odata4analytics.FilterExpression} This object for method chaining
-	     */
-	    addSetCondition : function(sPropertyName, aValues) {
-	        var oProperty = this._oEntityType.findPropertyByName(sPropertyName);
-	        if (oProperty == null) {
-	            throw "Cannot add filter condition for unknown property name " + sPropertyName; // TODO
-	        }
-	        var aFilterablePropertyNames = this._oEntityType.getFilterablePropertyNames();
-	        if (aFilterablePropertyNames.indexOf(sPropertyName) === -1) {
-	            throw "Cannot add filter condition for not filterable property name " + sPropertyName; // TODO
-	        }
-	        for ( var i = -1, oValue; oValue = aValues[++i];)
-	            this._addCondition(sPropertyName, sap.ui.model.FilterOperator.EQ, oValue);
-	        return this;
-	    },
-
-	    /**
-	     * Add an array of UI5 filter conditions to the filter expression.
-	     * 
-	     * The UI5 filter condition is combined with the other given conditions using a logical AND. This method
-	     * is particularly useful for passing forward already created UI5 filter arrays.  
-	     * 
-	     * @param {array(sap.ui.model.Filter)}
-	     *            aUI5Filter Array of UI5 filter objects
-	     * @returns {com.sap.odata4analytics.FilterExpression} This object for method chaining
-	     */
-	    addUI5FilterConditions : function(aUI5Filter) {
-	        if (! Array.isArray(aUI5Filter))
-	            throw "Argument is not an array";
-	        if (aUI5Filter.length > 0)
-	        	this._addUI5FilterArray(aUI5Filter);
-	        return this;
-	    },
-
-	        
-	    /**
-	     * Get an array of SAPUI5 Filter objects corresponding to this expression.
-	     * 
-	     * @returns {array(sap.ui.model.Filter)} List of filter objects representing this expression
-	     */
-	    getExpressionAsUI5FilterArray : function() {
-	        var aFilterObjects = this._aConditionUI5Filter.concat([]);
-
-	        for ( var i = -1, aFilter; aFilter = this._aUI5FilterArray[++i];) {
-	            for ( var j = -1, oFilter; oFilter = aFilter[++j];) {
-	                aFilterObjects.push(oFilter);
-	            }
-	        }
-	        return aFilterObjects;
-	    },
-
-
-	    /*
-	     * @private
-	     */
-	    getPropertiesReferencedByUI5FilterArray : function(aUI5Filter, oReferencedProperties) {
-	        for ( var i = -1, oUI5Filter; oUI5Filter = aUI5Filter[++i];) {
-	            if (oUI5Filter.aFilters != undefined) 
-	                this.getPropertiesReferencedByUI5FilterArray(oUI5Filter.aFilters, oReferencedProperties);
-	            else { 
-	                if (oReferencedProperties[oUI5Filter.sPath] == undefined)
-	                    oReferencedProperties[oUI5Filter.sPath] = [];
-	                oReferencedProperties[oUI5Filter.sPath].push(oUI5Filter);
-	            }                    
-	        }
-	    },
-	    
-
-	    /**
-	     * @private
-	     * 
-	     * Get the properties referenced by the filter expression.
-	     * 
-	     * @returns {object} Object containing (JavaScript) properties for all (OData entity type)
-	     *          properties referenced in the filter expression. The value for each of these properties is an array holding all used UI5 filters referencing them. 
-	     */
-	    getReferencedProperties : function() {
-	        var oReferencedProperties = new Object();
-
-	        for ( var i = -1, oUI5Filter; oUI5Filter = this._aConditionUI5Filter[++i];) {
-	            if (oReferencedProperties[oUI5Filter.sPath] == undefined)
-	                oReferencedProperties[oUI5Filter.sPath] = [];
-	            oReferencedProperties[oUI5Filter.sPath].push(oUI5Filter);
-	        }
-	        
-	        for ( var i = -1, aUI5Filter; aUI5Filter = this._aUI5FilterArray[++i];) {
-	            this.getPropertiesReferencedByUI5FilterArray(aUI5Filter, oReferencedProperties);
-	        }
-	        return oReferencedProperties;
-	    },
-
-	    /**
-	     * @private
-	     *
-	     * Render a UI5 Filter as OData condition.
-	     * 
-	     * @param {string} oUI5Filter The filter object to render (must not be a multi filter)
-	     * @returns {string} The $filter value for the given UI5 filter 
-	     */
-	    renderUI5Filter : function(oUI5Filter) {
-	        var oProperty = this._oEntityType.findPropertyByName(oUI5Filter.sPath);
-	        if (oProperty == null) {
-	            throw "Cannot add filter condition for unknown property name " + sPropertyName; // TODO
-	        }
-	        
-	        var sFilterExpression = null;
-	        switch (oUI5Filter.sOperator) {
-	        case sap.ui.model.FilterOperator.BT:
-	            sFilterExpression = "(" + oUI5Filter.sPath + " "
-	                    + sap.ui.model.FilterOperator.GE.toLowerCase() + " "
-	                    + this._renderPropertyFilterValue(oUI5Filter.oValue1, oProperty.type)
-	                    + " and " + oUI5Filter.sPath + " " + sap.ui.model.FilterOperator.LE.toLowerCase() + " "
-	                    + this._renderPropertyFilterValue(oUI5Filter.oValue2, oProperty.type)
-	                    + ")";
-	            break;
-	        case sap.ui.model.FilterOperator.Contains:
-	            sFilterExpression = "substringof('" + oUI5Filter.oValue1 + "'," +  oUI5Filter.sPath + ")";
-	            break;
-	        case sap.ui.model.FilterOperator.StartsWith:
-	        case sap.ui.model.FilterOperator.EndsWith:
-	            sFilterExpression = oUI5Filter.sOperator.toLowerCase() + "("
-	                    + oUI5Filter.sPath + ",'" + oUI5Filter.oValue1 + "')";
-	            break;
-	        default:
-	            sFilterExpression = oUI5Filter.sPath + " " + oUI5Filter.sOperator.toLowerCase() + " "
-	                    + this._renderPropertyFilterValue(oUI5Filter.oValue1, oProperty.type);
-	        }
-	        
-	        return sFilterExpression;
-	    },
-	    
-	    /*
-	     * @private
-	     */
-	    renderUI5MultiFilter : function(oUI5MultiFilter) {
-	        var aUI5MultiFilter = new Array();
-
-	        var sOptionString = "";
-	        var sLogicalMultiOperator = oUI5MultiFilter.bAnd == true ? " and " : " or ";
-	        
-	        for (var i = -1, oUI5Filter; oUI5Filter = oUI5MultiFilter.aFilters[++i];) {
-	            if (oUI5Filter.aFilters != undefined) { // defer processing to the end 
-	                aUI5MultiFilter.push(oUI5Filter);
-	                continue;
-	            }
-
-	            sOptionString += (sOptionString == "" ? "" : sLogicalMultiOperator) + "(" + this.renderUI5Filter(oUI5Filter) + ")";
-	        }
-	        // process multi filters if any
-	        if (aUI5MultiFilter.length > 0) {
-	            for (var i = -1, oMultiFilter; oMultiFilter = aUI5MultiFilter[++i];) {
-	                sOptionString += (sOptionString == "" ? "" : sLogicalMultiOperator) + "(" + this.renderUI5MultiFilter(oMultiFilter) + ")";      
-	            }
-	        }
-	        return sOptionString;
-	    },
-	    
-	    /*
-	     * @private
-	     */
-	    renderUI5FilterArray : function(aUI5Filter) {
-	        if (aUI5Filter.length == 0)
-	            return "";
-
-	        var sOptionString = "";
-	        // 1. Process conditions
-	        aUI5Filter.sort(function(a, b) {
-	            if (a.sPath == b.sPath)
-	                return 0;
-	            if (a.sPath > b.sPath)
-	                return 1;
-	            else
-	                return -1;
-	        });
-
-	        var sPropertyName = aUI5Filter[0].sPath;
-	        var sSubExpression = "";
-	        var aNEFilter = new Array(), aUI5MultiFilter = new Array();
-	        for ( var i = -1, oUI5Filter; oUI5Filter = aUI5Filter[++i];) {
-	            if (oUI5Filter.aFilters != undefined) { // defer processing to the end
-	                aUI5MultiFilter.push(oUI5Filter);
-	                continue;
-	            }
-	            if (sPropertyName != oUI5Filter.sPath) {
-	            	if (sSubExpression != "") sOptionString += (sOptionString == "" ? "" : " and ") + "(" + sSubExpression + ")";
-	                sSubExpression = "";
-	                if (aNEFilter.length > 0) { // handle negated comparisons
-	                    for (var j = -1, oNEFilter; oNEFilter = aNEFilter[++j];) {
-	                        sSubExpression += (sSubExpression == "" ? "" : " and ") + this.renderUI5Filter(oNEFilter);                        
-	                    }
-	                    sOptionString += (sOptionString == "" ? "" : " and ") + "(" + sSubExpression + ")";
-	                    sSubExpression = "";
-	                }
-	                sPropertyName = oUI5Filter.sPath;
-	                aNEFilter = new Array();
-	            }
-	            if (oUI5Filter.sOperator == sap.ui.model.FilterOperator.NE) {
-	                aNEFilter.push(oUI5Filter);
-	                continue;
-	            }
-	            sSubExpression += (sSubExpression == "" ? "" : " or ") + this.renderUI5Filter(oUI5Filter);
-	        }
-	        
-	        // add last sub expression
-	        if (sSubExpression != "") sOptionString += (sOptionString == "" ? "" : " and ") + "(" + sSubExpression + ")";
-	        if (aNEFilter.length > 0) { // handle negated comparisons
-                sSubExpression = "";
-	            for (var j = -1, oNEFilter; oNEFilter = aNEFilter[++j];) {
-	                sSubExpression += (sSubExpression == "" ? "" : " and ") + this.renderUI5Filter(oNEFilter);                        
-	            }
-	            sOptionString += (sOptionString == "" ? "" : " and ") + "(" + sSubExpression + ")";
-	        }
-	        
-	        // process multi filters if any
-	        if (aUI5MultiFilter.length > 0) {
-	            for (var j = -1, oMultiFilter; oMultiFilter = aUI5MultiFilter[++j];) {
-	                sOptionString += (sOptionString == "" ? "" : " and ") + "(" + this.renderUI5MultiFilter(oMultiFilter) + ")";      
-	            }
-	        }
-	        return sOptionString;
-	    },
-
-	    /**
-	     * Get the value for the OData system query option $filter corresponding to this expression.
-	     * 
-	     * @returns {string} The $filter value for the filter expression
-	     */
-	    getURIFilterOptionValue : function() {
-	        var sOptionString = this.renderUI5FilterArray(this._aConditionUI5Filter);
-	        for(var i = -1, aUI5Filter; aUI5Filter = this._aUI5FilterArray[++i]; ) {
-	            sOptionString += (sOptionString == "" ? "" : " and ") + "(" + this.renderUI5FilterArray(aUI5Filter) + ")";
-	        }
-	        return sOptionString;
-	    },
-
-	    /**
-	     * Check if request is compliant with basic filter constraints expressed in metadata:
-	     * 
-	     * (a) all properties required in the filter expression have been referenced (b) the single-value filter restrictions have been obeyed
-	     * 
-	     * @returns {boolean} The value true. In case the expression violates some of the rules, an exception with some explanatory
-	     *          message is thrown
-	     */
-
-	    isValid : function() {
-	        // (a) all properties required in the filter expression have been referenced
-	        var aRequiredFilterPropertyNames = this._oEntityType.getRequiredFilterPropertyNames();
-	        var oPropertiesInFilterExpression = this.getReferencedProperties();
-	        for ( var i = -1, sPropertyName; sPropertyName = aRequiredFilterPropertyNames[++i];) {
-	            if (oPropertiesInFilterExpression[sPropertyName] == undefined)
-	                throw "filter expression does not contain required property " + sPropertyName; // TODO
-	        }
-	        // (b) basic filter restrictions have been obeyed
-	        var oPropertyFilterRestrictionSet = this._oEntityType.getPropertiesWithFilterRestrictions();
-	        for ( var sPropertyName in oPropertyFilterRestrictionSet) {
-	            var sFilterRestriction = oPropertyFilterRestrictionSet[sPropertyName];
-	            var iConditionCount = 0;
-
-	            if (sFilterRestriction == odata4analytics.EntityType.propertyFilterRestriction.SINGLE_VALUE) {
-	                if (oPropertiesInFilterExpression[sPropertyName] != undefined) {
-	                    if (oPropertiesInFilterExpression[sPropertyName].length > 1 
-	                            || oPropertiesInFilterExpression[sPropertyName][0].sOperator != sap.ui.model.FilterOperator.EQ)
-	                        throw "filter expression may use " + sPropertyName + " only with a single EQ condition"; // TODO
-	                }
-	            }
-	        }
-	        return true;
-	    },
-
-	    /**
-	     * Get description for this entity type
-	     * 
-	     * @returns {com.sap.odata4analytics.EntityType} The object representing the entity type
-	     */
-	    getEntityType : function() {
-	        return this._oEntityType;
-	    },
-
-	    getSchema : function() {
-	        return this._oSchema;
-	    },
-
-	    getModel : function() {
-	        return this._oModel;
-	    },
-
-	    /**
-	     * Private member attributes
-	     */
-
-	    _oEntityType : null,
-	    _oSchema : null,
-	    _oModel : null,
-
-	    _aFilterCondition : null
-	};
-
-	/** ******************************************************************** */
-	
-	/**
-	 * @class Sort order of a property
-	 * 
-	 * @static
-	 * @protected
-	 */
-	odata4analytics.SortOrder = {
-	
-		/**
-		 * Sort Order: ascending.
-		 * 
-		 * @protected
-		 */
-		Ascending : "asc",
-	
-		/**
-		 * Sort Order: descending.
-		 * 
-		 * @protected
-		 */
-		Descending : "desc"
-	
-	};
-	
-	/** ******************************************************************** */
-	
-	/**
-	 * Create a representation of an order by expression for a given entity type. It
-	 * can be rendered as value for the $orderby system query option.
-	 * 
-	 * @param {object}
-	 *            oModel DataJS object for the OData model containing this entity
-	 *            type
-	 * @param {object}
-	 *            oSchema DataJS object for the schema containing this entity type
-	 * @param {odata4analytics.EntityType}
-	 *            oEntityType object for the entity type
-	 * 
-	 * @constructor
-	 * 
-	 * @class Representation of a $orderby expression for an OData entity type.
-	 * @protected
-	 */
-	odata4analytics.SortExpression = function(oModel, oSchema, oEntityType) {
-		this._init(oModel, oSchema, oEntityType);
-	};
-	
-	odata4analytics.SortExpression.prototype = {
-		/**
-		 * @private
-		 */
-		_init : function(oModel, oSchema, oEntityType) {
-			this._oEntityType = oEntityType;
-			this._oSchema = oSchema;
-			this._oModel = oModel;
-	
-			this._aSortCondition = [];
-		},
-	
-		/**
-		 * Checks if an order by expression for the given property is already
-		 * defined and returns a reference to an object with property sorter and
-		 * index of the object or null if the property is not yet defined in an
-		 * order by expression.
-		 * 
-		 * @private
-		 */
-		_containsSorter : function(sPropertyName) {
-			var oResult = null;
-			for (var i = -1, oCurrentSorter; oCurrentSorter = this._aSortCondition[++i];) {
-				if (oCurrentSorter.property.name === sPropertyName) {
-					oResult = {
-						sorter : oCurrentSorter,
-						index : i
-					};
-					break;
-				}
-			}
-			return oResult;
-		},
-	
-		/**
-		 * TODO helper method to remove elements from array
-		 * 
-		 * @private
-		 */
-		_removeFromArray : function(array, from, to) {
-			var rest = array.slice((to || from) + 1 || array.length);
-			array.length = from < 0 ? array.length + from : from;
-			return array.push.apply(array, rest);
-		},
-	
-		/**
-		 * Clear expression from any sort conditions that may have been set
-		 * previously
-		 */
-		clear : function() {
-			this._aSortCondition = [];
-		},
-	
-		/**
-		 * Add a condition to the order by expression. Multiple conditions on the
-		 * same property will throw an exception, e.g. you cannot order by ascending
-		 * and descending at the same time on the same property.
-		 * 
-		 * @param {string}
-		 *            sPropertyName The name of the property bound in the condition
-		 * @param {odata4analytics.SortOrder}
-		 *            sSortOrder sorting order used for the condition
-		 * @throws Exception
-		 *             if the property is unknown, not sortable or already added as
-		 *             sorter
-		 * @returns {odata4analytics.SortExpression} This object for method
-		 *          chaining
-		 */
-		addSorter : function(sPropertyName, sSortOrder) {
-			var oProperty = this._oEntityType.findPropertyByName(sPropertyName);
-			if (oProperty == null) {
-				throw "Cannot add sort condition for unknown property name " + sPropertyName; // TODO
-			}
-			var oExistingSorterEntry = this._containsSorter(sPropertyName);
-			if (oExistingSorterEntry != null) {
-				oExistingSorterEntry.sorter.order = sSortOrder;
-				return this;
-			}
-			var aSortablePropertyNames = this._oEntityType.getSortablePropertyNames();
-			if (aSortablePropertyNames.indexOf(sPropertyName) === -1) {
-				throw "Cannot add sort condition for not sortable property name " + sPropertyName; // TODO
-			}
-	
-			this._aSortCondition.push({
-				property : oProperty,
-				order : sSortOrder
-			});
-			return this;
-		},
-	
-		/**
-		 * Removes the order by expression for the given property name from the list
-		 * of order by expression. If no order by expression with this property name
-		 * exists the method does nothing.
-		 * 
-		 * @param {string}
-		 *            sPropertyName The name of the property to be removed from the
-		 *            condition
-		 */
-		removeSorter : function(sPropertyName) {
-			if (!sPropertyName)
-				return;
-	
-			var oSorter = this._containsSorter(sPropertyName);
-			if (oSorter) {
-				this._removeFromArray(this._aSortCondition, oSorter.index);
-			}
-		},
-	
-		/**
-		 * Get an array of SAPUI5 Sorter objects corresponding to this expression.
-		 * 
-		 * @returns {array(sap.ui.model.Sorter)} List of sorter objects representing
-		 *          this expression
-		 */
-		getExpressionsAsUI5SorterArray : function() {
-			var aSorterObjects = [];
-	
-			for (var i = -1, oCondition; oCondition = this._aSortCondition[++i];) {
-				aSorterObjects.push(new sap.ui.model.Sorter(oCondition.property.name,
-						oCondition.order == odata4analytics.SortOrder.Descending));
-			}
-	
-			return aSorterObjects;
-		},
-	
-		/**
-		 * Get the first SAPUI5 Sorter object.
-		 * 
-		 * @returns {sap.ui.model.Sorter} first sorter object or null if empty
-		 */
-		getExpressionAsUI5Sorter : function() {
-			var aSortArray = this.getExpressionsAsUI5SorterArray();
-			if (aSortArray.length == 0) {
-				return null;
-			} else {
-				return aSortArray[0];
-			}
-		},
-	
-		/**
-		 * Get the value for the OData system query option $orderby corresponding to
-		 * this expression.
-		 * 
-		 * @param {object} oSelectedPropertyNames Object with properties requested for $select 
-		 * 
-		 * @returns {string} The $orderby value for the sort expressions
-		 */
-		getURIOrderByOptionValue : function(oSelectedPropertyNames) {
-			if (this._aSortCondition.length == 0)
-				return "";
-	
-			var sOrderByOptionString = "";
-			for (var i = -1, oCondition; oCondition = this._aSortCondition[++i];) {
-				if (! oSelectedPropertyNames[oCondition.property.name]) 
-					continue; // sorting of aggregated entities is meaningful only if the sorted property is also selected
-				sOrderByOptionString += (sOrderByOptionString == "" ? "" : ",") + oCondition.property.name + " " + oCondition.order;
-			}
-	
-			return sOrderByOptionString;
-		},
-	
-		/**
-		 * Get description for this entity type
-		 * 
-		 * @returns {odata4analytics.EntityType} The object representing the
-		 *          entity type
-		 */
-		getEntityType : function() {
-			return this._oEntityType;
-		},
-	
-		getSchema : function() {
-			return this._oSchema;
-		},
-	
-		getModel : function() {
-			return this._oModel;
-		},
-	
-		/**
-		 * Private member attributes
-		 */
-	
-		_oEntityType : null,
-		_oSchema : null,
-		_oModel : null,
-	
-		_aSortCondition : null
-	};
-	
-	/** ******************************************************************** */
-	
-	/**
-	 * Create a request object for interaction with a query parameterization.
-	 * 
-	 * @param {odata4analytics.Parameterization}
-	 *            oParameterization Description of a query parameterization
-	 * 
-	 * @constructor
-	 * 
-	 * @class Creation of URIs for query parameterizations.
-	 * @protected
-	 */
-	odata4analytics.ParameterizationRequest = function(oParameterization) {
-		this._init(oParameterization);
-	};
-	
-	odata4analytics.ParameterizationRequest.prototype = {
-		/**
-		 * @private
-		 */
-		_init : function(oParameterization) {
-			if (!oParameterization)
-				throw "No parameterization given"; // TODO
-			this._oParameterization = oParameterization;
-			this._oParameterValueAssignment = new Array();
-		},
-	
-		/**
-		 * Get the description of the parameterization on which this request
-		 * operates on
-		 * 
-		 * @returns {odata4analytics.Parameterization} Description of a
-		 *          query parameterization
-		 */
-		getParameterization : function() {
-			return this._oParameterization;
-		},
-	
-		/**
-		 * Assign a value to a parameter
-		 * 
-		 * @param {String}
-		 *            sParameterName Name of the parameter. In case of a range
-		 *            value, provide the name of the lower boundary parameter.
-		 * @param {String}
-		 *            sValue Assigned value. Pass null to remove a value assignment.
-		 * @param {String}
-		 *            sToValue Omit it or set it to null for single values. If set,
-		 *            it will be assigned to the upper boundary parameter
-		 */
-		setParameterValue : function(sParameterName, sValue, sToValue) {
-			var oParameter = this._oParameterization.findParameterByName(sParameterName);
-			if (!oParameter)
-				throw "Invalid parameter name " + sParameterName; // TODO improve
-			// error handling
-			if (sToValue != null) {
-				if (!oParameter.isIntervalBoundary())
-					// TODO improve error handling
-					throw "Range value cannot be applied to parameter " + sParameterName + " accepting only single values"; // TODO
-				if (!oParameter.isLowerIntervalBoundary())
-					// TODO improve error handling
-					throw "Range value given, but parameter " + sParameterName + " does not hold the lower boundary"; // TODO
-			}
-			if (!oParameter.isIntervalBoundary()) {
-				if (sValue == null)
-					delete this._oParameterValueAssignment[sParameterName];
-				else
-					this._oParameterValueAssignment[sParameterName] = sValue;
-			} else {
-				if (sValue == null && sToValue != null)
-					throw "Parameter " + sParameterName + ": An upper boundary cannot be given without the lower boundary"; // TODO
-				if (sValue == null) {
-					delete this._oParameterValueAssignment[sParameterName];
-					sToValue = null;
-				} else
-					this._oParameterValueAssignment[sParameterName] = sValue;
-				var oUpperBoundaryParameter = oParameter.getPeerIntervalBoundaryParameter();
-				if (sToValue == null)
-					sToValue = sValue;
-				if (sValue == null)
-					delete this._oParameterValueAssignment[oUpperBoundaryParameter.getName()];
-				else
-					this._oParameterValueAssignment[oUpperBoundaryParameter.getName()] = sToValue;
-			}
-			return;
-		},
-	
-		/**
-		 * Get the URI to locate the entity set for the query parameterization.
-		 * 
-		 * @param {String}
-		 *            sServiceRootURI (optional) Identifies the root of the OData
-		 *            service
-		 * @returns The resource path of the URI pointing to the entity set. It is a
-		 *          relative URI unless a service root is given, which would then
-		 *          prefixed in order to return a complete URL.
-		 */
-		getURIToParameterizationEntitySet : function(sServiceRootURI) {
-			return (sServiceRootURI ? sServiceRootURI : "") + "/" + this._oParameterization.getEntitySet().getQName();
-		},
-	
-		/**
-		 * Get the URI to locate the parameterization entity for the values assigned
-		 * to all parameters beforehand. Notice that a value must be supplied for
-		 * every parameter including those marked as optional. For optional
-		 * parameters, assign the special value that the service provider uses as an
-		 * "omitted" value. For example, for services based on BW Easy Queries, this
-		 * would be an empty string.
-		 * 
-		 * @param {String}
-		 *            sServiceRootURI (optional) Identifies the root of the OData
-		 *            service
-		 * @returns The resource path of the URI pointing to the entity set. It is a
-		 *          relative URI unless a service root is given, which would then
-		 *          prefixed in order to return a complete URL.
-		 */
-		getURIToParameterizationEntry : function(sServiceRootURI) {
-			var oDefinedParameters = this._oParameterization.getAllParameters();
-			for ( var sDefinedParameterName in oDefinedParameters) {
-				// check that all parameters have a value assigned. This is also
-				// true for those marked as optional, because the
-				// omitted value is conveyed by some default value, e.g. as empty
-				// string.
-				if (this._oParameterValueAssignment[sDefinedParameterName] == undefined)
-					throw "Parameter " + sDefinedParameterName + " has no value assigned"; // TODO
-			}
-			var sKeyIdentification = "", bFirst = true;
-			for ( var sParameterName in this._oParameterValueAssignment) {
-				sKeyIdentification += (bFirst ? "" : ",")
-						+ sParameterName
-						+ "="
-						+ odata4analytics.helper.renderPropertyKeyValue(this._oParameterValueAssignment[sParameterName],
-								oDefinedParameters[sParameterName].getProperty().type);
-				bFirst = false;
-			}
-	
-			return (sServiceRootURI ? sServiceRootURI : "") + "/" + this._oParameterization.getEntitySet().getQName() + "("
-					+ sKeyIdentification + ")";
-		},
-	
-		/**
-		 * Private member attributes
-		 */
-		_oParameterization : null,
-		_oParameterValueAssignment : null
-	
-	};
-	
-	/** ******************************************************************** */
-	
-	/**
-	 * Create a request object for interaction with a query result.
-	 * 
-	 * @param {odata4analytics.QueryResult}
-	 *            oParameterization Description of a query parameterization
-	 * @param {odata4analytics.ParameterizationRequest}
-	 *            oParameterizationRequest (optional) Request object for
-	 *            interactions with the parameterization of this query. Only
-	 *            required if the query service includes parameters.
-	 * 
-	 * @constructor
-	 * 
-	 * @class Creation of URIs for fetching query results.
-	 * @protected
-	 */
-	odata4analytics.QueryResultRequest = function(oQueryResult, oParameterizationRequest) {
-		this._init(oQueryResult);
-	};
-	
-	odata4analytics.QueryResultRequest.prototype = {
-		/**
-		 * @private
-		 */
-		_init : function(oQueryResult, oParameterizationRequest) {
-			this._oQueryResult = oQueryResult;
-			this._oParameterizationRequest = oParameterizationRequest;
-			this._oAggregationLevel = new Object();
-			this._oMeasures = new Object();
-			this._bIncludeEntityKey = false;
-			this._oFilterExpression = null;
-			this._oSortExpression = null;
-			this._oSelectedPropertyNames = null;
-		},
-	
-		/**
-		 * Set the parameterization request required for interactions with the query
-		 * result of parameterized queries. This method provides an alternative way
-		 * to assign a parameterization request to a query result request.
-		 * 
-		 * @param oParameterizationRequest
-		 *            Request object for interactions with the parameterization of
-		 *            this query
-		 */
-		setParameterizationRequest : function(oParameterizationRequest) {
-			this._oParameterizationRequest = oParameterizationRequest;
-		},
-	
-		/**
-		 * Set the resource path to be considered for the OData request URI of this
-		 * query request object. This method provides an alternative way to assign a
-		 * path comprising a parameterization. If a path is provided, it overwrites
-		 * any parameterization object that might have been specified separately.
-		 * 
-		 * @param sResourcePath
-		 *            Resource path pointing to the entity set of the query result.
-		 *            Must include a valid parameterization if query contains
-		 *            parameters.
-		 */
-		setResourcePath : function(sResourcePath) {
-			this._sResourcePath = sResourcePath;
-			if (this._sResourcePath.indexOf("/") != 0)
-				throw "Missing leading / (slash) for resource path";
-			if (this._oQueryResult.getParameterization()) {
-				var iLastPathSep = sResourcePath.lastIndexOf("/");
-				if (iLastPathSep == -1)
-					throw "Missing navigation from parameter entity set to query result in resource path";
-				var sNavPropName = sResourcePath.substring(iLastPathSep + 1);
-				if (sNavPropName != this._oQueryResult.getParameterization().getNavigationPropertyToQueryResult())
-					throw "Invalid navigation property from parameter entity set to query result in resource path";
-			}
-		},
-	
-		/**
-		 * Retrieves the current parametrization request
-		 * 
-		 * @returns {odata4analytics.ParametrizationRequest}
-		 */
-		getParameterizationRequest : function() {
-			return this._oParameterizationRequest;
-		},
-	
-		/**
-		 * Get the description of the query result on which this request operates on
-		 * 
-		 * @returns {odata4analytics.QueryResult} Description of a query
-		 *          result
-		 */
-		getQueryResult : function() {
-			return this._oQueryResult;
-		},
-	
-		/**
-		 * Set the aggregation level for the query result request. By default, the
-		 * query result will include the properties holding the keys of the given
-		 * dimensions. This setting can be changed using
-		 * includeDimensionKeyTextAttributes.
-		 * 
-		 * @param aDimensionName
-		 *            Array of dimension names to be part of the aggregation level.
-		 *            If null, the aggregation level includes all dimensions, if
-		 *            empty, no dimension is included.
-		 * 
-		 */
-		setAggregationLevel : function(aDimensionName) {
-			this._oAggregationLevel = new Object();
-			if (!aDimensionName) {
-				aDimensionName = this._oQueryResult.getAllDimensionNames();
-			}
-			this.addToAggregationLevel(aDimensionName);
-			this._oSelectedPropertyNames = null; // reset previously compiled list of selected properties
-		},
-	
-		/**
-		 * Add one or more dimensions to the aggregation level
-		 * 
-		 * @param aDimensionName
-		 *            Array of dimension names to be added to the already defined
-		 *            aggregation level.
-		 * 
-		 */
-		addToAggregationLevel : function(aDimensionName) {
-			if (!aDimensionName)
-				return;
-	
-			this._oSelectedPropertyNames = null; // reset previously compiled list of selected properties
-			
-			for (var i = -1, sDimName; sDimName = aDimensionName[++i];) {
-				if (!this._oQueryResult.findDimensionByName(sDimName))
-					throw sDimName + " is not a valid dimension name"; // TODO
-				this._oAggregationLevel[sDimName] = {
-					key : true,
-					text : false,
-					attributes : null
-				};
-			}
-		},
-	
-		/**
-		 * Remove one or more dimensions from the aggregation level. The method also
-		 * removed a potential sort expression on the dimension.
-		 * 
-		 * @param aDimensionName
-		 *            Array of dimension names to be removed from the already
-		 *            defined aggregation level.
-		 */
-		removeFromAggregationLevel : function(aDimensionName) {
-			if (!aDimensionName) {
-				return;
-			}
-			this._oSelectedPropertyNames = null; // reset previously compiled list of selected properties
-			
-			for (var i = -1, sDimName; sDimName = aDimensionName[++i];) {
-				if (!this._oQueryResult.findDimensionByName(sDimName)) {
-					throw sDimName + " is not a valid dimension name"; // TODO
-				}
-				if (this._oAggregationLevel[sDimName] != undefined) {
-					delete this._oAggregationLevel[sDimName];
-	
-					// remove potential sort expression on this dimension
-					this.getSortExpression().removeSorter(sDimName);
-				}
-			}
-		},
-	
-		/**
-		 * Get the names of the dimensions included in the aggregation level
-		 * 
-		 * @returns {Array} The dimension names included in the aggregation level
-		 */
-		getAggregationLevel : function() {
-			var aDimName = new Array();
-			for ( var sDimName in this._oAggregationLevel) {
-				aDimName.push(sDimName);
-			}
-			return aDimName;
-		},
-	
-		/**
-		 * Get details about a dimensions included in the aggregation level
-		 * 
-		 * @param sDImensionName
-		 *            Name of a dimension included in the aggregation level of this
-		 *            request, for which details shall be returned
-		 * 
-		 * @returns {object} An object with three properties named key and text,
-		 *          both with Boolean values indicating whether the key and text of
-		 *          this dimension are included in this request. The third property
-		 *          named attributes is an array of attribute names of this
-		 *          dimension included in this request, or null, if there are none.
-		 */
-		getAggregationLevelDetails : function(sDimensionName) {
-			if (this._oAggregationLevel[sDimensionName] == undefined)
-				throw "Aggregation level does not include dimension " + sDimensionName;
-			return this._oAggregationLevel[sDimensionName];
-		},
-	
-		/**
-		 * Set the measures to be included in the query result request. By default,
-		 * the query result will include the properties holding the raw values of
-		 * the given measures. This setting can be changed using
-		 * includeMeasureRawFormattedValueUnit.
-		 * 
-		 * @param aMeasureName
-		 *            Array of measure names to be part of the query result request.
-		 *            If null, the request includes all measures, if empty, no
-		 *            measure is included.
-		 */
-		setMeasures : function(aMeasureName) {
-			if (!aMeasureName) {
-				aMeasureName = this._oQueryResult.getAllMeasureNames();
-			}
-			this._oSelectedPropertyNames = null; // reset previously compiled list of selected properties
-			
-			this._oMeasures = new Object();
-			for (var i = -1, sMeasName; sMeasName = aMeasureName[++i];) {
-				if (!this._oQueryResult.findMeasureByName(sMeasName))
-					throw sMeasName + " is not a valid measure name"; // TODO
-	
-				this._oMeasures[sMeasName] = {
-					value : true,
-					text : false,
-					unit : false
-				};
-			}
-		},
-	
-		/**
-		 * Get the names of the measures included in the query result request
-		 * 
-		 * @returns {Array} The measure names included in the query result request
-		 */
-		getMeasureNames : function() {
-			var aMeasName = new Array();
-			for ( var sMeasName in this._oMeasures) {
-				aMeasName.push(sMeasName);
-			}
-			return aMeasName;
-		},
-	
-		/**
-		 * Specify which dimension components shall be included in the query result.
-		 * The settings get applied to the currently defined aggregation level.
-		 * 
-		 * @param sDimensionName
-		 *            Name of the dimension for which the settings get applied.
-		 *            Specify null to apply the settings to all dimensions in the
-		 *            aggregation level.
-		 * @param bIncludeKey
-		 *            Indicator whether or not to include the dimension key in the
-		 *            query result. Pass null to keep current setting.
-		 * @param bIncludeText
-		 *            Indicator whether or not to include the dimension text (if
-		 *            available) in the query result. Pass null to keep current
-		 *            setting.
-		 * @param aAttributeName
-		 *            Array of dimension attribute names to be included in the
-		 *            result. Pass null to keep current setting. This argument is
-		 *            ignored if sDimensionName is null.
-		 */
-		includeDimensionKeyTextAttributes : function(sDimensionName, bIncludeKey, bIncludeText, aAttributeName) {
-			this._oSelectedPropertyNames = null; // reset previously compiled list of selected properties
-	
-			var aDimName = new Array();
-			if (sDimensionName) {
-				if (this._oAggregationLevel[sDimensionName] == undefined)
-					throw sDimensionName + " is not included in the aggregation level";
-				aDimName.push(sDimensionName);
-			} else {
-				for ( var sName in this._oAggregationLevel) {
-					aDimName.push(sName);
-				}
-				aAttributeName = null;
-			}
-			for (var i = -1, sDimName; sDimName = aDimName[++i];) {
-				if (bIncludeKey != null)
-					this._oAggregationLevel[sDimName].key = bIncludeKey;
-				if (bIncludeText != null)
-					this._oAggregationLevel[sDimName].text = bIncludeText;
-				if (aAttributeName != null)
-					this._oAggregationLevel[sDimName].attributes = aAttributeName;
-			}
-		},
-	
-		/**
-		 * Specify which measure components shall be included in the query result.
-		 * The settings get applied to the currently set measures.
-		 * 
-		 * @param sMeasureName
-		 *            Name of the measure for which the settings get applied.
-		 *            Specify null to apply the settings to all currently set
-		 *            measures.
-		 * @param bIncludeRawValue
-		 *            Indicator whether or not to include the raw value in the query
-		 *            result. Pass null to keep current setting.
-		 * @param bIncludeFormattedValue
-		 *            Indicator whether or not to include the formatted value (if
-		 *            available) in the query result. Pass null to keep current
-		 *            setting.
-		 * @param bIncludeUnit
-		 *            Indicator whether or not to include the unit (if available) in
-		 *            the query result. Pass null to keep current setting.
-		 */
-		includeMeasureRawFormattedValueUnit : function(sMeasureName, bIncludeRawValue, bIncludeFormattedValue, bIncludeUnit) {
-			this._oSelectedPropertyNames = null; // reset previously compiled list of selected properties
-	
-			var aMeasName = new Array();
-			if (sMeasureName) {
-				if (this._oMeasures[sMeasureName] == undefined)
-					throw sMeasureName + " is not part of the query result";
-				aMeasName.push(sMeasureName);
-			} else {
-				for ( var sName in this._oMeasures) {
-					aMeasName.push(sName);
-				}
-			}
-			for (var i = -1, sMeasName; sMeasName = aMeasName[++i];) {
-				if (bIncludeRawValue != null)
-					this._oMeasures[sMeasName].value = bIncludeRawValue;
-				if (bIncludeFormattedValue != null)
-					this._oMeasures[sMeasName].text = bIncludeFormattedValue;
-				if (bIncludeUnit != null)
-					this._oMeasures[sMeasName].unit = bIncludeUnit;
-			}
-		},
-	
-		/**
-		 * Get the filter expression for this request.
-		 * 
-		 * Expressions are represented by separate objects. If none exists so far, a
-		 * new expression object gets created.
-		 * 
-		 * @returns {odata4analytics.FilterExpression} The filter object
-		 *          associated to this request.
-		 */
-		getFilterExpression : function() {
-			if (this._oFilterExpression == null) {
-				var oEntityType = this._oQueryResult.getEntityType();
-				this._oFilterExpression = new odata4analytics.FilterExpression(this._oQueryResult.getModel(), oEntityType
-						.getSchema(), oEntityType);
-			}
-			return this._oFilterExpression;
-		},
-	
-		/**
-		 * Set the filter expression for this request.
-		 * 
-		 * Expressions are represented by separate objects. Calling this method
-		 * replaces the filter object maintained by this request.
-		 * 
-		 * @param {odata4analytics.FilterExpression}
-		 *            oFilter The filter object to be associated with this request.
-		 */
-		setFilterExpression : function(oFilter) {
-			this._oFilterExpression = oFilter;
-		},
-	
-		/**
-		 * Get the sort expression for this request.
-		 * 
-		 * Expressions are represented by separate objects. If none exists so far, a
-		 * new expression object gets created.
-		 * 
-		 * @returns {odata4analytics.SortExpression} The sort object
-		 *          associated to this request.
-		 */
-		getSortExpression : function() {
-			if (this._oSortExpression == null) {
-				var oEntityType = this._oQueryResult.getEntityType();
-				this._oSortExpression = new odata4analytics.SortExpression(oEntityType.getModel(), oEntityType.getSchema(),
-						oEntityType);
-			}
-			return this._oSortExpression;
-		},
-	
-		/**
-		 * Set the sort expression for this request.
-		 * 
-		 * Expressions are represented by separate objects. Calling this method
-		 * replaces the sort object maintained by this request.
-		 * 
-		 * @param {odata4analytics.SortExpression}
-		 *            oSorter The sort object to be associated with this request.
-		 */
-		setSortExpression : function(oSorter) {
-			this._oSortExpression = oSorter;
-		},
-	
-		/**
-		 * Set further options to be applied for the OData request to fetch the
-		 * query result
-		 * 
-		 * @param {Boolean}
-		 *            bIncludeEntityKey Indicates whether or not the entity key
-		 *            should be returned for every entry in the query result.
-		 *            Default is not to include it. Pass null to keep current
-		 *            setting.
-		 * @param {Boolean}
-		 *            bIncludeCount Indicates whether or not the result shall
-		 *            include a count for the returned entities. Default is not to
-		 *            include it. Pass null to keep current setting.
-		 */
-		setRequestOptions : function(bIncludeEntityKey, bIncludeCount) {
-			if (bIncludeEntityKey != null)
-				this._bIncludeEntityKey = bIncludeEntityKey;
-			if (bIncludeCount != null)
-				this._bIncludeCount = bIncludeCount;
-		},
-	
-		/**
-		 * Specify that only a page of the query result shall be returned. A page is
-		 * described by its boundaries, that are row numbers for the first and last
-		 * rows in the query result to be returned.
-		 * 
-		 * @param {Number}
-		 *            start The first row of the query result to be returned.
-		 *            Numbering starts at 1. Passing null is equivalent to start
-		 *            with the first row.
-		 * @param {Number}
-		 *            end The last row of the query result to be returned. Passing
-		 *            null is equivalent to get all rows up to the end of the query
-		 *            result.
-		 */
-		setResultPageBoundaries : function(start, end) {
-			if (start != null && typeof start !== "number") {
-				throw "Start value must be null or numeric"; // TODO
-			}
-			if (end !== null && typeof end !== "number") {
-				throw "End value must be null or numeric"; // TODO
-			}
-	
-			if (start == null)
-				start = 1;
-	
-			if (start < 1 || start > (end == null ? start : end)) {
-				throw "Invalid values for requested page boundaries"; // TODO
-			}
-	
-			this._iSkipRequestOption = (start > 1) ? start - 1 : null;
-			this._iTopRequestOption = (end != null) ? (end - start + 1) : null;
-		},
-	
-		/**
-		 * Returns the current page boundaries as object with properties
-		 * <code>start</code> and <code>end</code>. If the end of the page is
-		 * unbounded, <code>end</code> is null.
-		 * 
-		 * @returns {Object} the current page boundaries as object
-		 */
-		getResultPageBoundaries : function() {
-			return {
-				start : (this._iSkipRequestOption == null) ? 1 : this._iSkipRequestOption,
-				end : (this._iTopRequestOption != null) ? (this._iSkipRequestOption == null) ? 1 : this._iSkipRequestOption
-						+ this._iTopRequestOption : null
-			};
-		},
-	
-		/**
-		 * Get the URI to locate the entity set for the query result.
-		 * 
-		 * @param {String}
-		 *            sServiceRootURI (optional) Identifies the root of the OData
-		 *            service
-		 * 
-		 * @returns {String} The resource path of the URI pointing to the entity
-		 *          set. It is a relative URI unless a service root is given, which
-		 *          would then prefixed in order to return a complete URL.
-		 */
-		getURIToQueryResultEntitySet : function(sServiceRootURI) {
-			var sURI = null;
-			if (this._sResourcePath != null) {
-				sURI = (sServiceRootURI ? sServiceRootURI : "") + this._sResourcePath;
-			} else {
-				if (this._oQueryResult.getParameterization()) {
-					if (!this._oParameterizationRequest)
-						throw "Missing parameterization request";
-					else
-						sURI = this._oParameterizationRequest.getURIToParameterizationEntry(sServiceRootURI) + "/"
-								+ this._oQueryResult.getParameterization().getNavigationPropertyToQueryResult();
-				} else
-					sURI = (sServiceRootURI ? sServiceRootURI : "") + "/" + this._oQueryResult.getEntitySet().getQName();
-			}
-			return sURI;
-		},
-	
-		/**
-		 * Get the value of an query option for the OData request URI corresponding
-		 * to this request.
-		 * 
-		 * @param {String}
-		 *            sQueryOptionName Identifies the query option: $select,
-		 *            $filter,$orderby ... or any custom query option
-		 * 
-		 * @returns {String} The value of the requested query option or null, if
-		 *          this option is not used for the OData request.
-		 */
-		getURIQueryOptionValue : function(sQueryOptionName) {
-			var sQueryOptionValue = null;
-	
-			switch (sQueryOptionName) {
-			case "$select": {
-				var sSelectOption = "";
-				this._oSelectedPropertyNames = new Object();
-				var sDimensionPropertyName = null;
-				for ( var sDimName in this._oAggregationLevel) {
-					var oDim = this._oQueryResult.findDimensionByName(sDimName);
-					var oDimSelect = this._oAggregationLevel[sDimName];
-					if (oDimSelect.key == true) {
-						sDimensionPropertyName = oDim.getKeyProperty().name;
-						if (this._oSelectedPropertyNames[sDimensionPropertyName] == undefined) {
-							sSelectOption += (sSelectOption == "" ? "" : ",") + sDimensionPropertyName;
-							this._oSelectedPropertyNames[sDimensionPropertyName] = true;
-						}
-					}
-					if (oDimSelect.text == true && oDim.getTextProperty()) {
-						sDimensionPropertyName = oDim.getTextProperty().name;
-						if (this._oSelectedPropertyNames[sDimensionPropertyName] == undefined) {
-							sSelectOption += (sSelectOption == "" ? "" : ",") + sDimensionPropertyName;
-							this._oSelectedPropertyNames[sDimensionPropertyName] = true;
-						}
-					}
-					if (oDimSelect.attributes) {
-						for (var i = -1, sAttrName; sAttrName = oDimSelect.attributes[++i];) {
-							sDimensionPropertyName = oDim.findAttributeByName(sAttrName).getName();
-							if (this._oSelectedPropertyNames[sDimensionPropertyName] == undefined) {
-								sSelectOption += (sSelectOption == "" ? "" : ",") + sDimensionPropertyName;
-								this._oSelectedPropertyNames[sDimensionPropertyName] = true;
-							}
-						}
-					}
-				}
-	
-				var sMeasurePropertyName;
-				for ( var sMeasName in this._oMeasures) {
-					var oMeas = this._oQueryResult.findMeasureByName(sMeasName);
-					var oMeasSelect = this._oMeasures[sMeasName];
-					if (oMeasSelect.value == true) {
-						sMeasurePropertyName = oMeas.getRawValueProperty().name;
-						if (this._oSelectedPropertyNames[sMeasurePropertyName] == undefined) {
-							sSelectOption += (sSelectOption == "" ? "" : ",") + sMeasurePropertyName;
-							this._oSelectedPropertyNames[sMeasurePropertyName] = true;
-						}
-					}
-					if (oMeasSelect.text == true && oMeas.getFormattedValueProperty()) {
-						sMeasurePropertyName = oMeas.getFormattedValueProperty().name;
-						if (this._oSelectedPropertyNames[sMeasurePropertyName] == undefined) {
-							sSelectOption += (sSelectOption == "" ? "" : ",") + sMeasurePropertyName;
-							this._oSelectedPropertyNames[sMeasurePropertyName] = true;
-						}
-					}
-					if (oMeasSelect.unit == true && oMeas.getUnitProperty()) {
-						sMeasurePropertyName = oMeas.getUnitProperty().name;
-						if (this._oSelectedPropertyNames[sMeasurePropertyName] == undefined) {
-							sSelectOption += (sSelectOption == "" ? "" : ",") + sMeasurePropertyName;
-							this._oSelectedPropertyNames[sMeasurePropertyName] = true;
-						}
-					}
-				}
-	
-				if (this._bIncludeEntityKey) {
-					var aKeyPropRef = this._oQueryResult.getEntityType().getTypeDescription().key.propertyRef;
-					for (var i = -1, oKeyProp; oKeyProp = aKeyPropRef[++i];) {
-						sSelectOption += (sSelectOption == "" ? "" : ",") + oKeyProp.name;
-					}
-				}
-				sQueryOptionValue = (sSelectOption ? sSelectOption : null);
-				break;
-			}
-			case "$filter": {
-				var sFilterOption = null;
-				if (this._oFilterExpression)
-					sFilterOption = this._oFilterExpression.getURIFilterOptionValue();
-				sQueryOptionValue = (sFilterOption ? sFilterOption : null);
-				break;
-			}
-			case "$orderby": {
-				var sSortOption = null;
-				if (this._oSortExpression)
-					sSortOption = this._oSortExpression.getURIOrderByOptionValue(this._oSelectedPropertyNames);
-				sQueryOptionValue = (sSortOption ? sSortOption : null);
-				break;
-			}
-			case "$top": {
-				if (this._iTopRequestOption !== null) {
-					sQueryOptionValue = this._iTopRequestOption;
-				}
-				break;
-			}
-			case "$skip": {
-				sQueryOptionValue = this._iSkipRequestOption;
-				break;
-			}
-			case "$inlinecount": {
-				sQueryOptionValue = (this._bIncludeCount == true ? "allpages" : null);
-				break;
-			}
-			default:
-				break;
-			}
-			return sQueryOptionValue;
-		},
-	
-		/**
-		 * Get the unescaped URI to fetch the query result.
-		 * 
-		 * @param {String}
-		 *            sServiceRootURI (optional) Identifies the root of the OData
-		 *            service
-		 * @param {String}
-		 *            sResourcePath (optional) OData resource path to be considered.
-		 *            If provided, it overwrites any parameterization object that
-		 *            might have been specified separately.
-		 * 
-		 * @returns {String} The unescaped URI that contains the OData resource path
-		 *          and OData system query options to express the aggregation level,
-		 *          filter expression and further options.
-		 */
-		getURIToQueryResultEntries : function(sServiceRootURI, sResourcePath) {
-	
-			// construct resource path
-			var sResourcePath = this.getURIToQueryResultEntitySet(sServiceRootURI);
-	
-			// check if request is compliant with filter constraints expressed in
-			// metadata
-			this.getFilterExpression().isValid();
-	
-			// construct query options
-			var sSelectOption = this.getURIQueryOptionValue("$select");
-			var sFilterOption = this.getURIQueryOptionValue("$filter");
-			var sSortOption = this.getURIQueryOptionValue("$orderby");
-			var sTopOption = this.getURIQueryOptionValue("$top");
-			var sSkipOption = this.getURIQueryOptionValue("$skip");
-			var sInlineCountOption = this.getURIQueryOptionValue("$inlinecount");
-	
-			var sURI = sResourcePath;
-			var bQuestionmark = false;
-	
-			if (sSelectOption) {
-				sURI += "?$select=" + sSelectOption;
-				bQuestionmark = true;
-			}
-			if (this._oFilterExpression && sFilterOption) {
-				if (!bQuestionmark) {
-					sURI += "?";
-					bQuestionmark = true;
-				} else {
-					sURI += "&";
-				}
-				sURI += "$filter=" + sFilterOption;
-			}
-			if (this._oSortExpression && sSortOption) {
-				if (!bQuestionmark) {
-					sURI += "?";
-					bQuestionmark = true;
-				} else {
-					sURI += "&";
-				}
-				sURI += "$orderby=" + sSortOption;
-			}
-	
-			if (this._iTopRequestOption && sTopOption) {
-				if (!bQuestionmark) {
-					sURI += "?";
-					bQuestionmark = true;
-				} else {
-					sURI += "&";
-				}
-				sURI += "$top=" + sTopOption;
-			}
-			if (this._iSkipRequestOption && sSkipOption) {
-				if (!bQuestionmark) {
-					sURI += "?";
-					bQuestionmark = true;
-				} else {
-					sURI += "&";
-				}
-				sURI += "$skip=" + sSkipOption;
-			}
-			if (this._bIncludeCount && sInlineCountOption) {
-				if (!bQuestionmark) {
-					sURI += "?";
-					bQuestionmark = true;
-				} else {
-					sURI += "&";
-				}
-				sURI += "$inlinecount=" + sInlineCountOption;
-			}
-			return sURI;
-		},
-	
-		/**
-		 * Private member attributes
-		 */
-		_oQueryResult : null,
-		_oParameterizationRequest : null,
-		_sResourcePath : null,
-		_oAggregationLevel : null,
-		_oMeasures : null,
-		_bIncludeEntityKey : null,
-		_bIncludeCount : null,
-		_oFilterExpression : null,
-		_oSortExpression : null,
-		_iSkipRequestOption : 0,
-		_iTopRequestOption : null
-	};
-	
-	/** ******************************************************************** */
-	
-	/**
-	 * Create a request object for interaction with a query parameter value help.
-	 * 
-	 * @param {odata4analytics.Parameter}
-	 *            oParameter Description of a query parameter
-	 * 
-	 * @constructor
-	 * 
-	 * @class Creation of URIs for fetching a query parameter value set.
-	 * @protected
-	 */
-	odata4analytics.ParameterValueSetRequest = function(oParameter) {
-		this._init(oParameter);
-	};
-	
-	odata4analytics.ParameterValueSetRequest.prototype = {
-		/**
-		 * @private
-		 */
-		_init : function(oParameter) {
-			this._oParameter = oParameter;
-			this._oValueSetResult = new Object();
-			this._oFilterExpression = null;
-			this._oSortExpression = null;
-		},
-	
-		/**
-		 * Specify which components of the parameter shall be included in the value
-		 * set.
-		 * 
-		 * @param bIncludeText
-		 *            Indicator whether or not to include the parameter text (if
-		 *            available) in the value set. Pass null to keep current
-		 *            setting.
-		 */
-		includeParameterText : function(bIncludeText) {
-			if (bIncludeText != null)
-				this._oValueSetResult.text = bIncludeText;
-		},
-	
-		/**
-		 * Get the filter expression for this request.
-		 * 
-		 * Expressions are represented by separate objects. If none exists so far, a
-		 * new expression object gets created.
-		 * 
-		 * @returns {odata4analytics.FilterExpression} The filter object
-		 *          associated to this request.
-		 */
-		getFilterExpression : function() {
-			if (this._oFilterExpression == null) {
-				var oEntityType = this._oParameter.getContainingParameterization().getEntityType();
-				var oModel = this._oParameter.getContainingParameterization().getTargetQueryResult().getModel();
-				this._oFilterExpression = new odata4analytics.FilterExpression(oModel, oEntityType
-						.getSchema(), oEntityType);
-			}
-			return this._oFilterExpression;
-		},
-	
-		/**
-		 * Set the filter expression for this request.
-		 * 
-		 * Expressions are represented by separate objects. Calling this method
-		 * replaces the filter object maintained by this request.
-		 * 
-		 * @param {odata4analytics.FilterExpression}
-		 *            oFilter The filter object to be associated with this request.
-		 */
-		setFilterExpression : function(oFilter) {
-			this._oFilterExpression = oFilter;
-		},
-	
-		/**
-		 * Get the sort expression for this request.
-		 * 
-		 * Expressions are represented by separate objects. If none exists so far, a
-		 * new expression object gets created.
-		 * 
-		 * @returns {odata4analytics.SortExpression} The sort object
-		 *          associated to this request.
-		 */
-		getSortExpression : function() {
-			if (this._oSortExpression == null) {
-				var oEntityType = this._oParameter.getContainingParameterization().getEntityType();
-				this._oSortExpression = new odata4analytics.SortExpression(oEntityType.getModel(), oEntityType.getSchema(),
-						oEntityType);
-			}
-			return this._oSortExpression;
-		},
-	
-		/**
-		 * Set the sort expression for this request.
-		 * 
-		 * Expressions are represented by separate objects. Calling this method
-		 * replaces the sort object maintained by this request.
-		 * 
-		 * @param {odata4analytics.SortExpression}
-		 *            oSorter The sort object to be associated with this request.
-		 */
-		setSortExpression : function(oSorter) {
-			this._oSortExpression = oSorter;
-		},
-	
-		/**
-		 * Get the value of an query option for the OData request URI corresponding
-		 * to this request.
-		 * 
-		 * @param {String}
-		 *            sQueryOptionName Identifies the query option: $select,
-		 *            $filter,... or any custom query option
-		 * 
-		 * @returns {String} The value of the requested query option or null, if
-		 *          this option is not used for the OData request.
-		 */
-		getURIQueryOptionValue : function(sQueryOptionName) {
-			var sQueryOptionValue = null;
-	
-			switch (sQueryOptionName) {
-			case "$select": {
-				var sSelectOption = "";
-				sSelectOption += (sSelectOption == "" ? "" : ",") + this._oParameter.getProperty().name;
-				if (this._oValueSetResult.text == true && this._oParameter.getTextProperty())
-					sSelectOption += (sSelectOption == "" ? "" : ",") + this._oParameter.getTextProperty().name;
-				sQueryOptionValue = (sSelectOption ? sSelectOption : null);
-				break;
-			}
-			case "$filter": {
-				var sFilterOption = null;
-				if (this._oFilterExpression)
-					sFilterOption = this._oFilterExpression.getURIFilterOptionValue();
-				sQueryOptionValue = (sFilterOption ? sFilterOption : null);
-				break;
-			}
-			case "$orderby": {
-				var sSortOption = null;
-				if (this._oSortExpression)
-					sSortOption = this._oSortExpression.getURIOrderByOptionValue();
-				sQueryOptionValue = (sSortOption ? sSortOption : null);
-				break;
-			}
-			default:
-				break;
-			}
-	
-			return sQueryOptionValue;
-		},
-	
-		/**
-		 * Get the unescaped URI to fetch the parameter value set.
-		 * 
-		 * @param {String}
-		 *            sServiceRootURI (optional) Identifies the root of the OData
-		 *            service
-		 * @returns {String} The unescaped URI that contains the OData resource path
-		 *          and OData system query options to express the request for the
-		 *          parameter value set..
-		 */
-		getURIToParameterValueSetEntries : function(sServiceRootURI) {
-	
-			// construct resource path
-			var sResourcePath = null;
-	
-			sResourcePath = (sServiceRootURI ? sServiceRootURI : "") + "/"
-					+ this._oParameter.getContainingParameterization().getEntitySet().getQName();
-	
-			// check if request is compliant with filter constraints expressed in
-			// metadata
-			this.getFilterExpression().isValid();
-	
-			// construct query options
-			var sSelectOption = this.getURIQueryOptionValue("$select");
-			var sFilterOption = this.getURIQueryOptionValue("$filter");
-			var sSortOption = this.getURIQueryOptionValue("$orderby");
-	
-			var sURI = sResourcePath;
-			var bQuestionmark = false;
-	
-			if (sSelectOption) {
-				sURI += "?$select=" + sSelectOption;
-				bQuestionmark = true;
-			}
-			if (this._oFilterExpression && sFilterOption) {
-				if (!bQuestionmark) {
-					sURI += "?";
-					bQuestionmark = true;
-				} else
-					sURI += "&";
-				sURI += "$filter=" + sFilterOption;
-			}
-			if (this._oSortExpression && sSortOption) {
-				if (!bQuestionmark) {
-					sURI += "?";
-					bQuestionmark = true;
-				} else
-					sURI += "&";
-				sURI += "$orderby=" + sSortOption;
-			}
-			return sURI;
-		},
-	
-		/**
-		 * Private member attributes
-		 */
-		_oParameter : null,
-		_oFilterExpression : null,
-		_oSortExpression : null,
-		_oValueSetResult : null
-	};
-	
-	/** ******************************************************************** */
-	
-	/**
-	 * Create a request object for interaction with a dimension value help. Such a
-	 * value help is served by either the query result entity set, in which case the
-	 * returned dimension members are limited to those also used in the query result
-	 * data. Or, the value help is populated by a master data entity set, if made
-	 * available by the service. In this case, the result will include all valid
-	 * members for that dimension.
-	 * 
-	 * @param {odata4analytics.Dimension}
-	 *            oDimension Description of a dimension
-	 * @param {odata4analytics.ParameterizationRequest}
-	 *            oParameterizationRequest (optional) Request object for
-	 *            interactions with the parameterization of the query result or (not
-	 *            yet supported) master data entity set Such an object is required
-	 *            if the entity set holding the dimension members includes
-	 *            parameters.
-	 * @param {boolean}
-	 *            bUseMasterData (optional) Indicates use of master data for
-	 *            determining the dimension members.
-	 * 
-	 * @constructor
-	 * 
-	 * @class Creation of URIs for fetching a query dimension value set.
-	 * @protected
-	 */
-	odata4analytics.DimensionMemberSetRequest = function(oDimension, oParameterizationRequest, bUseMasterData) {
-		this._init(oDimension, oParameterizationRequest, bUseMasterData);
-	};
-	
-	odata4analytics.DimensionMemberSetRequest.prototype = {
-		/**
-		 * @private
-		 */
-		_init : function(oDimension, oParameterizationRequest, bUseMasterData) {
-			this._oDimension = oDimension;
-			this._oParameterizationRequest = oParameterizationRequest;
-			this._bUseMasterData = bUseMasterData;
-			this._oValueSetResult = new Object();
-			this._oFilterExpression = null;
-			this._oSortExpression = null;
-	
-			if (this._oParameterizationRequest != null && this._bUseMasterData == true)
-				throw "LIMITATION: parameterized master data entity sets are not yet implemented";
-			if (this._bUseMasterData) {
-				this._oEntitySet = this._oDimension.getMasterDataEntitySet();
-			} else {
-				this._oEntitySet = this._oDimension.getContainingQueryResult().getEntitySet();
-				if (this._oDimension.getContainingQueryResult().getParameterization() && !this._oParameterizationRequest)
-					throw "Missing parameterization request";
-			}
-		},
-	
-		/**
-		 * Set the parameterization request required for retrieving dimension
-		 * members directly from the query result, if it is parameterized.
-		 * 
-		 * @param oParameterizationRequest
-		 *            Request object for interactions with the parameterization of
-		 *            this query result
-		 */
-		setParameterizationRequest : function(oParameterizationRequest) {
-			this._oParameterizationRequest = oParameterizationRequest;
-		},
-	
-		/**
-		 * Specify which components of the dimension shall be included in the value
-		 * set.
-		 * 
-		 * @param bIncludeText
-		 *            Indicator whether or not to include the dimension text (if
-		 *            available) in the value set.
-		 * @param bIncludeAttributes
-		 *            Indicator whether or not to include all dimension attributes
-		 *            (if available) in the value set.
-		 */
-		includeDimensionTextAttributes : function(bIncludeText, bIncludeAttributes) {
-			this._oValueSetResult.text = {
-				text : false,
-				attributes : false
-			};
-			if (bIncludeText == true)
-				this._oValueSetResult.text = true;
-			if (bIncludeAttributes == true)
-				this._oValueSetResult.attributes = true;
-		},
-	
-		/**
-		 * Get the filter expression for this request.
-		 * 
-		 * Expressions are represented by separate objects. If none exists so far, a
-		 * new expression object gets created.
-		 * 
-		 * @returns {odata4analytics.FilterExpression} The filter object
-		 *          associated to this request.
-		 */
-		getFilterExpression : function() {
-			if (this._oFilterExpression == null) {
-				var oEntityType = this._oEntitySet.getEntityType();
-				var oModel = this._oDimension.getContainingQueryResult().getModel();
-				this._oFilterExpression = new odata4analytics.FilterExpression(oModel, oEntityType
-						.getSchema(), oEntityType);
-			}
-			return this._oFilterExpression;
-		},
-	
-		/**
-		 * Set the filter expression for this request.
-		 * 
-		 * Expressions are represented by separate objects. Calling this method
-		 * replaces the filter object maintained by this request.
-		 * 
-		 * @param {odata4analytics.FilterExpression}
-		 *            oFilter The filter object to be associated with this request.
-		 */
-		setFilterExpression : function(oFilter) {
-			this._oFilterExpression = oFilter;
-		},
-	
-		/**
-		 * Get the sort expression for this request.
-		 * 
-		 * Expressions are represented by separate objects. If none exists so far, a
-		 * new expression object gets created.
-		 * 
-		 * @returns {odata4analytics.SortExpression} The sort object
-		 *          associated to this request.
-		 */
-		getSortExpression : function() {
-			if (this._oSortExpression == null) {
-				this._oSortExpression = new odata4analytics.SortExpression(this._oEntityType.getModel(), this._oEntityType
-						.getSchema(), this._oEntityType);
-			}
-			return this._oSortExpression;
-		},
-	
-		/**
-		 * Set the sort expression for this request.
-		 * 
-		 * Expressions are represented by separate objects. Calling this method
-		 * replaces the sort object maintained by this request.
-		 * 
-		 * @param {odata4analytics.SortExpression}
-		 *            oSorter The sort object to be associated with this request.
-		 */
-		setSortExpression : function(oSorter) {
-			this._oSortExpression = oSorter;
-		},
-	
-		/**
-		 * Set further options to be applied for the OData request
-		 * 
-		 * @param {Boolean}
-		 *            bIncludeCount Indicates whether or not the result shall
-		 *            include a count for the returned entities. Default is not to
-		 *            include it. Pass null to keep current setting.
-		 */
-		setRequestOptions : function(bIncludeCount) {
-			if (bIncludeCount != null)
-				this._bIncludeCount = bIncludeCount;
-		},
-	
-		/**
-		 * Specify that only a page of the query result shall be returned. A page is
-		 * described by its boundaries, that are row numbers for the first and last
-		 * rows in the query result to be returned.
-		 * 
-		 * @param {Number}
-		 *            start The first row of the query result to be returned.
-		 *            Numbering starts at 1. Passing null is equivalent to start
-		 *            with the first row.
-		 * @param {Number}
-		 *            end The last row of the query result to be returned. Passing
-		 *            null is equivalent to get all rows up to the end of the query
-		 *            result.
-		 */
-		setResultPageBoundaries : function(start, end) {
-			if (start != null && typeof start !== "number") {
-				throw "Start value must be null or numeric"; // TODO
-			}
-			if (end !== null && typeof end !== "number") {
-				throw "End value must be null or numeric"; // TODO
-			}
-	
-			if (start == null)
-				start = 1;
-	
-			if (start < 1 || start > (end == null ? start : end)) {
-				throw "Invalid values for requested page boundaries"; // TODO
-			}
-	
-			this._iSkipRequestOption = (start > 1) ? start - 1 : null;
-			this._iTopRequestOption = (end != null) ? (end - start + 1) : null;
-		},
-	
-		/**
-		 * Returns the current page boundaries as object with properties
-		 * <code>start</code> and <code>end</code>. If the end of the page is
-		 * unbounded, <code>end</code> is null.
-		 * 
-		 * @returns {Object} the current page boundaries as object
-		 */
-		getResultPageBoundaries : function() {
-			return {
-				start : (this._iSkipRequestOption == null) ? 1 : this._iSkipRequestOption,
-				end : (this._iTopRequestOption != null) ? (this._iSkipRequestOption == null) ? 1 : this._iSkipRequestOption
-						+ this._iTopRequestOption : null
-			};
-		},
-		
-		/**
-		 * Get the value of an query option for the OData request URI corresponding
-		 * to this request.
-		 * 
-		 * @param {String}
-		 *            sQueryOptionName Identifies the query option: $select,
-		 *            $filter,... or any custom query option
-		 * 
-		 * @returns {String} The value of the requested query option or null, if
-		 *          this option is not used for the OData request.
-		 */
-		getURIQueryOptionValue : function(sQueryOptionName) {
-			var sQueryOptionValue = null;
-	
-			switch (sQueryOptionName) {
-			case "$select": {
-				var sSelectOption = "";
-				var oEntityType = this._oEntitySet.getEntityType();
-				var aKeyPropName = oEntityType.getKeyProperties();
-				var aKeyTextPropName = [];
-				// add key properties and, if requested, their text properties
-				if (this._bUseMasterData) {
-					for (var i = -1, sKeyPropName; sKeyPropName = aKeyPropName[++i];) {
-						sSelectOption += (sSelectOption == "" ? "" : ",") + sKeyPropName;
-						var oKeyTextProperty = oEntityType.getTextPropertyOfProperty(sKeyPropName);
-						if (oKeyTextProperty) {
-							if (this._oValueSetResult.text == true)
-								sSelectOption += "," + oKeyTextProperty.name;
-							aKeyTextPropName.push(oKeyTextProperty.name);
-						}
-					}
-				} else { // use query result
-					sSelectOption += (sSelectOption == "" ? "" : ",") + this._oDimension.getKeyProperty().name;
-					if (this._oValueSetResult.text == true && this._oDimension.getTextProperty())
-						sSelectOption += (sSelectOption == "" ? "" : ",") + this._oDimension.getTextProperty().name;
-				}
-				// add further attributes, if requested
-				if (this._oValueSetResult.attributes) {
-					if (this._bUseMasterData) {
-						// do not require sap:attribute-for annotations, but simply
-						// add all further
-						// properties
-						var oAllPropertiesSet = oEntityType.getProperties();
-						for ( var sPropName in oAllPropertiesSet) {
-							var bIsKeyOrKeyText = false;
-							for (var i = -1, sKeyPropName; sKeyPropName = aKeyPropName[++i];) {
-								if (sPropName == sKeyPropName) {
-									bIsKeyOrKeyText = true;
-									break;
-								}
-							}
-							if (bIsKeyOrKeyText)
-								continue;
-							for (var i = -1, sKeyTextPropName; sKeyTextPropName = aKeyTextPropName[++i];) {
-								if (sPropName == sKeyTextPropName) {
-									bIsKeyOrKeyText = true;
-									break;
-								}
-							}
-							if (!bIsKeyOrKeyText)
-								sSelectOption += "," + sPropName;
-						}
-					} else { // use query result, hence include known dimension
-						// attributes
-						var aAttributeName = this._oDimension.getAllAttributeNames();
-						for (var i = -1, sAttrName; sAttrName = aAttributeName[++i];) {
-							sSelectOption += (sSelectOption == "" ? "" : ",")
-									+ this._oDimension.findAttributeByName(sAttrName).getName();
-						}
-					}
-				}
-	
-				sQueryOptionValue = (sSelectOption ? sSelectOption : null);
-				break;
-			}
-			case "$filter": {
-				var sFilterOption = null;
-				if (this._oFilterExpression)
-					sFilterOption = this._oFilterExpression.getURIFilterOptionValue();
-				sQueryOptionValue = (sFilterOption ? sFilterOption : null);
-				break;
-			}
-			case "$orderby": {
-				var sSortOption = null;
-				if (this._oSortExpression)
-					sSortOption = this._oSortExpression.getURIOrderByOptionValue();
-				sQueryOptionValue = (sSortOption ? sSortOption : null);
-				break;
-			}
-			case "$top": {
-				if (this._iTopRequestOption !== null) {
-					sQueryOptionValue = this._iTopRequestOption;
-				}
-				break;
-			}
-			case "$skip": {
-				sQueryOptionValue = this._iSkipRequestOption;
-				break;
-			}
-			case "$inlinecount": {
-				sQueryOptionValue = (this._bIncludeCount == true ? "allpages" : null);
-				break;
-			}
-			default:
-				break;
-			}
-	
-			return sQueryOptionValue;
-		},
-	
-		/**
-		 * Get the URI to locate the entity set for the dimension memebers.
-		 * 
-		 * @param {String}
-		 *            sServiceRootURI (optional) Identifies the root of the OData
-		 *            service
-		 * @returns {String} The resource path of the URI pointing to the entity
-		 *          set. It is a relative URI unless a service root is given, which
-		 *          would then prefixed in order to return a complete URL.
-		 */
-		getURIToDimensionMemberEntitySet : function(sServiceRootURI) {
-			var sResourcePath = null;
-			if (!this._bUseMasterData && this._oParameterizationRequest) {
-				sResourcePath = this._oParameterizationRequest.getURIToParameterizationEntry(sServiceRootURI) + "/"
-						+ this._oDimension.getContainingQueryResult().getParameterization().getNavigationPropertyToQueryResult();
-			} else {
-				sResourcePath = (sServiceRootURI ? sServiceRootURI : "") + "/" + this._oEntitySet.getQName();
-			}
-			return sResourcePath;
-		},
-	
-		/**
-		 * Get the unescaped URI to fetch the dimension members, optionally
-		 * augmented by text and attributes.
-		 * 
-		 * @param {String}
-		 *            sServiceRootURI (optional) Identifies the root of the OData
-		 *            service
-		 * @returns {String} The unescaped URI that contains the OData resource path
-		 *          and OData system query options to express the request for the
-		 *          parameter value set..
-		 */
-		getURIToDimensionMemberEntries : function(sServiceRootURI) {
-	
-			// construct resource path
-			var sResourcePath = this.getURIToDimensionMemberEntitySet(sServiceRootURI);
-	
-			// check if request is compliant with filter constraints expressed in
-			// metadata
-			this.getFilterExpression().isValid();
-	
-			// construct query options
-			var sSelectOption = this.getURIQueryOptionValue("$select");
-			var sFilterOption = this.getURIQueryOptionValue("$filter");
-			var sSortOption = this.getURIQueryOptionValue("$orderby");
-			var sTopOption = this.getURIQueryOptionValue("$top");
-			var sSkipOption = this.getURIQueryOptionValue("$skip");
-			var sInlineCountOption = this.getURIQueryOptionValue("$inlinecount");
-	
-			var sURI = sResourcePath;
-			var bQuestionmark = false;
-	
-			if (sSelectOption) {
-				sURI += "?$select=" + sSelectOption;
-				bQuestionmark = true;
-			}
-			if (this._oFilterExpression && sFilterOption) {
-				if (!bQuestionmark) {
-					sURI += "?";
-					bQuestionmark = true;
-				} else
-					sURI += "&";
-				sURI += "$filter=" + sFilterOption;
-			}
-			if (this._oSortExpression && sSortOption) {
-				if (!bQuestionmark) {
-					sURI += "?";
-					bQuestionmark = true;
-				} else
-					sURI += "&";
-				sURI += "$orderby=" + sSortOption;
-			}
-			if (this._iTopRequestOption && sTopOption) {
-				if (!bQuestionmark) {
-					sURI += "?";
-					bQuestionmark = true;
-				} else {
-					sURI += "&";
-				}
-				sURI += "$top=" + sTopOption;
-			}
-			if (this._iSkipRequestOption && sSkipOption) {
-				if (!bQuestionmark) {
-					sURI += "?";
-					bQuestionmark = true;
-				} else {
-					sURI += "&";
-				}
-				sURI += "$skip=" + sSkipOption;
-			}
-			if (this._bIncludeCount && sInlineCountOption) {
-				if (!bQuestionmark) {
-					sURI += "?";
-					bQuestionmark = true;
-				} else {
-					sURI += "&";
-				}
-				sURI += "$inlinecount=" + sInlineCountOption;
-			}
-			return sURI;
-		},
-	
-		/**
-		 * Private member attributes
-		 */
-		_oDimension : null,
-		_oParameterizationRequest : null,
-		_oEntitySet : null, // points to query result entity set or master data
-		// entity set
-		_bUseMasterData : false,
-	
-		_oFilterExpression : null,
-		_oSortExpression : null,
-		_oValueSetResult : null,
-		
-		_bIncludeCount : null,
-		_iSkipRequestOption : 0,
-		_iTopRequestOption : null
-		
-	};
-	
-	//
-	// Desirable extensions:
-	//
-	// OBSOLETE due to DimensionMemberSetRequest against master data - Another class
-	// for representing value help entities to
-	// specifiy text properties, attribute properties (with association to
-	// odata4analytics.Parameter and odata4analytics.Dimension)
-	// 
-	// - ParameterValueSetRequest: Add option to read values from separate entity
-	// set (odata4analytics.ParameterValueSetRequest)
-	// 
-	// DONE - DimensionMemberSetRequest: Add option to read values from separate
-	// master
-	// data entity
-	// set (odata4analytics.DimensionMemberSetRequest)
-	//
-	// DONE - value rendering: Add support for types other than string
-	// (odata4analytics.helper.renderPropertyKeyValue)
-	//
-	// DONE - filter expressions are validated against filter restriction
-	// annotations
-	// (odata4analytics.FilterExpression)
-	//
-	// DONE workaround - Implemenentation of filter expressions shall use SAPUI5
-	// class
-	// sap.ui.model.Filter. Problem:
-	// This class does not provide accessor methods for object attributes.
-	// (odata4analytics.FilterExpression)
-	//
-	// - Shield API implementation from direct access to object properties.
-	// Introduce closures for this purpose.
-	/*
-	 * Pattern: odata4analytics.QueryResult = (function ($){ var _init =
-	 * func
-	 * 
-	 * var class = function(oEntityType, oEntitySet, oParameterization) {
-	 * _init(oEntityType, oEntitySet, oParameterization); }; }; return class;
-	 * })(jQuery);
-	 * 
-	 */
-	
-	return odata4analytics;
-	
-}, /* bExport= */ true);	
-}; // end of sap/ui/thirdparty/odata4analytics.js
 if ( !jQuery.sap.isDeclared('jquery.sap.act') ) {
 /*!
  * SAP UI development toolkit for HTML5 (SAPUI5/OpenUI5)
@@ -41566,6 +42147,8 @@ sap.ui.define("jquery.sap.events",['jquery.sap.global', 'jquery.sap.keycodes'],
 					oNewEvent.ctrlKey = oMappedEvent.ctrlKey;
 					oNewEvent.altKey = oMappedEvent.altKey;
 					oNewEvent.shiftKey = oMappedEvent.shiftKey;
+					// The simulated mouse event should always be clicked by the left key of the mouse
+					oNewEvent.button = (sap.ui.Device.browser.msie && sap.ui.Device.browser.version <= 8 ? 1 : 0);
 
 					bEventHandledByUIArea = oNewEvent.isMarked("handledByUIArea");
 
@@ -41812,6 +42395,123 @@ sap.ui.define("jquery.sap.events",['jquery.sap.global', 'jquery.sap.keycodes'],
 		return isMouseEnterLeave;
 	};
 
+	/*
+	 * Detect whether the pressed key is:
+	 * SHIFT, CONTROL, ALT, BREAK, CAPS_LOCK,
+	 * PAGE_UP, PAGE_DOWN, END, HOME, ARROW_LEFT, ARROW_UP, ARROW_RIGHT, ARROW_DOWN,
+	 * PRINT, INSERT, DELETE, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12,
+	 * BACKSPACE, TAB, ENTER, ESCAPE
+	 *
+	 * @param {jQuery.Event} oEvent The event object of the <code>keydown</code>, <code>keyup</code> or <code>keypress</code> events.
+	 * @static
+	 * @returns {boolean}
+	 * @protected
+	 * @since 1.24.0
+	 * @experimental Since 1.24.0 Implementation might change.
+	 */
+	jQuery.sap.isSpecialKey = function(oEvent) {
+		var mKeyCodes = jQuery.sap.KeyCodes,
+			iKeyCode = oEvent.which,	// jQuery oEvent.which normalizes oEvent.keyCode and oEvent.charCode
+			bSpecialKey = 	isModifierKey(oEvent) ||
+							isArrowKey(oEvent) ||
+							(iKeyCode >= 33 && iKeyCode <= 36) ||	// PAGE_UP, PAGE_DOWN, END, HOME
+							(iKeyCode >= 44 && iKeyCode <= 46) ||	// PRINT, INSERT, DELETE
+							(iKeyCode >= 112 && iKeyCode <= 123) ||	// F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12
+							(iKeyCode === mKeyCodes.BREAK) ||
+							(iKeyCode === mKeyCodes.BACKSPACE) ||
+							(iKeyCode === mKeyCodes.TAB) ||
+							(iKeyCode === mKeyCodes.ENTER) ||
+							(iKeyCode === mKeyCodes.ESCAPE) ||
+							(iKeyCode === mKeyCodes.SCROLL_LOCK);
+
+		switch (oEvent.type) {
+			case "keydown":
+			case "keyup":
+				return bSpecialKey;
+
+			// note: the keypress event should be fired only when a character key is pressed,
+			// unfortunately some browsers fire the keypress event for other keys. e.g.:
+			//
+			// Firefox fire it for:
+			// BREAK, ARROW_LEFT, ARROW_RIGHT, INSERT, DELETE,
+			// F1, F2, F3, F5, F6, F7, F8, F9, F10, F11, F12
+			// BACKSPACE, ESCAPE
+			//
+			// Internet Explorer fire it for:
+			// ESCAPE
+			case "keypress":
+
+				// note: in Firefox, almost all noncharacter keys that fire the keypress event have a key code of 0,
+				// with the exception of BACKSPACE (key code of 8).
+				// note: in IE the ESCAPE key is also fired for the the keypress event
+				return (iKeyCode === 0 ||	// in Firefox, almost all noncharacter keys that fire the keypress event have a key code of 0, with the exception of BACKSPACE (key code of 8)
+						iKeyCode === mKeyCodes.BACKSPACE ||
+						iKeyCode === mKeyCodes.ESCAPE ||
+						iKeyCode === mKeyCodes.ENTER /* all browsers */) || false;
+
+			default:
+				return false;
+		}
+	};
+
+	/**
+	 * Detect whether the pressed key is a modifier.
+	 *
+	 * Modifier keys are considered:
+	 * SHIFT, CONTROL, ALT, CAPS_LOCK, NUM_LOCK
+	 * These keys don't send characters, but modify the characters sent by other keys.
+	 *
+	 * @param {jQuery.Event} oEvent The event object of the <code>keydown</code>, <code>keyup</code> or <code>keypress</code> events.
+	 * @static
+	 * @returns {boolean}
+	 * @since 1.24.0
+	 */
+	function isModifierKey(oEvent) {
+		var mKeyCodes = jQuery.sap.KeyCodes,
+			iKeyCode = oEvent.which;	// jQuery oEvent.which normalizes oEvent.keyCode and oEvent.charCode
+
+		return (iKeyCode === mKeyCodes.SHIFT) ||
+				(iKeyCode === mKeyCodes.CONTROL) ||
+				(iKeyCode === mKeyCodes.ALT) ||
+				(iKeyCode === mKeyCodes.CAPS_LOCK) ||
+				(iKeyCode === mKeyCodes.NUM_LOCK);
+	}
+
+	/**
+	 * Detect whether the pressed key is a navigation key.
+	 *
+	 * Navigation keys are considered:
+	 * ARROW_LEFT, ARROW_UP, ARROW_RIGHT, ARROW_DOWN
+	 *
+	 * @param {jQuery.Event} oEvent The event object of the <code>keydown</code>, <code>keyup</code> or <code>keypress</code> events.
+	 * @static
+	 * @returns {boolean}
+	 * @since 1.24.0
+	 */
+	function isArrowKey(oEvent) {
+		var iKeyCode = oEvent.which,	// jQuery oEvent.which normalizes oEvent.keyCode and oEvent.charCode
+			bArrowKey = (iKeyCode >= 37 && iKeyCode <= 40);	// ARROW_LEFT, ARROW_UP, ARROW_RIGHT, ARROW_DOWN
+
+		switch (oEvent.type) {
+			case "keydown":
+			case "keyup":
+				return bArrowKey;
+
+			// note: the keypress event should be fired only when a character key is pressed,
+			// unfortunately some browsers fire the keypress event for other keys. e.g.:
+			//
+			// Firefox fire it for:
+			// ARROW_LEFT, ARROW_RIGHT
+			case "keypress":
+
+				// in Firefox, almost all noncharacter keys that fire the keypress event have a key code of 0
+				return iKeyCode === 0;
+
+			default:
+				return false;
+		}
+	}
+
 	/**
 	 * Constructor for a jQuery.Event object.<br/>
 	 * @see "http://www.jquery.com" and "http://api.jquery.com/category/events/event-object/".
@@ -41937,6 +42637,7 @@ sap.ui.define("jquery.sap.events",['jquery.sap.global', 'jquery.sap.keycodes'],
 	return jQuery;
 
 }, /* bExport= */ false);
+
 }; // end of jquery.sap.events.js
 if ( !jQuery.sap.isDeclared('jquery.sap.history') ) {
 /*!
@@ -43212,7 +43913,7 @@ sap.ui.define("jquery.sap.properties",['jquery.sap.global', 'jquery.sap.sjax'],
 	 * currently in the list.
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 0.9.0
 	 * @name jQuery.sap.util.Properties
 	 * @public
@@ -43504,7 +44205,7 @@ sap.ui.define("jquery.sap.resources",['jquery.sap.global', 'jquery.sap.propertie
 	 * Exception: Fallback for "zh_HK" is "zh_TW" before zh.
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 0.9.0
 	 * @name jQuery.sap.util.ResourceBundle
 	 * @public
@@ -43924,7 +44625,7 @@ if ( !jQuery.sap.isDeclared('sap.ui.Global') ) {
  * sap.ui.lazyRequire("sap.ui.core.Control");
  * sap.ui.lazyRequire("sap.ui.commons.Button");
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @author  Martin Schaus, Daniel Brinkmann
  * @public
  */
@@ -43947,7 +44648,7 @@ sap.ui.define("sap/ui/Global",['jquery.sap.global', 'jquery.sap.dom'],
 	 * The <code>sap</code> namespace is automatically registered with the
 	 * OpenAjax hub if it exists.
 	 *
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @namespace
 	 * @public
 	 * @name sap
@@ -43960,7 +44661,7 @@ sap.ui.define("sap/ui/Global",['jquery.sap.global', 'jquery.sap.dom'],
 	 * The <code>sap.ui</code> namespace is the central OpenAjax compliant entry
 	 * point for UI related JavaScript functionality provided by SAP.
 	 *
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @namespace
 	 * @name sap.ui
 	 * @public
@@ -43973,8 +44674,8 @@ sap.ui.define("sap/ui/Global",['jquery.sap.global', 'jquery.sap.dom'],
 			 * The version of the SAP UI Library
 			 * @type string
 			 */
-			version: "1.22.4",
-			buildinfo : { lastchange : "${ldi.scm.revision}", buildtime : "201407151731" }
+			version: "1.22.8",
+			buildinfo : { lastchange : "${ldi.scm.revision}", buildtime : "201409011429" }
 		});
 
 	/**
@@ -44230,7 +44931,7 @@ sap.ui.define("sap/ui/base/Event",['jquery.sap.global', './Object'],
 	 * @extends sap.ui.base.Object
 	 * @implements sap.ui.base.Poolable
 	 * @author Malte Wedel, Daniel Brinkmann
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @name sap.ui.base.Event
 	 * @public
 	 */
@@ -44396,7 +45097,7 @@ sap.ui.define("sap/ui/base/EventProvider",['jquery.sap.global', './Event', './Ob
 	 * @abstract
 	 * @extends sap.ui.base.Object
 	 * @author Malte Wedel, Daniel Brinkmann
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @constructor
 	 * @public
 	 * @name sap.ui.base.EventProvider
@@ -44735,7 +45436,7 @@ sap.ui.define("sap/ui/base/ManagedObjectMetadata",['jquery.sap.global', './DataT
 	 *
 	 * @class
 	 * @author Frank Weigel
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 0.8.6
 	 * @name sap.ui.base.ManagedObjectMetadata
 	 */
@@ -45474,7 +46175,7 @@ sap.ui.define("sap/ui/core/ComponentMetadata",['jquery.sap.global', 'sap/ui/base
 	 * @experimental Since 1.9.2. The Component concept is still under construction, so some implementation details can be changed in future.
 	 * @class
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 1.9.2
 	 * @name sap.ui.core.ComponentMetadata
 	 */
@@ -47130,7 +47831,7 @@ sap.ui.define("sap/ui/core/ElementMetadata",['jquery.sap.global', 'sap/ui/base/M
 	 *
 	 * @class
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 0.8.6
 	 * @name sap.ui.core.ElementMetadata
 	 */
@@ -47274,7 +47975,7 @@ sap.ui.define("sap/ui/core/EventBus",['jquery.sap.global', 'sap/ui/base/EventPro
 	 *
 	 * @extends sap.ui.base.Object
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @constructor
 	 * @public
 	 * @since 1.8.0
@@ -47790,7 +48491,7 @@ sap.ui.define("sap/ui/core/IntervalTrigger",['jquery.sap.global', './EventBus'],
 		 * 
 		 * @extends sap.ui.base.Object
 		 * @author SAP AG
-		 * @version 1.22.4
+		 * @version 1.22.8
 		 * @constructor
 		 * @public
 		 * @since 1.11.0
@@ -47939,7 +48640,7 @@ sap.ui.define("sap/ui/core/LocaleData",['jquery.sap.global', 'sap/ui/base/Object
 	 *
 	 * @extends sap.ui.base.Object
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @constructor
 	 * @public
 	 * @name sap.ui.core.LocaleData
@@ -48456,7 +49157,7 @@ sap.ui.define("sap/ui/core/RenderManager",['jquery.sap.global', 'sap/ui/base/Int
 	 *
 	 * @extends sap.ui.base.Object
 	 * @author Jens Pflueger
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @constructor
 	 * @name sap.ui.core.RenderManager
 	 * @public
@@ -49988,7 +50689,7 @@ sap.ui.define("sap/ui/core/UIComponentMetadata",['jquery.sap.global', './Compone
 	 * @experimental Since 1.15.1. The Component concept is still under construction, so some implementation details can be changed in future.
 	 * @class
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 1.15.1
 	 * @name sap.ui.core.UIComponentMetadata
 	 */
@@ -50185,7 +50886,7 @@ sap.ui.define("sap/ui/core/delegate/ItemNavigation",['jquery.sap.global', 'sap/u
 	 * @param {Element[]} aItemDomRefs Array of DOM elements representing the items for the navigation
 	 * @param {boolean} [bNotInTabChain=false] Whether the selected element should be in the tab chain or not
 	 *
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @constructor
 	 * @name sap.ui.core.delegate.ItemNavigation
 	 * @public
@@ -52115,29 +52816,29 @@ sap.ui.define("sap/ui/core/format/DateFormat",['jquery.sap.global', 'sap/ui/core
 				case "weekYear":
 					if (oPart.iDigits == 1) {
 						sPart = findNumbers(4);
-						iIndex += sPart.length;
 					}
 					else if (oPart.iDigits == 2) {
 						sPart = findNumbers(2);
-						if (sPart.length == 2) {
-							iYear = parseInt(sPart, 10);
-							if (iYear < 90) {
-								sPart = "20" + sPart;
-							} else {
-								sPart = "19" + sPart;
-							}
-							iIndex +=2;
-						}
-						else {
-							iIndex += sPart.length;
-						}
 					}
 					else {
 						sPart = findNumbers(oPart.iDigits);
-						iIndex += sPart.length;
 					}
+					iIndex += sPart.length;
 					checkValid(oPart.sType, sPart === "");
 					iYear = parseInt(sPart, 10);
+					// Find the right century for two-digit years
+					if (sPart.length <= 2) {
+						var iCurrentYear = new Date().getFullYear(),
+							iCurrentCentury = Math.floor(iCurrentYear/100),
+							iYearDiff = iCurrentCentury * 100 + iYear - iCurrentYear;
+						if (iYearDiff < -70) {
+							iYear += (iCurrentCentury + 1) * 100;
+						} else if (iYearDiff < 30 ){
+							iYear += iCurrentCentury * 100;
+						} else {
+							iYear += (iCurrentCentury - 1) * 100;
+						}
+					}
 					break;
 				case "weekInYear":
 					// TODO
@@ -52188,8 +52889,8 @@ sap.ui.define("sap/ui/core/format/DateFormat",['jquery.sap.global', 'sap/ui/core
 					break;
 				case "millisecond":
 					sPart = findNumbers(Math.max(oPart.iDigits, 3));
-					sPart = jQuery.sap.padRight(sPart, "0", 3);
 					iIndex += sPart.length;
+					sPart = jQuery.sap.padRight(sPart, "0", 3);
 					iMilliseconds = parseInt(sPart, 10);
 					break;
 				case "amPmMarker":
@@ -52279,7 +52980,7 @@ sap.ui.define("sap/ui/core/format/DateFormat",['jquery.sap.global', 'sap/ui/core
 		
 		if (!this.bIsFallback) {
 			jQuery.each(this.aFallbackFormats, function(i, oFallbackFormat) {
-				oDate = oFallbackFormat.parse(oValue);
+				oDate = oFallbackFormat.parse(oValue, bUTC);
 				if (oDate) {
 					return false;
 				}
@@ -54177,7 +54878,7 @@ sap.ui.define("sap/ui/core/util/serializer/Serializer",['jquery.sap.global', 'sa
 	 * @class Serializer class.
 	 * @extends sap.ui.base.EventProvider
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @name sap.ui.core.util.serializer.Serializer
 	 * @experimental Since 1.15.1. The Serializer is still under construction, so some implementation details can be changed in future.
 	 */
@@ -54324,7 +55025,7 @@ sap.ui.define("sap/ui/core/util/serializer/delegate/Delegate",['jquery.sap.globa
 	 * @class Abstract serializer delegate class.
 	 * @extends sap.ui.base.EventProvider
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @name sap.ui.core.util.serializer.delegate.Delegate
 	 * @experimental Since 1.15.1. The abstract serializer delegate is still under construction, so some implementation details can be changed in future.
 	 */
@@ -54442,7 +55143,7 @@ sap.ui.define("sap/ui/core/util/serializer/delegate/HTML",['jquery.sap.global', 
 	 * @class HTML serializer delegate class.
 	 * @extends sap.ui.core.util.serializer.delegate.Delegate
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @name sap.ui.core.util.serializer.delegate.HTML
 	 * @experimental Since 1.15.1. The HTML serializer delegate is still under construction, so some implementation details can be changed in future.
 	 */
@@ -54735,7 +55436,7 @@ sap.ui.define("sap/ui/core/util/serializer/delegate/XML",['jquery.sap.global', '
 	 * @class XML serializer delegate class.
 	 * @extends sap.ui.core.util.serializer.delegate.Delegate
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @name sap.ui.core.util.serializer.delegate.XML
 	 * @experimental Since 1.15.1. The XML serializer delegate is still under construction, so some implementation details can be changed in future.
 	 */
@@ -55081,7 +55782,7 @@ sap.ui.define("sap/ui/core/ws/WebSocket",['jquery.sap.global', 'sap/ui/Device', 
 	 * @class Basic WebSocket class
 	 * @extends sap.ui.base.EventProvider
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @name sap.ui.core.ws.WebSocket
 	 */
 	var WebSocket = EventProvider.extend("sap.ui.core.ws.WebSocket", /** @lends sap.ui.core.ws.WebSocket.prototype */ {
@@ -55937,6 +56638,7 @@ sap.ui.define("sap/ui/model/Binding",['jquery.sap.global', 'sap/ui/base/EventPro
 	 */
 	Binding.prototype.initialize = function() {
 		this.checkUpdate(true);
+		return this;
 	};
 	
 	/**
@@ -56080,7 +56782,7 @@ sap.ui.define("sap/ui/model/Context",['jquery.sap.global', 'sap/ui/base/EventPro
 	 * Context elements are created either by the ListBinding for each list entry
 	 * or by using createBindingContext.
 	 *
-	 * @param {sap.ui.model.Model} the model
+	 * @param {sap.ui.model.Model} oModel the model
 	 * @param {String} sPath the path
 	 * @param {Object} oContext the context object
 	 * @abstract
@@ -56673,7 +57375,7 @@ sap.ui.define("sap/ui/model/Model",['jquery.sap.global', 'sap/ui/base/EventProvi
 	 * @extends sap.ui.base.Object
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 *
 	 * @constructor
 	 * @public
@@ -57498,7 +58200,7 @@ sap.ui.define("sap/ui/model/SelectionModel",['jquery.sap.global', 'sap/ui/base/E
 	 * @extends sap.ui.base.Object
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 *
 	 * @param {int} iSelectionMode <code>sap.ui.model.SelectionModel.SINGLE_SELECTION</code> or <code>sap.ui.model.SelectionModel.MULTI_SELECTION</code>
 	 *
@@ -57743,6 +58445,45 @@ sap.ui.define("sap/ui/model/SelectionModel",['jquery.sap.global', 'sap/ui/base/E
 			}
 		}
 		this._update(aSelectedIndices, iTo, aChangedRowIndices);
+		return this;
+	};
+	
+	/**
+	 * Moves all selected indices starting at the position <code>iStartIndex</code> <code>iMove</code>
+	 * items.
+	 *
+	 * This can be used if new items are inserted to the item set and you want to keep the selection.
+	 * To handle a deletion of items use <code>sliceSelectionInterval</code>.
+	 *
+	 * If this call results in a change to the current selection or lead selection, then a
+	 * <code>SelectionChanged</code> event is fired.
+	 *
+	 * @param {int} iStartIndex start at this position
+	 * @param {int} iMove
+	 * @return {sap.ui.model.SelectionModel} <code>this</code> to allow method chaining
+	 * @public
+	 * @name sap.ui.model.SelectionModel#moveSelectionInterval
+	 * @function
+	 */
+	SelectionModel.prototype.moveSelectionInterval = function(iStartIndex, iMove) {
+		jQuery.sap.assert(typeof iStartIndex === "number", "iFromIndex must be an integer");
+		jQuery.sap.assert(typeof iMove === "number", "iToIndex must be an integer");
+
+		var aChangedRowIndices = [];
+		var aSelectedIndices = this.aSelectedIndices;
+		var iLeadIndex = this.iLeadIndex;
+		for (var i = 0; i < aSelectedIndices.length; i++) {
+			var iIndex = aSelectedIndices[i];
+			if (iIndex >= iStartIndex) {
+				aChangedRowIndices.push(aSelectedIndices[i]);
+				aSelectedIndices[i] += iMove;
+				aChangedRowIndices.push(aSelectedIndices[i]);
+				if (iIndex === this.iLeadIndex) {
+					iLeadIndex += iMove;
+				}
+			}
+		}
+		this._update(aSelectedIndices, iLeadIndex, aChangedRowIndices);
 		return this;
 	};
 	
@@ -58018,7 +58759,7 @@ sap.ui.define("sap/ui/model/SimpleType",['jquery.sap.global', './FormatException
 	 * @extends sap.ui.model.Type
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 *
 	 * @constructor
 	 * @param {object} [oFormatOptions] options as provided by concrete subclasses
@@ -58292,7 +59033,7 @@ if ( !jQuery.sap.isDeclared('sap.ui.model.analytics.AnalyticalBinding') ) {
 
 // Provides class sap.ui.model.odata.ODataListBinding
 jQuery.sap.declare('sap.ui.model.analytics.AnalyticalBinding'); // unresolved dependency added by SAPUI5 'AllInOne' Builder
-sap.ui.define("sap/ui/model/analytics/AnalyticalBinding",['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/ChangeReason', 'sap/ui/model/Sorter', 'sap/ui/model/FilterOperator', 'sap/ui/thirdparty/odata4analytics'],
+sap.ui.define("sap/ui/model/analytics/AnalyticalBinding",['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/ChangeReason', 'sap/ui/model/Sorter', 'sap/ui/model/FilterOperator', './odata4analytics'],
 	function(jQuery, TreeBinding, ChangeReason, Sorter, FilterOperator, odata4analytics) {
 	"use strict";
 	
@@ -58452,6 +59193,10 @@ sap.ui.define("sap/ui/model/analytics/AnalyticalBinding",['jquery.sap.global', '
 			break;
 		}
 		return bHasMeasures;
+	};
+	
+	AnalyticalBinding.prototype.hasGrandTotalDisplayed = function() {
+		return this.bProvideGrandTotals;
 	};
 	
 	/**
@@ -60261,12 +61006,20 @@ sap.ui.define("sap/ui/model/analytics/TreeBindingAdapter",['jquery.sap.global', 
 	};
 	
 	TreeBindingAdapter.prototype._updateContexts = function(iPosition, aContexts, aContextInfos, bReplace) {
+		var iInitialPosition = iPosition;
 		for ( var i = 0; i < aContexts.length; i++) {
 			var oContext = aContexts[i];
 			var oContextInfo = aContextInfos[i];
 			this._aContexts.splice(iPosition, bReplace ? 1 : 0, oContext);
 			this._aContextInfos.splice(iPosition, bReplace ? 1 : 0, oContextInfo);
 			iPosition++;
+		}
+		if (!bReplace) {
+			this._fireContextChange({
+				type: "insert",
+				index: iInitialPosition,
+				length: aContexts.length
+			});
 		}
 	
 		return aContextInfos;
@@ -60603,6 +61356,12 @@ sap.ui.define("sap/ui/model/analytics/TreeBindingAdapter",['jquery.sap.global', 
 			for (var j=iRemovePosition; j<this._aContextInfos.length; j++) {
 				this._aContextInfos[j].position += iDecrease;
 			}
+			
+			this._fireContextChange({
+				type: "remove",
+				index: iRemovePosition,
+				length: Math.abs(iDecrease)
+			});
 		}
 	
 		// node is collapse now => notifiy control
@@ -60685,6 +61444,41 @@ sap.ui.define("sap/ui/model/analytics/TreeBindingAdapter",['jquery.sap.global', 
 			}
 		}
 
+	};
+	
+	/**
+	 * Attach event-handler <code>fnFunction</code> to the 'contextChange' event of this <code>sap.ui.model.analytics.TreeBindingAdapter</code>.<br/>
+	 * @param {function} fnFunction The function to call, when the event occurs.
+	 * @param {object} [oListener] object on which to call the given function.
+	 * @protected
+	 * @name sap.ui.model.analytics.TreeBindingAdapter#attachContextChange
+	 * @function
+	 */
+	TreeBindingAdapter.prototype.attachContextChange = function(fnFunction, oListener) {
+		this.attachEvent("contextChange", fnFunction, oListener);
+	};
+	
+	/**
+	 * Detach event-handler <code>fnFunction</code> from the 'contextChange' event of this <code>sap.ui.model.analytics.TreeBindingAdapter</code>.<br/>
+	 * @param {function} fnFunction The function to call, when the event occurs.
+	 * @param {object} [oListener] object on which to call the given function.
+	 * @protected
+	 * @name sap.ui.model.analytics.TreeBindingAdapter#detachContextChange
+	 * @function
+	 */
+	TreeBindingAdapter.prototype.detachContextChange = function(fnFunction, oListener) {
+		this.detachEvent("contextChange", fnFunction, oListener);
+	};
+	
+	/**
+	 * Fire event contextChange to attached listeners.
+	 * @param {Map} [mArguments] the arguments to pass along with the event.
+	 * @private
+	 * @name sap.ui.model.analytics.TreeBindingAdapter#_fireContextChange
+	 * @function
+	 */
+	TreeBindingAdapter.prototype._fireContextChange = function(mArguments) {
+		this.fireEvent("contextChange", mArguments);
 	};
 
 	return TreeBindingAdapter;
@@ -60801,7 +61595,7 @@ sap.ui.define("sap/ui/model/odata/ODataAnnotations",['jquery.sap.global', 'sap/u
 	 *
 	 * @author SAP AG
 	 * @version
-	 * 1.22.4
+	 * 1.22.8
 	 *
 	 * @constructor
 	 * @public
@@ -61890,7 +62684,7 @@ sap.ui.define("sap/ui/model/odata/ODataMetadata",['jquery.sap.global', 'sap/ui/b
 	 * Implementation to access oData metadata
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 *
 	 * @constructor
 	 * @public
@@ -61909,6 +62703,7 @@ sap.ui.define("sap/ui/model/odata/ODataMetadata",['jquery.sap.global', 'sap/ui/b
 			this.bAsync = mParams.async;
 			this.sUser = mParams.user;
 			this.sPassword = mParams.password;
+			this.mHeaders = mParams.headers;
 			this.oLoadEvent = null;
 			this.oFailedEvent = null;
 			this.oMetadata = null;
@@ -62660,10 +63455,12 @@ sap.ui.define("sap/ui/model/odata/ODataMetadata",['jquery.sap.global', 'sap/ui/b
 	 */
 	sap.ui.model.odata.ODataMetadata.prototype._createRequest = function(sUrl) {
 
-		var oLangHeader = {"Accept-Language" : sap.ui.getCore().getConfiguration().getLanguage()};
+		var oHeaders = {}, oLangHeader = {"Accept-Language" : sap.ui.getCore().getConfiguration().getLanguage()};
+		
+		jQuery.extend(oHeaders, this.mHeaders, oLangHeader);
 		
 		var oRequest = {
-				headers : oLangHeader,
+				headers : oHeaders,
 				requestUri : sUrl,
 				method : 'GET',
 				user: this.sUser,
@@ -63447,7 +64244,7 @@ sap.ui.define("sap/ui/model/type/Boolean",['jquery.sap.global', 'sap/ui/core/for
 	 * @extends sap.ui.model.SimpleType
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 *
 	 * @constructor
 	 * @public
@@ -63566,7 +64363,7 @@ sap.ui.define("sap/ui/model/type/Date",['jquery.sap.global', 'sap/ui/core/format
 	 * @extends sap.ui.model.SimpleType
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 *
 	 * @constructor
 	 * @public
@@ -63775,7 +64572,7 @@ sap.ui.define("sap/ui/model/type/DateTime",['jquery.sap.global', './Date'],
 	 * @extends sap.ui.model.type.Date
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 *
 	 * @constructor
 	 * @public
@@ -63856,7 +64653,7 @@ sap.ui.define("sap/ui/model/type/Float",['jquery.sap.global', 'sap/ui/core/forma
 	 * @extends sap.ui.model.SimpleType
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 *
 	 * @constructor
 	 * @public
@@ -64011,7 +64808,7 @@ sap.ui.define("sap/ui/model/type/Integer",['jquery.sap.global', 'sap/ui/core/for
 	 * @extends sap.ui.model.SimpleType
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 *
 	 * @constructor
 	 * @public
@@ -64165,7 +64962,7 @@ sap.ui.define("sap/ui/model/type/String",['jquery.sap.global', 'sap/ui/core/form
 	 * @extends sap.ui.model.SimpleType
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 *
 	 * @constructor
 	 * @public
@@ -64359,7 +65156,7 @@ sap.ui.define("sap/ui/model/type/Time",['jquery.sap.global', './Date'],
 	 * @extends sap.ui.model.type.Date
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 *
 	 * @constructor
 	 * @public
@@ -64452,7 +65249,7 @@ sap.ui.define("jquery.sap.ui",['jquery.sap.global', 'sap/ui/Global'],
 //	/**
 //	 * Root Namespace for the jQuery UI-Layer plugin provided by SAP AG.
 //	 *
-//	 * @version 1.22.4
+//	 * @version 1.22.8
 //	 * @namespace
 //	 * @public
 //	 */
@@ -64624,7 +65421,7 @@ sap.ui.define("sap/ui/app/ApplicationMetadata",['jquery.sap.global', 'sap/ui/cor
 	 * @deprecated Since 1.15.1. The Component class is enhanced to take care about the Application code.
 	 * @class
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 1.13.2
 	 * @name sap.ui.app.ApplicationMetadata
 	 */
@@ -64719,7 +65516,7 @@ sap.ui.define("sap/ui/core/util/serializer/HTMLViewSerializer",['jquery.sap.glob
 	 * @class HTMLViewSerializer class.
 	 * @extends sap.ui.base.EventProvider
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @name sap.ui.core.util.serializer.HTMLViewSerializer
 	 * @experimental Since 1.15.1. The HTMLViewSerializer is still under construction, so some implementation details can be changed in future.
 	 */
@@ -64811,7 +65608,7 @@ sap.ui.define("sap/ui/core/util/serializer/XMLViewSerializer",['jquery.sap.globa
 	 * @class XMLViewSerializer class.
 	 * @extends sap.ui.base.EventProvider
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @name sap.ui.core.util.serializer.XMLViewSerializer
 	 * @experimental Since 1.15.1. The XMLViewSerializer is still under construction, so some implementation details can be changed in future.
 	 */
@@ -64927,7 +65724,7 @@ sap.ui.define("sap/ui/core/ws/SapPcpWebSocket",['jquery.sap.global', './WebSocke
 	 * @class WebSocket class implementing the pcp-protocol
 	 * @extends sap.ui.core.ws.WebSocket
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @name sap.ui.core.ws.SapPcpWebSocket
 	 */
 	var SapPcpWebSocket = WebSocket.extend("sap.ui.core.ws.SapPcpWebSocket", /** @lends sap.ui.core.ws.SapPcpWebSocket.prototype */ {
@@ -66898,7 +67695,7 @@ sap.ui.define("sap/ui/model/odata/ODataListBinding",['jquery.sap.global', 'sap/u
 			this.iStartIndex = 0;
 			this.bPendingChange = false;
 			this.aKeys = [];
-			this.bInitialized = false;
+			this.bInitial = true;
 			this.sCountMode = (mParameters && mParameters.countMode) || this.oModel.sDefaultCountMode;
 			this.bRefresh = false;
 			this.bNeedsUpdate = false;
@@ -66908,11 +67705,13 @@ sap.ui.define("sap/ui/model/odata/ODataListBinding",['jquery.sap.global', 'sap/u
 			if (!this.oModel.getServiceMetadata()) {
 				var that = this,
 				fnCallback = function(oEvent) {
+					that.bInitial = false;
 					that._initSortersFilters();
 					that.oModel.detachMetadataLoaded(fnCallback);
 				}
 				this.oModel.attachMetadataLoaded(this, fnCallback);
 			} else {
+				this.bInitial = false;
 				this._initSortersFilters();
 			}
 	
@@ -66920,6 +67719,7 @@ sap.ui.define("sap/ui/model/odata/ODataListBinding",['jquery.sap.global', 'sap/u
 			// use the data and don't send additional requests
 			// TODO: what if nested list is not complete, because it was too large?
 			var oRef = this.oModel._getObject(this.sPath, this.oContext);
+			this.aExpandRefs = oRef;
 			if (jQuery.isArray(oRef) && !aSorters && !aFilters) {
 				this.aKeys = oRef;
 				this.iLength = oRef.length;
@@ -66974,7 +67774,9 @@ sap.ui.define("sap/ui/model/odata/ODataListBinding",['jquery.sap.global', 'sap/u
 	 */
 	ODataListBinding.prototype.getContexts = function(iStartIndex, iLength, iThreshold) {	
 	
-		this.bInitialized = true;
+		if (this.bInitial) {
+			return [];
+		}
 		this.iLastLength = iLength;
 		this.iLastStartIndex = iStartIndex;
 		this.iLastThreshold = iThreshold;
@@ -67182,11 +67984,12 @@ sap.ui.define("sap/ui/model/odata/ODataListBinding",['jquery.sap.global', 'sap/u
 				// get new entity type with new context and init filters now correctly
 				this._initSortersFilters();
 	
-				if (this.bInitialized){
+				if (!this.bInitial){
 					// if nested list is already available, use the data and don't send additional requests
 					// TODO: what if nested list is not complete, because it was too large?
 					var oRef = this.oModel._getObject(this.sPath, this.oContext);
-					if (jQuery.isArray(oRef)) {
+					this.aExpandRefs = oRef;
+					if (jQuery.isArray(oRef) && !this.aSorters.length > 0 && !this.aFilters.length > 0) {
 						this.aKeys = oRef;
 						this.iLength = oRef.length;
 						this.bLengthFinal = true;
@@ -67447,8 +68250,10 @@ sap.ui.define("sap/ui/model/odata/ODataListBinding",['jquery.sap.global', 'sap/u
 	 * @function
 	 */
 	ODataListBinding.prototype._fireRefresh = function(mArguments) {
-		this.bRefresh = true;
-		this.fireEvent("refresh", mArguments);
+		if (this.oModel.resolve(this.sPath, this.oContext)){
+			this.bRefresh = true;
+			this.fireEvent("refresh", mArguments);
+		}
 	};
 	
 	/**
@@ -67465,7 +68270,7 @@ sap.ui.define("sap/ui/model/odata/ODataListBinding",['jquery.sap.global', 'sap/u
 			if (this.bDataAvailable) {
 				this._fireChange({reason: sap.ui.model.ChangeReason.Change});
 			} else {
-				this._fireRefresh({reason: sap.ui.model.ChangeReason.Refresh});
+					this._fireRefresh({reason: sap.ui.model.ChangeReason.Refresh});
 			}
 		}
 	};
@@ -67483,11 +68288,30 @@ sap.ui.define("sap/ui/model/odata/ODataListBinding",['jquery.sap.global', 'sap/u
 		var bChangeReason = this.sChangeReason ? this.sChangeReason : sap.ui.model.ChangeReason.Change,
 			bChangeDetected = false, 
 			oLastData, oCurrentData,
-			that = this;
+			that = this,
+			oRef, 
+			bRefChanged;
 		
 		if (!bForceUpdate && !this.bNeedsUpdate) {
-			//TODO: check if we can loop only the last requested contexts
-			if (mChangedEntities) {
+			
+			// check if data in listbinding contains data loaded via expand
+			// if yes and there was a change detected we:
+			// - set the new keys if there are no sortes/filters set
+			// - trigger a refresh if there are sorters/filters set
+			oRef = this.oModel._getObject(this.sPath, this.oContext); 
+			bRefChanged = jQuery.isArray(oRef) && !jQuery.sap.equal(oRef,this.aExpandRefs);
+			this.aExpandRefs = oRef;
+			if (bRefChanged) {
+				if (this.aSorters.length > 0 || this.aFilters.length > 0) {
+					this.refresh();
+					return;
+				} else {
+					this.aKeys = oRef;
+					this.iLength = oRef.length;
+					this.bLengthFinal = true;
+					bChangeDetected = true;
+				}
+			} else if (mChangedEntities) {
 				jQuery.each(this.aKeys, function(i, sKey) {
 					if (sKey in mChangedEntities) {
 						bChangeDetected = true;
@@ -67500,6 +68324,7 @@ sap.ui.define("sap/ui/model/odata/ODataListBinding",['jquery.sap.global', 'sap/u
 			if (bChangeDetected && this.aLastContexts) {
 				// Reset bChangeDetected and compare actual data of entries
 				bChangeDetected = false;
+				
 				//Get contexts for visible area and compare with stored contexts
 				var aContexts = this._getContexts(this.iLastStartIndex, this.iLastLength, this.iLastThreshold);
 				if (this.aLastContexts.length != aContexts.length) {
@@ -67573,7 +68398,7 @@ sap.ui.define("sap/ui/model/odata/ODataListBinding",['jquery.sap.global', 'sap/u
 	 * @function
 	 */
 	ODataListBinding.prototype.sort = function(aSorters) {
-	
+			
 		if (aSorters instanceof sap.ui.model.Sorter) {
 			aSorters = [aSorters];
 		}
@@ -67585,7 +68410,7 @@ sap.ui.define("sap/ui/model/odata/ODataListBinding",['jquery.sap.global', 'sap/u
 		this.abortPendingRequest();
 		this.aKeys = [];
 	
-		if (this.bInitialized) {
+		if (!this.bInitial) {
 			if (this.oRequestHandle) {
 				this.oRequestHandle.abort();
 				this.oRequestHandle = null;
@@ -67648,7 +68473,7 @@ sap.ui.define("sap/ui/model/odata/ODataListBinding",['jquery.sap.global', 'sap/u
 		this.abortPendingRequest();
 		this.resetData();
 		
-		if (this.bInitialized) {
+		if (!this.bInitial) {
 			if (this.oRequestHandle) {
 				this.oRequestHandle.abort();
 				this.oRequestHandle = null;
@@ -68188,7 +69013,7 @@ sap.ui.define("sap/ui/core/util/serializer/ViewSerializer",['jquery.sap.global',
 	 * @class ViewSerializer class.
 	 * @extends sap.ui.base.EventProvider
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @name sap.ui.core.util.serializer.ViewSerializer
 	 * @experimental Since 1.15.1. The ViewSerializer is still under construction, so some implementation details can be changed in future.
 	 */
@@ -68745,7 +69570,7 @@ sap.ui.define("sap/ui/model/control/ControlModel",['jquery.sap.global', 'sap/ui/
 	 * @extends sap.ui.model.Model
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 *
 	 * @constructor
 	 * @name sap.ui.model.control.ControlModel
@@ -68960,7 +69785,7 @@ sap.ui.define("sap/ui/model/odata/ODataModel",['jquery.sap.global', 'sap/ui/mode
 	 * @extends sap.ui.model.Model
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 *
 	 * @constructor
 	 * @public
@@ -69072,7 +69897,8 @@ sap.ui.define("sap/ui/model/odata/ODataModel",['jquery.sap.global', 'sap/ui/mode
 
 			if (!this.oServiceData.oMetadata) {
 				//create Metadata object
-				this.oMetadata = new sap.ui.model.odata.ODataMetadata(this._createRequestUrl("$metadata"), { async: this.bLoadMetadataAsync, user: this.sUser, password: this.sPassword, namespaces: mMetadataNamespaces});
+				this.oMetadata = new sap.ui.model.odata.ODataMetadata(this._createRequestUrl("$metadata"), 
+						{ async: this.bLoadMetadataAsync, user: this.sUser, password: this.sPassword, headers: this.mCustomHeaders, namespaces: mMetadataNamespaces});
 				that.oServiceData.oMetadata = that.oMetadata;
 			} else {
 				this.oMetadata = this.oServiceData.oMetadata;
@@ -69081,6 +69907,7 @@ sap.ui.define("sap/ui/model/odata/ODataModel",['jquery.sap.global', 'sap/ui/mode
 			if(!this.oMetadata.isLoaded()) {
 				this.oMetadata.attachLoaded(function(oEvent){
 					that._initializeMetadata();
+					that.initialize();
 				}, this);
 				this.oMetadata.attachFailed(this.fireMetadataFailed, this);
 			}
@@ -69200,15 +70027,12 @@ sap.ui.define("sap/ui/model/odata/ODataModel",['jquery.sap.global', 'sap/ui/mode
 	ODataModel.prototype._initializeMetadata = function(bDelayEvent) {
 		var that = this;
 		this.bUseBatch = this.bUseBatch || this.oMetadata.getUseBatch();
-		var doFire = function(bInitialize, bDelay){
-			if(!!bDelay){
-				that.metadataLoadEvent = jQuery.sap.delayedCall(0, that, doFire, [that.bLoadMetadataAsync]);
+		var doFire = function(bDelay){
+			if (!!bDelay) {
+				that.metadataLoadEvent = jQuery.sap.delayedCall(0, that, doFire);
 			} else {
 				that.fireMetadataLoaded({metadata: that.oMetadata});
 				jQuery.sap.log.debug("ODataModel fired metadataloaded");
-				if(bInitialize){
-					that.initialize();
-				}
 			}
 		};
 
@@ -69217,17 +70041,17 @@ sap.ui.define("sap/ui/model/odata/ODataModel",['jquery.sap.global', 'sap/ui/mode
 			// This is also tested in the fireMetadataLoaded-method and no event is fired in case
 			// of joined loading.
 			if (this.oAnnotations && this.oAnnotations.bInitialized) {
-				doFire(true);
+				doFire();
 			} else {
 				this.oAnnotations.attachLoaded(function() {
 					// Now metadata was loaded and the annotations have been parsed
-					doFire(true);
+					doFire();
 				}, this);
 			}
 		} else {
 			// In case of synchronous or asynchronous non-joined loading, or if no annotations are
 			// loaded at all, the events are fired individually
-				doFire(this.bLoadMetadataAsync, bDelayEvent);
+				doFire(bDelayEvent);
 		}
 	};
 
@@ -71473,6 +72297,10 @@ sap.ui.define("sap/ui/model/odata/ODataModel",['jquery.sap.global', 'sap/ui/mode
 	
 			oRequest = this._createRequest(this.sChangeKey, "MERGE", true, oPayload, sETag);
 			
+			  if (this.sUrlParams) {
+				  oRequest.requestUri += "?" + this.sUrlParams;
+			  }
+			
 			//get entry from model. If entry exists get key for update bindings
 			oRequest.keys = {};
 			if (oStoredEntry) {
@@ -71482,22 +72310,40 @@ sap.ui.define("sap/ui/model/odata/ODataModel",['jquery.sap.global', 'sap/ui/mode
 			
 			this.oRequestQueue[this.sChangeKey] = oRequest;
 		}
+		
+		if (jQuery.isEmptyObject(this.oRequestQueue)) {
+			return undefined;
+		}
 	
 		if (this.bUseBatch) {
 			var aChangeRequests = [];
 			jQuery.each(this.oRequestQueue, function(sKey, oCurrentRequest){
-				oCurrentRequest.requestUri = oCurrentRequest.requestUri.replace(that.sServiceUrl + '/','');
-				oCurrentRequest.data._bCreate ? delete oCurrentRequest.data._bCreate : false;
-				aChangeRequests.push(oCurrentRequest);
+				delete oCurrentRequest._oRef;
+				var oReqClone = jQuery.extend(true, {}, oCurrentRequest);
+				oCurrentRequest._oRef = oReqClone;
+				
+				oReqClone.requestUri = oReqClone.requestUri.replace(that.sServiceUrl + '/','');
+				oReqClone.data._bCreate ? delete oReqClone.data._bCreate : false;
+				aChangeRequests.push(oReqClone);
 			});
+			
 			oRequest = this._createBatchRequest([{__changeRequests:aChangeRequests}], true)
 			this._submitRequest(oRequest, this.bUseBatch, fnSuccess, fnError, true);
 		} else {
 			//loop request queue
 			jQuery.each(this.oRequestQueue, function(sKey, oCurrentRequest){
+				// clone request and store the clone as reference to compare it in updateRequestQueue. 
+				// We send the cloned request which will be modified by datajs but we want to keep the original request stored
+				// because it may fail and we need to send the request again.
+				delete oCurrentRequest._oRef;
+				var oReqClone = jQuery.extend(true, {}, oCurrentRequest);
+				oCurrentRequest._oRef = oReqClone;
 				//remove create flag
-				oCurrentRequest.data._bCreate ? delete oCurrentRequest.data._bCreate : false;
-				that._submitRequest(oCurrentRequest, this.bUseBatch, fnSuccess, fnError, true);
+				 if (oReqClone.data && oReqClone.data._bCreate) {
+					 delete oReqClone.data._bCreate;
+				 }
+
+				that._submitRequest(oReqClone, this.bUseBatch, fnSuccess, fnError, true);
 			});
 		}
 		return undefined;
@@ -71525,7 +72371,7 @@ sap.ui.define("sap/ui/model/odata/ODataModel",['jquery.sap.global', 'sap/ui/mode
 						for(var j = 0; j < aChangeRequests.length; j++){
 							oChangeRequest = aChangeRequests[j];
 							jQuery.each(this.oRequestQueue, function(sKey,oCurrentRequest) {
-								if (oCurrentRequest === oChangeRequest && sKey !== that.sChangeKey) {
+								if (oCurrentRequest._oRef === oChangeRequest && sKey !== that.sChangeKey) {
 									delete that.oRequestQueue[sKey];
 									delete that.oData[sKey];
 									delete that.mContexts["/" + sKey];
@@ -71540,7 +72386,7 @@ sap.ui.define("sap/ui/model/odata/ODataModel",['jquery.sap.global', 'sap/ui/mode
 			}
 		} else {
 			jQuery.each(this.oRequestQueue, function(sKey,oCurrentRequest) {
-				if (oCurrentRequest === oRequest && sKey !== that.sChangeKey) {
+				if (oCurrentRequest._oRef === oRequest && sKey !== that.sChangeKey) {
 					delete that.oRequestQueue[sKey];
 					delete that.oData[sKey];
 					delete that.mContexts["/" + sKey];
@@ -72120,7 +72966,7 @@ sap.ui.define("sap/ui/model/resource/ResourceModel",['jquery.sap.global', 'sap/u
 	 * @extends sap.ui.model.Model
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 *
 	 * @param {object} oData parameters used to initialize the ResourceModel; at least either bundleUrl or bundleName must be set on this object; if both are set, bundleName wins
 	 * @param {string} [oData.bundleUrl] the URL to the base .properties file of a bundle (.properties file without any locale information, e.g. "mybundle.properties")
@@ -72388,7 +73234,7 @@ sap.ui.define("sap/ui/base/ManagedObject",['jquery.sap.global', './BindingParser
 	 * @class Base Class for managed objects.
 	 * @extends sap.ui.base.EventProvider
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @public
 	 * @name sap.ui.base.ManagedObject
 	 * @experimental Since 1.11.2. ManagedObject as such is public and usable. Only the support for the optional parameter 
@@ -74237,8 +75083,8 @@ sap.ui.define("sap/ui/base/ManagedObject",['jquery.sap.global', './BindingParser
 				oPart.model = oPart.path.substr(0, iSeparatorPos);
 				oPart.path = oPart.path.substr(iSeparatorPos + 1);
 			}
-			// if we have multiple bindings the binding mode can be one way only
-			if (oBindingInfo.parts.length > 1) {
+			// if a formatter exists or we have multiple bindings the binding mode can be one way only 
+			if (oBindingInfo.formatter || oBindingInfo.parts.length > 1) {
 				oPart.mode = sap.ui.model.BindingMode.OneWay;
 			}
 			
@@ -74388,6 +75234,7 @@ sap.ui.define("sap/ui/base/ManagedObject",['jquery.sap.global', './BindingParser
 			this[oPropertyInfo._sMutator](oValue);
 			oBindingInfo.skipModelUpdate = false;
 		} catch (oException) {
+			oBindingInfo.skipModelUpdate = false;
 			if (oException instanceof sap.ui.model.FormatException) {
 				this.fireFormatError({
 					element : this,
@@ -74446,6 +75293,7 @@ sap.ui.define("sap/ui/base/ManagedObject",['jquery.sap.global', './BindingParser
 						}, false, true); // bAllowPreventDefault, bEnableEventBubbling
 					}
 				} catch (oException) {
+					oBindingInfo.skipPropertyUpdate = false;
 					if (oException instanceof sap.ui.model.ParseException) {
 						this.fireParseError({
 							element : this,
@@ -75577,7 +76425,7 @@ sap.ui.define("sap/ui/core/Fragment",['jquery.sap.global', 'sap/ui/base/ManagedO
 		 * @class Fragment
 		 * @extends sap.ui.base.ManagedObject
 		 * @author SAP AG
-		 * @version 1.22.4
+		 * @version 1.22.8
 		 * @public
 		 * @name sap.ui.core.Fragment
 		 */
@@ -76697,7 +77545,7 @@ sap.ui.define("sap/ui/core/tmpl/Template",['jquery.sap.global', 'sap/ui/base/Man
 	 * @extends sap.ui.base.ManagedObject
 	 * @abstract
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @name sap.ui.core.tmpl.Template
 	 * @experimental Since 1.15.0. The Template concept is still under construction, so some implementation details can be changed in future.
 	 */
@@ -77350,7 +78198,7 @@ sap.ui.define("sap/ui/core/util/ExportType",['jquery.sap.global', 'sap/ui/base/M
 	 * @extends sap.ui.base.ManagedObject
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 1.22.0
 	 *
 	 * @constructor
@@ -77762,7 +78610,7 @@ sap.ui.define("sap/ui/core/util/ExportTypeCSV",['jquery.sap.global', './ExportTy
 	 * @extends sap.ui.core.util.ExportType
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 1.22.0
 	 *
 	 * @constructor
@@ -77853,7 +78701,7 @@ sap.ui.define("sap/ui/core/util/ExportTypeCSV",['jquery.sap.global', './ExportTy
 	 * @function
 	 */
 	CSV.prototype.escapeContent = function(sVal) {
-		if (sVal && sVal.indexOf(this.getSeparatorChar()) > -1 || sVal.indexOf('\r\n') > -1) {
+		if (sVal && (sVal.indexOf(this.getSeparatorChar()) > -1 || sVal.indexOf('\r\n') > -1)) {
 			sVal = sVal.replace(/"/g, '""');
 			sVal = '"' + sVal + '"';
 		}
@@ -77929,6 +78777,7 @@ sap.ui.define("sap/ui/core/util/ExportTypeCSV",['jquery.sap.global', './ExportTy
 
 }, /* bExport= */ true
 );
+
 }; // end of sap/ui/core/util/ExportTypeCSV.js
 if ( !jQuery.sap.isDeclared('sap.ui.core.util.MockServer') ) {
 /*
@@ -77940,2342 +78789,2692 @@ if ( !jQuery.sap.isDeclared('sap.ui.core.util.MockServer') ) {
 // Provides class sap.ui.core.util.MockServer for mocking a server
 jQuery.sap.declare('sap.ui.core.util.MockServer'); // unresolved dependency added by SAPUI5 'AllInOne' Builder
 jQuery.sap.require('sap.ui.thirdparty.sinon'); // unlisted dependency retained
-sap.ui.define("sap/ui/core/util/MockServer",['jquery.sap.global', 'sap/ui/Device', 'sap/ui/base/ManagedObject', 'sap/ui/thirdparty/sinon'],
-	function(jQuery, Device, ManagedObject, sinon) {
-	"use strict";
+sap.ui
+		.define("sap/ui/core/util/MockServer",
+				[ 'jquery.sap.global', 'sap/ui/Device', 'sap/ui/base/ManagedObject', 'sap/ui/thirdparty/sinon' ],
+				function(jQuery, Device, ManagedObject, sinon) {
+					"use strict";
 
-	if (!!Device.browser.internet_explorer) {
-		jQuery.sap.require("sap.ui.thirdparty.sinon-ie");
-	}
-	
-	/*global URI *///declare unusual global vars for JSLint/SAPUI5 validation
-	
-	/**
-	 * Creates a mocked server. This helps to mock all or some backend calls, e.g. for OData/JSON Models or simple XHR calls, without
-	 * changing the application code. This class can also be used for qunit tests.
-	 * 
-	 * @param {string} [sId] id for the new server object; generated automatically if no non-empty id is given
-	 *      Note: this can be omitted, no matter whether <code>mSettings</code> will be given or not!
-	 * @param {object} [mSettings] optional map/JSON-object with initial property values, aggregated objects etc. for the new object
-	 * @param {object} [oScope] scope object for resolving string based type and formatter references in bindings
-	 * 
-	 * @class Class to mock a server
-	 * @extends sap.ui.base.ManagedObject
-	 * @abstract
-	 * @author SAP AG
-	 * @version 1.22.4
-	 * @public
-	 * @name sap.ui.core.util.MockServer
-	 */
-	var MockServer = ManagedObject.extend("sap.ui.core.util.MockServer", /** @lends sap.ui.core.util.MockServer.prototype */
-	{
-		constructor : function(sId, mSettings, oScope) {
-			ManagedObject.apply(this, arguments);
-			MockServer._aServers.push(this);
-		},
-
-		metadata : {
-			properties : {
-				/**
-				 * Setter for property <code>rootUri</code>. All request path URI are prefixed with this root URI if set.
-				 *
-				 * Default value is empty/<code>undefined</code>
-				 * @param {string} rootUri new value for property <code>rootUri</code>
-				 * @public
-				 * @name sap.ui.core.util.MockServer#setRootUri
-				 * @function
-				 */
-
-				/**
-				 * Getter for property <code>rootUri</code>.
-				 *
-				 * Default value is empty/<code>undefined</code>
-				 *
-				 * @return {string} the value of property <code>rootUri</code>
-				 * @public
-				 * @name sap.ui.core.util.MockServer#getRootUri
-				 * @function
-				 */
-				rootUri : "string",
-
-				/**
-				 * Setter for property <code>requests</code>.
-				 * 
-				 * Default value is is <code>[]</code>
-				 * 
-				 * Each array entry should consist of an array with the following properties / values:
-				 *
-				 * <ul>
-				 * <li><b>method <string>: "GET"|"POST"|"DELETE|"PUT"</b>
-				 * <br>
-				 * (any HTTP verb)
-				 * </li>
-				 * <li><b>path <string>: "/path/to/resource"</b>
-				 * <br> 
-				 * The path is converted to a regular expression, so it can contain normal regular expression syntax.
-				 * All regular expression groups are forwarded as arguments to the <code>response</code> function.
-				 * In addition to this, parameters can be written in this notation: <code>:param</code>. These placeholder will be replaced by regular expression groups.
-				 * </li>
-				 * <li><b>response <function>: function(xhr, param1, param2, ...) { }</b>
-				 * <br>
-				 * The xhr object can be used to respond on the request. Supported methods are:
-				 * <br>
-				 * <code>xhr.respond(iStatusCode, mHeaders, sBody)</code>
-				 * <br>
-				 * <code>xhr.respondJSON(iStatusCode, mHeaders, oJsonObjectOrString)</code>. By default a JSON header is set for response header
-				 * <br>
-				 * <code>xhr.respondXML(iStatusCode, mHeaders, sXmlString)</code>. By default a XML header is set for response header
-				 * <br>
-				 * <code>xhr.respondFile(iStatusCode, mHeaders, sFileUrl)</code>. By default the mime type of the file is set for response header
-				 * </li>
-				 * </ul>
-				 * 
-				 * @param {object[]} requests new value for property <code>requests</code>
-				 * @public
-				 * @name sap.ui.core.util.MockServer#setRequests
-				 * @function
-				 */
-
-				/**
-				 * Getter for property <code>requests</code>.
-				 *
-				 * Default value is <code>[]</code>
-				 *
-				 * @return {object[]} the value of property <code>rootUri</code>
-				 * @public
-				 * @name sap.ui.core.util.MockServer#getRequests
-				 * @function
-				 */
-				requests : {type:"object[]", defaultValue:[]}
-			}
-		},
-
-		_oServer : null,
-		_aFilter : null,
-		_oMockdata: null,
-		_oMetadata: null,
-		_sMetadataUrl: null,
-		_sMockdataBaseUrl: null,
-		_mEntitySets: null
-		
-	});
-
-
-	/**
-	 * Starts the server.
-	 * @public
-	 * @name sap.ui.core.util.MockServer#start
-	 * @function
-	 */
-	MockServer.prototype.start = function() {
-		this._oServer = MockServer._getInstance();
-		this._aFilters = [];
-		var aRequests = this.getRequests();
-		var iLength = aRequests.length;
-		for (var i = 0; i < iLength; i++) {
-			var oRequest = aRequests[i];
-			this._addRequestHandler(oRequest.method, oRequest.path, oRequest.response);
-		}
-	};
-
-
-	/**
-	 * Stops the server.
-	 * @public
-	 * @name sap.ui.core.util.MockServer#stop
-	 * @function
-	 */
-	MockServer.prototype.stop = function() {
-		if (this.isStarted()) {
-			this._removeAllRequestHandlers();
-			this._removeAllFilters();
-			this._oServer = null;
-		}
-	};
-
-
-	/**
-	 * Returns whether the server is started or not.
-	 * 
-	 * @return {boolean} whether the server is started or not.
-	 * @public
-	 * @name sap.ui.core.util.MockServer#isStarted
-	 * @function
-	 */
-	MockServer.prototype.isStarted = function() {
-		return !!this._oServer;
-	};
-	
-	/**
-	 * Applies the OData system query option string on the given array
-	 * @param {object} oFilteredData
-	 * @param {string} sQuery string in the form {query}={value}
-	 * @param {string} sEntitySetName the name of the entitySet the oFilteredData belongs to
-	 * @private
-	 * @name sap.ui.core.util.MockServer#_applyQueryOnCollection
-	 * @function
-	 */
-	MockServer.prototype._applyQueryOnCollection = function(oFilteredData, sQuery , sEntitySetName) {
-		var aQuery = sQuery.split('=');
-		var sODataQueryValue = aQuery[1];
-		if(sODataQueryValue === "") return;
-		if(sODataQueryValue.lastIndexOf(',') === sODataQueryValue.length){
-			jQuery.sap.log.error("The URI is violating the construction rules defined in the Data Services specification!");
-			throw new Error("400");
-		}
-		switch (aQuery[0]) {
-		case "top":
-			if(!(new RegExp(/^\d+$/).test(sODataQueryValue))){
-				jQuery.sap.log.error("Invalid system query options value!");
-				throw new Error("400");
-			}
-			oFilteredData.results = oFilteredData.results.slice(0, sODataQueryValue);
-			break;
-		case "skip":
-			if(!(new RegExp(/^\d+$/).test(sODataQueryValue))){
-				jQuery.sap.log.error("Invalid system query options value!");
-				throw new Error("400");
-			}
-			oFilteredData.results =  oFilteredData.results.slice(sODataQueryValue ,oFilteredData.results.length);
-			break;
-		case "orderby":
-			oFilteredData.results = this._getOdataQueryOrderby(oFilteredData.results, sODataQueryValue); 
-			break;
-		case "filter":
-			oFilteredData.results = this._recursiveOdataQueryFilter(oFilteredData.results, sODataQueryValue); 
-			break;
-		case "select":
-			oFilteredData.results = this._getOdataQuerySelect(oFilteredData.results, sODataQueryValue); 
-			break;
-		case "inlinecount":			
-			var iCount =  this._getOdataInlineCount(oFilteredData.results , sODataQueryValue);
-			if(iCount){
-				oFilteredData.__count = iCount;
-			}
-			break;
-		case "expand":			
-			oFilteredData.results = this._getOdataQueryExpand(oFilteredData.results, sODataQueryValue ,sEntitySetName); 
-			break;
-		case "format":			
-			this._getOdataQueryFormat(sODataQueryValue); 
-			break;
-		default:
-			jQuery.sap.log.error("Invalid system query options value!");
-			throw new Error("400");
-		}
-	};
-
-	/**
-	 * Applies the OData system query option string on the given entry
-	 * @param {object} oEntry 
-	 * @param {string} sQuery string of the form {query}={value}
-	 * @param {string} sEntitySetName the name of the entitySet the oEntry belongs to
-	 * @private
-	 * @name sap.ui.core.util.MockServer#_applyQueryOnEntry
-	 * @function
-	 */
-	MockServer.prototype._applyQueryOnEntry = function(oEntry, sQuery , sEntitySetName) {
-		var aQuery = sQuery.split('=');
-		var sODataQueryValue = aQuery[1];
-		if(sODataQueryValue === "") return;
-		if(sODataQueryValue.lastIndexOf(',') === sODataQueryValue.length){
-			jQuery.sap.log.error("The URI is violating the construction rules defined in the Data Services specification!");
-			throw new Error("400");
-		}
-		switch (aQuery[0]) {
-		case "filter":
-			return this._recursiveOdataQueryFilter([oEntry], sODataQueryValue)[0]; 
-		case "select":
-			return this._getOdataQuerySelect([oEntry], sODataQueryValue)[0]; 
-		case "expand":			
-			return this._getOdataQueryExpand([oEntry], sODataQueryValue ,sEntitySetName)[0]; 
-		case "format":			
-			this._getOdataQueryFormat(sODataQueryValue); 
-			break;
-		default:
-			jQuery.sap.log.error("Invalid system query options value!");
-			throw new Error("400");
-		}
-	};
-	
-	/**
-	 * Applies the Orderby OData system query option string on the given array
-	 * @param {object} aDataSet 
-	 * @param {string} sODataQueryValue a comma separated list of property navigation paths to sort by, where each property navigation path terminates on a primitive property
-	 * @private
-	 * @name sap.ui.core.util.MockServer#_getOdataQueryOrderby
-	 * @function
-	 */
-	MockServer.prototype._getOdataQueryOrderby = function(aDataSet, sODataQueryValue){
-		// sort properties lookup  
-		var aProperties = sODataQueryValue.split(',');
-		var that = this;
-		//trim all properties
-		jQuery.each(aProperties, function(i, sPropertyName){
-			aProperties[i] = that._trim(sPropertyName);
-		});
-		
-		var fnComparator = function compare(a,b) {
-			
-			for ( var i = 0; i < aProperties.length; i++) {
-				// sort order lookup asc / desc
-				var aSort = aProperties[i].split(' ');
-				// by default the sort is in asc order
-				var iSorter = 1;
-				if(aSort.length > 1){
-					switch (aSort[1]) {
-					case 'asc':
-						iSorter = 1;
-						break;
-					case 'desc':
-						iSorter = -1;
-						break;
-					default:
-						jQuery.sap.log.error("Invalid sortorder '" + aSort[1] + "' detected!");
-						throw new Error("400");
+					if (!!Device.browser.internet_explorer) {
+						jQuery.sap.require("sap.ui.thirdparty.sinon-ie");
 					}
-				}
-				// support for 1 level complex type property
-				var iComplexType = aSort[0].indexOf("/")
-				if (iComplexType != -1) {
-					var sPropName = aSort[0].substring(iComplexType + 1);
-					var sComplexType = aSort[0].substring(0, iComplexType);
-					if(!a[sComplexType].hasOwnProperty(sPropName)) {
-						jQuery.sap.log.error("Property " + sPropName + " not found!");
-						throw new Error("400");
-					}
-					if (a[sComplexType][sPropName] < b[sComplexType][sPropName])
-						return -1*iSorter;
-					if (a[sComplexType][sPropName] > b[sComplexType][sPropName])
-						return 1*iSorter;
-				} else {
-					var sPropName = aSort[0];
-					if(!a.hasOwnProperty(sPropName)) {
-						jQuery.sap.log.error("Property " + sPropName + " not found!");
-						throw new Error("400");
-					}
-					if (a[sPropName] < b[sPropName])
-						return -1*iSorter;
-					if (a[sPropName] > b[sPropName])
-						return 1*iSorter;
-					}
-			}
-			return 0;
-		};
-		return aDataSet.sort(fnComparator);
-	};
-	
-	MockServer.prototype._arrayUnique = function(array) {
-	    var a = array.concat();
-	    for(var i=0; i<a.length; ++i) {
-	        for(var j=i+1; j<a.length; ++j) {
-	            if(a[i] === a[j])
-	                a.splice(j--, 1);
-	        }
-	    }
-	    return a;
-	};
-	
-	MockServer.prototype._extractParentheses = function(sString) {
-		var aStack = [];
-		var iEndIndex = 0;
-		var iStartIndex;
-		for ( var character = 0; character < sString.length; character++) {
-			if (sString[character] == '(') {
-				aStack.push(sString[character]);
-				if (iStartIndex == undefined) 
-					iStartIndex = character;
-			}
-			else if (sString[character] == ')') {
-				aStack.pop();
-				iEndIndex = character;
-			}
-		}
-		if (aStack.length == 0 && iStartIndex != undefined)
-			return sString.substring(iStartIndex + 1, iEndIndex);
-		return sString;
-	};
-	
-	MockServer.prototype._recursiveOdataQueryFilter = function(aDataSet, sODataQueryValue) {
-		// e.g. cases where (A) or substringof(..)
-		if (sODataQueryValue.indexOf(' and ') == -1 && sODataQueryValue.indexOf(' or ') == -1) {
-			if (sODataQueryValue.indexOf('(') == 0) {
-				sODataQueryValue = this._extractParentheses(sODataQueryValue);
-			}
-			return this._getOdataQueryFilter(aDataSet, sODataQueryValue);
-		}
-		// e.g. (A and B)
-		if (sODataQueryValue.indexOf('(') == 0 && sODataQueryValue.indexOf(')') == sODataQueryValue.length -1) {
-			sODataQueryValue = this._extractParentheses(sODataQueryValue);
-			return this._recursiveOdataQueryFilter(aDataSet, sODataQueryValue);
-		}
-		var rExp1 = RegExp("(.*)( and | or )(.*)");
-		var rExp2 = RegExp("([^\(]*)( and | or )(.*)");
-		if (sODataQueryValue.indexOf('(') > -1) {
-			//e.g. (A and B) or C
-			if (sODataQueryValue.indexOf('(') == 0) {
-				if (sODataQueryValue.indexOf('((') == 0) {
-					sODataQueryValue = this._extractParentheses(sODataQueryValue);
-				}
-				var aParts = rExp1.exec(sODataQueryValue);
-			//e.g. A and (B or C)
-			} else {
-				var aParts = rExp2.exec(sODataQueryValue);
-			}
-			if (aParts) {
-			var sExpression = this._extractParentheses(aParts[1]);
-			var sOperator = aParts[2];
-			var sExpression2 = this._extractParentheses(aParts[3]);
-			} 
-			else {
-				var sExpression = this._extractParentheses(sODataQueryValue);
-			}
-			if (sOperator == " or ") {
-				var aSet1 = this._recursiveOdataQueryFilter(aDataSet, sExpression);
-				var aSet2 = this._recursiveOdataQueryFilter(aDataSet, sExpression2);
-				return this._arrayUnique(aSet1.concat(aSet2));
-			} 
-			if (sOperator == " and ") {
-				var aSet1 = this._recursiveOdataQueryFilter(aDataSet, sExpression);
-				return this._recursiveOdataQueryFilter(aSet1, sExpression2);
-			}
-			// e.g. (A) 
-			if (sOperator == undefined) {
-				return this._recursiveOdataQueryFilter(aDataSet, sExpression);
-			}
-		}
-			// e.g. A or B or C or D
-			var aLogicalOr = sODataQueryValue.split(' or ');
-			var aLogicalAnd = sODataQueryValue.split(' and ');
-			if (aLogicalOr.length > 1) {
-				var aOr = [];
-				for ( var i = 0; i < aLogicalOr.length; i++) {
-					var sExp = this._trim(aLogicalOr[i]);
-					if (sExp) {
-					aOr.push(this._recursiveOdataQueryFilter(aDataSet, sExp));
-					} else {
-						throw new Error("400");
-					}
-				}
-				for ( var i = 0; i < aOr.length - 1; i++) {
-					aOr[0] = aOr[0].concat(aOr[i + 1]);
-				}
-				return  this._arrayUnique(aOr[0]);
-			} else {
-				if (aLogicalAnd.length > 1) {
-					var aAnd = aDataSet;
-					for ( var i = 0; i < aLogicalAnd.length; i++) {
-						var sExp = this._trim(aLogicalAnd[i]);
-						if (sExp) { 
-						aAnd = this._recursiveOdataQueryFilter(aAnd, sExp);
-						} else {
+
+					/*global URI *///declare unusual global vars for JSLint/SAPUI5 validation
+					/**
+					 * Creates a mocked server. This helps to mock all or some backend calls, e.g. for OData/JSON Models or simple XHR calls, without
+					 * changing the application code. This class can also be used for qunit tests.
+					 * 
+					 * @param {string} [sId] id for the new server object; generated automatically if no non-empty id is given
+					 *      Note: this can be omitted, no matter whether <code>mSettings</code> will be given or not!
+					 * @param {object} [mSettings] optional map/JSON-object with initial property values, aggregated objects etc. for the new object
+					 * @param {object} [oScope] scope object for resolving string based type and formatter references in bindings
+					 * 
+					 * @class Class to mock a server
+					 * @extends sap.ui.base.ManagedObject
+					 * @abstract
+					 * @author SAP SE
+					 * @version 1.22.8
+					 * @public
+					 * @name sap.ui.core.util.MockServer
+					 */
+					var MockServer = ManagedObject.extend("sap.ui.core.util.MockServer", /** @lends sap.ui.core.util.MockServer.prototype */
+					{
+						constructor : function(sId, mSettings, oScope) {
+							ManagedObject.apply(this, arguments);
+							MockServer._aServers.push(this);
+						},
+
+						metadata : {
+							properties : {
+
+								/**
+								 * Setter for property <code>rootUri</code>. All request path URI are prefixed with this root URI if set.
+								 *
+								 * Default value is empty/<code>undefined</code>
+								 * @param {string} rootUri new value for property <code>rootUri</code>
+								 * @public
+								 * @name sap.ui.core.util.MockServer#setRootUri
+								 * @function
+								 */
+
+								/**
+								 * Getter for property <code>rootUri</code>.
+								 *
+								 * Default value is empty/<code>undefined</code>
+								 *
+								 * @return {string} the value of property <code>rootUri</code>
+								 * @public
+								 * @name sap.ui.core.util.MockServer#getRootUri
+								 * @function
+								 */
+								rootUri : "string",
+
+								/**
+								 * Setter for property <code>requests</code>.
+								 * 
+								 * Default value is is <code>[]</code>
+								 * 
+								 * Each array entry should consist of an array with the following properties / values:
+								 *
+								 * <ul>
+								 * <li><b>method <string>: "GET"|"POST"|"DELETE|"PUT"</b>
+								 * <br>
+								 * (any HTTP verb)
+								 * </li>
+								 * <li><b>path <string>: "/path/to/resource"</b>
+								 * <br> 
+								 * The path is converted to a regular expression, so it can contain normal regular expression syntax.
+								 * All regular expression groups are forwarded as arguments to the <code>response</code> function.
+								 * In addition to this, parameters can be written in this notation: <code>:param</code>. These placeholder will be replaced by regular expression groups.
+								 * </li>
+								 * <li><b>response <function>: function(xhr, param1, param2, ...) { }</b>
+								 * <br>
+								 * The xhr object can be used to respond on the request. Supported methods are:
+								 * <br>
+								 * <code>xhr.respond(iStatusCode, mHeaders, sBody)</code>
+								 * <br>
+								 * <code>xhr.respondJSON(iStatusCode, mHeaders, oJsonObjectOrString)</code>. By default a JSON header is set for response header
+								 * <br>
+								 * <code>xhr.respondXML(iStatusCode, mHeaders, sXmlString)</code>. By default a XML header is set for response header
+								 * <br>
+								 * <code>xhr.respondFile(iStatusCode, mHeaders, sFileUrl)</code>. By default the mime type of the file is set for response header
+								 * </li>
+								 * </ul>
+								 * 
+								 * @param {object[]} requests new value for property <code>requests</code>
+								 * @public
+								 * @name sap.ui.core.util.MockServer#setRequests
+								 * @function
+								 */
+
+								/**
+								 * Getter for property <code>requests</code>.
+								 *
+								 * Default value is <code>[]</code>
+								 *
+								 * @return {object[]} the value of property <code>rootUri</code>
+								 * @public
+								 * @name sap.ui.core.util.MockServer#getRequests
+								 * @function
+								 */
+								requests : {
+									type : "object[]",
+									defaultValue : []
+								}
+							}
+						},
+
+						_oServer : null,
+						_aFilter : null,
+						_oMockdata : null,
+						_oMetadata : null,
+						_sMetadataUrl : null,
+						_sMockdataBaseUrl : null,
+						_mEntitySets : null
+
+					});
+
+					/**
+					 * Starts the server.
+					 * @public
+					 * @name sap.ui.core.util.MockServer#start
+					 * @function
+					 */
+					MockServer.prototype.start = function() {
+						this._oServer = MockServer._getInstance();
+						this._aFilters = [];
+						var aRequests = this.getRequests();
+						var iLength = aRequests.length;
+						for ( var i = 0; i < iLength; i++) {
+							var oRequest = aRequests[i];
+							this._addRequestHandler(oRequest.method, oRequest.path, oRequest.response);
+						}
+					};
+
+					/**
+					 * Stops the server.
+					 * @public
+					 * @name sap.ui.core.util.MockServer#stop
+					 * @function
+					 */
+					MockServer.prototype.stop = function() {
+						if (this.isStarted()) {
+							this._removeAllRequestHandlers();
+							this._removeAllFilters();
+							this._oServer = null;
+						}
+					};
+
+					/**
+					 * Returns whether the server is started or not.
+					 * 
+					 * @return {boolean} whether the server is started or not.
+					 * @public
+					 * @name sap.ui.core.util.MockServer#isStarted
+					 * @function
+					 */
+					MockServer.prototype.isStarted = function() {
+						return !!this._oServer;
+					};
+
+					/**
+					 * Applies the OData system query option string on the given array
+					 * @param {object} oFilteredData
+					 * @param {string} sQuery string in the form {query}={value}
+					 * @param {string} sEntitySetName the name of the entitySet the oFilteredData belongs to
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_applyQueryOnCollection
+					 * @function
+					 */
+					MockServer.prototype._applyQueryOnCollection = function(oFilteredData, sQuery, sEntitySetName) {
+						var aQuery = sQuery.split('=');
+						var sODataQueryValue = aQuery[1];
+						if (sODataQueryValue === "")
+							return;
+						if (sODataQueryValue.lastIndexOf(',') === sODataQueryValue.length) {
+							jQuery.sap.log.error("The URI is violating the construction rules defined in the Data Services specification!");
 							throw new Error("400");
 						}
-					}
-					return  aAnd;
-				}
-			}
-		return this._getOdataQueryFilter(aDataSet, sODataQueryValue);
-	};
-
-	/**
-	 * Applies the Filter OData system query option string on the given array
-	 * @param {object} aDataSet 
-	 * @param {string} sODataQueryValue a boolean expression
-	 * @private
-	 * @name sap.ui.core.util.MockServer#_getOdataQueryFilter
-	 * @function
-	 */
-	MockServer.prototype._getOdataQueryFilter = function(aDataSet, sODataQueryValue) {
-		if (aDataSet.length == 0) return aDataSet;
-		var rExp = new RegExp("(.*) (eq|ne|gt|lt|le|ge) (.*)");
-		var rExp2 = new RegExp("(endswith|startswith|substringof)\\((.*)");
-		var aODataFilterValues = rExp.exec(sODataQueryValue);
-		if (aODataFilterValues) {
-			var sODataFilterMethod = aODataFilterValues[2];
-		}
-		else {
-			aODataFilterValues = rExp2.exec(sODataQueryValue);
-			if(aODataFilterValues) {
-			sODataFilterMethod = aODataFilterValues[1];
-			}
-			else {
-			throw new Error("400");
-			}
-		}
-		var that = this;
-		var fnGetFilteredData = function (bValue, iValueIndex, iPathIndex, fnSelectFilteredData){
-			var aODataFilterValues, sValue;
-			if (!bValue){ //e.g eq, ne, gt, lt, le, ge
-				aODataFilterValues = rExp.exec(sODataQueryValue);
-				sValue = that._trim(aODataFilterValues[iValueIndex + 1]);
-				sValue = ((sValue.charAt(0) == "'") && (sValue.charAt(sValue.length -1) == "'")) ? sValue.substr(1, aODataFilterValues[iValueIndex + 1].length - 2) : sValue;
-				var sPath = that._trim(aODataFilterValues[iPathIndex + 1]);
-			}
-			else{ //e.g.substringof, startswith, endswith
-				aODataFilterValues = sODataQueryValue.split("(")[1].split(")")[0].split(",");
-				sValue = that._trim(aODataFilterValues[iValueIndex]).substr(1, aODataFilterValues[0].length - 2);
-				sPath = that._trim(aODataFilterValues[iPathIndex]);
-			}	
-			
-			if (sValue.indexOf("datetime") === 0) {
-				sValue = "/Date(" + Date.parse(sValue.substring("datetime'".length, sValue.length - 1)) + ")/";
-			}
-
-			//check if sPath exists as property of the entityset
-			if(!aDataSet[0].hasOwnProperty(sPath)){
-				jQuery.sap.log.error("Property " + sPath + " not found!");
-				throw new Error("400")
-			}
-
-			return fnSelectFilteredData(sPath,sValue);
-		};
-
-		switch (sODataFilterMethod) {
-		case "substringof" :					
-			return fnGetFilteredData (true,0,1, 
-					function (sPath ,sValue){
-				return jQuery.grep(aDataSet, function(oMockData){
-					return (oMockData[sPath].indexOf(sValue) != -1);
-				});
-			})			
-		case "startswith" :
-			return fnGetFilteredData (true,1,0, 
-					function (sPath ,sValue){
-				return jQuery.grep(aDataSet, function(oMockData){
-					return (oMockData[sPath].indexOf(sValue) == 0);
-				});
-			})			
-		case "endswith" :
-			return fnGetFilteredData (true, 1,0, 
-					function (sPath ,sValue){
-				return jQuery.grep(aDataSet, function(oMockData){
-					return (oMockData[sPath].indexOf(sValue) == (oMockData[sPath].length - sValue.length));
-				});
-			})			
-		case "eq" :
-			return fnGetFilteredData (false,2,0, 
-					function (sPath ,sValue){
-				return jQuery.grep(aDataSet, function(oMockData){
-					return (oMockData[sPath] == sValue);
-				});
-			})		
-		case "ne" :
-			return fnGetFilteredData (false,2,0, 
-					function (sPath ,sValue){
-				return jQuery.grep(aDataSet, function(oMockData){
-					return (oMockData[sPath] != sValue);
-				});
-			})		
-		case "gt" :
-			return fnGetFilteredData (false,2,0, 
-					function (sPath ,sValue){
-				return jQuery.grep(aDataSet, function(oMockData){
-					return (oMockData[sPath] > sValue);
-				});
-			})
-		case "lt" :
-			return fnGetFilteredData (false,2,0, 
-					function (sPath ,sValue){
-				return jQuery.grep(aDataSet, function(oMockData){
-					return (oMockData[sPath] < sValue);
-				});
-			})
-		case "ge" :
-			return fnGetFilteredData (false, 2,0, 
-					function (sPath ,sValue){
-				return jQuery.grep(aDataSet, function(oMockData){
-					return (oMockData[sPath] >= sValue);
-				});
-			})
-		case "le" :
-			return fnGetFilteredData (false, 2,0, 
-					function (sPath ,sValue){
-				return jQuery.grep(aDataSet, function(oMockData){
-					return (oMockData[sPath] <= sValue);
-				});
-			})
-		default:
-			jQuery.sap.log.error("Invalid $filter operator '" + sODataFilterMethod + "'!");
-			throw new Error("400");
-		}
-	};
-
-	/**
-	 * Applies the Select OData system query option string on the given array
-	 * @param {object} aDataSet 
-	 * @param {string} sODataQueryValue a comma separated list of property paths, qualified action names, qualified function names, or the star operator (*)
-	 * @private
-	 * @name sap.ui.core.util.MockServer#_getOdataQuerySelect
-	 * @function
-	 */
-	MockServer.prototype._getOdataQuerySelect = function(aDataSet, sODataQueryValue){
-		var aProperties = sODataQueryValue.split(',');
-		if (jQuery.inArray("*", aProperties) !== -1){
-			return aDataSet;
-		}	
-		var aSelectedDataSet = [];
-		
-		var that = this;
-		//trim all properties 
-		jQuery.each(aProperties, function(i, sPropertyName){
-			aProperties[i] = that._trim(sPropertyName);
-		})
-		
-		//check if all properties exist
-		jQuery.each(aProperties, function(i, sPropertyName){
-			if(!aDataSet[0].hasOwnProperty(sPropertyName)){
-				jQuery.sap.log.error("Resource not found for the selection clause '" + sPropertyName + "'!");
-				throw new Error("404");
-			}
-		})
-		//TODO deepDown selection
-		//clone array of objects and delete not selected properties for each object 
-		jQuery.each(aDataSet, function(iIndex, oData){
-			var oPushedObject = jQuery.extend(true, {}, oData);
-			for (var sName in oPushedObject) {
-				if (sName !== "__metadata" && jQuery.inArray(sName, aProperties) === -1){
-					delete oPushedObject[sName];
-				}				
-			}
-			aSelectedDataSet.push(oPushedObject);
-		});	
-		return aSelectedDataSet;
-	};	
-	
-	/**
-	 * Applies the InlineCount OData system query option string on the given array
-	 * @param {object} aDataSet 
-	 * @param {string} sODataQueryValue a value of allpages, or a value of none
-	 * @private
-	 * @name sap.ui.core.util.MockServer#_getOdataInlineCount
-	 * @function
-	 */
-	MockServer.prototype._getOdataInlineCount = function(aDataSet , sODataQueryValue){ 
-		var aProperties = sODataQueryValue.split(',');
-		
-		if(aProperties.length !== 1 || (aProperties[0] !== 'none' && aProperties[0] !== 'allpages')){
-			jQuery.sap.log.error("Invalid system query options value!");
-			throw new Error("400");
-		}
-		if (aProperties[0] === 'none'){
-			return;
-		}			
-		return aDataSet.length;
-	};
-	
-	/**
-	 * Applies the Format OData system query option 
-	 * @param {string} sODataQueryValue
-	 * @private
-	 * @name sap.ui.core.util.MockServer#_getOdataQueryFormat
-	 * @function
-	 */
-	MockServer.prototype._getOdataQueryFormat = function(sODataQueryValue){ 
-		if(sODataQueryValue !== 'json'){
-			jQuery.sap.log.error("Unsupported format value. Only json format is supported!");
-			throw new Error("400");
-		}
-	};
-	
-	/**
-	 * Applies the Expand OData system query option string on the given array
-	 * @param {object} aDataSet 
-	 * @param {string} sODataQueryValue a comma separated list of navigation property paths
-	 * @param {string} sEntitySetName the name of the entitySet the aDataSet belongs to
-	 * @private
-	 * @name sap.ui.core.util.MockServer#_getOdataQueryExpand
-	 * @function
-	 */
-	MockServer.prototype._getOdataQueryExpand = function(aDataSet , sODataQueryValue , sEntitySetName){ 
-		var that = this;
-		var aNavProperties = sODataQueryValue.split(',');
-		//trim all nav properties 
-		jQuery.each(aNavProperties, function(i, sPropertyName){
-			aNavProperties[i] = that._trim(sPropertyName);
-		})
-		var oEntitySetNavProps = that._mEntitySets[sEntitySetName].navprops; 
-		jQuery.each(aDataSet, function(iIndex, oRecord){
-			jQuery.each(aNavProperties, function(iIndex, sNavProp){
-				var aNavProps = sNavProp.split("/");
-				var sNavProp = aNavProps[0];
-				var aNavEntry = jQuery.extend(true, [], that._resolveNavigation(sEntitySetName, oRecord, sNavProp));
-				
-				if(!!aNavEntry && aNavProps.length > 1){
-					var sRestNavProps = aNavProps.splice(1,aNavProps.length).join("/");
-					aNavEntry = that._getOdataQueryExpand(aNavEntry ,sRestNavProps , oEntitySetNavProps[sNavProp].to.entitySet )
-				}
-
-				if(oEntitySetNavProps[sNavProp].to.multiplicity === "*"){
-					oRecord[sNavProp] = {results: aNavEntry};
-				}else{
-					oRecord[sNavProp] = aNavEntry[0] ? aNavEntry[0] : {};
-				}
-			})
-		});
-		return aDataSet;
-	};
-	
-	/**
-	 * Refreshes the service metadata document and the mockdata
-	 * 
-	 * @private
-	 * @name sap.ui.core.util.MockServer#_refreshData
-	 * @function
-	 */
-	MockServer.prototype._refreshData = function() {
-	
-		// load the metadata
-		this._loadMetadata(this._sMetadataUrl);
-		
-		// here we need to analyse the EDMX and identify the entity sets
-		this._mEntitySets = this._findEntitySets(this._oMetadata); 
-
-		if (this._sMockdataBaseUrl == null) {
-			// load the mockdata
-			this._generateMockdata(this._mEntitySets, this._oMetadata);
-		} else {
-			// check the mockdata base URL to end with a slash
-			if (!jQuery.sap.endsWith(this._sMockdataBaseUrl, "/") && !jQuery.sap.endsWith(this._sMockdataBaseUrl, ".json")) {
-				this._sMockdataBaseUrl += "/";
-			}
-			// load the mockdata
-			this._loadMockdata(this._mEntitySets, this._sMockdataBaseUrl);
-		}
-	};
-
-	
-	/**
-	 * Returns the root URI without query or hash parameters
-	 * @return {string} the root URI without query or hash parameters
-	 * @name sap.ui.core.util.MockServer#_getRootUri
-	 * @function
-	 */
-	MockServer.prototype._getRootUri = function() {
-		var sUri = this.getRootUri();
-		sUri = sUri && /([^?#]*)([?#].*)?/.exec(sUri)[1]; // remove URL parameters or anchors
-		return sUri;
-	};
-	
-	
-	/**
-	 * Loads the service metadata for the given url
-	 * @param {string} sMetadataUrl url to the service metadata document
-	 * @return {XMLDocument} the xml document object 
-	 * @private
-	 * @name sap.ui.core.util.MockServer#_loadMetadata
-	 * @function
-	 */
-	MockServer.prototype._loadMetadata = function(sMetadataUrl) {
-		
-		// load the metadata
-		var oMetadata = jQuery.sap.sjax({url: sMetadataUrl, dataType: "xml"}).data;
-		jQuery.sap.assert(oMetadata !== undefined, "The metadata for url \"" + sMetadataUrl + "\" could not be found!");
-		this._oMetadata = oMetadata;
-		
-		return oMetadata;
-		
-	};
-	
-
-	/**
-	 * find the entity sets in the metadata XML document
-	 * @param {XMLDocument} oMetadata the metadata XML document
-	 * @return {map} map of entity sets 
-	 * @private
-	 * @name sap.ui.core.util.MockServer#_findEntitySets
-	 * @function
-	 */
-	MockServer.prototype._findEntitySets = function(oMetadata) {
-		
-		// here we need to analyse the EDMX and identify the entity sets
-		var mEntitySets = {};
-		var oPrincipals = jQuery(oMetadata).find("Principal");
-		var oDependents = jQuery(oMetadata).find("Dependent");
-		
-		jQuery(oMetadata).find("EntitySet").each(function(iIndex, oEntitySet) {
-			var $EntitySet = jQuery(oEntitySet);
-			// split the namespace and the name of the entity type (namespace could have dots inside)
-			var aEntityTypeParts =/((.*)\.)?(.*)/.exec($EntitySet.attr("EntityType"));
-			mEntitySets[$EntitySet.attr("Name")] = {
-				"name": $EntitySet.attr("Name"), 
-				"schema": aEntityTypeParts[2],
-				"type": aEntityTypeParts[3],
-				"keys": [],
-				"keysType" : {},
-				"navprops": {}
-			};
-		});
-		
-		// helper function to find the entity set and property reference
-		// for the given role name
-		var fnResolveNavProp = function(sRole, bFrom) {
-			var aRoleEnd = jQuery(oMetadata).find("End[Role=" + sRole + "]");
-			var sEntitySet;
-			var sMultiplicity;
-			jQuery.each(aRoleEnd, function(i,oValue){
-				if(!!jQuery(oValue).attr("EntitySet")){
-					sEntitySet = jQuery(oValue).attr("EntitySet");
-				}else{
-					sMultiplicity = jQuery(oValue).attr("Multiplicity");
-				}
-			});
-			var aPropRef = [];			
-			var oPrinDeps = (bFrom) ? oPrincipals :  oDependents;
-			jQuery(oPrinDeps).each(function(iIndex, oPrinDep){ 
-				if (sRole == (jQuery(oPrinDep).attr("Role"))) {	
-					jQuery(oPrinDep).children("PropertyRef").each(function(iIndex, oPropRef) {
-						aPropRef.push(jQuery(oPropRef).attr("Name"));
-					});
-					return false;
-				}
-			});				
-			return {
-				"role": sRole,
-				"entitySet": sEntitySet,
-				"propRef": aPropRef,
-				"multiplicity" : sMultiplicity
-			};
-		};
-		
-		// find the keys and the navigation properties of the entity types
-		jQuery.each(mEntitySets, function(sEntitySetName, oEntitySet) {
-			// find the keys
-			var $EntityType = jQuery(oMetadata).find("EntityType[Name=" + oEntitySet.type + "]");
-			var aKeys = jQuery($EntityType).find("PropertyRef");
-			jQuery.each(aKeys, function(iIndex, oPropRef) {
-				var sKeyName = jQuery(oPropRef).attr("Name");
-				oEntitySet.keys.push(sKeyName);
-				oEntitySet.keysType[sKeyName] = jQuery($EntityType).find("Property[Name="+ sKeyName +"]").attr("Type");
-			});
-			// resolve the navigation properties
-			var aNavProps = jQuery(oMetadata).find("EntityType[Name=" + oEntitySet.type + "] NavigationProperty");
-			jQuery.each(aNavProps, function(iIndex, oNavProp) {
-				var $NavProp = jQuery(oNavProp);
-				oEntitySet.navprops[$NavProp.attr("Name")] = {
-					"name": $NavProp.attr("Name"),
-					"from": fnResolveNavProp($NavProp.attr("FromRole"), true),
-					"to": fnResolveNavProp($NavProp.attr("ToRole"), false)
-				};
-			})
-		});
-
-		// return the entity sets
-		return mEntitySets;
-
-	};
-	
-	
-	/**
-	 * find the entity types in the metadata XML document
-	 * @param {XMLDocument} oMetadata the metadata XML document
-	 * @return {map} map of entity types
-	 * @private
-	 * @name sap.ui.core.util.MockServer#_findEntityTypes
-	 * @function
-	 */
-	MockServer.prototype._findEntityTypes = function (oMetadata) {
-		var mEntityTypes = {};
-		jQuery(oMetadata).find("EntityType").each(function (iIndex, oEntityType) {
-			var $EntityType = jQuery(oEntityType);
-			mEntityTypes[$EntityType.attr("Name")] = {
-				"name": $EntityType.attr("Name"),
-				"properties": [],
-				"keys": []
-			};
-			$EntityType.find("Property").each(function (iIndex, oProperty) {
-				var $Property = jQuery(oProperty);
-				var type = $Property.attr("Type");
-				mEntityTypes[$EntityType.attr("Name")].properties.push({
-					"schema": type.substring(0, type.lastIndexOf(".")),
-					"type": type.substring(type.lastIndexOf(".") + 1),
-					"name": $Property.attr("Name"),
-					"precision": $Property.attr("Precision"),
-					"scale": $Property.attr("Scale")
-				})
-			});
-			$EntityType.find("PropertyRef").each(function (iIndex, oKey) {
-				var $Key = jQuery(oKey);
-				var sPropertyName = $Key.attr("Name");
-				mEntityTypes[$EntityType.attr("Name")].keys.push(sPropertyName);
-			});
-		});
-		return mEntityTypes;
-	};
-
-	
-	/**
-	 * find the complex types in the metadata XML document
-	 * @param {XMLDocument} oMetadata the metadata XML document
-	 * @return {map} map of complex types
-	 * @private
-	 * @name sap.ui.core.util.MockServer#_findComplexTypes
-	 * @function
-	 */
-	MockServer.prototype._findComplexTypes = function (oMetadata) {
-		var mComplexTypes = {};
-		jQuery(oMetadata).find("ComplexType").each(function (iIndex, oComplexType) {
-			var $ComplexType = jQuery(oComplexType);
-			mComplexTypes[$ComplexType.attr("Name")] = {
-				"name": $ComplexType.attr("Name"),
-				"properties": []
-			};
-			$ComplexType.find("Property").each(function (iIndex, oProperty) {
-				var $Property = jQuery(oProperty);
-				var type = $Property.attr("Type");
-				mComplexTypes[$ComplexType.attr("Name")].properties.push({
-					"schema": type.substring(0, type.lastIndexOf(".")),
-					"type": type.substring(type.lastIndexOf(".") + 1),
-					"name": $Property.attr("Name"),
-					"precision": $Property.attr("Precision"),
-					"scale": $Property.attr("Scale")
-				})
-			});
-		});
-		return mComplexTypes;
-	};
-
-
-	/**
-	 * creates a key string for the given keys and entry
-	 * @param {object} oEntitySet the entity set info
-	 * @param {object} oEntry entity set entry which contains the keys as properties
-	 * @return {string} the keys string
-	 * @private 
-	 * @name sap.ui.core.util.MockServer#_createKeysString
-	 * @function
-	 */
-	MockServer.prototype._createKeysString = function(oEntitySet, oEntry) {
-		// creates the key string for an entity
-		var that = this;
-		var sKeys = "";
-		if (oEntry) {
-			jQuery.each(oEntitySet.keys, function(iIndex, sKey) {
-				if (sKeys) {
-					sKeys += ",";
-				}
-				var oKeyValue = oEntry[sKey];
-				if(oEntitySet.keysType[sKey] === "Edm.String"){
-					oKeyValue = "'" + oKeyValue + "'"; 
-				}
-				else if(oEntitySet.keysType[sKey] === "Edm.DateTime"){
-					oKeyValue = that._getDateInMin(oKeyValue); 
-				}
-				else if(oEntitySet.keysType[sKey] === "Edm.Guid"){
-					oKeyValue = "guid'" + oKeyValue + "'"; 
-				}
-				
-				if (oEntitySet.keys.length == 1) {
-						sKeys += oKeyValue; 
-					return sKeys;
-				} 
-				sKeys += sKey + "=" + oKeyValue; 
-			});
-		}
-		return sKeys;
-	};
-	
-	
-	/**
-	 * loads the mock data for the given entity sets and tries to load them from
-	 * the files inside the given base url. The name of the JSON files containing the
-	 * mock data should be the same as the name of the underlying entity type. As
-	 * an alternative you could also specify the url to a single JSON file containing
-	 * the mock data for all entity types.
-	 * @param {map} mEntitySets map of entity sets
-	 * @param {string} sBaseUrl the base url which contains the mock data in JSON files or if the url is pointing to a JSON file containing all entity types
-	 * @return {array} the mockdata arary containing the data for the entity sets
-	 * @private 
-	 * @name sap.ui.core.util.MockServer#_loadMockdata
-	 * @function
-	 */
-	MockServer.prototype._loadMockdata = function(mEntitySets, sBaseUrl) {
-		// load the entity sets (map the entity type data to the entity set)
-		var that = this,
-		    mEntityTypesData = {};
-		this._oMockdata = {};
-		// load the entity types data 
-		if (jQuery.sap.endsWith(sBaseUrl, ".json")) {
-			// all entity types are in one file
-			var oResponse = jQuery.sap.sjax({url: sBaseUrl, dataType: "json"});
-			if (oResponse.success) {
-				mEntityTypesData = oResponse.data;
-			} else {
-				jQuery.sap.log.error("The mockdata for all the entity types could not be found at \"" + sBaseUrl + "\"!");
-			}
-		} else {
-			// load the entity types individually
-			jQuery.each(mEntitySets, function(sEntitySetName, oEntitySet) {
-				if (!mEntityTypesData[oEntitySet.type]) {
-					var sEntityTypeUrl = sBaseUrl + oEntitySet.type + ".json";
-					var oResponse = jQuery.sap.sjax({url: sEntityTypeUrl, dataType: "json"});
-					if (oResponse.success) {
-						mEntityTypesData[oEntitySet.type] = oResponse.data;
-					} else {
-						if (oResponse.status == "parsererror") {
-							jQuery.sap.log.error("The mockdata for entity type \"" + oEntitySet.type + "\" could not be loaded due to a parsing error!");
-						} else {
-						jQuery.sap.log.error("The mockdata for entity type \"" + oEntitySet.type + "\" could not be found at \"" + sBaseUrl + "\"!");
-						}
-					}
-				}
-			});
-		}
-		// create the mock data for the entity sets and enhance the mock data with metadata
-		jQuery.each(mEntitySets, function(sEntitySetName, oEntitySet) {
-			// TODO: should we clone here or not? right now we clone because of unique metadata for 
-			//       individual entity sets otherwise the data of the entity types would be a 
-			//       reference and thus it overrides the metadata from the other entity type.
-			//       this happens especially then when we have two entity sets for the same
-			//       entity type => maybe we move the metdata generation to the response creation!
-			that._oMockdata[sEntitySetName] = [];
-			if (mEntityTypesData[oEntitySet.type]) {
-				jQuery.each(mEntityTypesData[oEntitySet.type], function(iIndex, oEntity) {
-					that._oMockdata[sEntitySetName].push(jQuery.extend(true, {}, oEntity));
-				});
-			}
-			// enhance with OData metadata if exists
-			if (that._oMockdata[sEntitySetName].length > 0) {
-				that._enhanceWithMetadata(oEntitySet, that._oMockdata[sEntitySetName]);
-			}
-		});
-		// return the new mockdata
-		return this._oMockdata;
-	};
-
-	
-	/**
-	 * enhances the mock data for the given entity set with the necessary metadata.
-	 * Important is at least to have a metadata entry incl. uri for the entry and 
-	 * for the navigation property it is required to have a deferred infor in case
-	 * of not expanding it.
-	 * @param {object} oEntitySet the entity set info
-	 * @param {object} oMockData mock data for the entity set
-	 * @private 
-	 * @name sap.ui.core.util.MockServer#_enhanceWithMetadata
-	 * @function
-	 */
-	MockServer.prototype._enhanceWithMetadata = function(oEntitySet, oMockData) {
-		if (oMockData) {
-			var that = this,
-			    sRootUri = this._getRootUri(),
-			    sEntitySetName = oEntitySet && oEntitySet.name;
-			jQuery.each(oMockData, function(iIndex, oEntry) {
-				// add the metadata for the entry (type is pointing to the EntityType which is required by datajs to resolve properties)
-				oEntry.__metadata = {
-					id: sRootUri + sEntitySetName + "(" + that._createKeysString(oEntitySet, oEntry) + ")",
-					type: oEntitySet.schema + "." + oEntitySet.type, 
-					uri: sRootUri + sEntitySetName + "(" + that._createKeysString(oEntitySet, oEntry) + ")"
-				};
-				// add the navigation properties
-				jQuery.each(oEntitySet.navprops, function(sKey, oNavProp) {
-					oEntry[sKey] = {
-							__deferred: {
-									uri: sRootUri + sEntitySetName + "(" + that._createKeysString(oEntitySet, oEntry) + ")/" + sKey
+						switch (aQuery[0]) {
+						case "$top":
+							if (!(new RegExp(/^\d+$/).test(sODataQueryValue))) {
+								jQuery.sap.log.error("Invalid system query options value!");
+								throw new Error("400");
 							}
-					};
-				});
-			});
-		}
-	};
-
-	/**
-	 * verify entitytype keys type ((e.g. Int, String, SByte, Time, DateTimeOffset, Decimal, Double, Single, Boolean, DateTime)
-	 * @param {oEntitySet} the entity set for verification
-	 * @param {aRequestedKeys} aRequestedKeys the requested Keys
-	 * @return boolean
-	 * @private
-	 * @name sap.ui.core.util.MockServer#_isRequestedKeysValid
-	 * @function
-	 */
-	MockServer.prototype._isRequestedKeysValid = function (oEntitySet, aRequestedKeys) {
-		
-		if (aRequestedKeys.length === 1 && !aRequestedKeys[0].split('=')[1]) {
-			aRequestedKeys = [oEntitySet.keys[0] + "=" + aRequestedKeys[0]];
-		}
-		
-		for ( var i = 0; i < aRequestedKeys.length; i++ ) {
-			var aKey = aRequestedKeys[i].split('=');
-			var sKey = this._trim(aKey[0]);
-			var sRequestValue = this._trim(aKey[1]);
-			var sFirstChar = sRequestValue.charAt(0);
-			var sLastChar =  sRequestValue.charAt(sRequestValue.length -1);
-
-			if(oEntitySet.keysType[sKey] === "Edm.String"){
-				if (sFirstChar !== "'" || sLastChar !== "'"){
-					return false;
-				} 
-			}else if(oEntitySet.keysType[sKey] === "Edm.DateTime"){
-				if (sFirstChar === "'" || sLastChar !== "'"){
-					return false;
-				} 
-			}else if(oEntitySet.keysType[sKey] === "Edm.Guid"){
-				if (sFirstChar === "'" || sLastChar !== "'"){
-					return false;
-				}
-			}
-			else {
-				if(sFirstChar === "'" || sLastChar === "'"){
-					return false;
-				}
-			}
-		}
-		return true;
-	};
-	
-	/**
-	 * Takes a string '<poperty1>=<value1>, <poperty2>=<value2>,...' and creates an
-	 * object (hash map) out of it.
-	 * 
-	 * @param {sKeys}
-	 *            the string of porperty/value pairs
-	 * @param {object}
-	 *            object consisting of the parsed properties
-	 */	
-	MockServer.prototype._parseKeys = function(sKeys, oEntitySet) {
-	    var oResult = {}; // default is an empty hash map
-		    var aProps = sKeys.split(",");
-		    for (var i=0; i<aProps.length; i++) {
-		        var aPair = aProps[i].split("=");
-                if (aPair.length === 1 && oEntitySet.keys.length === 1) {
-                        var sKeyName = oEntitySet.keys[0];
-                        var sKeyValue = aPair[0];
-                } else {
-                	if (aPair.length === 2) {
-                        var sKeyName = aPair[0];
-                        var sKeyValue = aPair[1];
-                	}
-                }
-	        	if (sKeyValue.indexOf('\'') === 0) {
-	        		oResult[sKeyName] = sKeyValue.slice(1,sKeyValue.length-1);
-	        	} else {
-	        		oResult[sKeyName] = sKeyValue;
-	        	}
-		    };
-	    return oResult;
-	};
-	
-	/**
-	 * Generate mock value for a specific property type. String value will be
-	 * based on the property name and an index Integer / Decimal value will be
-	 * generated randomly Date / Time / DateTime value will also be generated
-	 * randomly
-	 * 
-	 * @param {string}
-	 *            sKey the property name
-	 * @param {string}
-	 *            sType the property type without the Edm prefix
-	 * @param {map}
-	 *            mComplexTypes map of the complex types
-	 * @return {object} the mocked value
-	 * @private
-	 * @name sap.ui.core.util.MockServer#_generateDataFromEntity
-	 * @function
-	 */
-	MockServer.prototype._generatePropertyValue = function(sKey, sType, mComplexTypes) {
-		var iIndex = 0;		
-		switch (sType){
-					case "String": 
-						return sKey + "_" + iIndex;
-					case "DateTime":
-						var date = new Date();
-						date.setFullYear(2000 + Math.floor(Math.random() * 20));
-						date.setDate(Math.floor(Math.random() * 30));
-						date.setMonth(Math.floor(Math.random() * 12));
-						date.setMilliseconds(0);
-						return "/Date(" + date.getTime() + ")/";
-					case "Int16":
-					case "Int32":
-					case "Int64":
-						return Math.floor(Math.random() * 10000);
-					case "Decimal":
-						return Math.floor(Math.random() * 1000000) / 100;
-					case "Boolean": 
-						return Math.random()<.5;		
-					case "Byte":
-						return Math.floor(Math.random()*10);
-					case "Double":
-						return Math.random()*10;
-					case "Single":
-						return Math.random() * 1000000000;
-					case "SByte":
-						return Math.floor(Math.random()*10);
-					case "Time":
-						return Math.floor(Math.random()*23)+":"+ Math.floor(Math.random()*59)+":"+Math.floor(Math.random()*59);
-					case "Guid": 
-						return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-						    var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
-						    return v.toString(16);
-							});
-					case "Binary":
-						var nMask = Math.floor(-2147483648 + Math.random() * 4294967295);
-						  for (var nFlag = 0, nShifted = nMask, sMask = ""; nFlag < 32; nFlag++, sMask += String(nShifted >>> 31), nShifted <<= 1);
-						return sMask;
-					case "DateTimeOffset":
-						//TODO: generate value for DateTimeOffset
-					default:	
-						return this._generateDataFromEntity(mComplexTypes[sType], iIndex);
-				}
-
-	};
-	
-	/**
-	 * This method takes over the already existing key values from oKeys and
-	 * adds values for all remaining keys specified by oEntitySet.
-	 * The result is merged into oEntity.
-	 * 
-	 * @param {object}
-	 *            oEntitySet description of the entity set, conatins the full list of key fields
-	 * @param {oKeys}
-	 *            oKeys contains already defined key values
-	 * @param {oEntity}
-	 *            oEntity the result object, where the key property/value pairs merged into
-	 * @name sap.ui.core.util.MockServer#_completeKey
-	 * @function
-	 */
-	MockServer.prototype._completeKey = function(oEntitySet, oKeys, oEntity) {
-		if (oEntity) {
-			for ( var i = 0; i < oEntitySet.keys.length; i++) {
-				var sKey = oEntitySet.keys[i];
-				if (oKeys[sKey]) {
-					if (!oEntity[sKey]) {
-						// take over the specified key value
-						oEntity[sKey] = oKeys[sKey];
-					}
-				} else {
-					if (!oEntity[sKey]) {
-						// take over the specified key value
-						oEntity[sKey] = this._generatePropertyValue(sKey, oEntitySet.keysType[sKey].substring(oEntitySet.keysType[sKey].lastIndexOf('.') + 1));
-					}
-				}
-			}
-		}
-	};
-	
-	/**
-	 * Generate some mock data for a specific entityType. String value will be
-	 * based on the property name and an index Integer / Decimal value will be
-	 * generated randomly Date / Time / DateTime value will also be generated
-	 * randomly
-	 * 
-	 * @param {object}
-	 *            oEntityType the entity type used to generate the data
-	 * @param {int}
-	 *            iIndex index of this particular object in the parent
-	 *            collection
-	 * @param {map}
-	 *            mComplexTypes map of the complex types
-	 * @return {object} the mocked entity
-	 * @private
-	 * @name sap.ui.core.util.MockServer#_generateDataFromEntity
-	 * @function
-	 */
-	MockServer.prototype._generateDataFromEntity = function(oEntityType, iIndex, mComplexTypes) {
-		var oEntity = {};
-		if (!oEntityType) {
-			return oEntity;
-		}
-		for (var i = 0; i < oEntityType.properties.length; i++) {
-			var oProperty = oEntityType.properties[i];
-			var oPropertyValue = "";
-			oEntity[oProperty.name] = this._generatePropertyValue(oProperty.name, oProperty.type, mComplexTypes);
-		}		
-		return oEntity;
-	};
-	
-
-	/**
-	 * Generate some mock data for a specific entityset.
-	 * @param {object} oEntitySet the entity set for which we want to generate the data
-	 * @param {map} mEntityTypes map of the entity types
-	 * @param {map} mComplexTypes map of the complex types
-	 * @return {array} the array of mocked data
-	 * @private
-	 * @name sap.ui.core.util.MockServer#_generateDataFromEntitySet
-	 * @function
-	 */
-	MockServer.prototype._generateDataFromEntitySet = function(oEntitySet, mEntityTypes, mComplexTypes) {
-		var oEntityType = mEntityTypes[oEntitySet.type];
-		var aMockedEntries = [];
-		for ( var i = 0; i < 100; i++) {
-			aMockedEntries.push(this._generateDataFromEntity(oEntityType, i, mComplexTypes));
-		}
-		return aMockedEntries;
-	};
-	
-
-	/**
-	 * Generate some mock data based on the metadata specified for the odata service.
-	 * @param {map} mEntitySets map of the entity sets
-	 * @param {object} oMetadata the complete metadata for the service
-	 * @private
-	 * @name sap.ui.core.util.MockServer#_generateMockdata
-	 * @function
-	 */
-	MockServer.prototype._generateMockdata = function(mEntitySets, oMetadata) {
-		// load the entity sets (map the entity type data to the entity set)
-		var that = this, sRootUri = this._getRootUri(), oMockData = {};
-
-		// here we need to analyse the EDMX and identify the entity types and complex types
-		var mEntityTypes = this._findEntityTypes(oMetadata);
-		var mComplexTypes = this._findComplexTypes(oMetadata);
-
-		jQuery.each(mEntitySets, function(sEntitySetName, oEntitySet) {
-			oMockData[sEntitySetName] = that._generateDataFromEntitySet(oEntitySet, mEntityTypes, mComplexTypes);
-			jQuery.each(oMockData[sEntitySetName], function(iIndex, oEntry) {
-				// add the metadata for the entry
-				oEntry.__metadata = {
-					uri : sRootUri + sEntitySetName + "(" + that._createKeysString(oEntitySet, oEntry) + ")",
-					type : oEntitySet.schema + "." + oEntitySet.type
-				};
-				// add the navigation properties
-				jQuery.each(oEntitySet.navprops, function(sKey, oNavProp) {
-					oEntry[sKey] = {
-						__deferred : {
-							uri : sRootUri + sEntitySetName + "(" + that._createKeysString(oEntitySet, oEntry) + ")/" + sKey
+							oFilteredData.results = oFilteredData.results.slice(0, sODataQueryValue);
+							break;
+						case "$skip":
+							if (!(new RegExp(/^\d+$/).test(sODataQueryValue))) {
+								jQuery.sap.log.error("Invalid system query options value!");
+								throw new Error("400");
+							}
+							oFilteredData.results = oFilteredData.results.slice(sODataQueryValue, oFilteredData.results.length);
+							break;
+						case "$orderby":
+							oFilteredData.results = this._getOdataQueryOrderby(oFilteredData.results, sODataQueryValue);
+							break;
+						case "$filter":
+							oFilteredData.results = this._recursiveOdataQueryFilter(oFilteredData.results, sODataQueryValue);
+							break;
+						case "$select":
+							oFilteredData.results = this._getOdataQuerySelect(oFilteredData.results, sODataQueryValue);
+							break;
+						case "$inlinecount":
+							var iCount = this._getOdataInlineCount(oFilteredData.results, sODataQueryValue);
+							if (iCount) {
+								oFilteredData.__count = iCount;
+							}
+							break;
+						case "$expand":
+							oFilteredData.results = this._getOdataQueryExpand(oFilteredData.results, sODataQueryValue, sEntitySetName);
+							break;
+						case "$format":
+							oFilteredData.results = this._getOdataQueryFormat(oFilteredData.results, sODataQueryValue);
+							break;
+						default:
+							jQuery.sap.log.error("Invalid system query options value!");
+							throw new Error("400");
 						}
 					};
-				});
-			});
-		});
-		this._oMockdata = oMockData;
-	};
 
-	// helper function to resolve a navigation and return the matching entities
-	MockServer.prototype._resolveNavigation = function(sEntitySetName, oFromRecord, sNavProp) {
-		var oEntitySet = this._mEntitySets[sEntitySetName];
-		var oNavProp = oEntitySet.navprops[sNavProp];
-		if(!oNavProp){
-			throw new Error("404");
-		}
-		
-		var aEntries = [];
-		var iPropRefLength = oNavProp.from.propRef.length;
-		//if there is no ref.constraint, the data is return according to the multiplicity 
-		if(iPropRefLength === 0 ){
-			if(oNavProp.to.multiplicity === "*"){
-				return this._oMockdata[oNavProp.to.entitySet];
-			}
-			else{
-				aEntries.push(this._oMockdata[oNavProp.to.entitySet][0]);
-				return aEntries;
-			}
-		}
-		// maybe we can do symbolic links with a function to handle the navigation properties 
-		// instead of copying the data into the nested structures
-		jQuery.each(this._oMockdata[oNavProp.to.entitySet], function(iIndex, oToRecord) {
-
-			// check for property ref being identical
-			var bEquals = true;
-			for (var i = 0; i < iPropRefLength; i++) {
-				if (oFromRecord[oNavProp.from.propRef[i]] != oToRecord[oNavProp.to.propRef[i]]) {
-					bEquals = false;
-					break;
-				}
-			}
-			// if identical we add the to record
-			if (bEquals) {
-				aEntries.push(oToRecord);
-			}
-
-		});
-		return aEntries;
-	};
-
-	
-	/**
-	 * Simulates an existing OData service by sepcifiying the metadata URL and the base URL for the mockdata. The server
-	 * configures the request handlers depending on the service metadata. The mockdata needs to be stored individually for
-	 * each entity type in a separate JSON file. The name of the JSON file needs to match the name of the entity type. If
-	 * no base url for the mockdata is specified then the mockdata are generated from the metadata
-	 * 
-	 * @param {string} sMetadataUrl url to the service metadata document
-	 * @param {string} sMockdataBaseUrl base url which contains the mockdata as single .json files or the .json file containing the complete mock data 
-	 * 
-	 * @since 1.13.2
-	 * @public
-	 * @name sap.ui.core.util.MockServer#simulate
-	 * @function
-	 */
-	MockServer.prototype.simulate = function(sMetadataUrl, sMockdataBaseUrl) {
-		var that = this;
-		this._sMetadataUrl = sMetadataUrl;
-		this._sMockdataBaseUrl = sMockdataBaseUrl;
-		
-		this._refreshData();
-		
-		// helper to find the entity set entry for a given entity set name and the keys of the entry
-		var fnGetEntitySetEntry = function(sEntitySetName, sKeys) {
-			var oFoundEntry;
-			var oEntitySet = that._mEntitySets[sEntitySetName];
-			var aKeys = oEntitySet.keys;
-			// split keys
-			var aRequestedKeys = sKeys.split(',');
-
-			// check number of keys to be equal to the entity keys and validates keys type for quotations
-			if(aRequestedKeys.length !== aKeys.length || !that._isRequestedKeysValid(oEntitySet, aRequestedKeys)) {
-				return oFoundEntry;
-			}
-			
-			if (aRequestedKeys.length === 1 && !aRequestedKeys[0].split('=')[1]) {
-				aRequestedKeys = [aKeys[0] + "=" + aRequestedKeys[0]];
-			}
-			jQuery.each(that._oMockdata[sEntitySetName], function(iIndex, oEntry) {
-				// check each key for existence and value
-				for ( var i = 0; i < aRequestedKeys.length; i++) {
-					var aKeyVal = aRequestedKeys[i].split('=');
-					var sKey = that._trim(aKeyVal[0]);
-					//key doesn't match, continue to next entry
-					if(jQuery.inArray(sKey, aKeys) === -1){
-						return true; // = continue
-					}
-					
-					var sNewValue = that._trim(aKeyVal[1]);
-					var sOrigiValue = oEntry[sKey];
-					if(oEntitySet.keysType[sKey] === "Edm.String"){
-						//in case of string, remove the quotations
-						sNewValue = sNewValue.replace(/^\'|\'$/g,'');
-					}
-					else if (oEntitySet.keysType[sKey] === "Edm.DateTime"){
-							sOrigiValue = that._getDateInMin(sOrigiValue);
-					}
-					else if (oEntitySet.keysType[sKey] === "Edm.Guid"){
-						sNewValue = sNewValue.replace(/^guid\'|\'$/g,'');
-				}
-					//value doesn't match, continue to next entry
-					if ( sOrigiValue != sNewValue) {
-						return true; // = continue
-					}
-				}
-				oFoundEntry = {index: iIndex, entry: oEntry};
-				return false; // = break
-			});
-			return oFoundEntry;
-		};
-		
-
-		// helper to resolve an entity set for insert/delete/update operations
-		var fnResolveTargetEntityName = function(oEntitySet, sKeys, sUrlParams) {
-			// Set the default entity name
-			var sSetName = oEntitySet.name;
-			// If there are sUrlParams try to find a navigation property
-			if (sUrlParams) {
-				var navProp = oEntitySet.navprops[sUrlParams];
-			}
-			if (navProp) {
-				// instead of the default entity name use the endpoints entity
-				// name
-				sSetName = navProp.to.entitySet;
-			}
-			return sSetName;
-		};
-
-		var initNewEntity = function(oXhr, sTargetEntityName, sKeys, sUrlParams) {
-			var oEntity = JSON.parse(oXhr.requestBody);
-			if (oEntity) {
-				var oKeys = {};
-				if (sKeys) {
-					var oKeys = that._parseKeys(sKeys, that._mEntitySets[sTargetEntityName]);
-				}
-				that._completeKey(that._mEntitySets[sTargetEntityName], oKeys, oEntity);
-				that._enhanceWithMetadata(that._mEntitySets[sTargetEntityName], [oEntity]);
-				return oEntity;
-			}
-			return null;
-		};
-		
-		// create the request handlers
-		var aRequests = [];
-		
-		// add the CSRF-token request
-        aRequests.push({
-            method : "GET",
-            path : new RegExp(".*"),
-            response : function(oXhr) {
-                if (oXhr.requestHeaders["x-csrf-token"] == "Fetch" ) {
-            		jQuery.sap.log.debug("MockServer: incoming request for x-csrf-token");
-                    oXhr.respond(200, { "X-CSRF-Token": "42424242424242424242424242424242" });
-    				jQuery.sap.log.debug("MockServer: response sent with: 200");
-                } 
-            }
-        });
-		
-		// add the $metadata request
-		aRequests.push({
-			method : "GET",
-			path : new RegExp("\\$metadata([?#].*)?"),
-			response : function(oXhr) {
-				jQuery.sap.require("jquery.sap.xml");
-				jQuery.sap.log.debug("MockServer: incoming request for url: " + oXhr.url);
-				oXhr.respond(200, { "Content-Type": "application/xml;charset=utf-8" }, jQuery.sap.serializeXML(that._oMetadata));
-				jQuery.sap.log.debug("MockServer: response sent with: 200, " + jQuery.sap.serializeXML(that._oMetadata));
-			}
-		});
-
-		// batch processing
-		aRequests.push({
-			method : "POST",
-			path : new RegExp("\\$batch([?#].*)?"),
-			response : function(oXhr) {
-				jQuery.sap.log.debug("MockServer: incoming request for url: " + oXhr.url);
-				var fnResovleStatus = function(iStatusCode) {
-					switch (iStatusCode) {
-					case 200:
-						return "200 OK";
-					case 204:
-						return "204 No Content";
-					case 201:
-						return "201 Created";
-					case 400:
-						return "400 Bad Request";
-					case 404:
-						return "404 Not Found";
-					default:
-						break;
-					}
-				};
-				var fnBuildResponseString = function(oResponse, sContentType) {
-					var sResponseData = JSON.stringify(oResponse.data) || "";
-					if (sContentType) {
-						return "HTTP/1.1 " + fnResovleStatus(oResponse.statusCode) + "\r\nContent-Type: " + sContentType + "\r\nContent-Length: "
-						+ sResponseData.length + "\r\ndataserviceversion: 2.0\r\n\r\n" + sResponseData + "\r\n";
-					}
-					return "HTTP/1.1 " + fnResovleStatus(oResponse.statusCode) + "\r\nContent-Type: application/json\r\nContent-Length: "
-					+ sResponseData.length + "\r\ndataserviceversion: 2.0\r\n\r\n" + sResponseData + "\r\n";
-				};
-				// START BATCH HANDLING
-				var sRequestBody = oXhr.requestBody;
-				var oBoundaryRegex = new RegExp("--batch_[a-z0-9-]*");
-				var sBoundary = oBoundaryRegex.exec(sRequestBody)[0];
-				// boundary is defined in request header
-				if (!!sBoundary) {
-					var aBatchBodyResponse = [];
-					//split requests by boundary
-					var aBatchRequests = sRequestBody.split(sBoundary);
-					var sServiceURL = oXhr.url.split("$")[0];
-
-					var rPut = new RegExp("PUT (.*) HTTP");
-					var rMerge = new RegExp("MERGE (.*) HTTP"); //TODO temporary solution to handle merge as put
-					var rPost = new RegExp("POST (.*) HTTP");
-					var rDelete = new RegExp("DELETE (.*) HTTP");
-					var rGet = new RegExp("GET (.*) HTTP");
-
-					for ( var i = 1; i < aBatchRequests.length - 1; i++) {
-						var sBatchRequest = aBatchRequests[i];
-						//GET Handling
-						if (rGet.test(sBatchRequest) && sBatchRequest.indexOf("multipart/mixed") == -1) {
-							//In case of POST, PUT or DELETE not in ChangeSet
-							if (rPut.test(sBatchRequest) || rPost.test(sBatchRequest) || rDelete.test(sBatchRequest)) {
-								oXhr.respond(400, null, "The Data Services Request could not be understood due to malformed syntax");
-								jQuery.sap.log.debug("MockServer: response sent with: 400");
-								return;
-							} 
-							var oResponse = jQuery.sap.sjax({
-								url : sServiceURL + rGet.exec(sBatchRequest)[1],
-								dataType : "json"
-							});
-							if (rGet.exec(sBatchRequest)[1].indexOf('$count') != -1) {
-								var sResponseString = fnBuildResponseString(oResponse, "text/plain");
-							} else {
-								sResponseString = fnBuildResponseString(oResponse);
-							}
-							aBatchBodyResponse.push("\r\nContent-Type: application/http\r\n" + "Content-Length: " + sResponseString.length
-									+ "\r\n" + "content-transfer-encoding: binary\r\n\r\n" + sResponseString);
+					/**
+					 * Applies the OData system query option string on the given entry
+					 * @param {object} oEntry 
+					 * @param {string} sQuery string of the form {query}={value}
+					 * @param {string} sEntitySetName the name of the entitySet the oEntry belongs to
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_applyQueryOnEntry
+					 * @function
+					 */
+					MockServer.prototype._applyQueryOnEntry = function(oEntry, sQuery, sEntitySetName) {
+						var aQuery = sQuery.split('=');
+						var sODataQueryValue = aQuery[1];
+						if (sODataQueryValue === "")
+							return;
+						if (sODataQueryValue.lastIndexOf(',') === sODataQueryValue.length) {
+							jQuery.sap.log.error("The URI is violating the construction rules defined in the Data Services specification!");
+							throw new Error("400");
 						}
-						//CUD handling within changesets    	   
-						else {
-							var aChangesetResponses = [];
+						switch (aQuery[0]) {
+						case "$filter":
+							return this._recursiveOdataQueryFilter([ oEntry ], sODataQueryValue)[0];
+						case "$select":
+							return this._getOdataQuerySelect([ oEntry ], sODataQueryValue)[0];
+						case "$expand":
+							return this._getOdataQueryExpand([ oEntry ], sODataQueryValue, sEntitySetName)[0];
+						case "$format":
+							return this._getOdataQueryFormat([ oEntry ], sODataQueryValue);
+						default:
+							jQuery.sap.log.error("Invalid system query options value!");
+							throw new Error("400");
+						}
+					};
 
-							// copying the mock data to support rollback
-							var oCopiedMockdata = jQuery.extend(true, {}, that._oMockdata);
+					/**
+					 * Applies the Orderby OData system query option string on the given array
+					 * @param {object} aDataSet 
+					 * @param {string} sODataQueryValue a comma separated list of property navigation paths to sort by, where each property navigation path terminates on a primitive property
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_getOdataQueryOrderby
+					 * @function
+					 */
+					MockServer.prototype._getOdataQueryOrderby = function(aDataSet, sODataQueryValue) {
+						// sort properties lookup  
+						var aProperties = sODataQueryValue.split(',');
+						var that = this;
+						//trim all properties
+						jQuery.each(aProperties, function(i, sPropertyName) {
+							aProperties[i] = that._trim(sPropertyName);
+						});
 
-							var fnCUDRequest = function(rCUD, sData, sType) {
-								var oResponse = jQuery.sap.sjax({
-									type : sType,
-									url : sServiceURL + rCUD.exec(sChangesetRequest)[1],
-									dataType : "json",
-									data : sData
-								});
+						var fnComparator = function compare(a, b) {
 
-								if (oResponse.statusCode == 400 || oResponse.statusCode == 404) {
-									var sError = "\r\nHTTP/1.1 " + fnResovleStatus(oResponse.statusCode)
-									+ "\r\nContent-Type: application/json\r\nContent-Length: 0\r\n\r\n";
-									throw new Error(sError);
-								}
-								aChangesetResponses.push(fnBuildResponseString(oResponse));
-							};
-							// extract changeset
-							var sChangesetBoundary = sBatchRequest.substring(sBatchRequest.indexOf("boundary=") + 9, sBatchRequest
-									.indexOf("\r\n\r\n"));
-							var aChangesetRequests = sBatchRequest.split("--" + sChangesetBoundary);
-
-							try {
-								for ( var j = 1; j < aChangesetRequests.length - 1; j++) {
-									var sChangesetRequest = aChangesetRequests[j];
-									//Check if GET exists in ChangeSet - Return 400
-									if (rGet.test(sChangesetRequest)) {
-										// rollback
-										that._oMockdata = oCopiedMockdata;
-										oXhr.respond(400, null, "The Data Services Request could not be understood due to malformed syntax");
-										jQuery.sap.log.debug("MockServer: response sent with: 400");
-										return;
-									} else if (rPut.test(sChangesetRequest)) {
-										// PUT
-										var sData = sChangesetRequest.substring(sChangesetRequest.indexOf("{"),
-												sChangesetRequest.lastIndexOf("}") + 1).replace(/\\/g, '');
-										fnCUDRequest(rPut, sData, 'PUT');
-									} else if (rMerge.test(sChangesetRequest)) {
-										// MERGE
-										var sData = sChangesetRequest.substring(sChangesetRequest.indexOf("{"),
-												sChangesetRequest.lastIndexOf("}") + 1).replace(/\\/g, '');
-										fnCUDRequest(rMerge, sData, 'PUT');
-									}  else if (rPost.test(sChangesetRequest)) {
-										// POST
-										var sData = sChangesetRequest.substring(sChangesetRequest.indexOf("{"),
-												sChangesetRequest.lastIndexOf("}") + 1).replace(/\\/g, '');
-										fnCUDRequest(rPost, sData, 'POST');
-
-									} else if (rDelete.test(sChangesetRequest)) {
-										// DELETE
-										fnCUDRequest(rDelete, null, 'DELETE');
+							for ( var i = 0; i < aProperties.length; i++) {
+								// sort order lookup asc / desc
+								var aSort = aProperties[i].split(' ');
+								// by default the sort is in asc order
+								var iSorter = 1;
+								if (aSort.length > 1) {
+									switch (aSort[1]) {
+									case 'asc':
+										iSorter = 1;
+										break;
+									case 'desc':
+										iSorter = -1;
+										break;
+									default:
+										jQuery.sap.log.error("Invalid sortorder '" + aSort[1] + "' detected!");
+										throw new Error("400");
 									}
-								}//END ChangeSets FOR
-								var sChangesetRespondData = "\r\nContent-Type: multipart/mixed; boundary=ejjeeffe1\r\n\r\n--ejjeeffe1";
-								for ( var k = 0; k < aChangesetResponses.length; k++) {
-									sChangesetRespondData += "\r\nContent-Type: application/http\r\n" + "Content-Length: "
-									+ aChangesetResponses[k].length + "\r\n" + "content-transfer-encoding: binary\r\n\r\n"
-									+ aChangesetResponses[k] + "--ejjeeffe1";
 								}
-								sChangesetRespondData += "--\r\n";
-								aBatchBodyResponse.push(sChangesetRespondData);
-							} catch (oError) {
-								that._oMockdata = oCopiedMockdata;
-								var sError = "\r\nContent-Type: application/http\r\n" + "Content-Length: " + oError.message.length
-								+ "\r\n" + "content-transfer-encoding: binary\r\n\r\n" + oError.message;
-								aBatchBodyResponse.push(sError);
+								// support for 1 level complex type property
+								var sPropName, sComplexType;
+								var iComplexType = aSort[0].indexOf("/");
+								if (iComplexType !== -1) {
+									sPropName = aSort[0].substring(iComplexType + 1);
+									sComplexType = aSort[0].substring(0, iComplexType);
+									if (!a[sComplexType].hasOwnProperty(sPropName)) {
+										jQuery.sap.log.error("Property " + sPropName + " not found!");
+										throw new Error("400");
+									}
+									if (a[sComplexType][sPropName] < b[sComplexType][sPropName])
+										return -1 * iSorter;
+									if (a[sComplexType][sPropName] > b[sComplexType][sPropName])
+										return 1 * iSorter;
+								} else {
+									sPropName = aSort[0];
+									if (!a.hasOwnProperty(sPropName)) {
+										jQuery.sap.log.error("Property " + sPropName + " not found!");
+										throw new Error("400");
+									}
+									if (a[sPropName] < b[sPropName])
+										return -1 * iSorter;
+									if (a[sPropName] > b[sPropName])
+										return 1 * iSorter;
+								}
 							}
-						} //END ChangeSets handling	 
-					}//END Main FOR
-					//CREATE BATCH RESPONSE
-					var sRespondData = "--ejjeeffe0";
-					for ( var i = 0; i < aBatchBodyResponse.length; i++) {
-						sRespondData += aBatchBodyResponse[i] + "--ejjeeffe0";
-					}
-					sRespondData += "--";
-					var mHeaders = {
-							'Content-Type' : "multipart/mixed; boundary=ejjeeffe0"
+							return 0;
+						};
+						return aDataSet.sort(fnComparator);
 					};
-					oXhr.respond(202, mHeaders, sRespondData);
-					jQuery.sap.log.debug("MockServer: response sent with: 202, " + sRespondData);
-					//no boundary is defined
-				} else {
-					oXhr.respond(202);
-				}
-			}
-		});
 
-		
-		// add entity sets
-		jQuery.each(this._mEntitySets, function(sEntitySetName, oEntitySet) {
-			
-			// support $count requests on entity set
-			aRequests.push({
-				method : "GET",
-				path : new RegExp("(" + sEntitySetName + ")/\\$count/?(.*)?"),
-				response : function(oXhr, sEntitySetName, sUrlParams) {
-					jQuery.sap.log.debug("MockServer: incoming request for url: " + oXhr.url);
-					oXhr.respond(200, { "Content-Type": "text/plain;charset=utf-8" }, "" + that._oMockdata[sEntitySetName].length);
-					jQuery.sap.log.debug("MockServer: response sent with: 200, " +that._oMockdata[sEntitySetName].length);
-				}
-			});
-			
-			// support entity set with and without OData system query options
-			aRequests.push({
-				method : "GET",
-				path : new RegExp("(" + sEntitySetName + ")/?(\\?(\\$|%24)((filter|skip|top|orderby|select|inlinecount|expand|format)=(.*)))?"),
-				response : function(oXhr, sEntitySetName, sUrlParams) {
-					jQuery.sap.log.debug("MockServer: incoming request for url: " + oXhr.url);
-					var aData = that._oMockdata[sEntitySetName];
-					if(aData){
-						// using extend to copy the data to a new array
-						var oFilteredData = {results :jQuery.extend(true, [], aData)};
-						if (sUrlParams) {
-							// sUrlParams should not contains ?, but only & in its stead
-							var aUrlParams = decodeURIComponent(sUrlParams).replace("?", "&").replace(/\$/g,'').split("&");
-							if (aUrlParams.length > 1){
-								aUrlParams = that._orderQueryOptions(aUrlParams);
-							}	
-							try{
-								jQuery.each(aUrlParams, function(iIndex, sQuery) {
-									that._applyQueryOnCollection(oFilteredData, sQuery, sEntitySetName);
-								});
-							}catch(e){
-								oXhr.respond(parseInt(e.message || e.number, 10));
-								return;
+					/**
+					 * Removes duplicate entries from the given array
+					 * @param {object} aDataSet 
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_arrayUnique
+					 * @function
+					 */
+					MockServer.prototype._arrayUnique = function(array) {
+						var a = array.concat();
+						for ( var i = 0; i < a.length; ++i) {
+							for ( var j = i + 1; j < a.length; ++j) {
+								if (a[i] === a[j])
+									a.splice(j--, 1);
 							}
 						}
-						oXhr.respond(200, {	"Content-Type" : "application/json;charset=utf-8"	}, JSON.stringify({	d : oFilteredData}));	
-						jQuery.sap.log.debug("MockServer: response sent with: 200, " + JSON.stringify({	d : oFilteredData}));
-					}else{
-						oXhr.respond(404);
-						jQuery.sap.log.debug("MockServer: response sent with: 404");
-					}
-				}
-			});
-			
-			// support access of a single entry of an entity set with and without OData system query options
-			aRequests.push({
-				method : "GET",
-				path : new RegExp("(" + sEntitySetName + ")\\(([^/\\?#]+)\\)/?(\\?(\\$|%24)((filter|skip|top|orderby|select|inlinecount|expand|format)=(.*)))?"),
-				response : function(oXhr, sEntitySetName, sKeys, sUrlParams) {
-					jQuery.sap.log.debug("MockServer: incoming request for url: " + oXhr.url);
-					var oEntry = jQuery.extend(true, {}, fnGetEntitySetEntry(sEntitySetName, sKeys));
-					if (!jQuery.isEmptyObject(oEntry)) {
-						if (sUrlParams) {
-							// sUrlParams should not contains ?, but only & in its stead
-							var aUrlParams = decodeURIComponent(sUrlParams).replace("?", "&").replace(/\$/g,'').split("&");
-							if (aUrlParams.length > 1){
-								aUrlParams = that._orderQueryOptions(aUrlParams);
+						return a;
+					};
+					
+
+					/**
+					 * Returns the indices of the first brackets appearance, excluding brackets of $filter reserved functions
+					 * @param {string} sString 
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_getBracketIndices
+					 * @function
+					 */
+					MockServer.prototype._getBracketIndices = function(sString) {
+						var aStack = [];
+						var bReserved = false;
+						var iStartIndex, iEndIndex = 0;
+						for ( var character = 0; character < sString.length; character++) {
+							if (sString[character] === '(') {
+								if (/[substringof|endswith|startswith]$/.test(sString.substring(0, character))) {
+									bReserved = true;
+								} else {
+									aStack.push(sString[character]);
+									if (iStartIndex === undefined) {
+										iStartIndex = character;
+									}
+								}
+							} else if (sString[character] === ')') {
+								if (!bReserved) {
+									aStack.pop();
+									iEndIndex = character;
+									if (aStack.length === 0)
+										return {
+											start : iStartIndex,
+											end : iEndIndex
+										};
+								} else {
+									bReserved = false;
+								}
+							}
+						}
+						return {
+							start : iStartIndex,
+							end : iEndIndex
+						};
+					};
+
+					/**
+					 * Applies the $filter OData system query option string on the given array. 
+					 * This function is called recursively on expressions in brackets.
+					 * @param {string} sString 
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_getBracketIndices
+					 * @function
+					 */
+					MockServer.prototype._recursiveOdataQueryFilter = function(aDataSet, sODataQueryValue) {
+
+						// check for wrapping brackets, e.g. (A), (A op B), (A op (B)), (((A)))
+						var oIndices = this._getBracketIndices(sODataQueryValue);
+						if (oIndices.start === 0 && oIndices.end === sODataQueryValue.length - 1) {
+							sODataQueryValue = this._trim(sODataQueryValue.substring(oIndices.start + 1, oIndices.end));
+							return this._recursiveOdataQueryFilter(aDataSet, sODataQueryValue);
+						}
+
+						// find brackets that are not related to the reserved words
+						var rExp = /([^substringof|endswith|startswith]|^)\((.*)\)/;
+						if (rExp.test(sODataQueryValue)) {
+							var sBracketed = sODataQueryValue.substring(oIndices.start, oIndices.end + 1);
+							var rExp1 = new RegExp("(.*) +(or|and) +(" + this._trim(this._escapeStringForRegExp(sBracketed)) + ".*)");
+							if (oIndices.start === 0) {
+								rExp1 = new RegExp("(" + this._trim(this._escapeStringForRegExp(sBracketed)) + ") +(or|and) +(.*)");
+							}
+
+							var aExp1Parts = rExp1.exec(sODataQueryValue);
+							var sExpression = aExp1Parts[1];
+							var sOperator = aExp1Parts[2];
+							var sExpression2 = aExp1Parts[3];
+
+							var aSet1 = this._recursiveOdataQueryFilter(aDataSet, sExpression);
+							var aSet2, aParts;
+							if (sOperator === "or") {
+								aSet2 = this._recursiveOdataQueryFilter(aDataSet, sExpression2);
+								return this._arrayUnique(aSet1.concat(aSet2));
+							}
+							if (sOperator === "and") {
+								return this._recursiveOdataQueryFilter(aSet1, sExpression2);
+							}
+						} else {
+							//there are only brackets with the reserved words
+							// e.g. A or B and C or D
+							aParts = sODataQueryValue.split(/ +and|or +/);
+
+							// base case
+							if (aParts.length === 1) {
+								// IE8 handling
+								if (sODataQueryValue.match(/ +and|or +/)) {
+									throw new Error("400");
+								}
+								
+								return this._getOdataQueryFilter(aDataSet, this._trim(sODataQueryValue));
 							}
 							
-							try{
-								jQuery.each(aUrlParams, function(iIndex, sQuery) {
-									oEntry.entry = that._applyQueryOnEntry(oEntry.entry, sQuery, sEntitySetName);
-								});
-							}catch(e){
-								oXhr.respond(parseInt(e.message || e.number, 10));
-								jQuery.sap.log.debug("MockServer: response sent with: " + parseInt(e.message || e.number, 10));
-								return;
-							 }
-						}
-						oXhr.respond(200, { "Content-Type": "application/json;charset=utf-8" }, JSON.stringify({d: oEntry.entry}));
-						jQuery.sap.log.debug("MockServer: response sent with: 200, " + JSON.stringify({d: oEntry.entry}));
-					} else {
-						oXhr.respond(404);
-						jQuery.sap.log.debug("MockServer: response sent with: 404");
-					}
-				}
-			});
-			
-			// support navigation property 
-			jQuery.each(oEntitySet.navprops, function(sNavName, oNavProp) {
-				// support $count requests on navigation properties
-				aRequests.push({
-					method : "GET",
-					path : new RegExp("(" + sEntitySetName + ")\\(([^/\\?#]+)\\)/(" + sNavName + ")/\\$count/?(.*)?"),
-					response : function(oXhr, sEntitySetName, sKeys, sNavProp, sUrlParams) {
-						jQuery.sap.log.debug("MockServer: incoming request for url: " + oXhr.url);
-						var oEntry = fnGetEntitySetEntry(sEntitySetName, sKeys);
-						if (oEntry) {
-							var aEntries = that._resolveNavigation(sEntitySetName, oEntry.entry, sNavProp);
-							oXhr.respond(200, { "Content-Type": "text/plain;charset=utf-8" }, "" + aEntries.length);
-							jQuery.sap.log.debug("MockServer: response sent with: 200, " + aEntries.length);
+							var aResult = this._recursiveOdataQueryFilter(aDataSet, aParts[0]);
+							var rRegExp;
+							for ( var i = 1; i < aParts.length; i++) {
+								rRegExp = new RegExp(this._trim(this._escapeStringForRegExp(aParts[i - 1])) + " +(and|or) +"
+										+ this._trim(this._escapeStringForRegExp(aParts[i])));
+								sOperator = rRegExp.exec(sODataQueryValue)[1];
 
+								if (sOperator === "or") {
+									aSet2 = this._recursiveOdataQueryFilter(aDataSet, aParts[i]);
+									aResult = this._arrayUnique(aResult.concat(aSet2));
+								}
+								if (sOperator === "and") {
+									aResult = this._recursiveOdataQueryFilter(aResult, aParts[i]);
+								}
+							}
+							return aResult;
+						}
+					};
+
+					/**
+					 * Applies the Filter OData system query option string on the given array
+					 * @param {object} aDataSet 
+					 * @param {string} sODataQueryValue a boolean expression
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_getOdataQueryFilter
+					 * @function
+					 */
+					MockServer.prototype._getOdataQueryFilter = function(aDataSet, sODataQueryValue) {
+						if (aDataSet.length === 0)
+							return aDataSet;
+						var rExp = new RegExp("(.*) (eq|ne|gt|lt|le|ge) (.*)");
+						var rExp2 = new RegExp("(endswith|startswith|substringof)\\((.*)");
+						var sODataFilterMethod = null;
+						var aODataFilterValues = rExp.exec(sODataQueryValue);
+						if (aODataFilterValues) {
+							sODataFilterMethod = aODataFilterValues[2];
 						} else {
-							oXhr.respond(404);
-							jQuery.sap.log.debug("MockServer: response sent with: 404");
+							aODataFilterValues = rExp2.exec(sODataQueryValue);
+							if (aODataFilterValues) {
+								sODataFilterMethod = aODataFilterValues[1];
+							} else {
+								throw new Error("400");
+							}
 						}
-					}
-				});
-				
-				// support access of navigation property with and without OData system query options
-				aRequests.push({
-					method : "GET",
-					path : new RegExp("(" + sEntitySetName + ")\\(([^/\\?#]+)\\)/(" + sNavName + ")/?(\\?(\\$|%24)((filter|skip|top|orderby|select|inlinecount|expand)=(.*)))?"),
-					response : function(oXhr, sEntitySetName, sKeys, sNavProp, sUrlParams) {	
-						jQuery.sap.log.debug("MockServer: incoming request for url: " + oXhr.url);
-						var oEntry = fnGetEntitySetEntry(sEntitySetName, decodeURIComponent(sKeys));
-						if (oEntry) {
-							var aEntries,oFilteredData={}; 
-							try{
-								aEntries = that._resolveNavigation(sEntitySetName, oEntry.entry, sNavProp);
+						var that = this;
+						var fnGetFilteredData = function(bValue, iValueIndex, iPathIndex, fnSelectFilteredData) {
+							var aODataFilterValues, sValue;
+							if (!bValue) { //e.g eq, ne, gt, lt, le, ge
+								aODataFilterValues = rExp.exec(sODataQueryValue);
+								sValue = that._trim(aODataFilterValues[iValueIndex + 1]);
+								var sPath = that._trim(aODataFilterValues[iPathIndex + 1]);
+							} else { //e.g.substringof, startswith, endswith
+								var rStringFilterExpr = new RegExp("(substringof|startswith|endswith)\\(([^,\\)]*),(.*)\\)");
+								aODataFilterValues = rStringFilterExpr.exec(sODataQueryValue);
+								sValue = that._trim(aODataFilterValues[iValueIndex + 2]);
+								sPath = that._trim(aODataFilterValues[iPathIndex + 2]);
+							}
+							//TODO do the check using the property type and not value
+							//fix for filtering on date time properties
+							if (sValue.indexOf("datetime") === 0) {
+								sValue = that._getJsonDate(sValue);
+							}
+							// fix for filtering on boolean properties
+							else if (sValue === "true") {sValue = true;}
+							else if (sValue === "false") {sValue = false;}
+							//fix for filtering on properties of type number
+							else if(that._isValidNumber(sValue)) {
+								sValue = parseFloat(sValue);
+							}
+							//fix for filtering on properties of type string
+							else if((sValue.charAt(0) === "'") && (sValue.charAt(sValue.length - 1) === "'")){
+								sValue = sValue.substr(1, sValue.length - 2);
+							}
+							// support for 1 level complex type property
+							var iComplexType = sPath.indexOf("/");
+							if (iComplexType !== -1) {
+								var sPropName = sPath.substring(iComplexType + 1);
+								var sComplexType = sPath.substring(0, iComplexType);
+								if (!aDataSet[0][sComplexType].hasOwnProperty(sPropName)) {
+									jQuery.sap.log.error("Property " + sPropName + " not found!");
+									throw new Error("400");
+								}
+								return fnSelectFilteredData(sPath, sValue, sComplexType, sPropName);
+							} else {
+								//check if sPath exists as property of the entityset
+								if (!aDataSet[0].hasOwnProperty(sPath)) {
+									jQuery.sap.log.error("Property " + sPath + " not found for " + aDataSet[0].__metadata.type + "!");
+									throw new Error("400");
+								}
+								return fnSelectFilteredData(sPath, sValue);
+							}
 
-								if(aEntries){
-									var sMultiplicity = that._mEntitySets[sEntitySetName].navprops[sNavProp].to.multiplicity;
-									if(sMultiplicity === "*"){
-										oFilteredData = {results : jQuery.extend(true, [], aEntries)};
-									}else{
-										oFilteredData = jQuery.extend(true, {}, aEntries[0]);
+							
+						};
+
+						switch (sODataFilterMethod) {
+						case "substringof":
+							return fnGetFilteredData(true, 0, 1, function(sPath, sValue, sComplexType, sPropName) {
+								return jQuery.grep(aDataSet, function(oMockData) {
+									if (sComplexType && sPropName) {
+										return (oMockData[sComplexType][sPropName].indexOf(sValue) !== -1);
 									}
-									if (sUrlParams) {
-										// sUrlParams should not contains ?, but only & in its stead
-										var aUrlParams = decodeURIComponent(sUrlParams).replace("?", "&").replace(/\$/g,'').split("&");
+									return (oMockData[sPath].indexOf(sValue) !== -1);
+								});
+							});
+						case "startswith":
+							return fnGetFilteredData(true, 1, 0, function(sPath, sValue, sComplexType, sPropName) {
+								return jQuery.grep(aDataSet, function(oMockData) {
+									if (sComplexType && sPropName) {
+										return (oMockData[sComplexType][sPropName].indexOf(sValue) === 0);
+									}
+									return (oMockData[sPath].indexOf(sValue) === 0);
+								});
+							});
+						case "endswith":
+							return fnGetFilteredData(true, 1, 0, function(sPath, sValue, sComplexType, sPropName) {
+								return jQuery.grep(aDataSet, function(oMockData) {
+									if (sComplexType && sPropName) {
+										return (oMockData[sComplexType][sPropName].indexOf(sValue) === (oMockData[sComplexType][sPropName].length - sValue.length));
+									}
+									return (oMockData[sPath].indexOf(sValue) === (oMockData[sPath].length - sValue.length));
+								});
+							});
+						case "eq":
+							return fnGetFilteredData(false, 2, 0, function(sPath, sValue, sComplexType, sPropName) {
+								return jQuery.grep(aDataSet, function(oMockData) {
+									if (sComplexType && sPropName) {
+										return (oMockData[sComplexType][sPropName] === sValue);
+									}
+									return (oMockData[sPath] === sValue);
+								});
+							});
+						case "ne":
+							return fnGetFilteredData(false, 2, 0, function(sPath, sValue, sComplexType, sPropName) {
+								return jQuery.grep(aDataSet, function(oMockData) {
+									if (sComplexType && sPropName) {
+										return (oMockData[sComplexType][sPropName] !== sValue);
+									}
+									return (oMockData[sPath] !== sValue);
+								});
+							});
+						case "gt":
+							return fnGetFilteredData(false, 2, 0, function(sPath, sValue, sComplexType, sPropName) {
+								return jQuery.grep(aDataSet, function(oMockData) {
+									if (sComplexType && sPropName) {
+										return (oMockData[sComplexType][sPropName] > sValue);
+									}
+									return (oMockData[sPath] > sValue);
+								});
+							});
+						case "lt":
+							return fnGetFilteredData(false, 2, 0, function(sPath, sValue, sComplexType, sPropName) {
+								return jQuery.grep(aDataSet, function(oMockData) {
+									if (sComplexType && sPropName) {
+										return (oMockData[sComplexType][sPropName] < sValue);
+									}
+									return (oMockData[sPath] < sValue);
+								});
+							});
+						case "ge":
+							return fnGetFilteredData(false, 2, 0, function(sPath, sValue, sComplexType, sPropName) {
+								return jQuery.grep(aDataSet, function(oMockData) {
+									if (sComplexType && sPropName) {
+										return (oMockData[sComplexType][sPropName]  >= sValue);
+									}
+									return (oMockData[sPath] >= sValue);
+								});
+							});
+						case "le":
+							return fnGetFilteredData(false, 2, 0, function(sPath, sValue, sComplexType, sPropName) {
+								return jQuery.grep(aDataSet, function(oMockData) {
+									if (sComplexType && sPropName) {
+										return (oMockData[sComplexType][sPropName]  <= sValue);
+									}
+									return (oMockData[sPath] <= sValue);
+								});
+							});
+						default:
+							jQuery.sap.log.error("Invalid $filter operator '" + sODataFilterMethod + "'!");
+							throw new Error("400");
+						}
+					};
 
-										if (aUrlParams.length > 1){
-											aUrlParams = that._orderQueryOptions(aUrlParams);
-										}	
+					/**
+					 * Applies the Select OData system query option string on the given array
+					 * @param {object} aDataSet 
+					 * @param {string} sODataQueryValue a comma separated list of property paths, qualified action names, qualified function names, or the star operator (*)
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_getOdataQuerySelect
+					 * @function
+					 */
+					MockServer.prototype._getOdataQuerySelect = function(aDataSet, sODataQueryValue) {
+						var aProperties = sODataQueryValue.split(',');
+						if (jQuery.inArray("*", aProperties) !== -1) {
+							return aDataSet;
+						}
+						var aSelectedDataSet = [];
 
-										if(sMultiplicity === "*"){
-											jQuery.each(aUrlParams, function(iIndex, sQuery) {
-												that._applyQueryOnCollection(oFilteredData, sQuery, that._mEntitySets[sEntitySetName].navprops[sNavProp].to.entitySet);
-											});
-										}else{
-											jQuery.each(aUrlParams, function(iIndex, sQuery) {
-												oFilteredData = that._applyQueryOnEntry(oFilteredData, sQuery, that._mEntitySets[sEntitySetName].navprops[sNavProp].to.entitySet);
-											});
+						var that = this;
+						//trim all properties 
+						jQuery.each(aProperties, function(i, sPropertyName) {
+							aProperties[i] = that._trim(sPropertyName);
+						});
+
+						//check if all properties exist
+						jQuery.each(aProperties, function(i, sPropertyName) {
+							if (aDataSet.length > 0 && !aDataSet[0].hasOwnProperty(sPropertyName)) {
+								jQuery.sap.log.error("Resource not found for the selection clause '" + sPropertyName + "'!");
+								throw new Error("404");
+							}
+						});
+						//TODO deepDown selection
+						//clone array of objects and delete not selected properties for each object 
+						jQuery.each(aDataSet, function(iIndex, oData) {
+							var oPushedObject = jQuery.extend(true, {}, oData);
+							for ( var sName in oPushedObject) {
+								if (sName !== "__metadata" && jQuery.inArray(sName, aProperties) === -1) {
+									delete oPushedObject[sName];
+								}
+							}
+							aSelectedDataSet.push(oPushedObject);
+						});
+						return aSelectedDataSet;
+					};
+
+					/**
+					 * Applies the InlineCount OData system query option string on the given array
+					 * @param {object} aDataSet 
+					 * @param {string} sODataQueryValue a value of allpages, or a value of none
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_getOdataInlineCount
+					 * @function
+					 */
+					MockServer.prototype._getOdataInlineCount = function(aDataSet, sODataQueryValue) {
+						var aProperties = sODataQueryValue.split(',');
+
+						if (aProperties.length !== 1 || (aProperties[0] !== 'none' && aProperties[0] !== 'allpages')) {
+							jQuery.sap.log.error("Invalid system query options value!");
+							throw new Error("400");
+						}
+						if (aProperties[0] === 'none') {
+							return;
+						}
+						return aDataSet.length;
+					};
+
+					/**
+					 * Applies the Format OData system query option 
+					 * @param {string} sODataQueryValue
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_getOdataQueryFormat
+					 * @function
+					 */
+					MockServer.prototype._getOdataQueryFormat = function(aDataSet, sODataQueryValue) {
+						if (sODataQueryValue !== 'json') {
+							jQuery.sap.log.error("Unsupported format value. Only json format is supported!");
+							throw new Error("400");
+						}
+						return aDataSet;
+					};
+
+					/**
+					 * Applies the Expand OData system query option string on the given array
+					 * @param {object} aDataSet 
+					 * @param {string} sODataQueryValue a comma separated list of navigation property paths
+					 * @param {string} sEntitySetName the name of the entitySet the aDataSet belongs to
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_getOdataQueryExpand
+					 * @function
+					 */
+					MockServer.prototype._getOdataQueryExpand = function(aDataSet, sODataQueryValue, sEntitySetName) {
+						var that = this;
+						var aNavProperties = sODataQueryValue.split(',');
+						//trim all nav properties 
+						jQuery.each(aNavProperties, function(i, sPropertyName) {
+							aNavProperties[i] = that._trim(sPropertyName);
+						});
+						var oEntitySetNavProps = that._mEntitySets[sEntitySetName].navprops;
+						jQuery.each(aDataSet, function(iIndex, oRecord) {
+							jQuery.each(aNavProperties, function(iIndex, sNavPropFull) {
+								var aNavProps = sNavPropFull.split("/");
+								var sNavProp = aNavProps[0];
+
+								if (!oRecord[sNavProp]) {
+									throw new Error("404");
+								}
+
+								//check if an expanded operation was already executed. for 1:* check results . otherwise, check if there is __deferred for clean start.
+								var aNavEntry = oRecord[sNavProp].results || oRecord[sNavProp];
+								if (!aNavEntry || !!aNavEntry.__deferred) {
+									aNavEntry = jQuery.extend(true, [], that._resolveNavigation(sEntitySetName, oRecord, sNavProp));
+								}
+
+								if (!!aNavEntry && aNavProps.length > 1) {
+									var sRestNavProps = aNavProps.splice(1, aNavProps.length).join("/");
+									aNavEntry = that._getOdataQueryExpand(aNavEntry, sRestNavProps,
+											oEntitySetNavProps[sNavProp].to.entitySet);
+								}
+
+								if (oEntitySetNavProps[sNavProp].to.multiplicity === "*") {
+									oRecord[sNavProp] = {
+										results : aNavEntry
+									};
+								} else {
+									oRecord[sNavProp] = aNavEntry[0] ? aNavEntry[0] : {};
+								}
+							});
+						});
+						return aDataSet;
+					};
+
+					/**
+					 * Refreshes the service metadata document and the mockdata
+					 * 
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_refreshData
+					 * @function
+					 */
+					MockServer.prototype._refreshData = function() {
+
+						// load the metadata
+						this._loadMetadata(this._sMetadataUrl);
+
+						// here we need to analyse the EDMX and identify the entity sets
+						this._mEntitySets = this._findEntitySets(this._oMetadata);
+
+						if (!this._sMockdataBaseUrl) {
+							// load the mockdata
+							this._generateMockdata(this._mEntitySets, this._oMetadata);
+						} else {
+							// check the mockdata base URL to end with a slash
+							if (!jQuery.sap.endsWith(this._sMockdataBaseUrl, "/") && !jQuery.sap.endsWith(this._sMockdataBaseUrl, ".json")) {
+								this._sMockdataBaseUrl += "/";
+							}
+							// load the mockdata
+							this._loadMockdata(this._mEntitySets, this._sMockdataBaseUrl);
+						}
+					};
+
+					/**
+					 * Returns the root URI without query or hash parameters
+					 * @return {string} the root URI without query or hash parameters
+					 * @name sap.ui.core.util.MockServer#_getRootUri
+					 * @function
+					 */
+					MockServer.prototype._getRootUri = function() {
+						var sUri = this.getRootUri();
+						sUri = sUri && /([^?#]*)([?#].*)?/.exec(sUri)[1]; // remove URL parameters or anchors
+						return sUri;
+					};
+
+					/**
+					 * Loads the service metadata for the given url
+					 * @param {string} sMetadataUrl url to the service metadata document
+					 * @return {XMLDocument} the xml document object 
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_loadMetadata
+					 * @function
+					 */
+					MockServer.prototype._loadMetadata = function(sMetadataUrl) {
+
+						// load the metadata
+						var oMetadata = jQuery.sap.sjax({
+							url : sMetadataUrl,
+							dataType : "xml"
+						}).data;
+						jQuery.sap.assert(oMetadata !== undefined, "The metadata for url \"" + sMetadataUrl + "\" could not be found!");
+						this._oMetadata = oMetadata;
+
+						return oMetadata;
+
+					};
+
+					/**
+					 * find the entity sets in the metadata XML document
+					 * @param {XMLDocument} oMetadata the metadata XML document
+					 * @return {map} map of entity sets 
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_findEntitySets
+					 * @function
+					 */
+					MockServer.prototype._findEntitySets = function(oMetadata) {
+
+						// here we need to analyse the EDMX and identify the entity sets
+						var mEntitySets = {};
+						var oPrincipals = jQuery(oMetadata).find("Principal");
+						var oDependents = jQuery(oMetadata).find("Dependent");
+
+						jQuery(oMetadata).find("EntitySet").each(function(iIndex, oEntitySet) {
+							var $EntitySet = jQuery(oEntitySet);
+							// split the namespace and the name of the entity type (namespace could have dots inside)
+							var aEntityTypeParts = /((.*)\.)?(.*)/.exec($EntitySet.attr("EntityType"));
+							mEntitySets[$EntitySet.attr("Name")] = {
+								"name" : $EntitySet.attr("Name"),
+								"schema" : aEntityTypeParts[2],
+								"type" : aEntityTypeParts[3],
+								"keys" : [],
+								"keysType" : {},
+								"navprops" : {}
+							};
+						});
+
+						// helper function to find the entity set and property reference
+						// for the given role name
+						var fnResolveNavProp = function(sRole, bFrom) {
+							var aRoleEnd = jQuery(oMetadata).find("End[Role=" + sRole + "]");
+							var sEntitySet;
+							var sMultiplicity;
+							jQuery.each(aRoleEnd, function(i, oValue) {
+								if (!!jQuery(oValue).attr("EntitySet")) {
+									sEntitySet = jQuery(oValue).attr("EntitySet");
+								} else {
+									sMultiplicity = jQuery(oValue).attr("Multiplicity");
+								}
+							});
+							var aPropRef = [];
+							var oPrinDeps = (bFrom) ? oPrincipals : oDependents;
+							jQuery(oPrinDeps).each(function(iIndex, oPrinDep) {
+								if (sRole === (jQuery(oPrinDep).attr("Role"))) {
+									jQuery(oPrinDep).children("PropertyRef").each(function(iIndex, oPropRef) {
+										aPropRef.push(jQuery(oPropRef).attr("Name"));
+									});
+									return false;
+								}
+							});
+							return {
+								"role" : sRole,
+								"entitySet" : sEntitySet,
+								"propRef" : aPropRef,
+								"multiplicity" : sMultiplicity
+							};
+						};
+
+						// find the keys and the navigation properties of the entity types
+						jQuery.each(mEntitySets, function(sEntitySetName, oEntitySet) {
+							// find the keys
+							var $EntityType = jQuery(oMetadata).find("EntityType[Name=" + oEntitySet.type + "]");
+							var aKeys = jQuery($EntityType).find("PropertyRef");
+							jQuery.each(aKeys, function(iIndex, oPropRef) {
+								var sKeyName = jQuery(oPropRef).attr("Name");
+								oEntitySet.keys.push(sKeyName);
+								oEntitySet.keysType[sKeyName] = jQuery($EntityType).find("Property[Name=" + sKeyName + "]").attr("Type");
+							});
+							// resolve the navigation properties
+							var aNavProps = jQuery(oMetadata).find("EntityType[Name=" + oEntitySet.type + "] NavigationProperty");
+							jQuery.each(aNavProps, function(iIndex, oNavProp) {
+								var $NavProp = jQuery(oNavProp);
+								oEntitySet.navprops[$NavProp.attr("Name")] = {
+									"name" : $NavProp.attr("Name"),
+									"from" : fnResolveNavProp($NavProp.attr("FromRole"), true),
+									"to" : fnResolveNavProp($NavProp.attr("ToRole"), false)
+								};
+							});
+						});
+
+						// return the entity sets
+						return mEntitySets;
+
+					};
+
+					/**
+					 * find the entity types in the metadata XML document
+					 * @param {XMLDocument} oMetadata the metadata XML document
+					 * @return {map} map of entity types
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_findEntityTypes
+					 * @function
+					 */
+					MockServer.prototype._findEntityTypes = function(oMetadata) {
+						var mEntityTypes = {};
+						jQuery(oMetadata).find("EntityType").each(function(iIndex, oEntityType) {
+							var $EntityType = jQuery(oEntityType);
+							mEntityTypes[$EntityType.attr("Name")] = {
+								"name" : $EntityType.attr("Name"),
+								"properties" : [],
+								"keys" : []
+							};
+							$EntityType.find("Property").each(function(iIndex, oProperty) {
+								var $Property = jQuery(oProperty);
+								var type = $Property.attr("Type");
+								mEntityTypes[$EntityType.attr("Name")].properties.push({
+									"schema" : type.substring(0, type.lastIndexOf(".")),
+									"type" : type.substring(type.lastIndexOf(".") + 1),
+									"name" : $Property.attr("Name"),
+									"precision" : $Property.attr("Precision"),
+									"scale" : $Property.attr("Scale")
+								});
+							});
+							$EntityType.find("PropertyRef").each(function(iIndex, oKey) {
+								var $Key = jQuery(oKey);
+								var sPropertyName = $Key.attr("Name");
+								mEntityTypes[$EntityType.attr("Name")].keys.push(sPropertyName);
+							});
+						});
+						return mEntityTypes;
+					};
+
+					/**
+					 * find the complex types in the metadata XML document
+					 * @param {XMLDocument} oMetadata the metadata XML document
+					 * @return {map} map of complex types
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_findComplexTypes
+					 * @function
+					 */
+					MockServer.prototype._findComplexTypes = function(oMetadata) {
+						var mComplexTypes = {};
+						jQuery(oMetadata).find("ComplexType").each(function(iIndex, oComplexType) {
+							var $ComplexType = jQuery(oComplexType);
+							mComplexTypes[$ComplexType.attr("Name")] = {
+								"name" : $ComplexType.attr("Name"),
+								"properties" : []
+							};
+							$ComplexType.find("Property").each(function(iIndex, oProperty) {
+								var $Property = jQuery(oProperty);
+								var type = $Property.attr("Type");
+								mComplexTypes[$ComplexType.attr("Name")].properties.push({
+									"schema" : type.substring(0, type.lastIndexOf(".")),
+									"type" : type.substring(type.lastIndexOf(".") + 1),
+									"name" : $Property.attr("Name"),
+									"precision" : $Property.attr("Precision"),
+									"scale" : $Property.attr("Scale")
+								});
+							});
+						});
+						return mComplexTypes;
+					};
+
+					/**
+					 * creates a key string for the given keys and entry
+					 * @param {object} oEntitySet the entity set info
+					 * @param {object} oEntry entity set entry which contains the keys as properties
+					 * @return {string} the keys string
+					 * @private 
+					 * @name sap.ui.core.util.MockServer#_createKeysString
+					 * @function
+					 */
+					MockServer.prototype._createKeysString = function(oEntitySet, oEntry) {
+						// creates the key string for an entity
+						var that = this;
+						var sKeys = "";
+						if (oEntry) {
+							jQuery.each(oEntitySet.keys, function(iIndex, sKey) {
+								if (sKeys) {
+									sKeys += ",";
+								}
+								var oKeyValue = oEntry[sKey];
+								if (oEntitySet.keysType[sKey] === "Edm.String") {
+									oKeyValue = "'" + oKeyValue + "'";
+								} else if (oEntitySet.keysType[sKey] === "Edm.DateTime") {
+									oKeyValue = that._getDateTime(oKeyValue);
+								} else if (oEntitySet.keysType[sKey] === "Edm.Guid") {
+									oKeyValue = "guid'" + oKeyValue + "'";
+								}
+
+								if (oEntitySet.keys.length === 1) {
+									sKeys += oKeyValue;
+									return sKeys;
+								}
+								sKeys += sKey + "=" + oKeyValue;
+							});
+						}
+						return sKeys;
+					};
+
+					/**
+					 * loads the mock data for the given entity sets and tries to load them from
+					 * the files inside the given base url. The name of the JSON files containing the
+					 * mock data should be the same as the name of the underlying entity type. As
+					 * an alternative you could also specify the url to a single JSON file containing
+					 * the mock data for all entity types.
+					 * @param {map} mEntitySets map of entity sets
+					 * @param {string} sBaseUrl the base url which contains the mock data in JSON files or if the url is pointing to a JSON file containing all entity types
+					 * @return {array} the mockdata arary containing the data for the entity sets
+					 * @private 
+					 * @name sap.ui.core.util.MockServer#_loadMockdata
+					 * @function
+					 */
+					MockServer.prototype._loadMockdata = function(mEntitySets, sBaseUrl) {
+						// load the entity sets (map the entity type data to the entity set)
+						var that = this, mEntityTypesData = {};
+						this._oMockdata = {};
+						// load the entity types data 
+						if (jQuery.sap.endsWith(sBaseUrl, ".json")) {
+							// all entity types are in one file
+							var oResponse = jQuery.sap.sjax({
+								url : sBaseUrl,
+								dataType : "json"
+							});
+							if (oResponse.success) {
+								mEntityTypesData = oResponse.data;
+							} else {
+								jQuery.sap.log.error("The mockdata for all the entity types could not be found at \"" + sBaseUrl + "\"!");
+							}
+						} else {
+							// load the entity types individually
+							jQuery.each(mEntitySets, function(sEntitySetName, oEntitySet) {
+								if (!mEntityTypesData[oEntitySet.type]) {
+									var sEntityTypeUrl = sBaseUrl + oEntitySet.type + ".json";
+									var oResponse = jQuery.sap.sjax({
+										url : sEntityTypeUrl,
+										dataType : "json"
+									});
+									if (oResponse.success) {
+										if (!!oResponse.data.d) {
+											if (!!oResponse.data.d.results) {
+												mEntityTypesData[oEntitySet.type] = oResponse.data.d.results;
+											} else {
+												jQuery.sap.log.error("The mockdata format for entity type \"" + oEntitySet.type
+														+ "\" invalid");
+											}
+										} else {
+											mEntityTypesData[oEntitySet.type] = oResponse.data;
+										}
+									} else {
+										if (oResponse.status === "parsererror") {
+											jQuery.sap.log.error("The mockdata for entity type \"" + oEntitySet.type
+													+ "\" could not be loaded due to a parsing error!");
+										} else {
+											jQuery.sap.log.error("The mockdata for entity type \"" + oEntitySet.type
+													+ "\" could not be found at \"" + sBaseUrl + "\"!");
+											if (!!that._bGenerateMissingMockData) {
+												var mEntitySet = {};
+												mEntitySet[oEntitySet.name] = oEntitySet;
+												mEntityTypesData[oEntitySet.type] = that._generateODataMockdataForEntitySet(mEntitySet,
+														that._oMetadata)[oEntitySet.name];
+											}
 										}
 									}
 								}
-								oXhr.respond(200, { "Content-Type": "application/json;charset=utf-8" }, JSON.stringify({d: oFilteredData}));
-								jQuery.sap.log.debug("MockServer: response sent with: 200, " + JSON.stringify({d: oFilteredData}));
-								return;
-							}catch (e) {
-								oXhr.respond(parseInt(e.message || e.number, 10));
-								jQuery.sap.log.debug("MockServer: response sent with: " + parseInt(e.message || e.number, 10));
-								return;
+							});
+						}
+						// create the mock data for the entity sets and enhance the mock data with metadata
+						jQuery.each(mEntitySets, function(sEntitySetName, oEntitySet) {
+							// TODO: should we clone here or not? right now we clone because of unique metadata for 
+							//       individual entity sets otherwise the data of the entity types would be a 
+							//       reference and thus it overrides the metadata from the other entity type.
+							//       this happens especially then when we have two entity sets for the same
+							//       entity type => maybe we move the metdata generation to the response creation!
+							that._oMockdata[sEntitySetName] = [];
+							if (mEntityTypesData[oEntitySet.type]) {
+								jQuery.each(mEntityTypesData[oEntitySet.type], function(iIndex, oEntity) {
+									that._oMockdata[sEntitySetName].push(jQuery.extend(true, {}, oEntity));
+								});
+							}
+							// enhance with OData metadata if exists
+							if (that._oMockdata[sEntitySetName].length > 0) {
+								that._enhanceWithMetadata(oEntitySet, that._oMockdata[sEntitySetName]);
+							}
+						});
+						// return the new mockdata
+						return this._oMockdata;
+					};
+
+					/**
+					 * enhances the mock data for the given entity set with the necessary metadata.
+					 * Important is at least to have a metadata entry incl. uri for the entry and 
+					 * for the navigation property it is required to have a deferred infor in case
+					 * of not expanding it.
+					 * @param {object} oEntitySet the entity set info
+					 * @param {object} oMockData mock data for the entity set
+					 * @private 
+					 * @name sap.ui.core.util.MockServer#_enhanceWithMetadata
+					 * @function
+					 */
+					MockServer.prototype._enhanceWithMetadata = function(oEntitySet, oMockData) {
+						if (oMockData) {
+							var that = this, sRootUri = this._getRootUri(), sEntitySetName = oEntitySet && oEntitySet.name;
+							jQuery.each(oMockData, function(iIndex, oEntry) {
+								// add the metadata for the entry (type is pointing to the EntityType which is required by datajs to resolve properties)
+								oEntry.__metadata = {
+									id : sRootUri + sEntitySetName + "(" + that._createKeysString(oEntitySet, oEntry) + ")",
+									type : oEntitySet.schema + "." + oEntitySet.type,
+									uri : sRootUri + sEntitySetName + "(" + that._createKeysString(oEntitySet, oEntry) + ")"
+								};
+								// add the navigation properties
+								jQuery.each(oEntitySet.navprops, function(sKey, oNavProp) {
+									oEntry[sKey] = {
+										__deferred : {
+											uri : sRootUri + sEntitySetName + "(" + that._createKeysString(oEntitySet, oEntry) + ")/"
+													+ sKey
+										}
+									};
+								});
+							});
+						}
+					};
+
+					/**
+					 * verify entitytype keys type ((e.g. Int, String, SByte, Time, DateTimeOffset, Decimal, Double, Single, Boolean, DateTime)
+					 * @param {oEntitySet} the entity set for verification
+					 * @param {aRequestedKeys} aRequestedKeys the requested Keys
+					 * @return boolean
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_isRequestedKeysValid
+					 * @function
+					 */
+					MockServer.prototype._isRequestedKeysValid = function(oEntitySet, aRequestedKeys) {
+
+						// If the Entry has a single key Property the predicate may include only the value of the key Property
+						if (aRequestedKeys.length === 1) { 
+							var aSplitEq = aRequestedKeys[0].split('=');
+							if (this._trim(aSplitEq[0]) !== oEntitySet.keys[0]) {
+								aRequestedKeys = [ oEntitySet.keys[0] + "=" + aRequestedKeys[0] ];
 							}
 						}
-						oXhr.respond(404);
-						jQuery.sap.log.debug("MockServer: response sent with: 404");
-					}
-				});
-				
-			});
-			
-			// support creation of an entity of a specific type
-			aRequests.push({
-				method : "POST",
-				path : new RegExp("(" + sEntitySetName + ")(\\(([^/\\?#]+)\\)/?(.*)?)?"),
-				response : function(oXhr, sEntitySetName, group2 ,sKeys, sNavName) {
-					jQuery.sap.log.debug("MockServer: incoming request for url: " + oXhr.url);
-					var sRespondData = null;
-					var sRespondContentType = null;
-					var iResult = 405; // default: method not allowed
-					var sTargetEntityName = fnResolveTargetEntityName(oEntitySet, decodeURIComponent(sKeys), sNavName);
-					if (sTargetEntityName) {
-						var oEntity = initNewEntity(oXhr, sTargetEntityName, sKeys, sNavName);
-						if (oEntity) {
-							var sUri = that._getRootUri() + sTargetEntityName + "(" + that._createKeysString(that._mEntitySets[sTargetEntityName], oEntity) + ")";
-							sRespondData = JSON.stringify({d: oEntity, uri: sUri}); //'{"uri": "' + sUri + '" }';
-							sRespondContentType = {"Content-Type": "application/json;charset=utf-8"};
-							that._oMockdata[sTargetEntityName] = that._oMockdata[sTargetEntityName].concat([oEntity]);
-							iResult = 201; 
+
+						for ( var i = 0; i < aRequestedKeys.length; i++) {
+							var sKey = this._trim(aRequestedKeys[i].substring(0, aRequestedKeys[i].indexOf('=')));
+							var sRequestValue = this._trim(aRequestedKeys[i].substring(aRequestedKeys[i].indexOf('=') + 1));
+							var sFirstChar = sRequestValue.charAt(0);
+							var sLastChar = sRequestValue.charAt(sRequestValue.length - 1);
+
+							if (oEntitySet.keysType[sKey] === "Edm.String") {
+								if (sFirstChar !== "'" || sLastChar !== "'") {
+									return false;
+								}
+							} else if (oEntitySet.keysType[sKey] === "Edm.DateTime") {
+								if (sFirstChar === "'" || sLastChar !== "'") {
+									return false;
+								}
+							} else if (oEntitySet.keysType[sKey] === "Edm.Guid") {
+								if (sFirstChar === "'" || sLastChar !== "'") {
+									return false;
+								}
+							} else {
+								if (sFirstChar === "'" || sLastChar === "'") {
+									return false;
+								}
+							}
 						}
-					}
-					oXhr.respond(iResult, sRespondContentType, sRespondData); 
-					jQuery.sap.log.debug("MockServer: response sent with: " + iResult + ", " + sRespondData);
-				}
-			});
-			
-			// support update of an entity of a specific type
-			aRequests.push({
-				method : "PUT",
-				path : new RegExp("(" + sEntitySetName + ")\\(([^/\\?#]+)\\)/?(.*)?"),
-				response : function(oXhr, sEntitySetName, sKeys, sNavName) {
-					jQuery.sap.log.debug("MockServer: incoming request for url: " + oXhr.url);
-					var iResult = 405; // default: method not allowed 
-					var sRespondData = null;
-					var sRespondContentType = null;
+						return true;
+					};
+
+					/**
+					 * Takes a string '<poperty1>=<value1>, <poperty2>=<value2>,...' and creates an
+					 * object (hash map) out of it.
+					 * 
+					 * @param {sKeys}
+					 *            the string of porperty/value pairs
+					 * @param {object}
+					 *            object consisting of the parsed properties
+					 */
+					MockServer.prototype._parseKeys = function(sKeys, oEntitySet) {
+						var oResult = {}; // default is an empty hash map
+						var aProps = sKeys.split(",");
+						var sKeyName, sKeyValue, aPair;
+						for ( var i = 0; i < aProps.length; i++) {
+							aPair = aProps[i].split("=");
+							if (aPair.length === 1 && oEntitySet.keys.length === 1) {
+								sKeyName = oEntitySet.keys[0];
+								sKeyValue = aPair[0];
+							} else {
+								if (aPair.length === 2) {
+									sKeyName = aPair[0];
+									sKeyValue = aPair[1];
+								}
+							}
+							if (sKeyValue.indexOf('\'') === 0) {
+								oResult[sKeyName] = sKeyValue.slice(1, sKeyValue.length - 1);
+							} else {
+								oResult[sKeyName] = sKeyValue;
+							}
+						}
+						return oResult;
+					};
+
+					/**
+					 * Generate mock value for a specific property type. String value will be
+					 * based on the property name and an index Integer / Decimal value will be
+					 * generated randomly Date / Time / DateTime value will also be generated
+					 * randomly
+					 * 
+					 * @param {string}
+					 *            sKey the property name
+					 * @param {string}
+					 *            sType the property type without the Edm prefix
+					 * @param {map}
+					 *            mComplexTypes map of the complex types
+					 * @return {object} the mocked value
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_generatePropertyValue
+					 * @function
+					 */
+					MockServer.prototype._generatePropertyValue = function(sKey, sType, mComplexTypes, iIndexParameter) {
+						var iIndex = iIndexParameter;
+						if (!iIndex) {
+							iIndex = Math.floor(Math.random() * 10000) + 101;
+						}
+						switch (sType) {
+						case "String":
+							return sKey + " " + iIndex;
+						case "DateTime":
+							var date = new Date();
+							date.setFullYear(2000 + Math.floor(Math.random() * 20));
+							date.setDate(Math.floor(Math.random() * 30));
+							date.setMonth(Math.floor(Math.random() * 12));
+							date.setMilliseconds(0);
+							return "/Date(" + date.getTime() + ")/";
+						case "Int16":
+						case "Int32":
+						case "Int64":
+							return Math.floor(Math.random() * 10000);
+						case "Decimal":
+							return Math.floor(Math.random() * 1000000) / 100;
+						case "Boolean":
+							return Math.random() < .5;
+						case "Byte":
+							return Math.floor(Math.random() * 10);
+						case "Double":
+							return Math.random() * 10;
+						case "Single":
+							return Math.random() * 1000000000;
+						case "SByte":
+							return Math.floor(Math.random() * 10);
+						case "Time":
+							return Math.floor(Math.random() * 23) + ":" + Math.floor(Math.random() * 59) + ":"
+									+ Math.floor(Math.random() * 59);
+						case "Guid":
+							return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+								var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+								return v.toString(16);
+							});
+						case "Binary":
+							var nMask = Math.floor(-2147483648 + Math.random() * 4294967295);
+							for ( var nFlag = 0, nShifted = nMask, sMask = ""; nFlag < 32; nFlag++, sMask += String(nShifted >>> 31), nShifted <<= 1)
+								;
+							return sMask;
+						case "DateTimeOffset":
+							//TODO: generate value for DateTimeOffset
+						default:
+							return this._generateDataFromEntity(mComplexTypes[sType], iIndex);
+						}
+
+					};
+
+					/**
+					 * This method takes over the already existing key values from oKeys and
+					 * adds values for all remaining keys specified by oEntitySet.
+					 * The result is merged into oEntity.
+					 * 
+					 * @param {object}
+					 *            oEntitySet description of the entity set, conatins the full list of key fields
+					 * @param {oKeys}
+					 *            oKeys contains already defined key values
+					 * @param {oEntity}
+					 *            oEntity the result object, where the key property/value pairs merged into
+					 * @name sap.ui.core.util.MockServer#_completeKey
+					 * @function
+					 */
+					MockServer.prototype._completeKey = function(oEntitySet, oKeys, oEntity) {
+						if (oEntity) {
+							for ( var i = 0; i < oEntitySet.keys.length; i++) {
+								var sKey = oEntitySet.keys[i];
+								if (oKeys[sKey]) {
+									if (!oEntity[sKey]) {
+										// take over the specified key value
+										switch (oEntitySet.keysType[sKey]) {
+										case "Edm.DateTime":
+											oEntity[sKey]  = this._getJsonDate(oKeys[sKey]);
+											break;
+										case "Edm.Guid":
+											oEntity[sKey]  = oKeys[sKey].substring(5, oKeys[sKey].length - 2);
+											break;
+										default: 
+											oEntity[sKey] = oKeys[sKey];
+										}
+									}
+								} else {
+									if (!oEntity[sKey]) {
+										// take over the specified key value
+										oEntity[sKey] = this._generatePropertyValue(sKey, oEntitySet.keysType[sKey]
+												.substring(oEntitySet.keysType[sKey].lastIndexOf('.') + 1));
+									}
+								}
+							}
+						}
+					};
+
+					/**
+					 * Generate some mock data for a specific entityType. String value will be
+					 * based on the property name and an index Integer / Decimal value will be
+					 * generated randomly Date / Time / DateTime value will also be generated
+					 * randomly
+					 * 
+					 * @param {object}
+					 *            oEntityType the entity type used to generate the data
+					 * @param {int}
+					 *            iIndex index of this particular object in the parent
+					 *            collection
+					 * @param {map}
+					 *            mComplexTypes map of the complex types
+					 * @return {object} the mocked entity
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_generateDataFromEntity
+					 * @function
+					 */
+					MockServer.prototype._generateDataFromEntity = function(oEntityType, iIndex, mComplexTypes) {
+						var oEntity = {};
+						if (!oEntityType) {
+							return oEntity;
+						}
+						for ( var i = 0; i < oEntityType.properties.length; i++) {
+							var oProperty = oEntityType.properties[i];
+							var oPropertyValue = "";
+							oEntity[oProperty.name] = this._generatePropertyValue(oProperty.name, oProperty.type, mComplexTypes, iIndex);
+						}
+						return oEntity;
+					};
+
+					/**
+					 * Generate some mock data for a specific entityset.
+					 * @param {object} oEntitySet the entity set for which we want to generate the data
+					 * @param {map} mEntityTypes map of the entity types
+					 * @param {map} mComplexTypes map of the complex types
+					 * @return {array} the array of mocked data
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_generateDataFromEntitySet
+					 * @function
+					 */
+					MockServer.prototype._generateDataFromEntitySet = function(oEntitySet, mEntityTypes, mComplexTypes) {
+						var oEntityType = mEntityTypes[oEntitySet.type];
+						var aMockedEntries = [];
+						for ( var i = 0; i < 100; i++) {
+							aMockedEntries.push(this._generateDataFromEntity(oEntityType, i + 1, mComplexTypes));
+						}
+						return aMockedEntries;
+					};
+
+					/**
+					 * Generate some mock data based on the metadata specified for the odata service.
+					 * @param {map} mEntitySets map of the entity sets
+					 * @param {object} oMetadata the complete metadata for the service
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_generateMockdata
+					 * @function
+					 */
+					MockServer.prototype._generateMockdata = function(mEntitySets, oMetadata) {
+						var that = this;
+						var oMockData = {};
+						jQuery.each(mEntitySets, function(sEntitySetName, oEntitySet) {
+							var mEntitySet = {};
+							mEntitySet[oEntitySet.name] = oEntitySet;
+							oMockData[sEntitySetName] = that._generateODataMockdataForEntitySet(mEntitySet, oMetadata)[sEntitySetName];
+						});
+
+						this._oMockdata = oMockData;
+					};
+
+					/**
+					 * Generate some mock data based on the metadata specified for the odata service.
+					 * @param {map} mEntitySets map of the entity sets
+					 * @param {object} oMetadata the complete metadata for the service
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_generateODataMockdataForEntitySet
+					 * @function
+					 */
+					MockServer.prototype._generateODataMockdataForEntitySet = function(mEntitySets, oMetadata) {
+						// load the entity sets (map the entity type data to the entity set)
+						var that = this, sRootUri = this._getRootUri(), oMockData = {};
+
+						// here we need to analyse the EDMX and identify the entity types and complex types
+						var mEntityTypes = this._findEntityTypes(oMetadata);
+						var mComplexTypes = this._findComplexTypes(oMetadata);
+
+						jQuery.each(mEntitySets, function(sEntitySetName, oEntitySet) {
+							oMockData[sEntitySetName] = that._generateDataFromEntitySet(oEntitySet, mEntityTypes, mComplexTypes);
+							jQuery.each(oMockData[sEntitySetName], function(iIndex, oEntry) {
+								// add the metadata for the entry
+								oEntry.__metadata = {
+									uri : sRootUri + sEntitySetName + "(" + that._createKeysString(oEntitySet, oEntry) + ")",
+									type : oEntitySet.schema + "." + oEntitySet.type
+								};
+								// add the navigation properties
+								jQuery.each(oEntitySet.navprops, function(sKey, oNavProp) {
+									oEntry[sKey] = {
+										__deferred : {
+											uri : sRootUri + sEntitySetName + "(" + that._createKeysString(oEntitySet, oEntry) + ")/"
+													+ sKey
+										}
+									};
+								});
+							});
+						});
+						return oMockData;
+					};
+
+					// helper function to resolve a navigation and return the matching entities
+					MockServer.prototype._resolveNavigation = function(sEntitySetName, oFromRecord, sNavProp) {
+						var oEntitySet = this._mEntitySets[sEntitySetName];
+						var oNavProp = oEntitySet.navprops[sNavProp];
+						if (!oNavProp) {
+							throw new Error("404");
+						}
+
+						var aEntries = [];
+						var iPropRefLength = oNavProp.from.propRef.length;
+						//if there is no ref.constraint, the data is return according to the multiplicity 
+						if (iPropRefLength === 0) {
+							if (oNavProp.to.multiplicity === "*") {
+								return this._oMockdata[oNavProp.to.entitySet];
+							} else {
+								aEntries.push(this._oMockdata[oNavProp.to.entitySet][0]);
+								return aEntries;
+							}
+						}
+						// maybe we can do symbolic links with a function to handle the navigation properties 
+						// instead of copying the data into the nested structures
+						jQuery.each(this._oMockdata[oNavProp.to.entitySet], function(iIndex, oToRecord) {
+
+							// check for property ref being identical
+							var bEquals = true;
+							for ( var i = 0; i < iPropRefLength; i++) {
+								if (oFromRecord[oNavProp.from.propRef[i]] !== oToRecord[oNavProp.to.propRef[i]]) {
+									bEquals = false;
+									break;
+								}
+							}
+							// if identical we add the to record
+							if (bEquals) {
+								aEntries.push(oToRecord);
+							}
+
+						});
+						return aEntries;
+					};
+
+					/**
+					 * Simulates an existing OData service by sepcifiying the metadata URL and the base URL for the mockdata. The server
+					 * configures the request handlers depending on the service metadata. The mockdata needs to be stored individually for
+					 * each entity type in a separate JSON file. The name of the JSON file needs to match the name of the entity type. If
+					 * no base url for the mockdata is specified then the mockdata are generated from the metadata
+					 * 
+					 * @param {string} sMetadataUrl url to the service metadata document
+					 * @param {string|object} [vMockdataSettings] (optional) base url which contains the path to the mockdata, or an object which contains the following properties: sMockdataBaseUrl, bGenerateMissingMockData. See below for descriptions of these parameters. Ommit this parameter to produce random mock data based on the service metadata. 
+					 * @param {string} [vMockdataSettings.sMockdataBaseUrl] base url which contains the mockdata as single .json files or the .json file containing the complete mock data
+					 * @param {boolean} [vMockdataSettings.bGenerateMissingMockData] true for the MockServer to generate mock data for missing .json files that are not found in sMockdataBaseUrl. Default value is false.
+					 * 
+					 * @since 1.13.2
+					 * @public
+					 * @name sap.ui.core.util.MockServer#simulate
+					 * @function
+					 */
+					MockServer.prototype.simulate = function(sMetadataUrl, vMockdataSettings) {
+						var that = this;
+						this._sMetadataUrl = sMetadataUrl;
+						if (!vMockdataSettings || typeof vMockdataSettings === "string") {
+							this._sMockdataBaseUrl = vMockdataSettings;
+						} else {
+							this._sMockdataBaseUrl = vMockdataSettings.sMockdataBaseUrl;
+							this._bGenerateMissingMockData = vMockdataSettings.bGenerateMissingMockData;
+						}
+						
+						this._refreshData();
+						
+						// helper to handle xsrf token
+						var fnHandleXsrfTokenHeader = function(oXhr, mHeaders) {
+							if (oXhr.requestHeaders["x-csrf-token"] === "Fetch") {
+								mHeaders["X-CSRF-Token"] = "42424242424242424242424242424242";
+							}
+						};
+
+						// helper to find the entity set entry for a given entity set name and the keys of the entry
+						var fnGetEntitySetEntry = function(sEntitySetName, sKeys) {
+							var oFoundEntry;
+							var oEntitySet = that._mEntitySets[sEntitySetName];
+							var aKeys = oEntitySet.keys;
+							// split keys
+							var aRequestedKeys = sKeys.split(',');
+
+							// check number of keys to be equal to the entity keys and validates keys type for quotations
+							if (aRequestedKeys.length !== aKeys.length || !that._isRequestedKeysValid(oEntitySet, aRequestedKeys)) {
+								return oFoundEntry;
+							}
+
+							if (aRequestedKeys.length === 1 && !aRequestedKeys[0].split('=')[1]) {
+								aRequestedKeys = [ aKeys[0] + "=" + aRequestedKeys[0] ];
+							}
+							jQuery.each(that._oMockdata[sEntitySetName], function(iIndex, oEntry) {
+								// check each key for existence and value
+								for ( var i = 0; i < aRequestedKeys.length; i++) {
+									var aKeyVal = aRequestedKeys[i].split('=');
+									var sKey = that._trim(aKeyVal[0]);
+									//key doesn't match, continue to next entry
+									if (jQuery.inArray(sKey, aKeys) === -1) {
+										return true; // = continue
+									}
+
+									var sNewValue = that._trim(aKeyVal[1]);
+									var sOrigiValue = oEntry[sKey];
+									
+									switch (oEntitySet.keysType[sKey]) {
+									case "Edm.String":
+										sNewValue = sNewValue.replace(/^\'|\'$/g, '');
+										break;
+									case "Edm.Time":
+									case "Edm.DateTime":
+										sOrigiValue = that._getDateTime(sOrigiValue);
+										break;
+									case "Edm.Int16":
+									case "Edm.Int32":
+									case "Edm.Int64":
+									case "Edm.Decimal":
+									case "Edm.Byte":
+									case "Edm.Double":
+									case "Edm.Single":
+									case "Edm.SByte":
+										if(!that._isValidNumber(sNewValue)){
+											//TODO check better handling
+											return false;// = break
+										}
+										sNewValue = parseFloat(sNewValue);
+										break;
+									case "Edm.Guid":
+										sNewValue = sNewValue.replace(/^guid\'|\'$/g, '');
+										break;
+									case "Edm.Boolean":
+									case "Edm.Binary":
+									case "Edm.DateTimeOffset":
+									default:
+										sNewValue = sNewValue;
+									}
+									
+									//value doesn't match, continue to next entry
+									if (sOrigiValue !== sNewValue) {
+										return true; // = continue
+									}
+								}
+								oFoundEntry = {
+									index : iIndex,
+									entry : oEntry
+								};
+								return false; // = break
+							});
+							return oFoundEntry;
+						};
+
+						// helper to resolve an entity set for insert/delete/update operations
+						var fnResolveTargetEntityName = function(oEntitySet, sKeys, sUrlParams) {
+							// Set the default entity name
+							var sSetName = oEntitySet.name;
+							// If there are sUrlParams try to find a navigation property
+							if (sUrlParams) {
+								var navProp = oEntitySet.navprops[sUrlParams];
+							}
+							if (navProp) {
+								// instead of the default entity name use the endpoints entity
+								// name
+								sSetName = navProp.to.entitySet;
+							}
+							return sSetName;
+						};
+
+						var initNewEntity = function(oXhr, sTargetEntityName, sKeys, sUrlParams) {
+							var oEntity = JSON.parse(oXhr.requestBody);
+							if (oEntity) {
+								var oKeys = {};
+								if (sKeys) {
+									oKeys = that._parseKeys(sKeys, that._mEntitySets[sTargetEntityName]);
+								}
+								that._completeKey(that._mEntitySets[sTargetEntityName], oKeys, oEntity);
+								that._enhanceWithMetadata(that._mEntitySets[sTargetEntityName], [ oEntity ]);
+								return oEntity;
+							}
+							return null;
+						};
+
+						// create the request handlers
+						var aRequests = [];
+
+						// add the $metadata request
+						aRequests.push({
+							method : "GET",
+							path : new RegExp("\\$metadata([?#].*)?"),
+							response : function(oXhr) {
+								jQuery.sap.require("jquery.sap.xml");
+								jQuery.sap.log.debug("MockServer: incoming request for url: " + oXhr.url);
+								var mHeaders = {
+										"Content-Type" : "application/xml;charset=utf-8"
+								};
+								fnHandleXsrfTokenHeader(oXhr, mHeaders);
+								oXhr.respond(200, mHeaders, jQuery.sap.serializeXML(that._oMetadata));
+								jQuery.sap.log.debug("MockServer: response sent with: 200, " + jQuery.sap.serializeXML(that._oMetadata));
+							}
+						});
+
+						// batch processing
+						aRequests
+								.push({
+									method : "POST",
+									path : new RegExp("\\$batch([?#].*)?"),
+									response : function(oXhr) {
+										jQuery.sap.log.debug("MockServer: incoming request for url: " + oXhr.url);
+										var fnResovleStatus = function(iStatusCode) {
+											switch (iStatusCode) {
+											case 200:
+												return "200 OK";
+											case 204:
+												return "204 No Content";
+											case 201:
+												return "201 Created";
+											case 400:
+												return "400 Bad Request";
+											case 404:
+												return "404 Not Found";
+											default:
+												break;
+											}
+										};
+										var fnBuildResponseString = function(oResponse, sContentType) {
+											var sResponseData = JSON.stringify(oResponse.data) || "";
+											if (sContentType) {
+												return "HTTP/1.1 " + fnResovleStatus(oResponse.statusCode) + "\r\nContent-Type: "
+														+ sContentType + "\r\nContent-Length: " + sResponseData.length
+														+ "\r\ndataserviceversion: 2.0\r\n\r\n" + sResponseData + "\r\n";
+											}
+											return "HTTP/1.1 " + fnResovleStatus(oResponse.statusCode)
+													+ "\r\nContent-Type: application/json\r\nContent-Length: " + sResponseData.length
+													+ "\r\ndataserviceversion: 2.0\r\n\r\n" + sResponseData + "\r\n";
+										};
+										// START BATCH HANDLING
+										var sRequestBody = oXhr.requestBody;
+										var oBoundaryRegex = new RegExp("--batch_[a-z0-9-]*");
+										var sBoundary = oBoundaryRegex.exec(sRequestBody)[0];
+										// boundary is defined in request header
+										if (!!sBoundary) {
+											var aBatchBodyResponse = [];
+											//split requests by boundary
+											var aBatchRequests = sRequestBody.split(sBoundary);
+											var sServiceURL = oXhr.url.split("$")[0];
+
+											var rPut = new RegExp("PUT (.*) HTTP");
+											var rMerge = new RegExp("MERGE (.*) HTTP"); //TODO temporary solution to handle merge as put
+											var rPost = new RegExp("POST (.*) HTTP");
+											var rDelete = new RegExp("DELETE (.*) HTTP");
+											var rGet = new RegExp("GET (.*) HTTP");
+
+											for ( var i = 1; i < aBatchRequests.length - 1; i++) {
+												var sBatchRequest = aBatchRequests[i];
+												//GET Handling
+												if (rGet.test(sBatchRequest) && sBatchRequest.indexOf("multipart/mixed") === -1) {
+													//In case of POST, PUT or DELETE not in ChangeSet
+													if (rPut.test(sBatchRequest) || rPost.test(sBatchRequest)
+															|| rDelete.test(sBatchRequest)) {
+														oXhr
+																.respond(400, null,
+																		"The Data Services Request could not be understood due to malformed syntax");
+														jQuery.sap.log.debug("MockServer: response sent with: 400");
+														return;
+													}
+													var oResponse = jQuery.sap.sjax({
+														url : sServiceURL + rGet.exec(sBatchRequest)[1],
+														dataType : "json"
+													});
+													if (rGet.exec(sBatchRequest)[1].indexOf('$count') !== -1) {
+														var sResponseString = fnBuildResponseString(oResponse, "text/plain");
+													} else {
+														sResponseString = fnBuildResponseString(oResponse);
+													}
+													aBatchBodyResponse.push("\r\nContent-Type: application/http\r\n" + "Content-Length: "
+															+ sResponseString.length + "\r\n" + "content-transfer-encoding: binary\r\n\r\n"
+															+ sResponseString);
+												}
+												//CUD handling within changesets    	   
+												else {
+													var aChangesetResponses = [];
+
+													// copying the mock data to support rollback
+													var oCopiedMockdata = jQuery.extend(true, {}, that._oMockdata);
+
+													var fnCUDRequest = function(rCUD, sData, sType) {
+														var oResponse = jQuery.sap.sjax({
+															type : sType,
+															url : sServiceURL + rCUD.exec(sChangesetRequest)[1],
+															dataType : "json",
+															data : sData
+														});
+
+														if (oResponse.statusCode === 400 || oResponse.statusCode === 404) {
+															var sError = "\r\nHTTP/1.1 " + fnResovleStatus(oResponse.statusCode)
+																	+ "\r\nContent-Type: application/json\r\nContent-Length: 0\r\n\r\n";
+															throw new Error(sError);
+														}
+														aChangesetResponses.push(fnBuildResponseString(oResponse));
+													};
+													// extract changeset
+													var sChangesetBoundary = sBatchRequest.substring(
+															sBatchRequest.indexOf("boundary=") + 9, sBatchRequest.indexOf("\r\n\r\n"));
+													var aChangesetRequests = sBatchRequest.split("--" + sChangesetBoundary);
+
+													try {
+														for ( var j = 1; j < aChangesetRequests.length - 1; j++) {
+															var sChangesetRequest = aChangesetRequests[j];
+															//Check if GET exists in ChangeSet - Return 400
+															if (rGet.test(sChangesetRequest)) {
+																// rollback
+																that._oMockdata = oCopiedMockdata;
+																oXhr
+																		.respond(400, null,
+																				"The Data Services Request could not be understood due to malformed syntax");
+																jQuery.sap.log.debug("MockServer: response sent with: 400");
+																return;
+															} else if (rPut.test(sChangesetRequest)) {
+																// PUT
+																var sData = sChangesetRequest.substring(sChangesetRequest.indexOf("{"),
+																		sChangesetRequest.lastIndexOf("}") + 1).replace(/\\/g, '');
+																fnCUDRequest(rPut, sData, 'PUT');
+															} else if (rMerge.test(sChangesetRequest)) {
+																// MERGE
+																sData = sChangesetRequest.substring(sChangesetRequest.indexOf("{"),
+																		sChangesetRequest.lastIndexOf("}") + 1).replace(/\\/g, '');
+																fnCUDRequest(rMerge, sData, 'PUT');
+															} else if (rPost.test(sChangesetRequest)) {
+																// POST
+																sData = sChangesetRequest.substring(sChangesetRequest.indexOf("{"),
+																		sChangesetRequest.lastIndexOf("}") + 1).replace(/\\/g, '');
+																fnCUDRequest(rPost, sData, 'POST');
+
+															} else if (rDelete.test(sChangesetRequest)) {
+																// DELETE
+																fnCUDRequest(rDelete, null, 'DELETE');
+															}
+														}//END ChangeSets FOR
+														var sChangesetRespondData = "\r\nContent-Type: multipart/mixed; boundary=ejjeeffe1\r\n\r\n--ejjeeffe1";
+														for ( var k = 0; k < aChangesetResponses.length; k++) {
+															sChangesetRespondData += "\r\nContent-Type: application/http\r\n"
+																	+ "Content-Length: " + aChangesetResponses[k].length + "\r\n"
+																	+ "content-transfer-encoding: binary\r\n\r\n" + aChangesetResponses[k]
+																	+ "--ejjeeffe1";
+														}
+														sChangesetRespondData += "--\r\n";
+														aBatchBodyResponse.push(sChangesetRespondData);
+													} catch (oError) {
+														that._oMockdata = oCopiedMockdata;
+														var sError = "\r\nContent-Type: application/http\r\n" + "Content-Length: "
+																+ oError.message.length + "\r\n"
+																+ "content-transfer-encoding: binary\r\n\r\n" + oError.message;
+														aBatchBodyResponse.push(sError);
+													}
+												} //END ChangeSets handling	 
+											}//END Main FOR
+											//CREATE BATCH RESPONSE
+											var sRespondData = "--ejjeeffe0";
+											for ( var i = 0; i < aBatchBodyResponse.length; i++) {
+												sRespondData += aBatchBodyResponse[i] + "--ejjeeffe0";
+											}
+											sRespondData += "--";
+											var mHeaders = {
+												'Content-Type' : "multipart/mixed; boundary=ejjeeffe0"
+											};
+											fnHandleXsrfTokenHeader(oXhr, mHeaders);
+											oXhr.respond(202, mHeaders, sRespondData);
+											jQuery.sap.log.debug("MockServer: response sent with: 202, " + sRespondData);
+											//no boundary is defined
+										} else {
+											oXhr.respond(202);
+										}
+									}
+								});
+
+						// add entity sets
+						jQuery
+								.each(
+										this._mEntitySets,
+										function(sEntitySetName, oEntitySet) {
+
+											// support $count requests on entity set
+											aRequests.push({
+												method : "GET",
+												path : new RegExp("(" + sEntitySetName + ")/\\$count/?(.*)?"),
+												response : function(oXhr, sEntitySetName, sUrlParams) {
+													jQuery.sap.log.debug("MockServer: incoming request for url: " + oXhr.url);
+													var mHeaders = {
+														"Content-Type" : "text/plain;charset=utf-8"
+													};
+													fnHandleXsrfTokenHeader(oXhr, mHeaders);
+													oXhr.respond(200, mHeaders, "" + that._oMockdata[sEntitySetName].length);
+													jQuery.sap.log.debug("MockServer: response sent with: 200, "
+															+ that._oMockdata[sEntitySetName].length);
+												}
+											});
+
+											// support entity set with and without OData system query options
+											aRequests
+													.push({
+														method : "GET",
+														path : new RegExp(
+																"("
+																		+ sEntitySetName
+																		+ ")/?(\\?(.*))?"),
+														response : function(oXhr, sEntitySetName, sUrlParams) {
+															jQuery.sap.log.debug("MockServer: incoming request for url: " + oXhr.url);
+															var mHeaders = {
+																	"Content-Type" : "application/json;charset=utf-8"
+															};
+															fnHandleXsrfTokenHeader(oXhr, mHeaders);
+															var aData = that._oMockdata[sEntitySetName];
+															if (aData) {
+																// using extend to copy the data to a new array
+																var oFilteredData = {
+																	results : jQuery.extend(true, [], aData)
+																};
+																if (sUrlParams) {
+																	// sUrlParams should not contains ?, but only & in its stead
+																	var aUrlParams = decodeURIComponent(sUrlParams).replace("?", "&").split("&");
+																	
+																	try {
+																		if (aUrlParams.length > 1) {
+																			aUrlParams = that._orderQueryOptions(aUrlParams);
+																		}
+																		jQuery.each(aUrlParams, function(iIndex, sQuery) {
+																			that._applyQueryOnCollection(oFilteredData, sQuery,
+																					sEntitySetName);
+																		});
+																	} catch (e) {
+																		oXhr.respond(parseInt(e.message || e.number, 10));
+																		return;
+																	}
+																}
+																oXhr.respond(200, mHeaders, JSON.stringify({
+																	d : oFilteredData
+																}));
+																jQuery.sap.log.debug("MockServer: response sent with: 200, "
+																		+ JSON.stringify({
+																			d : oFilteredData
+																		}));
+															} else {
+																oXhr.respond(404);
+																jQuery.sap.log.debug("MockServer: response sent with: 404");
+															}
+														}
+													});
+
+											// support access of a single entry of an entity set with and without OData system query options
+											aRequests
+													.push({
+														method : "GET",
+														path : new RegExp(
+																"("
+																		+ sEntitySetName
+																		+ ")\\(([^/\\?#]+)\\)/?(\\?(.*))?"),
+														response : function(oXhr, sEntitySetName, sKeys, sUrlParams) {
+															jQuery.sap.log.debug("MockServer: incoming request for url: " + oXhr.url);
+															var mHeaders = {
+																	"Content-Type" : "application/json;charset=utf-8"
+															};
+															fnHandleXsrfTokenHeader(oXhr, mHeaders);
+															var oEntry = jQuery
+																	.extend(true, {}, fnGetEntitySetEntry(sEntitySetName, sKeys));
+															if (!jQuery.isEmptyObject(oEntry)) {
+																if (sUrlParams) {
+																	// sUrlParams should not contains ?, but only & in its stead
+																	var aUrlParams = decodeURIComponent(sUrlParams).replace("?", "&").split("&");
+																	
+																	try {
+																		if (aUrlParams.length > 1) {
+																			aUrlParams = that._orderQueryOptions(aUrlParams);
+																		}
+
+																		jQuery.each(aUrlParams, function(iIndex, sQuery) {
+																			oEntry.entry = that._applyQueryOnEntry(oEntry.entry, sQuery,
+																					sEntitySetName);
+																		});
+																	} catch (e) {
+																		oXhr.respond(parseInt(e.message || e.number, 10));
+																		jQuery.sap.log.debug("MockServer: response sent with: "
+																				+ parseInt(e.message || e.number, 10));
+																		return;
+																	}
+																}
+																oXhr.respond(200, mHeaders, JSON.stringify({
+																	d : oEntry.entry
+																}));
+																jQuery.sap.log.debug("MockServer: response sent with: 200, "
+																		+ JSON.stringify({
+																			d : oEntry.entry
+																		}));
+															} else {
+																oXhr.respond(404);
+																jQuery.sap.log.debug("MockServer: response sent with: 404");
+															}
+														}
+													});
+
+											// support navigation property 
+											jQuery
+													.each(
+															oEntitySet.navprops,
+															function(sNavName, oNavProp) {
+																// support $count requests on navigation properties
+																aRequests.push({
+																	method : "GET",
+																	path : new RegExp("(" + sEntitySetName + ")\\(([^/\\?#]+)\\)/("
+																			+ sNavName + ")/\\$count/?(.*)?"),
+																	response : function(oXhr, sEntitySetName, sKeys, sNavProp, sUrlParams) {
+																		jQuery.sap.log.debug("MockServer: incoming request for url: "
+																				+ oXhr.url);
+																		var mHeaders = {
+																				"Content-Type" : "text/plain;charset=utf-8"
+																		};
+																		fnHandleXsrfTokenHeader(oXhr, mHeaders);
+																		var oEntry = fnGetEntitySetEntry(sEntitySetName, sKeys);
+																		if (oEntry) {
+																			var aEntries = that._resolveNavigation(sEntitySetName,
+																					oEntry.entry, sNavProp);
+																			oXhr.respond(200, mHeaders, "" + aEntries.length);
+																			jQuery.sap.log.debug("MockServer: response sent with: 200, "
+																					+ aEntries.length);
+
+																		} else {
+																			oXhr.respond(404);
+																			jQuery.sap.log.debug("MockServer: response sent with: 404");
+																		}
+																	}
+																});
+
+																// support access of navigation property with and without OData system query options
+																aRequests
+																		.push({
+																			method : "GET",
+																			path : new RegExp(
+																					"("
+																							+ sEntitySetName
+																							+ ")\\(([^/\\?#]+)\\)/("
+																							+ sNavName
+																							+ ")/?(\\?(.*))?"),
+																			response : function(oXhr, sEntitySetName, sKeys, sNavProp,
+																					sUrlParams) {
+																				jQuery.sap.log
+																						.debug("MockServer: incoming request for url: "
+																								+ oXhr.url);
+																				var mHeaders = {
+																						"Content-Type" : "application/json;charset=utf-8"
+																				};
+																				fnHandleXsrfTokenHeader(oXhr, mHeaders);
+																				var oEntry = fnGetEntitySetEntry(sEntitySetName,
+																						decodeURIComponent(sKeys));
+																				if (oEntry) {
+																					var aEntries, oFilteredData = {};
+																					try {
+																						aEntries = that._resolveNavigation(sEntitySetName,
+																								oEntry.entry, sNavProp);
+
+																						if (aEntries && aEntries.length !== 0) {
+																							var sMultiplicity = that._mEntitySets[sEntitySetName].navprops[sNavProp].to.multiplicity;
+																							if (sMultiplicity === "*") {
+																								oFilteredData = {
+																									results : jQuery.extend(true, [],
+																											aEntries)
+																								};
+																							} else {
+																								oFilteredData = jQuery.extend(true, {},
+																										aEntries[0]);
+																							}
+																							if (sUrlParams) {
+																								// sUrlParams should not contains ?, but only & in its stead
+																								var aUrlParams = decodeURIComponent(
+																										sUrlParams).replace("?", "&").split("&");
+
+																								if (aUrlParams.length > 1) {
+																									aUrlParams = that
+																											._orderQueryOptions(aUrlParams);
+																								}
+
+																								if (sMultiplicity === "*") {
+																									jQuery
+																											.each(
+																													aUrlParams,
+																													function(iIndex, sQuery) {
+																														that
+																																._applyQueryOnCollection(
+																																		oFilteredData,
+																																		sQuery,
+																																		that._mEntitySets[sEntitySetName].navprops[sNavProp].to.entitySet);
+																													});
+																								} else {
+																									jQuery
+																											.each(
+																													aUrlParams,
+																													function(iIndex, sQuery) {
+																														oFilteredData = that
+																																._applyQueryOnEntry(
+																																		oFilteredData,
+																																		sQuery,
+																																		that._mEntitySets[sEntitySetName].navprops[sNavProp].to.entitySet);
+																													});
+																								}
+																							}
+																						}
+																						oXhr
+																								.respond(
+																										200,
+																										mHeaders, JSON.stringify({
+																											d : oFilteredData
+																										}));
+																						jQuery.sap.log
+																								.debug("MockServer: response sent with: 200, "
+																										+ JSON.stringify({
+																											d : oFilteredData
+																										}));
+																						return;
+																					} catch (e) {
+																						oXhr.respond(parseInt(e.message || e.number, 10));
+																						jQuery.sap.log
+																								.debug("MockServer: response sent with: "
+																										+ parseInt(e.message || e.number,
+																												10));
+																						return;
+																					}
+																				}
+																				oXhr.respond(404);
+																				jQuery.sap.log.debug("MockServer: response sent with: 404");
+																			}
+																		});
+
+															});
+
+											// support creation of an entity of a specific type
+											aRequests.push({
+												method : "POST",
+												path : new RegExp("(" + sEntitySetName + ")(\\(([^/\\?#]+)\\)/?(.*)?)?"),
+												response : function(oXhr, sEntitySetName, group2, sKeys, sNavName) {
+													jQuery.sap.log.debug("MockServer: incoming create request for url: " + oXhr.url);
+													var sRespondData = null;
+													var sRespondContentType = null;
+													var iResult = 405; // default: method not allowed
+													var sTargetEntityName = fnResolveTargetEntityName(oEntitySet,
+															decodeURIComponent(sKeys), sNavName);
+													if (sTargetEntityName) {
+														var oEntity = initNewEntity(oXhr, sTargetEntityName, sKeys, sNavName);
+														if (oEntity) {
+															var sUri = that._getRootUri() + sTargetEntityName + "("
+																	+ that._createKeysString(that._mEntitySets[sTargetEntityName], oEntity)
+																	+ ")";
+															sRespondData = JSON.stringify({
+																d : oEntity,
+																uri : sUri
+															}); //'{"uri": "' + sUri + '" }';
+															sRespondContentType = {
+																"Content-Type" : "application/json;charset=utf-8"
+															};
+															that._oMockdata[sTargetEntityName] = that._oMockdata[sTargetEntityName]
+																	.concat([ oEntity ]);
+															iResult = 201;
+														}
+													}
+													oXhr.respond(iResult, sRespondContentType, sRespondData);
+													jQuery.sap.log
+															.debug("MockServer: response sent with: " + iResult + ", " + sRespondData);
+												}
+											});
+
+											// support update of an entity of a specific type
+											aRequests.push({
+												method : "PUT",
+												path : new RegExp("(" + sEntitySetName + ")\\(([^/\\?#]+)\\)/?(.*)?"),
+												response : function(oXhr, sEntitySetName, sKeys, sNavName) {
+													jQuery.sap.log.debug("MockServer: incoming update request for url: " + oXhr.url);
+													var iResult = 405; // default: method not allowed 
+													var sRespondData = null;
+													var sRespondContentType = null;
+
+													var sTargetEntityName = fnResolveTargetEntityName(oEntitySet,
+															decodeURIComponent(sKeys), sNavName);
+													if (sTargetEntityName) {
+														var oEntity = initNewEntity(oXhr, sTargetEntityName, sKeys, sNavName);
+														if (oEntity) {
+															var sUri = that._getRootUri() + sTargetEntityName + "("
+																	+ that._createKeysString(that._mEntitySets[sTargetEntityName], oEntity)
+																	+ ")";
+															sRespondContentType = {
+																"Content-Type" : "application/json;charset=utf-8"
+															};
+
+															var oExistingEntry = fnGetEntitySetEntry(sEntitySetName, sKeys);
+															if (oExistingEntry) { // Overwrite existing
+																that._oMockdata[sEntitySetName][oExistingEntry.index] = oEntity;
+															}
+															iResult = 204;
+														}
+													}
+													oXhr.respond(iResult, sRespondContentType, sRespondData);
+													jQuery.sap.log
+															.debug("MockServer: response sent with: " + iResult + ", " + sRespondData);
+												}
+											});
+
+											// support deletion of an entity of a specific type
+											aRequests.push({
+												method : "DELETE",
+												path : new RegExp("(" + sEntitySetName + ")\\(([^/\\?#]+)\\)/?(.*)?"),
+												response : function(oXhr, sEntitySetName, sKeys, sUrlParams) {
+													jQuery.sap.log.debug("MockServer: incoming delete request for url: " + oXhr.url);
+
+													var iResult = 200;
+													var oEntry = fnGetEntitySetEntry(sEntitySetName, decodeURIComponent(sKeys));
+													if (oEntry) {
+														that._oMockdata[sEntitySetName].splice(oEntry.index, 1);
+													} else {
+														iResult = 400;
+													}
+													oXhr.respond(iResult, null, null);
+													jQuery.sap.log.debug("MockServer: response sent with: " + iResult);
+												}
+											});
+
+										});
+
+						// apply the request handlers
+						this.setRequests(aRequests);
+
+					};
+
+					/**
+					 * Organize query options according to thier execution order
+					 * 
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_orderQueryOptions
+					 * @function
+					 */
+					MockServer.prototype._orderQueryOptions = function(aUrlParams) {
+						var iFilterIndex, iInlinecountIndex, iSkipIndex, iTopIndex, iOrderbyIndex, iSelectindex, iExpandIndex, iFormatIndex, aOrderedUrlParams = [];
+						jQuery.each(aUrlParams, function(iIndex, sQuery) {
+							switch (sQuery.split('=')[0]) {
+							case "$top":
+								iTopIndex = jQuery.inArray(sQuery, aUrlParams);
+								break;
+							case "$skip":
+								iSkipIndex = jQuery.inArray(sQuery, aUrlParams);
+								break;
+							case "$orderby":
+								iOrderbyIndex = jQuery.inArray(sQuery, aUrlParams);
+								break;
+							case "$filter":
+								iFilterIndex = jQuery.inArray(sQuery, aUrlParams);
+								break;
+							case "$select":
+								iSelectindex = jQuery.inArray(sQuery, aUrlParams);
+								break;
+							case "$inlinecount":
+								iInlinecountIndex = jQuery.inArray(sQuery, aUrlParams);
+								break;
+							case "$expand":
+								iExpandIndex = jQuery.inArray(sQuery, aUrlParams);
+								break;
+							case "$format":
+								iFormatIndex = jQuery.inArray(sQuery, aUrlParams);
+								break;
+							default: 
+								if(sQuery.split('=')[0].indexOf('$') === 0) {
+									jQuery.sap.log.error("Invalid system query options value!");
+									throw new Error("400");
+								}
+							}
+						});
+
+						if (iFilterIndex >= 0)
+							aOrderedUrlParams.push(aUrlParams[iFilterIndex]);
+						if (iInlinecountIndex >= 0)
+							aOrderedUrlParams.push(aUrlParams[iInlinecountIndex]);
+						if (iSkipIndex >= 0)
+							aOrderedUrlParams.push(aUrlParams[iSkipIndex]);
+						if (iTopIndex >= 0)
+							aOrderedUrlParams.push(aUrlParams[iTopIndex]);
+						if (iSelectindex >= 0)
+							aOrderedUrlParams.push(aUrlParams[iSelectindex]);
+						if (iOrderbyIndex >= 0)
+							aOrderedUrlParams.push(aUrlParams[iOrderbyIndex]);
+						if (iExpandIndex >= 0)
+							aOrderedUrlParams.push(aUrlParams[iExpandIndex]);
+						if (iFormatIndex >= 0)
+							aOrderedUrlParams.push(aUrlParams[iFormatIndex]);
+
+						return aOrderedUrlParams;
+					};
+
+					/**
+					 * Removes all request handlers.
+					 * 
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_removeAllRequestHandlers
+					 * @function
+					 */
+					MockServer.prototype._removeAllRequestHandlers = function() {
+						var aRequests = this.getRequests();
+						var iLength = aRequests.length;
+						for ( var i = 0; i < iLength; i++) {
+							MockServer._removeResponse(aRequests[i].response);
+						}
+					};
+
+					/**
+					 * Removes all filters.
+					 * 
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_removeAllFilters
+					 * @function
+					 */
+					MockServer.prototype._removeAllFilters = function() {
+						for ( var i = 0; i < this._aFilters.length; i++) {
+							MockServer._removeFilter(this._aFilters[i]);
+						}
+						this._aFilters = null;
+					};
+
+					/**
+					 * Adds a request handler to the server, based on the given configuration.
+					 * 
+					 * @param {string}
+					 *          sMethod HTTP verb to use for this method (e.g. GET, POST, PUT, DELETE...)
+					 * @param {string|regexp}
+					 *          sPath the path of the URI (will be concatenated with the rootUri)
+					 * @param {function}
+					 *          fnResponse the response function to call when the request occurs
+					 * 
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_addRequestHandler
+					 * @function
+					 */
+					MockServer.prototype._addRequestHandler = function(sMethod, sPath, fnResponse) {
+						sMethod = sMethod ? sMethod.toUpperCase() : sMethod;
+						if (typeof sMethod !== "string") {
+							throw new Error("Error in request configuration: value of 'method' has to be a string");
+						}
+						if (!(typeof sPath === "string" || sPath instanceof RegExp)) {
+							throw new Error("Error in request configuration: value of 'path' has to be a string or a regular expression");
+						}
+						if (typeof fnResponse !== "function") {
+							throw new Error("Error in request configuration: value of 'response' has to be a function");
+						}
+
+						var sUri = this._getRootUri();
+
+						// create the URI regexp (will be escaped)
+						sUri = sUri && new RegExp(this._escapeStringForRegExp(sUri));
+
+						// create the path regexp (will have the special regexp encoding)
+						if (sPath && !(sPath instanceof RegExp)) {
+							sPath = new RegExp(this._createRegExpPattern(sPath));
+						}
+
+						// create the regexp for the request handler (concat root uri and path)
+						var oRegExp = this._createRegExp(sUri ? sUri.source + sPath.source : sPath.source);
+
+						this._addFilter(this._createFilter(sMethod, oRegExp));
+						this._oServer.respondWith(sMethod, oRegExp, fnResponse);
+
+						// some debug logging to see what is registered and how the regex look like
+						jQuery.sap.log.debug("MockServer: adding " + sMethod + " request handler for pattern " + oRegExp);
+
+					};
+
+					/**
+					 * Creates a regular expression based on a given pattern.
+					 * 
+					 * @param {string} sPattern the pattern to use for the regular expression.
+					 * @return {RegExp} the created regular expression.
+					 * 
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_createRegExp
+					 * @function
+					 */
+					MockServer.prototype._createRegExp = function(sPattern) {
+						return new RegExp("^" + sPattern + "$");
+					};
+
+					/**
+					 * Creates a regular expression pattern. All <code>:param</code> are replaced 
+					 * by regular expression groups.
+					 * 
+					 * @return {string} the created regular expression pattern.
+					 * 
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_createRegExpPattern
+					 * @function
+					 */
+					MockServer.prototype._createRegExpPattern = function(sPattern) {
+						return sPattern.replace(/:([\w\d]+)/g, "([^\/]+)");
+					};
+
+					/**
+					 * Converts a string into a regular expression. Escapes all regexp critical 
+					 * characters.
+					 * 
+					 * @return {string} the created regular expression pattern.
+					 * 
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_escapeStringForRegExp
+					 * @function
+					 */
+					MockServer.prototype._escapeStringForRegExp = function(sString) {
+						return sString.replace(/[\\\/\[\]\{\}\(\)\-\*\+\?\.\^\$\|]/g, "\\$&");
+					};
+					//
+
+					/**
+					 * Creates a trim string
+					 * 
+					 * @return {string} the trimmed string.
+					 * 
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_trim
+					 * @function
+					 */
+					MockServer.prototype._trim = function(sString) {
+						return sString && sString.replace(/^\s+|\s+$/g, "");
+					};
 					
-					var sTargetEntityName = fnResolveTargetEntityName(oEntitySet, decodeURIComponent(sKeys), sNavName);
-					if (sTargetEntityName) {
-						var oEntity = initNewEntity(oXhr, sTargetEntityName, sKeys, sNavName);
-						if (oEntity) {
-							var sUri = that._getRootUri() + sTargetEntityName + "(" + that._createKeysString(that._mEntitySets[sTargetEntityName], oEntity) + ")";
-							//sRespondData = '{"uri": "' + sUri + '" }';
-							sRespondContentType = {"Content-Type": "application/json;charset=utf-8"};
-							
-							var oExistingEntry = fnGetEntitySetEntry(sEntitySetName, sKeys);
-							if (oExistingEntry) { // Overwrite existing
-								that._oMockdata[sEntitySetName][oExistingEntry.index] = oEntity;
-							} 
-//							else { // really new //TODO don't allow creation of new entries with PUT
-//								that._oMockdata[sTargetEntityName] = that._oMockdata[sTargetEntityName].concat([oEntity]);
-//							}
-							iResult = 204; 
+					/**
+					 * Checks is the string is a valid number
+					 * 
+					 * @return {boolean} true if the string can be converted to a valid number
+					 * 
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_isValidNumber
+					 * @function
+					 */
+					MockServer.prototype._isValidNumber = function(sString) {
+						return !isNaN(parseFloat(sString)) && isFinite(sString);
+					};
+
+					/**
+					 * Converts a JSON format date string into a datetime format string.
+					 * 
+					 * @return {string} the date.
+					 * 
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_getDateTime
+					 * @function
+					 */
+					MockServer.prototype._getDateTime = function(sString) {
+						if (!sString)
+							return;
+						return "datetime'" + new Date(Number(sString.replace("/Date(", '').replace(")/", ''))).toJSON().substring(0, 19)
+								+ "'";
+
+					};
+					
+					/**
+					 * Converts a datetime format date string into a JSON date format string.
+					 * 
+					 * @return {string} the date.
+					 * 
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_getJsonDate
+					 * @function
+					 */
+					MockServer.prototype._getJsonDate = function(sString) {
+						if (!sString)
+							return;
+						var fnNoOffset = function(s) {
+							var day = jQuery.map(s.slice(0,-5).split(/\D/),function(itm){
+							    return parseInt(itm, 10) || 0;
+							  });
+							  day[1]-= 1;
+							  day= new Date(Date.UTC.apply(Date, day));  
+							  var offsetString = s.slice(-5);
+							  var offset = parseInt(offsetString,10)/100;
+							  if (offsetString.slice(0,1)==="+") {
+								  offset*=-1;
+							  }
+							  day.setHours(day.getHours()+offset);
+							  return day.getTime();
+							};
+						return "/Date(" + fnNoOffset(sString.substring("datetime'".length, sString.length - 1)) + ")/";
+					};
+
+					/**
+					 * Adds a filter function. The filter determines whether to fake a response or not. When the filter function
+					 * returns true, the request will be faked.
+					 * 
+					 * @param {function} fnFilter the filter function to add
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_addFilter
+					 * @function
+					 */
+					MockServer.prototype._addFilter = function(fnFilter) {
+						this._aFilters.push(fnFilter);
+						MockServer._addFilter(fnFilter);
+					};
+
+					/**
+					 * Creates and returns a filter filter function.
+					 * 
+					 * @param {string} sRequestMethod HTTP verb to use for this method (e.g. GET, POST, PUT, DELETE...)
+					 * @param {RegExp} oRegExp the regular expression to use for this filter
+					 * 
+					 * @private
+					 * @name sap.ui.core.util.MockServer#_createFilter
+					 * @function
+					 */
+					MockServer.prototype._createFilter = function(sRequestMethod, oRegExp) {
+						return function(sMethod, sUri, bAsync, sUsername, sPassword) {
+							return sRequestMethod === sMethod && oRegExp.test(sUri);
+						};
+					};
+
+					/**
+					 * Cleans up the resources associated with this object and all its aggregated children.
+					 *
+					 * After an object has been destroyed, it can no longer be used in!
+					 *
+					 * Applications should call this method if they don't need the object any longer.
+					 *
+					 * @see sap.ui.base.ManagedObject#destroy
+					 * @param {boolean}
+					 *            [bSuppressInvalidate] if true, this ManagedObject is not marked as changed
+					 * @public
+					 * @name sap.ui.core.util.MockServer#destroy
+					 * @function
+					 */
+					MockServer.prototype.destroy = function(bSuppressInvalidate) {
+						ManagedObject.prototype.destroy.apply(this, arguments);
+						this.stop();
+						var aServers = MockServer._aServers;
+						var iIndex = jQuery.inArray(this, aServers);
+						aServers.splice(iIndex, 1);
+					};
+
+					// =======
+					// STATICS
+					// =======
+
+					MockServer._aFilters = [];
+					MockServer._oServer = null;
+					MockServer._aServers = [];
+
+					/**
+					 * Returns the instance of the sinon fake server.
+					 * 
+					 * @return {object} the server instance
+					 * @private
+					 * @name sap.ui.core.util.MockServer._getInstance
+					 * @function
+					 */
+					MockServer._getInstance = function() {
+						// We can not create many fake servers, see bug https://github.com/cjohansen/Sinon.JS/issues/211
+						// This is why we reuse the server and patch it manually
+						if (!this._oServer) {
+							this._oServer = window.sinon.fakeServer.create();
+							this._oServer.autoRespond = true;
 						}
-					} 
-					oXhr.respond(iResult, sRespondContentType, sRespondData);  
-					jQuery.sap.log.debug("MockServer: response sent with: " + iResult + ", " + sRespondData);
-				}
-			});
-			
-			// support deletion of an entity of a specific type
-			aRequests.push({
-				method : "DELETE",
-				path : new RegExp("(" + sEntitySetName + ")\\(([^/\\?#]+)\\)/?(.*)?"),
-				response : function(oXhr, sEntitySetName, sKeys, sUrlParams) {
-					jQuery.sap.log.debug("MockServer: incoming request for url: " + oXhr.url);
+						return this._oServer;
+					};
 
-					var iResult = 200; 
-					var oEntry = fnGetEntitySetEntry(sEntitySetName, decodeURIComponent(sKeys));
-					if (oEntry) {
-						that._oMockdata[sEntitySetName].splice(oEntry.index, 1);
-					} else {
-						iResult = 400;
-					}
-					oXhr.respond(iResult, null, null);
-					jQuery.sap.log.debug("MockServer: response sent with: " + iResult);
-				}
-			});
-			
-		});
-		
-		// apply the request handlers
-		this.setRequests(aRequests);
-		
-	};
+					/**
+					 * Global configuration of all mock servers.
+					 * 
+					 * @param {object} mConfig the configuration object.
+					 * @param {boolean} [mConfig.autoRespond=true] If set true, all mock servers will respond automatically. If set false you have to call {@link sap.ui.core.util.MockServer#respond} method for response.
+					 * @param {int} [mConfig.autoRespondAfter=0] the time in ms after all mock servers should send their response. 
+					 * @param {boolean} [mConfig.fakeHTTPMethods=false] If set to true, all mock server will find <code>_method</code> parameter in the POST body and use this to override the the actual method. 
+					 * @name sap.ui.core.util.MockServer.config
+					 * @function
+					 */
+					MockServer.config = function(mConfig) {
+						var oServer = this._getInstance();
 
+						oServer.autoRespond = mConfig.autoRespond === false ? false : true;
+						oServer.autoRespondAfter = mConfig.autoRespondAfter || 0;
+						oServer.fakeHTTPMethods = mConfig.fakeHTTPMethods || false;
+					};
 
-	/**
-	 * Organize query options according to thier execution order
-	 * 
-	 * @private
-	 * @name sap.ui.core.util.MockServer#_orderQueryOptions
-	 * @function
-	 */
-	MockServer.prototype._orderQueryOptions = function(aUrlParams) {	
-		var iFilterIndex, iInlinecountIndex, iSkipIndex, iTopIndex,  iOrderbyIndex, iSelectindex, iExpandIndex, iFormatIndex, aOrderedUrlParams = [];
-		jQuery.each(aUrlParams, function(iIndex, sQuery) {
-			switch (sQuery.split('=')[0]) {
-				case "top": iTopIndex = jQuery.inArray(sQuery, aUrlParams); break;			
-				case "skip": iSkipIndex = jQuery.inArray(sQuery, aUrlParams); break;			
-				case "orderby": iOrderbyIndex = jQuery.inArray(sQuery, aUrlParams); break;		
-				case "filter": iFilterIndex = jQuery.inArray(sQuery, aUrlParams); break;		
-				case "select": iSelectindex = jQuery.inArray(sQuery, aUrlParams); break;
-				case "inlinecount": iInlinecountIndex = jQuery.inArray(sQuery, aUrlParams); break;
-				case "expand": iExpandIndex = jQuery.inArray(sQuery, aUrlParams); break;
-				case "format": iFormatIndex = jQuery.inArray(sQuery, aUrlParams); break;
-			}
-		});	
-		
-		if (iFilterIndex >= 0) aOrderedUrlParams.push(aUrlParams[iFilterIndex]);
-		if (iInlinecountIndex >= 0) aOrderedUrlParams.push(aUrlParams[iInlinecountIndex]);
-		if (iSkipIndex >= 0) aOrderedUrlParams.push(aUrlParams[iSkipIndex]);
-		if (iTopIndex >= 0) aOrderedUrlParams.push(aUrlParams[iTopIndex]);
-		if (iSelectindex >= 0) aOrderedUrlParams.push(aUrlParams[iSelectindex]);
-		if (iOrderbyIndex >= 0) aOrderedUrlParams.push(aUrlParams[iOrderbyIndex]);
-		if (iExpandIndex >= 0) aOrderedUrlParams.push(aUrlParams[iExpandIndex]);
-		if (iFormatIndex >= 0) aOrderedUrlParams.push(aUrlParams[iFormatIndex]);
-		
-		return aOrderedUrlParams;
-	};
-	
-	
-	/**
-	 * Removes all request handlers.
-	 * 
-	 * @private
-	 * @name sap.ui.core.util.MockServer#_removeAllRequestHandlers
-	 * @function
-	 */
-	MockServer.prototype._removeAllRequestHandlers = function() {
-		var aRequests = this.getRequests();
-		var iLength = aRequests.length;
-		for (var i = 0; i < iLength; i++) {
-			MockServer._removeResponse(aRequests[i].response);
-		}
-	};
+					/**
+					 * Respond to a request, when the servers are configured not to automatically respond.
+					 * @name sap.ui.core.util.MockServer.respond
+					 * @function
+					 */
+					MockServer.respond = function() {
+						this._getInstance().respond();
+					};
 
+					/**
+					 * Starts all registered servers.
+					 * @name sap.ui.core.util.MockServer.startAll
+					 * @function
+					 */
+					MockServer.startAll = function() {
+						for ( var i = 0; i < this._aServers.length; i++) {
+							this._aServers[i].start();
+						}
+					};
 
-	/**
-	 * Removes all filters.
-	 * 
-	 * @private
-	 * @name sap.ui.core.util.MockServer#_removeAllFilters
-	 * @function
-	 */
-	MockServer.prototype._removeAllFilters = function() {
-		for (var i = 0; i < this._aFilters.length; i++) {
-			MockServer._removeFilter(this._aFilters[i]);
-		}
-		this._aFilters = null;
-	};
+					/**
+					 * Stops all registered servers.
+					 * @name sap.ui.core.util.MockServer.stopAll
+					 * @function
+					 */
+					MockServer.stopAll = function() {
+						for ( var i = 0; i < this._aServers.length; i++) {
+							this._aServers[i].stop();
+						}
+						this._getInstance().restore();
+						this._oServer = null;
+					};
 
+					/**
+					 * Stops and calls destroy on all registered servers. Use this method for cleaning up.
+					 * @name sap.ui.core.util.MockServer.destroyAll
+					 * @function
+					 */
+					MockServer.destroyAll = function() {
+						this.stopAll();
+						for ( var i = 0; i < this._aServers.length; i++) {
+							this._aServers[i].destroy();
+						}
+					};
 
-	/**
-	 * Adds a request handler to the server, based on the given configuration.
-	 * 
-	 * @param {string}
-	 *          sMethod HTTP verb to use for this method (e.g. GET, POST, PUT, DELETE...)
-	 * @param {string|regexp}
-	 *          sPath the path of the URI (will be concatenated with the rootUri)
-	 * @param {function}
-	 *          fnResponse the response function to call when the request occurs
-	 * 
-	 * @private
-	 * @name sap.ui.core.util.MockServer#_addRequestHandler
-	 * @function
-	 */
-	MockServer.prototype._addRequestHandler = function(sMethod, sPath, fnResponse) {
-		sMethod = sMethod ? sMethod.toUpperCase() : sMethod;
-		if (typeof sMethod !== "string") {
-			throw new Error("Error in request configuration: value of 'method' has to be a string");
-		}
-		if (!(typeof sPath === "string" || sPath instanceof RegExp)) {
-			throw new Error("Error in request configuration: value of 'path' has to be a string or a regular expression");
-		}
-		if (typeof fnResponse !== "function") {
-			throw new Error("Error in request configuration: value of 'response' has to be a function");
-		}
+					/**
+					 * Adds a filter function. The filter determines whether to fake a response or not. When the filter function
+					 * returns true, the request will be faked.
+					 * 
+					 * @param {function} fnFilter the filter function to add
+					 * @private
+					 * @name sap.ui.core.util.MockServer._addFilter
+					 * @function
+					 */
+					MockServer._addFilter = function(fnFilter) {
+						this._aFilters.push(fnFilter);
+					};
 
-		var sUri = this._getRootUri();
-		
-		// create the URI regexp (will be escaped)
-		sUri = sUri && new RegExp(this._escapeStringForRegExp(sUri));
-		
-		// create the path regexp (will have the special regexp encoding)
-		if (sPath && !(sPath instanceof RegExp)) {
-			sPath = new RegExp(this._createRegExpPattern(sPath));
-		}
-		
-		// create the regexp for the request handler (concat root uri and path)
-		var oRegExp = this._createRegExp(sUri ? sUri.source + sPath.source : sPath.source);
+					/**
+					 * Removes a filter function.
+					 * 
+					 * @param {function} fnFilter the filter function to remove
+					 * @return {boolean} whether the filter was removed or not
+					 * @private
+					 * @name sap.ui.core.util.MockServer._removeFilter
+					 * @function
+					 */
+					MockServer._removeFilter = function(fnFilter) {
+						var iIndex = jQuery.inArray(fnFilter, this._aFilters);
+						if (iIndex !== -1) {
+							this._aFilters.splice(iIndex, 1);
+						}
+						return iIndex !== -1;
+					};
 
-		this._addFilter(this._createFilter(sMethod, oRegExp));
-		this._oServer.respondWith(sMethod, oRegExp, fnResponse);
+					/**
+					 * Removes a response from the real sinon fake server object
+					 *
+					 * @param {function} fnResponse the response function to remove
+					 * @return {boolean} whether the response was removed or not
+					 * @private
+					 * @name sap.ui.core.util.MockServer._removeResponse
+					 * @function
+					 */
+					MockServer._removeResponse = function(fnResponse) {
+						var aResponses = this._oServer.responses;
+						var iLength = aResponses.length;
+						for ( var i = 0; i < iLength; i++) {
+							if (aResponses[i].response === fnResponse) {
+								aResponses.splice(i, 1);
+								return true;
+							}
+						}
+						return false;
+					};
 
-		// some debug logging to see what is registered and how the regex look like
-		jQuery.sap.log.debug("MockServer: adding " + sMethod + " request handler for pattern " + oRegExp);
-		
-	};
+					// ================================
+					// SINON CONFIGURATON AND EXTENSION
+					// ================================
 
+					window.sinon.FakeXMLHttpRequest.useFilters = true;
 
-	/**
-	 * Creates a regular expression based on a given pattern.
-	 * 
-	 * @param {string} sPattern the pattern to use for the regular expression.
-	 * @return {RegExp} the created regular expression.
-	 * 
-	 * @private
-	 * @name sap.ui.core.util.MockServer#_createRegExp
-	 * @function
-	 */
-	MockServer.prototype._createRegExp = function(sPattern) {
-		return new RegExp("^" + sPattern + "$");
-	};
+					window.sinon.FakeXMLHttpRequest.addFilter(function(sMethod, sUri, bAsync, sUsername, sPassword) {
+						var aFilters = MockServer._aFilters;
+						for ( var i = 0; i < aFilters.length; i++) {
+							var fnFilter = aFilters[i];
+							if (fnFilter(sMethod, sUri, bAsync, sUsername, sPassword)) {
+								return false;
+							}
+						}
+						return true;
+					});
 
+					var getMimeType = function(sFileName) {
+						if (/.*\.json$/i.test(sFileName)) {
+							return "JSON";
+						}
+						if (/.*\.xml$/i.test(sFileName)) {
+							return "XML";
+						}
+						if (/.*metadata$/i.test(sFileName)) {
+							// This is needed in case the metadata comes from a
+							// local file otherwise it's interpreted as octetstream
+							return "XML";
+						}
+						return null;
+					};
 
-	/**
-	 * Creates a regular expression pattern. All <code>:param</code> are replaced 
-	 * by regular expression groups.
-	 * 
-	 * @return {string} the created regular expression pattern.
-	 * 
-	 * @private
-	 * @name sap.ui.core.util.MockServer#_createRegExpPattern
-	 * @function
-	 */
-	MockServer.prototype._createRegExpPattern = function(sPattern) {
-		return sPattern.replace(/:([\w\d]+)/g, "([^\/]+)");
-	};
+					/**
+					 * @param {int} iStatus
+					 * @param {object} mHeaders
+					 * @param {string} sFileUrl
+					 * @public
+					 */
+					window.sinon.FakeXMLHttpRequest.prototype.respondFile = function(iStatus, mHeaders, sFileUrl) {
+						var oResponse = jQuery.sap.sjax({
+							url : sFileUrl,
+							dataType : "text"
+						});
+						if (!oResponse.success)
+							throw new Error("Could not load file from: " + sFileUrl);
 
-	/**
-	 * Converts a string into a regular expression. Escapes all regexp critical 
-	 * characters.
-	 * 
-	 * @return {string} the created regular expression pattern.
-	 * 
-	 * @private
-	 * @name sap.ui.core.util.MockServer#_escapeStringForRegExp
-	 * @function
-	 */
-	MockServer.prototype._escapeStringForRegExp = function(sString) {
-		return sString.replace(/[\\\/\[\]\{\}\(\)\-\*\+\?\.\^\$\|]/g, "\\$&");
-	};
-	//
-	
-	/**
-	 * Creates a trim string
-	 * 
-	 * @return {string} the trimmed string.
-	 * 
-	 * @private
-	 * @name sap.ui.core.util.MockServer#_trim
-	 * @function
-	 */
-	MockServer.prototype._trim = function(sString) {
-		return sString && sString.replace(/^\s+|\s+$/g, "");
-	};
-	
-	/**
-	 * Parses an ISO format date string into a valid date object.
-	 * 
-	 * @return {Date} the date.
-	 * 
-	 * @private
-	 * @name sap.ui.core.util.MockServer#_getDateInMin
-	 * @function
-	 */
-	MockServer.prototype._getDateInMin = function(sString) {
-		if(!sString) return;
-		return "datetime'" + new Date(Number(sString.replace("/Date(",'').replace(")/",''))).toJSON().substring(0,19) + "'";			
-		
-	}
+						var oData = oResponse.data;
+						var sMimeType = getMimeType(sFileUrl);
 
-	/**
-	 * Adds a filter function. The filter determines whether to fake a response or not. When the filter function
-	 * returns true, the request will be faked.
-	 * 
-	 * @param {function} fnFilter the filter function to add
-	 * @private
-	 * @name sap.ui.core.util.MockServer#_addFilter
-	 * @function
-	 */
-	MockServer.prototype._addFilter = function(fnFilter) {
-		this._aFilters.push(fnFilter)
-		MockServer._addFilter(fnFilter);
-	};
+						if (this["respond" + sMimeType]) {
+							this["respond" + sMimeType](iStatus, mHeaders, oData);
+						} else {
+							this.respond(iStatus, mHeaders, oData);
+						}
+					};
 
+					/**
+					 * @param {int} iStatus
+					 * @param {object} mHeaders
+					 * @param {object} oJSONData
+					 * @public
+					 */
+					window.sinon.FakeXMLHttpRequest.prototype.respondJSON = function(iStatus, mHeaders, oJSONData) {
+						mHeaders = mHeaders || {};
+						mHeaders["Content-Type"] = mHeaders["Content-Type"] || "application/json";
+						this.respond(iStatus, mHeaders, typeof oJSONData === "string" ? oJSONData : JSON.stringify(oJSONData));
+					};
 
-	/**
-	 * Creates and returns a filter filter function.
-	 * 
-	 * @param {string} sRequestMethod HTTP verb to use for this method (e.g. GET, POST, PUT, DELETE...)
-	 * @param {RegExp} oRegExp the regular expression to use for this filter
-	 * 
-	 * @private
-	 * @name sap.ui.core.util.MockServer#_createFilter
-	 * @function
-	 */
-	MockServer.prototype._createFilter = function(sRequestMethod, oRegExp) {
-		return function(sMethod, sUri, bAsync, sUsername, sPassword) {
-			return sRequestMethod === sMethod && oRegExp.test(sUri);
-		}
-	};
+					/**
+					 * @param {int} iStatus
+					 * @param {object} mHeaders
+					 * @param {string} sXmlData
+					 * @public
+					 */
+					window.sinon.FakeXMLHttpRequest.prototype.respondXML = function(iStatus, mHeaders, sXmlData) {
+						mHeaders = mHeaders || {};
+						mHeaders["Content-Type"] = mHeaders["Content-Type"] || "application/xml";
+						this.respond(iStatus, mHeaders, sXmlData);
+					};
 
+					return MockServer;
 
-	/**
-	 * Cleans up the resources associated with this object and all its aggregated children.
-	 *
-	 * After an object has been destroyed, it can no longer be used in!
-	 *
-	 * Applications should call this method if they don't need the object any longer.
-	 *
-	 * @see sap.ui.base.ManagedObject#destroy
-	 * @param {boolean}
-	 *            [bSuppressInvalidate] if true, this ManagedObject is not marked as changed
-	 * @public
-	 * @name sap.ui.core.util.MockServer#destroy
-	 * @function
-	 */
-	MockServer.prototype.destroy = function(bSuppressInvalidate) {
-		ManagedObject.prototype.destroy.apply(this, arguments);
-		this.stop();
-		var aServers = MockServer._aServers;
-		var iIndex = jQuery.inArray(this, aServers);
-		aServers.splice(iIndex, 1);
-	};
-
-
-	// =======
-	// STATICS
-	// =======
-	
-	MockServer._aFilters = [];
-	MockServer._oServer = null;
-	MockServer._aServers = [];
-
-	/**
-	 * Returns the instance of the sinon fake server.
-	 * 
-	 * @return {object} the server instance
-	 * @private
-	 * @name sap.ui.core.util.MockServer._getInstance
-	 * @function
-	 */
-	MockServer._getInstance = function() {
-		// We can not create many fake servers, see bug https://github.com/cjohansen/Sinon.JS/issues/211
-		// This is why we reuse the server and patch it manually
-		if (!this._oServer) {
-			this._oServer = window.sinon.fakeServer.create();
-			this._oServer.autoRespond = true;
-		}
-		return this._oServer;
-	};
-
-
-	/**
-	 * Global configuration of all mock servers.
-	 * 
-	 * @param {object} mConfig the configuration object.
-	 * @param {boolean} [mConfig.autoRespond=true] If set true, all mock servers will respond automatically. If set false you have to call {@link sap.ui.core.util.MockServer#respond} method for response.
-	 * @param {int} [mConfig.autoRespondAfter=0] the time in ms after all mock servers should send their response. 
-	 * @param {boolean} [mConfig.fakeHTTPMethods=false] If set to true, all mock server will find <code>_method</code> parameter in the POST body and use this to override the the actual method. 
-	 * @name sap.ui.core.util.MockServer.config
-	 * @function
-	 */
-	MockServer.config = function(mConfig) {
-		var oServer = this._getInstance();
-
-		oServer.autoRespond = mConfig.autoRespond === false ? false : true;
-		oServer.autoRespondAfter = mConfig.autoRespondAfter || 0;
-		oServer.fakeHTTPMethods = mConfig.fakeHTTPMethods || false;
-	};
-
-
-	/**
-	 * Respond to a request, when the servers are configured not to automatically respond.
-	 * @name sap.ui.core.util.MockServer.respond
-	 * @function
-	 */
-	MockServer.respond = function() {
-		this._getInstance().respond();
-	};
-
-
-	/**
-	 * Starts all registered servers.
-	 * @name sap.ui.core.util.MockServer.startAll
-	 * @function
-	 */
-	MockServer.startAll = function() {
-		for (var i=0; i < this._aServers.length; i++) {
-			this._aServers[i].start();
-		}
-	};
-
-
-	/**
-	 * Stops all registered servers.
-	 * @name sap.ui.core.util.MockServer.stopAll
-	 * @function
-	 */
-	MockServer.stopAll = function() {
-		for (var i=0; i < this._aServers.length; i++) {
-			this._aServers[i].stop();
-		}
-		this._getInstance().restore();
-		this._oServer = null;
-	};
-
-
-	/**
-	 * Stops and calls destroy on all registered servers. Use this method for cleaning up.
-	 * @name sap.ui.core.util.MockServer.destroyAll
-	 * @function
-	 */
-	MockServer.destroyAll = function() {
-		this.stopAll();
-		for (var i=0; i < this._aServers.length; i++) {
-			this._aServers[i].destroy();
-		}
-	};
-
-
-	/**
-	 * Adds a filter function. The filter determines whether to fake a response or not. When the filter function
-	 * returns true, the request will be faked.
-	 * 
-	 * @param {function} fnFilter the filter function to add
-	 * @private
-	 * @name sap.ui.core.util.MockServer._addFilter
-	 * @function
-	 */
-	MockServer._addFilter = function(fnFilter) {
-		this._aFilters.push(fnFilter);
-	};
-
-
-	/**
-	 * Removes a filter function.
-	 * 
-	 * @param {function} fnFilter the filter function to remove
-	 * @return {boolean} whether the filter was removed or not
-	 * @private
-	 * @name sap.ui.core.util.MockServer._removeFilter
-	 * @function
-	 */
-	MockServer._removeFilter = function(fnFilter) {
-		var iIndex = jQuery.inArray(fnFilter, this._aFilters);
-		if (iIndex !== -1) {
-			this._aFilters.splice(iIndex, 1);
-		}
-		return iIndex !== -1;
-	};
-
-
-	/**
-	 * Removes a response from the real sinon fake server object
-	 *
-	 * @param {function} fnResponse the response function to remove
-	 * @return {boolean} whether the response was removed or not
-	 * @private
-	 * @name sap.ui.core.util.MockServer._removeResponse
-	 * @function
-	 */
-	MockServer._removeResponse = function(fnResponse) {
-		var aResponses = this._oServer.responses;
-		var iLength = aResponses.length;
-		for (var i = 0; i < iLength; i++) {
-			if (aResponses[i].response === fnResponse) {
-				aResponses.splice(i, 1);
-				return true;
-			}
-		}
-		return false;
-	};
-
-	// ================================
-	// SINON CONFIGURATON AND EXTENSION
-	// ================================
-
-	window.sinon.FakeXMLHttpRequest.useFilters = true;
-
-	window.sinon.FakeXMLHttpRequest.addFilter(function(sMethod, sUri, bAsync, sUsername, sPassword) {
-		var aFilters = MockServer._aFilters;
-		for (var i = 0; i < aFilters.length; i++) {
-			var fnFilter = aFilters[i];
-			if (fnFilter(sMethod, sUri, bAsync, sUsername, sPassword)) {
-				return false;
-			}
-		}
-		return true;
-	});
-
-	var getMimeType = function(sFileName) {
-		if (/.*\.json$/i.test(sFileName)) {
-			return "JSON";
-		}
-		if (/.*\.xml$/i.test(sFileName)) {
-			return "XML";
-		}
-		if (/.*metadata$/i.test(sFileName)) {
-			// This is needed in case the metadata comes from a
-			// local file otherwise it's interpreted as octetstream
-			return "XML";
-		}
-		return null;
-	};
-
-	/**
-	 * @public
-	 */
-	window.sinon.FakeXMLHttpRequest.prototype.respondFile = function(iStatus, mHeaders, sFileUrl) {
-		var oResponse = jQuery.sap.sjax({url:sFileUrl, dataType:"text"});
-		if (!oResponse.success) throw new Error("Could not load file from: " + sFileUrl);
-
-		var oData = oResponse.data;
-		var sMimeType = getMimeType(sFileUrl);
-
-		if (this["respond" + sMimeType]) {
-			this["respond" + sMimeType](iStatus, mHeaders, oData);
-		} else {
-			this.respond(iStatus, mHeaders, oData);
-		}
-	};
-
-	/**
-	 * @public
-	 */
-	window.sinon.FakeXMLHttpRequest.prototype.respondJSON = function(iStatus, mHeaders, oJSONData) {
-		mHeaders = mHeaders || {};
-		mHeaders["Content-Type"] = mHeaders["Content-Type"] || "application/json";
-		this.respond(iStatus, mHeaders, typeof oJSONData === "string" ? oJSONData : JSON.stringify(oJSONData));
-	};
-
-	/**
-	 * @public
-	 */
-	window.sinon.FakeXMLHttpRequest.prototype.respondXML = function(iStatus, mHeaders, sXmlData) {
-		mHeaders = mHeaders || {};
-		mHeaders["Content-Type"] = mHeaders["Content-Type"] || "application/xml";
-		this.respond(iStatus, mHeaders, sXmlData);
-	};
-
-	return MockServer;
-
-}, /* bExport= */ true);
+				}, /* bExport= */true);
 
 }; // end of sap/ui/core/util/MockServer.js
 if ( !jQuery.sap.isDeclared('sap.ui.model.ClientModel') ) {
@@ -80308,7 +81507,7 @@ sap.ui.define("sap/ui/model/ClientModel",['jquery.sap.global', './ClientContextB
 	 * @extends sap.ui.model.Model
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 *
 	 * @param {object} oData URL where to load the data from
 	 * @constructor
@@ -80533,7 +81732,7 @@ if ( !jQuery.sap.isDeclared('sap.ui.model.analytics.ODataModelAdapter') ) {
 
 // Provides class ODataModelAdapter
 jQuery.sap.declare('sap.ui.model.analytics.ODataModelAdapter'); // unresolved dependency added by SAPUI5 'AllInOne' Builder
-sap.ui.define("sap/ui/model/analytics/ODataModelAdapter",['jquery.sap.global', './AnalyticalBinding', "./TreeBindingAdapter", 'sap/ui/model/odata/ODataModel', 'sap/ui/thirdparty/odata4analytics'],
+sap.ui.define("sap/ui/model/analytics/ODataModelAdapter",['jquery.sap.global', './AnalyticalBinding', "./TreeBindingAdapter", 'sap/ui/model/odata/ODataModel', './odata4analytics'],
 	function(jQuery, AnalyticalBinding, TreeBindingAdapter, ODataModel, odata4analytics) {
 	"use strict";
 	
@@ -80603,7 +81802,7 @@ sap.ui.define("sap/ui/model/analytics/ODataModelAdapter",['jquery.sap.global', '
 	/**
 	 * @name sap.ui.model.odata.ODataModelAdapter#getAnalyticalExtensions
 	 * @function
-	 * @return {com.sap.odata4analytics.Model} Model providing access to analytical
+	 * @return {sap.ui.model.analytics.odata4analytics.Model} Model providing access to analytical
 	 *         extensions of the OData model or null if the services does not
 	 *         include analytical extensions
 	 * @public
@@ -80672,7 +81871,7 @@ sap.ui.define("sap/ui/model/json/JSONModel",['jquery.sap.global', 'sap/ui/model/
 	 * @extends sap.ui.model.Model
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 *
 	 * @param {object} oData either the URL where to load the JSON from or a JS object
 	 * @constructor
@@ -80990,7 +82189,7 @@ sap.ui.define("sap/ui/model/xml/XMLModel",['jquery.sap.global', 'sap/ui/model/Cl
 	 * @extends sap.ui.model.Model
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 *
 	 * @param {object} oData either the URL where to load the XML from or a XML
 	 * @constructor
@@ -81459,7 +82658,7 @@ sap.ui.define("sap/ui/app/MockServer",['jquery.sap.global', 'sap/ui/core/util/Mo
 	 * @extends sap.ui.base.ManagedObject
 	 * @abstract
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @public
 	 * @name sap.ui.app.MockServer
 	 * @experimental Since 1.13.0. The mock server is still under construction, so some implementation details can be changed in future.
@@ -81509,7 +82708,7 @@ sap.ui.define("sap/ui/core/tmpl/HandlebarsTemplate",['jquery.sap.global', './Tem
 	 * @extends sap.ui.base.ManagedObject
 	 * @abstract
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @name sap.ui.core.tmpl.HandlebarsTemplate
 	 * @experimental Since 1.15.0. The Template concept is still under construction, so some implementation details can be changed in future.
 	 */
@@ -81988,7 +83187,7 @@ sap.ui.define("sap/ui/core/Component",['jquery.sap.global', 'sap/ui/base/Managed
 	 * @extends sap.ui.base.ManagedObject
 	 * @abstract
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @name sap.ui.core.Component
 	 * @since 1.9.2
 	 */
@@ -82631,7 +83830,7 @@ sap.ui.define("sap/ui/core/Element",['jquery.sap.global', 'sap/ui/base/ManagedOb
 	 * @class Base Class for Elements.
 	 * @extends sap.ui.base.ManagedObject
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @public
 	 * @name sap.ui.core.Element
 	 */
@@ -84040,7 +85239,7 @@ sap.ui.define("sap/ui/core/Control",['jquery.sap.global', './CustomStyleClassSup
 	 * @extends sap.ui.core.Element
 	 * @abstract
 	 * @author Martin Schaus, Daniel Brinkmann
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @name sap.ui.core.Control
 	 */
 	var Control = Element.extend("sap.ui.core.Control", /* @lends sap.ui.core.Control */ {
@@ -84947,7 +86146,7 @@ sap.ui.define("sap/ui/core/UIArea",['jquery.sap.global', 'sap/ui/base/ManagedObj
 	 *
 	 * @extends sap.ui.base.ManagedObject
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @param {sap.ui.Core} oCore internal API of the <core>Core</code> that manages this UIArea
 	 * @param {object} [oRootNode] reference to the Dom Node that should be 'hosting' the UI Area.
 	 * @public
@@ -85928,7 +87127,7 @@ sap.ui.define("sap/ui/core/Core",['jquery.sap.global', 'sap/ui/Device', 'sap/ui/
 	 * @extends sap.ui.base.EventProvider
 	 * @final
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @constructor
 	 * @name sap.ui.core.Core 
 	 * @public
@@ -88689,7 +89888,7 @@ sap.ui.define("sap/ui/app/Application",['jquery.sap.global', './ApplicationMetad
 		 * @extends sap.ui.core.Component
 		 * @abstract
 		 * @author SAP AG
-		 * @version 1.22.4
+		 * @version 1.22.8
 		 * @name sap.ui.app.Application
 		 * @experimental Since 1.11.1. The Application class is still under construction, so some implementation details can be changed in future.
 		 * @deprecated Since 1.15.1. The Component class is enhanced to take care about the Application code.
@@ -89463,7 +90662,7 @@ sap.ui.define("sap/ui/core/CustomizingConfiguration",['jquery.sap.global', './Co
 		 * gets removed again.
 		 *
 		 * @author SAP AG
-		 * @version 1.22.4
+		 * @version 1.22.8
 		 * @constructor
 		 * @private
 		 * @since 1.15.1
@@ -89803,7 +91002,7 @@ if ( !jQuery.sap.isDeclared('sap.ui.core.library') ) {
  * ----------------------------------------------------------------------------------- */
 
 /**
- * Initialization Code and shared classes of library sap.ui.core (1.22.4)
+ * Initialization Code and shared classes of library sap.ui.core (1.22.8)
  */
 jQuery.sap.declare('sap.ui.core.library'); // unresolved dependency added by SAPUI5 'AllInOne' Builder
 sap.ui.define("sap/ui/core/library",['./Core'], function() {
@@ -89897,7 +91096,7 @@ sap.ui.getCore().initLibrary({
     "sap.ui.core.search.SearchProvider",
     "sap.ui.core.tmpl.DOMAttribute"
   ],
-  version: "1.22.4"});
+  version: "1.22.8"});
 
 /*!
  * SAP UI development toolkit for HTML5 (SAPUI5/OpenUI5)
@@ -89919,7 +91118,7 @@ sap.ui.define("sap/ui/core/AccessibleRole", function() {
  * For more information, goto "Roles for Accessible Rich Internet Applications (WAI-ARIA Roles)" at the www.w3.org homepage.
  * 
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @static
  * @public
  */
@@ -90333,7 +91532,7 @@ sap.ui.define("sap/ui/core/BarColor", function() {
 /**
  * @class Configuration options for the colors of a progress bar
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @static
  * @public
  */
@@ -90524,7 +91723,7 @@ sap.ui.define("sap/ui/core/Design", function() {
 /**
  * @class Font design for texts
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @static
  * @public
  */
@@ -90602,7 +91801,7 @@ sap.ui.define("sap/ui/core/HorizontalAlign", function() {
 /**
  * @class Configuration options for horizontal alignments of controls
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @static
  * @public
  */
@@ -90693,7 +91892,7 @@ sap.ui.define("sap/ui/core/IconColor", function() {
 /**
  * @class Semantic Colors of an icon.
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @static
  * @public
  */
@@ -90752,7 +91951,7 @@ sap.ui.define("sap/ui/core/ImeMode", function() {
 /**
  * @class State of the Input Method Editor (IME) for the control. Depending on its value, it allows users to enter and edit for example Chinese characters.
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @static
  * @public
  */
@@ -90816,7 +92015,7 @@ sap.ui.define("sap/ui/core/MessageType", function() {
 /**
  * @class Defines the different message types of a message
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @static
  * @public
  */
@@ -90875,7 +92074,7 @@ sap.ui.define("sap/ui/core/OpenState", function() {
 /**
  * @class Defines the different possible states of an element that can be open or closed and does not only toggle between these states, but also spends some time in between (e.g. because of an animation).
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @static
  * @public
  */
@@ -90928,7 +92127,7 @@ sap.ui.define("sap/ui/core/Orientation", function() {
 /**
  * @class Orientation of an UI element
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @static
  * @public
  * @since 1.22
@@ -91015,7 +92214,7 @@ sap.ui.define("sap/ui/core/ScrollBarAction", function() {
 /**
  * @class Actions are: Click on track, button, drag of thumb, or mouse wheel click
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @static
  * @public
  */
@@ -91068,7 +92267,7 @@ sap.ui.define("sap/ui/core/Scrolling", function() {
 /**
  * @class Defines the possible values for horizontal and vertical scrolling behavior.
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @static
  * @public
  */
@@ -91121,7 +92320,7 @@ sap.ui.define("sap/ui/core/TextAlign", function() {
 /**
  * @class Configuration options for text alignments.
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @static
  * @public
  */
@@ -91180,7 +92379,7 @@ sap.ui.define("sap/ui/core/TextDirection", function() {
 /**
  * @class Configuration options for the direction of texts.
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @static
  * @public
  */
@@ -91227,7 +92426,7 @@ sap.ui.define("sap/ui/core/TitleLevel", function() {
 /**
  * @class Level of a title.
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @static
  * @public
  * @since 1.9.1
@@ -91343,7 +92542,7 @@ sap.ui.define("sap/ui/core/ValueState", function() {
 /**
  * @class Marker for the correctness of the current value.
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @static
  * @public
  */
@@ -91398,7 +92597,7 @@ sap.ui.define("sap/ui/core/VerticalAlign", function() {
  * Configuration options for vertical alignments, for example of a layout cell content within the borders.
  * 
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @static
  * @public
  */
@@ -91459,7 +92658,7 @@ sap.ui.define("sap/ui/core/Wrapping", function() {
 /**
  * @class Configuration options for text wrapping.
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @static
  * @public
  */
@@ -91512,7 +92711,7 @@ sap.ui.define("sap/ui/core/mvc/ViewType", function() {
 /**
  * @class Specifies possible view types
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @static
  * @public
  */
@@ -91571,7 +92770,7 @@ sap.ui.define("sap/ui/core/routing/HistoryDirection", function() {
 /**
  * @class Enumaration for different HistoryDirections
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @static
  * @public
  */
@@ -91668,7 +92867,7 @@ sap.ui.define("sap/ui/core/plugin/TemplatingSupport",['jquery.sap.global', 'sap/
 	 * @author Peter Muessig
 	 * @public
 	 * @since 1.15.0
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @name sap.ui.core.plugin.TemplatingSupport
 	 */
 	var TemplatingSupport = function() {
@@ -91776,7 +92975,7 @@ sap.ui.define("sap/ui/core/search/SearchProvider",['sap/ui/core/library','sap/ui
  * @extends sap.ui.core.Element
  *
  * @author  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -92038,7 +93237,7 @@ sap.ui.define("sap/ui/core/theming/Parameters",['jquery.sap.global', 'sap/ui/cor
 				var match = /url[\s]*\('?"?([^\'")]*)'?"?\)/.exec(logo);
 				if(match){
 					logo = match[1];
-				}else if(logo === "''"){
+				}else if(logo === "''" || logo === "none"){
 					logo = null;
 				}
 			}
@@ -92116,7 +93315,7 @@ sap.ui.define("sap/ui/core/tmpl/DOMAttribute",['sap/ui/core/library','sap/ui/cor
  * @extends sap.ui.core.Element
  *
  * @author  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -92272,7 +93471,7 @@ sap.ui.define("sap/ui/core/util/ExportCell",['jquery.sap.global', 'sap/ui/core/E
 	 * @extends sap.ui.core.Element
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 1.22.0
 	 *
 	 * @constructor
@@ -92385,7 +93584,7 @@ sap.ui.define("sap/ui/core/util/ExportColumn",['jquery.sap.global', 'sap/ui/base
 	 * @extends sap.ui.base.ManagedObject
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 1.22.0
 	 *
 	 * @constructor
@@ -92531,7 +93730,7 @@ sap.ui.define("sap/ui/core/util/ExportRow",['jquery.sap.global', 'sap/ui/base/Ma
 	 * @extends sap.ui.base.ManagedObject
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 1.22.0
 	 *
 	 * @constructor
@@ -92709,7 +93908,7 @@ sap.ui.define("sap/ui/core/CustomData",['./library','./Element'], function() {
  * @extends sap.ui.core.Element
  *
  * @author  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -92886,7 +94085,7 @@ sap.ui.define("sap/ui/core/EnabledPropagator",['jquery.sap.global', './Control']
 	 * </code>
 	 *
 	 * @author Daniel Brinkmann
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @param {boolean} [bDefault=true] the value that should be used as default value for the enhancement of the control.
 	 * @param {boolean} [bLegacy=false] whether the introduced property should use the old name 'Enabled' 
 	 * @public
@@ -93016,7 +94215,7 @@ sap.ui.define("sap/ui/core/HTML",['./library','./Control'], function() {
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -93437,7 +94636,7 @@ sap.ui.define("sap/ui/core/Icon",['./library','./Control','./IconPool'], functio
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -93864,6 +95063,9 @@ sap.ui.core.Icon.M_EVENTS = {'press':'press'};
 sap.ui.core.Icon.prototype.onAfterRendering = function() {
 	var $Icon = this.$();
 
+	if (this.hasListeners("press")) {
+		$Icon.css("cursor", "pointer");
+	}
 	// This is to check if no cursor property inherited from parent DOM.
 	// If the current value is auto, set it to default.
 	// This is to fix the cursor: auto interpreted as text cursor in firefox and IE.
@@ -94144,7 +95346,7 @@ sap.ui.core.Icon.prototype.setHoverBackgroundColor = function(sColor) {
 sap.ui.core.Icon.prototype.attachPress = function() {
 	var aMyArgs = Array.prototype.slice.apply(arguments);
 	aMyArgs.splice(0, 0, "press");
-	this.addStyleClass("sapUiIconPointer");
+	this.$().css("cursor", "pointer");
 	return sap.ui.core.Control.prototype.attachEvent.apply(this, aMyArgs);
 };
 
@@ -94153,7 +95355,7 @@ sap.ui.core.Icon.prototype.detachPress = function() {
 	aMyArgs.splice(0, 0, "press");
 	sap.ui.core.Control.prototype.detachEvent.apply(this, aMyArgs);
 	if (!this.hasListeners("press")) {
-		this.removeStyleClass("sapUiIconPointer");
+		this.$().css("cursor", "default");
 	}
 	return this;
 };
@@ -94226,7 +95428,7 @@ sap.ui.define("sap/ui/core/Item",['./library','./Element'], function() {
  * @extends sap.ui.core.Element
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -94429,7 +95631,7 @@ sap.ui.define("sap/ui/core/LayoutData",['./library','./Element'], function() {
  * @extends sap.ui.core.Element
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -94556,7 +95758,7 @@ sap.ui.define("sap/ui/core/ListItem",['./library','./Item'], function() {
  * @extends sap.ui.core.Item
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -94715,7 +95917,7 @@ sap.ui.define("sap/ui/core/LocalBusyIndicator",['./library','./Control','./themi
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -95004,7 +96206,7 @@ sap.ui.define("sap/ui/core/Message",['./library','./Element','./theming/Paramete
  * @extends sap.ui.core.Element
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -95432,10 +96634,6 @@ sap.ui.define("sap/ui/core/Popup",['jquery.sap.global', 'sap/ui/base/ManagedObje
 
 					if (!bInsidePopup) {
 						this.close();
-						
-						for (var j = 0, l = aChildPopups.length; j < l; j++) {
-							this._closePopup(aChildPopups[j]);
-						}
 					}
 				};
 			}
@@ -95447,7 +96645,7 @@ sap.ui.define("sap/ui/core/Popup",['jquery.sap.global', 'sap/ui/base/ManagedObje
 			publicMethods : ["open", "close", 
 			                 "setContent", "getContent", 
 			                 "setPosition", 
-			                 "setShadow", "setModal", "setAutoClose", "setAutoCloseAreas", 
+			                 "setShadow", "setModal", "getModal", "setAutoClose", "setAutoCloseAreas", 
 			                 "isOpen", "getAutoClose", "getOpenState", "setAnimations", "setDurations", 
 			                 "attachOpened", "attachClosed", "detachOpened", "detachClosed"],
 			                 
@@ -95671,9 +96869,10 @@ sap.ui.define("sap/ui/core/Popup",['jquery.sap.global', 'sap/ui/base/ManagedObje
 	* @function
 	*/
 	Popup.Layer.prototype.init = function(/** jQuery */oRef, iZIndex) {
-		this._$Ref
-			.css("visibility", "visible")
-			.css("z-index", iZIndex);
+		this._$Ref.css({
+			"visibility" : "visible",
+			"z-index" : iZIndex
+		});
 		this.update(oRef, iZIndex);
 		this._$Ref.insertAfter(oRef).show();
 	};
@@ -95685,27 +96884,32 @@ sap.ui.define("sap/ui/core/Popup",['jquery.sap.global', 'sap/ui/base/ManagedObje
 	*/
 	Popup.Layer.prototype.update = function(/** jQuery */oRef, iZIndex){
 		var oRect = oRef.rect();
-		this._$Ref
-			.css("left", oRect.left)
-			.css("top", oRect.top);
+		this._$Ref.css({
+			"left" : oRect.left,
+			"top" : oRect.top
+		});
 	
 		if(oRef.css("right") != "auto" && oRef.css("right") != "inherit"){
-			this._$Ref
-				.css("right", oRef.css("right"))
-				.css("width", "auto");
-		}else{
-			this._$Ref
-				.css("width", oRect.width)
-				.css("right", "auto");
+			this._$Ref.css({
+				"right" : oRef.css("right"),
+				"width" : "auto"
+			});
+		} else {
+			this._$Ref.css({
+				"width" : oRect.width,
+				"right" : "auto"
+			});
 		}
 		if(oRef.css("bottom") != "auto" && oRef.css("bottom") != "inherit"){
-			this._$Ref
-				.css("bottom", oRef.css("bottom"))
-				.css("height", "auto");
+			this._$Ref.css({
+				"bottom" : oRef.css("bottom"),
+				"height" : "auto"
+			});
 		} else {
-			this._$Ref
-				.css("height", oRect.height)
-				.css("bottom", "auto");
+			this._$Ref.css({
+				"height" : oRect.height,
+				"bottom" : "auto"
+			});
 		}
 	
 		if(typeof(iZIndex) === "number") {
@@ -95714,9 +96918,7 @@ sap.ui.define("sap/ui/core/Popup",['jquery.sap.global', 'sap/ui/base/ManagedObje
 	};
 	
 	Popup.Layer.prototype.reset = function(){
-		this._$Ref
-			.hide()
-			.css("visibility", "hidden")
+		this._$Ref.hide().css("visibility", "hidden")
 			.appendTo(sap.ui.getCore().getStaticAreaRef());
 	};
 	
@@ -95852,7 +97054,7 @@ sap.ui.define("sap/ui/core/Popup",['jquery.sap.global', 'sap/ui/base/ManagedObje
 	 * @param {int} [iDuration] animation duration in milliseconds; default is the jQuery preset "fast". For iDuration == 0 the opening happens synchronously without animation.
 	 * @param {sap.ui.core.Popup.Dock} [my=sap.ui.core.Popup.Dock.CenterCenter] the popup content's reference position for docking
 	 * @param {sap.ui.core.Popup.Dock} [at=sap.ui.core.Popup.Dock.CenterCenter] the "of" element's reference point for docking to
-	 * @param {Element|sap.ui.core.Element} [of=document] the DOM Element or UI5 Element to dock to
+	 * @param {string | sap.ui.core.Element | DOMRef | jQuery | jQuery.Event} [of=document] specifies the reference element to which the given content should dock to
 	 * @param {string} [offset='0 0'] the offset relative to the docking point, specified as a string with space-separated pixel values (e.g. "0 10" to move the popup 10 pixels to the right). If the docking of both "my" and "at" are both RTL-sensitive ("begin" or "end"), this offset is automatically mirrored in the RTL case as well.
 	 * @param {string} [collision='flip'] defines how the position of an element should be adjusted in case it overflows the window in some direction.
 	 * @param {boolean} [followOf=false] defines whether the popup should follow the dock reference when the reference changes its position.
@@ -95955,7 +97157,10 @@ sap.ui.define("sap/ui/core/Popup",['jquery.sap.global', 'sap/ui/base/ManagedObje
 		this._iZIndex = this._iZIndex === this.getLastZIndex() ? this._iZIndex : this.getNextZIndex();
 	
 		var oStaticArea = sap.ui.getCore().getStaticAreaRef();
-		$Ref.css("position", "absolute").css("visibility", "hidden");
+		$Ref.css({
+			"position" : "absolute",
+			"visibility" : "hidden"
+		});
 	
 		if(!($Ref[0].parentNode == oStaticArea)) { // do not move in DOM if not required - otherwise this destroys e.g. the RichTextEditor
 			$Ref.appendTo(oStaticArea);
@@ -96056,8 +97261,8 @@ sap.ui.define("sap/ui/core/Popup",['jquery.sap.global', 'sap/ui/base/ManagedObje
 		
 		this.bOpen = true;
 	
-		if (this.isInPopup(of)) {
-			var sParentId = this.getParentPopupId(of);
+		if (this.isInPopup(of) || this.isInPopup(this._oPosition.of)) {
+			var sParentId = this.getParentPopupId(of) ||  this.getParentPopupId(this._oPosition.of);
 			var sChildId = "";
 			
 			var oContent = this.getContent();
@@ -96307,6 +97512,11 @@ sap.ui.define("sap/ui/core/Popup",['jquery.sap.global', 'sap/ui/base/ManagedObje
 	
 			// notify users that the popup is now officially closed
 			that.fireClosed();
+
+			var aChildPopups = that.getChildPopups()
+			for (var j = 0, l = aChildPopups.length; j < l; j++) {
+				that.closePopup(aChildPopups[j]);
+			}
 		};
 	
 		if (iRealDuration == 0) { // iRealDuration == 0 means: no animation!
@@ -96417,7 +97627,7 @@ sap.ui.define("sap/ui/core/Popup",['jquery.sap.global', 'sap/ui/base/ManagedObje
 	 *
 	 * @param {sap.ui.core.Popup.Dock} my specifies which point of the given Content should be aligned
 	 * @param {sap.ui.core.Popup.Dock | {left: sap.ui.core.CSSSize, top: sap.ui.core.CSSSize}} at specifies the point of the reference element to which the given Content should be aligned
-	 * @param {string | sap.ui.core.Control | DOMRef | jQuery | jQuery.Event} [of=document] specifies the reference element to which the given content should be aligned as specified in the other parameters
+	 * @param {string | sap.ui.core.Element | DOMRef | jQuery | jQuery.Event} [of=document] specifies the reference element to which the given content should be aligned as specified in the other parameters
 	 * @param {string} [offset='0 0'] the offset relative to the docking point, specified as a string with space-separated pixel values (e.g. "0 10" to move the popup 10 pixels to the right). If the docking of both "my" and "at" are both RTL-sensitive ("begin" or "end"), this offset is automatically mirrored in the RTL case as well.
 	 * @param {string} [collision] defines how the position of an element should be adjusted in case it overflows the window in some direction. The valid values that refer to jQuery-UI's position parameters are "flip", "fit" and "none".
 	 * @return {sap.ui.core.Popup} <code>this</code> to allow method chaining
@@ -96568,16 +97778,28 @@ sap.ui.define("sap/ui/core/Popup",['jquery.sap.global', 'sap/ui/base/ManagedObje
 			$Ref.css("display", "block").position(this._resolveReference(this._convertPositionRTL(oPosition, bRtl))); // must be visible, so browsers can calculate its offset!
 			this._fixPositioning(oPosition, bRtl);
 		} else if(sap.ui.core.CSSSize.isValid(oAt.left) && sap.ui.core.CSSSize.isValid(oAt.top)) {
-			$Ref.css("left", oAt.left).css("top", oAt.top);
+			$Ref.css({
+				"left" : oAt.left,
+				"top" : oAt.top
+			});
 		} else if(sap.ui.core.CSSSize.isValid(oAt.right) && sap.ui.core.CSSSize.isValid(oAt.top)) {
-			$Ref.css("right", oAt.right).css("top", oAt.top);
+			$Ref.css({
+				"right" : oAt.right,
+				"top" : oAt.top
+			});
 		} else if(typeof(oAt.left) === "number" && typeof(oAt.top) === "number") {
 			var domRef = $Ref[0];
 			if (domRef && domRef.style.right) { // in some RTL cases leave the Popup attached to the right side of the browser window
 				var width = $Ref.outerWidth();
-				$Ref.css("right", (document.documentElement.clientWidth - (oAt.left + width)) + "px").css("top", oAt.top + "px");
+				$Ref.css({
+					"right" : (document.documentElement.clientWidth - (oAt.left + width)) + "px",
+					"top" : oAt.top + "px"
+				});
 			} else {
-				$Ref.css("left", oAt.left + "px").css("top", oAt.top + "px");
+				$Ref.css({
+					"left" : oAt.left + "px",
+					"top" : oAt.top + "px"
+				});
 			}
 		}
 	
@@ -96589,14 +97811,47 @@ sap.ui.define("sap/ui/core/Popup",['jquery.sap.global', 'sap/ui/base/ManagedObje
 	/**
 	 * Calculates the rect information of the given parameter.
 	 * 
-	 * @param {Element|sap.ui.core.Element} oOf the DOM Element or UI Element instance on which the calculation is done
-	 * @returns {object} the rect infomartion which contains the top, left, width, height of the given object
+	 * @param {String| DomNode | jQuery |sap.ui.core.Element | Event | jQuery.Event} oOf the DOM Element, UI Element instance on which the calculation is done
+	 * @returns {object} the rect infomartion which contains the top, left, width, height of the given object. If Event or jQuery.Event type parameter is given, null is returned because there's no way to calculate the rect info based on a event object.
 	 * @private
 	 * @name sap.ui.core.Popup#_calcOfRect
 	 * @function
 	 */
 	Popup.prototype._calcOfRect = function(oOf){
-		return  jQuery(oOf instanceof sap.ui.core.Element ? oOf.getDomRef() : oOf).rect();
+		var oOfDom = this._getOfDom(oOf);
+		
+		if (oOfDom) {
+			return jQuery(oOfDom).rect();
+		}
+
+		return null;
+	};
+
+	/**
+	 * Get the DOM reference of the given parameter. The "of" parameter can be different types. This methods returns the refered DOM reference base on the given parameter. If Event or jQuery.Event type parameter is given, null is returned.
+	 * 
+	 * @param {String| DomNode | jQuery |sap.ui.core.Element | Event | jQuery.Event} oOf the DOM Element, UI Element instance on which the calculation is done
+	 * @returns {DomNode} the DOM reference calculated based on the given parameter. If Event, or jQuery Event type parameter is given, null is returned.
+	 * @private
+	 * @name sap.ui.core.Popup#_getOfDom
+	 * @function
+	 */
+	Popup.prototype._getOfDom = function(oOf) {
+		if ((oOf instanceof Event) || (oOf instanceof jQuery.Event)) {
+			return null;
+		}
+
+		var $Of;
+
+		if (typeof(oOf) === "string") {
+			$Of = jQuery.sap.byId(oOf);
+		} else if (oOf instanceof jQuery) {
+			$Of = oOf;
+		} else {
+			$Of = jQuery(oOf instanceof sap.ui.core.Element ? oOf.getDomRef() : oOf);
+		}
+
+		return $Of[0];
 	};
 	
 	/**
@@ -96697,13 +97952,19 @@ sap.ui.define("sap/ui/core/Popup",['jquery.sap.global', 'sap/ui/base/ManagedObje
 			if (bRtl && ((my.indexOf("right") > -1) || (my.indexOf("begin") > -1) || (my.indexOf("center") > -1))) {
 				var $Ref = this._$();
 				var right = jQuery(window).width() - $Ref.outerWidth() - $Ref.offset().left;
-				$Ref.css("right", right + "px").css("left", "");
+				$Ref.css({
+					"right" : right + "px",
+					"left" : ""
+				});
 			} else if ((my.indexOf("right") > -1) || (my.indexOf("end") > -1)) {
 	
 				// LTR
 				var $Ref = this._$();
 				var right = jQuery(window).width() - $Ref.outerWidth() - $Ref.offset().left;
-				$Ref.css("right", right + "px").css("left", "");
+				$Ref.css({
+					"right" : right + "px",
+					"left" : ""
+				});
 			}
 		}
 	};
@@ -96793,6 +98054,18 @@ sap.ui.define("sap/ui/core/Popup",['jquery.sap.global', 'sap/ui/base/ManagedObje
 	};
 	
 	/**
+	 * Returns the value if a Popup is of modal type
+	 * 
+	 * @return {boolean] bModal whether the Popup is of modal type
+	 * @public
+	 * @name sap.ui.core.Popup#getModal
+	 * @function
+	 */
+	Popup.prototype.getModal = function() {
+		return this._bModal;
+	}
+	
+	/**
 	 * Used to specify whether the Popup should close as soon as
 	 * - for non-touch environment: the focus leaves
 	 * - for touch environment: user clicks the area which is outside the popup itself, the dom elemnt which popup aligns to (except document),
@@ -96846,8 +98119,9 @@ sap.ui.define("sap/ui/core/Popup",['jquery.sap.global', 'sap/ui/base/ManagedObje
 			} else if (typeof aAutoCloseAreas[i] === "string") {
 				sId = aAutoCloseAreas[i];
 			}
-
-			this.addChildPopup(sId);
+			if (jQuery.inArray(sId, this.getChildPopups()) === -1) {
+				this.addChildPopup(sId);
+			}
 		}
 		return this;
 	};
@@ -97075,7 +98349,7 @@ sap.ui.define("sap/ui/core/Popup",['jquery.sap.global', 'sap/ui/base/ManagedObje
 			for (var i = 0, l = aChildPopups.length; i < l; i++) {
 				var oDomRef = jQuery.sap.domById(aChildPopups[i]);
 				if (oDomRef) {
-					jQuery(oDomRef).bind("deactivate", this.fEventHandler);
+					jQuery(oDomRef).bind("deactivate." + this._popupUID, this.fEventHandler);
 				}
 			}
 		}
@@ -97085,7 +98359,13 @@ sap.ui.define("sap/ui/core/Popup",['jquery.sap.global', 'sap/ui/base/ManagedObje
 	 * @private
 	 */
 	Popup.prototype._removeFocusEventListeners = function(sChannel, sEvent, oEventData) {
-		var $PopupRoot = this._$();
+		var $PopupRoot = this._$(/* force rendering */false, /* getter only */true);
+
+		// if popup's content isn't rendered yet, focus vent listeners don't need to be removed
+		if (!$PopupRoot.length) {
+			return;
+		}
+
 		var aChildPopups = this.getChildPopups();
 		
 		if(document.removeEventListener && !sap.ui.Device.browser.internet_explorer) { //FF, Safari
@@ -97156,7 +98436,9 @@ sap.ui.define("sap/ui/core/Popup",['jquery.sap.global', 'sap/ui/base/ManagedObje
 	 */
 	Popup.prototype._addFocusableArea = function(sChannel, sEvent, oEventData) {
 		var sParentPopupId = this._popupUID; // save for call below
-		this.addChildPopup(oEventData.id);
+		if (jQuery.inArray(oEventData.id, this.getChildPopups()) === -1) {
+			this.addChildPopup(oEventData.id);
+		}
 
 		// Forward the blur event of the child to the parent Popup
 		var $ChildDomRef = jQuery('[data-sap-ui-popup="' + oEventData.id + '"]');
@@ -97232,17 +98514,20 @@ sap.ui.define("sap/ui/core/Popup",['jquery.sap.global', 'sap/ui/base/ManagedObje
 	
 	/**
 	 * Returns the jQuery object containing the root of the content of the Popup
+	 * 
+	 * @param {boolean} [bForceReRender] The content will be rendered again regardless of the render status. When it's set to true, the bGetOnly parameter is ignored.
+	 * @param {boolean} [bGetOnly] Only returns the existing content DOM. When content isn't rendered yet, empty jQuery Object is returned.
 	 * @returns {jQuery} the jQuery object containing the root of the content of the Popup
 	 * @private
 	 * @name sap.ui.core.Popup#_$
 	 * @function
 	 */
-	Popup.prototype._$ = function(bForceReRender){
+	Popup.prototype._$ = function(bForceReRender, bGetOnly){
 		var $ContentRef;
-	
+
 		if(this.oContent instanceof Control){
 			$ContentRef = this.oContent.$();
-			if ($ContentRef.length === 0 || bForceReRender) {
+			if (bForceReRender || ($ContentRef.length === 0 && !bGetOnly)) {
 				jQuery.sap.log.info("Rendering of popup content: " + this.oContent.getId());
 				if ($ContentRef.length > 0) {
 					RenderManager.preserveContent($ContentRef[0], /* bPreserveRoot */ true, /* bPreserveNodesWithId */ false);
@@ -97281,7 +98566,10 @@ sap.ui.define("sap/ui/core/Popup",['jquery.sap.global', 'sap/ui/base/ManagedObje
 	
 		// push current z-index to stack
 		Popup.blStack.push(this._iZIndex - 2);
-		$BlockRef.css("z-index", this._iZIndex - 2).css("visibility","visible").show();
+		$BlockRef.css({
+			"z-index" : this._iZIndex - 2,
+			"visibility" : "visible"
+		}).show();
 	
 		// prevent HTML page from scrolling
 		jQuery("html").addClass("sapUiBLyBack");
@@ -97297,16 +98585,17 @@ sap.ui.define("sap/ui/core/Popup",['jquery.sap.global', 'sap/ui/base/ManagedObje
 		if (Popup.blStack.length > 0) {
 	
 			// set the blocklayer z-index to the last z-index in the stack and show it
-			jQuery("#sap-ui-blocklayer-popup").css("z-index", Popup.blStack[Popup.blStack.length-1]).css("visibility","visible").show();
+			jQuery("#sap-ui-blocklayer-popup").css({
+				"z-index" : Popup.blStack[Popup.blStack.length-1],
+				"visibility" : "visible"
+			}).show();
 		} else {
-	
 			// the last dialog was closed so we can hide the block layer now
 			jQuery("#sap-ui-blocklayer-popup").css("visibility","inherit").hide();
+
+			// Allow scrolling again in HTML page only if there is no BlockLayer left
+			jQuery("html").removeClass("sapUiBLyBack");
 		}
-	
-		// allow scrolling in HTML page
-		jQuery("html").removeClass("sapUiBLyBack");
-	
 	};
 	
 	//****************************************************
@@ -97326,7 +98615,8 @@ sap.ui.define("sap/ui/core/Popup",['jquery.sap.global', 'sap/ui/base/ManagedObje
 	
 	Popup.checkDocking = function(){
 		if (this.getOpenState() === sap.ui.core.OpenState.OPEN) {
-			var oCurrentOfRect = jQuery(this._oLastPosition.of instanceof sap.ui.core.Element ? this._oLastPosition.of.getDomRef() : this._oLastPosition.of).rect();
+			var oCurrentOfRef = this._getOfDom(this._oLastPosition.of),
+				oCurrentOfRect = jQuery(oCurrentOfRef).rect();
 			
 			if (!oCurrentOfRect) {
 				// Docking not possibe due to missing opener.
@@ -97337,11 +98627,11 @@ sap.ui.define("sap/ui/core/Popup",['jquery.sap.global', 'sap/ui/base/ManagedObje
 			// Check if the current 'of' dom element is removed from the dom tree which indicates that it
 			// was rerendered and all corresponding stuff has to be updated to position the popup
 			// properly again
-			if (!jQuery.sap.containsOrEquals(document, this._oLastPosition.of)) {
-				if (this._oLastPosition.of.id && this._oLastPosition.of.id !== "") {
+			if (!jQuery.sap.containsOrEquals(document.documentElement, oCurrentOfRef)) {
+				if (oCurrentOfRef.id && oCurrentOfRef.id !== "") {
 					// The 'of' was rerendered so the newest DOM-element has to be updated for the corresponding rect-object.
 					// Because the id of the 'of' may be still the same but due to its rerendering the reference changed and has to be updated 
-					var oNewestOf = jQuery.sap.domById(this._oLastPosition.of.id);
+					var oNewestOf = jQuery.sap.domById(oCurrentOfRef.id);
 					var oNewestOfRect = jQuery(oNewestOf).rect();
 					
 					// if there is a newest corresponding DOM-reference and it differs from the current -> use the newest one
@@ -97413,9 +98703,14 @@ sap.ui.define("sap/ui/core/Popup",['jquery.sap.global', 'sap/ui/base/ManagedObje
 			return;
 		}
 
-		if (this._iZIndex === this.getLastZIndex()) {
+		/*
+		 *  If this Popup is 'uppermost' and therefore everything is ok.
+		 *  Or if this is a modal Popup - its index has to be the 'uppermost'
+		 *  otherwise there must be another issue with the modal-mode.
+		 */
+		if (this._iZIndex === this.getLastZIndex() || this.getModal()) {
 			return;
-		} // we are 'uppermost' and therefore everything is ok
+		} 
 
 		this._increaseMyZIndex("", "mousedown", oEvent);
 	};
@@ -97496,6 +98791,11 @@ sap.ui.define("sap/ui/core/Popup",['jquery.sap.global', 'sap/ui/base/ManagedObje
 		if (this._oBlindLayer) {
 			this._resizeListenerId = sap.ui.core.ResizeHandler.register(this._$().get(0), jQuery.proxy(this.onresize, this));
 		}
+
+		if (this.isOpen() && (this.getModal() || this.getAutoClose())) {
+			// register the focus event listener again after rendering because the content DOM node is changed
+			this._addFocusEventListeners();
+		}
 	};
 	
 	/**
@@ -97509,6 +98809,11 @@ sap.ui.define("sap/ui/core/Popup",['jquery.sap.global', 'sap/ui/base/ManagedObje
 		if (this._resizeListenerId) {
 			sap.ui.core.ResizeHandler.deregister(this._resizeListenerId);
 			this._resizeListenerId = null;
+		}
+
+		if (this.isOpen() && (this.getModal() || this.getAutoClose())) {
+			// deregister the focus event listener because the content DOM node is going to be deleted
+			this._removeFocusEventListeners();
 		}
 	};
 	
@@ -97601,7 +98906,7 @@ sap.ui.define("sap/ui/core/ScrollBar",['./library','./Control'], function() {
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -98549,7 +99854,7 @@ sap.ui.define("sap/ui/core/SeparatorItem",['./library','./Item'], function() {
  * @extends sap.ui.core.Item
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -98656,7 +99961,7 @@ sap.ui.define("sap/ui/core/Title",['./library','./Element'], function() {
  * @extends sap.ui.core.Element
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -98870,7 +100175,7 @@ sap.ui.define("sap/ui/core/TooltipBase",['./library','./Control','./Popup'], fun
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -99661,7 +100966,7 @@ sap.ui.define("sap/ui/core/VariantLayoutData",['./library','./LayoutData'], func
  * @extends sap.ui.core.LayoutData
  *
  * @author  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -99849,7 +101154,7 @@ sap.ui.define("sap/ui/core/mvc/View",['sap/ui/core/library','sap/ui/core/Control
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -100676,7 +101981,7 @@ sap.ui.define("sap/ui/core/mvc/XMLView",['sap/ui/core/library','./View','jquery.
  * @extends sap.ui.core.mvc.View
  *
  * @author  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -100839,6 +102144,10 @@ sap.ui.core.mvc.View.extend("sap.ui.core.mvc.XMLView", { metadata : {
 			var aChildren = this.getAggregation("content");
 			if ( aChildren ) {
 				for(var i=0; i<aChildren.length; i++) {
+					if (aChildren[i].getDomRef() === null) {
+						// Do not replace if there is no dom to replace it with...
+						continue;
+					}
 					var $childDOM = aChildren[i].$();
 					// jQuery.sap.log.debug("replacing placeholder for " + aChildren[i] + " with content");
 					jQuery.sap.byId("sap-ui-dummy-" + aChildren[i].getId(), this._$oldContent).replaceWith($childDOM);
@@ -100934,7 +102243,7 @@ sap.ui.define("sap/ui/core/search/OpenSearchProvider",['sap/ui/core/library','./
  * @extends sap.ui.core.search.SearchProvider
  *
  * @author  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -101138,7 +102447,7 @@ sap.ui.define("sap/ui/core/tmpl/DOMElement",['sap/ui/core/library','sap/ui/core/
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -101637,7 +102946,7 @@ sap.ui.define("sap/ui/core/tmpl/TemplateControl",['sap/ui/core/library','sap/ui/
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -102179,7 +103488,7 @@ sap.ui.define("sap/ui/core/util/Export",['jquery.sap.global', 'sap/ui/core/Contr
 	 * @extends sap.ui.core.Control
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 1.22.0
 	 *
 	 * @constructor
@@ -102627,7 +103936,7 @@ sap.ui.define("sap/ui/core/BusyIndicator",['jquery.sap.global', './Popup'],
 	/**
 	 * @class Provides methods to show or hide a waiting animation covering the whole page and blocking user interaction.
 	 * @static 
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @public
 	 * @name sap.ui.core.BusyIndicator
 	 */
@@ -102959,7 +104268,7 @@ sap.ui.define("sap/ui/core/ComponentContainer",['./library','./Control'], functi
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -103585,7 +104894,7 @@ sap.ui.define("sap/ui/core/UIComponent",['jquery.sap.global', './Component', './
 	 * @extends sap.ui.core.Component
 	 * @abstract
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @name sap.ui.core.UIComponent
 	 * @since 1.9.2
 	 */
@@ -103977,7 +105286,7 @@ sap.ui.define("sap/ui/core/mvc/HTMLView",['sap/ui/core/library','./View','sap/ui
  * @extends sap.ui.core.mvc.View
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -104313,7 +105622,7 @@ sap.ui.define("sap/ui/core/mvc/JSONView",['sap/ui/core/library','./View'], funct
  * @extends sap.ui.core.mvc.View
  *
  * @author  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -104534,7 +105843,7 @@ sap.ui.define("sap/ui/core/mvc/JSView",['sap/ui/core/library','./View'], functio
  * @extends sap.ui.core.mvc.View
  *
  * @author  
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -104737,7 +106046,7 @@ sap.ui.define("sap/ui/core/mvc/TemplateView",['sap/ui/core/library','./View'], f
  * @extends sap.ui.core.mvc.View
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public

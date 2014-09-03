@@ -51,7 +51,7 @@ jQuery.sap.require("sap.ui.base.ManagedObject");
  * @extends sap.ui.base.ManagedObject
  *
  * @author SAP AG
- * @version 1.22.4
+ * @version 1.22.8
  * @since 1.21.1
  *
  * @constructor

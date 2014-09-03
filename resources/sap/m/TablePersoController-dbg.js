@@ -27,7 +27,7 @@ jQuery.sap.require("sap.m.TablePersoDialog");
  * @class Table Personalization Controller
  * @extends sap.ui.base.ManagedObject
  * @author SAP
- * @version 1.22.4
+ * @version 1.22.8
  * @name sap.m.TablePersoController
  */
 sap.ui.base.ManagedObject.extend("sap.m.TablePersoController", /** @lends sap.m.TablePersoController */
@@ -326,7 +326,8 @@ sap.m.TablePersoController.prototype.savePersonalizations = function() {
 
 
 /**
- * Refresh the personalizations
+ * Refresh the personalizations: reloads the personalization information from the table perso 
+ * provider, applies it to the controller's table and updates the controller's table perso dialog.
  *
  * @public
  */

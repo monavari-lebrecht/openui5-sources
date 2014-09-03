@@ -28,7 +28,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/Model', './ControlPropertyBind
 	 * @extends sap.ui.model.Model
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 *
 	 * @constructor
 	 * @name sap.ui.model.control.ControlModel

@@ -257,6 +257,12 @@ sap.ui.table.TableRenderer.renderTable = function(rm, oTable) {
 	rm.writeClasses();
 	rm.write(">");
 
+	rm.write("<div");
+	rm.addClass("sapUiTableCtrlBefore");
+	rm.writeClasses();
+	rm.writeAttribute("tabindex", "0");
+	rm.write("></div>");
+	
 	this.renderRowHdr(rm, oTable);
 	this.renderTableCtrl(rm, oTable);
 	this.renderVSb(rm, oTable);
@@ -555,12 +561,6 @@ sap.ui.table.TableRenderer.renderRowHdrRow = function(rm, oTable, oRow, iRowInde
 };
 
 sap.ui.table.TableRenderer.renderTableCtrl = function(rm, oTable) {
-
-	rm.write("<div");
-	rm.addClass("sapUiTableCtrlBefore");
-	rm.writeClasses();
-	rm.writeAttribute("tabindex", "0");
-	rm.write("></div>");
 
 	if (oTable.getFixedColumnCount() > 0) {
 		rm.write("<div");

@@ -58,7 +58,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @implements sap.ui.core.PopupInterface
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -413,13 +413,31 @@ sap.ui.ux3.Overlay.prototype.init = function() {
 			jQuery.sap.focus(domRef);
 		}
 	});
+	
 	this._overridePopupEventing();
+};
+
+/**
+ * Override Popup Events. Don't put Overlay to the front on mousedown. Existing 
+ * ToolPopups should always be in front of the Overlay.
+ *
+ * @private
+ */
+sap.ui.ux3.Overlay.prototype._overridePopupEventing = function() {
+	this._oPopup.onmousedown = function(oEvent) {
+		return;
+	}
 };
 
 /**
  * Returns the Shell (if both Overlay and Shell are rendered)
  */
 sap.ui.ux3.Overlay.prototype._getShell = function() {
+	var oShell = jQuery(".sapUiUx3Shell").control();
+	
+	if (oShell.length > 0 && !this._oShell) {
+		this._oShell = oShell.length ? oShell[0] : null;
+	}
 	return this._oShell;
 };
 
@@ -595,19 +613,6 @@ sap.ui.ux3.Overlay.prototype._getText = function(sKey, aArgs) {
 		}
 	}
 	return sText ? sText : sKey;
-};
-
-/**
- * Override Popup Events
- *
- * @private
- */
-sap.ui.ux3.Overlay.prototype._overridePopupEventing = function() {
-	// don't bring Overlay to the front on mouse down. Existing
-	// Toolpopups should always be in front
-	this._oPopup.onmousedown = function(oEvent) {
-		return;
-	};
 };
 
 /**

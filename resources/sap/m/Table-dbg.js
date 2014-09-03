@@ -60,7 +60,7 @@ jQuery.sap.require("sap.m.ListBase");
  * @extends sap.m.ListBase
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -275,8 +275,8 @@ sap.m.Table.prototype.init = function() {
 };
 
 sap.m.Table.prototype.onBeforeRendering = function() {
-	this.getDomRef() && this._notifyColumns("ItemsRemoved");
 	sap.m.ListBase.prototype.onBeforeRendering.call(this);
+	this._notifyColumns("ItemsRemoved");
 	this._navRenderedBy = "";
 };
 

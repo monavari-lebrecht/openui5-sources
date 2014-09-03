@@ -57,7 +57,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -407,6 +407,7 @@ sap.ui.unified.Menu.M_EVENTS = {'itemSelect':'itemSelect'};
 
 jQuery.sap.require("sap.ui.unified.MenuItemBase");
 jQuery.sap.require("sap.ui.core.Popup");
+jQuery.sap.require("jquery.sap.script");
 
 sap.ui.unified.Menu.prototype.init = function(){
 	var that = this;
@@ -449,10 +450,19 @@ sap.ui.unified.Menu.prototype.exit = function(){
 		this._bOrientationChangeBound = false;
 	}
 	
-	// Cleanup resize event registration
-	if(this.sResizeListenerId){
-		sap.ui.core.ResizeHandler.deregister(this.sResizeListenerId);
-		this.sResizeListenerId = null;
+	// Cleanup
+	this._resetDelayedRerenderItems();
+};
+
+/**
+ * Called when the control or its children are changed.
+ * @private
+ */
+sap.ui.unified.Menu.prototype.invalidate = function(oOrigin){
+	if(oOrigin instanceof sap.ui.unified.MenuItemBase && this.getDomRef()){
+		this._delayedRerenderItems();
+	}else{
+		sap.ui.core.Control.prototype.invalidate.apply(this, arguments);
 	}
 };
 
@@ -461,11 +471,7 @@ sap.ui.unified.Menu.prototype.exit = function(){
  * @private
  */
 sap.ui.unified.Menu.prototype.onBeforeRendering = function() {
-	// Cleanup resize event registration before re-rendering
-	if(this.sResizeListenerId){
-		sap.ui.core.ResizeHandler.deregister(this.sResizeListenerId);
-		this.sResizeListenerId = null;
-	}
+	this._resetDelayedRerenderItems();
 };
 
 /**
@@ -496,26 +502,67 @@ sap.ui.unified.Menu.prototype.onAfterRendering = function() {
 	if(this.$().outerHeight(true) > iMaxHeight){
 		this.$().css("max-height", iMaxHeight+"px").toggleClass("sapUiMnuScroll", true);
 	}
-	
-	//Might be in the end not a good idea to listen for resizing the body / window because the body might change its size
-	//during a menu is opened (which then closes the menu again):
-
-	//Listen to resizing of the document
-	//if(this.getRootMenu() == this)
-	//	this.sResizeListenerId = sap.ui.core.ResizeHandler.register(!!sap.ui.Device.browser.internet_explorer ? window : jQuery("body").get(0), jQuery.proxy(this.onresize, this));
 };
-
-///**
-// * Called when the control is resized
-// * @private
-// */
-//sap.ui.unified.Menu.prototype.onresize = function(oEvent) {
-//	if(!this.bOpen) return;
-//	this.close();
-//};
 
 
 //****** API Methods ******
+
+sap.ui.unified.Menu.prototype.addItem = function(oItem){
+	this.addAggregation("items", oItem, !!this.getDomRef());
+	this._delayedRerenderItems();
+	return this;
+};
+
+sap.ui.unified.Menu.prototype.insertItem = function(oItem, idx){
+	this.insertAggregation("items", oItem, idx, !!this.getDomRef());
+	this._delayedRerenderItems();
+	return this;
+};
+
+sap.ui.unified.Menu.prototype.removeItem = function(oItem){
+	this.removeAggregation("items", oItem, !!this.getDomRef());
+	this._delayedRerenderItems();
+	return this;
+};
+
+sap.ui.unified.Menu.prototype.removeAllItems = function(){
+	var oRes = this.removeAllAggregation("items", !!this.getDomRef());
+	this._delayedRerenderItems();
+	return oRes;
+};
+
+sap.ui.unified.Menu.prototype.destroyItems = function(){
+	this.destroyAggregation("items", !!this.getDomRef());
+	this._delayedRerenderItems();
+	return this;
+};
+
+sap.ui.unified.Menu.prototype._delayedRerenderItems = function(){
+	if(!this.getDomRef()){
+		return;
+	}
+	this._resetDelayedRerenderItems();
+	
+	this._itemRerenderTimer = jQuery.sap.delayedCall(0, this, function(){
+		var oDomRef = this.getDomRef();
+		if(oDomRef){
+			var oRm = sap.ui.getCore().createRenderManager();
+			sap.ui.unified.MenuRenderer.renderItems(oRm, this);
+			oRm.flush(oDomRef);
+			oRm.destroy();
+			this.onAfterRendering();
+			this.getPopup()._applyPosition(this.getPopup()._oLastPosition);
+		}
+	});
+};
+
+sap.ui.unified.Menu.prototype._resetDelayedRerenderItems = function(){
+	if(this._itemRerenderTimer){
+		jQuery.sap.clearDelayedCall(this._itemRerenderTimer);
+		delete this._itemRerenderTimer;
+	}
+};
+
 
 sap.ui.unified.Menu.prototype.open = function(bWithKeyboard, oOpenerRef, my, at, of, offset, collision){
 	if(this.bOpen) {
@@ -588,7 +635,7 @@ sap.ui.unified.Menu.prototype.close = function() {
 	this.getPopup().close(0);
 
 	//Remove the Menus DOM after it is closed
-	this.onBeforeRendering();
+	this._resetDelayedRerenderItems();
 	this.$().remove();
 	this.bOutput = false;
 
@@ -932,7 +979,7 @@ sap.ui.unified.Menu.prototype.openSubmenu = function(oItem, bWithKeyboard, bWith
 sap.ui.unified.Menu.prototype._bringToFront = function() {
 	// This is a hack. We "simulate" a mouse-down-event on the submenu so that it brings itself
 	// to the front.
-	this.getPopup().onmousedown();
+	jQuery.sap.byId(this.getPopup().getId()).mousedown();
 };
 
 sap.ui.unified.Menu.prototype.checkEnabled = function(oItem){

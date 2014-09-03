@@ -5,7 +5,7 @@
  */
 jQuery.sap.declare("sap.m.Table");jQuery.sap.require("sap.m.library");jQuery.sap.require("sap.m.ListBase");sap.m.ListBase.extend("sap.m.Table",{metadata:{library:"sap.m",properties:{"backgroundDesign":{type:"sap.m.BackgroundDesign",group:"Appearance",defaultValue:sap.m.BackgroundDesign.Translucent},"fixedLayout":{type:"boolean",group:"Behavior",defaultValue:true},"showOverlay":{type:"boolean",group:"Appearance",defaultValue:false}},aggregations:{"columns":{type:"sap.m.Column",multiple:true,singularName:"column"}}}});
 sap.m.Table.prototype.init=function(){this._hasPopin=false;this._selectAllCheckBox=null;sap.m.ListBase.prototype.init.call(this)};
-sap.m.Table.prototype.onBeforeRendering=function(){this.getDomRef()&&this._notifyColumns("ItemsRemoved");sap.m.ListBase.prototype.onBeforeRendering.call(this);this._navRenderedBy=""};
+sap.m.Table.prototype.onBeforeRendering=function(){sap.m.ListBase.prototype.onBeforeRendering.call(this);this._notifyColumns("ItemsRemoved");this._navRenderedBy=""};
 sap.m.Table.prototype.onAfterRendering=function(){sap.m.ListBase.prototype.onAfterRendering.call(this);var $=jQuery(this.getTableDomRef());this._navRenderedBy&&$.addClass("sapMListTblHasNav");this._notifyColumns("ColumnRendered",$);this.updateSelectAllCheckbox();this._renderOverlay()};
 sap.m.Table.prototype._renderOverlay=function(){var $=this.$(),a=$.find(".sapMTableOverlay"),s=this.getShowOverlay();if(s&&a.length===0){a=jQuery("<div>").addClass("sapUiOverlay sapMTableOverlay").css("z-index","1");$.append(a)}else if(!s){a.remove()}};
 sap.m.Table.prototype.setShowOverlay=function(s){this.setProperty("showOverlay",s,true);this._renderOverlay();return this};

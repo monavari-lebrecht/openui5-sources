@@ -67,7 +67,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.4
+ * @version 1.22.8
  *
  * @constructor   
  * @public
@@ -796,11 +796,15 @@ sap.ui.layout.Splitter.prototype._resizeContents = function(iLeftContent, iPixel
  *
  * @private
  */
-sap.ui.layout.Splitter.prototype._delayedResize = function() {
+sap.ui.layout.Splitter.prototype._delayedResize = function(iDelay) {
+	if (iDelay === undefined) {
+		iDelay = 0;
+	}
+	
 	// If we are not rendered, we do not need to resize since resizing is done after rendering
 	if (this.getDomRef()) {
 		jQuery.sap.clearDelayedCall(this._resizeTimeout);
-		jQuery.sap.delayedCall(0, this, this._resize, []);
+		jQuery.sap.delayedCall(iDelay, this, this._resize, []);
 	}
 };
 
@@ -814,6 +818,20 @@ sap.ui.layout.Splitter.prototype._resize = function() {
 	var oldCalculatedSizes = this.getCalculatedSizes();
 	this._recalculateSizes();
 	var newCalculatedSizes = this.getCalculatedSizes();
+	
+	var bSizesValid = false;
+	for (var i = 0, iLen = newCalculatedSizes.length; i < iLen; ++i) {
+		if (newCalculatedSizes[i] !== 0) {
+			bSizesValid = true;
+			break;
+		}
+	}
+	if (!bSizesValid) {
+		// TODO: What if all sizes are set to 0 on purpose...?
+		this._delayedResize(100);
+		return;
+	}
+	
 	
 	var aContentAreas = this.getContentAreas();
 	var bLastContentResizable = true;
@@ -836,6 +854,22 @@ sap.ui.layout.Splitter.prototype._resize = function() {
 			$Bar.attr("title", bResizable ? this._getText("SPLITTER_MOVE") : "");
 		}
 		bLastContentResizable = bContentResizable;
+	}
+	
+	// In case the Splitter has a relative height or width set (like "100%"), and the surrounding 
+	// container does not have a size set, the content of the Splitter defines the height/width,
+	// in which case the size of the splitter bars is incorrect.
+	var $this = this.$();
+	// First remove the size from the splitter bar so it does not lead to growing the content
+	for (var i = 0; i < aContentAreas.length - 1; ++i) {
+		var $Bar = this.$("splitbar-" + i);
+		$Bar.css(this._sizeTypeNot, "");
+	}
+	// Now measure the content and adapt the size of the Splitter bar
+	for (var i = 0; i < aContentAreas.length - 1; ++i) {
+		var $Bar = this.$("splitbar-" + i);
+		var iSize = this._bHorizontal ? $this.height() : $this.width();
+		$Bar.css(this._sizeTypeNot, iSize + "px");
 	}
 	
 	// In case something was resized, change sizes and fire resize event
@@ -1205,7 +1239,7 @@ sap.ui.layout.Splitter.prototype.setOrientation = function(sOrientation) {
 	var vReturn = this.setProperty("orientation", sOrientation, true);
 	
 	this._switchOrientation();
-	this._resize();
+	this._delayedResize();
 	
 	return vReturn;
 };

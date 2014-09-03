@@ -10299,7 +10299,7 @@ $.ui.position = {
 /** 
  * Device and Feature Detection API of the SAP UI5 Library.
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @namespace
  * @name sap.ui.Device
  * @public
@@ -10322,7 +10322,7 @@ if(typeof window.sap.ui !== "object"){
 
 	//Skip initialization if API is already available
 	if(typeof window.sap.ui.Device === "object" || typeof window.sap.ui.Device === "function" ){
-		var apiVersion = "1.22.4";
+		var apiVersion = "1.22.8";
 		window.sap.ui.Device._checkAPIVersion(apiVersion);
 		return;
 	}
@@ -10376,7 +10376,7 @@ if(typeof window.sap.ui !== "object"){
 	
 	//Only used internal to make clear when Device API is loaded in wrong version
 	device._checkAPIVersion = function(sVersion){
-		var v = "1.22.4";
+		var v = "1.22.8";
 		if(v != sVersion){
 			logger.log(WARNING, "Device API version differs: "+v+" <-> "+sVersion);
 		}
@@ -13876,7 +13876,7 @@ return URI;
 	 * @class Represents a version consisting of major, minor, patch version and suffix, e.g. '1.2.7-SNAPSHOT'.
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @constructor
 	 * @public
 	 * @since 1.15.0
@@ -14269,7 +14269,7 @@ return URI;
 	/**
 	 * Root Namespace for the jQuery plug-in provided by SAP AG.
 	 *
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @namespace
 	 * @public
 	 * @static
@@ -15442,7 +15442,7 @@ return URI;
 		function execModule(sModuleName) {
 			
 			var oModule = mModules[sModuleName],
-				sOldPrefix, oUri, sAbsoluteUrl;
+				sOldPrefix, sScript;
 			
 			if ( oModule && oModule.state === LOADED && typeof oModule.data !== "undefined" ) {
 				try {
@@ -15458,20 +15458,30 @@ return URI;
 					_execStack.push(sModuleName);
 					if ( typeof oModule.data === "function" ) {
 						oModule.data.apply(window);
-					} else if (_window.execScript && (!oModule.data || oModule.data.length < MAX_EXEC_SCRIPT_LENGTH) ) { 
-						try {
-							oModule.data && _window.execScript(oModule.data); // execScript fails if data is empty
-						} catch (e) {
-							_execStack.pop();
-							// eval again with different approach - should fail with a more informative exception
-							jQuery.sap.globalEval(oModule.data);
-							throw e; // rethrow err in case globalEval succeeded unexpectedly
-						}
 					} else {
-						// make URL absolute so Chrome displays the file tree correctly
-						oUri = URI(oModule.url);
-						sAbsoluteUrl = oUri.absoluteTo(sDocumentLocation);
-						_window.eval(oModule.data + "\r\n//# sourceURL=" + sAbsoluteUrl); // Firebug, Chrome and Safari debugging help, appending the string seems to cost ZERO performance
+
+						sScript = oModule.data;
+
+						// sourceURL: Firebug, Chrome, Safari and IE11 debugging help, appending the string seems to cost ZERO performance
+						// Note: IE11 supports sourceURL even when running in IE9 or IE10 mode
+						// Note: make URL absolute so Chrome displays the file tree correctly
+						// Note: do not append if there is already a sourceURL / sourceMappingURL
+						if (sScript && !sScript.match(/\/\/[#@] source(Mapping)?URL=.*$/)) {
+							sScript += "\n//# sourceURL=" + URI(oModule.url).absoluteTo(sDocumentLocation);
+						}
+
+						if (_window.execScript && (!oModule.data || oModule.data.length < MAX_EXEC_SCRIPT_LENGTH) ) { 
+							try {
+								oModule.data && _window.execScript(sScript); // execScript fails if data is empty
+							} catch (e) {
+								_execStack.pop();
+								// eval again with different approach - should fail with a more informative exception
+								jQuery.sap.globalEval(oModule.data);
+								throw e; // rethrow err in case globalEval succeeded unexpectedly
+							}
+						} else {
+							_window.eval(sScript);
+						}
 					}
 					_execStack.pop();
 					oModule.state = READY;
@@ -16878,7 +16888,7 @@ if ( !jQuery.sap.isDeclared('sap.ui.Global') ) {
  * sap.ui.lazyRequire("sap.ui.core.Control");
  * sap.ui.lazyRequire("sap.ui.commons.Button");
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @author  Martin Schaus, Daniel Brinkmann
  * @public
  */
@@ -17811,7 +17821,7 @@ sap.ui.define("sap/ui/Global",['jquery.sap.global', 'jquery.sap.dom'],
 	 * The <code>sap</code> namespace is automatically registered with the
 	 * OpenAjax hub if it exists.
 	 *
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @namespace
 	 * @public
 	 * @name sap
@@ -17824,7 +17834,7 @@ sap.ui.define("sap/ui/Global",['jquery.sap.global', 'jquery.sap.dom'],
 	 * The <code>sap.ui</code> namespace is the central OpenAjax compliant entry
 	 * point for UI related JavaScript functionality provided by SAP.
 	 *
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @namespace
 	 * @name sap.ui
 	 * @public
@@ -17837,8 +17847,8 @@ sap.ui.define("sap/ui/Global",['jquery.sap.global', 'jquery.sap.dom'],
 			 * The version of the SAP UI Library
 			 * @type string
 			 */
-			version: "1.22.4",
-			buildinfo : { lastchange : "${ldi.scm.revision}", buildtime : "201407151731" }
+			version: "1.22.8",
+			buildinfo : { lastchange : "${ldi.scm.revision}", buildtime : "201409011429" }
 		});
 
 	/**
@@ -18478,7 +18488,7 @@ sap.ui.define("sap/ui/base/Interface",['jquery.sap.global'],
 	 *        only the defined functions will be visible, no internals of the class can be accessed.
 	 *
 	 * @author Malte Wedel, Daniel Brinkmann
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @param {sap.ui.base.Object}
 	 *            oObject the instance that needs an interface created
 	 * @param {string[]}
@@ -18639,7 +18649,7 @@ sap.ui.define("jquery.sap.script",['jquery.sap.global'],
 	 * Use {@link jQuery.sap.getUriParameters} to create an instance of jQuery.sap.util.UriParameters.
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 0.9.0
 	 * @name jQuery.sap.util.UriParameters
 	 * @public
@@ -19405,7 +19415,7 @@ sap.ui.define("sap/ui/base/Metadata",['jquery.sap.global', 'jquery.sap.script'],
 	 *
 	 * @class Metadata for a class.
 	 * @author Frank Weigel
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 0.8.6
 	 * @public
 	 * @name sap.ui.base.Metadata
@@ -19766,7 +19776,7 @@ sap.ui.define("sap/ui/base/Object",['jquery.sap.global', './Interface', './Metad
 	 * @class Base class for all SAPUI5 Objects
 	 * @abstract
 	 * @author Malte Wedel
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @public
 	 * @name sap.ui.base.Object
 	 */
@@ -19941,7 +19951,7 @@ sap.ui.define("sap/ui/base/Event",['jquery.sap.global', './Object'],
 	 * @extends sap.ui.base.Object
 	 * @implements sap.ui.base.Poolable
 	 * @author Malte Wedel, Daniel Brinkmann
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @name sap.ui.base.Event
 	 * @public
 	 */
@@ -20130,7 +20140,7 @@ sap.ui.define("sap/ui/base/ObjectPool",['jquery.sap.global', './Object'],
 	 *
 	 * @extends sap.ui.base.Object
 	 * @author Malte Wedel
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @constructor
 	 * @name sap.ui.base.ObjectPool
 	 * @public
@@ -20245,7 +20255,7 @@ sap.ui.define("sap/ui/base/EventProvider",['jquery.sap.global', './Event', './Ob
 	 * @abstract
 	 * @extends sap.ui.base.Object
 	 * @author Malte Wedel, Daniel Brinkmann
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @constructor
 	 * @public
 	 * @name sap.ui.base.EventProvider
@@ -20840,7 +20850,7 @@ sap.ui.define("sap/ui/base/ManagedObjectMetadata",['jquery.sap.global', './DataT
 	 *
 	 * @class
 	 * @author Frank Weigel
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 0.8.6
 	 * @name sap.ui.base.ManagedObjectMetadata
 	 */
@@ -21918,6 +21928,7 @@ sap.ui.define("sap/ui/model/Binding",['jquery.sap.global', 'sap/ui/base/EventPro
 	 */
 	Binding.prototype.initialize = function() {
 		this.checkUpdate(true);
+		return this;
 	};
 	
 	/**
@@ -22184,7 +22195,7 @@ sap.ui.define("sap/ui/model/Type",['jquery.sap.global', 'sap/ui/base/Object'],
 	 * @extends sap.ui.base.Object
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 *
 	 * @constructor
 	 * @public
@@ -22292,7 +22303,7 @@ sap.ui.define("sap/ui/model/SimpleType",['jquery.sap.global', './FormatException
 	 * @extends sap.ui.model.Type
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 *
 	 * @constructor
 	 * @param {object} [oFormatOptions] options as provided by concrete subclasses
@@ -23038,7 +23049,7 @@ sap.ui.define("sap/ui/model/Context",['jquery.sap.global', 'sap/ui/base/EventPro
 	 * Context elements are created either by the ListBinding for each list entry
 	 * or by using createBindingContext.
 	 *
-	 * @param {sap.ui.model.Model} the model
+	 * @param {sap.ui.model.Model} oModel the model
 	 * @param {String} sPath the path
 	 * @param {Object} oContext the context object
 	 * @abstract
@@ -23171,7 +23182,7 @@ sap.ui.define("sap/ui/model/Model",['jquery.sap.global', 'sap/ui/base/EventProvi
 	 * @extends sap.ui.base.Object
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 *
 	 * @constructor
 	 * @public
@@ -24501,7 +24512,7 @@ sap.ui.define("sap/ui/base/ManagedObject",['jquery.sap.global', './BindingParser
 	 * @class Base Class for managed objects.
 	 * @extends sap.ui.base.EventProvider
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @public
 	 * @name sap.ui.base.ManagedObject
 	 * @experimental Since 1.11.2. ManagedObject as such is public and usable. Only the support for the optional parameter 
@@ -26350,8 +26361,8 @@ sap.ui.define("sap/ui/base/ManagedObject",['jquery.sap.global', './BindingParser
 				oPart.model = oPart.path.substr(0, iSeparatorPos);
 				oPart.path = oPart.path.substr(iSeparatorPos + 1);
 			}
-			// if we have multiple bindings the binding mode can be one way only
-			if (oBindingInfo.parts.length > 1) {
+			// if a formatter exists or we have multiple bindings the binding mode can be one way only 
+			if (oBindingInfo.formatter || oBindingInfo.parts.length > 1) {
 				oPart.mode = sap.ui.model.BindingMode.OneWay;
 			}
 			
@@ -26501,6 +26512,7 @@ sap.ui.define("sap/ui/base/ManagedObject",['jquery.sap.global', './BindingParser
 			this[oPropertyInfo._sMutator](oValue);
 			oBindingInfo.skipModelUpdate = false;
 		} catch (oException) {
+			oBindingInfo.skipModelUpdate = false;
 			if (oException instanceof sap.ui.model.FormatException) {
 				this.fireFormatError({
 					element : this,
@@ -26559,6 +26571,7 @@ sap.ui.define("sap/ui/base/ManagedObject",['jquery.sap.global', './BindingParser
 						}, false, true); // bAllowPreventDefault, bEnableEventBubbling
 					}
 				} catch (oException) {
+					oBindingInfo.skipPropertyUpdate = false;
 					if (oException instanceof sap.ui.model.ParseException) {
 						this.fireParseError({
 							element : this,
@@ -27667,7 +27680,7 @@ sap.ui.define("sap/ui/core/ComponentMetadata",['jquery.sap.global', 'sap/ui/base
 	 * @experimental Since 1.9.2. The Component concept is still under construction, so some implementation details can be changed in future.
 	 * @class
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 1.9.2
 	 * @name sap.ui.core.ComponentMetadata
 	 */
@@ -28130,7 +28143,7 @@ sap.ui.define("sap/ui/core/Component",['jquery.sap.global', 'sap/ui/base/Managed
 	 * @extends sap.ui.base.ManagedObject
 	 * @abstract
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @name sap.ui.core.Component
 	 * @since 1.9.2
 	 */
@@ -28746,7 +28759,7 @@ sap.ui.define("sap/ui/core/Locale",['jquery.sap.global', 'sap/ui/base/Object'],
 		 *
 		 * @extends sap.ui.base.Object
 		 * @author SAP AG
-		 * @version 1.22.4
+		 * @version 1.22.8
 		 * @constructor
 		 * @public
 		 * @name sap.ui.core.Locale
@@ -30265,7 +30278,7 @@ sap.ui.define("sap/ui/core/ElementMetadata",['jquery.sap.global', 'sap/ui/base/M
 	 *
 	 * @class
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 0.8.6
 	 * @name sap.ui.core.ElementMetadata
 	 */
@@ -30438,7 +30451,7 @@ sap.ui.define("sap/ui/core/Element",['jquery.sap.global', 'sap/ui/base/ManagedOb
 	 * @class Base Class for Elements.
 	 * @extends sap.ui.base.ManagedObject
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @public
 	 * @name sap.ui.core.Element
 	 */
@@ -31847,7 +31860,7 @@ sap.ui.define("sap/ui/core/Control",['jquery.sap.global', './CustomStyleClassSup
 	 * @extends sap.ui.core.Element
 	 * @abstract
 	 * @author Martin Schaus, Daniel Brinkmann
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @name sap.ui.core.Control
 	 */
 	var Control = Element.extend("sap.ui.core.Control", /* @lends sap.ui.core.Control */ {
@@ -33456,7 +33469,7 @@ sap.ui.define("sap/ui/core/RenderManager",['jquery.sap.global', 'sap/ui/base/Int
 	 *
 	 * @extends sap.ui.base.Object
 	 * @author Jens Pflueger
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @constructor
 	 * @name sap.ui.core.RenderManager
 	 * @public
@@ -34971,6 +34984,8 @@ if ( !jQuery.sap.isDeclared('sap.ui.core.ThemeCheck') ) {
  * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
  */
 
+/*global URI*/// declare unusual global vars for JSLint/SAPUI5 validation
+
 // Provides class sap.ui.core.ThemeCheck
 jQuery.sap.declare('sap.ui.core.ThemeCheck'); // unresolved dependency added by SAPUI5 CreateModule Ant-Task
 sap.ui.define("sap/ui/core/ThemeCheck",['jquery.sap.global', 'sap/ui/Device', 'sap/ui/base/Object', 'jquery.sap.script'],
@@ -35077,7 +35092,7 @@ sap.ui.define("sap/ui/core/ThemeCheck",['jquery.sap.global', 'sap/ui/Device', 's
 		if (!!oThemeCheck._customCSSAdded && oThemeCheck._themeCheckedForCustom === sThemeName){
 			// include custom style sheet here because it has already been added using jQuery.sap.includeStyleSheet
 			// hence, needs to be checked for successful inclusion, too
-			mLibs["sap-ui-theme-"+oThemeCheck._CUSTOMID] = {};
+			mLibs[oThemeCheck._CUSTOMID] = {};
 		}
 
 		function checkLib(lib) {
@@ -35113,12 +35128,24 @@ sap.ui.define("sap/ui/core/ThemeCheck",['jquery.sap.global', 'sap/ui/Device', 's
 							} else {
 								oBaseStyleSheet = oStyle;
 							}
+							// parse original href
+							var oHref = new URI(oBaseStyleSheet.getAttribute("href"));
+							var sSuffix = oHref.suffix();
+							// get filename without suffix
+							var sFileName = oHref.filename();
+							if (sSuffix.length > 0) {
+								sSuffix = "." + sSuffix;
+								sFileName = sFileName.slice(0, - sSuffix.length);
+							}
+							// change filename only (to keep URI parameters)
+							oHref.filename(sFileName + "_" + sAdditionalLibSuffix + sSuffix);
+							// build final href
+							var sHref = oHref.toString();
 							// create the new link element
 							var oLink = document.createElement("link");
 							oLink.type = "text/css";
 							oLink.rel = "stylesheet";
-							oLink.href = oBaseStyleSheet.getAttribute("href").substr(0, oBaseStyleSheet.getAttribute("href").length - 4 /* length of .css */) +
-								"_" + sAdditionalLibSuffix + ".css";
+							oLink.href = sHref;
 							oLink.id = sLinkId;
 
 							jQuery(oLink)
@@ -35140,7 +35167,7 @@ sap.ui.define("sap/ui/core/ThemeCheck",['jquery.sap.global', 'sap/ui/Device', 's
 				if(oThemeCheck._themeCheckedForCustom != sThemeName){
 					if (checkCustom(oThemeCheck, lib)){
 							//load custom css available at sap/ui/core/themename/library.css
-						jQuery.sap.includeStyleSheet(sPath,  oThemeCheck._CUSTOMID);
+						jQuery.sap.includeStyleSheet(sPath, oThemeCheck._CUSTOMID);
 						oThemeCheck._customCSSAdded = true;
 						jQuery.sap.log.warning("ThemeCheck delivered custom CSS needs to be loaded, Theme not yet applied");
 						oThemeCheck._themeCheckedForCustom = sThemeName;
@@ -35176,27 +35203,27 @@ sap.ui.define("sap/ui/core/ThemeCheck",['jquery.sap.global', 'sap/ui/Device', 's
 	 */
 	function checkCustom (oThemeCheck, lib){
 		var ruleName = null,
-		bSuccess = false;
-	 var lib = new RegExp(lib);
-		//get the core styles
-		jQuery.each(document.styleSheets, function(iIndex, oStyleSheet) {
-				if (!!oStyleSheet.ownerNode && lib.test(oStyleSheet.ownerNode.id) && oStyleSheet.cssRules && oStyleSheet.cssRules.length > 0){
-					ruleName = oStyleSheet.cssRules[0].selectorText;
-					if(oThemeCheck._CUSTOMCSSCHECK.test(ruleName)){
-						bSuccess = true;
-						return false;
-					}
-				}
-				else if(!!oStyleSheet.owningElement && lib.test(oStyleSheet.owningElement.id) && oStyleSheet.rules && oStyleSheet.rules.length > 0){
-						//ie8 doesn't know ownerNode
-					ruleName = oStyleSheet.rules[0].selectorText;
-					if(oThemeCheck._CUSTOMCSSCHECK.test(ruleName)){
-						bSuccess = true;
-						return false;
-					}
-				}
-		});
+			bSuccess = false,
+			aRules = Array();
+		if (jQuery.sap.domById("sap-ui-theme-"+lib)){
+			var cssFile = jQuery.sap.domById("sap-ui-theme-"+lib);
+			if (cssFile.sheet){
+				aRules = cssFile.sheet.cssRules;
+			} else if (cssFile.styleSheet){
+				//we're in an old IE version
+				aRules = cssFile.styleSheet.rules;
+			}
+		}
+		if(aRules.length > 0){
+			ruleName = aRules[0].selectorText;
+		} else {
+			jQuery.sap.log.warning("Custom check: Failed retrieving a CSS rule from stylesheet " + lib);
+			return false;
+		}
 		// we should now have some rule name ==> try to match against custom check
+		if(oThemeCheck._CUSTOMCSSCHECK.test(ruleName)){
+			bSuccess = true;
+		}
 		return bSuccess;
 	}
 	
@@ -35272,7 +35299,7 @@ sap.ui.define("jquery.sap.ui",['jquery.sap.global', 'sap/ui/Global'],
 //	/**
 //	 * Root Namespace for the jQuery UI-Layer plugin provided by SAP AG.
 //	 *
-//	 * @version 1.22.4
+//	 * @version 1.22.8
 //	 * @namespace
 //	 * @public
 //	 */
@@ -35524,7 +35551,7 @@ sap.ui.define("sap/ui/core/UIArea",['jquery.sap.global', 'sap/ui/base/ManagedObj
 	 *
 	 * @extends sap.ui.base.ManagedObject
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @param {sap.ui.Core} oCore internal API of the <core>Core</code> that manages this UIArea
 	 * @param {object} [oRootNode] reference to the Dom Node that should be 'hosting' the UI Area.
 	 * @public
@@ -36514,7 +36541,7 @@ sap.ui.define("sap/ui/core/tmpl/Template",['jquery.sap.global', 'sap/ui/base/Man
 	 * @extends sap.ui.base.ManagedObject
 	 * @abstract
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @name sap.ui.core.tmpl.Template
 	 * @experimental Since 1.15.0. The Template concept is still under construction, so some implementation details can be changed in future.
 	 */
@@ -38752,6 +38779,8 @@ sap.ui.define("jquery.sap.events",['jquery.sap.global', 'jquery.sap.keycodes'],
 					oNewEvent.ctrlKey = oMappedEvent.ctrlKey;
 					oNewEvent.altKey = oMappedEvent.altKey;
 					oNewEvent.shiftKey = oMappedEvent.shiftKey;
+					// The simulated mouse event should always be clicked by the left key of the mouse
+					oNewEvent.button = (sap.ui.Device.browser.msie && sap.ui.Device.browser.version <= 8 ? 1 : 0);
 
 					bEventHandledByUIArea = oNewEvent.isMarked("handledByUIArea");
 
@@ -38998,6 +39027,123 @@ sap.ui.define("jquery.sap.events",['jquery.sap.global', 'jquery.sap.keycodes'],
 		return isMouseEnterLeave;
 	};
 
+	/*
+	 * Detect whether the pressed key is:
+	 * SHIFT, CONTROL, ALT, BREAK, CAPS_LOCK,
+	 * PAGE_UP, PAGE_DOWN, END, HOME, ARROW_LEFT, ARROW_UP, ARROW_RIGHT, ARROW_DOWN,
+	 * PRINT, INSERT, DELETE, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12,
+	 * BACKSPACE, TAB, ENTER, ESCAPE
+	 *
+	 * @param {jQuery.Event} oEvent The event object of the <code>keydown</code>, <code>keyup</code> or <code>keypress</code> events.
+	 * @static
+	 * @returns {boolean}
+	 * @protected
+	 * @since 1.24.0
+	 * @experimental Since 1.24.0 Implementation might change.
+	 */
+	jQuery.sap.isSpecialKey = function(oEvent) {
+		var mKeyCodes = jQuery.sap.KeyCodes,
+			iKeyCode = oEvent.which,	// jQuery oEvent.which normalizes oEvent.keyCode and oEvent.charCode
+			bSpecialKey = 	isModifierKey(oEvent) ||
+							isArrowKey(oEvent) ||
+							(iKeyCode >= 33 && iKeyCode <= 36) ||	// PAGE_UP, PAGE_DOWN, END, HOME
+							(iKeyCode >= 44 && iKeyCode <= 46) ||	// PRINT, INSERT, DELETE
+							(iKeyCode >= 112 && iKeyCode <= 123) ||	// F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12
+							(iKeyCode === mKeyCodes.BREAK) ||
+							(iKeyCode === mKeyCodes.BACKSPACE) ||
+							(iKeyCode === mKeyCodes.TAB) ||
+							(iKeyCode === mKeyCodes.ENTER) ||
+							(iKeyCode === mKeyCodes.ESCAPE) ||
+							(iKeyCode === mKeyCodes.SCROLL_LOCK);
+
+		switch (oEvent.type) {
+			case "keydown":
+			case "keyup":
+				return bSpecialKey;
+
+			// note: the keypress event should be fired only when a character key is pressed,
+			// unfortunately some browsers fire the keypress event for other keys. e.g.:
+			//
+			// Firefox fire it for:
+			// BREAK, ARROW_LEFT, ARROW_RIGHT, INSERT, DELETE,
+			// F1, F2, F3, F5, F6, F7, F8, F9, F10, F11, F12
+			// BACKSPACE, ESCAPE
+			//
+			// Internet Explorer fire it for:
+			// ESCAPE
+			case "keypress":
+
+				// note: in Firefox, almost all noncharacter keys that fire the keypress event have a key code of 0,
+				// with the exception of BACKSPACE (key code of 8).
+				// note: in IE the ESCAPE key is also fired for the the keypress event
+				return (iKeyCode === 0 ||	// in Firefox, almost all noncharacter keys that fire the keypress event have a key code of 0, with the exception of BACKSPACE (key code of 8)
+						iKeyCode === mKeyCodes.BACKSPACE ||
+						iKeyCode === mKeyCodes.ESCAPE ||
+						iKeyCode === mKeyCodes.ENTER /* all browsers */) || false;
+
+			default:
+				return false;
+		}
+	};
+
+	/**
+	 * Detect whether the pressed key is a modifier.
+	 *
+	 * Modifier keys are considered:
+	 * SHIFT, CONTROL, ALT, CAPS_LOCK, NUM_LOCK
+	 * These keys don't send characters, but modify the characters sent by other keys.
+	 *
+	 * @param {jQuery.Event} oEvent The event object of the <code>keydown</code>, <code>keyup</code> or <code>keypress</code> events.
+	 * @static
+	 * @returns {boolean}
+	 * @since 1.24.0
+	 */
+	function isModifierKey(oEvent) {
+		var mKeyCodes = jQuery.sap.KeyCodes,
+			iKeyCode = oEvent.which;	// jQuery oEvent.which normalizes oEvent.keyCode and oEvent.charCode
+
+		return (iKeyCode === mKeyCodes.SHIFT) ||
+				(iKeyCode === mKeyCodes.CONTROL) ||
+				(iKeyCode === mKeyCodes.ALT) ||
+				(iKeyCode === mKeyCodes.CAPS_LOCK) ||
+				(iKeyCode === mKeyCodes.NUM_LOCK);
+	}
+
+	/**
+	 * Detect whether the pressed key is a navigation key.
+	 *
+	 * Navigation keys are considered:
+	 * ARROW_LEFT, ARROW_UP, ARROW_RIGHT, ARROW_DOWN
+	 *
+	 * @param {jQuery.Event} oEvent The event object of the <code>keydown</code>, <code>keyup</code> or <code>keypress</code> events.
+	 * @static
+	 * @returns {boolean}
+	 * @since 1.24.0
+	 */
+	function isArrowKey(oEvent) {
+		var iKeyCode = oEvent.which,	// jQuery oEvent.which normalizes oEvent.keyCode and oEvent.charCode
+			bArrowKey = (iKeyCode >= 37 && iKeyCode <= 40);	// ARROW_LEFT, ARROW_UP, ARROW_RIGHT, ARROW_DOWN
+
+		switch (oEvent.type) {
+			case "keydown":
+			case "keyup":
+				return bArrowKey;
+
+			// note: the keypress event should be fired only when a character key is pressed,
+			// unfortunately some browsers fire the keypress event for other keys. e.g.:
+			//
+			// Firefox fire it for:
+			// ARROW_LEFT, ARROW_RIGHT
+			case "keypress":
+
+				// in Firefox, almost all noncharacter keys that fire the keypress event have a key code of 0
+				return iKeyCode === 0;
+
+			default:
+				return false;
+		}
+	}
+
 	/**
 	 * Constructor for a jQuery.Event object.<br/>
 	 * @see "http://www.jquery.com" and "http://api.jquery.com/category/events/event-object/".
@@ -39123,6 +39269,7 @@ sap.ui.define("jquery.sap.events",['jquery.sap.global', 'jquery.sap.keycodes'],
 	return jQuery;
 
 }, /* bExport= */ false);
+
 }; // end of jquery.sap.events.js
 if ( !jQuery.sap.isDeclared('jquery.sap.mobile') ) {
 /*!
@@ -39855,7 +40002,7 @@ sap.ui.define("jquery.sap.properties",['jquery.sap.global', 'jquery.sap.sjax'],
 	 * currently in the list.
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 0.9.0
 	 * @name jQuery.sap.util.Properties
 	 * @public
@@ -40147,7 +40294,7 @@ sap.ui.define("jquery.sap.resources",['jquery.sap.global', 'jquery.sap.propertie
 	 * Exception: Fallback for "zh_HK" is "zh_TW" before zh.
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @since 0.9.0
 	 * @name jQuery.sap.util.ResourceBundle
 	 * @public
@@ -40572,7 +40719,7 @@ sap.ui.define("sap/ui/core/Core",['jquery.sap.global', 'sap/ui/Device', 'sap/ui/
 	 * @extends sap.ui.base.EventProvider
 	 * @final
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @constructor
 	 * @name sap.ui.core.Core 
 	 * @public

@@ -10299,7 +10299,7 @@ $.ui.position = {
 /** 
  * Device and Feature Detection API of the SAP UI5 Library.
  *
- * @version 1.22.4
+ * @version 1.22.8
  * @namespace
  * @name sap.ui.Device
  * @public
@@ -10322,7 +10322,7 @@ if(typeof window.sap.ui !== "object"){
 
 	//Skip initialization if API is already available
 	if(typeof window.sap.ui.Device === "object" || typeof window.sap.ui.Device === "function" ){
-		var apiVersion = "1.22.4";
+		var apiVersion = "1.22.8";
 		window.sap.ui.Device._checkAPIVersion(apiVersion);
 		return;
 	}
@@ -10376,7 +10376,7 @@ if(typeof window.sap.ui !== "object"){
 	
 	//Only used internal to make clear when Device API is loaded in wrong version
 	device._checkAPIVersion = function(sVersion){
-		var v = "1.22.4";
+		var v = "1.22.8";
 		if(v != sVersion){
 			logger.log(WARNING, "Device API version differs: "+v+" <-> "+sVersion);
 		}
@@ -13876,7 +13876,7 @@ return URI;
 	 * @class Represents a version consisting of major, minor, patch version and suffix, e.g. '1.2.7-SNAPSHOT'.
 	 *
 	 * @author SAP AG
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @constructor
 	 * @public
 	 * @since 1.15.0
@@ -14269,7 +14269,7 @@ return URI;
 	/**
 	 * Root Namespace for the jQuery plug-in provided by SAP AG.
 	 *
-	 * @version 1.22.4
+	 * @version 1.22.8
 	 * @namespace
 	 * @public
 	 * @static
@@ -15442,7 +15442,7 @@ return URI;
 		function execModule(sModuleName) {
 			
 			var oModule = mModules[sModuleName],
-				sOldPrefix, oUri, sAbsoluteUrl;
+				sOldPrefix, sScript;
 			
 			if ( oModule && oModule.state === LOADED && typeof oModule.data !== "undefined" ) {
 				try {
@@ -15458,20 +15458,30 @@ return URI;
 					_execStack.push(sModuleName);
 					if ( typeof oModule.data === "function" ) {
 						oModule.data.apply(window);
-					} else if (_window.execScript && (!oModule.data || oModule.data.length < MAX_EXEC_SCRIPT_LENGTH) ) { 
-						try {
-							oModule.data && _window.execScript(oModule.data); // execScript fails if data is empty
-						} catch (e) {
-							_execStack.pop();
-							// eval again with different approach - should fail with a more informative exception
-							jQuery.sap.globalEval(oModule.data);
-							throw e; // rethrow err in case globalEval succeeded unexpectedly
-						}
 					} else {
-						// make URL absolute so Chrome displays the file tree correctly
-						oUri = URI(oModule.url);
-						sAbsoluteUrl = oUri.absoluteTo(sDocumentLocation);
-						_window.eval(oModule.data + "\r\n//# sourceURL=" + sAbsoluteUrl); // Firebug, Chrome and Safari debugging help, appending the string seems to cost ZERO performance
+
+						sScript = oModule.data;
+
+						// sourceURL: Firebug, Chrome, Safari and IE11 debugging help, appending the string seems to cost ZERO performance
+						// Note: IE11 supports sourceURL even when running in IE9 or IE10 mode
+						// Note: make URL absolute so Chrome displays the file tree correctly
+						// Note: do not append if there is already a sourceURL / sourceMappingURL
+						if (sScript && !sScript.match(/\/\/[#@] source(Mapping)?URL=.*$/)) {
+							sScript += "\n//# sourceURL=" + URI(oModule.url).absoluteTo(sDocumentLocation);
+						}
+
+						if (_window.execScript && (!oModule.data || oModule.data.length < MAX_EXEC_SCRIPT_LENGTH) ) { 
+							try {
+								oModule.data && _window.execScript(sScript); // execScript fails if data is empty
+							} catch (e) {
+								_execStack.pop();
+								// eval again with different approach - should fail with a more informative exception
+								jQuery.sap.globalEval(oModule.data);
+								throw e; // rethrow err in case globalEval succeeded unexpectedly
+							}
+						} else {
+							_window.eval(sScript);
+						}
 					}
 					_execStack.pop();
 					oModule.state = READY;

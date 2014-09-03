@@ -33,7 +33,7 @@ jQuery.sap.require("sap.m.Button");
  * @class Table Personalization Dialog
  * @extends sap.ui.base.ManagedObject
  * @author SAP
- * @version 1.22.4
+ * @version 1.22.8
  * @name sap.m.TablePersoDialog
  */
 sap.ui.base.ManagedObject.extend("sap.m.TablePersoDialog", /** @lends sap.m.TablePersoDialog */
@@ -431,7 +431,18 @@ sap.m.TablePersoDialog.prototype._resetAll = function () {
 		//Deep copy of Initial Data, otherwise initial data will be changed
 		//and can only be used once to restore the initial state
 		
-		var aInitialStateCopy = jQuery.extend(true, [], this.getInitialColumnState());
+		var aInitialStateCopy = jQuery.extend(true, [], this.getInitialColumnState()),
+		    that = this;
+		
+		//CSN 0120061532 0001380609 2014
+		//Make sure that captions are not replaced by column id's. This my be the case if
+		//initalStateCopy has been created too early
+		if(!!this._mColumnCaptions) {
+			aInitialStateCopy.forEach(
+				function(oColumn) {
+					oColumn.text = that._mColumnCaptions[oColumn.id];
+			});
+		}
 		
 		this._oP13nModel.getData().aColumns = aInitialStateCopy;
 		
@@ -444,63 +455,6 @@ sap.m.TablePersoDialog.prototype._resetAll = function () {
 };
 
 
-/**
- * Returns table column settings (header text, order, visibility) for a table
- * @private
- * @param {object} oTable the table for which column settings should be returned
- */
-sap.m.TablePersoDialog.prototype._tableColumnInfo = function (oTable) {
-	//Check if persoMap has been passed into the dialog.
-	//Otherwise, personalization is not possible.
-	if(!!this.getPersoMap()) {
-		var aColumns = oTable.getColumns(),
-			that = this,
-			aColumnInfo = [];
-		aColumns.forEach(function(oColumn){
-			var sCaption = null;
-			if(that.getPersoService().getCaption) {
-				sCaption = that.getPersoService().getCaption(oColumn);
-			}
-			
-			var sGroup = null;
-			if(that.getPersoService().getGroup) {
-				sGroup = that.getPersoService().getGroup(oColumn);
-			}
-			
-			if (!sCaption) {
-				var oColHeader = oColumn.getHeader();
-				//Check if header control has either text or 'title' property
-				if(oColHeader.getText && oColHeader.getText()) {
-					sCaption = oColHeader.getText();
-				} else if(oColHeader.getTitle && oColHeader.getTitle()) {
-					sCaption = oColHeader.getTitle();
-				}
-			}
-				
-			if (!sCaption){
-				//Fallback: use column id and issue warning to let app developer know to add captions to columns
-				sCaption = oColumn.getId();
-				jQuery.sap.log.warning("Please 'getCaption' callback implentation in your TablePersoProvider for column " + oColumn + ". Table personalization uses column id as fallback value.");
-			}
-			
-			//In this case, oColumn is one of our controls. Therefore, sap.ui.core.Element.toString() 
-			//is called which delivers something like 'Element sap.m.Column#<sId>' where sId is the column's sId property
-			aColumnInfo.push({
-				text : sCaption,
-				order : oColumn.getOrder(),
-				visible : oColumn.getVisible(),
-				id: that.getPersoMap()[oColumn],
-				group : sGroup
-			});
-		});
-
-		// Sort to make sure they're presented in the right order
-		aColumnInfo.sort(function(a, b) { return a.order - b.order; });
-
-		return aColumnInfo;
-	}
-	return null;
-};
 
 /**
  * Moves an item up or down, swapping it with the neighbour.
@@ -542,12 +496,39 @@ sap.m.TablePersoDialog.prototype._moveItem = function (iDirection) {
 	this._oP13nModel.updateBindings();
 	
 	// Switch the selected item
-	this._oList.setSelectedItem(this._oList.getItems()[swap], true);
+	var oSwapItem = this._oList.getItems()[swap];
+	this._oList.setSelectedItem(oSwapItem, true);
+	
+	// Scroll to selected item
+	// Make sure that item is selected so 'oSwapItem.$()' 
+	// is not empty
+	sap.ui.getCore().applyChanges();
+	// swapItem need to be rendered, otherwise we can not
+	// perform the necessary calculations
+	if(!!oSwapItem.getDomRef()) {
+		var iElementOffset =  oSwapItem.$().position().top,
+			//this is the minimal height that should be visible from the selected element
+		    //18 means 18px which corresponds to 3em
+			iMinHeight=18,
+			iViewPortHeight = this._oScrollContainer.$().height(),
+			iViewPortStart = this._oScrollContainer.$().offset().top - this._oList.$().offset().top,
+			iViewPortEnd = iViewPortStart + iViewPortHeight;
+		
+		if(iElementOffset < iViewPortStart ) {
+			//selected element is above or below visible viewport
+			//scroll page up
+			this._oScrollContainer.scrollTo(0, Math.max(0, iViewPortStart - iViewPortHeight + iMinHeight));
+		} else if(iElementOffset + iMinHeight > iViewPortEnd){
+			//selected element is above or below visible viewport
+			//scroll down a page (this is the height of the scroll container)
+			this._oScrollContainer.scrollTo(0, iElementOffset);
+		}
+		// otherwise, element is within the scroll container's viewport, so no action is necessary 
+	}
 	
 	this._fnUpdateArrowButtons.call(this);
 	
 };
-
 
 
 /**
@@ -556,6 +537,7 @@ sap.m.TablePersoDialog.prototype._moveItem = function (iDirection) {
  */
 sap.m.TablePersoDialog.prototype._readCurrentSettingsFromTable = function() {
 	var oTable = sap.ui.getCore().byId(this.getPersoDialogFor()),
+		that = this,
 		aCurrentColumns = this.getColumnInfoCallback().call(this, oTable, this.getPersoMap(), this.getPersoService());
 	this._oP13nModel.setData({ aColumns : aCurrentColumns, aHeaders : [{
 		text : this._oRb.getText("PERSODIALOG_SELECT_ALL"),
@@ -565,6 +547,13 @@ sap.m.TablePersoDialog.prototype._readCurrentSettingsFromTable = function() {
 		),
 		id: this.getId() + '_SelectAll'
 	}] });
+	
+	//Remember column captions, needed for 'Reset All'
+	this._mColumnCaptions = {};
+	aCurrentColumns.forEach(
+			function(oColumn) { 
+				that._mColumnCaptions[oColumn.id] = oColumn.text; 
+	});
 };
 
 /**
