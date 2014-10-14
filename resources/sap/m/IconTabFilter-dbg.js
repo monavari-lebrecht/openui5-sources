@@ -64,7 +64,7 @@ jQuery.sap.require("sap.ui.core.Item");
  * @implements sap.m.IconTab
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -400,6 +400,9 @@ sap.m.IconTabFilter.prototype._getImageControl = function(aCssClassesToAdd, oPar
 	};
 	if (mProperties.src) {
 		this._oImageControl = sap.m.ImageHelper.getImageControl(this.getId() + "-icon", this._oImageControl, oParent, mProperties, aCssClassesToAdd, aCssClassesToRemove);
+	} else if (this._oImageControl) {
+		this._oImageControl.destroy();
+		this._oImageControl = null;
 	}
 	
 	return this._oImageControl;

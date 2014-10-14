@@ -1771,6 +1771,7 @@
 /* OverlapCalendar Event Type */
 @sapMeOverlapCalendarType00 : @sapUiExtraLightBorder;
 @sapMeOverlapCalendarType01 : mix(@sapUiHighlight,@sapUiWhite,15);
+@sapMeOverlapCalendarType01Action: mix(@sapUiAccent6, @sapUiWhite, 20%);
 @sapMeOverlapCalendarType04 : mix(@sapUiHighlight,@sapUiWhite,15);
 @sapMeOverlapCalendarType06 : mix(@sapUiAccent1,@sapUiWhite,35);
 @sapMeOverlapCalendarType07 : mix(@sapUiAccent3,@sapUiWhite,10);
@@ -1779,7 +1780,6 @@
 /* Calendar Legend */
 @sapMeCalendarLegendIconCollapse: collapse;
 @sapMeCalendarLegendIconExpand: expand;
-
 
 /* Tab Container */
 @sapMeTabIconInfo: hint;
@@ -1944,6 +1944,7 @@
 
 .sapUiCalWH{
 	color: @sapUiLightText;
+	white-space: nowrap;
 }
 
 .sapUiCalDay,
@@ -2340,6 +2341,11 @@ and (orientation: portrait) {
 		width: 50%;
 		padding-left: 1rem;
 		padding-right: 1rem;
+	}
+
+	.sap-phone .sapUiShd > .sapUiCalMonths,
+	.sap-phone .sapUiShd > .sapUiCalYears{
+		bottom: 56px;
 	}
 }
 

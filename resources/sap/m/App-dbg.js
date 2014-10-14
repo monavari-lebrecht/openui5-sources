@@ -62,7 +62,7 @@ jQuery.sap.require("sap.m.NavContainer");
  * @extends sap.m.NavContainer
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public

@@ -65,7 +65,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -696,6 +696,38 @@ sap.m.Select.prototype._getParentPopup = function() {
 };
 
 /**
+ * Called, whenever the binding of the aggregation items is changed.
+ * This method deletes all items in this aggregation and recreates them
+ * according to the data model.
+ *
+ * @private
+ * @name sap.m.Select#updateItems
+ * @function
+ */
+sap.m.Select.prototype.updateItems = function(sReason) {
+	this._bDataAvailable = false;
+	this.updateAggregation("items");
+	this._bDataAvailable = true;
+};
+
+/**
+ * Called, when the items aggregation needs to be refreshed.
+ * This method does not make any change on the aggregation, but just calls the
+ * getContexts() method to trigger fetching of new data.
+ *
+ * note: This method has been overwritten to prevent .updateItems()
+ * from being called when the bindings are refreshed.
+ * @see sap.ui.base.ManagedObject#bindAggregation
+ *
+ * @private
+ * @name sap.m.Select#refreshItems
+ * @function
+ */
+sap.m.Select.prototype.refreshItems = function() {
+	this.refreshAggregation("items");
+};
+
+/**
  * Synchronize selected item and key.
  *
  * @param {sap.ui.core.Item} vItem
@@ -731,20 +763,21 @@ sap.m.Select.prototype._synchronizeSelection = function(vItem, sKey, aItems) {
 			return;
 		}
 
-		// the "selectedKey" property have the default value
-		vItem = this.getDefaultSelectedItem();
+		// the aggregation items is not bound or
+		// it is bound and the data is already available
+		if (!this.isBound("items") || this._bDataAvailable) {
 
-		// Update and synchronize "selectedItem" association,
-		// "selectedKey" and "selectedItemId" properties.
-		this._setSelectedItem({
-			item: vItem || null,
-			id: vItem ? vItem.getId() : "",
-			key: vItem ? vItem.getKey() : "",
-			suppressInvalidate: true
-		});
+			vItem = this.getDefaultSelectedItem();
 
-	} else if (aItems.indexOf(vItem) === -1) {	// validate if the selected item is aggregated
-		jQuery.sap.log.warning('Warning: _synchronizeSelection() the sap.ui.core.Item instance or sap.ui.core.Item id is not a valid aggregation on', this);
+			// Update and synchronize "selectedItem" association,
+			// "selectedKey" and "selectedItemId" properties.
+			this._setSelectedItem({
+				item: vItem || null,
+				id: vItem ? vItem.getId() : "",
+				key: vItem ? vItem.getKey() : "",
+				suppressInvalidate: true
+			});
+		}
 	}
 };
 

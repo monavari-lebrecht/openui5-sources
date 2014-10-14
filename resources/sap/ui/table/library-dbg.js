@@ -10,7 +10,7 @@
  * ----------------------------------------------------------------------------------- */
 
 /**
- * Initialization Code and shared classes of library sap.ui.table (1.22.8)
+ * Initialization Code and shared classes of library sap.ui.table (1.22.10)
  */
 jQuery.sap.declare("sap.ui.table.library");
 jQuery.sap.require("sap.ui.core.Core");
@@ -52,7 +52,7 @@ sap.ui.getCore().initLibrary({
     "sap.ui.table.Column",
     "sap.ui.table.Row"
   ],
-  version: "1.22.8"});
+  version: "1.22.10"});
 
 /*!
  * SAP UI development toolkit for HTML5 (SAPUI5/OpenUI5)
@@ -72,7 +72,7 @@ jQuery.sap.declare("sap.ui.table.NavigationMode");
 /**
  * @class Navigation mode of the table
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -109,7 +109,7 @@ jQuery.sap.declare("sap.ui.table.SelectionBehavior");
 /**
  * @class Selection behavior of the table
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -152,7 +152,7 @@ jQuery.sap.declare("sap.ui.table.SelectionMode");
 /**
  * @class Selection mode of the table
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -201,7 +201,7 @@ jQuery.sap.declare("sap.ui.table.SortOrder");
 /**
  * @class Sort order of a column
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -238,7 +238,7 @@ jQuery.sap.declare("sap.ui.table.VisibleRowCountMode");
 /**
  * @class VisibleRowCountMode of the table
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */

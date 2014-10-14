@@ -59,7 +59,7 @@ jQuery.sap.require("sap.ui.core.Element");
  * @extends sap.ui.core.Element
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -341,6 +341,9 @@ jQuery.sap.require("sap.ui.commons.Callout");
 		if (oEvent.getSource()) {
 			oEvent.getSource().destroyContent();
 		}
+		if (this._oCallout) {
+			this._oCallout.$().css("display", "none");
+		}
 	};
 
 	sap.ui.ux3.Notifier.prototype.hasItems = function() {
@@ -360,7 +363,10 @@ jQuery.sap.require("sap.ui.commons.Callout");
 			beforeOpen : jQuery.proxy(fBeforeOpen, this),
 			open : function(oEvent) {
 				// to prevent that the Callout moves if the window is scrolled
-				this.$().css("position", "fixed");
+				this.$().css({
+					position : "fixed",
+					display  : "block"
+				});
 			},
 			close : jQuery.proxy(fCalloutClosed, this),
 			collision : "none"

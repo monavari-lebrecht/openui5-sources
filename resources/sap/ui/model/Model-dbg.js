@@ -33,7 +33,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/EventProvider', './BindingMode'
 	 * @extends sap.ui.base.Object
 	 *
 	 * @author SAP AG
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 *
 	 * @constructor
 	 * @public

@@ -7,7 +7,7 @@
 /** 
  * Device and Feature Detection API of the SAP UI5 Library.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @namespace
  * @name sap.ui.Device
  * @public
@@ -30,7 +30,7 @@ if(typeof window.sap.ui !== "object"){
 
 	//Skip initialization if API is already available
 	if(typeof window.sap.ui.Device === "object" || typeof window.sap.ui.Device === "function" ){
-		var apiVersion = "1.22.8";
+		var apiVersion = "1.22.10";
 		window.sap.ui.Device._checkAPIVersion(apiVersion);
 		return;
 	}
@@ -84,7 +84,7 @@ if(typeof window.sap.ui !== "object"){
 	
 	//Only used internal to make clear when Device API is loaded in wrong version
 	device._checkAPIVersion = function(sVersion){
-		var v = "1.22.8";
+		var v = "1.22.10";
 		if(v != sVersion){
 			logger.log(WARNING, "Device API version differs: "+v+" <-> "+sVersion);
 		}
@@ -1203,6 +1203,7 @@ if(typeof window.sap.ui !== "object"){
 	};
 
 	var isWin8 = device.os.windows && device.os.version === 8;
+	var isWin7 = device.os.windows && device.os.version === 7;
 
 	device.system = {};
 
@@ -1211,9 +1212,9 @@ if(typeof window.sap.ui !== "object"){
 		var t = isTablet();
 		
 		var s = {};
-		s.tablet = (device.support.touch || !!_simMobileOnDesktop) && t;
-		s.phone = (device.support.touch || !!_simMobileOnDesktop) && !t;
-		s.desktop = (!s.tablet && !s.phone) || isWin8;
+		s.tablet = ((device.support.touch && !isWin7) || !!_simMobileOnDesktop) && t;
+		s.phone = ((device.support.touch && !isWin7) || !!_simMobileOnDesktop) && !t;
+		s.desktop = (!s.tablet && !s.phone) || isWin8 || isWin7;
 		s.combi = (s.desktop && s.tablet);
 		s.SYSTEMTYPE = SYSTEMTYPE;
 		

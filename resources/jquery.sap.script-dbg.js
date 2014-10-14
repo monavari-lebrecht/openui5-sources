@@ -99,7 +99,7 @@ sap.ui.define(['jquery.sap.global'],
 	 * Use {@link jQuery.sap.getUriParameters} to create an instance of jQuery.sap.util.UriParameters.
 	 *
 	 * @author SAP AG
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @since 0.9.0
 	 * @name jQuery.sap.util.UriParameters
 	 * @public

@@ -47,7 +47,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/ClientPropertyBinding'],
 	 */
 	XMLPropertyBinding.prototype.checkUpdate = function(bForceupdate){
 		var oValue = this._getValue();
-		if(oValue !== this.oValue || bForceupdate) {// optimize for not firing the events when unneeded
+		if (!jQuery.sap.equal(oValue, this.oValue) || bForceupdate) {// optimize for not firing the events when unneeded
 			this.oValue = oValue;
 			this._fireChange({reason: sap.ui.model.ChangeReason.Change});
 		}

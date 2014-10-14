@@ -80,11 +80,11 @@ sap.m.ObjectHeaderRenderer._isEmptyRow = function(oLeft, aRight) {
  *            aObjects array of controls to be rendered
  * @private
  */
-sap.m.ObjectHeaderRenderer._renderObjects = function(rm, aObjects) {
+sap.m.ObjectHeaderRenderer._renderObjects = function(rm, aObjects, oOH) {
 
 	for ( var i = 0; i < aObjects.length; i++) {
 		if (aObjects[i] instanceof sap.ui.core.Control) {
-			rm.renderControl(aObjects[i]);
+			this._renderChildControl(rm, oOH, aObjects[i]);
 		}
 	}
 };
@@ -138,7 +138,7 @@ sap.m.ObjectHeaderRenderer.renderAttribute = function(rm, oOH, oAttr, bFullWidth
 		rm.writeStyles();
 	}
 	rm.write(">");
-	rm.renderControl(oAttr);
+	this._renderChildControl(rm, oOH, oAttr);
 	rm.write("</div>");
 };
 
@@ -190,7 +190,7 @@ sap.m.ObjectHeaderRenderer.renderRow = function(rm, oOH, oLeft, aRight) {
 		}
 		rm.writeClasses();
 		rm.write(">");
-		sap.m.ObjectHeaderRenderer._renderObjects(rm, aRight);
+		sap.m.ObjectHeaderRenderer._renderObjects(rm, aRight, oOH);
 		rm.write("</div>");
 	}
 
@@ -340,7 +340,7 @@ sap.m.ObjectHeaderRenderer.renderTitle = function(rm, oOH) {
 			oOH._titleText.addStyleClass("sapMOHTitle");
 		}
 
-		rm.renderControl(oOH._titleText);
+		this._renderChildControl(rm, oOH, oOH._titleText);
 		rm.write("</span>"); // End Title Text container
 	}
 
@@ -349,7 +349,7 @@ sap.m.ObjectHeaderRenderer.renderTitle = function(rm, oOH) {
 		rm.addClass("sapMOHTitleArrow");
 		rm.writeClasses();
 		rm.write(">");
-		rm.renderControl(oOH._oTitleArrowIcon);
+		this._renderChildControl(rm, oOH, oOH._oTitleArrowIcon);
 		rm.write("</span>"); // end title arrow container
 	}
 
@@ -426,7 +426,7 @@ sap.m.ObjectHeaderRenderer.renderFullOH = function(rm, oOH) {
 		}
 		rm.writeClasses();
 		rm.write(">");
-		rm.renderControl(oOH._getImageControl());
+		this._renderChildControl(rm, oOH, oOH._getImageControl());
 		rm.write("</div>"); // end icon container
 	}
 	
@@ -493,14 +493,19 @@ sap.m.ObjectHeaderRenderer.renderCondensedOH = function(rm, oOH) {
  *            oOH an object representation of the control that should be rendered
  */
 sap.m.ObjectHeaderRenderer.render = function(rm, oOH) {
+	
+	this._computeChildControlsToBeRendered(oOH);
+	
 	// return immediately if control is invisible
 	if (!oOH.getVisible()) {
+		this._cleanupNotRenderedChildControls(rm, oOH);
 		return;
 	}
 
 	// responsive prototype
 	if (oOH.getResponsive()) {
 		this.renderResponsive(rm, oOH);
+		this._cleanupNotRenderedChildControls(rm, oOH);
 		return;
 	}
 
@@ -533,7 +538,8 @@ sap.m.ObjectHeaderRenderer.render = function(rm, oOH) {
 	rm.write("<div class=\"sapMOHLastDivider\"/>");
 
 	rm.write("</div>"); // End Main container\
-
+	
+	this._cleanupNotRenderedChildControls(rm, oOH);
 };
 
 /**** responsive rendering start (barely any methods from above are used in this part to not break old UIs, it replaces most parts of renderer) ****/
@@ -620,7 +626,7 @@ sap.m.ObjectHeaderRenderer.renderResponsive = function(oRm, oControl) {
 
 	// render the IconTabBar content section after the object header div
 	if (oHeaderContainer && oHeaderContainer instanceof sap.m.IconTabBar) {
-		oRm.renderControl(oHeaderContainer);
+		this._renderChildControl(oRm, oControl, oHeaderContainer);
 	}
 
 	// end outer div
@@ -670,7 +676,7 @@ sap.m.ObjectHeaderRenderer.renderResponsiveTitle = function(oRm, oControl, bTitl
 		}
 		oRm.writeClasses();
 		oRm.write(">");
-		oRm.renderControl(oControl._getImageControl());
+		this._renderChildControl(oRm, oControl, oControl._getImageControl());
 		oRm.write("</div>"); // end icon container
 	}
 
@@ -702,7 +708,7 @@ sap.m.ObjectHeaderRenderer.renderResponsiveMarkers = function(oRm, oControl) {
 		// render icons
 		oRm.write("<div class=\"sapMObjStatusMarker\">");
 		for (; i < aIcons.length; i++) {
-			oRm.renderControl(aIcons[i]);
+			this._renderChildControl(oRm, oControl, aIcons[i]);
 		}
 		oRm.write("</div>");
 	}
@@ -712,7 +718,7 @@ sap.m.ObjectHeaderRenderer.renderResponsiveNumber = function(oRm, oControl) {
 	var oObjectNumber = oControl.getAggregation("_objectNumber");
 	if (oObjectNumber && oObjectNumber.getNumber()) {
 		oObjectNumber.toggleStyleClass("sapMObjectNumberFull", !oControl.getTitle());
-		oRm.renderControl(oObjectNumber);
+		this._renderChildControl(oRm, oControl, oObjectNumber);
 	}
 };
 
@@ -814,12 +820,12 @@ sap.m.ObjectHeaderRenderer.renderResponsiveTabs = function(oRm, oControl, bTitle
 		if (oHeaderContainer instanceof sap.m.IconTabBar) {
 			// TODO: use a public function
 			oIconTabHeader = oHeaderContainer._getIconTabHeader();
-			oRm.renderControl(oIconTabHeader);
+			this._renderChildControl(oRm, oControl, oIconTabHeader);
 			// tell iconTabBar to not render the header
 			oHeaderContainer._bHideHeader = true;
 		} else if (sap.suite && sap.suite.ui && sap.suite.ui.commons && oHeaderContainer instanceof sap.suite.ui.commons.HeaderContainer) {
 			// render the header container
-			oRm.renderControl(oHeaderContainer);
+			this._renderChildControl(oRm, oControl, oHeaderContainer);
 		} else {
 			console.log("The control " + oHeaderContainer + " is not supported for aggregation \"headerContainer\"");
 		}
@@ -902,7 +908,7 @@ sap.m.ObjectHeaderRenderer.renderStatus = function(rm, oOH, oStatus, bFullWidth)
 		rm.writeStyles();
 	}
 	rm.write(">");
-	rm.renderControl(oStatus[0]);
+	this._renderChildControl(rm, oOH, oStatus[0]);
 	rm.write("</div>");
 };
 
@@ -945,14 +951,14 @@ sap.m.ObjectHeaderRenderer.renderTitleResponsive = function(oRm, oOH) {
 			oOH._titleText.addStyleClass("sapMOHTitle");
 		}
 
-		oRm.renderControl(oOH._titleText);
+		this._renderChildControl(oRm, oOH, oOH._titleText);
 
 		if(oOH.getShowTitleSelector()){
 			oRm.write("<span"); // Start title arrow container
 			oRm.addClass("sapMOHTitleArrow");
 			oRm.writeClasses();
 			oRm.write(">");
-			oRm.renderControl(oOH._oTitleArrowIcon);
+			this._renderChildControl(oRm, oOH, oOH._oTitleArrowIcon);
 			oRm.write("</span>"); // end title arrow container
 		}
 
@@ -982,3 +988,41 @@ sap.m.ObjectHeaderRenderer.renderTitleResponsive = function(oRm, oOH) {
 };
 
 /**** responsive rendering end ****/
+
+sap.m.ObjectHeaderRenderer._computeChildControlsToBeRendered = function(oOH){
+	oOH.__controlsToBeRendered = {};
+	var aChildren = oOH.getAttributes();
+	for(var i=0; i<aChildren.length; i++){
+		oOH.__controlsToBeRendered[aChildren[i].getId()] = aChildren[i];
+	}
+	aChildren = oOH.getStatuses();
+	for(var i=0; i<aChildren.length; i++){
+		oOH.__controlsToBeRendered[aChildren[i].getId()] = aChildren[i];
+	}
+	var oChild = oOH.getFirstStatus();
+	if(oChild){
+		oOH.__controlsToBeRendered[oChild.getId()] = oChild;
+	}
+	oChild = oOH.getSecondStatus();
+	if(oChild){
+		oOH.__controlsToBeRendered[oChild.getId()] = oChild;
+	}
+	oChild = oOH.getAggregation("_objectNumber");
+	if(oChild){
+		oOH.__controlsToBeRendered[oChild.getId()] = oChild;
+	}
+};
+
+sap.m.ObjectHeaderRenderer._renderChildControl = function(rm, oOH, oControl){
+	rm.renderControl(oControl);
+	if(oControl){
+		delete oOH.__controlsToBeRendered[oControl.getId()];
+	}
+};
+
+sap.m.ObjectHeaderRenderer._cleanupNotRenderedChildControls = function(rm, oOH){
+	for(var id in oOH.__controlsToBeRendered){
+		rm.cleanupControlWithoutRendering(oOH.__controlsToBeRendered[id]);
+	}
+	delete oOH.__controlsToBeRendered;
+};

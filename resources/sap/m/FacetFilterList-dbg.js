@@ -65,7 +65,7 @@ jQuery.sap.require("sap.m.List");
  * @extends sap.m.List
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public

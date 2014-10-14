@@ -4,4 +4,4 @@
  * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
  */
 jQuery.sap.require("sap.ui.core.Renderer");jQuery.sap.require("sap.m.DatePickerRenderer");jQuery.sap.declare("sap.m.DateRangeSelectionRenderer");sap.m.DateRangeSelectionRenderer=sap.ui.core.Renderer.extend(sap.m.DatePickerRenderer);
-sap.m.DateRangeSelectionRenderer.writeInnerValue=function(r,d){r.writeAttributeEscaped("value",d._formatValue())};
+sap.m.DateRangeSelectionRenderer.writeInnerValue=function(r,c){r.writeAttributeEscaped("value",c._formatValue(c.getDateValue(),c.getSecondDateValue()))};

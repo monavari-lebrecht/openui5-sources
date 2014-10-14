@@ -16,9 +16,9 @@ sap.ui.unified.CalendarRenderer = {
 
 /**
  * Renders the HTML for the given control, using the provided {@link sap.ui.core.RenderManager}.
- * 
+ *
  * @param {sap.ui.core.RenderManager} oRm the RenderManager that can be used for writing to the render output buffer
- * @param {sap.ui.core.Control} oControl an object representation of the control that should be rendered
+ * @param {sap.ui.unified.Calendar} oCal an object representation of the control that should be rendered
  */
 sap.ui.unified.CalendarRenderer.render = function(oRm, oCal){
 
@@ -48,6 +48,9 @@ sap.ui.unified.CalendarRenderer.render = function(oRm, oCal){
 	oRm.write(rb.getText("CALENDAR_CANCEL"));
 	oRm.write("</button>");
 
+	// dummy element to catch tabbing in from next element
+	oRm.write("<div id=\""+sId+"-end\" tabindex=\"0\" style=\"width:0;height:0;position:absolute;right:0;bottom:0;\"></div>");
+
 	oRm.write("</div>");
 };
 
@@ -55,8 +58,8 @@ sap.ui.unified.CalendarRenderer.renderHeader = function(oRm, oCal, oDate){
 
 	var oLocaleData = oCal._getLocaleData();
 	var sId = oCal.getId();
-	var iMonth = oDate.getMonth();
-	var iYear = oDate.getFullYear();
+	var iMonth = oDate.getUTCMonth();
+	var iYear = oDate.getUTCFullYear();
 	var aMonthNames = [];
 	if (oCal._bLongMonth || !oCal._bNamesLengthChecked) {
 		aMonthNames = oLocaleData.getMonthsStandAlone("wide");
@@ -131,11 +134,14 @@ sap.ui.unified.CalendarRenderer.renderDayPicker = function(oRm, oCal, oDate){
 
 sap.ui.unified.CalendarRenderer.renderDays = function(oRm, oCal, oDate){
 
+	if (!oDate) {
+		oDate = oCal._getFocusedDate();
+	}
+
 	var sLocale = oCal.getLocale();
 	var oLocaleData = oCal._getLocaleData();
-	var oDate = oCal._getFocusedDate();
-	var iMonth = oDate.getMonth();
-	var iYear = oDate.getFullYear();
+	var iMonth = oDate.getUTCMonth();
+	var iYear = oDate.getUTCFullYear();
 	var iFirstDayOfWeek = oLocaleData.getFirstDayOfWeek();
 	var iWeekendStart = oLocaleData.getWeekendStart();
 	var iWeekendEnd = oLocaleData.getWeekendEnd();
@@ -144,8 +150,8 @@ sap.ui.unified.CalendarRenderer.renderDays = function(oRm, oCal, oDate){
 
 	// determine weekday of first day in month
 	var oFirstDay = new Date(oDate.getTime());
-	oFirstDay.setDate(1);
-	var iWeekDay = oFirstDay.getDay();
+	oFirstDay.setUTCDate(1);
+	var iWeekDay = oFirstDay.getUTCDay();
 	var iDaysOldMonth = iWeekDay - iFirstDayOfWeek;
 	if (iDaysOldMonth < 0) {
 		iDaysOldMonth = 7 + iDaysOldMonth;
@@ -153,7 +159,7 @@ sap.ui.unified.CalendarRenderer.renderDays = function(oRm, oCal, oDate){
 
 	if (iDaysOldMonth > 0) {
 		// determine first day for display
-		oFirstDay.setDate(1 - iDaysOldMonth);
+		oFirstDay.setUTCDate(1 - iDaysOldMonth);
 	}
 
 	var oDay = new Date(oFirstDay.getTime());
@@ -162,8 +168,9 @@ sap.ui.unified.CalendarRenderer.renderDays = function(oRm, oCal, oDate){
 	var iSelected = 0;
 
 	do {
-		sYyyymmdd = oCal._oFormatYyyymmdd.format(oDay);
-		iWeekDay = oDay.getDay();
+
+		sYyyymmdd = oCal._oFormatYyyymmdd.format(oDay, true);
+		iWeekDay = oDay.getUTCDay();
 		iSelected = oCal._checkDateSelected(oDay);
 		oRm.write("<div");
 		oRm.writeAttribute("id", sId+"-"+sYyyymmdd);
@@ -172,10 +179,10 @@ sap.ui.unified.CalendarRenderer.renderDays = function(oRm, oCal, oDate){
 		if (iWeekDay == iFirstDayOfWeek) {
 			oRm.addClass("sapUiCalFirstWDay");
 		}
-		if (iMonth != oDay.getMonth()) {
+		if (iMonth != oDay.getUTCMonth()) {
 			oRm.addClass("sapUiCalDayOtherMonth");
 		}
-		if (oDay.getMonth() == oToday.getMonth() && oDay.getYear() == oToday.getYear() && oDay.getDate() == oToday.getDate()) {
+		if (oDay.getUTCMonth() == oToday.getMonth() && oDay.getUTCFullYear() == oToday.getFullYear() && oDay.getUTCDate() == oToday.getDate()) {
 			oRm.addClass("sapUiCalDayToday");
 		}
 
@@ -203,7 +210,7 @@ sap.ui.unified.CalendarRenderer.renderDays = function(oRm, oCal, oDate){
 		oRm.write(">"); // div element
 
 		oRm.write("<span class=\"sapUiCalDayNum\">");
-		oRm.write(oDay.getDate());
+		oRm.write(oDay.getUTCDate());
 		oRm.write("</span>");
 
 		if (iWeekDay == iFirstDayOfWeek) {
@@ -214,8 +221,10 @@ sap.ui.unified.CalendarRenderer.renderDays = function(oRm, oCal, oDate){
 		}
 
 		oRm.write("</div>");
-		oDay.setDate(oDay.getDate()+1);
-	} while (oDay.getMonth() != iNextMonth || oDay.getDay() != iFirstDayOfWeek);
+
+		oDay.setUTCDate(oDay.getUTCDate()+1);
+
+	} while (oDay.getUTCMonth() != iNextMonth || oDay.getUTCDay() != iFirstDayOfWeek);
 
 };
 
@@ -233,12 +242,12 @@ sap.ui.unified.CalendarRenderer.calculateWeekNumber = function(oDate, iYear, sLo
 		 * So the week beginning in December and ending in January has 2 week numbers
 		 */
 		var oJanFirst = new Date(oDate.getTime());
-		oJanFirst.setFullYear(iYear, 0, 1);
-		iWeekDay = oJanFirst.getDay();
+		oJanFirst.setUTCFullYear(iYear, 0, 1);
+		iWeekDay = oJanFirst.getUTCDay();
 
 		//get the date for the same weekday like jan 1.
 		var oCheckDate = new Date(oDate.getTime());
-		oCheckDate.setDate(oCheckDate.getDate() - oCheckDate.getDay() + iWeekDay);
+		oCheckDate.setUTCDate(oCheckDate.getUTCDate() - oCheckDate.getUTCDay() + iWeekDay);
 
 		iWeekNum = Math.round((oCheckDate.getTime() - oJanFirst.getTime()) / 86400000 / 7) + 1;
 
@@ -249,19 +258,19 @@ sap.ui.unified.CalendarRenderer.calculateWeekNumber = function(oDate, iYear, sLo
 		// find Thursday of this week
 		// if the checked day is before the 1. day of the week use a day of the previous week to check
 		var oThursday = new Date(oDate.getTime());
-		oThursday.setDate(oThursday.getDate() - iFirstDayOfWeek);
-		iWeekDay = oThursday.getDay();
-		oThursday.setDate(oThursday.getDate() - iWeekDay + 4);
+		oThursday.setUTCDate(oThursday.getUTCDate() - iFirstDayOfWeek);
+		iWeekDay = oThursday.getUTCDay();
+		oThursday.setUTCDate(oThursday.getUTCDate() - iWeekDay + 4);
 
 		var oFirstDayOfYear = new Date(oThursday.getTime());
-		oFirstDayOfYear.setMonth(0, 1);
-		iWeekDay = oFirstDayOfYear.getDay();
+		oFirstDayOfYear.setUTCMonth(0, 1);
+		iWeekDay = oFirstDayOfYear.getUTCDay();
 		var iAddDays = 0;
 		if (iWeekDay > 4) {
 			iAddDays = 7; // first day of year is after Thursday, so first Thursday is in the next week
 		}
 		var oFirstThursday = new Date(oFirstDayOfYear.getTime());
-		oFirstThursday.setDate(1 - iWeekDay + 4 + iAddDays);
+		oFirstThursday.setUTCDate(1 - iWeekDay + 4 + iAddDays);
 
 		iWeekNum = Math.round((oThursday.getTime() - oFirstThursday.getTime()) / 86400000 / 7) + 1;
 
@@ -282,7 +291,7 @@ sap.ui.unified.CalendarRenderer.renderMonthPicker = function(oRm, oCal, oDate){
 	} else {
 		aMonthNames = oLocaleData.getMonthsStandAlone("abbreviated");
 	}
-	var iMonth = oDate.getMonth();
+	var iMonth = oDate.getUTCMonth();
 
 	oRm.write("<div id=\""+sId+"-months\" class=\"sapUiCalMonths\">");
 
@@ -306,9 +315,8 @@ sap.ui.unified.CalendarRenderer.renderMonthPicker = function(oRm, oCal, oDate){
 
 sap.ui.unified.CalendarRenderer.renderYearPicker = function(oRm, oCal, oDate){
 
-	var oLocaleData = oCal._getLocaleData();
 	var sId = oCal.getId();
-	var iCurrentYear = oDate.getFullYear();
+	var iCurrentYear = oDate.getUTCFullYear();
 	var iYear = 0;
 
 	oRm.write("<div id=\""+sId+"-years\" class=\"sapUiCalYears\">");

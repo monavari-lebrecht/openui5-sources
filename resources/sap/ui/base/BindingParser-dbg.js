@@ -102,11 +102,15 @@ sap.ui.define(['jquery.sap.global', 'jquery.sap.script'],
 
 		function resolveRef(o,sProp) {
 			if ( typeof o[sProp] === "string" ) {
+				var sName = o[sProp];
 				if ( jQuery.sap.startsWith(o[sProp], ".") ) {
 					o[sProp] = jQuery.proxy(jQuery.sap.getObject(o[sProp].slice(1), undefined, oContext), oContext);
 				} else {
 					o[sProp] = jQuery.sap.getObject(o[sProp]);
 				} 
+				if (typeof (o[sProp]) !== "function") {
+					jQuery.sap.log.error(sProp + " function " + sName + " not found!");
+				}
 			}
 		}
 

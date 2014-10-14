@@ -59,7 +59,7 @@ jQuery.sap.require("sap.ui.core.TooltipBase");
  * @extends sap.ui.core.TooltipBase
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -782,6 +782,7 @@ sap.ui.commons.CalloutBase.prototype.handleOpened = function() {
 		this.bFocused = true; // Remember to set focus to parent on close
 	}
 	
+	this.$().css("display:", "");
 	this.fireOpened();
 	
 	// - listen to mouse over events outside

@@ -2123,14 +2123,14 @@ HTML[data-sap-ui-browser*='ie'] .sapUiRFL {
 /* add paddings between containers */
 .sapUiRespGridMedia-Std-Tablet.sapUiFormResGridMain > div:not(.sapUiRespGridSpanM12):not(.sapUiFormResGridLastContM),
 .sapUiRespGridMedia-Std-Desktop.sapUiFormResGridMain > div:not(.sapUiRespGridSpanL12):not(.sapUiFormResGridLastContL){
-	padding-right: 1rem;
+	padding-right: 0.75rem; /* because fields have 0.25rem padding on left and right */
 	-moz-box-sizing: padding-box;
 	box-sizing: border-box;
 }
 
 .sapUiRespGridMedia-Std-Tablet.sapUiFormResGridMain > div:not(.sapUiRespGridBreakM):not(.sapUiRespGridSpanM12),
 .sapUiRespGridMedia-Std-Desktop.sapUiFormResGridMain > div:not(.sapUiRespGridBreakL):not(.sapUiRespGridSpanL12){
-	padding-left: 1rem;
+	padding-left: 0.75rem; /* because fields have 0.25rem padding on left and right */
 	-moz-box-sizing: padding-box;
 	box-sizing: border-box;
 }

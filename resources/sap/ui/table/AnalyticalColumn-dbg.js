@@ -60,7 +60,7 @@ jQuery.sap.require("sap.ui.table.Column");
  * @extends sap.ui.table.Column
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public

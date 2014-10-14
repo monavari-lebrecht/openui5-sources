@@ -61,7 +61,7 @@ jQuery.sap.require("sap.m.InputBase");
  * @extends sap.m.InputBase
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -781,7 +781,7 @@ sap.m.DateTimeInput.prototype.onsapshow = function(oEvent) {
 				fnAutoCloseProxy = $.proxy(this._autoClose, this),
 				fnHandleResize = $.proxy(this._handleResize, this),
 				fnHandleBtnKeyDown = $.proxy(this._handleBtnKeyDown, this),
-				fnFocusInFirst, fnFocusInLast,
+				fnFocusInFirst, fnFocusInLast, fnClick,
 				$focusLeft = $("<span class='sapMFirstFE' tabindex='0'/>"),
 				$focusRight = $("<span class='sapMLastFE' tabindex='0'/>"),
 				fnKeyDown, $dialogToClean,
@@ -829,6 +829,15 @@ sap.m.DateTimeInput.prototype.onsapshow = function(oEvent) {
 
 							// Make sure, the first scroller column has initial focus
 							$.sap.focus($scrollerCont.firstFocusableDomRef());
+							
+							// CSN 0120061532 0001326801 2014: mobiscroll scrollers don't 
+							// get focus when clicked upon
+							fnClick = function(oEvent){
+								//The target itself is not focusable. Need to focus the 
+								//scroller parent marked by a 'dwww' class 
+								$.sap.focus($(oEvent.target).parents(".dwww"));
+							};
+							$dialog.click(fnClick);
 
 							// Support other keyboard events as well, e.g. LEFT, RIGHT
 							$dialogToClean = $dialog;
@@ -855,6 +864,7 @@ sap.m.DateTimeInput.prototype.onsapshow = function(oEvent) {
 						if ($dialogToClean) {
 							$dialogToClean.unbind('keydown', fnKeyDown);
 							$dialogToClean.unbind('keydown.dw', fnHandleBtnKeyDown);
+							$dialogToClean.unbind('click', fnClick);
 						}
 					},
 					onSelect : function() {

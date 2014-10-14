@@ -1877,9 +1877,14 @@ sap.m.FlexBoxStylingHelper.setOldSpecStyle = function(oRm, oControl, sProperty, 
 		var mLegacyMap = null;
 		if(typeof(sap.m.FlexBoxCssPropertyMap[sSpec][sProperty]) === "object") {
 			if(sap.m.FlexBoxCssPropertyMap[sSpec][sProperty]["<number>"]) {
-				mLegacyMap = sap.m.FlexBoxCssPropertyMap[sSpec][sProperty]["<number>"];
-				for(var key in mLegacyMap) {
-					mLegacyMap[key] = sValue;
+				mLegacyMap = {};
+				for(var key in sap.m.FlexBoxCssPropertyMap[sSpec][sProperty]["<number>"]) {
+					// Check if the target is also a number, otherwise assume it's a literal
+					if(sap.m.FlexBoxCssPropertyMap[sSpec][sProperty]["<number>"][key] === "<number>") {
+						mLegacyMap[key] = sValue;
+					} else {
+						mLegacyMap[key] = sap.m.FlexBoxCssPropertyMap[sSpec][sProperty]["<number>"][key];
+					}
 				}
 			} else {
 				mLegacyMap = sap.m.FlexBoxCssPropertyMap[sSpec][sProperty][sValue];
@@ -1990,6 +1995,7 @@ sap.m.FlexBoxStylingHelper.applyFlexBoxPolyfill = function(sId, oSettings) {
 	
 	return box;
 };
+
 }; // end of sap/m/FlexBoxStylingHelper.js
 if ( !jQuery.sap.isDeclared('sap.m.GrowingEnablement') ) {
 /*!
@@ -5382,8 +5388,6 @@ sap.m.ObjectAttributeRenderer.render = function(oRm, oOA) {
 		if(oOA.getActive()){
 			oRm.addClass("sapMObjectAttributeActive");
 			oRm.writeAttribute("tabindex", "0");
-		} else {
-			oRm.writeAttribute("tabindex", "-1");
 		}
 		oRm.writeClasses();
 
@@ -5484,11 +5488,11 @@ sap.m.ObjectHeaderRenderer._isEmptyRow = function(oLeft, aRight) {
  *            aObjects array of controls to be rendered
  * @private
  */
-sap.m.ObjectHeaderRenderer._renderObjects = function(rm, aObjects) {
+sap.m.ObjectHeaderRenderer._renderObjects = function(rm, aObjects, oOH) {
 
 	for ( var i = 0; i < aObjects.length; i++) {
 		if (aObjects[i] instanceof sap.ui.core.Control) {
-			rm.renderControl(aObjects[i]);
+			this._renderChildControl(rm, oOH, aObjects[i]);
 		}
 	}
 };
@@ -5542,7 +5546,7 @@ sap.m.ObjectHeaderRenderer.renderAttribute = function(rm, oOH, oAttr, bFullWidth
 		rm.writeStyles();
 	}
 	rm.write(">");
-	rm.renderControl(oAttr);
+	this._renderChildControl(rm, oOH, oAttr);
 	rm.write("</div>");
 };
 
@@ -5594,7 +5598,7 @@ sap.m.ObjectHeaderRenderer.renderRow = function(rm, oOH, oLeft, aRight) {
 		}
 		rm.writeClasses();
 		rm.write(">");
-		sap.m.ObjectHeaderRenderer._renderObjects(rm, aRight);
+		sap.m.ObjectHeaderRenderer._renderObjects(rm, aRight, oOH);
 		rm.write("</div>");
 	}
 
@@ -5744,7 +5748,7 @@ sap.m.ObjectHeaderRenderer.renderTitle = function(rm, oOH) {
 			oOH._titleText.addStyleClass("sapMOHTitle");
 		}
 
-		rm.renderControl(oOH._titleText);
+		this._renderChildControl(rm, oOH, oOH._titleText);
 		rm.write("</span>"); // End Title Text container
 	}
 
@@ -5753,7 +5757,7 @@ sap.m.ObjectHeaderRenderer.renderTitle = function(rm, oOH) {
 		rm.addClass("sapMOHTitleArrow");
 		rm.writeClasses();
 		rm.write(">");
-		rm.renderControl(oOH._oTitleArrowIcon);
+		this._renderChildControl(rm, oOH, oOH._oTitleArrowIcon);
 		rm.write("</span>"); // end title arrow container
 	}
 
@@ -5830,7 +5834,7 @@ sap.m.ObjectHeaderRenderer.renderFullOH = function(rm, oOH) {
 		}
 		rm.writeClasses();
 		rm.write(">");
-		rm.renderControl(oOH._getImageControl());
+		this._renderChildControl(rm, oOH, oOH._getImageControl());
 		rm.write("</div>"); // end icon container
 	}
 	
@@ -5897,14 +5901,19 @@ sap.m.ObjectHeaderRenderer.renderCondensedOH = function(rm, oOH) {
  *            oOH an object representation of the control that should be rendered
  */
 sap.m.ObjectHeaderRenderer.render = function(rm, oOH) {
+	
+	this._computeChildControlsToBeRendered(oOH);
+	
 	// return immediately if control is invisible
 	if (!oOH.getVisible()) {
+		this._cleanupNotRenderedChildControls(rm, oOH);
 		return;
 	}
 
 	// responsive prototype
 	if (oOH.getResponsive()) {
 		this.renderResponsive(rm, oOH);
+		this._cleanupNotRenderedChildControls(rm, oOH);
 		return;
 	}
 
@@ -5937,7 +5946,8 @@ sap.m.ObjectHeaderRenderer.render = function(rm, oOH) {
 	rm.write("<div class=\"sapMOHLastDivider\"/>");
 
 	rm.write("</div>"); // End Main container\
-
+	
+	this._cleanupNotRenderedChildControls(rm, oOH);
 };
 
 /**** responsive rendering start (barely any methods from above are used in this part to not break old UIs, it replaces most parts of renderer) ****/
@@ -6024,7 +6034,7 @@ sap.m.ObjectHeaderRenderer.renderResponsive = function(oRm, oControl) {
 
 	// render the IconTabBar content section after the object header div
 	if (oHeaderContainer && oHeaderContainer instanceof sap.m.IconTabBar) {
-		oRm.renderControl(oHeaderContainer);
+		this._renderChildControl(oRm, oControl, oHeaderContainer);
 	}
 
 	// end outer div
@@ -6074,7 +6084,7 @@ sap.m.ObjectHeaderRenderer.renderResponsiveTitle = function(oRm, oControl, bTitl
 		}
 		oRm.writeClasses();
 		oRm.write(">");
-		oRm.renderControl(oControl._getImageControl());
+		this._renderChildControl(oRm, oControl, oControl._getImageControl());
 		oRm.write("</div>"); // end icon container
 	}
 
@@ -6106,7 +6116,7 @@ sap.m.ObjectHeaderRenderer.renderResponsiveMarkers = function(oRm, oControl) {
 		// render icons
 		oRm.write("<div class=\"sapMObjStatusMarker\">");
 		for (; i < aIcons.length; i++) {
-			oRm.renderControl(aIcons[i]);
+			this._renderChildControl(oRm, oControl, aIcons[i]);
 		}
 		oRm.write("</div>");
 	}
@@ -6116,7 +6126,7 @@ sap.m.ObjectHeaderRenderer.renderResponsiveNumber = function(oRm, oControl) {
 	var oObjectNumber = oControl.getAggregation("_objectNumber");
 	if (oObjectNumber && oObjectNumber.getNumber()) {
 		oObjectNumber.toggleStyleClass("sapMObjectNumberFull", !oControl.getTitle());
-		oRm.renderControl(oObjectNumber);
+		this._renderChildControl(oRm, oControl, oObjectNumber);
 	}
 };
 
@@ -6218,12 +6228,12 @@ sap.m.ObjectHeaderRenderer.renderResponsiveTabs = function(oRm, oControl, bTitle
 		if (oHeaderContainer instanceof sap.m.IconTabBar) {
 			// TODO: use a public function
 			oIconTabHeader = oHeaderContainer._getIconTabHeader();
-			oRm.renderControl(oIconTabHeader);
+			this._renderChildControl(oRm, oControl, oIconTabHeader);
 			// tell iconTabBar to not render the header
 			oHeaderContainer._bHideHeader = true;
 		} else if (sap.suite && sap.suite.ui && sap.suite.ui.commons && oHeaderContainer instanceof sap.suite.ui.commons.HeaderContainer) {
 			// render the header container
-			oRm.renderControl(oHeaderContainer);
+			this._renderChildControl(oRm, oControl, oHeaderContainer);
 		} else {
 			console.log("The control " + oHeaderContainer + " is not supported for aggregation \"headerContainer\"");
 		}
@@ -6306,7 +6316,7 @@ sap.m.ObjectHeaderRenderer.renderStatus = function(rm, oOH, oStatus, bFullWidth)
 		rm.writeStyles();
 	}
 	rm.write(">");
-	rm.renderControl(oStatus[0]);
+	this._renderChildControl(rm, oOH, oStatus[0]);
 	rm.write("</div>");
 };
 
@@ -6349,14 +6359,14 @@ sap.m.ObjectHeaderRenderer.renderTitleResponsive = function(oRm, oOH) {
 			oOH._titleText.addStyleClass("sapMOHTitle");
 		}
 
-		oRm.renderControl(oOH._titleText);
+		this._renderChildControl(oRm, oOH, oOH._titleText);
 
 		if(oOH.getShowTitleSelector()){
 			oRm.write("<span"); // Start title arrow container
 			oRm.addClass("sapMOHTitleArrow");
 			oRm.writeClasses();
 			oRm.write(">");
-			oRm.renderControl(oOH._oTitleArrowIcon);
+			this._renderChildControl(oRm, oOH, oOH._oTitleArrowIcon);
 			oRm.write("</span>"); // end title arrow container
 		}
 
@@ -6386,6 +6396,44 @@ sap.m.ObjectHeaderRenderer.renderTitleResponsive = function(oRm, oOH) {
 };
 
 /**** responsive rendering end ****/
+
+sap.m.ObjectHeaderRenderer._computeChildControlsToBeRendered = function(oOH){
+	oOH.__controlsToBeRendered = {};
+	var aChildren = oOH.getAttributes();
+	for(var i=0; i<aChildren.length; i++){
+		oOH.__controlsToBeRendered[aChildren[i].getId()] = aChildren[i];
+	}
+	aChildren = oOH.getStatuses();
+	for(var i=0; i<aChildren.length; i++){
+		oOH.__controlsToBeRendered[aChildren[i].getId()] = aChildren[i];
+	}
+	var oChild = oOH.getFirstStatus();
+	if(oChild){
+		oOH.__controlsToBeRendered[oChild.getId()] = oChild;
+	}
+	oChild = oOH.getSecondStatus();
+	if(oChild){
+		oOH.__controlsToBeRendered[oChild.getId()] = oChild;
+	}
+	oChild = oOH.getAggregation("_objectNumber");
+	if(oChild){
+		oOH.__controlsToBeRendered[oChild.getId()] = oChild;
+	}
+};
+
+sap.m.ObjectHeaderRenderer._renderChildControl = function(rm, oOH, oControl){
+	rm.renderControl(oControl);
+	if(oControl){
+		delete oOH.__controlsToBeRendered[oControl.getId()];
+	}
+};
+
+sap.m.ObjectHeaderRenderer._cleanupNotRenderedChildControls = function(rm, oOH){
+	for(var id in oOH.__controlsToBeRendered){
+		rm.cleanupControlWithoutRendering(oOH.__controlsToBeRendered[id]);
+	}
+	delete oOH.__controlsToBeRendered;
+};
 
 }; // end of sap/m/ObjectHeaderRenderer.js
 if ( !jQuery.sap.isDeclared('sap.m.ObjectIdentifierRenderer') ) {
@@ -6742,14 +6790,24 @@ sap.m.ObjectNumberRenderer = {
  * @param {sap.ui.core.Control} oControl an object representation of the control that should be rendered
  */
 sap.m.ObjectNumberRenderer.render = function(oRm, oON){
+	
+	var sTooltip;
+	
 	// return immediately if control is invisible
 	if (!oON.getVisible()) {
 		return;
 	}
-
+	
 	// write the HTML into the render manager
 	oRm.write("<div"); // Number begins
 	oRm.writeControlData(oON);
+	
+	// write the tooltip
+	sTooltip = oON.getTooltip_AsString();
+	if (sTooltip) {
+		oRm.writeAttributeEscaped("title", sTooltip);
+	}
+	
 	oRm.addClass("sapMObjectNumber");
 	if (oON.getEmphasized()) {
 		oRm.addClass("sapMObjectNumberEmph");
@@ -9375,7 +9433,7 @@ jQuery.sap.require('sap.ui.base.ManagedObject'); // unlisted dependency retained
  * @extends sap.ui.base.ManagedObject
  * @abstract
  * @author SAP
- * @version 1.22.8
+ * @version 1.22.10
  * @name sap.m.TablePersoProvider
  */
 sap.ui.base.ManagedObject.extend("sap.m.TablePersoProvider", /** @lends sap.m.TablePersoProvider */
@@ -10520,7 +10578,7 @@ if ( !jQuery.sap.isDeclared('sap.m.library') ) {
  * ----------------------------------------------------------------------------------- */
 
 /**
- * Initialization Code and shared classes of library sap.m (1.22.8)
+ * Initialization Code and shared classes of library sap.m (1.22.10)
  */
 jQuery.sap.declare("sap.m.library");
 jQuery.sap.require('sap.ui.core.Core'); // unlisted dependency retained
@@ -10674,7 +10732,7 @@ sap.ui.getCore().initLibrary({
     "sap.m.ViewSettingsFilterItem",
     "sap.m.ViewSettingsItem"
   ],
-  version: "1.22.8"});
+  version: "1.22.10"});
 
 /*!
  * SAP UI development toolkit for HTML5 (SAPUI5/OpenUI5)
@@ -10694,7 +10752,7 @@ jQuery.sap.declare("sap.m.BackgroundDesign");
 /**
  * @class Available Background Design.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -10737,7 +10795,7 @@ jQuery.sap.declare("sap.m.BarDesign");
 /**
  * @class Types of the Bar design
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  * @since 1.20
@@ -10787,7 +10845,7 @@ jQuery.sap.declare("sap.m.ButtonType");
 /**
  * @class Different types for a button (predefined types)
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -10860,7 +10918,7 @@ jQuery.sap.declare("sap.m.DateTimeInputType");
 /**
  * @class A subset of DateTimeInput types that fit to a simple API returning one string.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -10905,7 +10963,7 @@ jQuery.sap.declare("sap.m.DialogType");
 /**
  * @class Enum for the type of sap.m.Dialog control.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -10943,7 +11001,7 @@ jQuery.sap.declare("sap.m.FacetFilterType");
  * @class Used by the FacetFilter control to adapt its design according to type.
  * 
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -10980,7 +11038,7 @@ jQuery.sap.declare("sap.m.FlexAlignItems");
 /**
  * @class Available options for the layout of all elements along the cross axis of the flexbox layout.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -11041,7 +11099,7 @@ jQuery.sap.declare("sap.m.FlexAlignSelf");
 /**
  * @class Available options for the layout of individual elements along the cross axis of the flexbox layout overriding the default alignment.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -11108,7 +11166,7 @@ jQuery.sap.declare("sap.m.FlexDirection");
 /**
  * @class Available directions for flex layouts.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -11163,7 +11221,7 @@ jQuery.sap.declare("sap.m.FlexJustifyContent");
 /**
  * @class Available options for the layout of elements along the main axis of the flexbox layout.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -11224,7 +11282,7 @@ jQuery.sap.declare("sap.m.FlexRendertype");
 /**
  * @class Determines the type of HTML elements used for rendering controls.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -11261,7 +11319,7 @@ jQuery.sap.declare("sap.m.HeaderLevel");
 /**
  * @class Different levels for headers
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -11335,7 +11393,7 @@ jQuery.sap.declare("sap.m.IBarHTMLTag");
 /**
  * @class Allowed tags for the implementation of the IBar interface.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  * @since 1.22
@@ -11391,7 +11449,7 @@ jQuery.sap.declare("sap.m.IconTabFilterDesign");
 /**
  * @class Available Filter Item Design.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -11429,7 +11487,7 @@ jQuery.sap.declare("sap.m.InputType");
  * @class A subset of input types that fit to a simple API returning one string.
  * Not available on purpose: button, checkbox, hidden, image, password, radio, range, reset, search, submit.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -11538,7 +11596,7 @@ jQuery.sap.declare("sap.m.LabelDesign");
 /**
  * @class Available label display modes.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -11575,7 +11633,7 @@ jQuery.sap.declare("sap.m.ListHeaderDesign");
 /**
  * @class Defines the differnet header styles.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  * @deprecated Since version 1.16. 
@@ -11614,7 +11672,7 @@ jQuery.sap.declare("sap.m.ListMode");
 /**
  * @class Different modes for the list selection (predefined modes)
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -11675,7 +11733,7 @@ jQuery.sap.declare("sap.m.ListSeparators");
 /**
  * @class Defines which separator style will be applied for the items.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -11718,7 +11776,7 @@ jQuery.sap.declare("sap.m.ListType");
 /**
  * @class List types
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -11782,7 +11840,7 @@ jQuery.sap.declare("sap.m.PageBackgroundDesign");
 /**
  * @class Available Page Background Design.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -11831,7 +11889,7 @@ jQuery.sap.declare("sap.m.PlacementType");
 /**
  * @class Types for the placement of popover control.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -11898,7 +11956,7 @@ jQuery.sap.declare("sap.m.PopinDisplay");
 /**
  * @class Defines the display of table pop-ins
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  * @since 1.13.2
@@ -11936,7 +11994,7 @@ jQuery.sap.declare("sap.m.RatingIndicatorVisualMode");
 /**
  * @class Possible values for the visualization of float values in the RatingIndicator Control.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -11973,7 +12031,7 @@ jQuery.sap.declare("sap.m.ScreenSize");
 /**
  * @class Breakpoint names for different screen sizes.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -12058,7 +12116,7 @@ jQuery.sap.declare("sap.m.SelectType");
 /**
  * @class Enumeration for different Select types.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  * @since 1.16
@@ -12096,7 +12154,7 @@ jQuery.sap.declare("sap.m.SplitAppMode");
 /**
  * @class The mode of SplitContainer or SplitApp control to show/hide the master area.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -12145,7 +12203,7 @@ jQuery.sap.declare("sap.m.StandardTileType");
 /**
  * @class Types for StandardTile
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -12188,7 +12246,7 @@ jQuery.sap.declare("sap.m.SwipeDirection");
 /**
  * @class Directions for swipe event.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -12231,7 +12289,7 @@ jQuery.sap.declare("sap.m.SwitchType");
 /**
  * @class Enumaration for different switch types.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -12268,7 +12326,7 @@ jQuery.sap.declare("sap.m.ToolbarDesign");
 /**
  * @class Types of the Toolbar Design.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  * @since 1.16.8
@@ -13515,7 +13573,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @implements sap.m.IBar
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -14335,7 +14393,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -15089,7 +15147,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -15815,7 +15873,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -16867,7 +16925,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -18189,7 +18247,7 @@ jQuery.sap.require('sap.ui.core.Element'); // unlisted dependency retained
  * @extends sap.ui.core.Element
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -19539,7 +19597,7 @@ sap.m.DatePickerRenderer = sap.ui.core.Renderer.extend(sap.m.InputBaseRenderer);
  * Adds control specific class
  *
  * @param {sap.ui.core.RenderManager} oRm the RenderManager that can be used for writing to the render output buffer
- * @param {sap.ui.core.Control} oControl an object representation of the control that should be rendered
+ * @param {sap.m.DatePicker} oDP an object representation of the control that should be rendered
  */
 sap.m.DatePickerRenderer.addOuterClasses = function(oRm, oDP) {
 
@@ -19555,11 +19613,11 @@ sap.m.DatePickerRenderer.addOuterClasses = function(oRm, oDP) {
  * add extra content to Input
  *
  * @param {sap.ui.core.RenderManager} oRm the RenderManager that can be used for writing to the render output buffer
- * @param {sap.ui.core.Control} oControl an object representation of the control that should be rendered
+ * @param {sap.m.DatePicker} oDP an object representation of the control that should be rendered
  */
 sap.m.DatePickerRenderer.writeInnerContent = function(oRm, oDP) {
 
-	if(oDP.getEnabled() && oDP.getEditable()) {
+	if (oDP.getEnabled() && oDP.getEditable()) {
 		var aClasses = [];
 		var mAttributes = {};
 
@@ -19590,7 +19648,7 @@ sap.m.DatePickerRenderer.writeInnerContent = function(oRm, oDP) {
  * Write the value of the input.
  *
  * @param {sap.ui.core.RenderManager} oRm The RenderManager that can be used for writing to the render output buffer.
- * @param {sap.ui.core.Control} oControl An object representation of the control that should be rendered.
+ * @param {sap.m.DatePicker} oDP An object representation of the control that should be rendered.
  */
 sap.m.DatePickerRenderer.writeInnerValue = function(oRm, oDP) {
 
@@ -19602,7 +19660,7 @@ sap.m.DatePickerRenderer.writeInnerValue = function(oRm, oDP) {
  * This method is reserved for derived classes to add extra attributes for the input element.
  *
  * @param {sap.ui.core.RenderManager} oRm The RenderManager that can be used for writing to the render output buffer.
- * @param {sap.ui.core.Control} oControl An object representation of the control that should be rendered.
+ * @param {sap.m.DatePicker} oDP An object representation of the control that should be rendered.
  */
 sap.m.DatePickerRenderer.writeInnerAttributes = function(oRm, oDP) {
 
@@ -19611,7 +19669,7 @@ sap.m.DatePickerRenderer.writeInnerAttributes = function(oRm, oDP) {
 		oRm.writeAttribute("readonly", "readonly");
 	}
 
-	var mProps= {
+	var mProps = {
 		multiline: false,
 		autocomplete: "none",
 		haspopup: true,
@@ -19649,9 +19707,12 @@ sap.m.DateRangeSelectionRenderer = sap.ui.core.Renderer.extend(sap.m.DatePickerR
  * @param {sap.ui.core.RenderManager} oRm The RenderManager that can be used for writing to the render output buffer.
  * @param {sap.ui.core.Control} oControl An object representation of the control that should be rendered.
  */
-sap.m.DateRangeSelectionRenderer.writeInnerValue = function(oRm, oDRP) {
-	oRm.writeAttributeEscaped("value", oDRP._formatValue());
+sap.m.DateRangeSelectionRenderer.writeInnerValue = function(oRm, oControl) {
+
+	oRm.writeAttributeEscaped("value", oControl._formatValue(oControl.getDateValue(), oControl.getSecondDateValue()));
+
 };
+
 }; // end of sap/m/DateRangeSelectionRenderer.js
 if ( !jQuery.sap.isDeclared('sap.m.DateTimeInputRenderer') ) {
 /*!
@@ -19881,7 +19942,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -20577,7 +20638,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -21319,7 +21380,7 @@ jQuery.sap.require('sap.ui.core.LayoutData'); // unlisted dependency retained
  * @extends sap.ui.core.LayoutData
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -21663,7 +21724,7 @@ jQuery.sap.declare("sap.m.HBox");
  * @extends sap.m.FlexBox
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -21794,7 +21855,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @implements sap.m.ObjectHeaderContainer
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -22403,12 +22464,12 @@ sap.m.IconTabBar.prototype._toggleExpandCollapse = function(bExpanded) {
 					this._rerenderContent(this.getContent());
 				}
 			}
-			$content.slideDown('400', jQuery.proxy(this.onTransitionEnded, this, bExpanded));
+			$content.stop(true, true).slideDown('400', jQuery.proxy(this.onTransitionEnded, this, bExpanded));
 			this.$("containerContent").toggleClass("sapMITBContentClosed", !bExpanded);
 		}
 	} else { // collapsing
 		this.$("contentArrow").hide();
-		$content.slideUp('400', jQuery.proxy(this.onTransitionEnded, this, bExpanded));
+		$content.stop(true, true).slideUp('400', jQuery.proxy(this.onTransitionEnded, this, bExpanded));
 	}
 
 	// update property (if we have a selected item) and fire event
@@ -22701,7 +22762,7 @@ jQuery.sap.require('sap.ui.core.Item'); // unlisted dependency retained
  * @implements sap.m.IconTab
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -23037,6 +23098,9 @@ sap.m.IconTabFilter.prototype._getImageControl = function(aCssClassesToAdd, oPar
 	};
 	if (mProperties.src) {
 		this._oImageControl = sap.m.ImageHelper.getImageControl(this.getId() + "-icon", this._oImageControl, oParent, mProperties, aCssClassesToAdd, aCssClassesToRemove);
+	} else if (this._oImageControl) {
+		this._oImageControl.destroy();
+		this._oImageControl = null;
 	}
 	
 	return this._oImageControl;
@@ -23144,7 +23208,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -23656,7 +23720,7 @@ sap.m.IconTabHeader.prototype.setSelectedItem = function(oItem, bAPIchange) {
 	var sSelectedKey = this.oSelectedItem.getKey();
 	this.oSelectedItem = oItem;
 	this.setProperty("selectedKey", sSelectedKey, true);
-
+	
 	if (!bAPIchange) {
 		// fire event on iconTabBar
 		if (this.getParent() instanceof sap.m.IconTabBar) {
@@ -23710,6 +23774,8 @@ sap.m.IconTabHeader.prototype.onAfterRendering = function() {
 
 	if (this._bDoScroll) {
 		jQuery.sap.delayedCall(350, this, "_checkOverflow", [oHeadDomRef, $bar]);
+	} else {
+		this._checkOverflow(oHeadDomRef, $bar);
 	}
 
 	// reset scroll state after re-rendering for non-touch devices (iScroll will handle this internally)
@@ -23896,9 +23962,14 @@ sap.m.IconTabHeader.prototype._getScrollingArrow = function(sName) {
 	var mProperties = {
 		src : "sap-icon://navigation-" + sName + "-arrow"
 	};
-	var aCssClassesToAddLeft = ["sapMITBArrowScroll", "sapMITBArrowScrollLeft"];
-	var aCssClassesToAddRight = ["sapMITBArrowScroll", "sapMITBArrowScrollRight"];
 	
+	var sSuffix = this._bTextOnly ? "TextOnly" : "";
+	var sLeftArrowClass = "sapMITBArrowScrollLeft" + sSuffix;
+	var sRightArrowClass = "sapMITBArrowScrollRight" + sSuffix;
+
+	var aCssClassesToAddLeft = ["sapMITBArrowScroll", sLeftArrowClass];
+	var aCssClassesToAddRight = ["sapMITBArrowScroll", sRightArrowClass];
+
 	if (sName === "left") {
 		if (!this._oArrowLeft) {
 			this._oArrowLeft = sap.m.ImageHelper.getImageControl(this.getId() + "-arrowScrollLeft", this._oArrowLeft, this, mProperties, aCssClassesToAddLeft);
@@ -23939,7 +24010,7 @@ sap.m.IconTabHeader.prototype._checkOverflow = function(oBarHead, $bar) {
 			}
 
 		} else { //desktop mode
-			var iScrollLeft = oBarHead.scrollLeft;
+			var iScrollLeft = this._iCurrentScrollLeft;
 			var realWidth = oBarHead.scrollWidth;
 			var availableWidth = oBarHead.clientWidth;
 
@@ -23974,6 +24045,9 @@ sap.m.IconTabHeader.prototype._checkOverflow = function(oBarHead, $bar) {
 			$bar.toggleClass("sapMITBScrollForward", bScrollForward);
 			$bar.toggleClass("sapMITBNoScrollForward", !bScrollForward);
 		}
+	} else {
+		this._bPreviousScrollForward = false;
+		this._bPreviousScrollBack = false;
 	}
 };
 
@@ -23989,7 +24063,7 @@ sap.m.IconTabHeader.prototype._handleActivation = function(oEvent) {
 	var $sTargetId = jQuery.sap.byId(sTargetId);
 	if (jQuery.inArray(this.$("content")[0], $sTargetId.parents()) > -1) {
 		//do nothing because element is inside content
-	} else {
+	} else {	
 		if (sTargetId) {
 			var sId = this.getId();
 
@@ -24034,7 +24108,7 @@ sap.m.IconTabHeader.prototype._handleActivation = function(oEvent) {
 					this._scroll(sap.m.IconTabHeader.SCROLL_STEP, 500);
 				}
 
-			} else {
+			} else {				
 				// should be one of the items - select it
 				if (oControl instanceof sap.ui.core.Icon || oControl instanceof sap.m.Image) { 
 					// click on icon: fetch filter instead
@@ -24046,16 +24120,16 @@ sap.m.IconTabHeader.prototype._handleActivation = function(oEvent) {
 				}
 				// select item if it is an iconTab but not a separator
 				else if (oControl.getMetadata().isInstanceOf("sap.m.IconTab") && !(oControl instanceof sap.m.IconTabSeparator)) {
-					//for tabs with showAll property true, click on whole area leads to selection, for text only version only clicking on text itself (not count)
-					if (oControl.getShowAll() || this._bTextOnly && sTargetId === oControl.getId() + "-text") {
+					//for tabs with showAll property true or for text only version click on whole area leads to selection
+					if (oControl.getShowAll() || this._bTextOnly) {
 						this.setSelectedItem(oControl);
 					}
 				}
 			}
 		}
 		else {
-			//no target id, so we have to check if showAll is set, because clicking on the number then also leads to selecting the item
-			if (oControl.getMetadata().isInstanceOf("sap.m.IconTab") && !(oControl instanceof sap.m.IconTabSeparator) && oControl.getShowAll()) {
+			//no target id, so we have to check if showAll is set or it's a text only item, because clicking on the number then also leads to selecting the item
+			if (oControl.getMetadata().isInstanceOf("sap.m.IconTab") && !(oControl instanceof sap.m.IconTabSeparator) && (oControl.getShowAll() || this._bTextOnly)) {
 				this.setSelectedItem(oControl);
 			}
 		}
@@ -24079,7 +24153,7 @@ sap.m.IconTabHeader.prototype._scrollIntoView = function(oItem, iDuration) {
 	iContainerWidth;
 
 	if ($item.length > 0) {
-		var iItemWidth = $item.outerWidth();
+		var iItemWidth = $item.outerWidth(true);
 		var iItemPosLeft = $item.position().left;
 
 		// switch based on scrolling mode
@@ -24098,6 +24172,8 @@ sap.m.IconTabHeader.prototype._scrollIntoView = function(oItem, iDuration) {
 
 				// execute manual scrolling with scrollTo method (delayedCall 0 is needed for positioning glitch)
 				this._scrollPreparation();
+				// store current scroll state to set it after rerendering
+				this._iCurrentScrollLeft = iNewScrollLeft;
 				jQuery.sap.delayedCall(0, this._oScroller, "scrollTo", [iNewScrollLeft, 0, iDuration]);
 				jQuery.sap.delayedCall(iDuration, this, "_afterIscroll");
 			}
@@ -24117,11 +24193,11 @@ sap.m.IconTabHeader.prototype._scrollIntoView = function(oItem, iDuration) {
 
 				// execute scrolling
 				this._scrollPreparation();
+				// store current scroll state to set it after rerendering
+				this._iCurrentScrollLeft = iNewScrollLeft;
 				jQuery(oHeadDomRef).stop(true, true).animate({scrollLeft: iNewScrollLeft}, iDuration, jQuery.proxy(this._adjustAndShowArrow, this));
 			}
 		}
-		// store current scroll state to set it after rerendering
-		this._iCurrentScrollLeft = iNewScrollLeft;
 	}
 
 	return this;
@@ -24227,13 +24303,19 @@ sap.m.IconTabHeader.prototype.applyFocusInfo = function (oFocusInfo) {
  * @param {jQuery.Event} oEvent
  * @private
  */
-sap.m.IconTabHeader.prototype.ontouchstart = function(oEvent) {
+sap.m.IconTabHeader.prototype.ontouchstart = function(oEvent) {	
 	var oTargetTouch = oEvent.targetTouches[0];
 
 	// store & init touch state
 	this._iActiveTouch = oTargetTouch.identifier;
 	this._iTouchStartPageX = oTargetTouch.pageX;
 	this._iTouchDragX = 0;
+	
+	// if the item is text-only and we click outside the text area, move the focus to the text
+	var oItemTouched = jQuery(oEvent.target);
+	if (this._bTextOnly && !oItemTouched.hasClass('sapMITBText')) {
+		oItemTouched.parents('.sapMITBItem').children('.sapMITBText').focus();
+	}
 };
 
 /**
@@ -24357,7 +24439,7 @@ jQuery.sap.require('sap.ui.core.Element'); // unlisted dependency retained
  * @implements sap.m.IconTab
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -24554,7 +24636,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -25329,7 +25411,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -26404,7 +26486,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @implements sap.ui.core.Label
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -26665,7 +26747,7 @@ sap.m.Label.prototype.getLabelForRendering = function(){
 
 sap.m.Label.prototype.setText = function(sText) {
 	var sValue = this.getText();
-	if (sValue != sText) {
+	if (sValue !== sText) {
 		this.setProperty("text", sText, true);
 		this.$().html(jQuery.sap.encodeHTML(this.getProperty("text")));
 	}
@@ -26747,7 +26829,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -27256,7 +27338,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -28289,7 +28371,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -30268,7 +30350,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -30626,7 +30708,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -31828,7 +31910,7 @@ sap.m.ObjectHeader.prototype.ontap = function(oEvent) {
 		});
 	} else if (this.getTitleActive() && oEvent.srcControl === this._titleText) {
 		this.fireTitlePress({
-			domRef : jQuery.sap.domById(sourceId)
+			domRef : this._titleText.getFocusDomRef()
 		});
 	} else if (this.getIconActive() && (sourceId === this.getId() + "-img" || sourceId === this.getId() + "-icon")) {
 		this.fireIconPress({
@@ -32100,7 +32182,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -32493,7 +32575,7 @@ jQuery.sap.declare("sap.m.ObjectListItem");
  * @extends sap.m.ListItemBase
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -33244,7 +33326,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -33536,7 +33618,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -33886,7 +33968,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -35018,7 +35100,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -35667,7 +35749,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @implements sap.ui.core.PopupInterface
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -38440,7 +38522,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -38814,7 +38896,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -39354,7 +39436,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -39932,7 +40014,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -41121,7 +41203,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -41566,7 +41648,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -42367,7 +42449,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -43181,7 +43263,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -43758,7 +43840,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -45072,7 +45154,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -46685,7 +46767,7 @@ sap.m.SplitContainer.prototype.init = function() {
 				oSplitContainer.fireBeforeMasterOpen();
 			},
 			beforeClose: function(){
-				oSplitContainer.fireAfterMasterOpen();
+				oSplitContainer.fireBeforeMasterClose();
 			},
 			afterOpen: function(){
 				oSplitContainer.fireAfterMasterOpen();
@@ -47184,6 +47266,11 @@ sap.m.SplitContainer.prototype._afterHideMasterAnimation = function() {
 
 	this._bMasterClosing = false;
 	this._bMasterisOpen = false;
+	// If the focus is still inside the master area after master is open, the focus should be removed.
+	// Otherwise user can still type something on mobile device and the browser will show the master area again.
+	if (jQuery.sap.containsOrEquals(this._oMasterNav.getDomRef(), document.activeElement)) {
+		document.activeElement.blur();
+	}
 	this.fireAfterMasterClose();
 };
 
@@ -47733,6 +47820,9 @@ sap.m.SplitContainer.prototype._removeMasterButton = function(oPage, fnCallBack)
 		}
 		this.fireMasterButton({show: false});
 	}else{
+		// The master button is invisible even without this CSS class because the page in which the master button is can be out of the viewport.
+		// Therefore this class has to be set here.
+		this._oShowMasterBtn.addStyleClass("sapMSplitContainerMasterBtnHidden");
 		if(fnCallBack){
 			fnCallBack(oPage);
 		}
@@ -47919,7 +48009,7 @@ jQuery.sap.declare("sap.m.StandardListItem");
  * @extends sap.m.ListItemBase
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -48443,7 +48533,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -49152,7 +49242,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -49764,7 +49854,7 @@ jQuery.sap.declare("sap.m.TextArea");
  * @extends sap.m.InputBase
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -50186,7 +50276,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -50553,7 +50643,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -51915,7 +52005,6 @@ sap.m.TileContainer.prototype._calculatePositions = function() {
 
 	this._iOffsetY = Math.floor(( oContentDimension.height - iPagerHeight - (this._oTileDimension.height * iNumTileY )) / 2);
 
-	jQuery.sap.log.debug("maxtiles "+ this._iMaxTiles +" on page " + this.getId());
 };
 
 /**
@@ -52542,7 +52631,7 @@ jQuery.sap.declare("sap.m.ToggleButton");
  * @extends sap.m.Button
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -52707,7 +52796,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -53112,7 +53201,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -53902,7 +53991,7 @@ jQuery.sap.require('sap.ui.core.LayoutData'); // unlisted dependency retained
  * @extends sap.ui.core.LayoutData
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -54107,7 +54196,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -54238,7 +54327,7 @@ jQuery.sap.declare("sap.m.VBox");
  * @extends sap.m.FlexBox
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -54371,7 +54460,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -55667,7 +55756,9 @@ sap.m.ViewSettingsDialog.prototype.open = function(oParentControl) {
 		contentPage : this._iContentPage,
 		contentItem : this._oContentItem
 	};
-
+	
+	// set initial focus to the segmentedButton if available
+	this._getDialog().setInitialFocus((sap.ui.Device.system.desktop && this._showSubHeader) ? this._segmentedButton : null);
 	// open dialog
 	this._getDialog().open();
 	return this;
@@ -56819,7 +56910,7 @@ jQuery.sap.require('sap.ui.core.Item'); // unlisted dependency retained
  * @extends sap.ui.core.Item
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -57266,7 +57357,7 @@ jQuery.sap.declare("sap.m.ActionListItem");
  * @extends sap.m.ListItemBase
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -57400,7 +57491,7 @@ jQuery.sap.declare("sap.m.App");
  * @extends sap.m.NavContainer
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -57821,7 +57912,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -58349,7 +58440,7 @@ jQuery.sap.declare("sap.m.ColumnListItem");
  * @extends sap.m.ListItemBase
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -58689,7 +58780,7 @@ jQuery.sap.declare("sap.m.CustomListItem");
  * @extends sap.m.ListItemBase
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -58894,7 +58985,7 @@ jQuery.sap.declare("sap.m.CustomTile");
  * @extends sap.m.Tile
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -59029,7 +59120,7 @@ jQuery.sap.declare("sap.m.DatePicker");
  * @extends sap.m.InputBase
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -59173,7 +59264,7 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 
 		sap.m.InputBase.prototype.exit.apply(this, arguments);
 
-		if(this._oPopup) {
+		if (this._oPopup) {
 			if (this._oPopup.isOpen()) {
 				this._oPopup.close();
 			}
@@ -59196,7 +59287,7 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 
 	sap.m.DatePicker.prototype.invalidate = function(oOrigin) {
 
-		if(!oOrigin || oOrigin != this._oCalendar){
+		if (!oOrigin || oOrigin != this._oCalendar){
 			// Calendar is only invalidated by DatePicker itself -> so don't invalidate DatePicker
 			sap.ui.core.Control.prototype.invalidate.apply(this, arguments);
 		}
@@ -59206,8 +59297,9 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 	/**
 	 * Defines the width of the DatePicker. Default value is 100%
 	 *
+	 * @param {string} sWidth  new value for <code>width</code>
+	 * @returns {sap.m.DatePicker} <code>this</code> to allow method chaining
 	 * @public
-	 * @param {string} sWidth
 	 */
 	sap.m.DatePicker.prototype.setWidth = function(sWidth) {
 
@@ -59223,16 +59315,16 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 
 	sap.m.DatePicker.prototype.onfocusin = function(oEvent) {
 
-		if (sap.ui.Device.browser.mobile && !jQuery(oEvent.target).hasClass("sapUiIcon") && !this._bFocusByCancel) {
+		if (sap.ui.Device.browser.mobile && !jQuery(oEvent.target).hasClass("sapUiIcon") && !this._bFocusNoPopup) {
 			// on mobile devices open calendar
 			var that = this;
 
-			if(!this._oPopup || !this._oPopup.isOpen()) {
+			if (!this._oPopup || !this._oPopup.isOpen()) {
 				_open(that);
 			}
 		}
 
-		this._bFocusByCancel = undefined;
+		this._bFocusNoPopup = undefined;
 
 	};
 
@@ -59240,31 +59332,22 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 
 		var that = this;
 
-		if (oEvent.keyCode == jQuery.sap.KeyCodes.ARROW_DOWN) {
-			if(!this._oPopup || !this._oPopup.isOpen()) {
-				_open(that);
-			}
-		}else {
-			_toggleOpen(that);
-		}
+		_toggleOpen(that);
 
 		oEvent.preventDefault(); // otherwise IE opens the address bar history
 
 	};
 
-	sap.m.DatePicker.prototype.onsaphide = function(oEvent) {
-
-		if(this._oPopup && this._oPopup.isOpen()) {
-			this._oPopup.close();
-		}
-
-	};
+	// ALT-UP and ALT-DOWN should behave the same
+	sap.m.DatePicker.prototype.onsaphide = sap.m.DatePicker.prototype.onsapshow;
 
 	sap.m.DatePicker.prototype.onsappageup = function(oEvent){
 
 		//increase by one day
 		var that = this;
 		_incraseDate(that, 1, "day");
+
+		oEvent.preventDefault(); // do not move cursor
 
 	};
 
@@ -59279,6 +59362,8 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 			_incraseDate(that, 1, "year");
 		}
 
+		oEvent.preventDefault(); // do not move cursor
+
 	};
 
 	sap.m.DatePicker.prototype.onsappagedown = function(oEvent){
@@ -59286,6 +59371,8 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 		//decrease by one day
 		var that = this;
 		_incraseDate(that, -1, "day");
+
+		oEvent.preventDefault(); // do not move cursor
 
 	};
 
@@ -59300,6 +59387,8 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 			_incraseDate(that, -1, "year");
 		}
 
+		oEvent.preventDefault(); // do not move cursor
+
 	};
 
 	sap.m.DatePicker.prototype.onclick = function(oEvent) {
@@ -59307,7 +59396,7 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 		var that = this;
 		if (jQuery(oEvent.target).hasClass("sapUiIcon")) {
 			_toggleOpen(that);
-		}else	if(sap.ui.Device.browser.mobile && (!this._oPopup || !this._oPopup.isOpen())) {
+		}else	if (sap.ui.Device.browser.mobile && (!this._oPopup || !this._oPopup.isOpen())) {
 			_open(that);
 		}
 
@@ -59318,7 +59407,7 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 		var sOldValue = this.getValue();
 		if (sValue == sOldValue) {
 			return this;
-		}else{
+		}else {
 			this._lastValue = sValue;
 		}
 
@@ -59419,7 +59508,7 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 
 		// set date before fire change event
 		var sValue = this._$input.val();
-		var oDate = undefined;
+		var oDate;
 		if (sValue != "") {
 			oDate = this._parseValue(sValue, true);
 			if (oDate) {
@@ -59429,7 +59518,6 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 				sValue = "";
 			}
 		}
-		this.setProperty("dateValue", oDate, true); // no rerendering
 
 		if (this.getDomRef() && (this._$input.val() !== sValue)) {
 			this._$input.val(sValue);
@@ -59448,20 +59536,21 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 		// compare with the old known value
 		if (sValue !== this._lastValue) {
 			this.setProperty("value", sValue, true); // no rerendering
+			this.setProperty("dateValue", oDate, true); // no rerendering
 
 			// remember the last value on change
 			this._lastValue = sValue;
 
 			this.fireChangeEvent(sValue);
-		}
 
-		if(this._oPopup && this._oPopup.isOpen()) {
-			this._oCalendar.focusDate(oDate);
-			var oStartDate = this._oDateRange.getStartDate();
-			if ((!oStartDate && oDate) || (oStartDate && oDate && oStartDate.getTime() != oDate.getTime())) {
-				this._oDateRange.setStartDate(new Date(oDate.getTime()));
-			}else if(oStartDate && !oDate){
-				this._oDateRange.setStartDate(undefined);
+			if (this._oPopup && this._oPopup.isOpen()) {
+				this._oCalendar.focusDate(oDate);
+				var oStartDate = this._oDateRange.getStartDate();
+				if ((!oStartDate && oDate) || (oStartDate && oDate && oStartDate.getTime() != oDate.getTime())) {
+					this._oDateRange.setStartDate(new Date(oDate.getTime()));
+				}else if (oStartDate && !oDate){
+					this._oDateRange.setStartDate(undefined);
+				}
 			}
 		}
 
@@ -59477,6 +59566,31 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 
 		return sValue;
 
+	};
+
+	// overwrite _getInputValue to do the output conversion
+	sap.m.DatePicker.prototype.updateDomValue = function(sValue) {
+
+		// dom value updated other than value property
+		this._bCheckDomValue = true;
+
+		sValue = (typeof sValue == "undefined") ? this._$input.val() : sValue.toString();
+		this._curpos = this._$input.cursorPos();
+
+		var oDate = this._parseValue(sValue, true);
+		sValue = this._formatValue(oDate);
+
+		// update the DOM value when necessary
+		// otherwise cursor can goto end of text unnecessarily
+		if (this.isActive() && (this._$input.val() !== sValue)) {
+			this._$input.val(sValue);
+			this._$input.cursorPos(this._curpos);
+		}
+
+		// update synthetic placeholder visibility
+		this._setLabelVisibility();
+
+		return this;
 	};
 
 	sap.m.DatePicker.prototype._parseValue = function(sValue, bDisplayFormat) {
@@ -59574,7 +59688,7 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 
 			if (oBinding && oBinding.oType && (oBinding.oType instanceof sap.ui.model.type.Date)) {
 				sPlaceholder = oBinding.oType.getOutputPattern();
-			}else{
+			}else {
 				sPlaceholder = this.getDisplayFormat();
 			}
 
@@ -59595,7 +59709,7 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 
 	function _open(oThis){
 
-		if(!oThis._oPopup) {
+		if (!oThis._oPopup) {
 			jQuery.sap.require("sap.ui.core.Popup");
 			oThis._oPopup = new sap.ui.core.Popup();
 			oThis._oPopup.setAutoClose(true);
@@ -59607,7 +59721,7 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 		if (!oThis._oCalendar) {
 			sap.ui.getCore().loadLibrary("sap.ui.unified");
 			jQuery.sap.require("sap.ui.unified.library");
-			oThis._oCalendar = new sap.ui.unified.Calendar(oThis.getId()+"-cal", {intervalSelection: oThis._bIntervalSelection});
+			oThis._oCalendar = new sap.ui.unified.Calendar(oThis.getId() + "-cal", {intervalSelection: oThis._bIntervalSelection});
 			oThis._oDateRange = new sap.ui.unified.DateRange();
 			oThis._oCalendar.addSelectedDate(oThis._oDateRange);
 			oThis._oCalendar.attachSelect(oThis._selectDate, oThis);
@@ -59631,21 +59745,19 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 		var sAt = eDock.BeginBottom + "-4"; // as m.Input has some padding around
 		oThis._oPopup.open(0, eDock.BeginTop, sAt, oThis, null, "fit", true);
 
-	};
+	}
 
 	sap.m.DatePicker.prototype._fillDateRange = function(){
 
 		var oDate = this.getDateValue();
 
 		if (oDate) {
-			this._oCalendar.focusDate(oDate);
+			this._oCalendar.focusDate(new Date(oDate.getTime()));
 			if (!this._oDateRange.getStartDate() || this._oDateRange.getStartDate().getTime() != oDate.getTime()) {
 				this._oDateRange.setStartDate(new Date(oDate.getTime()));
 			}
-		} else {
-			if (this._oDateRange.getStartDate()) {
-				this._oDateRange.setStartDate(undefined);
-			}
+		} else if (this._oDateRange.getStartDate()) {
+			this._oDateRange.setStartDate(undefined);
 		}
 
 	};
@@ -59653,51 +59765,50 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 	function _toggleOpen(oThis){
 
 		if (oThis.getEditable() && oThis.getEnabled()) {
-			if(!oThis._oPopup || !oThis._oPopup.isOpen()) {
+			if (!oThis._oPopup || !oThis._oPopup.isOpen()) {
 				_open(oThis);
 			} else {
 				oThis._oPopup.close();
 			}
 		}
 
-	};
+	}
 
 	sap.m.DatePicker.prototype._selectDate = function(oEvent){
 
 		var aSelectedDates = this._oCalendar.getSelectedDates();
+		var oDateOld = this.getDateValue();
 		var oDate;
-		var sValue = "";
 
 		if (aSelectedDates.length > 0) {
 			oDate = aSelectedDates[0].getStartDate();
-			sValue = this._formatValue(oDate);
-			if (this._$input.val() !== sValue) {
-				this._$input.val(sValue);
-				this._setLabelVisibility();
-				this._curpos = sValue.length;
-				this._$input.cursorPos(this._curpos);
-			}
 		}
+		this.setDateValue(oDate);
 
 		this._oPopup.close();
+		this._bFocusNoPopup = true;
 		this.focus();
 
 		// do not use this.onChange() because output pattern will change date (e.g. only last 2 number of year -> 1966 -> 2066 )
-		this.setProperty("dateValue", oDate, true); // no rerendering
-
-		sap.m.InputBase.prototype.onChange.apply(this, arguments);
+		if (!jQuery.sap.equal(oDate, oDateOld)) {
+			// compare Dates because value can be the same if only 2 digits for year 
+			var sValue = this.getValue();
+			this.fireChangeEvent(sValue);
+			this._curpos = sValue.length;
+			this._$input.cursorPos(this._curpos);
+		}
 
 	};
 
 	function _cancel(oEvent) {
 
-		if(this._oPopup && this._oPopup.isOpen()) {
+		if (this._oPopup && this._oPopup.isOpen()) {
 			this._oPopup.close();
-			this._bFocusByCancel = true;
+			this._bFocusNoPopup = true;
 			this.focus();
 		}
 
-	};
+	}
 /*
 	function _handleClosed(oEvent) {
 
@@ -59707,10 +59818,11 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 	function _incraseDate(oThis, iNumber, sUnit) {
 
 		var oOldDate = oThis.getDateValue();
+		var iCurpos = oThis._$input.cursorPos();
 
 		if (oOldDate && oThis.getEditable() && oThis.getEnabled()) {
 			// use a new date object to have a real updated property
-			var oDate = new Date (oOldDate.getTime());
+			var oDate = new Date(oOldDate.getTime());
 
 			switch (sUnit) {
 			case "day":
@@ -59729,11 +59841,14 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 
 			oThis.setDateValue(oDate);
 
+			oThis._curpos = iCurpos;
+			oThis._$input.cursorPos(oThis._curpos);
+
 			var sValue = oThis._getInputValue();
 			oThis.fireChangeEvent(sValue);
 		}
 
-	};
+	}
 
 	function _onInput(oEvent){
 
@@ -59743,13 +59858,13 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 			this._$label.css("display", sValue ? "none" : "inline");
 		}
 
-	};
+	}
 
 	function _handleOpened(oEvent) {
 
 		this._renderedDays = this._oCalendar.$("days").children(".sapUiCalDay").length;
 
-	};
+	}
 
 	function _resizeCalendar(oEvent){
 
@@ -59761,9 +59876,10 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 			this._oPopup._applyPosition(this._oPopup._oLastPosition);
 		}
 
-	};
+	}
 
 }());
+
 }; // end of sap/m/DatePicker.js
 if ( !jQuery.sap.isDeclared('sap.m.DateRangeSelection') ) {
 /*!
@@ -59828,7 +59944,7 @@ jQuery.sap.declare("sap.m.DateRangeSelection");
  * @extends sap.m.DatePicker
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -59874,6 +59990,7 @@ sap.m.DateRangeSelection.M_EVENTS = {'change':'change'};
 /**
  * Getter for property <code>delimiter</code>.
  * Delimiter of starting and ending date. Default value is "-".
+ * If no delimiter is given the one defined for the used locale is used.
  *
  * Default value is <code>-</code>
  *
@@ -60077,8 +60194,10 @@ sap.m.DateRangeSelection.M_EVENTS = {'change':'change'};
 				sPlaceholder = oLocaleData.getDatePattern(sPlaceholder);
 			}
 
-			if (this.getDelimiter() && this.getDelimiter() !== "") {
-				sPlaceholder = sPlaceholder +" "+this.getDelimiter()+" "+ sPlaceholder;
+			var that = this;
+			var sDelimiter = _getDelimiter(that);
+			if (sDelimiter && sDelimiter !== "") {
+				sPlaceholder = sPlaceholder +" "+sDelimiter+" "+ sPlaceholder;
 			}
 		}
 
@@ -60090,17 +60209,23 @@ sap.m.DateRangeSelection.M_EVENTS = {'change':'change'};
 
 		if (sValue !== this.getValue()) {
 			this._lastValue = sValue;
+		}else {
+			return this;
 		}
 		// Set the property in any case but check validity on output
 		this.setProperty("value", sValue, true);
 
 		// Convert to date object(s)
-		this._parseValue(sValue);
+		var aDates = [undefined, undefined];
+		aDates = this._parseValue(sValue);
+		aDates = _dateRangeValidityCheck(this, aDates[0], aDates[1]);
+		this.setProperty("dateValue", aDates[0], true);
+		this.setProperty("secondDateValue", aDates[1], true);
 
 		// Do not call InputBase.setValue because the displayed value and the output value might have different pattern
 		if (this.getDomRef()) {
 			// Convert to output
-			var sOutputValue = this._formatValue();
+			var sOutputValue = this._formatValue(aDates[0], aDates[1]);
 
 			if (this._$input.val() !== sOutputValue) {
 				this._$input.val(sOutputValue);
@@ -60140,8 +60265,9 @@ sap.m.DateRangeSelection.M_EVENTS = {'change':'change'};
 
 		this.setProperty("dateValue", oDateValue, true);
 
+		var oSecondDateValue = this.getSecondDateValue();
 		// Convert date object(s) to value
-		var sValue = this._formatValue();
+		var sValue = this._formatValue(oDateValue, oSecondDateValue);
 
 		if (sValue !== this.getValue()) {
 			this._lastValue = sValue;
@@ -60151,7 +60277,7 @@ sap.m.DateRangeSelection.M_EVENTS = {'change':'change'};
 
 		if (this.getDomRef()) {
 			// convert to output
-			var sOutputValue = this._formatValue();
+			var sOutputValue = this._formatValue(oDateValue, oSecondDateValue);
 
 			if (this._$input.val() !== sOutputValue) {
 				this._$input.val(sOutputValue);
@@ -60166,10 +60292,15 @@ sap.m.DateRangeSelection.M_EVENTS = {'change':'change'};
 
 	sap.m.DateRangeSelection.prototype.setSecondDateValue = function(oSecondDateValue) {
 
+		if (jQuery.sap.equal(this.getSecondDateValue(), oSecondDateValue)) {
+			return this;
+		}
+
 		this.setProperty("secondDateValue", oSecondDateValue, true);
 
+		var oDateValue = this.getDateValue();
 		// Convert date object(s) to value
-		var sValue = this._formatValue();
+		var sValue = this._formatValue(oDateValue, oSecondDateValue);
 
 		if (sValue !== this.getValue()) {
 			this._lastValue = sValue;
@@ -60179,7 +60310,7 @@ sap.m.DateRangeSelection.M_EVENTS = {'change':'change'};
 
 		if (this.getDomRef()) {
 			// convert to output
-			var sOutputValue = this._formatValue();
+			var sOutputValue = this._formatValue(oDateValue, oSecondDateValue);
 
 			if (this._$input.val() !== sOutputValue) {
 				this._$input.val(sOutputValue);
@@ -60193,18 +60324,39 @@ sap.m.DateRangeSelection.M_EVENTS = {'change':'change'};
 
 	//Support of two date range version added into original DatePicker's version
 	sap.m.DateRangeSelection.prototype._parseValue = function(sValue) {
+
 		var sInputPattern = "";
 		var oFormat;
-		var aDates = "";
+		var aDates = [];
+		var oDate1, oDate2;
 
 		//If we have version of control with delimiter, then sValue should consist of two dates delimited with delimiter,
 		//hence we have to split the value to these dates
-		if ((this.getDelimiter() && (this.getDelimiter() !== "")) && sValue) {
-			aDates = sValue.split(" " + this.getDelimiter() + " ");
+		var that = this;
+		var sDelimiter = _getDelimiter(that);
+		if ((sDelimiter && sDelimiter !== "") && sValue) {
+			aDates = sValue.split(sDelimiter);
+			if (aDates.length === 2) {
+				// if delimiter only appears once in value (not part of date pattern) remove " " to be more flexible for input
+				if (aDates[0].slice(aDates[0].length-1,aDates[0].length) == " ") {
+					aDates[0] = aDates[0].slice(0, aDates[0].length-1);
+				}
+				if (aDates[1].slice(0,1) == " ") {
+					aDates[1] = aDates[1].slice(1);
+				}
+			}else {
+				aDates = sValue.split(" " + sDelimiter + " ");// Delimiter appears more than once -> try with separators
+			}
+			if (aDates.length < 2) {
+				// no delimiter found -> maybe only " " is used
+				var aDates2 = sValue.split(" ");
+				if (aDates2.length === 2) {
+					aDates = aDates2;
+				}
+			}
 		}
 
-		if (((!this.getDelimiter() || (this.getDelimiter() === "")) && sValue) ||
-				(this.getDelimiter() && (this.getDelimiter() !== "") && sValue && aDates && (aDates.length === 2))) {
+		if (sValue && aDates.length <= 2) {
 
 			sInputPattern = this.getDisplayFormat();
 
@@ -60220,51 +60372,29 @@ sap.m.DateRangeSelection.M_EVENTS = {'change':'change'};
 			}
 
 			//Convert to date object(s)
-			if ((!this.getDelimiter() || (this.getDelimiter() === "")) && sValue) {
-				this.setProperty("dateValue", oFormat.parse(sValue), true);
-			}
-			else if (aDates !== "") {
+			if ((!sDelimiter || sDelimiter === "") || aDates.length === 1) {
+				oDate1 = oFormat.parse(sValue);
+			}else if (aDates.length === 2) {
 				if ((oFormat.parse(aDates[0]) === null) || (oFormat.parse(aDates[1]) === null)) {
-					this.setProperty("dateValue", null, true);
-					this.setProperty("secondDateValue", null, true);
-					this.setProperty("value", null, true);
-				}
-				else {
-					this.setProperty("dateValue", oFormat.parse(aDates[0]), true);
-					this.setProperty("secondDateValue", oFormat.parse(aDates[1]), true);
+				}else {
+					oDate1 = oFormat.parse(aDates[0]);
+					oDate2 = oFormat.parse(aDates[1]);
 				}
 			}
 		}
-		else {
-			this.setProperty("dateValue", null, true);
-			this.setProperty("secondDateValue", null, true);
-			this.setProperty("value", null, true);
-		}
+
+		return [oDate1, oDate2];
+
 	};
 
 	//Support of two date range version added into original DatePicker's version
-	sap.m.DateRangeSelection.prototype._formatValue = function(oDate1, oDate2) {
-		var oDateValue;
-		var oSecondDateValue;
-		if (oDate1) {
-			oDateValue = oDate1;
-		}
-		else {
-			oDateValue = this.getProperty("dateValue");
-		}
-
-		if (oDate2) {
-			oSecondDateValue = oDate2;
-		}
-		else {
-			oSecondDateValue = this.getProperty("secondDateValue");
-		}
+	sap.m.DateRangeSelection.prototype._formatValue = function(oDateValue, oSecondDateValue) {
 
 		var sValue = "";
+		var that = this;
+		var sDelimiter = _getDelimiter(that);
 
-		if (((!this.getDelimiter() || (this.getDelimiter() === "")) && oDateValue) ||                 //1) If no delimiter specified, then value is formatted from oDateValue
-				(this.getDelimiter() && (this.getDelimiter() !== "") && oDateValue && oSecondDateValue)) { //2) If there is delimiter, then value is formatted from both oDateValue and oSecondDateValue
-
+		if (oDateValue) {
 			var sOutputPattern = "";
 			var oFormat;
 
@@ -60281,11 +60411,10 @@ sap.m.DateRangeSelection.M_EVENTS = {'change':'change'};
 				oFormat = sap.ui.core.format.DateFormat.getInstance({pattern: sOutputPattern});
 			}
 
-			if (this.getDelimiter() && (this.getDelimiter() !== "")) {
-				sValue = oFormat.format(oDateValue) + " " + this.getDelimiter() + " " + oFormat.format(oSecondDateValue);
-			}
-			else {
-				sValue = null;
+			if (sDelimiter && sDelimiter !== "" && oSecondDateValue) {
+				sValue = oFormat.format(oDateValue) + " " + sDelimiter + " " + oFormat.format(oSecondDateValue);
+			}else {
+				sValue = oFormat.format(oDateValue);
 			}
 		}
 
@@ -60300,21 +60429,21 @@ sap.m.DateRangeSelection.M_EVENTS = {'change':'change'};
 			return;
 		}
 
-		var oDateValueOld = this.getDateValue();
-		var oSecondDateValueOld = this.getSecondDateValue();
-		var sLastValueOld = this._lastValue;
-
-		this._getInputValue();
-		_dateRangeValidityCheck(this, oDateValueOld, oSecondDateValueOld);
-		this._lastValue = sLastValueOld;
-
-		var sValue = this._formatValue();
+		var sValue = this._$input.val();
+		var aDates = [undefined, undefined];
+		if (sValue != "") {
+			aDates = this._parseValue(sValue);
+			aDates = _dateRangeValidityCheck(this, aDates[0], aDates[1]);
+			sValue = this._formatValue( aDates[0], aDates[1] ); // to have the right output format if entered different
+		}
 
 		if ((sValue !== this._lastValue) || (sValue === "")) {
 			if (this.getDomRef()) {
 				this._$input.val(sValue);
 			}
 			this.setProperty("value", sValue, true);
+			this.setProperty("dateValue", aDates[0], true);
+			this.setProperty("secondDateValue", aDates[1], true);
 			this._curpos = this._$input.cursorPos();
 			this._setLabelVisibility();
 			this._lastValue = sValue;
@@ -60349,18 +60478,44 @@ sap.m.DateRangeSelection.M_EVENTS = {'change':'change'};
 			_fireChange(this);
 
 		}
+
 	};
 
 	// Overwrite DatePicker's _getInputValue  to support two date range processing
-	sap.m.DateRangeSelection.prototype._getInputValue = function() {
+	sap.m.DateRangeSelection.prototype._getInputValue = function(sValue) {
 
-		var sValue = this._$input.val();
+		sValue = (typeof sValue == "undefined") ? this._$input.val() : sValue.toString();
 
-		this._parseValue(sValue);
-		sValue = this._formatValue();
+		var aDates = this._parseValue(sValue);
+		sValue = this._formatValue( aDates[0], aDates[1]);
 
 		return sValue;
 
+	};
+
+	// overwrite _getInputValue to do the output conversion
+	sap.m.DateRangeSelection.prototype.updateDomValue = function(sValue) {
+
+		// dom value updated other than value property
+		this._bCheckDomValue = true;
+
+		sValue = (typeof sValue == "undefined") ? this._$input.val() : sValue.toString();
+		this._curpos = this._$input.cursorPos();
+
+		var aDates = this._parseValue(sValue);
+		sValue = this._formatValue( aDates[0], aDates[1]);
+
+		// update the DOM value when necessary
+		// otherwise cursor can goto end of text unnecessarily
+		if (this.isActive() && (this._$input.val() !== sValue)) {
+			this._$input.val(sValue);
+			this._$input.cursorPos(this._curpos);
+		}
+
+		// update synthetic placeholder visibility
+		this._setLabelVisibility();
+
+		return this;
 	};
 
 	// overwrite InputBase function because this calls _getInputValue what calls _parseValue what updates the properties
@@ -60410,19 +60565,26 @@ sap.m.DateRangeSelection.M_EVENTS = {'change':'change'};
 		if (aSelectedDates.length > 0) {
 			var oDate1 = aSelectedDates[0].getStartDate();
 			var oDate2 = aSelectedDates[0].getEndDate();
+			var sLastValue = this._lastValue;
 
 			if (oDate1 && oDate2) {
-				var sOutputValue = this._formatValue(oDate1, oDate2);
-				if (this._$input.val() !== sOutputValue) {
-					this._$input.val(sOutputValue);
-					this._setLabelVisibility();
-					this._curpos = sOutputValue.length;
-					this._$input.cursorPos(this._curpos);
-				}
+				var oDate1Old = this.getDateValue();
+				var oDate2Old = this.getSecondDateValue();
 
 				this._oPopup.close();
+				this._bFocusNoPopup = true;
 				this.focus();
-				this.onChange(); //as no change event will be triggered from browser
+				this.setProperty("dateValue", oDate1, true); // no rerendering
+
+				this.setSecondDateValue(oDate2);
+				if (!jQuery.sap.equal(oDate1, oDate1Old) || !jQuery.sap.equal(oDate2, oDate2Old)) {
+					// compare Dates because value can be the same if only 2 digits for year 
+					var sValue = this.getValue();
+					var that = this;
+					_fireChange(that);
+					this._curpos = sValue.length;
+					this._$input.cursorPos(this._curpos);
+				}
 
 				//To prevent opening keyboard on mobile device after dates are selected
 				if (sap.ui.Device.browser.mobile) {
@@ -60441,35 +60603,56 @@ sap.m.DateRangeSelection.M_EVENTS = {'change':'change'};
 
 	};
 
-	function _dateRangeValidityCheck(oThis, oDateValueOld, oSecondDateValueOld) {
+	function _dateRangeValidityCheck(oThis, oDate, oSecondDate) {
 
-		var currentDateValue = oThis.getDateValue();
-		var currentSecondDateValue = oThis.getSecondDateValue();
-
-		if ((currentDateValue !== null) && (currentSecondDateValue !== null) && (!_bCorrectDateRange(currentDateValue, currentSecondDateValue))) {
-			if ((oDateValueOld !== null) && (currentDateValue.getTime() === oDateValueOld.getTime())) {
-				//secondDateValue, i.e. "to" changed and "from" > "to". Hence, "from" (dateValue) has to have same value as "to".
-				oThis.setProperty("dateValue", currentSecondDateValue, true);
-			}
-			else if ((oSecondDateValueOld !== null) && (currentSecondDateValue.getTime() === oSecondDateValueOld.getTime())) {
-				//dateValue, i.e. "from" changed and "from" > to. Hence, "to" (secondDateValue) has to have same value as "from".
-				oThis.setProperty("secondDateValue", currentDateValue, true);
-			}
-			else {
-				//Both dates changed => "to" will have the same value as "from".
-				oThis.setProperty("secondDateValue", currentDateValue, true);
-			}
+		if (oDate && oSecondDate && oDate.getTime() > oSecondDate.getTime()) {
+			// dates are in wrong oder -> just switch
+			var oTmpDate = oDate;
+			oDate = oSecondDate;
+			oSecondDate = oTmpDate;
 		}
+
+		return [oDate, oSecondDate];
 
 	};
 
-	function _bCorrectDateRange(fromDate, toDate) {
+	function _bCorrectDateRange(oFromDate, oToDate) {
 
-		if (fromDate.getTime() < toDate.getTime()) {
+		if (oFromDate.getTime() < oToDate.getTime()) {
 			return true;
 		}
 
 		return false;
+
+	};
+
+	function _getDelimiter(oThis) {
+
+		var sDelimiter = oThis.getDelimiter();
+
+		if (!sDelimiter) {
+			if (!oThis._sLocaleDelimiter) {
+				var oLocale = sap.ui.getCore().getConfiguration().getFormatSettings().getFormatLocale();
+				var oLocaleData = sap.ui.core.LocaleData.getInstance(oLocale);
+				var sPattern = oLocaleData.getIntervalPattern();
+				var iIndex1 = sPattern.indexOf("{0}") + 3;
+				var iIndex2 = sPattern.indexOf("{1}");
+				sDelimiter = sPattern.slice(iIndex1, iIndex2);
+				if (sDelimiter.length > 1) {
+					if (sDelimiter.slice(0,1) == " ") {
+						sDelimiter = sDelimiter.slice(1);
+					}
+					if (sDelimiter.slice(sDelimiter.length-1,sDelimiter.length) == " ") {
+						sDelimiter = sDelimiter.slice(0, sDelimiter.length-1);
+					}
+				}
+				oThis._sLocaleDelimiter = sDelimiter;
+			}else {
+				sDelimiter = oThis._sLocaleDelimiter;
+			}
+		}
+
+		return sDelimiter;
 
 	};
 
@@ -60601,7 +60784,7 @@ jQuery.sap.declare("sap.m.DateTimeInput");
  * @extends sap.m.InputBase
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -61327,7 +61510,7 @@ sap.m.DateTimeInput.prototype.onsapshow = function(oEvent) {
 				fnAutoCloseProxy = $.proxy(this._autoClose, this),
 				fnHandleResize = $.proxy(this._handleResize, this),
 				fnHandleBtnKeyDown = $.proxy(this._handleBtnKeyDown, this),
-				fnFocusInFirst, fnFocusInLast,
+				fnFocusInFirst, fnFocusInLast, fnClick,
 				$focusLeft = $("<span class='sapMFirstFE' tabindex='0'/>"),
 				$focusRight = $("<span class='sapMLastFE' tabindex='0'/>"),
 				fnKeyDown, $dialogToClean,
@@ -61375,6 +61558,15 @@ sap.m.DateTimeInput.prototype.onsapshow = function(oEvent) {
 
 							// Make sure, the first scroller column has initial focus
 							$.sap.focus($scrollerCont.firstFocusableDomRef());
+							
+							// CSN 0120061532 0001326801 2014: mobiscroll scrollers don't 
+							// get focus when clicked upon
+							fnClick = function(oEvent){
+								//The target itself is not focusable. Need to focus the 
+								//scroller parent marked by a 'dwww' class 
+								$.sap.focus($(oEvent.target).parents(".dwww"));
+							};
+							$dialog.click(fnClick);
 
 							// Support other keyboard events as well, e.g. LEFT, RIGHT
 							$dialogToClean = $dialog;
@@ -61401,6 +61593,7 @@ sap.m.DateTimeInput.prototype.onsapshow = function(oEvent) {
 						if ($dialogToClean) {
 							$dialogToClean.unbind('keydown', fnKeyDown);
 							$dialogToClean.unbind('keydown.dw', fnHandleBtnKeyDown);
+							$dialogToClean.unbind('click', fnClick);
 						}
 					},
 					onSelect : function() {
@@ -61715,7 +61908,7 @@ jQuery.sap.declare("sap.m.DisplayListItem");
  * @extends sap.m.ListItemBase
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -61875,7 +62068,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -63792,7 +63985,7 @@ jQuery.sap.declare("sap.m.FacetFilterItem");
  * @extends sap.m.ListItemBase
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -64007,7 +64200,7 @@ jQuery.sap.declare("sap.m.FeedListItem");
  * @extends sap.m.ListItemBase
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -64618,7 +64811,7 @@ jQuery.sap.declare("sap.m.GroupHeaderListItem");
  * @extends sap.m.ListItemBase
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -64815,7 +65008,7 @@ jQuery.sap.declare("sap.m.InputListItem");
  * @extends sap.m.ListItemBase
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -65078,7 +65271,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -67815,7 +68008,7 @@ jQuery.sap.declare("sap.m.SplitApp");
  * @extends sap.m.SplitContainer
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -68093,7 +68286,7 @@ jQuery.sap.declare("sap.m.StandardTile");
  * @extends sap.m.Tile
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -68482,7 +68675,7 @@ jQuery.sap.declare("sap.m.Table");
  * @extends sap.m.ListBase
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -69139,7 +69332,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @implements sap.ui.core.Toolbar,sap.m.IBar
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -70153,7 +70346,7 @@ jQuery.sap.declare("sap.m.ViewSettingsCustomItem");
  * @extends sap.m.ViewSettingsItem
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -70264,7 +70457,7 @@ sap.m.ViewSettingsCustomItem.prototype.exit = function () {
 /*
  * Internally the control is handled as a managed object instead of an aggregation 
  * because this control is sometimes aggregated in other controls like a popover or a dialog
- * @overwrite
+ * @override
  * @public
  * @param {sap.ui.core.Control} oControl a control used for filtering purposes
  * @return {sap.m.ViewSettingsCustomItem} this pointer for chaining 
@@ -70277,13 +70470,38 @@ sap.m.ViewSettingsCustomItem.prototype.setCustomControl = function (oControl) {
 /*
  * Internally the control is handled as a managed object instead of an aggregation 
  * because this control is sometimes aggregated in other controls like a popover or a dialog
- * @overwrite
+ * @override
  * @public
  * @return {sap.ui.core.Control} oControl a control used for filtering purposes
  */
 sap.m.ViewSettingsCustomItem.prototype.getCustomControl = function () {
 	return this._control;
 };
+
+/*
+ * Sets the filterCount property without invalidating the control as it is never rendered directly 
+ * @override
+ * @param {integer} iValue the new value for property filterCount
+ * @public
+ * @return {sap.m.ViewSettingsItem} this pointer for chaining
+ */
+sap.m.ViewSettingsCustomItem.prototype.setFilterCount = function (iValue) {
+	this.setProperty("filterCount", iValue, true);
+	return this;
+};
+
+/*
+ * Sets the selected property without invalidating the control as it is never rendered directly 
+ * @override
+ * @param {boolean} bValue the new value for property selected
+ * @public
+ * @return {sap.m.ViewSettingsItem} this pointer for chaining
+ */
+sap.m.ViewSettingsCustomItem.prototype.setSelected = function (bValue) {
+	this.setProperty("selected", bValue, true);
+	return this;
+};
+
 }; // end of sap/m/ViewSettingsCustomItem.js
 if ( !jQuery.sap.isDeclared('sap.m.ViewSettingsFilterItem') ) {
 /*!
@@ -70345,7 +70563,7 @@ jQuery.sap.declare("sap.m.ViewSettingsFilterItem");
  * @extends sap.m.ViewSettingsItem
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -70574,7 +70792,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @implements sap.ui.core.PopupInterface
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -73085,7 +73303,7 @@ jQuery.sap.declare("sap.m.List");
  * @extends sap.m.ListBase
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -73472,7 +73690,8 @@ sap.m.MessageBox.Icon = {
 	 * Creates and displays a sap.m.Dialog with type sap.m.DialogType.Message with the given text and buttons, and optionally other parts.
 	 * After the user has tapped a button, the <code>onClose</code> function is invoked when given.
 	 *
-	 * The only mandatory parameter is <code>sMessage</code>.
+	 * The only mandatory parameter is <code>vMessage</code>. Either a string with the corresponding text or even
+	 * a layout control could be provided.
 	 * 
 	 * <pre>
 	 * sap.m.MessageBox.show("This message should appear in the message box", {
@@ -73497,7 +73716,7 @@ sap.m.MessageBox.Icon = {
 	 * where <code>oAction</code> is the button that the user has tapped. For example, when the user has pressed the close button,
 	 * a sap.m.MessageBox.Action.Close is returned.
 	 *
-	 * @param {string} sMessage The message to be displayed.
+	 * @param {string | sap.ui.core.Control} vMessage The message to be displayed.
 	 * @param {object} [mOptions] Optionally other options.
 	 * @param {sap.m.MessageBox.Icon} [mOptions.icon] The icon to be displayed.
 	 * @param {string} [mOptions.title] The title of the message box.
@@ -73510,7 +73729,7 @@ sap.m.MessageBox.Icon = {
 	 * @param {string} [mOptions.styleClass] Added since version 1.21.2. CSS style class which is added to the dialog's root DOM node. The compact design can be activated by setting this to "sapUiSizeCompact"
 	 * @public
 	 */
-	sap.m.MessageBox.show = function(sMessage, mOptions) {
+	sap.m.MessageBox.show = function(vMessage, mOptions) {
 		var oDialog, oResult = null, that = this, aButtons = [], i,
 			sIcon, sTitle, vActions, fnCallback, sDialogId, sClass,
 			mDefaults = {
@@ -73584,11 +73803,15 @@ sap.m.MessageBox.Icon = {
 			type: sap.m.DialogType.Message,
 			title: mOptions.title,
 			icon: mIcons[mOptions.icon],
-			content: new sap.m.Text({
-				text: sMessage
-			}).addStyleClass("sapMMsgBoxText"),
 			afterClose: onclose
 		});
+		if (typeof(vMessage) === "string") {
+			oDialog.addContent(new sap.m.Text({
+				text: vMessage
+			}).addStyleClass("sapMMsgBoxText"));
+		} else if (vMessage instanceof sap.ui.core.Control) {
+			oDialog.addContent(vMessage.addStyleClass("sapMMsgBoxText"));
+		}
 
 		if (aButtons.length > 2) {
 			for (i = 0 ; i < aButtons.length ; i++) {
@@ -73637,7 +73860,7 @@ sap.m.MessageBox.Icon = {
 	 * Applications have to use the <code>fnCallback</code> to continue work after the
 	 * user closed the alert dialog.
 	 *
-	 * @param {string} sMessage Message to be displayed in the alert dialog
+	 * @param {string | sap.ui.core.Control} vMessage Message to be displayed in the alert dialog
 	 * @param {object} [mOptions] Optionally other options
 	 * @param {function} [mOptions.onClose] callback function to be called when the user closes the dialog
 	 * @param {string} [mOptions.title='Alert'] Title to be displayed in the alert dialog
@@ -73645,7 +73868,7 @@ sap.m.MessageBox.Icon = {
 	 * @param {string} [mOptions.styleClass] Added since version 1.21.2. CSS style class which is added to the alert dialog's root DOM node. The compact design can be activated by setting this to "sapUiSizeCompact"
 	 * @public
 	 */
-	sap.m.MessageBox.alert = function(sMessage, mOptions) {
+	sap.m.MessageBox.alert = function(vMessage, mOptions) {
 		var mDefaults = {
 				icon: Icon.NONE,
 				title: this._rb.getText("MSGBOX_TITLE_ALERT"),
@@ -73670,7 +73893,7 @@ sap.m.MessageBox.Icon = {
 
 		mOptions = jQuery.extend({}, mDefaults, mOptions);
 
-		return sap.m.MessageBox.show(sMessage, mOptions);
+		return sap.m.MessageBox.show(vMessage, mOptions);
 	};
 
 	/**
@@ -73701,7 +73924,7 @@ sap.m.MessageBox.Icon = {
 	 * Applications have to use the <code>fnCallback</code> to continue work after the
 	 * user closed the confirmation dialog
 	 *
-	 * @param {string} sMessage Message to display in the confirmation dialog
+	 * @param {string | sap.ui.core.Control} vMessage Message to display in the confirmation dialog
 	 * @param {object} [mOptions] Optionally other options
 	 * @param {function} [mOptions.onClose] Callback to be called when the user closes the dialog
 	 * @param {string} [mOptions.onClose='Confirmation'] Title to display in the confirmation dialog
@@ -73709,7 +73932,7 @@ sap.m.MessageBox.Icon = {
 	 * @param {string} [mOptions.styleClass] Added since version 1.21.2. CSS style class which is added to the confirmation dialog's root DOM node. The compact design can be activated by setting this to "sapUiSizeCompact"
 	 * @public
 	 */
-	sap.m.MessageBox.confirm = function(sMessage, mOptions) {
+	sap.m.MessageBox.confirm = function(vMessage, mOptions) {
 		var mDefaults = {
 			icon: Icon.QUESTION,
 			title: this._rb.getText("MSGBOX_TITLE_CONFIRM"),
@@ -73734,9 +73957,10 @@ sap.m.MessageBox.Icon = {
 
 		mOptions = jQuery.extend({}, mDefaults, mOptions);
 
-		return sap.m.MessageBox.show(sMessage, mOptions);
+		return sap.m.MessageBox.show(vMessage, mOptions);
 	};
 }());
+
 }; // end of sap/m/MessageBox.js
 if ( !jQuery.sap.isDeclared('sap.m.MultiComboBox') ) {
 /*!
@@ -73801,7 +74025,7 @@ jQuery.sap.declare("sap.m.MultiComboBox");
  * @extends sap.m.InputBase
  *
  * @author SAP AG  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -76482,7 +76706,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -77787,7 +78011,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -78420,6 +78644,38 @@ sap.m.Select.prototype._getParentPopup = function() {
 };
 
 /**
+ * Called, whenever the binding of the aggregation items is changed.
+ * This method deletes all items in this aggregation and recreates them
+ * according to the data model.
+ *
+ * @private
+ * @name sap.m.Select#updateItems
+ * @function
+ */
+sap.m.Select.prototype.updateItems = function(sReason) {
+	this._bDataAvailable = false;
+	this.updateAggregation("items");
+	this._bDataAvailable = true;
+};
+
+/**
+ * Called, when the items aggregation needs to be refreshed.
+ * This method does not make any change on the aggregation, but just calls the
+ * getContexts() method to trigger fetching of new data.
+ *
+ * note: This method has been overwritten to prevent .updateItems()
+ * from being called when the bindings are refreshed.
+ * @see sap.ui.base.ManagedObject#bindAggregation
+ *
+ * @private
+ * @name sap.m.Select#refreshItems
+ * @function
+ */
+sap.m.Select.prototype.refreshItems = function() {
+	this.refreshAggregation("items");
+};
+
+/**
  * Synchronize selected item and key.
  *
  * @param {sap.ui.core.Item} vItem
@@ -78455,20 +78711,21 @@ sap.m.Select.prototype._synchronizeSelection = function(vItem, sKey, aItems) {
 			return;
 		}
 
-		// the "selectedKey" property have the default value
-		vItem = this.getDefaultSelectedItem();
+		// the aggregation items is not bound or
+		// it is bound and the data is already available
+		if (!this.isBound("items") || this._bDataAvailable) {
 
-		// Update and synchronize "selectedItem" association,
-		// "selectedKey" and "selectedItemId" properties.
-		this._setSelectedItem({
-			item: vItem || null,
-			id: vItem ? vItem.getId() : "",
-			key: vItem ? vItem.getKey() : "",
-			suppressInvalidate: true
-		});
+			vItem = this.getDefaultSelectedItem();
 
-	} else if (aItems.indexOf(vItem) === -1) {	// validate if the selected item is aggregated
-		jQuery.sap.log.warning('Warning: _synchronizeSelection() the sap.ui.core.Item instance or sap.ui.core.Item id is not a valid aggregation on', this);
+			// Update and synchronize "selectedItem" association,
+			// "selectedKey" and "selectedItemId" properties.
+			this._setSelectedItem({
+				item: vItem || null,
+				id: vItem ? vItem.getId() : "",
+				key: vItem ? vItem.getKey() : "",
+				suppressInvalidate: true
+			});
+		}
 	}
 };
 
@@ -80229,7 +80486,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -80908,7 +81165,8 @@ sap.m.SelectDialog.prototype.init = function () {
 		contentHeight: "2000px",
 		subHeader: this._oSubHeader,
 		content: [this._oBusyIndicator, this._oList],
-		leftButton: this._getCancelButton()
+		leftButton: this._getCancelButton(),
+		initialFocus: (sap.ui.Device.system.desktop ? this._oSearchField : null)
 	}).addStyleClass("sapMSelectDialog", true);
 	// for downward compatibility reasons
 	this._dialog = this._oDialog;
@@ -81418,6 +81676,13 @@ sap.m.SelectDialog.prototype._setBusy = function (bBusy) {
 		} else {
 			if (this._bFirstRequest) { // also show the header bar again for the first request
 				this._oSubHeader.$().css('display', 'block');
+				// set initial focus manually after all items are visible
+				if(sap.ui.Device.system.desktop){
+					var oFocusControl = sap.ui.getCore().byId(this._oDialog.getInitialFocus());
+					if (oFocusControl.getFocusDomRef()) {
+						oFocusControl.getFocusDomRef().focus();
+					}
+				}
 				this._bFirstRequest = false;
 			}
 			this._oList.removeStyleClass('sapMSelectDialogListHide');
@@ -81641,7 +81906,7 @@ jQuery.sap.require('sap.ui.base.ManagedObject'); // unlisted dependency retained
  * @class Table Personalization Dialog
  * @extends sap.ui.base.ManagedObject
  * @author SAP
- * @version 1.22.8
+ * @version 1.22.10
  * @name sap.m.TablePersoDialog
  */
 sap.ui.base.ManagedObject.extend("sap.m.TablePersoDialog", /** @lends sap.m.TablePersoDialog */
@@ -81881,6 +82146,7 @@ sap.m.TablePersoDialog.prototype.init = function() {
 		stretch: sap.ui.Device.system.phone,
 		horizontalScrolling: false,
 		verticalScrolling: false,
+		initialFocus: (sap.ui.Device.system.desktop ? this._oSearchField : null),
 		content : [ this._oSelectAllToolbar, this._oScrollContainer],
 		subHeader : new sap.m.Toolbar({
 			active : true,
@@ -82295,7 +82561,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -83096,7 +83362,8 @@ sap.m.TableSelectDialog.prototype.init = function () {
 		contentHeight: "2000px",
 		subHeader: this._oSubHeader,
 		content: [this._oBusyIndicator, this._oTable],
-		leftButton: this._getCancelButton()
+		leftButton: this._getCancelButton(),
+		initialFocus: ((sap.ui.Device.system.desktop && this._oSearchField) ? this._oSearchField : null)
 	});
 	this._dialog = this._oDialog; // for downward compatibility
 
@@ -83213,8 +83480,10 @@ sap.m.TableSelectDialog.prototype.open = function (sSearchValue) {
 	// set search field value
 	this._oSearchField.setValue(sSearchValue);
 
+
 	// open the dialog
 	this._oDialog.open();
+
 
 	// open dialog with busy state if a list update is still in progress
 	if (this._bInitBusy) {
@@ -83608,6 +83877,14 @@ sap.m.TableSelectDialog.prototype._setBusy = function (bBusy) {
 		} else {
 			if (this._bFirstRequest) { // also show the header bar again for the first request
 				this._oSubHeader.$().css('display', 'block');
+				// set initial focus manually after all items are visible
+				if(sap.ui.Device.system.desktop){
+					var oFocusControl = sap.ui.getCore().byId(this._oDialog.getInitialFocus());
+					if (oFocusControl.getFocusDomRef()) {
+						oFocusControl.getFocusDomRef().focus();
+					}
+				}
+
 				this._bFirstRequest = false;
 			}
 			this._oTable.removeStyleClass('sapMSelectDialogListHide');
@@ -83851,7 +84128,7 @@ jQuery.sap.declare("sap.m.ActionSelect");
  * @extends sap.m.Select
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -84096,7 +84373,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -85234,7 +85511,7 @@ jQuery.sap.declare("sap.m.ComboBoxBase");
  * @extends sap.m.InputBase
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -86414,7 +86691,7 @@ jQuery.sap.declare("sap.m.FacetFilterList");
  * @extends sap.m.List
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -87397,7 +87674,7 @@ jQuery.sap.declare("sap.m.GrowingList");
  * @extends sap.m.List
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -87625,7 +87902,7 @@ jQuery.sap.declare("sap.m.Input");
  * @extends sap.m.InputBase
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -90049,7 +90326,7 @@ jQuery.sap.declare("sap.m.MultiInput");
  * @extends sap.m.Input
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -90851,7 +91128,7 @@ jQuery.sap.require('sap.ui.base.ManagedObject'); // unlisted dependency retained
  * @class Table Personalization Controller
  * @extends sap.ui.base.ManagedObject
  * @author SAP
- * @version 1.22.8
+ * @version 1.22.10
  * @name sap.m.TablePersoController
  */
 sap.ui.base.ManagedObject.extend("sap.m.TablePersoController", /** @lends sap.m.TablePersoController */
@@ -91532,7 +91809,7 @@ jQuery.sap.declare("sap.m.ComboBox");
  * @extends sap.m.ComboBoxBase
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -91726,6 +92003,38 @@ sap.m.ComboBox.M_EVENTS = {'selectionChange':'selectionChange'};
 /* ----------------------------------------------------------- */
 
 /**
+ * Called, whenever the binding of the aggregation items is changed.
+ * This method deletes all items in this aggregation and recreates them
+ * according to the data model.
+ *
+ * @private
+ * @name sap.m.ComboBox#updateItems
+ * @function
+ */
+sap.m.ComboBox.prototype.updateItems = function(sReason) {
+	this._bDataAvailable = false;
+	this.updateAggregation("items");
+	this._bDataAvailable = true;
+};
+
+/**
+ * Called, when the items aggregation needs to be refreshed.
+ * This method does not make any change on the aggregation, but just calls the
+ * getContexts() method to trigger fetching of new data.
+ *
+ * note: This method has been overwritten to prevent .updateItems()
+ * from being called when the bindings are refreshed.
+ * @see sap.ui.base.ManagedObject#bindAggregation
+ *
+ * @private
+ * @name sap.m.ComboBox#refreshItems
+ * @function
+ */
+sap.m.ComboBox.prototype.refreshItems = function() {
+	this.refreshAggregation("items");
+};
+
+/**
  * Synchronize selected item and key.
  *
  * @private
@@ -91733,17 +92042,7 @@ sap.m.ComboBox.M_EVENTS = {'selectionChange':'selectionChange'};
 sap.m.ComboBox.prototype._synchronizeSelection = function() {
 
 	var vItem = this.getSelectedItem(),
-		sKey = this.getSelectedKey(),
-		aItems = this.getItems();
-
-	/*
-	 *	functional dependencies:
-	 *
-	 *	selectedKey  -> selectedItem, selectedItemId
-	 *	selectedItem -> selectedItemId, selectedKey
-	 *
-	 *	items        -> selectedItem, selectedItemId, selectedKey
-	 */
+		sKey = this.getSelectedKey();
 
 	// the "selectedKey" property is set, but it is not synchronized with the "selectedItem" association
 	if (sKey !== (vItem && vItem.getKey())) {
@@ -91765,30 +92064,22 @@ sap.m.ComboBox.prototype._synchronizeSelection = function() {
 				this.setValue(vItem.getText());
 			}
 
-			return;
+		// the aggregation items is not bound or
+		// it is bound and the data is already available
+		} else if (!this.isBound("items") || this._bDataAvailable) {
+
+			// the "selectedKey" property have the default value
+			vItem = this.getDefaultSelectedItem();
+
+			// Update and synchronize "selectedItem" association,
+			// "selectedKey" and "selectedItemId" properties.
+			this._setSelectedItem({
+				item: vItem || null,
+				id: vItem ? vItem.getId() : "",
+				key: vItem ? vItem.getKey() : "",
+				suppressInvalidate: true
+			});
 		}
-
-		// the "selectedKey" property have the default value
-		vItem = this.getDefaultSelectedItem();
-
-		// Update and synchronize "selectedItem" association,
-		// "selectedKey" and "selectedItemId" properties.
-		this._setSelectedItem({
-			item: vItem || null,
-			id: vItem ? vItem.getId() : "",
-			key: vItem ? vItem.getKey() : "",
-			suppressInvalidate: true
-		});
-
-		// note: do not set the value if the selected item has been destroyed or removed
-		if (this.getForceSelection() && vItem) {
-
-			// set the input value
-			this.setValue(vItem.getText());
-		}
-
-	} else if (aItems.indexOf(vItem) === -1) {	// validate if the selected item is aggregated
-		jQuery.sap.log.warning('Warning: _synchronizeSelection() the sap.ui.core.Item instance or sap.ui.core.Item id is not a valid aggregation on', this);
 	}
 };
 

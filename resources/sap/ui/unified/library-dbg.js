@@ -10,7 +10,7 @@
  * ----------------------------------------------------------------------------------- */
 
 /**
- * Initialization Code and shared classes of library sap.ui.unified (1.22.8)
+ * Initialization Code and shared classes of library sap.ui.unified (1.22.10)
  */
 jQuery.sap.declare("sap.ui.unified.library");
 jQuery.sap.require("sap.ui.core.Core");
@@ -53,7 +53,7 @@ sap.ui.getCore().initLibrary({
     "sap.ui.unified.ShellHeadItem",
     "sap.ui.unified.ShellHeadUserItem"
   ],
-  version: "1.22.8"});
+  version: "1.22.10"});
 
 /*!
  * SAP UI development toolkit for HTML5 (SAPUI5/OpenUI5)
@@ -73,7 +73,7 @@ jQuery.sap.declare("sap.ui.unified.ContentSwitcherAnimation");
 /**
  * @class Predefined animations for the ContentSwitcher
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  * @since 1.16.0

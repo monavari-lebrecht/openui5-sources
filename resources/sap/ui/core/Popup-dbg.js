@@ -567,8 +567,14 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', 'sap/ui/base/Ob
 
 		this.eOpenState = sap.ui.core.OpenState.OPENING;
 
-		var oStatic = sap.ui.getCore().getStaticAreaRef();
-		oStatic = sap.ui.getCore().getUIArea(oStatic);
+		var oStatic;
+		try{
+			oStatic = sap.ui.getCore().getStaticAreaRef();
+			oStatic = sap.ui.getCore().getUIArea(oStatic);
+		}catch(e){
+			jQuery.sap.log.error(e);
+			throw new Error("Popup cannot be opened because static UIArea cannot be determined.");
+		}
 		
 		// If the content is a control and has no parent, add it to the static UIArea.
 		// This makes automatic rerendering after invalidation work.
@@ -984,7 +990,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', 'sap/ui/base/Ob
 		
 		var fnClosed = function() { // the function to call when the popup closing animation has completed
 			jQuery($Ref).hide().css({
-				"visibility" : "inherit",
+				"visibility" : "hidden",
 				"left" : "0px",
 				"top" : "0px",
 				"right" : ""
@@ -2086,7 +2092,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObject', 'sap/ui/base/Ob
 			}).show();
 		} else {
 			// the last dialog was closed so we can hide the block layer now
-			jQuery("#sap-ui-blocklayer-popup").css("visibility","inherit").hide();
+			jQuery("#sap-ui-blocklayer-popup").css("visibility","hidden").hide();
 
 			// Allow scrolling again in HTML page only if there is no BlockLayer left
 			jQuery("html").removeClass("sapUiBLyBack");

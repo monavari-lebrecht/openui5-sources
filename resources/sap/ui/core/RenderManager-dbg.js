@@ -12,7 +12,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/Interface', 'sap/ui/base/Object
 	var aCommonMethods = ["renderControl", "write", "writeEscaped", "translate", "writeAcceleratorKey", "writeControlData",
 						  "writeElementData", "writeAttribute", "writeAttributeEscaped", "addClass", "writeClasses",
 						  "addStyle", "writeStyles", "writeAccessibilityState", "writeIcon",
-						  "getConfiguration", "getHTML"];
+						  "getConfiguration", "getHTML", "cleanupControlWithoutRendering"];
 	var aNonRendererMethods = ["render", "flush", "destroy"];
 	
 	/**
@@ -34,7 +34,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/Interface', 'sap/ui/base/Object
 	 *
 	 * @extends sap.ui.base.Object
 	 * @author Jens Pflueger
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @constructor
 	 * @name sap.ui.core.RenderManager
 	 * @public
@@ -110,6 +110,71 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/Interface', 'sap/ui/base/Object
 		return RenderManager.getRenderer(oControl);
 	};
 	
+	//Triggers the BeforeRendering event on the given Control
+	var triggerBeforeRendering = function(oRM, oControl){
+		oRM._bLocked = true;
+		try {
+			var oEvent = jQuery.Event("BeforeRendering");
+			// store the element on the event (aligned with jQuery syntax)
+			oEvent.srcControl = oControl;
+			oControl._handleEvent(oEvent);
+		} finally {
+			oRM._bLocked = false;
+		}
+	};
+	
+	/**
+	 * Cleans up the rendering state of the given control with rendering it.
+	 * 
+	 * A control is responsible for the rendering of all its child controls.
+	 * But in some cases it makes sense that a control does not render all its
+	 * children based on a filter condition. For example a Carousel control only renders
+	 * the current visible parts (and maybe some parts before and after the visible area)
+	 * for performance reasons.
+	 * If a child was rendered but should not be rendered anymore because the filter condition
+	 * does not apply anymore this child must be cleaned up correctly (e.g deregistering eventhandlers, ...).
+	 *
+	 * The following example shows how renderControl and cleanupControlWithoutRendering should
+	 * be used:
+	 * 
+	 * render = function(rm, ctrl){
+	 *   //...
+	 *   var aAggregatedControls = //...
+	 *   for(var i=0; i<aAgrregatedControls.length; i++){
+	 *   	if(//... some filter expression){
+	 *         rm.renderControl(aAggregatedControls[i]);
+	 *      }else{
+	 *         rm.cleanupControlWithoutRendering(aAggregatedControls[i]);
+	 *      }
+	 *   }
+	 *   //...
+	 * }
+	 * 
+	 * Note:
+	 * The method does not remove DOM of the given control. The callee of this method has to take over the
+	 * responsibility to cleanup the DOM of the control afterwards.
+	 * For parents which are rendered with the normal mechanism as shown in the example above this requirement
+	 * is fulfilled, because the control is not added to the rendering buffer (renderControl is not called) and
+	 * the DOM is replaced when the rendering cycle is finalized.
+	 *
+	 * @param {sap.ui.core.Control} oControl the control that should be cleaned up
+	 * @public
+	 * @name sap.ui.core.RenderManager#cleanupControlWithoutRendering
+	 * @since 1.22.9
+	 * @function
+	 */
+	RenderManager.prototype.cleanupControlWithoutRendering = function(oControl) {
+		jQuery.sap.assert(!oControl || oControl instanceof sap.ui.core.Control, "oControl must be a sap.ui.core.Control or empty");
+		if (!oControl || !oControl.getDomRef()) {
+			return;
+		}
+		
+		//Call beforeRendering to allow cleanup
+		triggerBeforeRendering(this, oControl);
+		
+		oControl.bOutput = false;
+	};
+	
 	/**
 	 * Turns the given control into its HTML representation and appends it to the
 	 * rendering buffer.
@@ -159,15 +224,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/Interface', 'sap/ui/base/Object
 		jQuery.sap.measure.resume(oControl.getId()+"---renderControl");
 	
 		// notify the control that it will be rendered soon (e.g. detached from DOM)
-		this._bLocked = true;
-		try {
-			var oEvent = jQuery.Event("BeforeRendering");
-			// store the element on the event (aligned with jQuery syntax)
-			oEvent.srcControl = oControl;
-			oControl._handleEvent(oEvent);
-		} finally {
-			this._bLocked = false;
-		}
+		triggerBeforeRendering(this, oControl);
 		// unbind any generically bound browser event handlers
 		var aBindings = oControl.aBindParameters;
 		if (aBindings && aBindings.length > 0) { // if we have stored bind calls...
@@ -562,9 +619,12 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/Interface', 'sap/ui/base/Object
 					}
 	
 					var e = d.cloneNode(true);
-					document.body.appendChild(e);
+					// in case of early usage of HTML views (before DOMReady) the 
+					// prepareHTML5 call will fail since the body is undefined
+					var f = document.body || document.createDocumentFragment();
+					f.appendChild(e);
 					e.innerHTML = sHTML.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
-					document.body.removeChild(e);
+					f.removeChild(e);
 	
 					return e.childNodes;
 				}

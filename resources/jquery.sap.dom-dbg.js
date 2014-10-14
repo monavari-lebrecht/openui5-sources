@@ -394,6 +394,12 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/Device'],
 	 */
 	jQuery.fn.hasTabIndex = function hasTabIndex() {
 		var iTabIndex = this.prop("tabIndex");
+
+		if (this.attr("disabled") && !this.attr("tabindex")) {
+			// disabled field with not explicit set tabindex -> not in tab chain (bug of jQuery prop function)
+			iTabIndex = -1;
+		}
+
 		return !isNaN(iTabIndex) && iTabIndex >= 0;
 	};
 
@@ -857,7 +863,15 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/Device'],
 		var iHeight = oDomRef.offsetHeight - oDomRef.scrollHeight;
 
 		$Area.remove();
-		
+
+		// due to a bug in FireFox when hiding iframes via an outer DIV element
+		// the height and width calculation is not working properly - by not storing
+		// height and width when one value is 0 we make sure that once the iframe
+		// gets visible the height calculation will be redone (see snippix: #64049)
+		if (iWidth === 0 || iHeight === 0) {
+			return {width: iWidth, height: iHeight};
+		}
+
 		_oScrollbarSize[sKey] = {width: iWidth, height: iHeight};
 
 		return _oScrollbarSize[sKey];

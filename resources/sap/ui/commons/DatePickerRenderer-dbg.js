@@ -43,7 +43,7 @@ sap.ui.commons.DatePickerRenderer.renderOuterAttributes = function(rm, oControl)
 /**
  * Renders additional HTML for the DatePicker to the TextField (sets the icon)
  *
- * @param {sap.ui.fw.RenderManager} oRenderManager The RenderManager that can be used for
+ * @param {sap.ui.fw.RenderManager} rm The RenderManager that can be used for
  *                                                 writing to the Render-Output-Buffer.
  * @param {sap.ui.fw.Control} oControl An object representation of the control that should
  *                                     be rendered.

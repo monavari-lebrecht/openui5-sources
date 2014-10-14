@@ -29,12 +29,16 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 			constructor : function(oModel, sPath, oContext, aSorters, aFilters, mParameters) {
 				TreeBinding.call(this, oModel, sPath, oContext, aFilters, mParameters);
 
+				// attribute members for addressing the requested entity set
+				this.sEntitySetName = (mParameters && mParameters.entitySet) ? mParameters.entitySet : undefined; 
 				// attribute members for maintaining aggregated OData requests
+				this.bArtificalRootContext = false;
 				this.aGlobalFilter = aFilters;
 				this.aGlobalSorter = aSorters;
 				this.aMaxAggregationLevel = [];
 				this.aAggregationLevel = [];
 				this.oPendingRequests = {};
+				this.oPendingRequestHandle = [];
 				this.oGroupedRequests = {};
 				this.bUseBatchRequests = (mParameters && mParameters.useBatchRequests === true) ? true : false;
 				this.bProvideTotalSize = (mParameters && mParameters.provideTotalResultSize === false) ? false : true;
@@ -49,8 +53,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 				this.bNeedsUpdate = false;
 
 				// attribute members for maintaining structure details requested by the binding consumer
-				this.oAnalyticalQueryResult = this.oModel.getAnalyticalExtensions().findQueryResultByName(
-						this._getEntitySetFromPath());
+				this.oAnalyticalQueryResult = this.oModel.getAnalyticalExtensions().findQueryResultByName(this._getEntitySet());
 				this.aAnalyticalInfo = [];
 				this.mAnalyticalInfoByProperty = {};
 
@@ -66,11 +69,22 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 	// called for initial population and on every subsequent change of grouping structure or filter conditions
 	AnalyticalBinding.prototype.getRootContexts = function(mParameters) {
 		var iAutoExpandGroupsToLevel = (mParameters && mParameters.numberOfExpandedLevels ? mParameters.numberOfExpandedLevels + 1 : 1);
+// 		this._trace_enter("API", "getRootContexts", "expand to level=" + iAutoExpandGroupsToLevel, mParameters); // DISABLED FOR PRODUCTION 
 		var aRootContext = null;
+		
+		var sRootContextGroupMembersRequestId = this._getRequestId(AnalyticalBinding._requestType.groupMembersQuery, {groupId: null});
+		
+		// if the root context is artificial (i.e. no grand total requested), then delay its return until all other related requests have been completed
+		if (this.bArtificalRootContext 
+				&& !this._cleanupGroupingForCompletedRequest(sRootContextGroupMembersRequestId)) {
+// 			this._trace_leave("API", "getRootContexts", "delay until related requests have been completed"); // DISABLED FOR PRODUCTION 			
+			return null;
+		}
+		
 		if (iAutoExpandGroupsToLevel <= 1) {
 			aRootContext = this._getContextsForParentContext(null);
 			if (iAutoExpandGroupsToLevel == 1) {
-				this._considerRequestGrouping([ this._getRequestId(AnalyticalBinding._requestType.groupMembersQuery, {groupId: null}), 
+				this._considerRequestGrouping([ sRootContextGroupMembersRequestId, 
 				                                this._getRequestId(AnalyticalBinding._requestType.groupMembersQuery, {groupId: "/"}) ]);
 				this.getNodeContexts(this.getModel().getContext("/"), {
 					startIndex : mParameters.startIndex,
@@ -83,8 +97,8 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 		}
 		else {
 			aRootContext = this._getContextsForParentContext(null);
-			var aRequestId = this._prepareGroupMembersAutoExpansionRequestIds();
-			aRequestId.push(this._getRequestId(AnalyticalBinding._requestType.groupMembersQuery, {groupId: null}));
+			var aRequestId = this._prepareGroupMembersAutoExpansionRequestIds("/", mParameters.numberOfExpandedLevels);
+			aRequestId.push(sRootContextGroupMembersRequestId);
 			this._considerRequestGrouping(aRequestId);
 			this.getNodeContexts(this.getModel().getContext("/"), {
 				startIndex : mParameters.startIndex,
@@ -99,10 +113,12 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 		}
 		if (aRootContext.length > 1)
 			jQuery.sap.log.fatal("assertion failed: grand total represented by a single entry");
+// 		this._trace_leave("API", "getRootContexts", "aRootContext.length=" + aRootContext.length, aRootContext); // DISABLED FOR PRODUCTION 
 		return aRootContext;		
 	};
 	
 	AnalyticalBinding.prototype.getNodeContexts = function(oContext, mParameters) {
+// 		this._trace_enter("API", "getNodeContexts", "groupId=" + this._getGroupIdFromContext(oContext), mParameters); // DISABLED FOR PRODUCTION 
 		var iStartIndex, iLength, iThreshold, iLevel, iNumberOfExpandedLevels;
 		if (typeof mParameters == "object") {
 			iStartIndex = mParameters.startIndex;
@@ -118,7 +134,9 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 			iNumberOfExpandedLevels = arguments[5];
 		}
 	
-		return this._getContextsForParentContext(oContext, iStartIndex, iLength, iThreshold, iLevel, iNumberOfExpandedLevels);
+		var aContext = this._getContextsForParentContext(oContext, iStartIndex, iLength, iThreshold, iLevel, iNumberOfExpandedLevels);
+// 		this._trace_leave("API", "getNodeContexts", "aContext.length=" + aContext.length, aContext); // DISABLED FOR PRODUCTION 
+		return aContext;
 	};
 	
 	AnalyticalBinding.prototype.ContextsAvailabilityStatus = { ALL: 2, SOME: 1, NONE: 0 };
@@ -207,6 +225,8 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 	
 		this.iTotalSize = -1; // invalidate last row counter
 
+		this._abortAllPendingRequests();
+				
 		this.resetData();
 		this._fireRefresh({
 			reason : ChangeReason.Filter
@@ -233,6 +253,8 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 	
 		this.aPropertySorter = aSorter;
 
+		this._abortAllPendingRequests();
+		
 		this._fireRefresh({
 			reason : ChangeReason.Sort
 		});
@@ -247,18 +269,20 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 			oDimension = this.oAnalyticalQueryResult.findDimensionByPropertyName(sGroupProperty),
 			fValueFormatter = this.mAnalyticalInfoByProperty[sGroupProperty].formatter,
 			sPropertyValue = oContext.getProperty(sGroupProperty),
-			sFormattedPropertyValue = fValueFormatter ? fValueFormatter(sPropertyValue) : sPropertyValue,
+			sDisplayPropertyValue = sPropertyValue == null ? "" : sPropertyValue,
+			sFormattedPropertyValue = fValueFormatter ? fValueFormatter(sDisplayPropertyValue) : sDisplayPropertyValue,
 			sGroupName = ((oDimension.getLabelText()) ? oDimension.getLabelText() + ': ' : '') + sFormattedPropertyValue,
 			oTextProperty = null;
 	
-		if (oDimension) {
+		if (oDimension && this.oDimensionDetailsSet[sGroupProperty].textPropertyName) {
 			oTextProperty = oDimension.getTextProperty();
 		}
 		if (oTextProperty) {
 			var sTextProperty = oDimension.getTextProperty().name,
 				fTextValueFormatter = this.mAnalyticalInfoByProperty[sGroupProperty].formatter,
 				sTextPropertyValue = oContext.getProperty(sTextProperty),
-				sFormattedTextPropertyValue = fTextValueFormatter ? fTextValueFormatter(sTextPropertyValue) : sTextPropertyValue;
+				sDisplayTextPropertyValue = sTextPropertyValue == null ? "" : sTextPropertyValue,
+				sFormattedTextPropertyValue = fTextValueFormatter ? fTextValueFormatter(sDisplayTextPropertyValue) : sDisplayTextPropertyValue;
 			if (sFormattedTextPropertyValue) {
 				sGroupName += ' - ' + sFormattedTextPropertyValue;
 			}
@@ -531,11 +555,11 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 						this._executeQueryRequest(this._prepareTotalSizeQueryRequest(AnalyticalBinding._requestType.totalSizeQuery));
 					}
 				}
+				if (sParentGroupId == null) this._abortAllPendingRequests(); // root node is requested, so discard all not received responses, because the entire table must be set up from scratch 
 			}
 		}
 	
 		return aContext;
-	
 	};
 	
 	AnalyticalBinding.prototype._processRequestQueue = function() {
@@ -558,7 +582,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 			var oRequestDetails = null;
 			switch (aRequestQueueEntry[0]) { // different request types
 			case AnalyticalBinding._requestType.groupMembersQuery:
-				continue;
+				continue; // handled above
 			case AnalyticalBinding._requestType.totalSizeQuery:
 				if (!bFoundFlatListRequest)
 					oRequestDetails = AnalyticalBinding.prototype._prepareTotalSizeQueryRequest.apply(this, aRequestQueueEntry);
@@ -591,7 +615,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 	
 		// (0) set up analytical OData request object
 		var oAnalyticalQueryRequest = new odata4analytics.QueryResultRequest(this.oAnalyticalQueryResult);
-		oAnalyticalQueryRequest.setResourcePath(this.sPath);
+		oAnalyticalQueryRequest.setResourcePath(this._getResourcePath());
 	
 		// (1) analyze aggregation level of sGroupId
 	
@@ -743,7 +767,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 	
 		// (0) set up analytical OData request object
 		var oAnalyticalQueryRequest = new odata4analytics.QueryResultRequest(this.oAnalyticalQueryResult);
-		oAnalyticalQueryRequest.setResourcePath(this.sPath);
+		oAnalyticalQueryRequest.setResourcePath(this._getResourcePath());
 	
 		// (1) set aggregation level
 		oAnalyticalQueryRequest.setAggregationLevel(this.aMaxAggregationLevel);
@@ -783,7 +807,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 		
 			// (0) set up analytical OData request object
 			var oAnalyticalQueryRequest = new odata4analytics.QueryResultRequest(that.oAnalyticalQueryResult);
-			oAnalyticalQueryRequest.setResourcePath(that.sPath);
+			oAnalyticalQueryRequest.setResourcePath(that._getResourcePath());
 		
 			// (1) set aggregation level for child nodes
 			var aAggregationLevel = that.aAggregationLevel.slice(0, iLevel);
@@ -991,9 +1015,11 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 				this.bNeedsUpdate = true;
 				// simulate the async behavior for the root context in case of having no sums (TODO: reconsider!)
 				var that = this;
-				setTimeout(function() {
-					that.fireDataReceived();
-				});
+				if (aRequestDetails.length == 1) { // since no other request will be issued, send the received event at this point
+					setTimeout(function() {
+						that.fireDataReceived();
+					});
+				}
 				this.bArtificalRootContext = true;
 				// return immediately - no need to load data...
 				continue;
@@ -1013,19 +1039,30 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 
 		jQuery.sap.log.debug("AnalyticalBinding: executing batch request with " + aExecutedRequestDetails.length + " operations");
 		
-		
-		this.oModel.addBatchReadOperations(aBatchQueryRequest);
-		this.fireDataRequested();
-		var res = this.oModel.submitBatch(fnSuccess, fnError, true, true);
-		
+		var iRequestHandleId = this._getIdForNewRequestHandle();
+		if (aBatchQueryRequest.length > 0) {
+			this.oModel.addBatchReadOperations(aBatchQueryRequest);
+			this.fireDataRequested();
+			var oRequestHandle = this.oModel.submitBatch(fnSuccess, fnError, true, true);
+
+			// fire event to indicate sending of a new request
+			this.oModel.fireRequestSent({url : this.oModel.sServiceUrl	+ "/$batch", type : "POST", async : true,
+				info: "",
+				infoObject : {}
+			});
+
+			this._registerNewRequestHandle(iRequestHandleId, oRequestHandle);
+		}
+
 		function fnSuccess(oData, response) {
+			that._deregisterHandleOfCompletedRequest(iRequestHandleId);
+			
 			if (aExecutedRequestDetails.length != oData.__batchResponses.length)
 				jQuery.sap.log.fatal("assertion failed: received " + oData.__batchResponses.length 
 						+ " responses for " + aExecutedRequestDetails.length + " read operations in the batch request");
 	
 			if (iCurrentAnalyticalInfoVersion != that.iAnalyticalInfoVersionNumber) {
 				// discard responses for outdated analytical infos
-				that.oRequestHandle = null;
 				for(var i = -1, sRequestId; sRequestId = aExecutedRequestDetails[++i].sRequestId;) {
 					that._deregisterCompletedRequest(sRequestId);
 					that._cleanupGroupingForCompletedRequest(sRequestId);
@@ -1047,8 +1084,6 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 						    continue;	
 					}
 				}
-	
-				that.oRequestHandle = null;
 				that._deregisterCompletedRequest(aExecutedRequestDetails[i].sRequestId);
 				that._cleanupGroupingForCompletedRequest(aExecutedRequestDetails[i].sRequestId);
 			}
@@ -1072,7 +1107,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 		}	
 		
 		function fnError (oError) {
-			that.oRequestHandle = null;
+			that._deregisterHandleOfCompletedRequest(iRequestHandleId);
 			for(var i = -1, oExecutedRequestDetails; oExecutedRequestDetails = aExecutedRequestDetails[++i];) {
 				that._deregisterCompletedRequest(oExecutedRequestDetails.sRequestId);
 				that._cleanupGroupingForCompletedRequest(oExecutedRequestDetails.sRequestId);
@@ -1112,7 +1147,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 		var iCurrentAnalyticalInfoVersion = this.iAnalyticalInfoVersionNumber;
 	
 		var oAnalyticalQueryRequest = oRequestDetails.oAnalyticalQueryRequest, sGroupId = oRequestDetails.sGroupId;
-	
+
 		// determine relevant request query options  
 		var sPath = oAnalyticalQueryRequest.getURIToQueryResultEntitySet();
 		var aParam = this._getQueryODataRequestOptions(oAnalyticalQueryRequest);
@@ -1144,13 +1179,16 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 		this.fireDataRequested();
 		for (var i = 0; i < aParam.length; i++) 
 			aParam[i] = aParam[i].replace(/\ /g, "%20");
-		jQuery.sap.log.debug("AnalyticalBinding: executing query request");		
+		jQuery.sap.log.debug("AnalyticalBinding: executing query request");	
+		
+		var iRequestHandleId = this._getIdForNewRequestHandle();
 		this.oModel._loadData(sPath, aParam, fnSuccess, fnError, false, fnUpdateHandle, fnCompleted);
 	
 		function fnSuccess(oData) {
+			that._deregisterHandleOfCompletedRequest(iRequestHandleId);
+			
 			if (iCurrentAnalyticalInfoVersion != that.iAnalyticalInfoVersionNumber) {
 				// discard responses for outdated analytical infos
-				that.oRequestHandle = null;
 				that._deregisterCompletedRequest(oRequestDetails.sRequestId);
 				return;
 			}
@@ -1168,7 +1206,6 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 					jQuery.sap.log.fatal("invalid request type " + oRequestDetails.iRequestType);
 			    	break;	
 			}
-			that.oRequestHandle = null;
 			that._deregisterCompletedRequest(oRequestDetails.sRequestId);
 		}
 	
@@ -1183,7 +1220,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 	
 		function fnError(oData) {
 	
-			that.oRequestHandle = null;
+			that._deregisterHandleOfCompletedRequest(iRequestHandleId);
 			that._deregisterCompletedRequest(oRequestDetails.sRequestId);
 			that._cleanupGroupingForCompletedRequest(oRequestDetails.sRequestId);
 			if (iCurrentAnalyticalInfoVersion != that.iAnalyticalInfoVersionNumber) {
@@ -1193,10 +1230,20 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 			that.fireDataReceived();
 		}
 	
-		function fnUpdateHandle(oHandle) {
-			that.oRequestHandle = oHandle;
+		function fnUpdateHandle(oRequestHandle) {
+			that._registerNewRequestHandle(iRequestHandleId, oRequestHandle);
 		}
 	
+	};
+	
+	/**
+	 * @private
+	 * @function
+	 * @name AnalyticalBinding.prototype._abortAllPendingRequests
+	 */
+	AnalyticalBinding.prototype._abortAllPendingRequests = function() {
+		this._abortAllPendingRequestsByHandle();
+		this._clearAllPendingRequests();
 	};
 	
 	/**
@@ -1556,17 +1603,30 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 	/**
 	 * @private
 	 * @function
-	 * @name AnalyticalBinding.prototype._getEntitySetFromPath
+	 * @name AnalyticalBinding.prototype._getResourcePath
 	 */
-	AnalyticalBinding.prototype._getEntitySetFromPath = function() {
+	AnalyticalBinding.prototype._getResourcePath = function() { 
+		return this.isRelative() ? this.oModel.resolve(this.sPath, this.getContext()) : this.sPath;
+	};
 	
-		var sEntityset = this.sPath.split("/")[1];
-	
-		if (sEntityset.indexOf("(") != -1) {
-			sEntityset = sEntityset.split("(")[0] + "Results";
+	/**
+	 * @private
+	 * @function
+	 * @name AnalyticalBinding.prototype._getEntitySet
+	 */
+	AnalyticalBinding.prototype._getEntitySet = function() {
+		var sEntitySet = this.sEntitySetName;
+		var bindingContext = this.getContext();
+		
+		if (! sEntitySet) {	
+			// assume absolute path complying with conventions from OData4SAP spec
+			sEntitySet = this.sPath.split("/")[1];
+		
+			if (sEntitySet.indexOf("(") != -1) {
+				sEntitySet = sEntitySet.split("(")[0] + "Results";
+			}
 		}
-	
-		return sEntityset;
+		return sEntitySet;
 	
 	};
 	
@@ -1705,14 +1765,71 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 		return aUniqueString;
 	};
 	
+	
+	/********************************
+	 *** Maintaining handles of pending requests
+	 ********************************/
+	
+	/**
+	 * Get an ID for a new request handle yet to be registered
+	 *  
+	 * @private
+	 * @function
+	 */
+	AnalyticalBinding.prototype._getIdForNewRequestHandle = function() {
+		if (this.oPendingRequestHandle === undefined) this.oPendingRequestHandle = [];
+		// find first unused slot or extend array
+		for (var i = 0; i < this.oPendingRequestHandle.length; i++) {
+			if (this.oPendingRequestHandle[i] === undefined) return i;
+		}
+		this.oPendingRequestHandle[this.oPendingRequestHandle.length] = undefined;
+		return this.oPendingRequestHandle.length - 1;
+	};
+	
+	/**
+	 * Register a new request handle with its given request ID
+	 * 
+	 * @private
+	 * @function
+	 */
+	AnalyticalBinding.prototype._registerNewRequestHandle = function(iRequestHandleId, oRequestHandle) {
+		if (this.oPendingRequestHandle[iRequestHandleId] !== undefined) 
+			jQuery.sap.log.fatal("request handle ID already in use");
+		this.oPendingRequestHandle[iRequestHandleId] = oRequestHandle;
+	};
+	
+	/**
+	 * Deregister handle of completed request
+	 * 
+	 * @private
+	 * @function
+	 */
+	AnalyticalBinding.prototype._deregisterHandleOfCompletedRequest = function(iRequestHandleId) {
+		if (this.oPendingRequestHandle[iRequestHandleId] === undefined) 
+			jQuery.sap.log.fatal("no handle found for this request ID");
+		this.oPendingRequestHandle[iRequestHandleId] = undefined;
+	};
+
+	/**
+	 * Abort all currently sent requests, which have not yet been completed  
+	 * 
+	 * @private
+	 * @function
+	 */
+	AnalyticalBinding.prototype._abortAllPendingRequestsByHandle = function() {
+// 		this._trace_enter("Requests", "_abortAllPendingRequestsByHandle"); // DISABLED FOR PRODUCTION 		
+		for (var i = 0; i < this.oPendingRequestHandle.length; i++) {
+// 			if (this.oPendingRequestHandle[i]) this._trace_message ("Requests", "abort index " + i);
+			this.oPendingRequestHandle[i] !== undefined && this.oPendingRequestHandle[i].abort();
+		}
+		this.oPendingRequestHandle = [];
+// 		this._trace_leave("Requests", "_abortAllPendingRequestsByHandle"); // DISABLED FOR PRODUCTION 		
+	};
+	
 	/********************************
 	 *** Maintaining pending requests
 	 ********************************/
 	
-	/*
-	 * Construction of request Ids for the various types of requests
-	 */
-
 	/**
 	 * Construct a request ID for a query request of the specified type
 	 * 
@@ -1740,7 +1857,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 	};
 	
 	/**
-	 * Register another request to maintain its lifecycle (pending, comppleted)
+	 * Register another request to maintain its lifecycle (pending, completed)
 	 * 
 	 * @private
 	 * @function
@@ -1828,6 +1945,11 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 		return bGroupCompleted;
 	};
 	
+	AnalyticalBinding.prototype._clearAllPendingRequests = function() {
+		this.oPendingRequests = {};
+		this.oGroupedRequests = {};
+	};
+
 	/**
 	 * Resets the current list data and length
 	 * 
@@ -1887,6 +2009,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 			}
 		}
 		if (bForceUpdate || bChangeDetected) {
+			this._abortAllPendingRequests();
 			this.resetData();
 			this.bNeedsUpdate = false;
 			this._fireRefresh({reason: sap.ui.model.ChangeReason.Refresh});
@@ -1923,6 +2046,56 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/TreeBinding', 'sap/ui/model/Ch
 			this._fireChange();
 		}
 	};
+	
+	/********************************
+	 *** Tracing execution
+	 ********************************/
+	
+	/** DISABLED FOR PRODUCTION 
+// 	 *    to enable, search using regex for "^// (.*\._trace_.*)", replace by "$1" 
+// 	 *    to disable, search using regex for "^(.*\._trace_.*)", replace by "// $1"
+	 *
+// 	AnalyticalBinding.prototype._trace_enter = function(groupid, scope, input_msg, _arguments) {
+		if (!this._traceMsgCtr) this._traceMsgCtr = { level: 0, msg: [] };
+		this._traceMsgCtr.msg.push( { group: groupid, level: ++this._traceMsgCtr.level, scope: scope, msg: input_msg, details: _arguments, enter: true } );
+	};
+	
+// 	AnalyticalBinding.prototype._trace_leave = function (groupid, scope, output_msg, results) {
+		if (!this._traceMsgCtr) throw "leave without enter";
+		this._traceMsgCtr.msg.push( { group: groupid, level: this._traceMsgCtr.level--, scope: scope, msg: output_msg, details: results, leave: true } );
+	};
+	 
+// 	AnalyticalBinding.prototype._trace_message = function (groupid, message, details) {
+		if (!this._traceMsgCtr) throw "message without enter";
+		this._traceMsgCtr.msg.push( { group: groupid, level: this._traceMsgCtr.level, msg: message, details: details } );
+	};
+	
+// 	AnalyticalBinding.prototype._trace_dump = function (aGroupId) {
+		var fRenderMessage = function (line) {
+			var s = "[" + line.group + "          ".slice(0,10 - line.group.length) + "]";
+			for (var i = 0; i < line.level; i++) s+= "  ";
+			if (line.enter) s += "->" + line.scope + (line.msg ? ":\t" : "");
+			else if (line.leave) s += "<-" + line.scope + (line.msg ? ":\t" : "");
+			else s += "  ";
+			if (line.msg) s += line.msg;
+			s += "\n";
+			return s;
+		}
+		var fRender = function (aMsg) {
+			var s = "";
+			for (var i = 0; i < aMsg.length; i++) {
+				if (!aGroupId || aGroupId.indexOf (aMsg[i].group) != -1) s += fRenderMessage(aMsg[i]);
+			}
+			return s;
+		} 
+		if (!this._traceMsgCtr) return;
+		return "\n" + fRender (this._traceMsgCtr.msg);
+	};
+
+// 	AnalyticalBinding.prototype._trace_reset = function () {
+		delete this._traceMsgCtr;
+	};
+	**/
 	
 	return AnalyticalBinding;
 

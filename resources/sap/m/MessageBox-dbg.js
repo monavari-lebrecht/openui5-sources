@@ -186,7 +186,8 @@ sap.m.MessageBox.Icon = {
 	 * Creates and displays a sap.m.Dialog with type sap.m.DialogType.Message with the given text and buttons, and optionally other parts.
 	 * After the user has tapped a button, the <code>onClose</code> function is invoked when given.
 	 *
-	 * The only mandatory parameter is <code>sMessage</code>.
+	 * The only mandatory parameter is <code>vMessage</code>. Either a string with the corresponding text or even
+	 * a layout control could be provided.
 	 * 
 	 * <pre>
 	 * sap.m.MessageBox.show("This message should appear in the message box", {
@@ -211,7 +212,7 @@ sap.m.MessageBox.Icon = {
 	 * where <code>oAction</code> is the button that the user has tapped. For example, when the user has pressed the close button,
 	 * a sap.m.MessageBox.Action.Close is returned.
 	 *
-	 * @param {string} sMessage The message to be displayed.
+	 * @param {string | sap.ui.core.Control} vMessage The message to be displayed.
 	 * @param {object} [mOptions] Optionally other options.
 	 * @param {sap.m.MessageBox.Icon} [mOptions.icon] The icon to be displayed.
 	 * @param {string} [mOptions.title] The title of the message box.
@@ -224,7 +225,7 @@ sap.m.MessageBox.Icon = {
 	 * @param {string} [mOptions.styleClass] Added since version 1.21.2. CSS style class which is added to the dialog's root DOM node. The compact design can be activated by setting this to "sapUiSizeCompact"
 	 * @public
 	 */
-	sap.m.MessageBox.show = function(sMessage, mOptions) {
+	sap.m.MessageBox.show = function(vMessage, mOptions) {
 		var oDialog, oResult = null, that = this, aButtons = [], i,
 			sIcon, sTitle, vActions, fnCallback, sDialogId, sClass,
 			mDefaults = {
@@ -298,11 +299,15 @@ sap.m.MessageBox.Icon = {
 			type: sap.m.DialogType.Message,
 			title: mOptions.title,
 			icon: mIcons[mOptions.icon],
-			content: new sap.m.Text({
-				text: sMessage
-			}).addStyleClass("sapMMsgBoxText"),
 			afterClose: onclose
 		});
+		if (typeof(vMessage) === "string") {
+			oDialog.addContent(new sap.m.Text({
+				text: vMessage
+			}).addStyleClass("sapMMsgBoxText"));
+		} else if (vMessage instanceof sap.ui.core.Control) {
+			oDialog.addContent(vMessage.addStyleClass("sapMMsgBoxText"));
+		}
 
 		if (aButtons.length > 2) {
 			for (i = 0 ; i < aButtons.length ; i++) {
@@ -351,7 +356,7 @@ sap.m.MessageBox.Icon = {
 	 * Applications have to use the <code>fnCallback</code> to continue work after the
 	 * user closed the alert dialog.
 	 *
-	 * @param {string} sMessage Message to be displayed in the alert dialog
+	 * @param {string | sap.ui.core.Control} vMessage Message to be displayed in the alert dialog
 	 * @param {object} [mOptions] Optionally other options
 	 * @param {function} [mOptions.onClose] callback function to be called when the user closes the dialog
 	 * @param {string} [mOptions.title='Alert'] Title to be displayed in the alert dialog
@@ -359,7 +364,7 @@ sap.m.MessageBox.Icon = {
 	 * @param {string} [mOptions.styleClass] Added since version 1.21.2. CSS style class which is added to the alert dialog's root DOM node. The compact design can be activated by setting this to "sapUiSizeCompact"
 	 * @public
 	 */
-	sap.m.MessageBox.alert = function(sMessage, mOptions) {
+	sap.m.MessageBox.alert = function(vMessage, mOptions) {
 		var mDefaults = {
 				icon: Icon.NONE,
 				title: this._rb.getText("MSGBOX_TITLE_ALERT"),
@@ -384,7 +389,7 @@ sap.m.MessageBox.Icon = {
 
 		mOptions = jQuery.extend({}, mDefaults, mOptions);
 
-		return sap.m.MessageBox.show(sMessage, mOptions);
+		return sap.m.MessageBox.show(vMessage, mOptions);
 	};
 
 	/**
@@ -415,7 +420,7 @@ sap.m.MessageBox.Icon = {
 	 * Applications have to use the <code>fnCallback</code> to continue work after the
 	 * user closed the confirmation dialog
 	 *
-	 * @param {string} sMessage Message to display in the confirmation dialog
+	 * @param {string | sap.ui.core.Control} vMessage Message to display in the confirmation dialog
 	 * @param {object} [mOptions] Optionally other options
 	 * @param {function} [mOptions.onClose] Callback to be called when the user closes the dialog
 	 * @param {string} [mOptions.onClose='Confirmation'] Title to display in the confirmation dialog
@@ -423,7 +428,7 @@ sap.m.MessageBox.Icon = {
 	 * @param {string} [mOptions.styleClass] Added since version 1.21.2. CSS style class which is added to the confirmation dialog's root DOM node. The compact design can be activated by setting this to "sapUiSizeCompact"
 	 * @public
 	 */
-	sap.m.MessageBox.confirm = function(sMessage, mOptions) {
+	sap.m.MessageBox.confirm = function(vMessage, mOptions) {
 		var mDefaults = {
 			icon: Icon.QUESTION,
 			title: this._rb.getText("MSGBOX_TITLE_CONFIRM"),
@@ -448,6 +453,6 @@ sap.m.MessageBox.Icon = {
 
 		mOptions = jQuery.extend({}, mDefaults, mOptions);
 
-		return sap.m.MessageBox.show(sMessage, mOptions);
+		return sap.m.MessageBox.show(vMessage, mOptions);
 	};
 }());

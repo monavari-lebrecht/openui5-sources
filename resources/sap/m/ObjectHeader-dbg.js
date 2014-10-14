@@ -79,7 +79,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -1280,7 +1280,7 @@ sap.m.ObjectHeader.prototype.ontap = function(oEvent) {
 		});
 	} else if (this.getTitleActive() && oEvent.srcControl === this._titleText) {
 		this.fireTitlePress({
-			domRef : jQuery.sap.domById(sourceId)
+			domRef : this._titleText.getFocusDomRef()
 		});
 	} else if (this.getIconActive() && (sourceId === this.getId() + "-img" || sourceId === this.getId() + "-icon")) {
 		this.fireIconPress({

@@ -55,7 +55,7 @@ jQuery.sap.require("sap.ui.core.Title");
  * @extends sap.ui.core.Title
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public

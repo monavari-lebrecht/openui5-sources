@@ -8,7 +8,7 @@
 /** 
  * Device and Feature Detection API of the SAP UI5 Library.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @namespace
  * @name sap.ui.Device
  * @public
@@ -31,7 +31,7 @@ if(typeof window.sap.ui !== "object"){
 
 	//Skip initialization if API is already available
 	if(typeof window.sap.ui.Device === "object" || typeof window.sap.ui.Device === "function" ){
-		var apiVersion = "1.22.8";
+		var apiVersion = "1.22.10";
 		window.sap.ui.Device._checkAPIVersion(apiVersion);
 		return;
 	}
@@ -85,7 +85,7 @@ if(typeof window.sap.ui !== "object"){
 	
 	//Only used internal to make clear when Device API is loaded in wrong version
 	device._checkAPIVersion = function(sVersion){
-		var v = "1.22.8";
+		var v = "1.22.10";
 		if(v != sVersion){
 			logger.log(WARNING, "Device API version differs: "+v+" <-> "+sVersion);
 		}
@@ -1204,6 +1204,7 @@ if(typeof window.sap.ui !== "object"){
 	};
 
 	var isWin8 = device.os.windows && device.os.version === 8;
+	var isWin7 = device.os.windows && device.os.version === 7;
 
 	device.system = {};
 
@@ -1212,9 +1213,9 @@ if(typeof window.sap.ui !== "object"){
 		var t = isTablet();
 		
 		var s = {};
-		s.tablet = (device.support.touch || !!_simMobileOnDesktop) && t;
-		s.phone = (device.support.touch || !!_simMobileOnDesktop) && !t;
-		s.desktop = (!s.tablet && !s.phone) || isWin8;
+		s.tablet = ((device.support.touch && !isWin7) || !!_simMobileOnDesktop) && t;
+		s.phone = ((device.support.touch && !isWin7) || !!_simMobileOnDesktop) && !t;
+		s.desktop = (!s.tablet && !s.phone) || isWin8 || isWin7;
 		s.combi = (s.desktop && s.tablet);
 		s.SYSTEMTYPE = SYSTEMTYPE;
 		
@@ -3585,7 +3586,7 @@ return URI;
 	 * @class Represents a version consisting of major, minor, patch version and suffix, e.g. '1.2.7-SNAPSHOT'.
 	 *
 	 * @author SAP AG
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @constructor
 	 * @public
 	 * @since 1.15.0
@@ -3978,7 +3979,7 @@ return URI;
 	/**
 	 * Root Namespace for the jQuery plug-in provided by SAP AG.
 	 *
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @namespace
 	 * @public
 	 * @static
@@ -4864,6 +4865,7 @@ return URI;
 				'sap/ui/thirdparty/datajs.js': true,
 				'sap/ui/thirdparty/hasher.js': true,
 				'sap/ui/thirdparty/IPv6.js': true,
+				'sap/ui/thirdparty/jquery/jquery-1.11.1.js': true,
 				'sap/ui/thirdparty/jquery/jquery-1.10.2.js': true,
 				'sap/ui/thirdparty/jquery/jquery-1.10.1.js': true,
 				'sap/ui/thirdparty/jquery/jquery.1.7.1.js': true,
@@ -6963,6 +6965,12 @@ sap.ui.define("jquery.sap.dom",['jquery.sap.global', 'sap/ui/Device'],
 	 */
 	jQuery.fn.hasTabIndex = function hasTabIndex() {
 		var iTabIndex = this.prop("tabIndex");
+
+		if (this.attr("disabled") && !this.attr("tabindex")) {
+			// disabled field with not explicit set tabindex -> not in tab chain (bug of jQuery prop function)
+			iTabIndex = -1;
+		}
+
 		return !isNaN(iTabIndex) && iTabIndex >= 0;
 	};
 
@@ -7426,7 +7434,15 @@ sap.ui.define("jquery.sap.dom",['jquery.sap.global', 'sap/ui/Device'],
 		var iHeight = oDomRef.offsetHeight - oDomRef.scrollHeight;
 
 		$Area.remove();
-		
+
+		// due to a bug in FireFox when hiding iframes via an outer DIV element
+		// the height and width calculation is not working properly - by not storing
+		// height and width when one value is 0 we make sure that once the iframe
+		// gets visible the height calculation will be redone (see snippix: #64049)
+		if (iWidth === 0 || iHeight === 0) {
+			return {width: iWidth, height: iHeight};
+		}
+
 		_oScrollbarSize[sKey] = {width: iWidth, height: iHeight};
 
 		return _oScrollbarSize[sKey];
@@ -7474,6 +7490,7 @@ sap.ui.define("jquery.sap.dom",['jquery.sap.global', 'sap/ui/Device'],
 	return jQuery;
 
 }, /* bExport= */ false);
+
 }; // end of jquery.sap.dom.js
 if ( !jQuery.sap.isDeclared('jquery.sap.events') ) {
 /*!
@@ -10336,7 +10353,7 @@ sap.ui.define("jquery.sap.properties",['jquery.sap.global', 'jquery.sap.sjax'],
 	 * currently in the list.
 	 *
 	 * @author SAP AG
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @since 0.9.0
 	 * @name jQuery.sap.util.Properties
 	 * @public
@@ -10935,7 +10952,7 @@ sap.ui.define("jquery.sap.resources",['jquery.sap.global', 'jquery.sap.propertie
 	 * Exception: Fallback for "zh_HK" is "zh_TW" before zh.
 	 *
 	 * @author SAP AG
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @since 0.9.0
 	 * @name jQuery.sap.util.ResourceBundle
 	 * @public
@@ -11437,7 +11454,7 @@ sap.ui.define("jquery.sap.script",['jquery.sap.global'],
 	 * Use {@link jQuery.sap.getUriParameters} to create an instance of jQuery.sap.util.UriParameters.
 	 *
 	 * @author SAP AG
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @since 0.9.0
 	 * @name jQuery.sap.util.UriParameters
 	 * @public

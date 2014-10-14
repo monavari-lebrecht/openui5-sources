@@ -13,7 +13,7 @@ jQuery.sap.require("jquery.sap.strings");
  * @class ListBox Renderer
  *
  * @author d046011
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  */
 sap.ui.commons.ListBoxRenderer = {

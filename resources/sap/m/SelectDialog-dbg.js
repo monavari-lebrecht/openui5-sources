@@ -71,7 +71,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -750,7 +750,8 @@ sap.m.SelectDialog.prototype.init = function () {
 		contentHeight: "2000px",
 		subHeader: this._oSubHeader,
 		content: [this._oBusyIndicator, this._oList],
-		leftButton: this._getCancelButton()
+		leftButton: this._getCancelButton(),
+		initialFocus: (sap.ui.Device.system.desktop ? this._oSearchField : null)
 	}).addStyleClass("sapMSelectDialog", true);
 	// for downward compatibility reasons
 	this._dialog = this._oDialog;
@@ -1260,6 +1261,13 @@ sap.m.SelectDialog.prototype._setBusy = function (bBusy) {
 		} else {
 			if (this._bFirstRequest) { // also show the header bar again for the first request
 				this._oSubHeader.$().css('display', 'block');
+				// set initial focus manually after all items are visible
+				if(sap.ui.Device.system.desktop){
+					var oFocusControl = sap.ui.getCore().byId(this._oDialog.getInitialFocus());
+					if (oFocusControl.getFocusDomRef()) {
+						oFocusControl.getFocusDomRef().focus();
+					}
+				}
 				this._bFirstRequest = false;
 			}
 			this._oList.removeStyleClass('sapMSelectDialogListHide');

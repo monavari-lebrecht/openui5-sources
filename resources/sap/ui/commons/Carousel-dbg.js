@@ -62,7 +62,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -778,13 +778,17 @@ sap.ui.commons.Carousel.prototype.onmouseup = function(oEvent) {
 	}
 };
 
-sap.ui.commons.Carousel.prototype.onswipeleft = function(oEvent) {
-	this.showNext();
-};
+if (sap.ui.Device.support.touch) {
+	
+	sap.ui.commons.Carousel.prototype.onswipeleft = function(oEvent) {
+		this.showNext();
+	};
+	
+	sap.ui.commons.Carousel.prototype.onswiperight = function(oEvent) {
+		this.showPrevious();
+	};
 
-sap.ui.commons.Carousel.prototype.onswiperight = function(oEvent) {
-	this.showPrevious();
-};
+}
 
 
 /**

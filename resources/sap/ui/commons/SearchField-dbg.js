@@ -75,7 +75,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @implements sap.ui.commons.ToolbarItem
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -1002,7 +1002,11 @@ sap.ui.commons.SearchField.prototype.getValue = function() {
 };
 
 sap.ui.commons.SearchField.prototype.setValue = function(sValue) {
-	return _set(this, "Value", sValue, !!this.getDomRef(), true);
+	var res = _set(this, "Value", sValue, !!this.getDomRef(), true);
+	if(this.getEnableClear() && this.getDomRef()){
+		this.$().toggleClass("sapUiSearchFieldVal", !!sValue);
+	}
+	return res;
 };
 
 sap.ui.commons.SearchField.prototype.setEnableCache = function(bEnableCache) {

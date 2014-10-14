@@ -57,7 +57,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -567,7 +567,7 @@ sap.m.IconTabHeader.prototype.setSelectedItem = function(oItem, bAPIchange) {
 	var sSelectedKey = this.oSelectedItem.getKey();
 	this.oSelectedItem = oItem;
 	this.setProperty("selectedKey", sSelectedKey, true);
-
+	
 	if (!bAPIchange) {
 		// fire event on iconTabBar
 		if (this.getParent() instanceof sap.m.IconTabBar) {
@@ -621,6 +621,8 @@ sap.m.IconTabHeader.prototype.onAfterRendering = function() {
 
 	if (this._bDoScroll) {
 		jQuery.sap.delayedCall(350, this, "_checkOverflow", [oHeadDomRef, $bar]);
+	} else {
+		this._checkOverflow(oHeadDomRef, $bar);
 	}
 
 	// reset scroll state after re-rendering for non-touch devices (iScroll will handle this internally)
@@ -807,9 +809,14 @@ sap.m.IconTabHeader.prototype._getScrollingArrow = function(sName) {
 	var mProperties = {
 		src : "sap-icon://navigation-" + sName + "-arrow"
 	};
-	var aCssClassesToAddLeft = ["sapMITBArrowScroll", "sapMITBArrowScrollLeft"];
-	var aCssClassesToAddRight = ["sapMITBArrowScroll", "sapMITBArrowScrollRight"];
 	
+	var sSuffix = this._bTextOnly ? "TextOnly" : "";
+	var sLeftArrowClass = "sapMITBArrowScrollLeft" + sSuffix;
+	var sRightArrowClass = "sapMITBArrowScrollRight" + sSuffix;
+
+	var aCssClassesToAddLeft = ["sapMITBArrowScroll", sLeftArrowClass];
+	var aCssClassesToAddRight = ["sapMITBArrowScroll", sRightArrowClass];
+
 	if (sName === "left") {
 		if (!this._oArrowLeft) {
 			this._oArrowLeft = sap.m.ImageHelper.getImageControl(this.getId() + "-arrowScrollLeft", this._oArrowLeft, this, mProperties, aCssClassesToAddLeft);
@@ -850,7 +857,7 @@ sap.m.IconTabHeader.prototype._checkOverflow = function(oBarHead, $bar) {
 			}
 
 		} else { //desktop mode
-			var iScrollLeft = oBarHead.scrollLeft;
+			var iScrollLeft = this._iCurrentScrollLeft;
 			var realWidth = oBarHead.scrollWidth;
 			var availableWidth = oBarHead.clientWidth;
 
@@ -885,6 +892,9 @@ sap.m.IconTabHeader.prototype._checkOverflow = function(oBarHead, $bar) {
 			$bar.toggleClass("sapMITBScrollForward", bScrollForward);
 			$bar.toggleClass("sapMITBNoScrollForward", !bScrollForward);
 		}
+	} else {
+		this._bPreviousScrollForward = false;
+		this._bPreviousScrollBack = false;
 	}
 };
 
@@ -900,7 +910,7 @@ sap.m.IconTabHeader.prototype._handleActivation = function(oEvent) {
 	var $sTargetId = jQuery.sap.byId(sTargetId);
 	if (jQuery.inArray(this.$("content")[0], $sTargetId.parents()) > -1) {
 		//do nothing because element is inside content
-	} else {
+	} else {	
 		if (sTargetId) {
 			var sId = this.getId();
 
@@ -945,7 +955,7 @@ sap.m.IconTabHeader.prototype._handleActivation = function(oEvent) {
 					this._scroll(sap.m.IconTabHeader.SCROLL_STEP, 500);
 				}
 
-			} else {
+			} else {				
 				// should be one of the items - select it
 				if (oControl instanceof sap.ui.core.Icon || oControl instanceof sap.m.Image) { 
 					// click on icon: fetch filter instead
@@ -957,16 +967,16 @@ sap.m.IconTabHeader.prototype._handleActivation = function(oEvent) {
 				}
 				// select item if it is an iconTab but not a separator
 				else if (oControl.getMetadata().isInstanceOf("sap.m.IconTab") && !(oControl instanceof sap.m.IconTabSeparator)) {
-					//for tabs with showAll property true, click on whole area leads to selection, for text only version only clicking on text itself (not count)
-					if (oControl.getShowAll() || this._bTextOnly && sTargetId === oControl.getId() + "-text") {
+					//for tabs with showAll property true or for text only version click on whole area leads to selection
+					if (oControl.getShowAll() || this._bTextOnly) {
 						this.setSelectedItem(oControl);
 					}
 				}
 			}
 		}
 		else {
-			//no target id, so we have to check if showAll is set, because clicking on the number then also leads to selecting the item
-			if (oControl.getMetadata().isInstanceOf("sap.m.IconTab") && !(oControl instanceof sap.m.IconTabSeparator) && oControl.getShowAll()) {
+			//no target id, so we have to check if showAll is set or it's a text only item, because clicking on the number then also leads to selecting the item
+			if (oControl.getMetadata().isInstanceOf("sap.m.IconTab") && !(oControl instanceof sap.m.IconTabSeparator) && (oControl.getShowAll() || this._bTextOnly)) {
 				this.setSelectedItem(oControl);
 			}
 		}
@@ -990,7 +1000,7 @@ sap.m.IconTabHeader.prototype._scrollIntoView = function(oItem, iDuration) {
 	iContainerWidth;
 
 	if ($item.length > 0) {
-		var iItemWidth = $item.outerWidth();
+		var iItemWidth = $item.outerWidth(true);
 		var iItemPosLeft = $item.position().left;
 
 		// switch based on scrolling mode
@@ -1009,6 +1019,8 @@ sap.m.IconTabHeader.prototype._scrollIntoView = function(oItem, iDuration) {
 
 				// execute manual scrolling with scrollTo method (delayedCall 0 is needed for positioning glitch)
 				this._scrollPreparation();
+				// store current scroll state to set it after rerendering
+				this._iCurrentScrollLeft = iNewScrollLeft;
 				jQuery.sap.delayedCall(0, this._oScroller, "scrollTo", [iNewScrollLeft, 0, iDuration]);
 				jQuery.sap.delayedCall(iDuration, this, "_afterIscroll");
 			}
@@ -1028,11 +1040,11 @@ sap.m.IconTabHeader.prototype._scrollIntoView = function(oItem, iDuration) {
 
 				// execute scrolling
 				this._scrollPreparation();
+				// store current scroll state to set it after rerendering
+				this._iCurrentScrollLeft = iNewScrollLeft;
 				jQuery(oHeadDomRef).stop(true, true).animate({scrollLeft: iNewScrollLeft}, iDuration, jQuery.proxy(this._adjustAndShowArrow, this));
 			}
 		}
-		// store current scroll state to set it after rerendering
-		this._iCurrentScrollLeft = iNewScrollLeft;
 	}
 
 	return this;
@@ -1138,13 +1150,19 @@ sap.m.IconTabHeader.prototype.applyFocusInfo = function (oFocusInfo) {
  * @param {jQuery.Event} oEvent
  * @private
  */
-sap.m.IconTabHeader.prototype.ontouchstart = function(oEvent) {
+sap.m.IconTabHeader.prototype.ontouchstart = function(oEvent) {	
 	var oTargetTouch = oEvent.targetTouches[0];
 
 	// store & init touch state
 	this._iActiveTouch = oTargetTouch.identifier;
 	this._iTouchStartPageX = oTargetTouch.pageX;
 	this._iTouchDragX = 0;
+	
+	// if the item is text-only and we click outside the text area, move the focus to the text
+	var oItemTouched = jQuery(oEvent.target);
+	if (this._bTextOnly && !oItemTouched.hasClass('sapMITBText')) {
+		oItemTouched.parents('.sapMITBItem').children('.sapMITBText').focus();
+	}
 };
 
 /**

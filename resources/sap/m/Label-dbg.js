@@ -61,7 +61,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @implements sap.ui.core.Label
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -322,7 +322,7 @@ sap.m.Label.prototype.getLabelForRendering = function(){
 
 sap.m.Label.prototype.setText = function(sText) {
 	var sValue = this.getText();
-	if (sValue != sText) {
+	if (sValue !== sText) {
 		this.setProperty("text", sText, true);
 		this.$().html(jQuery.sap.encodeHTML(this.getProperty("text")));
 	}

@@ -4,8 +4,8 @@
  * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
  */
 jQuery.sap.declare("sap.ui.table.ColumnMenu");jQuery.sap.require("sap.ui.table.library");jQuery.sap.require("sap.ui.unified.Menu");sap.ui.unified.Menu.extend("sap.ui.table.ColumnMenu",{metadata:{library:"sap.ui.table"}});jQuery.sap.require("sap.ui.core.RenderManager");jQuery.sap.require("sap.ui.unified.Menu");jQuery.sap.require("sap.ui.unified.MenuItem");
-sap.ui.table.ColumnMenu.prototype.init=function(){this.addStyleClass("sapUiTableColumnMenu");this.oResBundle=sap.ui.getCore().getLibraryResourceBundle("sap.ui.table");this._bInvalidated=true;this._iPopupClosedTimeoutId=null;this._oColumn=null;this._oTable=null;this._attachPopupClosed()};
-sap.ui.table.ColumnMenu.prototype.exit=function(){window.clearTimeout(this._iPopupClosedTimeoutId);this._detachEvents();this._oColumn=this._oTable=null};
+sap.ui.table.ColumnMenu.prototype.init=function(){if(sap.ui.unified.Menu.prototype.init){sap.ui.unified.Menu.prototype.init.apply(this,arguments)}this.addStyleClass("sapUiTableColumnMenu");this.oResBundle=sap.ui.getCore().getLibraryResourceBundle("sap.ui.table");this._bInvalidated=true;this._iPopupClosedTimeoutId=null;this._oColumn=null;this._oTable=null;this._attachPopupClosed()};
+sap.ui.table.ColumnMenu.prototype.exit=function(){if(sap.ui.unified.Menu.prototype.exit){sap.ui.unified.Menu.prototype.exit.apply(this,arguments)}window.clearTimeout(this._iPopupClosedTimeoutId);this._detachEvents();this._oColumn=this._oTable=null};
 sap.ui.table.ColumnMenu.prototype.onThemeChanged=function(){if(this.getDomRef()){this._invalidate()}};
 sap.ui.table.ColumnMenu.prototype.setParent=function(p){this._detachEvents();this._invalidate();this._oColumn=p;if(p){this._oTable=this._oColumn.getParent();if(this._oTable){}}this._attachEvents();return sap.ui.unified.Menu.prototype.setParent.apply(this,arguments)};
 sap.ui.table.ColumnMenu.prototype._attachEvents=function(){if(this._oTable){this._oTable.attachColumnVisibility(this._invalidate,this);this._oTable.attachColumnMove(this._invalidate,this)}};

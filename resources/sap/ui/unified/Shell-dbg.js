@@ -66,7 +66,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -846,8 +846,9 @@ sap.ui.unified.Shell._SIDEPANE_WIDTH_DESKTOP = 240;
 sap.ui.unified.Shell._HEADER_ALWAYS_VISIBLE = true; /*Whether header hiding is technically possible (touch enabled)*/
 sap.ui.unified.Shell._HEADER_AUTO_CLOSE = true;
 sap.ui.unified.Shell._HEADER_TOUCH_TRESHOLD = 30;
-if(sap.ui.Device.os.windows && sap.ui.Device.os.version == 8 && sap.ui.Device.browser.chrome){
-	sap.ui.unified.Shell._HEADER_TOUCH_TRESHOLD = 15;
+if(sap.ui.Device.browser.chrome){
+	//see https://groups.google.com/a/chromium.org/forum/#!topic/input-dev/Ru9xjSsvLHw --> chrome://flags/#touch-scrolling-mode
+	sap.ui.unified.Shell._HEADER_TOUCH_TRESHOLD = sap.ui.Device.browser.version < 36 ? 10 : 15;
 }
 	
 sap.ui.unified.Shell.prototype.init = function(){
@@ -1167,6 +1168,9 @@ sap.ui.unified.Shell.prototype.destroyContent = function() {
 	this._cont.destroyContent();
 	return this;
 };
+sap.ui.unified.Shell.prototype.indexOfContent = function(oContent) {
+	return this._cont.indexOfContent(oContent);
+};
 
 
 sap.ui.unified.Shell.prototype.getPaneContent = function() {
@@ -1190,7 +1194,9 @@ sap.ui.unified.Shell.prototype.destroyPaneContent = function() {
 	this._cont.destroySecondaryContent();
 	return this;
 };
-
+sap.ui.unified.Shell.prototype.indexOfPaneContent = function(oContent) {
+	return this._cont.indexOfSecondaryContent(oContent);
+};
 
 sap.ui.unified.Shell.prototype.getCurtainContent = function() {
 	return this._curtCont.getContent();
@@ -1213,7 +1219,9 @@ sap.ui.unified.Shell.prototype.destroyCurtainContent = function() {
 	this._curtCont.destroyContent();
 	return this;
 };
-
+sap.ui.unified.Shell.prototype.indexOfCurtainContent = function(oContent) {
+	return this._curtCont.indexOfCurtainContent(oContent);
+};
 
 sap.ui.unified.Shell.prototype.getCurtainPaneContent = function() {
 	return this._curtCont.getSecondaryContent();
@@ -1236,7 +1244,9 @@ sap.ui.unified.Shell.prototype.destroyCurtainPaneContent = function() {
 	this._curtCont.destroySecondaryContent();
 	return this;
 };
-
+sap.ui.unified.Shell.prototype.indexOfCurtainPaneContent = function(oContent) { 
+	return this._curtCont.indexOfSecondaryContent(oContent);
+};
 
 sap.ui.unified.Shell.prototype.insertHeadItem = function(oHeadItem, iIndex) {
 	return this._mod(function(bRendered){
@@ -1264,7 +1274,6 @@ sap.ui.unified.Shell.prototype.destroyHeadItems = function() {
 	}, this._headBeginRenderer);
 };
 
-
 sap.ui.unified.Shell.prototype.insertHeadEndItem = function(oHeadItem, iIndex) {
 	return this._mod(function(bRendered){
 		return this.insertAggregation("headEndItems", oHeadItem, iIndex, bRendered);
@@ -1290,6 +1299,7 @@ sap.ui.unified.Shell.prototype.destroyHeadEndItems = function() {
 		return this.destroyAggregation("headEndItems", bRendered);
 	}, this._headEndRenderer);
 };
+
 
 /*Restricted API for Launchpad to set a Strong BG style*/
 sap.ui.unified.Shell.prototype._setStrongBackground = function(bUseStongBG){	
@@ -1323,7 +1333,6 @@ sap.ui.unified.Shell.prototype._timedHideHeader = function(bClearOnly){
 	this._headerHidingTimer = jQuery.sap.delayedCall(this._iHeaderHidingDelay, this, function(){
 		if(this._isHeaderHidingActive() && this._iHeaderHidingDelay > 0 && !jQuery.sap.containsOrEquals(this.getDomRef("hdr"), document.activeElement)){
 			this._doShowHeader(false);
-			this._refreshCSSWorkaround();
 		}
 	});
 };
@@ -1434,6 +1443,8 @@ sap.ui.unified.Shell.prototype._repaint = function(oDom){
 		oDom.style.display = "none";
 		oDom.offsetHeight;
 		oDom.style.display = display;
+		
+		this._refreshCSSWorkaround();
 	}
 };
 
@@ -1446,7 +1457,7 @@ sap.ui.unified.Shell.prototype._isHeaderHidingActive = function(){
 };
 
 sap.ui.unified.Shell.prototype._refreshCSSWorkaround = function() {
-	if(!sap.ui.Device.browser.chrome || !sap.ui.Device.support.touch){
+	if(!sap.ui.Device.browser.webkit || !sap.ui.Device.support.touch){
 		return;
 	}
 	

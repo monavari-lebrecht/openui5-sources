@@ -10,7 +10,7 @@
  * ----------------------------------------------------------------------------------- */
 
 /**
- * Initialization Code and shared classes of library sap.m (1.22.8)
+ * Initialization Code and shared classes of library sap.m (1.22.10)
  */
 jQuery.sap.declare("sap.m.library");
 jQuery.sap.require("sap.ui.core.Core");
@@ -162,7 +162,7 @@ sap.ui.getCore().initLibrary({
     "sap.m.ViewSettingsFilterItem",
     "sap.m.ViewSettingsItem"
   ],
-  version: "1.22.8"});
+  version: "1.22.10"});
 
 /*!
  * SAP UI development toolkit for HTML5 (SAPUI5/OpenUI5)
@@ -182,7 +182,7 @@ jQuery.sap.declare("sap.m.BackgroundDesign");
 /**
  * @class Available Background Design.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -225,7 +225,7 @@ jQuery.sap.declare("sap.m.BarDesign");
 /**
  * @class Types of the Bar design
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  * @since 1.20
@@ -275,7 +275,7 @@ jQuery.sap.declare("sap.m.ButtonType");
 /**
  * @class Different types for a button (predefined types)
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -348,7 +348,7 @@ jQuery.sap.declare("sap.m.DateTimeInputType");
 /**
  * @class A subset of DateTimeInput types that fit to a simple API returning one string.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -393,7 +393,7 @@ jQuery.sap.declare("sap.m.DialogType");
 /**
  * @class Enum for the type of sap.m.Dialog control.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -431,7 +431,7 @@ jQuery.sap.declare("sap.m.FacetFilterType");
  * @class Used by the FacetFilter control to adapt its design according to type.
  * 
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -468,7 +468,7 @@ jQuery.sap.declare("sap.m.FlexAlignItems");
 /**
  * @class Available options for the layout of all elements along the cross axis of the flexbox layout.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -529,7 +529,7 @@ jQuery.sap.declare("sap.m.FlexAlignSelf");
 /**
  * @class Available options for the layout of individual elements along the cross axis of the flexbox layout overriding the default alignment.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -596,7 +596,7 @@ jQuery.sap.declare("sap.m.FlexDirection");
 /**
  * @class Available directions for flex layouts.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -651,7 +651,7 @@ jQuery.sap.declare("sap.m.FlexJustifyContent");
 /**
  * @class Available options for the layout of elements along the main axis of the flexbox layout.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -712,7 +712,7 @@ jQuery.sap.declare("sap.m.FlexRendertype");
 /**
  * @class Determines the type of HTML elements used for rendering controls.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -749,7 +749,7 @@ jQuery.sap.declare("sap.m.HeaderLevel");
 /**
  * @class Different levels for headers
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -823,7 +823,7 @@ jQuery.sap.declare("sap.m.IBarHTMLTag");
 /**
  * @class Allowed tags for the implementation of the IBar interface.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  * @since 1.22
@@ -879,7 +879,7 @@ jQuery.sap.declare("sap.m.IconTabFilterDesign");
 /**
  * @class Available Filter Item Design.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -917,7 +917,7 @@ jQuery.sap.declare("sap.m.InputType");
  * @class A subset of input types that fit to a simple API returning one string.
  * Not available on purpose: button, checkbox, hidden, image, password, radio, range, reset, search, submit.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -1026,7 +1026,7 @@ jQuery.sap.declare("sap.m.LabelDesign");
 /**
  * @class Available label display modes.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -1063,7 +1063,7 @@ jQuery.sap.declare("sap.m.ListHeaderDesign");
 /**
  * @class Defines the differnet header styles.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  * @deprecated Since version 1.16. 
@@ -1102,7 +1102,7 @@ jQuery.sap.declare("sap.m.ListMode");
 /**
  * @class Different modes for the list selection (predefined modes)
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -1163,7 +1163,7 @@ jQuery.sap.declare("sap.m.ListSeparators");
 /**
  * @class Defines which separator style will be applied for the items.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -1206,7 +1206,7 @@ jQuery.sap.declare("sap.m.ListType");
 /**
  * @class List types
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -1270,7 +1270,7 @@ jQuery.sap.declare("sap.m.PageBackgroundDesign");
 /**
  * @class Available Page Background Design.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -1319,7 +1319,7 @@ jQuery.sap.declare("sap.m.PlacementType");
 /**
  * @class Types for the placement of popover control.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -1386,7 +1386,7 @@ jQuery.sap.declare("sap.m.PopinDisplay");
 /**
  * @class Defines the display of table pop-ins
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  * @since 1.13.2
@@ -1424,7 +1424,7 @@ jQuery.sap.declare("sap.m.RatingIndicatorVisualMode");
 /**
  * @class Possible values for the visualization of float values in the RatingIndicator Control.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -1461,7 +1461,7 @@ jQuery.sap.declare("sap.m.ScreenSize");
 /**
  * @class Breakpoint names for different screen sizes.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -1546,7 +1546,7 @@ jQuery.sap.declare("sap.m.SelectType");
 /**
  * @class Enumeration for different Select types.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  * @since 1.16
@@ -1584,7 +1584,7 @@ jQuery.sap.declare("sap.m.SplitAppMode");
 /**
  * @class The mode of SplitContainer or SplitApp control to show/hide the master area.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -1633,7 +1633,7 @@ jQuery.sap.declare("sap.m.StandardTileType");
 /**
  * @class Types for StandardTile
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -1676,7 +1676,7 @@ jQuery.sap.declare("sap.m.SwipeDirection");
 /**
  * @class Directions for swipe event.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -1719,7 +1719,7 @@ jQuery.sap.declare("sap.m.SwitchType");
 /**
  * @class Enumaration for different switch types.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -1756,7 +1756,7 @@ jQuery.sap.declare("sap.m.ToolbarDesign");
 /**
  * @class Types of the Toolbar Design.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  * @since 1.16.8

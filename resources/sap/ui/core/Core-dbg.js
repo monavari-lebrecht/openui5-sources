@@ -31,7 +31,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/Device', 'sap/ui/Global', 'sap/ui/ba
 	 * @extends sap.ui.base.EventProvider
 	 * @final
 	 * @author SAP AG
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @constructor
 	 * @name sap.ui.core.Core 
 	 * @public
@@ -62,6 +62,12 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/Device', 'sap/ui/Global', 'sap/ui/ba
 			 * @private
 			 */
 			this.bInitialized = false;
+			
+			/**
+			 * Whether the dom is ready (document.ready)
+			 * @private
+			 */
+			this.bDomReady = false;
 		
 			/**
 			 * Available plugins in the order of registration.
@@ -799,6 +805,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/Device', 'sap/ui/Global', 'sap/ui/ba
 	 * @function
 	 */
 	Core.prototype.handleLoad = function () {
+		this.bDomReady = true;
 	
 		//do not allow any event processing until the Core is initialized
 		var bWasLocked = this.isLocked();
@@ -1980,6 +1987,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/Device', 'sap/ui/Global', 'sap/ui/ba
 	 * If it is not yet available, a DIV is created and appended to the body.
 	 *
 	 * @return {Element} the static, hidden area DOM element belonging to this core instance.
+	 * @throws {Error} an Error if the document is not yet ready
 	 * @public
 	 * @name sap.ui.core.Core#getStaticAreaRef
 	 * @function
@@ -1988,14 +1996,17 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/Device', 'sap/ui/Global', 'sap/ui/ba
 		var sStaticId = "sap-ui-static";
 		var oStatic = jQuery.sap.domById(sStaticId);
 		if(!oStatic){
+			if(!this.bDomReady){
+				throw new Error("DOM is not ready yet. Static UIArea cannot be created.");
+			}
+			
 			var leftRight = this.getConfiguration().getRTL() ? "right" : "left";
-			oStatic = jQuery("<DIV/>",{id:sStaticId})
-						.css("visibility", "hidden")
-						.css("height", "0")
-						.css("width", "0")
-						.css("overflow", "hidden")
-						.css("float", leftRight)
-						.prependTo(document.body)[0];
+			oStatic = jQuery("<DIV/>", {id:sStaticId}).css({
+				"height"   : "0",
+				"width"    : "0",
+				"overflow" : "hidden",
+				"float"    : leftRight
+			}).prependTo(document.body)[0];
 	
 			// TODO Check whether this is sufficient
 			this.createUIArea(oStatic).bInitial = false;

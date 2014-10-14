@@ -357,7 +357,7 @@ if ( !jQuery.sap.isDeclared('sap.ui.suite.library') ) {
  * ----------------------------------------------------------------------------------- */
 
 /**
- * Initialization Code and shared classes of library sap.ui.suite (1.22.8)
+ * Initialization Code and shared classes of library sap.ui.suite (1.22.10)
  */
 jQuery.sap.declare("sap.ui.suite.library");
 jQuery.sap.require('sap.ui.core.Core'); // unlisted dependency retained
@@ -388,7 +388,7 @@ sap.ui.getCore().initLibrary({
     "sap.ui.suite.VerticalProgressIndicator"
   ],
   elements: [],
-  version: "1.22.8"});
+  version: "1.22.10"});
 
 /*!
  * SAP UI development toolkit for HTML5 (SAPUI5/OpenUI5)
@@ -408,7 +408,7 @@ jQuery.sap.declare("sap.ui.suite.TaskCircleColor");
 /**
  * @class Defined color values for the Task Circle Control
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -504,7 +504,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author Svetozar Buzdumovic 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -895,7 +895,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author Svetozar Buzdumovic 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public

@@ -642,6 +642,15 @@
 .sapUiAcdSectionHdr {
 	cursor: pointer;
 	line-height: 1;
+	text-align: start;
+}
+
+/* special handling for IE, as it does not support text-align: start */
+html[data-sap-ui-browser^="ie"] .sapUiAcdSectionHdr {
+	text-align: left;
+}
+html[dir=rtl][data-sap-ui-browser^="ie"] .sapUiAcdSectionHdr {
+	text-align: right;
 }
 
 .sapUiAcdSectionDis .sapUiAcdSectionHdr {
@@ -3251,6 +3260,10 @@ html[dir=rtl][data-sap-ui-browser=ff3] .sapUiLbx.sapUiLbxFlexWidth > ul > li > s
 	padding-bottom: 2px;
 }
 
+html[dir=rtl][data-sap-ui-browser*="ie"] .sapUiMnuBarItm > span {
+	display: inline-block;
+}
+
 .sapUiMnuBarItm.sapUiMnuBarItmDsbl > span {
 	background-image: url("img/menu/trg-dis.png");
 }
@@ -3271,6 +3284,10 @@ html[dir=rtl][data-sap-ui-browser=ff3] .sapUiLbx.sapUiLbxFlexWidth > ul > li > s
 	background-image: url("img/menu/bar-overflow.gif");
 	background-position: center center;
 	padding-left: 9px;
+}
+
+html[dir=rtl][data-sap-ui-browser*="ie"] .sapUiMnuBarItm.sapUiMnuBarOvrFlw > span {
+	display: inline;
 }
 
 .sapUiMnuBarItm.sapUiMnuBarOvrFlw {

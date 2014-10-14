@@ -1164,6 +1164,7 @@
 /* OverlapCalendar Event Type */
 @sapMeOverlapCalendarType00 : @sapUiExtraLightBorder;
 @sapMeOverlapCalendarType01 : mix(@sapUiHighlight,@sapUiWhite,15);
+@sapMeOverlapCalendarType01Action: mix(@sapUiAccent6, @sapUiWhite, 20%);
 @sapMeOverlapCalendarType04 : mix(@sapUiHighlight,@sapUiWhite,15);
 @sapMeOverlapCalendarType06 : mix(@sapUiAccent1,@sapUiWhite,35);
 @sapMeOverlapCalendarType07 : mix(@sapUiAccent3,@sapUiWhite,10);
@@ -1172,7 +1173,6 @@
 /* Calendar Legend */
 @sapMeCalendarLegendIconCollapse: collapse;
 @sapMeCalendarLegendIconExpand: expand;
-
 
 /* Tab Container */
 @sapMeTabIconInfo: hint;
@@ -3187,14 +3187,14 @@ HTML[data-sap-ui-browser*='ie'] .sapUiRFL {
 /* add paddings between containers */
 .sapUiRespGridMedia-Std-Tablet.sapUiFormResGridMain > div:not(.sapUiRespGridSpanM12):not(.sapUiFormResGridLastContM),
 .sapUiRespGridMedia-Std-Desktop.sapUiFormResGridMain > div:not(.sapUiRespGridSpanL12):not(.sapUiFormResGridLastContL){
-	padding-right: 1rem;
+	padding-right: 0.75rem; /* because fields have 0.25rem padding on left and right */
 	-moz-box-sizing: padding-box;
 	box-sizing: border-box;
 }
 
 .sapUiRespGridMedia-Std-Tablet.sapUiFormResGridMain > div:not(.sapUiRespGridBreakM):not(.sapUiRespGridSpanM12),
 .sapUiRespGridMedia-Std-Desktop.sapUiFormResGridMain > div:not(.sapUiRespGridBreakL):not(.sapUiRespGridSpanL12){
-	padding-left: 1rem;
+	padding-left: 0.75rem; /* because fields have 0.25rem padding on left and right */
 	-moz-box-sizing: padding-box;
 	box-sizing: border-box;
 }
@@ -3214,11 +3214,12 @@ HTML[data-sap-ui-browser*='ie'] .sapUiRFL {
 
 .sapUiRGLContainer > .sapUiFormTitle{
 	border: none;
+	padding-left: 0.25rem;
 }
 
 .sapUiFormResGrid > div {
 	background-color: fade(@sapUiLightestBG, @sapUiTranslucentBGOpacity);
-	padding: 1rem;
+	padding: 1rem 0.75rem; /* because fields have 0.25rem padding on left and right */
 	-moz-box-sizing: padding-box;
 	box-sizing: border-box;
 }

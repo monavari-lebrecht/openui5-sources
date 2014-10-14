@@ -1164,6 +1164,7 @@
 /* OverlapCalendar Event Type */
 @sapMeOverlapCalendarType00 : @sapUiExtraLightBorder;
 @sapMeOverlapCalendarType01 : mix(@sapUiHighlight,@sapUiWhite,15);
+@sapMeOverlapCalendarType01Action: mix(@sapUiAccent6, @sapUiWhite, 20%);
 @sapMeOverlapCalendarType04 : mix(@sapUiHighlight,@sapUiWhite,15);
 @sapMeOverlapCalendarType06 : mix(@sapUiAccent1,@sapUiWhite,35);
 @sapMeOverlapCalendarType07 : mix(@sapUiAccent3,@sapUiWhite,10);
@@ -1172,7 +1173,6 @@
 /* Calendar Legend */
 @sapMeCalendarLegendIconCollapse: collapse;
 @sapMeCalendarLegendIconExpand: expand;
-
 
 /* Tab Container */
 @sapMeTabIconInfo: hint;
@@ -1291,6 +1291,7 @@
 }
 
 .sapUiAnalyticalTableSum .sapUiTv,
+.sapUiAnalyticalTableSum .sapUiUfdCurrency,
 .sapUiAnalyticalTableSum .sapUiTableCell > .sapMLabel {
 	font-weight: bold !important;
 }
@@ -1744,7 +1745,7 @@ html[data-sap-ui-browser="ie8"] .sapUiTable {
 }
 
 .sapUiTableCtrlEmptyMsg {
-	position: relative;
+	position: absolute;
 	top: 50%;
 	margin-top: -0.5em;
 }

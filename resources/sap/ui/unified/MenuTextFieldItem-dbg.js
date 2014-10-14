@@ -60,7 +60,7 @@ jQuery.sap.require("sap.ui.unified.MenuItemBase");
  * @extends sap.ui.unified.MenuItemBase
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -330,7 +330,9 @@ sap.ui.unified.MenuTextFieldItem.prototype.onkeydown = function(oEvent){
 
 
 sap.ui.unified.MenuTextFieldItem.prototype.onclick = function(oEvent){
-	oEvent.preventDefault();
+	if(!sap.ui.Device.system.desktop && this.getParent().checkEnabled(this)){
+		this.focus();
+	}
 	oEvent.stopPropagation();
 };
 
@@ -410,6 +412,12 @@ sap.ui.unified.MenuTextFieldItem.prototype.setValueState = function(sValueState)
 
 
 //************ Private Helpers *************
+
+
+sap.ui.unified.MenuTextFieldItem.prototype.getFocusDomRef = function () {
+	var $FocusRef = this.$("tf");
+	return $FocusRef.length ? $FocusRef.get(0) : null;
+};
 
 
 sap.ui.unified.MenuTextFieldItem.prototype._adaptSizes = function(){

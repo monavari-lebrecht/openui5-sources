@@ -445,7 +445,7 @@ sap.ui.define("sap/ui/test/ControlTree",['jquery.sap.global', 'sap/ui/core/Eleme
 	 *
 	 * @class Control Tree used for the Test Environment
 	 * @author SAPUI5 Designtime
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 *
 	 * @param {sap.ui.core.Core}
 	 *            oCore the core instance to use for analysis
@@ -596,7 +596,7 @@ sap.ui.define("sap/ui/test/TestEnv",['jquery.sap.global', 'sap/ui/debug/Highligh
 	 * @class Central Class for the Test Environment
 	 *
 	 * @author SAPUI5 Designtime
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @constructor
 	 * @private
 	 * @name sap.ui.test.TestEnv

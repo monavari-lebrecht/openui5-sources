@@ -17,7 +17,7 @@ sap.m.DatePickerRenderer = sap.ui.core.Renderer.extend(sap.m.InputBaseRenderer);
  * Adds control specific class
  *
  * @param {sap.ui.core.RenderManager} oRm the RenderManager that can be used for writing to the render output buffer
- * @param {sap.ui.core.Control} oControl an object representation of the control that should be rendered
+ * @param {sap.m.DatePicker} oDP an object representation of the control that should be rendered
  */
 sap.m.DatePickerRenderer.addOuterClasses = function(oRm, oDP) {
 
@@ -33,11 +33,11 @@ sap.m.DatePickerRenderer.addOuterClasses = function(oRm, oDP) {
  * add extra content to Input
  *
  * @param {sap.ui.core.RenderManager} oRm the RenderManager that can be used for writing to the render output buffer
- * @param {sap.ui.core.Control} oControl an object representation of the control that should be rendered
+ * @param {sap.m.DatePicker} oDP an object representation of the control that should be rendered
  */
 sap.m.DatePickerRenderer.writeInnerContent = function(oRm, oDP) {
 
-	if(oDP.getEnabled() && oDP.getEditable()) {
+	if (oDP.getEnabled() && oDP.getEditable()) {
 		var aClasses = [];
 		var mAttributes = {};
 
@@ -68,7 +68,7 @@ sap.m.DatePickerRenderer.writeInnerContent = function(oRm, oDP) {
  * Write the value of the input.
  *
  * @param {sap.ui.core.RenderManager} oRm The RenderManager that can be used for writing to the render output buffer.
- * @param {sap.ui.core.Control} oControl An object representation of the control that should be rendered.
+ * @param {sap.m.DatePicker} oDP An object representation of the control that should be rendered.
  */
 sap.m.DatePickerRenderer.writeInnerValue = function(oRm, oDP) {
 
@@ -80,7 +80,7 @@ sap.m.DatePickerRenderer.writeInnerValue = function(oRm, oDP) {
  * This method is reserved for derived classes to add extra attributes for the input element.
  *
  * @param {sap.ui.core.RenderManager} oRm The RenderManager that can be used for writing to the render output buffer.
- * @param {sap.ui.core.Control} oControl An object representation of the control that should be rendered.
+ * @param {sap.m.DatePicker} oDP An object representation of the control that should be rendered.
  */
 sap.m.DatePickerRenderer.writeInnerAttributes = function(oRm, oDP) {
 
@@ -89,7 +89,7 @@ sap.m.DatePickerRenderer.writeInnerAttributes = function(oRm, oDP) {
 		oRm.writeAttribute("readonly", "readonly");
 	}
 
-	var mProps= {
+	var mProps = {
 		multiline: false,
 		autocomplete: "none",
 		haspopup: true,

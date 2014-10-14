@@ -216,6 +216,9 @@ sap.ui.ux3.ActionBarRenderer._renderMoreMenuButton = function (rm, oMoreMenuButt
 	} else {
 		rm.write("<a  role=\"button\" aria-disabled=\"false\" aria-haspopup=\"false\"");
 	}
+	if (action.name == oControl.mActionKeys.Flag || action.name == oControl.mActionKeys.Favorite) {
+		rm.writeAttribute("aria-pressed", action.fnCalculateState(oControl) == "Selected" ? "true" : "false");
+	}
 	rm.writeAttribute("tabindex", "0");
 	rm.writeElementData(action);
 	rm.addClass(action.cssClass);

@@ -60,7 +60,7 @@ jQuery.sap.require("sap.m.DatePicker");
  * @extends sap.m.DatePicker
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -106,6 +106,7 @@ sap.m.DateRangeSelection.M_EVENTS = {'change':'change'};
 /**
  * Getter for property <code>delimiter</code>.
  * Delimiter of starting and ending date. Default value is "-".
+ * If no delimiter is given the one defined for the used locale is used.
  *
  * Default value is <code>-</code>
  *
@@ -309,8 +310,10 @@ sap.m.DateRangeSelection.M_EVENTS = {'change':'change'};
 				sPlaceholder = oLocaleData.getDatePattern(sPlaceholder);
 			}
 
-			if (this.getDelimiter() && this.getDelimiter() !== "") {
-				sPlaceholder = sPlaceholder +" "+this.getDelimiter()+" "+ sPlaceholder;
+			var that = this;
+			var sDelimiter = _getDelimiter(that);
+			if (sDelimiter && sDelimiter !== "") {
+				sPlaceholder = sPlaceholder +" "+sDelimiter+" "+ sPlaceholder;
 			}
 		}
 
@@ -322,17 +325,23 @@ sap.m.DateRangeSelection.M_EVENTS = {'change':'change'};
 
 		if (sValue !== this.getValue()) {
 			this._lastValue = sValue;
+		}else {
+			return this;
 		}
 		// Set the property in any case but check validity on output
 		this.setProperty("value", sValue, true);
 
 		// Convert to date object(s)
-		this._parseValue(sValue);
+		var aDates = [undefined, undefined];
+		aDates = this._parseValue(sValue);
+		aDates = _dateRangeValidityCheck(this, aDates[0], aDates[1]);
+		this.setProperty("dateValue", aDates[0], true);
+		this.setProperty("secondDateValue", aDates[1], true);
 
 		// Do not call InputBase.setValue because the displayed value and the output value might have different pattern
 		if (this.getDomRef()) {
 			// Convert to output
-			var sOutputValue = this._formatValue();
+			var sOutputValue = this._formatValue(aDates[0], aDates[1]);
 
 			if (this._$input.val() !== sOutputValue) {
 				this._$input.val(sOutputValue);
@@ -372,8 +381,9 @@ sap.m.DateRangeSelection.M_EVENTS = {'change':'change'};
 
 		this.setProperty("dateValue", oDateValue, true);
 
+		var oSecondDateValue = this.getSecondDateValue();
 		// Convert date object(s) to value
-		var sValue = this._formatValue();
+		var sValue = this._formatValue(oDateValue, oSecondDateValue);
 
 		if (sValue !== this.getValue()) {
 			this._lastValue = sValue;
@@ -383,7 +393,7 @@ sap.m.DateRangeSelection.M_EVENTS = {'change':'change'};
 
 		if (this.getDomRef()) {
 			// convert to output
-			var sOutputValue = this._formatValue();
+			var sOutputValue = this._formatValue(oDateValue, oSecondDateValue);
 
 			if (this._$input.val() !== sOutputValue) {
 				this._$input.val(sOutputValue);
@@ -398,10 +408,15 @@ sap.m.DateRangeSelection.M_EVENTS = {'change':'change'};
 
 	sap.m.DateRangeSelection.prototype.setSecondDateValue = function(oSecondDateValue) {
 
+		if (jQuery.sap.equal(this.getSecondDateValue(), oSecondDateValue)) {
+			return this;
+		}
+
 		this.setProperty("secondDateValue", oSecondDateValue, true);
 
+		var oDateValue = this.getDateValue();
 		// Convert date object(s) to value
-		var sValue = this._formatValue();
+		var sValue = this._formatValue(oDateValue, oSecondDateValue);
 
 		if (sValue !== this.getValue()) {
 			this._lastValue = sValue;
@@ -411,7 +426,7 @@ sap.m.DateRangeSelection.M_EVENTS = {'change':'change'};
 
 		if (this.getDomRef()) {
 			// convert to output
-			var sOutputValue = this._formatValue();
+			var sOutputValue = this._formatValue(oDateValue, oSecondDateValue);
 
 			if (this._$input.val() !== sOutputValue) {
 				this._$input.val(sOutputValue);
@@ -425,18 +440,39 @@ sap.m.DateRangeSelection.M_EVENTS = {'change':'change'};
 
 	//Support of two date range version added into original DatePicker's version
 	sap.m.DateRangeSelection.prototype._parseValue = function(sValue) {
+
 		var sInputPattern = "";
 		var oFormat;
-		var aDates = "";
+		var aDates = [];
+		var oDate1, oDate2;
 
 		//If we have version of control with delimiter, then sValue should consist of two dates delimited with delimiter,
 		//hence we have to split the value to these dates
-		if ((this.getDelimiter() && (this.getDelimiter() !== "")) && sValue) {
-			aDates = sValue.split(" " + this.getDelimiter() + " ");
+		var that = this;
+		var sDelimiter = _getDelimiter(that);
+		if ((sDelimiter && sDelimiter !== "") && sValue) {
+			aDates = sValue.split(sDelimiter);
+			if (aDates.length === 2) {
+				// if delimiter only appears once in value (not part of date pattern) remove " " to be more flexible for input
+				if (aDates[0].slice(aDates[0].length-1,aDates[0].length) == " ") {
+					aDates[0] = aDates[0].slice(0, aDates[0].length-1);
+				}
+				if (aDates[1].slice(0,1) == " ") {
+					aDates[1] = aDates[1].slice(1);
+				}
+			}else {
+				aDates = sValue.split(" " + sDelimiter + " ");// Delimiter appears more than once -> try with separators
+			}
+			if (aDates.length < 2) {
+				// no delimiter found -> maybe only " " is used
+				var aDates2 = sValue.split(" ");
+				if (aDates2.length === 2) {
+					aDates = aDates2;
+				}
+			}
 		}
 
-		if (((!this.getDelimiter() || (this.getDelimiter() === "")) && sValue) ||
-				(this.getDelimiter() && (this.getDelimiter() !== "") && sValue && aDates && (aDates.length === 2))) {
+		if (sValue && aDates.length <= 2) {
 
 			sInputPattern = this.getDisplayFormat();
 
@@ -452,51 +488,29 @@ sap.m.DateRangeSelection.M_EVENTS = {'change':'change'};
 			}
 
 			//Convert to date object(s)
-			if ((!this.getDelimiter() || (this.getDelimiter() === "")) && sValue) {
-				this.setProperty("dateValue", oFormat.parse(sValue), true);
-			}
-			else if (aDates !== "") {
+			if ((!sDelimiter || sDelimiter === "") || aDates.length === 1) {
+				oDate1 = oFormat.parse(sValue);
+			}else if (aDates.length === 2) {
 				if ((oFormat.parse(aDates[0]) === null) || (oFormat.parse(aDates[1]) === null)) {
-					this.setProperty("dateValue", null, true);
-					this.setProperty("secondDateValue", null, true);
-					this.setProperty("value", null, true);
-				}
-				else {
-					this.setProperty("dateValue", oFormat.parse(aDates[0]), true);
-					this.setProperty("secondDateValue", oFormat.parse(aDates[1]), true);
+				}else {
+					oDate1 = oFormat.parse(aDates[0]);
+					oDate2 = oFormat.parse(aDates[1]);
 				}
 			}
 		}
-		else {
-			this.setProperty("dateValue", null, true);
-			this.setProperty("secondDateValue", null, true);
-			this.setProperty("value", null, true);
-		}
+
+		return [oDate1, oDate2];
+
 	};
 
 	//Support of two date range version added into original DatePicker's version
-	sap.m.DateRangeSelection.prototype._formatValue = function(oDate1, oDate2) {
-		var oDateValue;
-		var oSecondDateValue;
-		if (oDate1) {
-			oDateValue = oDate1;
-		}
-		else {
-			oDateValue = this.getProperty("dateValue");
-		}
-
-		if (oDate2) {
-			oSecondDateValue = oDate2;
-		}
-		else {
-			oSecondDateValue = this.getProperty("secondDateValue");
-		}
+	sap.m.DateRangeSelection.prototype._formatValue = function(oDateValue, oSecondDateValue) {
 
 		var sValue = "";
+		var that = this;
+		var sDelimiter = _getDelimiter(that);
 
-		if (((!this.getDelimiter() || (this.getDelimiter() === "")) && oDateValue) ||                 //1) If no delimiter specified, then value is formatted from oDateValue
-				(this.getDelimiter() && (this.getDelimiter() !== "") && oDateValue && oSecondDateValue)) { //2) If there is delimiter, then value is formatted from both oDateValue and oSecondDateValue
-
+		if (oDateValue) {
 			var sOutputPattern = "";
 			var oFormat;
 
@@ -513,11 +527,10 @@ sap.m.DateRangeSelection.M_EVENTS = {'change':'change'};
 				oFormat = sap.ui.core.format.DateFormat.getInstance({pattern: sOutputPattern});
 			}
 
-			if (this.getDelimiter() && (this.getDelimiter() !== "")) {
-				sValue = oFormat.format(oDateValue) + " " + this.getDelimiter() + " " + oFormat.format(oSecondDateValue);
-			}
-			else {
-				sValue = null;
+			if (sDelimiter && sDelimiter !== "" && oSecondDateValue) {
+				sValue = oFormat.format(oDateValue) + " " + sDelimiter + " " + oFormat.format(oSecondDateValue);
+			}else {
+				sValue = oFormat.format(oDateValue);
 			}
 		}
 
@@ -532,21 +545,21 @@ sap.m.DateRangeSelection.M_EVENTS = {'change':'change'};
 			return;
 		}
 
-		var oDateValueOld = this.getDateValue();
-		var oSecondDateValueOld = this.getSecondDateValue();
-		var sLastValueOld = this._lastValue;
-
-		this._getInputValue();
-		_dateRangeValidityCheck(this, oDateValueOld, oSecondDateValueOld);
-		this._lastValue = sLastValueOld;
-
-		var sValue = this._formatValue();
+		var sValue = this._$input.val();
+		var aDates = [undefined, undefined];
+		if (sValue != "") {
+			aDates = this._parseValue(sValue);
+			aDates = _dateRangeValidityCheck(this, aDates[0], aDates[1]);
+			sValue = this._formatValue( aDates[0], aDates[1] ); // to have the right output format if entered different
+		}
 
 		if ((sValue !== this._lastValue) || (sValue === "")) {
 			if (this.getDomRef()) {
 				this._$input.val(sValue);
 			}
 			this.setProperty("value", sValue, true);
+			this.setProperty("dateValue", aDates[0], true);
+			this.setProperty("secondDateValue", aDates[1], true);
 			this._curpos = this._$input.cursorPos();
 			this._setLabelVisibility();
 			this._lastValue = sValue;
@@ -581,18 +594,44 @@ sap.m.DateRangeSelection.M_EVENTS = {'change':'change'};
 			_fireChange(this);
 
 		}
+
 	};
 
 	// Overwrite DatePicker's _getInputValue  to support two date range processing
-	sap.m.DateRangeSelection.prototype._getInputValue = function() {
+	sap.m.DateRangeSelection.prototype._getInputValue = function(sValue) {
 
-		var sValue = this._$input.val();
+		sValue = (typeof sValue == "undefined") ? this._$input.val() : sValue.toString();
 
-		this._parseValue(sValue);
-		sValue = this._formatValue();
+		var aDates = this._parseValue(sValue);
+		sValue = this._formatValue( aDates[0], aDates[1]);
 
 		return sValue;
 
+	};
+
+	// overwrite _getInputValue to do the output conversion
+	sap.m.DateRangeSelection.prototype.updateDomValue = function(sValue) {
+
+		// dom value updated other than value property
+		this._bCheckDomValue = true;
+
+		sValue = (typeof sValue == "undefined") ? this._$input.val() : sValue.toString();
+		this._curpos = this._$input.cursorPos();
+
+		var aDates = this._parseValue(sValue);
+		sValue = this._formatValue( aDates[0], aDates[1]);
+
+		// update the DOM value when necessary
+		// otherwise cursor can goto end of text unnecessarily
+		if (this.isActive() && (this._$input.val() !== sValue)) {
+			this._$input.val(sValue);
+			this._$input.cursorPos(this._curpos);
+		}
+
+		// update synthetic placeholder visibility
+		this._setLabelVisibility();
+
+		return this;
 	};
 
 	// overwrite InputBase function because this calls _getInputValue what calls _parseValue what updates the properties
@@ -642,19 +681,26 @@ sap.m.DateRangeSelection.M_EVENTS = {'change':'change'};
 		if (aSelectedDates.length > 0) {
 			var oDate1 = aSelectedDates[0].getStartDate();
 			var oDate2 = aSelectedDates[0].getEndDate();
+			var sLastValue = this._lastValue;
 
 			if (oDate1 && oDate2) {
-				var sOutputValue = this._formatValue(oDate1, oDate2);
-				if (this._$input.val() !== sOutputValue) {
-					this._$input.val(sOutputValue);
-					this._setLabelVisibility();
-					this._curpos = sOutputValue.length;
-					this._$input.cursorPos(this._curpos);
-				}
+				var oDate1Old = this.getDateValue();
+				var oDate2Old = this.getSecondDateValue();
 
 				this._oPopup.close();
+				this._bFocusNoPopup = true;
 				this.focus();
-				this.onChange(); //as no change event will be triggered from browser
+				this.setProperty("dateValue", oDate1, true); // no rerendering
+
+				this.setSecondDateValue(oDate2);
+				if (!jQuery.sap.equal(oDate1, oDate1Old) || !jQuery.sap.equal(oDate2, oDate2Old)) {
+					// compare Dates because value can be the same if only 2 digits for year 
+					var sValue = this.getValue();
+					var that = this;
+					_fireChange(that);
+					this._curpos = sValue.length;
+					this._$input.cursorPos(this._curpos);
+				}
 
 				//To prevent opening keyboard on mobile device after dates are selected
 				if (sap.ui.Device.browser.mobile) {
@@ -673,35 +719,56 @@ sap.m.DateRangeSelection.M_EVENTS = {'change':'change'};
 
 	};
 
-	function _dateRangeValidityCheck(oThis, oDateValueOld, oSecondDateValueOld) {
+	function _dateRangeValidityCheck(oThis, oDate, oSecondDate) {
 
-		var currentDateValue = oThis.getDateValue();
-		var currentSecondDateValue = oThis.getSecondDateValue();
-
-		if ((currentDateValue !== null) && (currentSecondDateValue !== null) && (!_bCorrectDateRange(currentDateValue, currentSecondDateValue))) {
-			if ((oDateValueOld !== null) && (currentDateValue.getTime() === oDateValueOld.getTime())) {
-				//secondDateValue, i.e. "to" changed and "from" > "to". Hence, "from" (dateValue) has to have same value as "to".
-				oThis.setProperty("dateValue", currentSecondDateValue, true);
-			}
-			else if ((oSecondDateValueOld !== null) && (currentSecondDateValue.getTime() === oSecondDateValueOld.getTime())) {
-				//dateValue, i.e. "from" changed and "from" > to. Hence, "to" (secondDateValue) has to have same value as "from".
-				oThis.setProperty("secondDateValue", currentDateValue, true);
-			}
-			else {
-				//Both dates changed => "to" will have the same value as "from".
-				oThis.setProperty("secondDateValue", currentDateValue, true);
-			}
+		if (oDate && oSecondDate && oDate.getTime() > oSecondDate.getTime()) {
+			// dates are in wrong oder -> just switch
+			var oTmpDate = oDate;
+			oDate = oSecondDate;
+			oSecondDate = oTmpDate;
 		}
+
+		return [oDate, oSecondDate];
 
 	};
 
-	function _bCorrectDateRange(fromDate, toDate) {
+	function _bCorrectDateRange(oFromDate, oToDate) {
 
-		if (fromDate.getTime() < toDate.getTime()) {
+		if (oFromDate.getTime() < oToDate.getTime()) {
 			return true;
 		}
 
 		return false;
+
+	};
+
+	function _getDelimiter(oThis) {
+
+		var sDelimiter = oThis.getDelimiter();
+
+		if (!sDelimiter) {
+			if (!oThis._sLocaleDelimiter) {
+				var oLocale = sap.ui.getCore().getConfiguration().getFormatSettings().getFormatLocale();
+				var oLocaleData = sap.ui.core.LocaleData.getInstance(oLocale);
+				var sPattern = oLocaleData.getIntervalPattern();
+				var iIndex1 = sPattern.indexOf("{0}") + 3;
+				var iIndex2 = sPattern.indexOf("{1}");
+				sDelimiter = sPattern.slice(iIndex1, iIndex2);
+				if (sDelimiter.length > 1) {
+					if (sDelimiter.slice(0,1) == " ") {
+						sDelimiter = sDelimiter.slice(1);
+					}
+					if (sDelimiter.slice(sDelimiter.length-1,sDelimiter.length) == " ") {
+						sDelimiter = sDelimiter.slice(0, sDelimiter.length-1);
+					}
+				}
+				oThis._sLocaleDelimiter = sDelimiter;
+			}else {
+				sDelimiter = oThis._sLocaleDelimiter;
+			}
+		}
+
+		return sDelimiter;
 
 	};
 

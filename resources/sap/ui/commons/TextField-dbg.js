@@ -73,7 +73,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @implements sap.ui.commons.ToolbarItem
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -1311,12 +1311,25 @@ sap.ui.commons.TextField.prototype.applyFocusInfo = function (oFocusInfo) {
 		var that = this;
 		setTimeout(function(){
 			that.focus();
+			that._restoreUnsavedUserInput(oFocusInfo.userinput);
 			jQuery(that.getFocusDomRef()).cursorPos(oPos);
 		}, 0);
 	}else{
 		this.focus();
+		this._restoreUnsavedUserInput(oFocusInfo.userinput);
 	}
 	return this;
+};
+
+/**
+ * Returns an object representing the serialized focus information
+ * @type object
+ * @return an object representing the serialized focus information
+ * @protected
+ * @function
+ */
+sap.ui.commons.TextField.prototype.getFocusInfo = function () {
+	return {id: this.getId(), userinput: this._getUnsavedUserInputInfo()};
 };
 
 /*
@@ -1379,4 +1392,28 @@ sap.ui.commons.TextField.prototype.getFocusDomRef = function() {
 
 	return this.getInputDomRef();
 
+};
+
+
+sap.ui.commons.TextField.prototype._getUnsavedUserInputInfo = function() {
+	var $tf = this.$();
+	if($tf.length && $tf.hasClass("sapUiTfFoc") && !$tf.hasClass("sapUiTfPlace") && this.getEnabled() && this.getEditable()){
+		var sVal = jQuery(this.getInputDomRef()).val();
+		var sValue = this.getValue();
+		if(sVal != sValue){
+			return {userinput: sVal, value: sValue};
+		}
+	}
+	return null;
+};
+
+sap.ui.commons.TextField.prototype._restoreUnsavedUserInput = function(oUnsavedUserInputInfo) {
+	if(oUnsavedUserInputInfo && this.getEnabled() && this.getEditable() && this.getValue() == oUnsavedUserInputInfo.value){
+		var sVal = oUnsavedUserInputInfo.userinput;
+		if ( sVal && sVal.length > this.getMaxLength() && this.getMaxLength() > 0) {
+			sVal = sVal.substring(0,this.getMaxLength());
+		}
+		
+		jQuery(this.getInputDomRef()).val(sVal);
+	}
 };

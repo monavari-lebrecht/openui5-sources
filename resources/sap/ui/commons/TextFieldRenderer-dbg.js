@@ -14,7 +14,7 @@ jQuery.sap.require("sap.ui.core.ValueStateSupport");
  * @class
  * @static
  * @author SAP
- * @version 1.22.8
+ * @version 1.22.10
  * @since 0.9.0
  */
 sap.ui.commons.TextFieldRenderer = {};

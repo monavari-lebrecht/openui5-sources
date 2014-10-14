@@ -60,7 +60,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -1421,7 +1421,6 @@ sap.m.TileContainer.prototype._calculatePositions = function() {
 
 	this._iOffsetY = Math.floor(( oContentDimension.height - iPagerHeight - (this._oTileDimension.height * iNumTileY )) / 2);
 
-	jQuery.sap.log.debug("maxtiles "+ this._iMaxTiles +" on page " + this.getId());
 };
 
 /**

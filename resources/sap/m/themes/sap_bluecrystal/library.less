@@ -1164,6 +1164,7 @@
 /* OverlapCalendar Event Type */
 @sapMeOverlapCalendarType00 : @sapUiExtraLightBorder;
 @sapMeOverlapCalendarType01 : mix(@sapUiHighlight,@sapUiWhite,15);
+@sapMeOverlapCalendarType01Action: mix(@sapUiAccent6, @sapUiWhite, 20%);
 @sapMeOverlapCalendarType04 : mix(@sapUiHighlight,@sapUiWhite,15);
 @sapMeOverlapCalendarType06 : mix(@sapUiAccent1,@sapUiWhite,35);
 @sapMeOverlapCalendarType07 : mix(@sapUiAccent3,@sapUiWhite,10);
@@ -1172,7 +1173,6 @@
 /* Calendar Legend */
 @sapMeCalendarLegendIconCollapse: collapse;
 @sapMeCalendarLegendIconExpand: expand;
-
 
 /* Tab Container */
 @sapMeTabIconInfo: hint;
@@ -2405,6 +2405,11 @@ div.sapMBtnInner.sapMBtnEmphasized > .sapMBtnIcon {
 .sapMFooter-CTX .sapMBtn:hover > .sapMBtnHoverable.sapMBtnReject:not(.sapMBtnActive) {
 	background-color: @sapUiBtnBGNegativeHover;
 	border-color:     @sapUiBtnBGNegativeHover;
+}
+
+.sapMFooter-CTX .sapMBtn:hover > .sapMBtnHoverable.sapMBtnEmphasized:not(.sapMBtnActive) {
+	background-color: @sapUiBtnBGEmphasizedHover;
+	border-color:     @sapUiBtnBGEmphasizedHover;
 }
 
 /* Separators between buttons in a footer */
@@ -5301,6 +5306,7 @@ li.sapMLIB.sapMFeedListItemTitleDiv.sapMLIBNoFlex>.sapMLIBContent>.sapMLIBConten
 }
 
 .sapMITBFilterIcon,
+.sapMITBTextOnly .sapMITBFilter,
 .sapMITBTextOnly .sapMITBText,
 .sapMITBAll {
 	cursor: pointer;
@@ -5318,10 +5324,15 @@ li.sapMLIB.sapMFeedListItemTitleDiv.sapMLIBNoFlex>.sapMLIBContent>.sapMLIBConten
 .sapMITBHead {
 	display: block;
 	margin: 1rem 2rem 0 2rem;
+	padding: 1px 1px 0 1px;
 	white-space: nowrap;
 	font-size: @sapMFontSmallSize;
 	position: relative;
 	overflow: hidden;
+}
+
+.sapMITBHead.sapMITBTextOnly {
+	margin-left: 1rem;
 }
 
 .sap-phone .sapMITBHead {
@@ -5330,11 +5341,19 @@ li.sapMLIB.sapMFeedListItemTitleDiv.sapMLIBNoFlex>.sapMLIBContent>.sapMLIBConten
 	vertical-align: top;
 }
 
+.sap-phone .sapMITBHead.sapMITBTextOnly .sapMITBFilter {
+	margin-left: -0.75rem;
+}
+
 .sap-tablet .sapMITBHead,
 html[data-sap-ui-os=win8] .sapMITBHead {
 	display: inline-block;
 	margin: 1rem 1rem 0 0;
 	vertical-align: top;
+}
+
+.sap-tablet .sapMITBHead.sapMITBTextOnly {
+	margin-left: -1rem;
 }
 
 .sapMITBScrollContainer {
@@ -5498,7 +5517,8 @@ html[dir=rtl] .sapMITBTextOnly .sapMITBTab {
 }
 
 .sapMITBTextOnly .sapMITBFilter {
-	padding: 0 1rem;
+	padding: 0;
+	margin: 0 1rem;
 }
 
 .sap-phone .sapMITBTextOnly .sapMITBFilter {
@@ -5617,7 +5637,8 @@ html[data-sap-ui-os=win8] .sapMITBNoText .sapMITBFilter:last-child {
 }
 
 .sapMITBTextOnly .sapMITBText {
-	padding: 0;
+	padding: 0.25rem 0.5rem 0.5rem 0.5rem;
+	margin: -0.25rem -0.5rem -0.5rem -0.5rem;
 	font-size: @sapMFontMediumSize;
 	text-align: left;
 	width: auto;
@@ -5858,8 +5879,8 @@ html[data-sap-ui-os=win8] .sapMITBNoText .sapMITBFilter:last-child {
 	cursor: pointer;
 }
 
-.sapMITBArrowScroll:hover,
-.sapMITBArrowScroll:active {
+.sap-desktop .sapMITBArrowScroll:hover,
+.sap-desktop .sapMITBArrowScroll:active {
 	color: @sapUiHighlight;
 }
 
@@ -5879,6 +5900,16 @@ html[data-sap-ui-os=win8] .sapMITBArrowScroll {
 	padding: 1rem 0.4rem;
 }
 
+.sapMITBArrowScrollLeftTextOnly {
+	left: 0.25rem;
+	padding: 1.3rem 0.4rem 0.7rem;
+}
+
+.sapMITBArrowScrollRightTextOnly {
+	right: 0.25rem;
+	padding: 1.3rem 0.4rem 0.7rem;
+}
+
 .sap-phone .sapMITBArrowScrollLeft {
 	left: 0.25rem;
 	padding: 1rem 0;
@@ -5889,12 +5920,24 @@ html[data-sap-ui-os=win8] .sapMITBArrowScroll {
 	padding: 1rem 0;
 }
 
+.sap-phone .sapMITBArrowScrollLeftTextOnly {
+	left: 0.25rem;
+	padding: 1.25rem 0 0.75rem;
+}
+
+.sap-phone .sapMITBArrowScrollRightTextOnly {
+	right: 0.25rem;
+	padding: 1.25rem 0 0.75rem;
+}
+
 .sapMITBNotScrollable > .sapMITBArrowScroll {
 	visibility: hidden;
 }
 
 .sapMITBScrollable.sapMITBNoScrollBack > .sapMITBArrowScrollLeft,
-.sapMITBScrollable.sapMITBNoScrollForward > .sapMITBArrowScrollRight {
+.sapMITBScrollable.sapMITBNoScrollBack > .sapMITBArrowScrollLeftTextOnly,
+.sapMITBScrollable.sapMITBNoScrollForward > .sapMITBArrowScrollRight,
+.sapMITBScrollable.sapMITBNoScrollForward > .sapMITBArrowScrollRightTextOnly {
 	visibility: hidden;
 }
 
@@ -5915,7 +5958,6 @@ html[data-sap-ui-os=win8] .sapMITBArrowScroll {
 .sap-desktop .sapMITBTextOnly .sapMITBText:focus,
 .sap-desktop .sapMITBAll:focus {
 	outline: 1px dotted @sapUiFocus;
-	outline-offset: -1px;
 }
 .sapMImg{
 	border: none;
@@ -6582,6 +6624,14 @@ html[dir=rtl] .sapMILIDiv {
 /* collapse lines in a form */
 .sapUiForm .sapMLabel{
 	height: auto;
+	position: relative;
+	/* 
+		We guessed the width of a : here. 0.3em seems to be fine in chrome it works without the padding 
+		but as long as we do not touch the box-sizing it seems to be fine to set it there too
+		because the padding is outside of the box
+		The use of em is intentional since it has to relate to the current font size applied to the label
+	*/
+	padding-right: 0.3em;
 }
 .sapUiForm.sapUiFormEdit .sapMLabel{
 	vertical-align: top; /* align vertically to multiline texts */
@@ -6636,6 +6686,15 @@ html[dir=rtl] .sapMILIDiv {
 	padding-right: 4px;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
+}
+
+/* in the cases text-align: end is set, we position the colon of the label to absolute so it does not get truncated in the ellipsis*/
+.sapUiRespGridMedia-Std-Phone.sapUiFormResGridCont > .sapUiFormResGridLbl:not(.sapUiRespGridSpanS12) > .sapMLabel:after,
+.sapUiRespGridMedia-Std-Tablet.sapUiFormResGridCont > .sapUiFormResGridLbl:not(.sapUiRespGridSpanM12) > .sapMLabel:after,
+.sapUiRespGridMedia-Std-Desktop.sapUiFormResGridCont > .sapUiFormResGridLbl:not(.sapUiRespGridSpanL12) > .sapMLabel:after,
+.sapUiFormResLayout .sapUiRFLRow:first-child > .sapUiRFLContainer:first-child > .sapUiRFLContainerContent > .sapUiForm .sapMLabel:after {
+	position: absolute;
+	right: 0;
 }
 
 html[data-sap-ui-browser^=ie] .sapUiFormResLayout .sapUiRFLRow:first-child > .sapUiRFLContainer:first-child > .sapUiRFLContainerContent > .sapMLabel{
@@ -6766,6 +6825,7 @@ html[dir=rtl][data-sap-ui-browser^=ie] .sapUiRespGridMedia-Std-Desktop.sapUiForm
 
 .sap-desktop .sapMLnk:focus {
 	outline: 0.0625rem dotted @sapUiFocus;
+	outline-offset: -1px;
 }
 
 .sapMLIBActive .sapMLnk {
@@ -6788,7 +6848,6 @@ html[dir=rtl][data-sap-ui-browser^=ie] .sapUiRespGridMedia-Std-Desktop.sapUiForm
 .sapMLnkEmphasized{
 	font-weight: bold;
 }
-
 
 /* Compact size */
 .sapUiSizeCompact .sapUiFormEdit .sapMLnk {
@@ -8522,6 +8581,10 @@ div.sapMMultiComboBoxPopup .sapMDialogScrollCont {
 /* CSS for control sap.m/ObjectAttribute.control */
 /* ============================================= */
 
+.sapMObjectAttributeDiv{
+	outline: none;
+}
+
 .sapMLIBActive .sapMObjectAttributeDiv{
 	color: @sapUiLITextInverted;
 }
@@ -9776,8 +9839,7 @@ html[dir=rtl][data-sap-ui-browser^=ie] .sapMOHR.sapMOH > .sapMOHStates > .sapMOH
 }
 
 .sapMObjectIdentifierTitle{
-	display: inline;
-	white-space: wordwrap;
+	text-overflow: ellipsis;
 	overflow: hidden;
 	color: @sapUiDarkText;
 	font-weight: bold;	
@@ -9842,8 +9904,7 @@ html[data-sap-ui-browser="ie9"] .sapMText.sapMObjLTitle {
   a layout control with fixed width. */
 .sapMOHTitle:not(.sapMOHRTitleNoWordBreak) > .sapMText {
 	/* to break all words even browser does not know the width */
-	word-break: break-word;  /* Non standard for old webkits */
-	word-break: break-all;
+	word-break: break-word;
 	-webkit-hyphens: auto;
 	-moz-hyphens: auto;
 	-ms-hyphens: auto;
@@ -14703,6 +14764,11 @@ tr.sapMListTblHeaderNone > th {
 /* prevent that dialog is too wide when text is too long, but not on phone */
 .sapMPersoDialog:not(.sapMDialogPhone) .sapMDialogScroll {
 	max-width: 25rem;
+}
+/* CSS 0120031469 0000631910 2014: in ie9 dialog always takes max width. to prevent this
+   an explicit width 24.875rem (398px = 400px - 2px) is set on the content section */
+html[data-sap-ui-browser='ie9'] .sapMPersoDialog > .sapMDialogSection {
+	width: 24.875rem;
 }
 
 .sapMPersoDialogLI .sapMILILabel {

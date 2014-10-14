@@ -63,7 +63,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @implements sap.m.ObjectHeaderContainer
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -672,12 +672,12 @@ sap.m.IconTabBar.prototype._toggleExpandCollapse = function(bExpanded) {
 					this._rerenderContent(this.getContent());
 				}
 			}
-			$content.slideDown('400', jQuery.proxy(this.onTransitionEnded, this, bExpanded));
+			$content.stop(true, true).slideDown('400', jQuery.proxy(this.onTransitionEnded, this, bExpanded));
 			this.$("containerContent").toggleClass("sapMITBContentClosed", !bExpanded);
 		}
 	} else { // collapsing
 		this.$("contentArrow").hide();
-		$content.slideUp('400', jQuery.proxy(this.onTransitionEnded, this, bExpanded));
+		$content.stop(true, true).slideUp('400', jQuery.proxy(this.onTransitionEnded, this, bExpanded));
 	}
 
 	// update property (if we have a selected item) and fire event

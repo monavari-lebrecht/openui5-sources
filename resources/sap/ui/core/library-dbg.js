@@ -10,7 +10,7 @@
  * ----------------------------------------------------------------------------------- */
 
 /**
- * Initialization Code and shared classes of library sap.ui.core (1.22.8)
+ * Initialization Code and shared classes of library sap.ui.core (1.22.10)
  */
 sap.ui.define(['./Core'], function() {
 
@@ -103,7 +103,7 @@ sap.ui.getCore().initLibrary({
     "sap.ui.core.search.SearchProvider",
     "sap.ui.core.tmpl.DOMAttribute"
   ],
-  version: "1.22.8"});
+  version: "1.22.10"});
 
 /*!
  * SAP UI development toolkit for HTML5 (SAPUI5/OpenUI5)
@@ -125,7 +125,7 @@ sap.ui.define("sap/ui/core/AccessibleRole", function() {
  * For more information, goto "Roles for Accessible Rich Internet Applications (WAI-ARIA Roles)" at the www.w3.org homepage.
  * 
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -539,7 +539,7 @@ sap.ui.define("sap/ui/core/BarColor", function() {
 /**
  * @class Configuration options for the colors of a progress bar
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -730,7 +730,7 @@ sap.ui.define("sap/ui/core/Design", function() {
 /**
  * @class Font design for texts
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -808,7 +808,7 @@ sap.ui.define("sap/ui/core/HorizontalAlign", function() {
 /**
  * @class Configuration options for horizontal alignments of controls
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -899,7 +899,7 @@ sap.ui.define("sap/ui/core/IconColor", function() {
 /**
  * @class Semantic Colors of an icon.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -958,7 +958,7 @@ sap.ui.define("sap/ui/core/ImeMode", function() {
 /**
  * @class State of the Input Method Editor (IME) for the control. Depending on its value, it allows users to enter and edit for example Chinese characters.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -1022,7 +1022,7 @@ sap.ui.define("sap/ui/core/MessageType", function() {
 /**
  * @class Defines the different message types of a message
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -1081,7 +1081,7 @@ sap.ui.define("sap/ui/core/OpenState", function() {
 /**
  * @class Defines the different possible states of an element that can be open or closed and does not only toggle between these states, but also spends some time in between (e.g. because of an animation).
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -1134,7 +1134,7 @@ sap.ui.define("sap/ui/core/Orientation", function() {
 /**
  * @class Orientation of an UI element
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  * @since 1.22
@@ -1221,7 +1221,7 @@ sap.ui.define("sap/ui/core/ScrollBarAction", function() {
 /**
  * @class Actions are: Click on track, button, drag of thumb, or mouse wheel click
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -1274,7 +1274,7 @@ sap.ui.define("sap/ui/core/Scrolling", function() {
 /**
  * @class Defines the possible values for horizontal and vertical scrolling behavior.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -1327,7 +1327,7 @@ sap.ui.define("sap/ui/core/TextAlign", function() {
 /**
  * @class Configuration options for text alignments.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -1386,7 +1386,7 @@ sap.ui.define("sap/ui/core/TextDirection", function() {
 /**
  * @class Configuration options for the direction of texts.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -1433,7 +1433,7 @@ sap.ui.define("sap/ui/core/TitleLevel", function() {
 /**
  * @class Level of a title.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  * @since 1.9.1
@@ -1549,7 +1549,7 @@ sap.ui.define("sap/ui/core/ValueState", function() {
 /**
  * @class Marker for the correctness of the current value.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -1604,7 +1604,7 @@ sap.ui.define("sap/ui/core/VerticalAlign", function() {
  * Configuration options for vertical alignments, for example of a layout cell content within the borders.
  * 
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -1665,7 +1665,7 @@ sap.ui.define("sap/ui/core/Wrapping", function() {
 /**
  * @class Configuration options for text wrapping.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -1718,7 +1718,7 @@ sap.ui.define("sap/ui/core/mvc/ViewType", function() {
 /**
  * @class Specifies possible view types
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -1777,7 +1777,7 @@ sap.ui.define("sap/ui/core/routing/HistoryDirection", function() {
 /**
  * @class Enumaration for different HistoryDirections
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */

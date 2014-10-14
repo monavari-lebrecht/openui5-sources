@@ -69,7 +69,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -1804,28 +1804,35 @@ jQuery.sap.require("sap.ui.layout.ResponsiveFlowLayoutData"); // because Respons
 			var aContent = _getFormContent(this.getAggregation("form"));
 			var j = 0;
 			var bCreateNew = false;
-			for (var i = 0; i < aContent.length; i++) {
-				var oElement1 = aContent[i];
-				var oElement2 = this._aElements[j];
-				if (oElement1 === oElement2) {
-					j++;
-				}else {
-					// check if Element1 is new
-					var oElementNext = aContent[i+1];
-					if (oElementNext === oElement2) {
-						this.insertContent(oElement1, i);
+
+			if (aContent.length < this._aElements.length) {
+				// at least one element must be removed -> create completely new,
+				// because for deleted controls it's hard to find out the old parent.
+				bCreateNew = true;
+			} else {
+				for (var i = 0; i < aContent.length; i++) {
+					var oElement1 = aContent[i];
+					var oElement2 = this._aElements[j];
+					if (oElement1 === oElement2) {
+						j++;
+					}else {
+						// check if Element1 is new
+						var oElementNext = aContent[i+1];
+						if (oElementNext === oElement2) {
+							this.insertContent(oElement1, i);
+							break;
+						}
+
+						// check if Element2 is removed
+						var oElementNext = this._aElements[j+1];
+						if (oElementNext === oElement1) {
+							// difficult to find out old Formelement or FormContainer -> create content completely new.
+							bCreateNew = true;
+							break;
+						}
+
 						break;
 					}
-
-					// check if Element2 is removed
-					var oElementNext = this._aElements[j+1];
-					if (oElementNext === oElement1) {
-						// difficult to find out old Formelement or FormContainer -> create content completely new.
-						bCreateNew = true;
-						break;
-					}
-
-					break;
 				}
 			}
 

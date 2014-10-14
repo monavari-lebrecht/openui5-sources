@@ -75,7 +75,7 @@ jQuery.sap.require('sap.ui.base.ManagedObject'); // unlisted dependency retained
  * @extends sap.ui.base.ManagedObject
  *
  * @author SAP AG
- * @version 1.22.8
+ * @version 1.22.10
  * @since 1.21.1
  *
  * @constructor
@@ -1255,8 +1255,8 @@ sap.ui.table.TableRenderer.renderTableControlCnt = function(rm, oTable, bFixedTa
 	rm.addClass("sapUiTableCtrl");
 	rm.writeClasses();
 	rm.addStyle("min-width", oTable._getColumnsWidth(iStartColumn, iEndColumn) + "px");
-	//Firefox and chrome need a defined width for the fixed table
-	if (bFixedTable && (!!sap.ui.Device.browser.firefox || !!sap.ui.Device.browser.chrome)) {
+	//Firefox and chrome and safari need a defined width for the fixed table
+	if (bFixedTable && (!!sap.ui.Device.browser.firefox || !!sap.ui.Device.browser.chrome || !!sap.ui.Device.browser.safari)) {
 		rm.addStyle("width", oTable._getColumnsWidth(iStartColumn, iEndColumn) + "px");
 	}
 	rm.writeStyles();
@@ -1439,7 +1439,15 @@ sap.ui.table.TableRenderer.renderTableCell = function(rm, oTable, oRow, oCell, i
 			// correct would be aria-labelledby but doesn't work for JAWS
 			rm.writeAttribute("headers", oTable.getId() + "_col" + iColIndex);
 			rm.writeAttribute("role", "gridcell");
-			rm.writeAttribute("aria-labelledby", oTable.getId() + "-ariadesc " + oColumn.getId() + " " + oCell.getId());
+			var sLabelledBy = oTable.getId() + "-ariadesc " + oColumn.getId();
+			var iMultiLabels = oColumn.getMultiLabels().length;
+			if (iMultiLabels > 1) {
+				for (var i = 1; i < iMultiLabels; i++) {
+					sLabelledBy +=  " " + oColumn.getId() + "_" + i;
+				}
+			}
+			sLabelledBy +=  " " + oCell.getId();
+			rm.writeAttribute("aria-labelledby", sLabelledBy);
 			rm.writeAttribute("aria-describedby", oTable.getId() + "-toggleedit");
 			rm.writeAttribute("aria-activedescendant", oCell.getId());
 			rm.writeAttribute("tabindex", "-1");
@@ -1571,7 +1579,7 @@ if ( !jQuery.sap.isDeclared('sap.ui.table.library') ) {
  * ----------------------------------------------------------------------------------- */
 
 /**
- * Initialization Code and shared classes of library sap.ui.table (1.22.8)
+ * Initialization Code and shared classes of library sap.ui.table (1.22.10)
  */
 jQuery.sap.declare("sap.ui.table.library");
 jQuery.sap.require('sap.ui.core.Core'); // unlisted dependency retained
@@ -1616,7 +1624,7 @@ sap.ui.getCore().initLibrary({
     "sap.ui.table.Column",
     "sap.ui.table.Row"
   ],
-  version: "1.22.8"});
+  version: "1.22.10"});
 
 /*!
  * SAP UI development toolkit for HTML5 (SAPUI5/OpenUI5)
@@ -1636,7 +1644,7 @@ jQuery.sap.declare("sap.ui.table.NavigationMode");
 /**
  * @class Navigation mode of the table
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -1673,7 +1681,7 @@ jQuery.sap.declare("sap.ui.table.SelectionBehavior");
 /**
  * @class Selection behavior of the table
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -1716,7 +1724,7 @@ jQuery.sap.declare("sap.ui.table.SelectionMode");
 /**
  * @class Selection mode of the table
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -1765,7 +1773,7 @@ jQuery.sap.declare("sap.ui.table.SortOrder");
 /**
  * @class Sort order of a column
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -1802,7 +1810,7 @@ jQuery.sap.declare("sap.ui.table.VisibleRowCountMode");
 /**
  * @class VisibleRowCountMode of the table
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -1967,7 +1975,7 @@ jQuery.sap.require('sap.ui.core.Element'); // unlisted dependency retained
  * @extends sap.ui.core.Element
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -3342,7 +3350,7 @@ jQuery.sap.require('sap.ui.unified.Menu'); // unlisted dependency retained
  * @extends sap.ui.unified.Menu
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -3392,6 +3400,9 @@ jQuery.sap.require('sap.ui.unified.MenuItem'); // unlisted dependency retained
  * @private
  */
 sap.ui.table.ColumnMenu.prototype.init = function() {
+	if(sap.ui.unified.Menu.prototype.init){
+		sap.ui.unified.Menu.prototype.init.apply(this, arguments);
+	}
 	this.addStyleClass("sapUiTableColumnMenu");
 	this.oResBundle = sap.ui.getCore().getLibraryResourceBundle("sap.ui.table");
 	this._bInvalidated = true;
@@ -3407,6 +3418,9 @@ sap.ui.table.ColumnMenu.prototype.init = function() {
  * @private
  */
 sap.ui.table.ColumnMenu.prototype.exit = function() {
+	if(sap.ui.unified.Menu.prototype.exit){
+		sap.ui.unified.Menu.prototype.exit.apply(this, arguments);
+	}
 	window.clearTimeout(this._iPopupClosedTimeoutId);
 	this._detachEvents();
 	this._oColumn = this._oTable = null;
@@ -3845,7 +3859,7 @@ jQuery.sap.require('sap.ui.core.Element'); // unlisted dependency retained
  * @extends sap.ui.core.Element
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -4091,7 +4105,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -10334,7 +10348,7 @@ jQuery.sap.declare("sap.ui.table.TreeTable");
  * @extends sap.ui.table.Table
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -11045,7 +11059,7 @@ jQuery.sap.declare("sap.ui.table.AnalyticalColumn");
  * @extends sap.ui.table.Column
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -11373,7 +11387,7 @@ jQuery.sap.declare("sap.ui.table.AnalyticalColumnMenu");
  * @extends sap.ui.table.ColumnMenu
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -11551,7 +11565,7 @@ jQuery.sap.declare("sap.ui.table.AnalyticalTable");
  * @extends sap.ui.table.Table
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -12698,7 +12712,7 @@ jQuery.sap.declare("sap.ui.table.DataTable");
  * @extends sap.ui.table.TreeTable
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public

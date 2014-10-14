@@ -33,7 +33,7 @@ jQuery.sap.require("sap.m.Button");
  * @class Table Personalization Dialog
  * @extends sap.ui.base.ManagedObject
  * @author SAP
- * @version 1.22.8
+ * @version 1.22.10
  * @name sap.m.TablePersoDialog
  */
 sap.ui.base.ManagedObject.extend("sap.m.TablePersoDialog", /** @lends sap.m.TablePersoDialog */
@@ -273,6 +273,7 @@ sap.m.TablePersoDialog.prototype.init = function() {
 		stretch: sap.ui.Device.system.phone,
 		horizontalScrolling: false,
 		verticalScrolling: false,
+		initialFocus: (sap.ui.Device.system.desktop ? this._oSearchField : null),
 		content : [ this._oSelectAllToolbar, this._oScrollContainer],
 		subHeader : new sap.m.Toolbar({
 			active : true,

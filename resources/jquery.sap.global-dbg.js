@@ -83,7 +83,7 @@
 	 * @class Represents a version consisting of major, minor, patch version and suffix, e.g. '1.2.7-SNAPSHOT'.
 	 *
 	 * @author SAP AG
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @constructor
 	 * @public
 	 * @since 1.15.0
@@ -476,7 +476,7 @@
 	/**
 	 * Root Namespace for the jQuery plug-in provided by SAP AG.
 	 *
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @namespace
 	 * @public
 	 * @static
@@ -1362,6 +1362,7 @@
 				'sap/ui/thirdparty/datajs.js': true,
 				'sap/ui/thirdparty/hasher.js': true,
 				'sap/ui/thirdparty/IPv6.js': true,
+				'sap/ui/thirdparty/jquery/jquery-1.11.1.js': true,
 				'sap/ui/thirdparty/jquery/jquery-1.10.2.js': true,
 				'sap/ui/thirdparty/jquery/jquery-1.10.1.js': true,
 				'sap/ui/thirdparty/jquery/jquery.1.7.1.js': true,

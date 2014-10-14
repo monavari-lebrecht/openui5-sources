@@ -1771,6 +1771,7 @@
 /* OverlapCalendar Event Type */
 @sapMeOverlapCalendarType00 : @sapUiExtraLightBorder;
 @sapMeOverlapCalendarType01 : mix(@sapUiHighlight,@sapUiWhite,15);
+@sapMeOverlapCalendarType01Action: mix(@sapUiAccent6, @sapUiWhite, 20%);
 @sapMeOverlapCalendarType04 : mix(@sapUiHighlight,@sapUiWhite,15);
 @sapMeOverlapCalendarType06 : mix(@sapUiAccent1,@sapUiWhite,35);
 @sapMeOverlapCalendarType07 : mix(@sapUiAccent3,@sapUiWhite,10);
@@ -1779,7 +1780,6 @@
 /* Calendar Legend */
 @sapMeCalendarLegendIconCollapse: collapse;
 @sapMeCalendarLegendIconExpand: expand;
-
 
 /* Tab Container */
 @sapMeTabIconInfo: hint;
@@ -1954,8 +1954,8 @@ html.sap-phone *, html.sap-tablet * {   /* FIXME!!! (star rule with any-parent s
 	-webkit-user-drag: none;
 }
 
-html.sap-phone input, html.sap-phone textarea, html.sap-phone [contenteditable=true],
-html.sap-tablet input, html.sap-tablet textarea, html.sap-tablet [contenteditable=true]  {
+html.sap-phone input, html.sap-phone textarea, html.sap-phone [contenteditable=true], html.sap-phone [contenteditable=true] > div,
+html.sap-tablet input, html.sap-tablet textarea, html.sap-tablet [contenteditable=true], html.sap-tablet [contenteditable=true] > div {
 	-webkit-user-select: text;
 	-moz-user-select: text;
 	-ms-user-select: text;

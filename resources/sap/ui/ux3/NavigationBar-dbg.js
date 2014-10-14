@@ -61,7 +61,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -522,6 +522,16 @@ sap.ui.ux3.NavigationBar.prototype.onBeforeRendering = function() {
 
 	var arrow = this.getDomRef("arrow");
 	this._iLastArrowPos = arrow ? parseInt(this._bRtl ? arrow.style.right : arrow.style.left, 10) : -100;
+};
+
+
+sap.ui.ux3.NavigationBar.prototype.invalidate = function(oSource) {
+	// In case the source of invalidation is a navigation item, it most likely changed something
+	// that we have to reflect in the overflow-menu
+	if (oSource instanceof sap.ui.ux3.NavigationItem) {
+		this._menuInvalid = true;
+	}
+	sap.ui.core.Control.prototype.invalidate.apply(this, arguments);
 };
 
 /**

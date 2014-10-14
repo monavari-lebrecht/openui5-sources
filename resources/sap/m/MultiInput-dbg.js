@@ -57,7 +57,7 @@ jQuery.sap.require("sap.m.Input");
  * @extends sap.m.Input
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public

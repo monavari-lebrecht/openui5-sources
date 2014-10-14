@@ -57,7 +57,7 @@ jQuery.sap.require("sap.m.ViewSettingsItem");
  * @extends sap.m.ViewSettingsItem
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -168,7 +168,7 @@ sap.m.ViewSettingsCustomItem.prototype.exit = function () {
 /*
  * Internally the control is handled as a managed object instead of an aggregation 
  * because this control is sometimes aggregated in other controls like a popover or a dialog
- * @overwrite
+ * @override
  * @public
  * @param {sap.ui.core.Control} oControl a control used for filtering purposes
  * @return {sap.m.ViewSettingsCustomItem} this pointer for chaining 
@@ -181,10 +181,34 @@ sap.m.ViewSettingsCustomItem.prototype.setCustomControl = function (oControl) {
 /*
  * Internally the control is handled as a managed object instead of an aggregation 
  * because this control is sometimes aggregated in other controls like a popover or a dialog
- * @overwrite
+ * @override
  * @public
  * @return {sap.ui.core.Control} oControl a control used for filtering purposes
  */
 sap.m.ViewSettingsCustomItem.prototype.getCustomControl = function () {
 	return this._control;
+};
+
+/*
+ * Sets the filterCount property without invalidating the control as it is never rendered directly 
+ * @override
+ * @param {integer} iValue the new value for property filterCount
+ * @public
+ * @return {sap.m.ViewSettingsItem} this pointer for chaining
+ */
+sap.m.ViewSettingsCustomItem.prototype.setFilterCount = function (iValue) {
+	this.setProperty("filterCount", iValue, true);
+	return this;
+};
+
+/*
+ * Sets the selected property without invalidating the control as it is never rendered directly 
+ * @override
+ * @param {boolean} bValue the new value for property selected
+ * @public
+ * @return {sap.m.ViewSettingsItem} this pointer for chaining
+ */
+sap.m.ViewSettingsCustomItem.prototype.setSelected = function (bValue) {
+	this.setProperty("selected", bValue, true);
+	return this;
 };

@@ -19,6 +19,8 @@ sap.m.DateRangeSelectionRenderer = sap.ui.core.Renderer.extend(sap.m.DatePickerR
  * @param {sap.ui.core.RenderManager} oRm The RenderManager that can be used for writing to the render output buffer.
  * @param {sap.ui.core.Control} oControl An object representation of the control that should be rendered.
  */
-sap.m.DateRangeSelectionRenderer.writeInnerValue = function(oRm, oDRP) {
-	oRm.writeAttributeEscaped("value", oDRP._formatValue());
+sap.m.DateRangeSelectionRenderer.writeInnerValue = function(oRm, oControl) {
+
+	oRm.writeAttributeEscaped("value", oControl._formatValue(oControl.getDateValue(), oControl.getSecondDateValue()));
+
 };

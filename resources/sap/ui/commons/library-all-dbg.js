@@ -374,7 +374,7 @@ jQuery.sap.declare("sap.ui.commons.ButtonRenderer");
 /**
  * @class
  * @author SAP AG
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  */
 sap.ui.commons.ButtonRenderer = {
@@ -727,6 +727,10 @@ sap.ui.commons.CalloutBaseRenderer.render = function(oRenderManager, oControl){
 	if (oControl.getTooltip_AsString()) {
 		rm.writeAttributeEscaped("title", oControl.getTooltip_AsString());
 	}
+	
+	rm.addStyle("display", "none");
+	rm.writeStyles();
+	
 	rm.write(">");
 
 	//first focusable control to provide tab loop
@@ -2123,7 +2127,7 @@ jQuery.sap.require('jquery.sap.strings'); // unlisted dependency retained
  * @class ListBox Renderer
  *
  * @author d046011
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  */
 sap.ui.commons.ListBoxRenderer = {
@@ -5788,7 +5792,7 @@ jQuery.sap.require('sap.ui.core.ValueStateSupport'); // unlisted dependency reta
  * @class
  * @static
  * @author SAP
- * @version 1.22.8
+ * @version 1.22.10
  * @since 0.9.0
  */
 sap.ui.commons.TextFieldRenderer = {};
@@ -8390,7 +8394,7 @@ if ( !jQuery.sap.isDeclared('sap.ui.commons.library') ) {
  * ----------------------------------------------------------------------------------- */
 
 /**
- * Initialization Code and shared classes of library sap.ui.commons (1.22.8)
+ * Initialization Code and shared classes of library sap.ui.commons (1.22.10)
  */
 jQuery.sap.declare("sap.ui.commons.library");
 jQuery.sap.require('sap.ui.core.Core'); // unlisted dependency retained
@@ -8541,7 +8545,7 @@ sap.ui.getCore().initLibrary({
     "sap.ui.commons.layout.PositionContainer",
     "sap.ui.commons.layout.ResponsiveFlowLayoutData"
   ],
-  version: "1.22.8"});
+  version: "1.22.10"});
 
 /*!
  * SAP UI development toolkit for HTML5 (SAPUI5/OpenUI5)
@@ -8561,7 +8565,7 @@ jQuery.sap.declare("sap.ui.commons.ButtonStyle");
 /**
  * @class different styles for a button.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -8621,7 +8625,7 @@ jQuery.sap.declare("sap.ui.commons.HorizontalDividerHeight");
 /**
  * @class Enumeration of possible HorizontalDivider height settings.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -8670,7 +8674,7 @@ jQuery.sap.declare("sap.ui.commons.HorizontalDividerType");
 /**
  * @class Enumeration of possible HorizontalDivider types.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -8707,7 +8711,7 @@ jQuery.sap.declare("sap.ui.commons.LabelDesign");
 /**
  * @class Available label display modes.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -8744,7 +8748,7 @@ jQuery.sap.declare("sap.ui.commons.MenuBarDesign");
 /**
  * @class Determines the visual design of a MenuBar. The feature might be not supported by all themes.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -8781,7 +8785,7 @@ jQuery.sap.declare("sap.ui.commons.MessageType");
 /**
  * @class [Enter description for MessageType]
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -8824,7 +8828,7 @@ jQuery.sap.declare("sap.ui.commons.PaginatorEvent");
 /**
  * @class Disctinct paginator event types
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -8879,7 +8883,7 @@ jQuery.sap.declare("sap.ui.commons.RatingIndicatorVisualMode");
 /**
  * @class Possible values for the visualization of float values in the RatingIndicator Control.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -8922,7 +8926,7 @@ jQuery.sap.declare("sap.ui.commons.RowRepeaterDesign");
 /**
  * @class Determines the visual design of a RowRepeater.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -8997,7 +9001,7 @@ jQuery.sap.declare("sap.ui.commons.TextViewColor");
 /**
  * @class Semantic Colors of a text.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -9046,7 +9050,7 @@ jQuery.sap.declare("sap.ui.commons.TextViewDesign");
 /**
  * @class Designs for TextView.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -9143,7 +9147,7 @@ jQuery.sap.declare("sap.ui.commons.ToolbarDesign");
 /**
  * @class Determines the visual design of a Toolbar.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -9205,7 +9209,7 @@ jQuery.sap.declare("sap.ui.commons.ToolbarSeparatorDesign");
 /**
  * @class Design of the Toolbar Separator.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -9242,7 +9246,7 @@ jQuery.sap.declare("sap.ui.commons.TreeSelectionMode");
 /**
  * @class Selection mode of the tree
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -9285,7 +9289,7 @@ jQuery.sap.declare("sap.ui.commons.TriStateCheckBoxState");
 /**
  * @class States for TriStateCheckBox
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  * @since 1.7.2
@@ -9329,7 +9333,7 @@ jQuery.sap.declare("sap.ui.commons.enums.AreaDesign");
 /**
  * @class Value set for the background design of areas
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -9372,7 +9376,7 @@ jQuery.sap.declare("sap.ui.commons.enums.BorderDesign");
 /**
  * @class Value set for the border design of areas
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -9409,7 +9413,7 @@ jQuery.sap.declare("sap.ui.commons.enums.Orientation");
 /**
  * @class Orientation of a UI element
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -9448,7 +9452,7 @@ jQuery.sap.declare("sap.ui.commons.layout.BackgroundDesign");
  * Background design (i.e. color), e.g. of a layout cell.
  * 
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -9529,7 +9533,7 @@ jQuery.sap.declare("sap.ui.commons.layout.BorderLayoutAreaTypes");
 /**
  * @class The type (=position) of a BorderLayoutArea
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -9588,7 +9592,7 @@ jQuery.sap.declare("sap.ui.commons.layout.HAlign");
  * others do not.
  * 
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -9658,7 +9662,7 @@ jQuery.sap.declare("sap.ui.commons.layout.Padding");
  * or end of a line, in the current locale's writing direction.
  * 
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -9732,7 +9736,7 @@ jQuery.sap.declare("sap.ui.commons.layout.Separation");
  * defined width, with or without a vertical line in its middle.
  * 
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -9815,7 +9819,7 @@ jQuery.sap.declare("sap.ui.commons.layout.VAlign");
  * Vertical alignment, e.g. of a layout cell's content within the cell's borders.
  * 
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @static
  * @public
  */
@@ -9992,7 +9996,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -11297,7 +11301,7 @@ jQuery.sap.require('sap.ui.core.Element'); // unlisted dependency retained
  * @extends sap.ui.core.Element
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -11928,7 +11932,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -12311,7 +12315,7 @@ jQuery.sap.require('sap.ui.core.Element'); // unlisted dependency retained
  * @extends sap.ui.core.Element
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -12546,7 +12550,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @implements sap.ui.commons.ToolbarItem
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -13352,7 +13356,7 @@ jQuery.sap.require('sap.ui.core.TooltipBase'); // unlisted dependency retained
  * @extends sap.ui.core.TooltipBase
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -14075,6 +14079,7 @@ sap.ui.commons.CalloutBase.prototype.handleOpened = function() {
 		this.bFocused = true; // Remember to set focus to parent on close
 	}
 	
+	this.$().css("display:", "");
 	this.fireOpened();
 	
 	// - listen to mouse over events outside
@@ -14301,7 +14306,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -15019,13 +15024,17 @@ sap.ui.commons.Carousel.prototype.onmouseup = function(oEvent) {
 	}
 };
 
-sap.ui.commons.Carousel.prototype.onswipeleft = function(oEvent) {
-	this.showNext();
-};
+if (sap.ui.Device.support.touch) {
+	
+	sap.ui.commons.Carousel.prototype.onswipeleft = function(oEvent) {
+		this.showNext();
+	};
+	
+	sap.ui.commons.Carousel.prototype.onswiperight = function(oEvent) {
+		this.showPrevious();
+	};
 
-sap.ui.commons.Carousel.prototype.onswiperight = function(oEvent) {
-	this.showPrevious();
-};
+}
 
 
 /**
@@ -15368,6 +15377,7 @@ sap.ui.commons.Carousel.prototype.setFirstVisibleIndex = function(iFirstVisibleI
 		return result;
 	};
 }) (jQuery.fn.clone);
+
 }; // end of sap/ui/commons/Carousel.js
 if ( !jQuery.sap.isDeclared('sap.ui.commons.CheckBox') ) {
 /*!
@@ -15438,7 +15448,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -16035,7 +16045,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -17823,7 +17833,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @implements sap.ui.core.PopupInterface
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -19528,7 +19538,7 @@ jQuery.sap.require('sap.ui.unified.FileUploader'); // unlisted dependency retain
  * @extends sap.ui.unified.FileUploader
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -19642,7 +19652,7 @@ jQuery.sap.require('sap.ui.unified.FileUploaderParameter'); // unlisted dependen
  * @extends sap.ui.unified.FileUploaderParameter
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -19758,7 +19768,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -20221,7 +20231,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -20428,7 +20438,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @implements sap.ui.commons.ToolbarItem,sap.ui.commons.FormattedTextViewControl
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -20791,7 +20801,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -21197,7 +21207,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @implements sap.ui.commons.ToolbarItem,sap.ui.core.Label
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -21763,7 +21773,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @implements sap.ui.commons.ToolbarItem,sap.ui.commons.FormattedTextViewControl
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -22272,7 +22282,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -24244,7 +24254,7 @@ jQuery.sap.require('sap.ui.unified.Menu'); // unlisted dependency retained
  * @extends sap.ui.unified.Menu
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -24346,7 +24356,7 @@ jQuery.sap.declare("sap.ui.commons.MenuButton");
  * @extends sap.ui.commons.Button
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -24813,7 +24823,7 @@ jQuery.sap.require('sap.ui.unified.MenuItem'); // unlisted dependency retained
  * @extends sap.ui.unified.MenuItem
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -24911,7 +24921,7 @@ jQuery.sap.require('sap.ui.unified.MenuTextFieldItem'); // unlisted dependency r
  * @extends sap.ui.unified.MenuTextFieldItem
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -25009,7 +25019,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -25453,7 +25463,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -26479,7 +26489,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -26817,7 +26827,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -27220,7 +27230,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -27827,7 +27837,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -29172,7 +29182,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -29695,7 +29705,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -30370,7 +30380,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -31506,7 +31516,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -32382,7 +32392,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -32826,7 +32836,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -33032,7 +33042,7 @@ jQuery.sap.require('sap.ui.core.TooltipBase'); // unlisted dependency retained
  * @extends sap.ui.core.TooltipBase
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -33383,7 +33393,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -34261,7 +34271,7 @@ jQuery.sap.require('sap.ui.core.Element'); // unlisted dependency retained
  * @extends sap.ui.core.Element
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -34766,7 +34776,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -37025,7 +37035,7 @@ jQuery.sap.require('sap.ui.core.Element'); // unlisted dependency retained
  * @extends sap.ui.core.Element
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -37207,7 +37217,7 @@ jQuery.sap.require('sap.ui.core.Element'); // unlisted dependency retained
  * @extends sap.ui.core.Element
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -37386,7 +37396,7 @@ jQuery.sap.require('sap.ui.core.search.OpenSearchProvider'); // unlisted depende
  * @extends sap.ui.core.search.OpenSearchProvider
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -37499,7 +37509,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @implements sap.ui.commons.ToolbarItem
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -38064,7 +38074,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -40184,7 +40194,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -41509,7 +41519,7 @@ jQuery.sap.declare("sap.ui.commons.Tab");
  * @extends sap.ui.commons.Panel
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -41887,7 +41897,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -42917,7 +42927,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @implements sap.ui.commons.ToolbarItem
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -44156,12 +44166,25 @@ sap.ui.commons.TextField.prototype.applyFocusInfo = function (oFocusInfo) {
 		var that = this;
 		setTimeout(function(){
 			that.focus();
+			that._restoreUnsavedUserInput(oFocusInfo.userinput);
 			jQuery(that.getFocusDomRef()).cursorPos(oPos);
 		}, 0);
 	}else{
 		this.focus();
+		this._restoreUnsavedUserInput(oFocusInfo.userinput);
 	}
 	return this;
+};
+
+/**
+ * Returns an object representing the serialized focus information
+ * @type object
+ * @return an object representing the serialized focus information
+ * @protected
+ * @function
+ */
+sap.ui.commons.TextField.prototype.getFocusInfo = function () {
+	return {id: this.getId(), userinput: this._getUnsavedUserInputInfo()};
 };
 
 /*
@@ -44224,6 +44247,30 @@ sap.ui.commons.TextField.prototype.getFocusDomRef = function() {
 
 	return this.getInputDomRef();
 
+};
+
+
+sap.ui.commons.TextField.prototype._getUnsavedUserInputInfo = function() {
+	var $tf = this.$();
+	if($tf.length && $tf.hasClass("sapUiTfFoc") && !$tf.hasClass("sapUiTfPlace") && this.getEnabled() && this.getEditable()){
+		var sVal = jQuery(this.getInputDomRef()).val();
+		var sValue = this.getValue();
+		if(sVal != sValue){
+			return {userinput: sVal, value: sValue};
+		}
+	}
+	return null;
+};
+
+sap.ui.commons.TextField.prototype._restoreUnsavedUserInput = function(oUnsavedUserInputInfo) {
+	if(oUnsavedUserInputInfo && this.getEnabled() && this.getEditable() && this.getValue() == oUnsavedUserInputInfo.value){
+		var sVal = oUnsavedUserInputInfo.userinput;
+		if ( sVal && sVal.length > this.getMaxLength() && this.getMaxLength() > 0) {
+			sVal = sVal.substring(0,this.getMaxLength());
+		}
+		
+		jQuery(this.getInputDomRef()).val(sVal);
+	}
 };
 
 }; // end of sap/ui/commons/TextField.js
@@ -44297,7 +44344,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @implements sap.ui.commons.ToolbarItem
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -44859,7 +44906,7 @@ jQuery.sap.require('sap.ui.core.Title'); // unlisted dependency retained
  * @extends sap.ui.core.Title
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -44983,7 +45030,7 @@ jQuery.sap.declare("sap.ui.commons.ToggleButton");
  * @extends sap.ui.commons.Button
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -45149,7 +45196,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @implements sap.ui.core.Toolbar
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -46406,7 +46453,7 @@ jQuery.sap.require('sap.ui.core.Element'); // unlisted dependency retained
  * @implements sap.ui.commons.ToolbarItem
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -46567,7 +46614,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -47727,7 +47774,7 @@ jQuery.sap.require('sap.ui.core.Element'); // unlisted dependency retained
  * @extends sap.ui.core.Element
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -48792,7 +48839,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -49274,7 +49321,7 @@ jQuery.sap.declare("sap.ui.commons.ValueHelpField");
  * @extends sap.ui.commons.TextField
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -49641,7 +49688,7 @@ jQuery.sap.require('sap.ui.layout.form.Form'); // unlisted dependency retained
  * @extends sap.ui.layout.form.Form
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -49770,7 +49817,7 @@ jQuery.sap.require('sap.ui.layout.form.FormContainer'); // unlisted dependency r
  * @extends sap.ui.layout.form.FormContainer
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -49898,7 +49945,7 @@ jQuery.sap.require('sap.ui.layout.form.FormElement'); // unlisted dependency ret
  * @extends sap.ui.layout.form.FormElement
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -50026,7 +50073,7 @@ jQuery.sap.require('sap.ui.layout.form.FormLayout'); // unlisted dependency reta
  * @extends sap.ui.layout.form.FormLayout
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -50128,7 +50175,7 @@ jQuery.sap.require('sap.ui.layout.form.GridContainerData'); // unlisted dependen
  * @extends sap.ui.layout.form.GridContainerData
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -50233,7 +50280,7 @@ jQuery.sap.require('sap.ui.layout.form.GridElementData'); // unlisted dependency
  * @extends sap.ui.layout.form.GridElementData
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -50339,7 +50386,7 @@ jQuery.sap.require('sap.ui.layout.form.GridLayout'); // unlisted dependency reta
  * @extends sap.ui.layout.form.GridLayout
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -50439,7 +50486,7 @@ jQuery.sap.require('sap.ui.layout.form.ResponsiveLayout'); // unlisted dependenc
  * @extends sap.ui.layout.form.ResponsiveLayout
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -50539,7 +50586,7 @@ jQuery.sap.require('sap.ui.layout.form.SimpleForm'); // unlisted dependency reta
  * @extends sap.ui.layout.form.SimpleForm
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -50673,7 +50720,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -51359,7 +51406,7 @@ jQuery.sap.require('sap.ui.core.Element'); // unlisted dependency retained
  * @extends sap.ui.core.Element
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -51727,7 +51774,7 @@ jQuery.sap.require('sap.ui.layout.HorizontalLayout'); // unlisted dependency ret
  * @extends sap.ui.layout.HorizontalLayout
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -51831,7 +51878,7 @@ jQuery.sap.require('sap.ui.core.Element'); // unlisted dependency retained
  * @extends sap.ui.core.Element
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -52299,7 +52346,7 @@ jQuery.sap.require('sap.ui.core.Element'); // unlisted dependency retained
  * @extends sap.ui.core.Element
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -52595,7 +52642,7 @@ jQuery.sap.require('sap.ui.core.Element'); // unlisted dependency retained
  * @extends sap.ui.core.Element
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -53255,7 +53302,7 @@ jQuery.sap.require('sap.ui.layout.ResponsiveFlowLayout'); // unlisted dependency
  * @extends sap.ui.layout.ResponsiveFlowLayout
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -53353,7 +53400,7 @@ jQuery.sap.require('sap.ui.layout.ResponsiveFlowLayoutData'); // unlisted depend
  * @extends sap.ui.layout.ResponsiveFlowLayoutData
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -53480,7 +53527,7 @@ jQuery.sap.require('sap.ui.layout.VerticalLayout'); // unlisted dependency retai
  * @extends sap.ui.layout.VerticalLayout
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -53643,7 +53690,7 @@ jQuery.sap.declare("sap.ui.commons.Callout");
  * @extends sap.ui.commons.CalloutBase
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -53831,7 +53878,7 @@ jQuery.sap.declare("sap.ui.commons.ComboBox");
  * @implements sap.ui.commons.ToolbarItem
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -55844,7 +55891,7 @@ jQuery.sap.declare("sap.ui.commons.DatePicker");
  * @extends sap.ui.commons.TextField
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -56001,11 +56048,15 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 
 	};
 
+	sap.ui.commons.DatePicker.prototype.onsaphide = sap.ui.commons.DatePicker.prototype.onsapshow;
+
 	sap.ui.commons.DatePicker.prototype.onsappageup = function(oEvent){
 
 		//increase by one day
 		var that = this;
 		_incraseDate(that, 1, "day");
+
+		oEvent.preventDefault(); // do not move cursor
 
 	};
 
@@ -56020,6 +56071,8 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 			_incraseDate(that, 1, "year");
 		}
 
+		oEvent.preventDefault(); // do not move cursor
+
 	};
 
 	sap.ui.commons.DatePicker.prototype.onsappagedown = function(oEvent){
@@ -56027,6 +56080,8 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 		//decrease by one day
 		var that = this;
 		_incraseDate(that, -1, "day");
+
+		oEvent.preventDefault(); // do not move cursor
 
 	};
 
@@ -56040,6 +56095,8 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 			// decrease by one year
 			_incraseDate(that, -1, "year");
 		}
+
+		oEvent.preventDefault(); // do not move cursor
 
 	};
 
@@ -56069,7 +56126,7 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 
 		var sOldValue = this.getValue();
 		if (sValue == sOldValue) {
-			return;
+			return this;
 		}
 
 		var that = this;
@@ -56114,7 +56171,7 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 
 		var sOldYyyymmdd = this.getYyyymmdd();
 		if (sYyyymmdd == sOldYyyymmdd) {
-			return;
+			return this;
 		}
 
 		this.setProperty("yyyymmdd", sYyyymmdd, true);
@@ -56289,7 +56346,7 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 	 * <li>'invalidValue' of type <code>boolean</code> The new / changed value of the DatePicker is not a valid date. </li>
 	 * </ul>
 	 *
-	 * @param {Map} [mArguments] the arguments to pass along with the event.
+	 * @param {boolean} bInvalidValue true is value is invalid
 	 * @return {sap.ui.commons.DatePicker} <code>this</code> to allow method chaining
 	 * @protected
 	 * @name sap.ui.commons.DatePicker#fireChange
@@ -56358,7 +56415,7 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 
 		return oThis._oFormat;
 
-	};
+	}
 
 	function _getUsedLocale(oThis) {
 
@@ -56373,7 +56430,7 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 
 		return oLocale;
 
-	};
+	}
 
 	function _checkLocaleAllowed(oThis) {
 
@@ -56385,7 +56442,7 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 			oThis._bIgnoreLocale = true;
 		}
 
-	};
+	}
 
 	function _open(oThis){
 
@@ -56436,7 +56493,7 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 		var eDock = sap.ui.core.Popup.Dock;
 		oThis._oPopup.open(0, eDock.BeginTop, eDock.BeginBottom, oThis, null, null, true);
 
-	};
+	}
 
 	function _toggleOpen(oThis){
 
@@ -56449,7 +56506,7 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 			}
 		}
 
-	};
+	}
 
 	function _selectDate(oEvent){
 
@@ -56480,7 +56537,7 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 
 		this.fireChange();
 
-	};
+	}
 
 	function _cancel(oEvent) {
 
@@ -56489,7 +56546,7 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 			this.focus();
 		}
 
-	};
+	}
 
 	function _handleClosed(oEvent) {
 
@@ -56498,7 +56555,7 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 			this.getRenderer().onblur(this);
 		}
 
-	};
+	}
 
 	function _incraseDate(oThis, iNumber, sUnit) {
 
@@ -56506,7 +56563,9 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 
 		if (oOldDate && oThis.getEditable() && oThis.getEnabled()) {
 			// use a new date object to have a real updated property
-			var oDate = new Date (oOldDate.getTime());
+			var oDate = new Date(oOldDate.getTime());
+			var $Input = jQuery(oThis.getInputDomRef());
+			var iPos = $Input.cursorPos();
 
 			switch (sUnit) {
 			case "day":
@@ -56526,13 +56585,13 @@ jQuery.sap.require('sap.ui.model.type.Date'); // unlisted dependency retained
 			oThis._oDate = oDate;
 
 			// update value in input field
-			var $Input = jQuery(oThis.getInputDomRef());
 			var sOutputValue = oThis._formatValue(oDate);
 			$Input.val(sOutputValue);
+			$Input.cursorPos(iPos);
 
 		}
 
-	};
+	}
 
 }());
 
@@ -56583,7 +56642,7 @@ sap.ui.commons.DatePickerRenderer.renderOuterAttributes = function(rm, oControl)
 /**
  * Renders additional HTML for the DatePicker to the TextField (sets the icon)
  *
- * @param {sap.ui.fw.RenderManager} oRenderManager The RenderManager that can be used for
+ * @param {sap.ui.fw.RenderManager} rm The RenderManager that can be used for
  *                                                 writing to the Render-Output-Buffer.
  * @param {sap.ui.fw.Control} oControl An object representation of the control that should
  *                                     be rendered.
@@ -56684,6 +56743,7 @@ sap.ui.commons.DatePickerRenderer.convertPlaceholder = function(oDatePicker) {
 	return sPlaceholder;
 
 };
+
 }; // end of sap/ui/commons/DatePickerRenderer.js
 if ( !jQuery.sap.isDeclared('sap.ui.commons.DropdownBox') ) {
 /*!
@@ -56750,7 +56810,7 @@ jQuery.sap.declare("sap.ui.commons.DropdownBox");
  * @extends sap.ui.commons.ComboBox
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -58630,7 +58690,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -59888,7 +59948,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -60666,7 +60726,7 @@ jQuery.sap.declare("sap.ui.commons.PasswordField");
  * @extends sap.ui.commons.TextField
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -60784,7 +60844,7 @@ jQuery.sap.declare("sap.ui.commons.RangeSlider");
  * @extends sap.ui.commons.Slider
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -61903,7 +61963,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @implements sap.ui.commons.ToolbarItem
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -62832,7 +62892,11 @@ sap.ui.commons.SearchField.prototype.getValue = function() {
 };
 
 sap.ui.commons.SearchField.prototype.setValue = function(sValue) {
-	return _set(this, "Value", sValue, !!this.getDomRef(), true);
+	var res = _set(this, "Value", sValue, !!this.getDomRef(), true);
+	if(this.getEnableClear() && this.getDomRef()){
+		this.$().toggleClass("sapUiSearchFieldVal", !!sValue);
+	}
+	return res;
 };
 
 sap.ui.commons.SearchField.prototype.setEnableCache = function(bEnableCache) {
@@ -63462,7 +63526,7 @@ jQuery.sap.declare("sap.ui.commons.TextArea");
  * @extends sap.ui.commons.TextField
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -64047,7 +64111,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -64880,7 +64944,7 @@ jQuery.sap.require('sap.ui.core.Control'); // unlisted dependency retained
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -65322,7 +65386,7 @@ jQuery.sap.declare("sap.ui.commons.AutoComplete");
  * @implements sap.ui.commons.ToolbarItem
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -66012,7 +66076,8 @@ sap.ui.commons.MessageBox.Icon = {
 	 * After the user has selected a button or closed the message box using the close icon, the <code>callback</code>
 	 * function is invoked when given.
 	 *
-	 * The only mandatory parameter is <code>sMessage</code>.
+	 * The only mandatory parameter is <code>vMessage</code>. Either a string with the corresponding text or even
+	 * a layout control could be provided.
 	 *
 	 * The created dialog box is executed asynchronously. When it has been created and registered for rendering,
 	 * this function returns without waiting for a user reaction.
@@ -66027,7 +66092,7 @@ sap.ui.commons.MessageBox.Icon = {
 	 * where <code>oAction</code> is the button that the user has pressed. When the user has pressed the close button,
 	 * a MessageBox.Action.Close is returned.
 	 *
-	 * @param {string} sMessage The message to be displayed.
+	 * @param {string | sap.ui.core.Control} vMessage The message to be displayed.
 	 * @param {sap.ui.commons.MessageBox.Icon} [oIcon=None] The icon to be displayed.
 	 * @param {string} [sTitle=''] The title of the message box.
 	 * @param {sap.ui.commons.MessageBox.Action|sap.ui.commons.MessageBox.Action[]} [vActions] Either a single action, or an array of actions.
@@ -66037,7 +66102,7 @@ sap.ui.commons.MessageBox.Icon = {
 	 * @param {string} [sDialogId] ID to be used for the dialog. Intended for test scenarios, not recommended for productive apps
 	 * @public
 	 */
-	sap.ui.commons.MessageBox.show = function(sMessage, oIcon, sTitle, vActions, fnCallback, oDefaultAction, sDialogId) {
+	sap.ui.commons.MessageBox.show = function(vMessage, oIcon, sTitle, vActions, fnCallback, oDefaultAction, sDialogId) {
 
 		var rb = sap.ui.getCore().getLibraryResourceBundle("sap.ui.commons"),
 			oDialog, oResult, oContent, oMsg, oDefaultButton;
@@ -66103,7 +66168,12 @@ sap.ui.commons.MessageBox.Icon = {
 		}
 
 		oContent = new c.layout.MatrixLayout({id : sDialogId + "--lyt", layoutFixed:false}).addStyleClass("sapUiMboxCont");
-		oMsg = new c.TextView({id : sDialogId + "--msg", text:sMessage}).addStyleClass("sapUiMboxText");
+
+		if (typeof(vMessage) === "string") {
+			oMsg = new c.TextView({id : sDialogId + "--msg"}).setText(vMessage).addStyleClass("sapUiMboxText");
+		} else if (vMessage instanceof sap.ui.core.Control) {
+			oMsg = vMessage.addStyleClass("sapUiMboxText");
+		}
 		if ( oIcon !== Icon.NONE ) {
 			oContent.createRow(cell(image(oIcon)), cell(oMsg));
 		} else {
@@ -66142,14 +66212,14 @@ sap.ui.commons.MessageBox.Icon = {
 	 * Applications have to use the <code>fnCallback</code> to continue work after the
 	 * user closed the alert box.
 	 *
-	 * @param {string} sMessage Message to be displayed in the alert box
+	 * @param {string | sap.ui.core.Control} vMessage Message to be displayed in the alert box
 	 * @param {function} [fnCallback] callback function to be called when the user closed the dialog
 	 * @param {string } [sTitle] Title to be displayed in the alert box
 	 * @param {string} [sDialogId] ID to be used for the alert box. Intended for test scenarios, not recommended for productive apps
 	 * @public
 	 */
-	sap.ui.commons.MessageBox.alert = function(sMessage, fnCallback, sTitle, sDialogId) {
-		return c.MessageBox.show(sMessage, Icon.NONE, sTitle, Action.OK,
+	sap.ui.commons.MessageBox.alert = function(vMessage, fnCallback, sTitle, sDialogId) {
+		return c.MessageBox.show(vMessage, Icon.NONE, sTitle, Action.OK,
 				function(oAction) {
 					if ( typeof fnCallback === "function" ) {
 						fnCallback();
@@ -66173,14 +66243,14 @@ sap.ui.commons.MessageBox.Icon = {
 	 * Applications have to use the <code>fnCallback</code> to continue work after the
 	 * user closed the alert box.
 	 *
-	 * @param {string} sMessage Message to display
+	 * @param {string | sap.ui.core.Control} vMessage Message to display
 	 * @param {function} [fnCallback] Callback to be called
 	 * @param {string} [sTitle] Title to display
 	 * @param {string} [sDialogId] ID to be used for the confirmation dialog. Intended for test scenarios, not recommended for productive apps
 	 * @public
 	 */
-	sap.ui.commons.MessageBox.confirm = function(sMessage, fnCallback, sTitle, sDialogId) {
-		return c.MessageBox.show(sMessage, Icon.QUESTION, sTitle, [Action.OK, Action.CANCEL],
+	sap.ui.commons.MessageBox.confirm = function(vMessage, fnCallback, sTitle, sDialogId) {
+		return c.MessageBox.show(vMessage, Icon.QUESTION, sTitle, [Action.OK, Action.CANCEL],
 				function(oAction) {
 					if ( typeof fnCallback === "function" ) {
 						fnCallback(oAction === Action.OK);

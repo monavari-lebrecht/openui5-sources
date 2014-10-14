@@ -8,7 +8,7 @@
 /** 
  * Device and Feature Detection API of the SAP UI5 Library.
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @namespace
  * @name sap.ui.Device
  * @public
@@ -31,7 +31,7 @@ if(typeof window.sap.ui !== "object"){
 
 	//Skip initialization if API is already available
 	if(typeof window.sap.ui.Device === "object" || typeof window.sap.ui.Device === "function" ){
-		var apiVersion = "1.22.8";
+		var apiVersion = "1.22.10";
 		window.sap.ui.Device._checkAPIVersion(apiVersion);
 		return;
 	}
@@ -85,7 +85,7 @@ if(typeof window.sap.ui !== "object"){
 	
 	//Only used internal to make clear when Device API is loaded in wrong version
 	device._checkAPIVersion = function(sVersion){
-		var v = "1.22.8";
+		var v = "1.22.10";
 		if(v != sVersion){
 			logger.log(WARNING, "Device API version differs: "+v+" <-> "+sVersion);
 		}
@@ -1204,6 +1204,7 @@ if(typeof window.sap.ui !== "object"){
 	};
 
 	var isWin8 = device.os.windows && device.os.version === 8;
+	var isWin7 = device.os.windows && device.os.version === 7;
 
 	device.system = {};
 
@@ -1212,9 +1213,9 @@ if(typeof window.sap.ui !== "object"){
 		var t = isTablet();
 		
 		var s = {};
-		s.tablet = (device.support.touch || !!_simMobileOnDesktop) && t;
-		s.phone = (device.support.touch || !!_simMobileOnDesktop) && !t;
-		s.desktop = (!s.tablet && !s.phone) || isWin8;
+		s.tablet = ((device.support.touch && !isWin7) || !!_simMobileOnDesktop) && t;
+		s.phone = ((device.support.touch && !isWin7) || !!_simMobileOnDesktop) && !t;
+		s.desktop = (!s.tablet && !s.phone) || isWin8 || isWin7;
 		s.combi = (s.desktop && s.tablet);
 		s.SYSTEMTYPE = SYSTEMTYPE;
 		
@@ -3585,7 +3586,7 @@ return URI;
 	 * @class Represents a version consisting of major, minor, patch version and suffix, e.g. '1.2.7-SNAPSHOT'.
 	 *
 	 * @author SAP AG
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @constructor
 	 * @public
 	 * @since 1.15.0
@@ -3978,7 +3979,7 @@ return URI;
 	/**
 	 * Root Namespace for the jQuery plug-in provided by SAP AG.
 	 *
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @namespace
 	 * @public
 	 * @static
@@ -4864,6 +4865,7 @@ return URI;
 				'sap/ui/thirdparty/datajs.js': true,
 				'sap/ui/thirdparty/hasher.js': true,
 				'sap/ui/thirdparty/IPv6.js': true,
+				'sap/ui/thirdparty/jquery/jquery-1.11.1.js': true,
 				'sap/ui/thirdparty/jquery/jquery-1.10.2.js': true,
 				'sap/ui/thirdparty/jquery/jquery-1.10.1.js': true,
 				'sap/ui/thirdparty/jquery/jquery.1.7.1.js': true,
@@ -6595,7 +6597,7 @@ if ( !jQuery.sap.isDeclared('sap.ui.Global') ) {
  * sap.ui.lazyRequire("sap.ui.core.Control");
  * sap.ui.lazyRequire("sap.ui.commons.Button");
  *
- * @version 1.22.8
+ * @version 1.22.10
  * @author  Martin Schaus, Daniel Brinkmann
  * @public
  */
@@ -7006,6 +7008,12 @@ sap.ui.define("jquery.sap.dom",['jquery.sap.global', 'sap/ui/Device'],
 	 */
 	jQuery.fn.hasTabIndex = function hasTabIndex() {
 		var iTabIndex = this.prop("tabIndex");
+
+		if (this.attr("disabled") && !this.attr("tabindex")) {
+			// disabled field with not explicit set tabindex -> not in tab chain (bug of jQuery prop function)
+			iTabIndex = -1;
+		}
+
 		return !isNaN(iTabIndex) && iTabIndex >= 0;
 	};
 
@@ -7469,7 +7477,15 @@ sap.ui.define("jquery.sap.dom",['jquery.sap.global', 'sap/ui/Device'],
 		var iHeight = oDomRef.offsetHeight - oDomRef.scrollHeight;
 
 		$Area.remove();
-		
+
+		// due to a bug in FireFox when hiding iframes via an outer DIV element
+		// the height and width calculation is not working properly - by not storing
+		// height and width when one value is 0 we make sure that once the iframe
+		// gets visible the height calculation will be redone (see snippix: #64049)
+		if (iWidth === 0 || iHeight === 0) {
+			return {width: iWidth, height: iHeight};
+		}
+
 		_oScrollbarSize[sKey] = {width: iWidth, height: iHeight};
 
 		return _oScrollbarSize[sKey];
@@ -7517,6 +7533,7 @@ sap.ui.define("jquery.sap.dom",['jquery.sap.global', 'sap/ui/Device'],
 	return jQuery;
 
 }, /* bExport= */ false);
+
 }; // end of jquery.sap.dom.js
 sap.ui.define("sap/ui/Global",['jquery.sap.global', 'jquery.sap.dom'],
 	function(jQuery/* , jQuerySap */) {
@@ -7528,7 +7545,7 @@ sap.ui.define("sap/ui/Global",['jquery.sap.global', 'jquery.sap.dom'],
 	 * The <code>sap</code> namespace is automatically registered with the
 	 * OpenAjax hub if it exists.
 	 *
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @namespace
 	 * @public
 	 * @name sap
@@ -7541,7 +7558,7 @@ sap.ui.define("sap/ui/Global",['jquery.sap.global', 'jquery.sap.dom'],
 	 * The <code>sap.ui</code> namespace is the central OpenAjax compliant entry
 	 * point for UI related JavaScript functionality provided by SAP.
 	 *
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @namespace
 	 * @name sap.ui
 	 * @public
@@ -7554,8 +7571,8 @@ sap.ui.define("sap/ui/Global",['jquery.sap.global', 'jquery.sap.dom'],
 			 * The version of the SAP UI Library
 			 * @type string
 			 */
-			version: "1.22.8",
-			buildinfo : { lastchange : "${ldi.scm.revision}", buildtime : "201409011429" }
+			version: "1.22.10",
+			buildinfo : { lastchange : "${ldi.scm.revision}", buildtime : "201409291648" }
 		});
 
 	/**
@@ -8195,7 +8212,7 @@ sap.ui.define("sap/ui/base/Interface",['jquery.sap.global'],
 	 *        only the defined functions will be visible, no internals of the class can be accessed.
 	 *
 	 * @author Malte Wedel, Daniel Brinkmann
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @param {sap.ui.base.Object}
 	 *            oObject the instance that needs an interface created
 	 * @param {string[]}
@@ -8356,7 +8373,7 @@ sap.ui.define("jquery.sap.script",['jquery.sap.global'],
 	 * Use {@link jQuery.sap.getUriParameters} to create an instance of jQuery.sap.util.UriParameters.
 	 *
 	 * @author SAP AG
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @since 0.9.0
 	 * @name jQuery.sap.util.UriParameters
 	 * @public
@@ -9122,7 +9139,7 @@ sap.ui.define("sap/ui/base/Metadata",['jquery.sap.global', 'jquery.sap.script'],
 	 *
 	 * @class Metadata for a class.
 	 * @author Frank Weigel
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @since 0.8.6
 	 * @public
 	 * @name sap.ui.base.Metadata
@@ -9483,7 +9500,7 @@ sap.ui.define("sap/ui/base/Object",['jquery.sap.global', './Interface', './Metad
 	 * @class Base class for all SAPUI5 Objects
 	 * @abstract
 	 * @author Malte Wedel
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @public
 	 * @name sap.ui.base.Object
 	 */
@@ -9658,7 +9675,7 @@ sap.ui.define("sap/ui/base/Event",['jquery.sap.global', './Object'],
 	 * @extends sap.ui.base.Object
 	 * @implements sap.ui.base.Poolable
 	 * @author Malte Wedel, Daniel Brinkmann
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @name sap.ui.base.Event
 	 * @public
 	 */
@@ -9847,7 +9864,7 @@ sap.ui.define("sap/ui/base/ObjectPool",['jquery.sap.global', './Object'],
 	 *
 	 * @extends sap.ui.base.Object
 	 * @author Malte Wedel
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @constructor
 	 * @name sap.ui.base.ObjectPool
 	 * @public
@@ -9962,7 +9979,7 @@ sap.ui.define("sap/ui/base/EventProvider",['jquery.sap.global', './Event', './Ob
 	 * @abstract
 	 * @extends sap.ui.base.Object
 	 * @author Malte Wedel, Daniel Brinkmann
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @constructor
 	 * @public
 	 * @name sap.ui.base.EventProvider
@@ -10403,11 +10420,15 @@ sap.ui.define("sap/ui/base/BindingParser",['jquery.sap.global', 'jquery.sap.scri
 
 		function resolveRef(o,sProp) {
 			if ( typeof o[sProp] === "string" ) {
+				var sName = o[sProp];
 				if ( jQuery.sap.startsWith(o[sProp], ".") ) {
 					o[sProp] = jQuery.proxy(jQuery.sap.getObject(o[sProp].slice(1), undefined, oContext), oContext);
 				} else {
 					o[sProp] = jQuery.sap.getObject(o[sProp]);
 				} 
+				if (typeof (o[sProp]) !== "function") {
+					jQuery.sap.log.error(sProp + " function " + sName + " not found!");
+				}
 			}
 		}
 
@@ -10557,7 +10578,7 @@ sap.ui.define("sap/ui/base/ManagedObjectMetadata",['jquery.sap.global', './DataT
 	 *
 	 * @class
 	 * @author Frank Weigel
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @since 0.8.6
 	 * @name sap.ui.base.ManagedObjectMetadata
 	 */
@@ -11902,7 +11923,7 @@ sap.ui.define("sap/ui/model/Type",['jquery.sap.global', 'sap/ui/base/Object'],
 	 * @extends sap.ui.base.Object
 	 *
 	 * @author SAP AG
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 *
 	 * @constructor
 	 * @public
@@ -12010,7 +12031,7 @@ sap.ui.define("sap/ui/model/SimpleType",['jquery.sap.global', './FormatException
 	 * @extends sap.ui.model.Type
 	 *
 	 * @author SAP AG
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 *
 	 * @constructor
 	 * @param {object} [oFormatOptions] options as provided by concrete subclasses
@@ -12889,7 +12910,7 @@ sap.ui.define("sap/ui/model/Model",['jquery.sap.global', 'sap/ui/base/EventProvi
 	 * @extends sap.ui.base.Object
 	 *
 	 * @author SAP AG
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 *
 	 * @constructor
 	 * @public
@@ -14219,7 +14240,7 @@ sap.ui.define("sap/ui/base/ManagedObject",['jquery.sap.global', './BindingParser
 	 * @class Base Class for managed objects.
 	 * @extends sap.ui.base.EventProvider
 	 * @author SAP AG
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @public
 	 * @name sap.ui.base.ManagedObject
 	 * @experimental Since 1.11.2. ManagedObject as such is public and usable. Only the support for the optional parameter 
@@ -17387,7 +17408,7 @@ sap.ui.define("sap/ui/core/ComponentMetadata",['jquery.sap.global', 'sap/ui/base
 	 * @experimental Since 1.9.2. The Component concept is still under construction, so some implementation details can be changed in future.
 	 * @class
 	 * @author SAP AG
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @since 1.9.2
 	 * @name sap.ui.core.ComponentMetadata
 	 */
@@ -17850,7 +17871,7 @@ sap.ui.define("sap/ui/core/Component",['jquery.sap.global', 'sap/ui/base/Managed
 	 * @extends sap.ui.base.ManagedObject
 	 * @abstract
 	 * @author SAP AG
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @name sap.ui.core.Component
 	 * @since 1.9.2
 	 */
@@ -18466,7 +18487,7 @@ sap.ui.define("sap/ui/core/Locale",['jquery.sap.global', 'sap/ui/base/Object'],
 		 *
 		 * @extends sap.ui.base.Object
 		 * @author SAP AG
-		 * @version 1.22.8
+		 * @version 1.22.10
 		 * @constructor
 		 * @public
 		 * @name sap.ui.core.Locale
@@ -19985,7 +20006,7 @@ sap.ui.define("sap/ui/core/ElementMetadata",['jquery.sap.global', 'sap/ui/base/M
 	 *
 	 * @class
 	 * @author SAP AG
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @since 0.8.6
 	 * @name sap.ui.core.ElementMetadata
 	 */
@@ -20158,7 +20179,7 @@ sap.ui.define("sap/ui/core/Element",['jquery.sap.global', 'sap/ui/base/ManagedOb
 	 * @class Base Class for Elements.
 	 * @extends sap.ui.base.ManagedObject
 	 * @author SAP AG
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @public
 	 * @name sap.ui.core.Element
 	 */
@@ -21567,7 +21588,7 @@ sap.ui.define("sap/ui/core/Control",['jquery.sap.global', './CustomStyleClassSup
 	 * @extends sap.ui.core.Element
 	 * @abstract
 	 * @author Martin Schaus, Daniel Brinkmann
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @name sap.ui.core.Control
 	 */
 	var Control = Element.extend("sap.ui.core.Control", /* @lends sap.ui.core.Control */ {
@@ -23154,7 +23175,7 @@ sap.ui.define("sap/ui/core/RenderManager",['jquery.sap.global', 'sap/ui/base/Int
 	var aCommonMethods = ["renderControl", "write", "writeEscaped", "translate", "writeAcceleratorKey", "writeControlData",
 						  "writeElementData", "writeAttribute", "writeAttributeEscaped", "addClass", "writeClasses",
 						  "addStyle", "writeStyles", "writeAccessibilityState", "writeIcon",
-						  "getConfiguration", "getHTML"];
+						  "getConfiguration", "getHTML", "cleanupControlWithoutRendering"];
 	var aNonRendererMethods = ["render", "flush", "destroy"];
 	
 	/**
@@ -23176,7 +23197,7 @@ sap.ui.define("sap/ui/core/RenderManager",['jquery.sap.global', 'sap/ui/base/Int
 	 *
 	 * @extends sap.ui.base.Object
 	 * @author Jens Pflueger
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @constructor
 	 * @name sap.ui.core.RenderManager
 	 * @public
@@ -23252,6 +23273,71 @@ sap.ui.define("sap/ui/core/RenderManager",['jquery.sap.global', 'sap/ui/base/Int
 		return RenderManager.getRenderer(oControl);
 	};
 	
+	//Triggers the BeforeRendering event on the given Control
+	var triggerBeforeRendering = function(oRM, oControl){
+		oRM._bLocked = true;
+		try {
+			var oEvent = jQuery.Event("BeforeRendering");
+			// store the element on the event (aligned with jQuery syntax)
+			oEvent.srcControl = oControl;
+			oControl._handleEvent(oEvent);
+		} finally {
+			oRM._bLocked = false;
+		}
+	};
+	
+	/**
+	 * Cleans up the rendering state of the given control with rendering it.
+	 * 
+	 * A control is responsible for the rendering of all its child controls.
+	 * But in some cases it makes sense that a control does not render all its
+	 * children based on a filter condition. For example a Carousel control only renders
+	 * the current visible parts (and maybe some parts before and after the visible area)
+	 * for performance reasons.
+	 * If a child was rendered but should not be rendered anymore because the filter condition
+	 * does not apply anymore this child must be cleaned up correctly (e.g deregistering eventhandlers, ...).
+	 *
+	 * The following example shows how renderControl and cleanupControlWithoutRendering should
+	 * be used:
+	 * 
+	 * render = function(rm, ctrl){
+	 *   //...
+	 *   var aAggregatedControls = //...
+	 *   for(var i=0; i<aAgrregatedControls.length; i++){
+	 *   	if(//... some filter expression){
+	 *         rm.renderControl(aAggregatedControls[i]);
+	 *      }else{
+	 *         rm.cleanupControlWithoutRendering(aAggregatedControls[i]);
+	 *      }
+	 *   }
+	 *   //...
+	 * }
+	 * 
+	 * Note:
+	 * The method does not remove DOM of the given control. The callee of this method has to take over the
+	 * responsibility to cleanup the DOM of the control afterwards.
+	 * For parents which are rendered with the normal mechanism as shown in the example above this requirement
+	 * is fulfilled, because the control is not added to the rendering buffer (renderControl is not called) and
+	 * the DOM is replaced when the rendering cycle is finalized.
+	 *
+	 * @param {sap.ui.core.Control} oControl the control that should be cleaned up
+	 * @public
+	 * @name sap.ui.core.RenderManager#cleanupControlWithoutRendering
+	 * @since 1.22.9
+	 * @function
+	 */
+	RenderManager.prototype.cleanupControlWithoutRendering = function(oControl) {
+		jQuery.sap.assert(!oControl || oControl instanceof sap.ui.core.Control, "oControl must be a sap.ui.core.Control or empty");
+		if (!oControl || !oControl.getDomRef()) {
+			return;
+		}
+		
+		//Call beforeRendering to allow cleanup
+		triggerBeforeRendering(this, oControl);
+		
+		oControl.bOutput = false;
+	};
+	
 	/**
 	 * Turns the given control into its HTML representation and appends it to the
 	 * rendering buffer.
@@ -23301,15 +23387,7 @@ sap.ui.define("sap/ui/core/RenderManager",['jquery.sap.global', 'sap/ui/base/Int
 		jQuery.sap.measure.resume(oControl.getId()+"---renderControl");
 	
 		// notify the control that it will be rendered soon (e.g. detached from DOM)
-		this._bLocked = true;
-		try {
-			var oEvent = jQuery.Event("BeforeRendering");
-			// store the element on the event (aligned with jQuery syntax)
-			oEvent.srcControl = oControl;
-			oControl._handleEvent(oEvent);
-		} finally {
-			this._bLocked = false;
-		}
+		triggerBeforeRendering(this, oControl);
 		// unbind any generically bound browser event handlers
 		var aBindings = oControl.aBindParameters;
 		if (aBindings && aBindings.length > 0) { // if we have stored bind calls...
@@ -23704,9 +23782,12 @@ sap.ui.define("sap/ui/core/RenderManager",['jquery.sap.global', 'sap/ui/base/Int
 					}
 	
 					var e = d.cloneNode(true);
-					document.body.appendChild(e);
+					// in case of early usage of HTML views (before DOMReady) the 
+					// prepareHTML5 call will fail since the body is undefined
+					var f = document.body || document.createDocumentFragment();
+					f.appendChild(e);
 					e.innerHTML = sHTML.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
-					document.body.removeChild(e);
+					f.removeChild(e);
 	
 					return e.childNodes;
 				}
@@ -25006,7 +25087,7 @@ sap.ui.define("jquery.sap.ui",['jquery.sap.global', 'sap/ui/Global'],
 //	/**
 //	 * Root Namespace for the jQuery UI-Layer plugin provided by SAP AG.
 //	 *
-//	 * @version 1.22.8
+//	 * @version 1.22.10
 //	 * @namespace
 //	 * @public
 //	 */
@@ -25258,7 +25339,7 @@ sap.ui.define("sap/ui/core/UIArea",['jquery.sap.global', 'sap/ui/base/ManagedObj
 	 *
 	 * @extends sap.ui.base.ManagedObject
 	 * @author SAP AG
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @param {sap.ui.Core} oCore internal API of the <core>Core</code> that manages this UIArea
 	 * @param {object} [oRootNode] reference to the Dom Node that should be 'hosting' the UI Area.
 	 * @public
@@ -26248,7 +26329,7 @@ sap.ui.define("sap/ui/core/tmpl/Template",['jquery.sap.global', 'sap/ui/base/Man
 	 * @extends sap.ui.base.ManagedObject
 	 * @abstract
 	 * @author SAP AG
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @name sap.ui.core.tmpl.Template
 	 * @experimental Since 1.15.0. The Template concept is still under construction, so some implementation details can be changed in future.
 	 */
@@ -29709,7 +29790,7 @@ sap.ui.define("jquery.sap.properties",['jquery.sap.global', 'jquery.sap.sjax'],
 	 * currently in the list.
 	 *
 	 * @author SAP AG
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @since 0.9.0
 	 * @name jQuery.sap.util.Properties
 	 * @public
@@ -30001,7 +30082,7 @@ sap.ui.define("jquery.sap.resources",['jquery.sap.global', 'jquery.sap.propertie
 	 * Exception: Fallback for "zh_HK" is "zh_TW" before zh.
 	 *
 	 * @author SAP AG
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @since 0.9.0
 	 * @name jQuery.sap.util.ResourceBundle
 	 * @public
@@ -30426,7 +30507,7 @@ sap.ui.define("sap/ui/core/Core",['jquery.sap.global', 'sap/ui/Device', 'sap/ui/
 	 * @extends sap.ui.base.EventProvider
 	 * @final
 	 * @author SAP AG
-	 * @version 1.22.8
+	 * @version 1.22.10
 	 * @constructor
 	 * @name sap.ui.core.Core 
 	 * @public
@@ -30457,6 +30538,12 @@ sap.ui.define("sap/ui/core/Core",['jquery.sap.global', 'sap/ui/Device', 'sap/ui/
 			 * @private
 			 */
 			this.bInitialized = false;
+			
+			/**
+			 * Whether the dom is ready (document.ready)
+			 * @private
+			 */
+			this.bDomReady = false;
 		
 			/**
 			 * Available plugins in the order of registration.
@@ -31194,6 +31281,7 @@ sap.ui.define("sap/ui/core/Core",['jquery.sap.global', 'sap/ui/Device', 'sap/ui/
 	 * @function
 	 */
 	Core.prototype.handleLoad = function () {
+		this.bDomReady = true;
 	
 		//do not allow any event processing until the Core is initialized
 		var bWasLocked = this.isLocked();
@@ -32375,6 +32463,7 @@ sap.ui.define("sap/ui/core/Core",['jquery.sap.global', 'sap/ui/Device', 'sap/ui/
 	 * If it is not yet available, a DIV is created and appended to the body.
 	 *
 	 * @return {Element} the static, hidden area DOM element belonging to this core instance.
+	 * @throws {Error} an Error if the document is not yet ready
 	 * @public
 	 * @name sap.ui.core.Core#getStaticAreaRef
 	 * @function
@@ -32383,14 +32472,17 @@ sap.ui.define("sap/ui/core/Core",['jquery.sap.global', 'sap/ui/Device', 'sap/ui/
 		var sStaticId = "sap-ui-static";
 		var oStatic = jQuery.sap.domById(sStaticId);
 		if(!oStatic){
+			if(!this.bDomReady){
+				throw new Error("DOM is not ready yet. Static UIArea cannot be created.");
+			}
+			
 			var leftRight = this.getConfiguration().getRTL() ? "right" : "left";
-			oStatic = jQuery("<DIV/>",{id:sStaticId})
-						.css("visibility", "hidden")
-						.css("height", "0")
-						.css("width", "0")
-						.css("overflow", "hidden")
-						.css("float", leftRight)
-						.prependTo(document.body)[0];
+			oStatic = jQuery("<DIV/>", {id:sStaticId}).css({
+				"height"   : "0",
+				"width"    : "0",
+				"overflow" : "hidden",
+				"float"    : leftRight
+			}).prependTo(document.body)[0];
 	
 			// TODO Check whether this is sufficient
 			this.createUIArea(oStatic).bInitial = false;

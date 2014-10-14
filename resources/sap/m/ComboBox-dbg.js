@@ -59,7 +59,7 @@ jQuery.sap.require("sap.m.ComboBoxBase");
  * @extends sap.m.ComboBoxBase
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -253,6 +253,38 @@ jQuery.sap.require("sap.m.ComboBoxRenderer");
 /* ----------------------------------------------------------- */
 
 /**
+ * Called, whenever the binding of the aggregation items is changed.
+ * This method deletes all items in this aggregation and recreates them
+ * according to the data model.
+ *
+ * @private
+ * @name sap.m.ComboBox#updateItems
+ * @function
+ */
+sap.m.ComboBox.prototype.updateItems = function(sReason) {
+	this._bDataAvailable = false;
+	this.updateAggregation("items");
+	this._bDataAvailable = true;
+};
+
+/**
+ * Called, when the items aggregation needs to be refreshed.
+ * This method does not make any change on the aggregation, but just calls the
+ * getContexts() method to trigger fetching of new data.
+ *
+ * note: This method has been overwritten to prevent .updateItems()
+ * from being called when the bindings are refreshed.
+ * @see sap.ui.base.ManagedObject#bindAggregation
+ *
+ * @private
+ * @name sap.m.ComboBox#refreshItems
+ * @function
+ */
+sap.m.ComboBox.prototype.refreshItems = function() {
+	this.refreshAggregation("items");
+};
+
+/**
  * Synchronize selected item and key.
  *
  * @private
@@ -260,17 +292,7 @@ jQuery.sap.require("sap.m.ComboBoxRenderer");
 sap.m.ComboBox.prototype._synchronizeSelection = function() {
 
 	var vItem = this.getSelectedItem(),
-		sKey = this.getSelectedKey(),
-		aItems = this.getItems();
-
-	/*
-	 *	functional dependencies:
-	 *
-	 *	selectedKey  -> selectedItem, selectedItemId
-	 *	selectedItem -> selectedItemId, selectedKey
-	 *
-	 *	items        -> selectedItem, selectedItemId, selectedKey
-	 */
+		sKey = this.getSelectedKey();
 
 	// the "selectedKey" property is set, but it is not synchronized with the "selectedItem" association
 	if (sKey !== (vItem && vItem.getKey())) {
@@ -292,30 +314,22 @@ sap.m.ComboBox.prototype._synchronizeSelection = function() {
 				this.setValue(vItem.getText());
 			}
 
-			return;
+		// the aggregation items is not bound or
+		// it is bound and the data is already available
+		} else if (!this.isBound("items") || this._bDataAvailable) {
+
+			// the "selectedKey" property have the default value
+			vItem = this.getDefaultSelectedItem();
+
+			// Update and synchronize "selectedItem" association,
+			// "selectedKey" and "selectedItemId" properties.
+			this._setSelectedItem({
+				item: vItem || null,
+				id: vItem ? vItem.getId() : "",
+				key: vItem ? vItem.getKey() : "",
+				suppressInvalidate: true
+			});
 		}
-
-		// the "selectedKey" property have the default value
-		vItem = this.getDefaultSelectedItem();
-
-		// Update and synchronize "selectedItem" association,
-		// "selectedKey" and "selectedItemId" properties.
-		this._setSelectedItem({
-			item: vItem || null,
-			id: vItem ? vItem.getId() : "",
-			key: vItem ? vItem.getKey() : "",
-			suppressInvalidate: true
-		});
-
-		// note: do not set the value if the selected item has been destroyed or removed
-		if (this.getForceSelection() && vItem) {
-
-			// set the input value
-			this.setValue(vItem.getText());
-		}
-
-	} else if (aItems.indexOf(vItem) === -1) {	// validate if the selected item is aggregated
-		jQuery.sap.log.warning('Warning: _synchronizeSelection() the sap.ui.core.Item instance or sap.ui.core.Item id is not a valid aggregation on', this);
 	}
 };
 

@@ -75,7 +75,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -1686,7 +1686,7 @@ sap.m.SplitContainer.prototype.init = function() {
 				oSplitContainer.fireBeforeMasterOpen();
 			},
 			beforeClose: function(){
-				oSplitContainer.fireAfterMasterOpen();
+				oSplitContainer.fireBeforeMasterClose();
 			},
 			afterOpen: function(){
 				oSplitContainer.fireAfterMasterOpen();
@@ -2185,6 +2185,11 @@ sap.m.SplitContainer.prototype._afterHideMasterAnimation = function() {
 
 	this._bMasterClosing = false;
 	this._bMasterisOpen = false;
+	// If the focus is still inside the master area after master is open, the focus should be removed.
+	// Otherwise user can still type something on mobile device and the browser will show the master area again.
+	if (jQuery.sap.containsOrEquals(this._oMasterNav.getDomRef(), document.activeElement)) {
+		document.activeElement.blur();
+	}
 	this.fireAfterMasterClose();
 };
 
@@ -2734,6 +2739,9 @@ sap.m.SplitContainer.prototype._removeMasterButton = function(oPage, fnCallBack)
 		}
 		this.fireMasterButton({show: false});
 	}else{
+		// The master button is invisible even without this CSS class because the page in which the master button is can be out of the viewport.
+		// Therefore this class has to be set here.
+		this._oShowMasterBtn.addStyleClass("sapMSplitContainerMasterBtnHidden");
 		if(fnCallBack){
 			fnCallBack(oPage);
 		}

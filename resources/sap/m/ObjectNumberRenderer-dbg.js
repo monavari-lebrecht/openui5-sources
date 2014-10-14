@@ -19,14 +19,24 @@ sap.m.ObjectNumberRenderer = {
  * @param {sap.ui.core.Control} oControl an object representation of the control that should be rendered
  */
 sap.m.ObjectNumberRenderer.render = function(oRm, oON){
+	
+	var sTooltip;
+	
 	// return immediately if control is invisible
 	if (!oON.getVisible()) {
 		return;
 	}
-
+	
 	// write the HTML into the render manager
 	oRm.write("<div"); // Number begins
 	oRm.writeControlData(oON);
+	
+	// write the tooltip
+	sTooltip = oON.getTooltip_AsString();
+	if (sTooltip) {
+		oRm.writeAttributeEscaped("title", sTooltip);
+	}
+	
 	oRm.addClass("sapMObjectNumber");
 	if (oON.getEmphasized()) {
 		oRm.addClass("sapMObjectNumberEmph");

@@ -27,8 +27,6 @@ sap.m.ObjectAttributeRenderer.render = function(oRm, oOA) {
 		if(oOA.getActive()){
 			oRm.addClass("sapMObjectAttributeActive");
 			oRm.writeAttribute("tabindex", "0");
-		} else {
-			oRm.writeAttribute("tabindex", "-1");
 		}
 		oRm.writeClasses();
 

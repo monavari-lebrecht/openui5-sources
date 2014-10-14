@@ -1164,6 +1164,7 @@
 /* OverlapCalendar Event Type */
 @sapMeOverlapCalendarType00 : @sapUiExtraLightBorder;
 @sapMeOverlapCalendarType01 : mix(@sapUiHighlight,@sapUiWhite,15);
+@sapMeOverlapCalendarType01Action: mix(@sapUiAccent6, @sapUiWhite, 20%);
 @sapMeOverlapCalendarType04 : mix(@sapUiHighlight,@sapUiWhite,15);
 @sapMeOverlapCalendarType06 : mix(@sapUiAccent1,@sapUiWhite,35);
 @sapMeOverlapCalendarType07 : mix(@sapUiAccent3,@sapUiWhite,10);
@@ -1172,7 +1173,6 @@
 /* Calendar Legend */
 @sapMeCalendarLegendIconCollapse: collapse;
 @sapMeCalendarLegendIconExpand: expand;
-
 
 /* Tab Container */
 @sapMeTabIconInfo: hint;
@@ -1347,6 +1347,15 @@
 .sapUiAcdSectionHdr {
 	cursor: pointer;
 	line-height: 1;
+	text-align: start;
+}
+
+/* special handling for IE, as it does not support text-align: start */
+html[data-sap-ui-browser^="ie"] .sapUiAcdSectionHdr {
+	text-align: left;
+}
+html[dir=rtl][data-sap-ui-browser^="ie"] .sapUiAcdSectionHdr {
+	text-align: right;
 }
 
 .sapUiAcdSectionDis .sapUiAcdSectionHdr {

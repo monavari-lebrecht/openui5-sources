@@ -65,7 +65,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -1360,7 +1360,9 @@ sap.m.ViewSettingsDialog.prototype.open = function(oParentControl) {
 		contentPage : this._iContentPage,
 		contentItem : this._oContentItem
 	};
-
+	
+	// set initial focus to the segmentedButton if available
+	this._getDialog().setInitialFocus((sap.ui.Device.system.desktop && this._showSubHeader) ? this._segmentedButton : null);
 	// open dialog
 	this._getDialog().open();
 	return this;

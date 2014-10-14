@@ -60,7 +60,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -388,5 +388,18 @@ sap.ui.core.Control.extend("sap.ui.layout.form.Form", { metadata : {
 		return this;
 
 	};
+
+	/*
+	 * Overwrite of INVALIDATE
+	 * do not invalidate Form during rendering. Because there the Layout may update the content
+	 * otherwise the Form will render twice
+	*/
+	sap.ui.layout.form.Form.prototype.invalidate = function(oOrigin) {
+
+	if (!this._bNoInvalidate) {
+		sap.ui.core.Control.prototype.invalidate.apply(this, arguments);
+	}
+
+};
 
 }());

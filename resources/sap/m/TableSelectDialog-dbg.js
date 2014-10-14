@@ -65,7 +65,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -866,7 +866,8 @@ sap.m.TableSelectDialog.prototype.init = function () {
 		contentHeight: "2000px",
 		subHeader: this._oSubHeader,
 		content: [this._oBusyIndicator, this._oTable],
-		leftButton: this._getCancelButton()
+		leftButton: this._getCancelButton(),
+		initialFocus: ((sap.ui.Device.system.desktop && this._oSearchField) ? this._oSearchField : null)
 	});
 	this._dialog = this._oDialog; // for downward compatibility
 
@@ -983,8 +984,10 @@ sap.m.TableSelectDialog.prototype.open = function (sSearchValue) {
 	// set search field value
 	this._oSearchField.setValue(sSearchValue);
 
+
 	// open the dialog
 	this._oDialog.open();
+
 
 	// open dialog with busy state if a list update is still in progress
 	if (this._bInitBusy) {
@@ -1378,6 +1381,14 @@ sap.m.TableSelectDialog.prototype._setBusy = function (bBusy) {
 		} else {
 			if (this._bFirstRequest) { // also show the header bar again for the first request
 				this._oSubHeader.$().css('display', 'block');
+				// set initial focus manually after all items are visible
+				if(sap.ui.Device.system.desktop){
+					var oFocusControl = sap.ui.getCore().byId(this._oDialog.getInitialFocus());
+					if (oFocusControl.getFocusDomRef()) {
+						oFocusControl.getFocusDomRef().focus();
+					}
+				}
+
 				this._bFirstRequest = false;
 			}
 			this._oTable.removeStyleClass('sapMSelectDialogListHide');

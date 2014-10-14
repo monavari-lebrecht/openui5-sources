@@ -1565,6 +1565,7 @@ html[data-sap-ui-browser="ie9"] .sapMFeedListItemTitleDiv {
 }
 
 .sapMITBFilterIcon,
+.sapMITBTextOnly .sapMITBFilter,
 .sapMITBTextOnly .sapMITBText,
 .sapMITBAll {
 	cursor: pointer;
@@ -3511,8 +3512,7 @@ html[dir=rtl][data-sap-ui-browser^=ie] .sapMOHR.sapMOH > .sapMOHStates > .sapMOH
 }
 
 .sapMObjectIdentifierTitle{
-	display: inline;
-	white-space: wordwrap;
+	text-overflow: ellipsis;
 	overflow: hidden;
 	color: @sapUiDarkText;
 	font-weight: bold;	
@@ -3569,8 +3569,7 @@ html[data-sap-ui-browser="ie9"] .sapMText.sapMObjLTitle {
   a layout control with fixed width. */
 .sapMOHTitle:not(.sapMOHRTitleNoWordBreak) > .sapMText {
 	/* to break all words even browser does not know the width */
-	word-break: break-word;  /* Non standard for old webkits */
-	word-break: break-all;
+	word-break: break-word;
 	-webkit-hyphens: auto;
 	-moz-hyphens: auto;
 	-ms-hyphens: auto;

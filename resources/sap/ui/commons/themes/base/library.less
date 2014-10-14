@@ -500,6 +500,15 @@
 .sapUiAcdSectionHdr {
 	cursor: pointer;
 	line-height: 1;
+	text-align: start;
+}
+
+/* special handling for IE, as it does not support text-align: start */
+html[data-sap-ui-browser^="ie"] .sapUiAcdSectionHdr {
+	text-align: left;
+}
+html[dir=rtl][data-sap-ui-browser^="ie"] .sapUiAcdSectionHdr {
+	text-align: right;
 }
 
 .sapUiAcdSectionDis .sapUiAcdSectionHdr {

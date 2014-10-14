@@ -55,7 +55,7 @@ jQuery.sap.require("sap.ui.unified.Menu");
  * @extends sap.ui.unified.Menu
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -102,6 +102,9 @@ jQuery.sap.require("sap.ui.unified.MenuItem");
  * @private
  */
 sap.ui.table.ColumnMenu.prototype.init = function() {
+	if(sap.ui.unified.Menu.prototype.init){
+		sap.ui.unified.Menu.prototype.init.apply(this, arguments);
+	}
 	this.addStyleClass("sapUiTableColumnMenu");
 	this.oResBundle = sap.ui.getCore().getLibraryResourceBundle("sap.ui.table");
 	this._bInvalidated = true;
@@ -117,6 +120,9 @@ sap.ui.table.ColumnMenu.prototype.init = function() {
  * @private
  */
 sap.ui.table.ColumnMenu.prototype.exit = function() {
+	if(sap.ui.unified.Menu.prototype.exit){
+		sap.ui.unified.Menu.prototype.exit.apply(this, arguments);
+	}
 	window.clearTimeout(this._iPopupClosedTimeoutId);
 	this._detachEvents();
 	this._oColumn = this._oTable = null;

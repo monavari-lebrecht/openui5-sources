@@ -57,7 +57,7 @@ jQuery.sap.require("sap.ui.core.Control");
  * @extends sap.ui.core.Control
  *
  * @author SAP AG 
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -416,14 +416,11 @@ sap.ui.unified.Menu.prototype.init = function(){
 	this.oHoveredItem = null;
 	this.oPopup = null; // Will be created lazily
 	this.fAnyEventHandlerProxy = jQuery.proxy(function(oEvent){
-		if(!this.bOpen || !this.getDomRef() || oEvent.type != "mousedown") {
+		var oRoot = this.getRootMenu();
+		if(oRoot != this || !this.bOpen || !this.getDomRef() || (oEvent.type != "mousedown" && oEvent.type != "touchstart")) {
 			return;
 		}
-		var oSource = oEvent.target, oDomRef = this.getDomRef();
-
-		if(!jQuery.sap.containsOrEquals(oDomRef, oSource) || oSource.tagName=="BODY"){
-			this.getRootMenu().handleOuterEvent(this.getId(), oEvent);
-		}
+		oRoot.handleOuterEvent(this.getId(), oEvent); //TBD: standard popup autoclose
 	}, this);
 	this.fOrientationChangeHandler = function(){
 		that.close();
@@ -651,9 +648,14 @@ sap.ui.unified.Menu.prototype.close = function() {
  * @private
  */ 
 sap.ui.unified.Menu.prototype._menuClosed = function() {
+	//TBD: standard popup autoclose: this.close(); //Ensure proper cleanup
 	if (this.oOpenerRef) {
-		if(!this.ignoreOpenerDOMRef) {
-			this.oOpenerRef.focus();
+		if (!this.ignoreOpenerDOMRef) {
+			try {
+				this.oOpenerRef.focus();
+			} catch(e) {
+				jQuery.sap.log.warning("Menu.close cannot restore the focus on opener " + this.oOpenerRef + ", " + e);
+			}
 		}
 		this.oOpenerRef = undefined;
 	}
@@ -779,6 +781,9 @@ sap.ui.unified.Menu.prototype.onsaptabnext = sap.ui.unified.Menu.prototype.onsap
 sap.ui.unified.Menu.prototype.onsaptabprevious = sap.ui.unified.Menu.prototype.onsapescape;
 
 sap.ui.unified.Menu.prototype.onmouseover = function(oEvent){
+	if(!sap.ui.Device.system.desktop){
+		return;
+	}
 	var oItem = this.getItemByDomRef(oEvent.target);
 	if(!this.bOpen || !oItem || oItem == this.oHoveredItem) {
 		return;
@@ -805,6 +810,9 @@ sap.ui.unified.Menu.prototype.onmouseover = function(oEvent){
 };
 
 sap.ui.unified.Menu.prototype.onmouseout = function(oEvent){
+	if(!sap.ui.Device.system.desktop){
+		return;
+	}
 	fnIe8RepaintBug(this);
 	
 	if(jQuery.sap.checkMouseEnterOrLeave(oEvent, this.getDomRef())){
@@ -824,25 +832,38 @@ sap.ui.unified.Menu.prototype.onsapfocusleave = function(oEvent){
 	if(this.oOpenedSubMenu || !this.bOpen) {
 		return;
 	}
-	this.getRootMenu().handleOuterEvent(this.getId(), oEvent);
+	this.getRootMenu().handleOuterEvent(this.getId(), oEvent); //TBD: standard popup autoclose
 };
 
 //****** Helper Methods ******
 
 sap.ui.unified.Menu.prototype.handleOuterEvent = function(oMenuId, oEvent){
-	var isInMenuHierarchy = false;
-	if (oEvent.type == "mousedown"){
+	//See sap.ui.core.Popup implementation: Target is to use autoclose mechanismn of the popup
+	//but currently there autoclose only works for 2 hierarchy levels and not for n as needed by the menu
+	//-> This function and all its callers are obsolete when switching later to standard popup autoclose
+	//   (all needed further code locations for that change are marked with "TBD: standard popup autoclose")
+	var isInMenuHierarchy = false,
+		touchEnabled = this.getPopup().touchEnabled;
+	
+	if (oEvent.type == "mousedown" || oEvent.type == "touchstart"){
+		// Suppress the delayed mouse event from mobile browser
+		if(touchEnabled && (oEvent.isMarked("delayedMouseEvent") || oEvent.isMarked("cancelAutoClose"))){
+			return;
+		}
 		var currentMenu = this;
-		while(currentMenu){
+		while(currentMenu && !isInMenuHierarchy){
 			if(jQuery.sap.containsOrEquals(currentMenu.getDomRef(), oEvent.target)){
 				isInMenuHierarchy = true;
 			}
 			currentMenu = currentMenu.oOpenedSubMenu;
 		}
 	}else if (oEvent.type == "sapfocusleave"){
+		if(touchEnabled){
+			return;
+		}
 		if(oEvent.relatedControlId){
 			var currentMenu = this;
-			while(currentMenu){
+			while(currentMenu && !isInMenuHierarchy){
 				if((currentMenu.oOpenedSubMenu && currentMenu.oOpenedSubMenu.getId() == oEvent.relatedControlId)
 						|| jQuery.sap.containsOrEquals(currentMenu.getDomRef(), jQuery.sap.byId(oEvent.relatedControlId).get(0))){
 					isInMenuHierarchy = true;
@@ -854,7 +875,6 @@ sap.ui.unified.Menu.prototype.handleOuterEvent = function(oMenuId, oEvent){
 
 	if(!isInMenuHierarchy) {
 		this.ignoreOpenerDOMRef = true;
-		
 		this.close();
 		this.ignoreOpenerDOMRef = false;
 	}
@@ -884,8 +904,13 @@ sap.ui.unified.Menu.prototype.selectItem = function(oItem, bWithKeyboard, bCtrlK
 		// This is a normal item -> Close all menus and fire event.
 		this.getRootMenu().close();
 	}else{
-		// Item with sub menu was triggered -> Open sub menu and fire event.
-		this.openSubmenu(oItem, bWithKeyboard);
+		if(!sap.ui.Device.system.desktop && this.oOpenedSubMenu === oSubMenu){
+			this.oOpenedSubMenu.close();
+			this.oOpenedSubMenu = null;
+		}else{
+			// Item with sub menu was triggered -> Open sub menu and fire event.
+			this.openSubmenu(oItem, bWithKeyboard);
+		}
 	}
 
 	oItem.fireSelect({item: oItem, ctrlKey: bCtrlKey});
@@ -916,7 +941,8 @@ sap.ui.unified.Menu.prototype.getMenuLevel = function(){
 
 sap.ui.unified.Menu.prototype.getPopup = function (){
 	if(!this.oPopup){
-		this.oPopup = new sap.ui.core.Popup(this, false, true); // content, modal, shadow
+		this.oPopup = new sap.ui.core.Popup(this, false, true, false); // content, modal, shadow, autoclose (TBD: standard popup autoclose)
+		this.oPopup.setDurations(0, 0);
 		this.oPopup.attachOpened(this._menuOpened, this);
 		this.oPopup.attachClosed(this._menuClosed, this);
 	}

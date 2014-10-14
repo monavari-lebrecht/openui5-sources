@@ -216,9 +216,14 @@ sap.m.FlexBoxStylingHelper.setOldSpecStyle = function(oRm, oControl, sProperty, 
 		var mLegacyMap = null;
 		if(typeof(sap.m.FlexBoxCssPropertyMap[sSpec][sProperty]) === "object") {
 			if(sap.m.FlexBoxCssPropertyMap[sSpec][sProperty]["<number>"]) {
-				mLegacyMap = sap.m.FlexBoxCssPropertyMap[sSpec][sProperty]["<number>"];
-				for(var key in mLegacyMap) {
-					mLegacyMap[key] = sValue;
+				mLegacyMap = {};
+				for(var key in sap.m.FlexBoxCssPropertyMap[sSpec][sProperty]["<number>"]) {
+					// Check if the target is also a number, otherwise assume it's a literal
+					if(sap.m.FlexBoxCssPropertyMap[sSpec][sProperty]["<number>"][key] === "<number>") {
+						mLegacyMap[key] = sValue;
+					} else {
+						mLegacyMap[key] = sap.m.FlexBoxCssPropertyMap[sSpec][sProperty]["<number>"][key];
+					}
 				}
 			} else {
 				mLegacyMap = sap.m.FlexBoxCssPropertyMap[sSpec][sProperty][sValue];

@@ -165,7 +165,8 @@ sap.ui.commons.MessageBox.Icon = {
 	 * After the user has selected a button or closed the message box using the close icon, the <code>callback</code>
 	 * function is invoked when given.
 	 *
-	 * The only mandatory parameter is <code>sMessage</code>.
+	 * The only mandatory parameter is <code>vMessage</code>. Either a string with the corresponding text or even
+	 * a layout control could be provided.
 	 *
 	 * The created dialog box is executed asynchronously. When it has been created and registered for rendering,
 	 * this function returns without waiting for a user reaction.
@@ -180,7 +181,7 @@ sap.ui.commons.MessageBox.Icon = {
 	 * where <code>oAction</code> is the button that the user has pressed. When the user has pressed the close button,
 	 * a MessageBox.Action.Close is returned.
 	 *
-	 * @param {string} sMessage The message to be displayed.
+	 * @param {string | sap.ui.core.Control} vMessage The message to be displayed.
 	 * @param {sap.ui.commons.MessageBox.Icon} [oIcon=None] The icon to be displayed.
 	 * @param {string} [sTitle=''] The title of the message box.
 	 * @param {sap.ui.commons.MessageBox.Action|sap.ui.commons.MessageBox.Action[]} [vActions] Either a single action, or an array of actions.
@@ -190,7 +191,7 @@ sap.ui.commons.MessageBox.Icon = {
 	 * @param {string} [sDialogId] ID to be used for the dialog. Intended for test scenarios, not recommended for productive apps
 	 * @public
 	 */
-	sap.ui.commons.MessageBox.show = function(sMessage, oIcon, sTitle, vActions, fnCallback, oDefaultAction, sDialogId) {
+	sap.ui.commons.MessageBox.show = function(vMessage, oIcon, sTitle, vActions, fnCallback, oDefaultAction, sDialogId) {
 
 		var rb = sap.ui.getCore().getLibraryResourceBundle("sap.ui.commons"),
 			oDialog, oResult, oContent, oMsg, oDefaultButton;
@@ -256,7 +257,12 @@ sap.ui.commons.MessageBox.Icon = {
 		}
 
 		oContent = new c.layout.MatrixLayout({id : sDialogId + "--lyt", layoutFixed:false}).addStyleClass("sapUiMboxCont");
-		oMsg = new c.TextView({id : sDialogId + "--msg", text:sMessage}).addStyleClass("sapUiMboxText");
+
+		if (typeof(vMessage) === "string") {
+			oMsg = new c.TextView({id : sDialogId + "--msg"}).setText(vMessage).addStyleClass("sapUiMboxText");
+		} else if (vMessage instanceof sap.ui.core.Control) {
+			oMsg = vMessage.addStyleClass("sapUiMboxText");
+		}
 		if ( oIcon !== Icon.NONE ) {
 			oContent.createRow(cell(image(oIcon)), cell(oMsg));
 		} else {
@@ -295,14 +301,14 @@ sap.ui.commons.MessageBox.Icon = {
 	 * Applications have to use the <code>fnCallback</code> to continue work after the
 	 * user closed the alert box.
 	 *
-	 * @param {string} sMessage Message to be displayed in the alert box
+	 * @param {string | sap.ui.core.Control} vMessage Message to be displayed in the alert box
 	 * @param {function} [fnCallback] callback function to be called when the user closed the dialog
 	 * @param {string } [sTitle] Title to be displayed in the alert box
 	 * @param {string} [sDialogId] ID to be used for the alert box. Intended for test scenarios, not recommended for productive apps
 	 * @public
 	 */
-	sap.ui.commons.MessageBox.alert = function(sMessage, fnCallback, sTitle, sDialogId) {
-		return c.MessageBox.show(sMessage, Icon.NONE, sTitle, Action.OK,
+	sap.ui.commons.MessageBox.alert = function(vMessage, fnCallback, sTitle, sDialogId) {
+		return c.MessageBox.show(vMessage, Icon.NONE, sTitle, Action.OK,
 				function(oAction) {
 					if ( typeof fnCallback === "function" ) {
 						fnCallback();
@@ -326,14 +332,14 @@ sap.ui.commons.MessageBox.Icon = {
 	 * Applications have to use the <code>fnCallback</code> to continue work after the
 	 * user closed the alert box.
 	 *
-	 * @param {string} sMessage Message to display
+	 * @param {string | sap.ui.core.Control} vMessage Message to display
 	 * @param {function} [fnCallback] Callback to be called
 	 * @param {string} [sTitle] Title to display
 	 * @param {string} [sDialogId] ID to be used for the confirmation dialog. Intended for test scenarios, not recommended for productive apps
 	 * @public
 	 */
-	sap.ui.commons.MessageBox.confirm = function(sMessage, fnCallback, sTitle, sDialogId) {
-		return c.MessageBox.show(sMessage, Icon.QUESTION, sTitle, [Action.OK, Action.CANCEL],
+	sap.ui.commons.MessageBox.confirm = function(vMessage, fnCallback, sTitle, sDialogId) {
+		return c.MessageBox.show(vMessage, Icon.QUESTION, sTitle, [Action.OK, Action.CANCEL],
 				function(oAction) {
 					if ( typeof fnCallback === "function" ) {
 						fnCallback(oAction === Action.OK);

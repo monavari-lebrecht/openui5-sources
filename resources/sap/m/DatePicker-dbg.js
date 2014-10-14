@@ -59,7 +59,7 @@ jQuery.sap.require("sap.m.InputBase");
  * @extends sap.m.InputBase
  *
  * @author  
- * @version 1.22.8
+ * @version 1.22.10
  *
  * @constructor   
  * @public
@@ -202,7 +202,7 @@ jQuery.sap.require("sap.ui.model.type.Date");
 
 		sap.m.InputBase.prototype.exit.apply(this, arguments);
 
-		if(this._oPopup) {
+		if (this._oPopup) {
 			if (this._oPopup.isOpen()) {
 				this._oPopup.close();
 			}
@@ -225,7 +225,7 @@ jQuery.sap.require("sap.ui.model.type.Date");
 
 	sap.m.DatePicker.prototype.invalidate = function(oOrigin) {
 
-		if(!oOrigin || oOrigin != this._oCalendar){
+		if (!oOrigin || oOrigin != this._oCalendar){
 			// Calendar is only invalidated by DatePicker itself -> so don't invalidate DatePicker
 			sap.ui.core.Control.prototype.invalidate.apply(this, arguments);
 		}
@@ -235,8 +235,9 @@ jQuery.sap.require("sap.ui.model.type.Date");
 	/**
 	 * Defines the width of the DatePicker. Default value is 100%
 	 *
+	 * @param {string} sWidth  new value for <code>width</code>
+	 * @returns {sap.m.DatePicker} <code>this</code> to allow method chaining
 	 * @public
-	 * @param {string} sWidth
 	 */
 	sap.m.DatePicker.prototype.setWidth = function(sWidth) {
 
@@ -252,16 +253,16 @@ jQuery.sap.require("sap.ui.model.type.Date");
 
 	sap.m.DatePicker.prototype.onfocusin = function(oEvent) {
 
-		if (sap.ui.Device.browser.mobile && !jQuery(oEvent.target).hasClass("sapUiIcon") && !this._bFocusByCancel) {
+		if (sap.ui.Device.browser.mobile && !jQuery(oEvent.target).hasClass("sapUiIcon") && !this._bFocusNoPopup) {
 			// on mobile devices open calendar
 			var that = this;
 
-			if(!this._oPopup || !this._oPopup.isOpen()) {
+			if (!this._oPopup || !this._oPopup.isOpen()) {
 				_open(that);
 			}
 		}
 
-		this._bFocusByCancel = undefined;
+		this._bFocusNoPopup = undefined;
 
 	};
 
@@ -269,31 +270,22 @@ jQuery.sap.require("sap.ui.model.type.Date");
 
 		var that = this;
 
-		if (oEvent.keyCode == jQuery.sap.KeyCodes.ARROW_DOWN) {
-			if(!this._oPopup || !this._oPopup.isOpen()) {
-				_open(that);
-			}
-		}else {
-			_toggleOpen(that);
-		}
+		_toggleOpen(that);
 
 		oEvent.preventDefault(); // otherwise IE opens the address bar history
 
 	};
 
-	sap.m.DatePicker.prototype.onsaphide = function(oEvent) {
-
-		if(this._oPopup && this._oPopup.isOpen()) {
-			this._oPopup.close();
-		}
-
-	};
+	// ALT-UP and ALT-DOWN should behave the same
+	sap.m.DatePicker.prototype.onsaphide = sap.m.DatePicker.prototype.onsapshow;
 
 	sap.m.DatePicker.prototype.onsappageup = function(oEvent){
 
 		//increase by one day
 		var that = this;
 		_incraseDate(that, 1, "day");
+
+		oEvent.preventDefault(); // do not move cursor
 
 	};
 
@@ -308,6 +300,8 @@ jQuery.sap.require("sap.ui.model.type.Date");
 			_incraseDate(that, 1, "year");
 		}
 
+		oEvent.preventDefault(); // do not move cursor
+
 	};
 
 	sap.m.DatePicker.prototype.onsappagedown = function(oEvent){
@@ -315,6 +309,8 @@ jQuery.sap.require("sap.ui.model.type.Date");
 		//decrease by one day
 		var that = this;
 		_incraseDate(that, -1, "day");
+
+		oEvent.preventDefault(); // do not move cursor
 
 	};
 
@@ -329,6 +325,8 @@ jQuery.sap.require("sap.ui.model.type.Date");
 			_incraseDate(that, -1, "year");
 		}
 
+		oEvent.preventDefault(); // do not move cursor
+
 	};
 
 	sap.m.DatePicker.prototype.onclick = function(oEvent) {
@@ -336,7 +334,7 @@ jQuery.sap.require("sap.ui.model.type.Date");
 		var that = this;
 		if (jQuery(oEvent.target).hasClass("sapUiIcon")) {
 			_toggleOpen(that);
-		}else	if(sap.ui.Device.browser.mobile && (!this._oPopup || !this._oPopup.isOpen())) {
+		}else	if (sap.ui.Device.browser.mobile && (!this._oPopup || !this._oPopup.isOpen())) {
 			_open(that);
 		}
 
@@ -347,7 +345,7 @@ jQuery.sap.require("sap.ui.model.type.Date");
 		var sOldValue = this.getValue();
 		if (sValue == sOldValue) {
 			return this;
-		}else{
+		}else {
 			this._lastValue = sValue;
 		}
 
@@ -448,7 +446,7 @@ jQuery.sap.require("sap.ui.model.type.Date");
 
 		// set date before fire change event
 		var sValue = this._$input.val();
-		var oDate = undefined;
+		var oDate;
 		if (sValue != "") {
 			oDate = this._parseValue(sValue, true);
 			if (oDate) {
@@ -458,7 +456,6 @@ jQuery.sap.require("sap.ui.model.type.Date");
 				sValue = "";
 			}
 		}
-		this.setProperty("dateValue", oDate, true); // no rerendering
 
 		if (this.getDomRef() && (this._$input.val() !== sValue)) {
 			this._$input.val(sValue);
@@ -477,20 +474,21 @@ jQuery.sap.require("sap.ui.model.type.Date");
 		// compare with the old known value
 		if (sValue !== this._lastValue) {
 			this.setProperty("value", sValue, true); // no rerendering
+			this.setProperty("dateValue", oDate, true); // no rerendering
 
 			// remember the last value on change
 			this._lastValue = sValue;
 
 			this.fireChangeEvent(sValue);
-		}
 
-		if(this._oPopup && this._oPopup.isOpen()) {
-			this._oCalendar.focusDate(oDate);
-			var oStartDate = this._oDateRange.getStartDate();
-			if ((!oStartDate && oDate) || (oStartDate && oDate && oStartDate.getTime() != oDate.getTime())) {
-				this._oDateRange.setStartDate(new Date(oDate.getTime()));
-			}else if(oStartDate && !oDate){
-				this._oDateRange.setStartDate(undefined);
+			if (this._oPopup && this._oPopup.isOpen()) {
+				this._oCalendar.focusDate(oDate);
+				var oStartDate = this._oDateRange.getStartDate();
+				if ((!oStartDate && oDate) || (oStartDate && oDate && oStartDate.getTime() != oDate.getTime())) {
+					this._oDateRange.setStartDate(new Date(oDate.getTime()));
+				}else if (oStartDate && !oDate){
+					this._oDateRange.setStartDate(undefined);
+				}
 			}
 		}
 
@@ -506,6 +504,31 @@ jQuery.sap.require("sap.ui.model.type.Date");
 
 		return sValue;
 
+	};
+
+	// overwrite _getInputValue to do the output conversion
+	sap.m.DatePicker.prototype.updateDomValue = function(sValue) {
+
+		// dom value updated other than value property
+		this._bCheckDomValue = true;
+
+		sValue = (typeof sValue == "undefined") ? this._$input.val() : sValue.toString();
+		this._curpos = this._$input.cursorPos();
+
+		var oDate = this._parseValue(sValue, true);
+		sValue = this._formatValue(oDate);
+
+		// update the DOM value when necessary
+		// otherwise cursor can goto end of text unnecessarily
+		if (this.isActive() && (this._$input.val() !== sValue)) {
+			this._$input.val(sValue);
+			this._$input.cursorPos(this._curpos);
+		}
+
+		// update synthetic placeholder visibility
+		this._setLabelVisibility();
+
+		return this;
 	};
 
 	sap.m.DatePicker.prototype._parseValue = function(sValue, bDisplayFormat) {
@@ -603,7 +626,7 @@ jQuery.sap.require("sap.ui.model.type.Date");
 
 			if (oBinding && oBinding.oType && (oBinding.oType instanceof sap.ui.model.type.Date)) {
 				sPlaceholder = oBinding.oType.getOutputPattern();
-			}else{
+			}else {
 				sPlaceholder = this.getDisplayFormat();
 			}
 
@@ -624,7 +647,7 @@ jQuery.sap.require("sap.ui.model.type.Date");
 
 	function _open(oThis){
 
-		if(!oThis._oPopup) {
+		if (!oThis._oPopup) {
 			jQuery.sap.require("sap.ui.core.Popup");
 			oThis._oPopup = new sap.ui.core.Popup();
 			oThis._oPopup.setAutoClose(true);
@@ -636,7 +659,7 @@ jQuery.sap.require("sap.ui.model.type.Date");
 		if (!oThis._oCalendar) {
 			sap.ui.getCore().loadLibrary("sap.ui.unified");
 			jQuery.sap.require("sap.ui.unified.library");
-			oThis._oCalendar = new sap.ui.unified.Calendar(oThis.getId()+"-cal", {intervalSelection: oThis._bIntervalSelection});
+			oThis._oCalendar = new sap.ui.unified.Calendar(oThis.getId() + "-cal", {intervalSelection: oThis._bIntervalSelection});
 			oThis._oDateRange = new sap.ui.unified.DateRange();
 			oThis._oCalendar.addSelectedDate(oThis._oDateRange);
 			oThis._oCalendar.attachSelect(oThis._selectDate, oThis);
@@ -660,21 +683,19 @@ jQuery.sap.require("sap.ui.model.type.Date");
 		var sAt = eDock.BeginBottom + "-4"; // as m.Input has some padding around
 		oThis._oPopup.open(0, eDock.BeginTop, sAt, oThis, null, "fit", true);
 
-	};
+	}
 
 	sap.m.DatePicker.prototype._fillDateRange = function(){
 
 		var oDate = this.getDateValue();
 
 		if (oDate) {
-			this._oCalendar.focusDate(oDate);
+			this._oCalendar.focusDate(new Date(oDate.getTime()));
 			if (!this._oDateRange.getStartDate() || this._oDateRange.getStartDate().getTime() != oDate.getTime()) {
 				this._oDateRange.setStartDate(new Date(oDate.getTime()));
 			}
-		} else {
-			if (this._oDateRange.getStartDate()) {
-				this._oDateRange.setStartDate(undefined);
-			}
+		} else if (this._oDateRange.getStartDate()) {
+			this._oDateRange.setStartDate(undefined);
 		}
 
 	};
@@ -682,51 +703,50 @@ jQuery.sap.require("sap.ui.model.type.Date");
 	function _toggleOpen(oThis){
 
 		if (oThis.getEditable() && oThis.getEnabled()) {
-			if(!oThis._oPopup || !oThis._oPopup.isOpen()) {
+			if (!oThis._oPopup || !oThis._oPopup.isOpen()) {
 				_open(oThis);
 			} else {
 				oThis._oPopup.close();
 			}
 		}
 
-	};
+	}
 
 	sap.m.DatePicker.prototype._selectDate = function(oEvent){
 
 		var aSelectedDates = this._oCalendar.getSelectedDates();
+		var oDateOld = this.getDateValue();
 		var oDate;
-		var sValue = "";
 
 		if (aSelectedDates.length > 0) {
 			oDate = aSelectedDates[0].getStartDate();
-			sValue = this._formatValue(oDate);
-			if (this._$input.val() !== sValue) {
-				this._$input.val(sValue);
-				this._setLabelVisibility();
-				this._curpos = sValue.length;
-				this._$input.cursorPos(this._curpos);
-			}
 		}
+		this.setDateValue(oDate);
 
 		this._oPopup.close();
+		this._bFocusNoPopup = true;
 		this.focus();
 
 		// do not use this.onChange() because output pattern will change date (e.g. only last 2 number of year -> 1966 -> 2066 )
-		this.setProperty("dateValue", oDate, true); // no rerendering
-
-		sap.m.InputBase.prototype.onChange.apply(this, arguments);
+		if (!jQuery.sap.equal(oDate, oDateOld)) {
+			// compare Dates because value can be the same if only 2 digits for year 
+			var sValue = this.getValue();
+			this.fireChangeEvent(sValue);
+			this._curpos = sValue.length;
+			this._$input.cursorPos(this._curpos);
+		}
 
 	};
 
 	function _cancel(oEvent) {
 
-		if(this._oPopup && this._oPopup.isOpen()) {
+		if (this._oPopup && this._oPopup.isOpen()) {
 			this._oPopup.close();
-			this._bFocusByCancel = true;
+			this._bFocusNoPopup = true;
 			this.focus();
 		}
 
-	};
+	}
 /*
 	function _handleClosed(oEvent) {
 
@@ -736,10 +756,11 @@ jQuery.sap.require("sap.ui.model.type.Date");
 	function _incraseDate(oThis, iNumber, sUnit) {
 
 		var oOldDate = oThis.getDateValue();
+		var iCurpos = oThis._$input.cursorPos();
 
 		if (oOldDate && oThis.getEditable() && oThis.getEnabled()) {
 			// use a new date object to have a real updated property
-			var oDate = new Date (oOldDate.getTime());
+			var oDate = new Date(oOldDate.getTime());
 
 			switch (sUnit) {
 			case "day":
@@ -758,11 +779,14 @@ jQuery.sap.require("sap.ui.model.type.Date");
 
 			oThis.setDateValue(oDate);
 
+			oThis._curpos = iCurpos;
+			oThis._$input.cursorPos(oThis._curpos);
+
 			var sValue = oThis._getInputValue();
 			oThis.fireChangeEvent(sValue);
 		}
 
-	};
+	}
 
 	function _onInput(oEvent){
 
@@ -772,13 +796,13 @@ jQuery.sap.require("sap.ui.model.type.Date");
 			this._$label.css("display", sValue ? "none" : "inline");
 		}
 
-	};
+	}
 
 	function _handleOpened(oEvent) {
 
 		this._renderedDays = this._oCalendar.$("days").children(".sapUiCalDay").length;
 
-	};
+	}
 
 	function _resizeCalendar(oEvent){
 
@@ -790,6 +814,6 @@ jQuery.sap.require("sap.ui.model.type.Date");
 			this._oPopup._applyPosition(this._oPopup._oLastPosition);
 		}
 
-	};
+	}
 
 }());

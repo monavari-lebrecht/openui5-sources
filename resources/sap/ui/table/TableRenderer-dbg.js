@@ -674,8 +674,8 @@ sap.ui.table.TableRenderer.renderTableControlCnt = function(rm, oTable, bFixedTa
 	rm.addClass("sapUiTableCtrl");
 	rm.writeClasses();
 	rm.addStyle("min-width", oTable._getColumnsWidth(iStartColumn, iEndColumn) + "px");
-	//Firefox and chrome need a defined width for the fixed table
-	if (bFixedTable && (!!sap.ui.Device.browser.firefox || !!sap.ui.Device.browser.chrome)) {
+	//Firefox and chrome and safari need a defined width for the fixed table
+	if (bFixedTable && (!!sap.ui.Device.browser.firefox || !!sap.ui.Device.browser.chrome || !!sap.ui.Device.browser.safari)) {
 		rm.addStyle("width", oTable._getColumnsWidth(iStartColumn, iEndColumn) + "px");
 	}
 	rm.writeStyles();
@@ -858,7 +858,15 @@ sap.ui.table.TableRenderer.renderTableCell = function(rm, oTable, oRow, oCell, i
 			// correct would be aria-labelledby but doesn't work for JAWS
 			rm.writeAttribute("headers", oTable.getId() + "_col" + iColIndex);
 			rm.writeAttribute("role", "gridcell");
-			rm.writeAttribute("aria-labelledby", oTable.getId() + "-ariadesc " + oColumn.getId() + " " + oCell.getId());
+			var sLabelledBy = oTable.getId() + "-ariadesc " + oColumn.getId();
+			var iMultiLabels = oColumn.getMultiLabels().length;
+			if (iMultiLabels > 1) {
+				for (var i = 1; i < iMultiLabels; i++) {
+					sLabelledBy +=  " " + oColumn.getId() + "_" + i;
+				}
+			}
+			sLabelledBy +=  " " + oCell.getId();
+			rm.writeAttribute("aria-labelledby", sLabelledBy);
 			rm.writeAttribute("aria-describedby", oTable.getId() + "-toggleedit");
 			rm.writeAttribute("aria-activedescendant", oCell.getId());
 			rm.writeAttribute("tabindex", "-1");

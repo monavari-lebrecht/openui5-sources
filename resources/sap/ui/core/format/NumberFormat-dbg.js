@@ -424,7 +424,11 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/LocaleData'],
 			oDecimalRegExp = new RegExp("\\" + oOptions.decimalSeparator, "g"),
 			oRegExp,
 			oResult = 0;
-		
+
+		// remove all white spaces because when grouping separator is a non-breaking space (russian and french for example)
+		// user will not input it this way. Also white spaces or grouping separator can be ignored by determining the value
+		sValue = sValue.replace(/\s/g, "");
+
 		// Check for valid syntax
 		if (oOptions.isInteger) {
 			oRegExp = new RegExp(sRegExpInt);

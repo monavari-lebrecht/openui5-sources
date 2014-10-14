@@ -46,6 +46,10 @@ sap.ui.commons.CalloutBaseRenderer.render = function(oRenderManager, oControl){
 	if (oControl.getTooltip_AsString()) {
 		rm.writeAttributeEscaped("title", oControl.getTooltip_AsString());
 	}
+	
+	rm.addStyle("display", "none");
+	rm.writeStyles();
+	
 	rm.write(">");
 
 	//first focusable control to provide tab loop

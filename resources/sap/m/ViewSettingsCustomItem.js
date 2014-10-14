@@ -7,3 +7,5 @@ jQuery.sap.declare("sap.m.ViewSettingsCustomItem");jQuery.sap.require("sap.m.lib
 sap.m.ViewSettingsCustomItem.prototype.exit=function(){if(this._control&&!this._control.getParent()){this._control.destroy();delete this._control}};
 sap.m.ViewSettingsCustomItem.prototype.setCustomControl=function(c){this._control=c;return this};
 sap.m.ViewSettingsCustomItem.prototype.getCustomControl=function(){return this._control};
+sap.m.ViewSettingsCustomItem.prototype.setFilterCount=function(v){this.setProperty("filterCount",v,true);return this};
+sap.m.ViewSettingsCustomItem.prototype.setSelected=function(v){this.setProperty("selected",v,true);return this};
